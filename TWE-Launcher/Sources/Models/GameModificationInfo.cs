@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using TWE_Launcher.Forms;
 
 namespace TWE_Launcher.Models
 {
@@ -12,7 +15,7 @@ namespace TWE_Launcher.Models
 		public string ModCfgRelativePath { get; }
 		public string LogFileName { get; }
 		public string LogFileRelativePath { get; }
-		public string LogotypeImage { get; }
+		private string modLogotypeImage { get; }
 
 		// example: modificationURI = "A:\TWEMP\modcenter_M2TW\MEDD"
 		public GameModificationInfo(string modificationURI, ModCenterInfo parentModCenter, GameSetupInfo setupInfo)
@@ -29,8 +32,34 @@ namespace TWE_Launcher.Models
 			LogFileName = InitializeLogFileName();
 			LogFileRelativePath = InitializeLogFileRelativePath(ModCfgRelativePath, LogFileName);
 
-			LogotypeImage = InitializeCachedLogotypeImage(Location);
+			modLogotypeImage = InitializeCachedLogotypeImage(Location);
 		}
+
+
+		public void ShowModVisitingCard(PictureBox modLogotypePictureBox, Label modStatusLabel)
+		{
+			const string modLogoErrorMsg = "Mod Caching Error: Logotype image was not found.";
+
+			if (modLogotypePictureBox.Image != null)
+			{
+				modLogotypePictureBox.Image.Dispose();
+				modLogotypePictureBox.Image = null;
+			}
+
+			if (File.Exists(modLogotypeImage))
+			{
+				modLogotypePictureBox.Load(modLogotypeImage);
+				modLogotypePictureBox.Visible = true;
+				modStatusLabel.Text = Location;
+			}
+			else
+			{
+				modLogotypePictureBox.Visible = true;
+				modLogotypePictureBox.BackColor = Color.Silver;
+				modStatusLabel.Text = modLogoErrorMsg;
+			}
+		}
+
 
 		private string InitializeCacheDirectory(string cacheModCenterDirectoryPath, string cacheModFolderName)
 		{

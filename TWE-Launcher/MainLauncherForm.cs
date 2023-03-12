@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 
 using TWE_Launcher.Models;
-
+using TWE_Launcher.Sources.Forms;
 
 namespace TWE_Launcher.Forms
 {
@@ -31,6 +31,17 @@ namespace TWE_Launcher.Forms
 		{
 			InitializeComponent();
 			UpdateModificationsListBox();
+
+			Text = GetApplicationFullName();
+		}
+
+		private static string GetApplicationFullName()
+		{
+			string appProjectTitle = "OpenTWEMP Community Browser";
+			string appCurrentVersion = "Preview 2023.1";
+			string appHomeFolder = Application.ExecutablePath;
+
+			return appProjectTitle + " - " + appCurrentVersion + " [ " + appHomeFolder + " ]";
 		}
 
 		public void UpdateModificationsListBox()
@@ -49,44 +60,24 @@ namespace TWE_Launcher.Forms
 			listBoxMODS.Enabled = true;
 
 			modMainTitleLabel.Text = string.Empty;
-
+			modStatusLabel.Text = string.Empty;
 			modLogoPictureBox.Visible = false;
-			aboutProjectPanel.Visible = true;
 		}
 
 		private void listBoxMODS_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			GameModificationInfo current_mod = Settings.GetActiveModificationInfo(listBoxMODS.SelectedIndex);
+			current_mod.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
 			modMainTitleLabel.Text = current_mod.ShortName;
 			EnableModUIControls();
-
-			aboutProjectPanel.Visible = false;
-
-			if (modLogoPictureBox.Image != null)
-			{
-				modLogoPictureBox.Image.Dispose();
-				modLogoPictureBox.Image = null;
-			}
-
-			if (File.Exists(current_mod.LogotypeImage))
-			{
-				modLogoPictureBox.Load(current_mod.LogotypeImage);
-				modLogoPictureBox.Visible = true;
-			}
-			else
-			{
-				aboutProjectNameLabel1.Visible = false;
-				aboutProjectNameLabel2.Visible = false;
-				errorModLogotypeNotFoundLabel.Visible = true;
-				aboutProjectPanel.BackColor = Color.WhiteSmoke;
-
-				aboutProjectPanel.Visible = true;
-			}
 		}
 
 		private void DisableModUIControls()
 		{
-			panelLauncherOptions.Enabled = false;
+			groupBoxConfigLaunchMode.Enabled = false;
+			groupBoxConfigLogMode.Enabled = false;
+			groupBoxConfigCleanerMode.Enabled = false;
+
 			buttonLaunch.Enabled = false;
 			buttonExplore.Enabled = false;
 			modQuickNavigationButton.Enabled = false;
@@ -94,37 +85,13 @@ namespace TWE_Launcher.Forms
 
 		private void EnableModUIControls()
 		{
-			panelLauncherOptions.Enabled = true;
+			groupBoxConfigLaunchMode.Enabled = true;
+			groupBoxConfigLogMode.Enabled = true;
+			groupBoxConfigCleanerMode.Enabled = true;
+
 			buttonLaunch.Enabled = true;
 			buttonExplore.Enabled = true;
 			modQuickNavigationButton.Enabled = true;
-		}
-
-
-		private void buttonExit_Click(object sender, EventArgs e)
-		{
-			const string MESSAGE_CAPTION = "Exit from the Application";
-			const string MESSAGE_TEXT = "Do you want to exit from the program ?";
-			MessageBoxButtons exit_dialog_buttons = MessageBoxButtons.OKCancel;
-			MessageBoxIcon exit_dialog_icon = MessageBoxIcon.Question;
-
-			DialogResult exitDialogResult = MessageBox.Show(
-				MESSAGE_TEXT, MESSAGE_CAPTION, exit_dialog_buttons, exit_dialog_icon);
-
-			if (exitDialogResult == DialogResult.OK)
-			{
-				Application.Exit();
-			}
-		}
-
-		private void importGameSetupButton_Click(object sender, EventArgs e)
-		{
-			var gameSetupConfigForm = new GameSetupConfigForm(this);
-
-			Enabled = false;
-			Visible= false;
-
-			gameSetupConfigForm.Show();
 		}
 
 		private void changeLauncherGUIWhenGameStarting()
@@ -173,22 +140,9 @@ namespace TWE_Launcher.Forms
 			MessageBox.Show("Config Settings");
 		}
 
-		private void buttonShowHomeDirectory_Click(object sender, EventArgs e)
-		{
-			string appWorkDirectory = Directory.GetCurrentDirectory();
-			SystemToolbox.ShowFileSystemDirectory(appWorkDirectory);
-		}
-
 		private void buttonAboutProject_Click(object sender, EventArgs e)
 		{
-			modLogoPictureBox.Visible = false;
 
-			aboutProjectNameLabel1.Visible = true;
-			aboutProjectNameLabel2.Visible = true;
-			errorModLogotypeNotFoundLabel.Visible = false;
-			aboutProjectPanel.BackColor = Color.Black;
-
-			aboutProjectPanel.Visible = true;
 		}
 
 
@@ -230,92 +184,23 @@ namespace TWE_Launcher.Forms
 
 		private void ApplyUIStyleByDefaultTheme()
 		{
-			BackColor= Color.DarkSeaGreen;
+			BackColor = Color.DarkSeaGreen;
 
-			aboutProjectReleaseLabel.BackColor = Color.MediumAquamarine;
-			panelLauncherActions.BackColor = Color.MediumAquamarine;
 			panelLauncherToolkit.BackColor = Color.MediumAquamarine;
 			panelLauncherOptions.BackColor = Color.MediumAquamarine;
 
-			listBoxMODS.BackColor= Color.MediumSeaGreen;
+			listBoxMODS.BackColor = Color.MediumSeaGreen;
 			modMainTitleLabel.BackColor = Color.MediumSeaGreen;
+			modStatusLabel.BackColor = Color.MediumSeaGreen;
 
-			importGameSetupButton.BackColor = Color.LightGreen;
 			buttonLaunch.BackColor = Color.LightGreen;
 			modQuickNavigationButton.BackColor = Color.LightGreen;
 			buttonExplore.BackColor = Color.LightGreen;
-			buttonAboutProject.BackColor = Color.LightGreen;
-			buttonShowHomeDirectory.BackColor = Color.LightGreen;
-			buttonExit.BackColor = Color.LightGreen;
 
 
-			importGameSetupButton.ForeColor = Color.Black;
 			buttonLaunch.ForeColor = Color.Black;
 			modQuickNavigationButton.ForeColor = Color.Black;
 			buttonExplore.ForeColor = Color.Black;
-			buttonAboutProject.ForeColor = Color.Black;
-			buttonShowHomeDirectory.ForeColor = Color.Black;
-			buttonExit.ForeColor = Color.Black;
-
-			groupBoxConfigLaunchMode.ForeColor = Color.Black;
-			radioButtonLaunchWindowScreen.ForeColor = Color.Black;
-			radioButtonLaunchFullScreen.ForeColor = Color.Black;
-			checkBoxVideo.ForeColor = Color.Black;
-			checkBoxBorderless.ForeColor = Color.Black;
-
-			groupBoxConfigLogMode.ForeColor = Color.Black;
-			radioButtonLogOnlyError.ForeColor = Color.Black;
-			radioButtonLogOnlyTrace.ForeColor = Color.Black;
-			radioButtonLogErrorAndTrace.ForeColor = Color.Black;
-			checkBoxLogHistory.ForeColor = Color.Black;
-
-			groupBoxConfigCleanerMode.ForeColor = Color.Black;
-			checkBoxCleaner_MapRWM.ForeColor = Color.Black;
-			checkBoxCleaner_textBIN.ForeColor = Color.Black;
-			checkBoxCleaner_soundPacks.ForeColor = Color.Black;
-
-			appColorThemeGroupBox.ForeColor = Color.Black;
-			uiStyleByDarkThemeRadioButton.ForeColor = Color.Black;
-			uiStyleByLightThemeRadioButton.ForeColor= Color.Black;
-			uiStyleByDefaultThemeRadioButton.ForeColor = Color.Black;
-
-			appLocalizationGroupBox.ForeColor= Color.Black;
-			enableEngLocaleRadioButton.ForeColor = Color.Black;
-			enableRusLocaleRadioButton.ForeColor= Color.Black;
-
-			listBoxMODS.ForeColor = Color.Black;
-			modMainTitleLabel.ForeColor = Color.Black;
-			aboutProjectReleaseLabel.ForeColor = Color.Black;
-		}
-
-		private void ApplyUIStyleByLightTheme()
-		{
-			BackColor = Color.SeaShell;
-
-			aboutProjectReleaseLabel.BackColor = Color.Azure;
-			panelLauncherActions.BackColor = Color.Azure;
-			panelLauncherToolkit.BackColor = Color.Azure;
-			panelLauncherOptions.BackColor = Color.Azure;
-
-			listBoxMODS.BackColor = Color.AliceBlue;
-			modMainTitleLabel.BackColor = Color.AliceBlue;
-
-			importGameSetupButton.BackColor = Color.GhostWhite;
-			buttonLaunch.BackColor = Color.GhostWhite;
-			modQuickNavigationButton.BackColor = Color.GhostWhite;
-			buttonExplore.BackColor = Color.GhostWhite;
-			buttonAboutProject.BackColor = Color.GhostWhite;
-			buttonShowHomeDirectory.BackColor = Color.GhostWhite;
-			buttonExit.BackColor = Color.GhostWhite;
-
-
-			importGameSetupButton.ForeColor = Color.Black;
-			buttonLaunch.ForeColor = Color.Black;
-			modQuickNavigationButton.ForeColor = Color.Black;
-			buttonExplore.ForeColor = Color.Black;
-			buttonAboutProject.ForeColor = Color.Black;
-			buttonShowHomeDirectory.ForeColor = Color.Black;
-			buttonExit.ForeColor = Color.Black;
 
 			groupBoxConfigLaunchMode.ForeColor = Color.Black;
 			radioButtonLaunchWindowScreen.ForeColor = Color.Black;
@@ -345,37 +230,79 @@ namespace TWE_Launcher.Forms
 
 			listBoxMODS.ForeColor = Color.Black;
 			modMainTitleLabel.ForeColor = Color.Black;
-			aboutProjectReleaseLabel.ForeColor = Color.Black;
+			modStatusLabel.ForeColor = Color.Black;
+		}
+
+		private void ApplyUIStyleByLightTheme()
+		{
+			BackColor = Color.SeaShell;
+
+			panelLauncherToolkit.BackColor = Color.Azure;
+			panelLauncherOptions.BackColor = Color.Azure;
+
+			listBoxMODS.BackColor = Color.AliceBlue;
+			modMainTitleLabel.BackColor = Color.AliceBlue;
+			modStatusLabel.BackColor = Color.AliceBlue;
+
+			buttonLaunch.BackColor = Color.GhostWhite;
+			modQuickNavigationButton.BackColor = Color.GhostWhite;
+			buttonExplore.BackColor = Color.GhostWhite;
+
+
+			buttonLaunch.ForeColor = Color.Black;
+			modQuickNavigationButton.ForeColor = Color.Black;
+			buttonExplore.ForeColor = Color.Black;
+
+			groupBoxConfigLaunchMode.ForeColor = Color.Black;
+			radioButtonLaunchWindowScreen.ForeColor = Color.Black;
+			radioButtonLaunchFullScreen.ForeColor = Color.Black;
+			checkBoxVideo.ForeColor = Color.Black;
+			checkBoxBorderless.ForeColor = Color.Black;
+
+			groupBoxConfigLogMode.ForeColor = Color.Black;
+			radioButtonLogOnlyError.ForeColor = Color.Black;
+			radioButtonLogOnlyTrace.ForeColor = Color.Black;
+			radioButtonLogErrorAndTrace.ForeColor = Color.Black;
+			checkBoxLogHistory.ForeColor = Color.Black;
+
+			groupBoxConfigCleanerMode.ForeColor = Color.Black;
+			checkBoxCleaner_MapRWM.ForeColor = Color.Black;
+			checkBoxCleaner_textBIN.ForeColor = Color.Black;
+			checkBoxCleaner_soundPacks.ForeColor = Color.Black;
+
+			appColorThemeGroupBox.ForeColor = Color.Black;
+			uiStyleByDarkThemeRadioButton.ForeColor = Color.Black;
+			uiStyleByLightThemeRadioButton.ForeColor = Color.Black;
+			uiStyleByDefaultThemeRadioButton.ForeColor = Color.Black;
+
+			appLocalizationGroupBox.ForeColor = Color.Black;
+			enableEngLocaleRadioButton.ForeColor = Color.Black;
+			enableRusLocaleRadioButton.ForeColor = Color.Black;
+
+			listBoxMODS.ForeColor = Color.Black;
+			modMainTitleLabel.ForeColor = Color.Black;
+			modStatusLabel.ForeColor = Color.Black;
 		}
 
 		private void ApplyUIStyleByDarkTheme()
 		{
 			BackColor = Color.DarkSlateGray;
 
-			aboutProjectReleaseLabel.BackColor = Color.LightSlateGray;
-			panelLauncherActions.BackColor = Color.LightSlateGray;
 			panelLauncherToolkit.BackColor = Color.LightSlateGray;
 			panelLauncherOptions.BackColor = Color.LightSlateGray;
 
 			listBoxMODS.BackColor = Color.SlateGray;
 			modMainTitleLabel.BackColor = Color.SlateGray;
+			modStatusLabel.BackColor = Color.SlateGray;
 
-			importGameSetupButton.BackColor = Color.DarkGray;
 			buttonLaunch.BackColor = Color.DarkGray;
 			modQuickNavigationButton.BackColor = Color.DarkGray;
 			buttonExplore.BackColor = Color.DarkGray;
-			buttonAboutProject.BackColor = Color.DarkGray;
-			buttonShowHomeDirectory.BackColor = Color.DarkGray;
-			buttonExit.BackColor = Color.DarkGray;
 
 
-			importGameSetupButton.ForeColor = Color.Snow;
 			buttonLaunch.ForeColor = Color.Snow;
 			modQuickNavigationButton.ForeColor = Color.Snow;
 			buttonExplore.ForeColor = Color.Snow;
-			buttonAboutProject.ForeColor = Color.Snow;
-			buttonShowHomeDirectory.ForeColor = Color.Snow;
-			buttonExit.ForeColor = Color.Snow;
 
 			groupBoxConfigLaunchMode.ForeColor = Color.Snow;
 			radioButtonLaunchWindowScreen.ForeColor = Color.Snow;
@@ -405,7 +332,7 @@ namespace TWE_Launcher.Forms
 
 			listBoxMODS.ForeColor = Color.Snow;
 			modMainTitleLabel.ForeColor = Color.Snow;
-			aboutProjectReleaseLabel.ForeColor = Color.Snow;
+			modStatusLabel.ForeColor = Color.Snow;
 		}
 
 
@@ -435,11 +362,7 @@ namespace TWE_Launcher.Forms
 
 		private void ApplyUILanguageOnEnglish()
 		{
-			importGameSetupButton.Text = "GAME SETUP SETTINGS";
 			buttonLaunch.Text = "LAUNCH";
-			buttonExit.Text = "EXIT";
-			buttonAboutProject.Text = "ABOUT";
-			buttonShowHomeDirectory.Text = "APP HOME FOLDER";
 			modQuickNavigationButton.Text = "MOD QUICK NAVIGATION";
 			buttonExplore.Text = "MOD HOME FOLDER";
 
@@ -468,19 +391,11 @@ namespace TWE_Launcher.Forms
 			radioButtonLaunchFullScreen.Text = "Full-Screen Mode";
 			checkBoxVideo.Text = "Enable Game Video";
 			checkBoxBorderless.Text = "Borderless Windowed Mode";
-
-			errorModLogotypeNotFoundLabel.Text
-				= "ERROR: Mod logotype image was not found."
-				+ "Probably, caching was finished with failure.";
 		}
 
 		private void ApplyUILanguageOnRussian()
 		{
-			importGameSetupButton.Text = "ИГРОВЫЕ УСТАНОВКИ";
 			buttonLaunch.Text = "ИГРАТЬ";
-			buttonExit.Text = "ВЫХОД";
-			buttonAboutProject.Text = "ИНФО";
-			buttonShowHomeDirectory.Text = "ДОМАШНИЙ КАТАЛОГ ПРОГРАММЫ";
 			modQuickNavigationButton.Text = "БЫСТРАЯ МОД-НАВИГАЦИЯ";
 			buttonExplore.Text = "РАЗМЕЩЕНИЕ МОДИФИКАЦИИ";
 
@@ -509,10 +424,56 @@ namespace TWE_Launcher.Forms
 			radioButtonLaunchFullScreen.Text = "Полноэкранный режим";
 			checkBoxVideo.Text = "Игровое видео";
 			checkBoxBorderless.Text = "Оконный режим без границ";
+		}
 
-			errorModLogotypeNotFoundLabel.Text 
-				= "ОШИБКА: Изображение логотипа мода не было найдено. "
-				+ "Возможно, произошла ошибка кэширования.";
+
+
+		private void exitFromApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			const string MESSAGE_CAPTION = "Exit from the Application";
+			const string MESSAGE_TEXT = "Do you want to exit from the program ?";
+			MessageBoxButtons exit_dialog_buttons = MessageBoxButtons.OKCancel;
+			MessageBoxIcon exit_dialog_icon = MessageBoxIcon.Question;
+
+			DialogResult exitDialogResult = MessageBox.Show(
+				MESSAGE_TEXT, MESSAGE_CAPTION, exit_dialog_buttons, exit_dialog_icon);
+
+			if (exitDialogResult == DialogResult.OK)
+			{
+				Application.Exit();
+			}
+		}
+
+		private void applicationHomeFolderToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			string appWorkDirectory = Directory.GetCurrentDirectory();
+			SystemToolbox.ShowFileSystemDirectory(appWorkDirectory);
+		}
+
+		private void applicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("applicationSettingsToolStripMenuItem_Click");
+		}
+
+		private void gameSetupSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var gameSetupConfigForm = new GameSetupConfigForm(this);
+
+			Enabled = false;
+			Visible = false;
+
+			gameSetupConfigForm.Show();
+		}
+
+		private void configSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("configSettingsToolStripMenuItem_Click");
+		}
+
+		private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var aboutProjectForm = new AboutProjectForm();
+			aboutProjectForm.Show();
 		}
 	}
 }
