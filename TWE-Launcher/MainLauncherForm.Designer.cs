@@ -104,6 +104,7 @@ namespace TWE_Launcher.Forms
 			// panelLauncherOptions
 			// 
 			panelLauncherOptions.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+			panelLauncherOptions.AutoScroll = true;
 			panelLauncherOptions.BackColor = System.Drawing.Color.MediumAquamarine;
 			panelLauncherOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			panelLauncherOptions.Controls.Add(appColorThemeGroupBox);
@@ -126,7 +127,7 @@ namespace TWE_Launcher.Forms
 			appColorThemeGroupBox.Controls.Add(uiStyleByDefaultThemeRadioButton);
 			appColorThemeGroupBox.Location = new System.Drawing.Point(3, 451);
 			appColorThemeGroupBox.Name = "appColorThemeGroupBox";
-			appColorThemeGroupBox.Size = new System.Drawing.Size(268, 101);
+			appColorThemeGroupBox.Size = new System.Drawing.Size(238, 101);
 			appColorThemeGroupBox.TabIndex = 14;
 			appColorThemeGroupBox.TabStop = false;
 			appColorThemeGroupBox.Text = "Select GUI style theme";
@@ -176,7 +177,7 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigCleanerMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigCleanerMode.Name = "groupBoxConfigCleanerMode";
 			groupBoxConfigCleanerMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			groupBoxConfigCleanerMode.Size = new System.Drawing.Size(267, 103);
+			groupBoxConfigCleanerMode.Size = new System.Drawing.Size(237, 103);
 			groupBoxConfigCleanerMode.TabIndex = 5;
 			groupBoxConfigCleanerMode.TabStop = false;
 			groupBoxConfigCleanerMode.Text = "Select mod clean routines";
@@ -221,7 +222,7 @@ namespace TWE_Launcher.Forms
 			appLocalizationGroupBox.Controls.Add(enableRusLocaleRadioButton);
 			appLocalizationGroupBox.Location = new System.Drawing.Point(3, 372);
 			appLocalizationGroupBox.Name = "appLocalizationGroupBox";
-			appLocalizationGroupBox.Size = new System.Drawing.Size(268, 73);
+			appLocalizationGroupBox.Size = new System.Drawing.Size(238, 73);
 			appLocalizationGroupBox.TabIndex = 15;
 			appLocalizationGroupBox.TabStop = false;
 			appLocalizationGroupBox.Text = "Select GUI language";
@@ -261,7 +262,7 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigLogMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigLogMode.Name = "groupBoxConfigLogMode";
 			groupBoxConfigLogMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			groupBoxConfigLogMode.Size = new System.Drawing.Size(267, 126);
+			groupBoxConfigLogMode.Size = new System.Drawing.Size(237, 126);
 			groupBoxConfigLogMode.TabIndex = 1;
 			groupBoxConfigLogMode.TabStop = false;
 			groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
@@ -325,7 +326,7 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigLaunchMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigLaunchMode.Name = "groupBoxConfigLaunchMode";
 			groupBoxConfigLaunchMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			groupBoxConfigLaunchMode.Size = new System.Drawing.Size(267, 122);
+			groupBoxConfigLaunchMode.Size = new System.Drawing.Size(237, 122);
 			groupBoxConfigLaunchMode.TabIndex = 0;
 			groupBoxConfigLaunchMode.TabStop = false;
 			groupBoxConfigLaunchMode.Text = "Select game launch mode";
@@ -588,6 +589,7 @@ namespace TWE_Launcher.Forms
 			Name = "MainLauncherForm";
 			ShowIcon = false;
 			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			panelLauncherOptions.ResumeLayout(false);
 			appColorThemeGroupBox.ResumeLayout(false);
 			appColorThemeGroupBox.PerformLayout();
