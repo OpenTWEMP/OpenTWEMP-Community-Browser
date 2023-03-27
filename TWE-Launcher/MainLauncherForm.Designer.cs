@@ -85,17 +85,17 @@ namespace TWE_Launcher.Forms
 			// 
 			// buttonLaunch
 			// 
-			buttonLaunch.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			buttonLaunch.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			buttonLaunch.BackColor = System.Drawing.Color.LightGreen;
-			buttonLaunch.Cursor = System.Windows.Forms.Cursors.AppStarting;
+			buttonLaunch.Cursor = System.Windows.Forms.Cursors.Hand;
 			buttonLaunch.Enabled = false;
 			buttonLaunch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			buttonLaunch.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
 			buttonLaunch.ForeColor = System.Drawing.SystemColors.ControlText;
-			buttonLaunch.Location = new System.Drawing.Point(4, 358);
+			buttonLaunch.Location = new System.Drawing.Point(4, 3);
 			buttonLaunch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			buttonLaunch.Name = "buttonLaunch";
-			buttonLaunch.Size = new System.Drawing.Size(323, 92);
+			buttonLaunch.Size = new System.Drawing.Size(384, 88);
 			buttonLaunch.TabIndex = 0;
 			buttonLaunch.Text = "LAUNCH";
 			buttonLaunch.UseVisualStyleBackColor = false;
@@ -112,10 +112,10 @@ namespace TWE_Launcher.Forms
 			panelLauncherOptions.Controls.Add(groupBoxConfigLogMode);
 			panelLauncherOptions.Controls.Add(groupBoxConfigLaunchMode);
 			panelLauncherOptions.Cursor = System.Windows.Forms.Cursors.Hand;
-			panelLauncherOptions.Location = new System.Drawing.Point(737, 84);
+			panelLauncherOptions.Location = new System.Drawing.Point(719, 84);
 			panelLauncherOptions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			panelLauncherOptions.Name = "panelLauncherOptions";
-			panelLauncherOptions.Size = new System.Drawing.Size(258, 567);
+			panelLauncherOptions.Size = new System.Drawing.Size(276, 567);
 			panelLauncherOptions.TabIndex = 2;
 			// 
 			// appColorThemeGroupBox
@@ -124,9 +124,9 @@ namespace TWE_Launcher.Forms
 			appColorThemeGroupBox.Controls.Add(uiStyleByDarkThemeRadioButton);
 			appColorThemeGroupBox.Controls.Add(uiStyleByLightThemeRadioButton);
 			appColorThemeGroupBox.Controls.Add(uiStyleByDefaultThemeRadioButton);
-			appColorThemeGroupBox.Location = new System.Drawing.Point(3, 416);
+			appColorThemeGroupBox.Location = new System.Drawing.Point(3, 451);
 			appColorThemeGroupBox.Name = "appColorThemeGroupBox";
-			appColorThemeGroupBox.Size = new System.Drawing.Size(244, 78);
+			appColorThemeGroupBox.Size = new System.Drawing.Size(268, 101);
 			appColorThemeGroupBox.TabIndex = 14;
 			appColorThemeGroupBox.TabStop = false;
 			appColorThemeGroupBox.Text = "Select GUI style theme";
@@ -134,7 +134,7 @@ namespace TWE_Launcher.Forms
 			// uiStyleByDarkThemeRadioButton
 			// 
 			uiStyleByDarkThemeRadioButton.AutoSize = true;
-			uiStyleByDarkThemeRadioButton.Location = new System.Drawing.Point(109, 49);
+			uiStyleByDarkThemeRadioButton.Location = new System.Drawing.Point(12, 74);
 			uiStyleByDarkThemeRadioButton.Name = "uiStyleByDarkThemeRadioButton";
 			uiStyleByDarkThemeRadioButton.Size = new System.Drawing.Size(88, 19);
 			uiStyleByDarkThemeRadioButton.TabIndex = 2;
@@ -172,11 +172,11 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_soundPacks);
 			groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_textBIN);
 			groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_MapRWM);
-			groupBoxConfigCleanerMode.Location = new System.Drawing.Point(4, 228);
+			groupBoxConfigCleanerMode.Location = new System.Drawing.Point(4, 263);
 			groupBoxConfigCleanerMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigCleanerMode.Name = "groupBoxConfigCleanerMode";
 			groupBoxConfigCleanerMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			groupBoxConfigCleanerMode.Size = new System.Drawing.Size(243, 103);
+			groupBoxConfigCleanerMode.Size = new System.Drawing.Size(267, 103);
 			groupBoxConfigCleanerMode.TabIndex = 5;
 			groupBoxConfigCleanerMode.TabStop = false;
 			groupBoxConfigCleanerMode.Text = "Select mod clean routines";
@@ -219,9 +219,9 @@ namespace TWE_Launcher.Forms
 			appLocalizationGroupBox.BackColor = System.Drawing.Color.Transparent;
 			appLocalizationGroupBox.Controls.Add(enableEngLocaleRadioButton);
 			appLocalizationGroupBox.Controls.Add(enableRusLocaleRadioButton);
-			appLocalizationGroupBox.Location = new System.Drawing.Point(3, 337);
+			appLocalizationGroupBox.Location = new System.Drawing.Point(3, 372);
 			appLocalizationGroupBox.Name = "appLocalizationGroupBox";
-			appLocalizationGroupBox.Size = new System.Drawing.Size(244, 73);
+			appLocalizationGroupBox.Size = new System.Drawing.Size(268, 73);
 			appLocalizationGroupBox.TabIndex = 15;
 			appLocalizationGroupBox.TabStop = false;
 			appLocalizationGroupBox.Text = "Select GUI language";
@@ -261,7 +261,7 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigLogMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigLogMode.Name = "groupBoxConfigLogMode";
 			groupBoxConfigLogMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			groupBoxConfigLogMode.Size = new System.Drawing.Size(243, 96);
+			groupBoxConfigLogMode.Size = new System.Drawing.Size(267, 126);
 			groupBoxConfigLogMode.TabIndex = 1;
 			groupBoxConfigLogMode.TabStop = false;
 			groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
@@ -271,7 +271,7 @@ namespace TWE_Launcher.Forms
 			checkBoxLogHistory.AutoSize = true;
 			checkBoxLogHistory.Checked = true;
 			checkBoxLogHistory.CheckState = System.Windows.Forms.CheckState.Checked;
-			checkBoxLogHistory.Location = new System.Drawing.Point(8, 72);
+			checkBoxLogHistory.Location = new System.Drawing.Point(11, 97);
 			checkBoxLogHistory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			checkBoxLogHistory.Name = "checkBoxLogHistory";
 			checkBoxLogHistory.Size = new System.Drawing.Size(167, 19);
@@ -283,7 +283,7 @@ namespace TWE_Launcher.Forms
 			// 
 			radioButtonLogErrorAndTrace.AutoSize = true;
 			radioButtonLogErrorAndTrace.Checked = true;
-			radioButtonLogErrorAndTrace.Location = new System.Drawing.Point(101, 34);
+			radioButtonLogErrorAndTrace.Location = new System.Drawing.Point(10, 72);
 			radioButtonLogErrorAndTrace.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			radioButtonLogErrorAndTrace.Name = "radioButtonLogErrorAndTrace";
 			radioButtonLogErrorAndTrace.Size = new System.Drawing.Size(96, 19);
@@ -325,7 +325,7 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigLaunchMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigLaunchMode.Name = "groupBoxConfigLaunchMode";
 			groupBoxConfigLaunchMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			groupBoxConfigLaunchMode.Size = new System.Drawing.Size(243, 122);
+			groupBoxConfigLaunchMode.Size = new System.Drawing.Size(267, 122);
 			groupBoxConfigLaunchMode.TabIndex = 0;
 			groupBoxConfigLaunchMode.TabStop = false;
 			groupBoxConfigLaunchMode.Text = "Select game launch mode";
@@ -378,14 +378,15 @@ namespace TWE_Launcher.Forms
 			// 
 			// buttonExplore
 			// 
-			buttonExplore.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			buttonExplore.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			buttonExplore.BackColor = System.Drawing.Color.LightGreen;
+			buttonExplore.Cursor = System.Windows.Forms.Cursors.Hand;
 			buttonExplore.Enabled = false;
 			buttonExplore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			buttonExplore.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			buttonExplore.Location = new System.Drawing.Point(3, 510);
+			buttonExplore.Location = new System.Drawing.Point(4, 151);
 			buttonExplore.Name = "buttonExplore";
-			buttonExplore.Size = new System.Drawing.Size(324, 52);
+			buttonExplore.Size = new System.Drawing.Size(384, 52);
 			buttonExplore.TabIndex = 8;
 			buttonExplore.Text = "MOD HOME FOLDER";
 			buttonExplore.UseVisualStyleBackColor = false;
@@ -393,15 +394,16 @@ namespace TWE_Launcher.Forms
 			// 
 			// modQuickNavigationButton
 			// 
-			modQuickNavigationButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			modQuickNavigationButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			modQuickNavigationButton.BackColor = System.Drawing.Color.LightGreen;
+			modQuickNavigationButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			modQuickNavigationButton.Enabled = false;
 			modQuickNavigationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			modQuickNavigationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			modQuickNavigationButton.Location = new System.Drawing.Point(4, 456);
+			modQuickNavigationButton.Location = new System.Drawing.Point(4, 97);
 			modQuickNavigationButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			modQuickNavigationButton.Name = "modQuickNavigationButton";
-			modQuickNavigationButton.Size = new System.Drawing.Size(323, 48);
+			modQuickNavigationButton.Size = new System.Drawing.Size(384, 48);
 			modQuickNavigationButton.TabIndex = 7;
 			modQuickNavigationButton.Text = "MOD QUICK NAVIGATION";
 			modQuickNavigationButton.UseVisualStyleBackColor = false;
@@ -409,32 +411,31 @@ namespace TWE_Launcher.Forms
 			// 
 			// panelLauncherToolkit
 			// 
-			panelLauncherToolkit.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+			panelLauncherToolkit.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			panelLauncherToolkit.BackColor = System.Drawing.Color.MediumAquamarine;
 			panelLauncherToolkit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			panelLauncherToolkit.Controls.Add(modQuickNavigationButton);
 			panelLauncherToolkit.Controls.Add(buttonExplore);
 			panelLauncherToolkit.Controls.Add(buttonLaunch);
-			panelLauncherToolkit.Controls.Add(listBoxMODS);
-			panelLauncherToolkit.Location = new System.Drawing.Point(13, 84);
+			panelLauncherToolkit.Location = new System.Drawing.Point(318, 443);
 			panelLauncherToolkit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			panelLauncherToolkit.Name = "panelLauncherToolkit";
-			panelLauncherToolkit.Size = new System.Drawing.Size(333, 567);
+			panelLauncherToolkit.Size = new System.Drawing.Size(394, 208);
 			panelLauncherToolkit.TabIndex = 6;
 			// 
 			// listBoxMODS
 			// 
-			listBoxMODS.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom;
+			listBoxMODS.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			listBoxMODS.BackColor = System.Drawing.Color.MediumSeaGreen;
 			listBoxMODS.Cursor = System.Windows.Forms.Cursors.Hand;
 			listBoxMODS.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			listBoxMODS.ForeColor = System.Drawing.SystemColors.WindowText;
 			listBoxMODS.FormattingEnabled = true;
 			listBoxMODS.ItemHeight = 17;
-			listBoxMODS.Location = new System.Drawing.Point(4, 8);
+			listBoxMODS.Location = new System.Drawing.Point(13, 84);
 			listBoxMODS.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			listBoxMODS.Name = "listBoxMODS";
-			listBoxMODS.Size = new System.Drawing.Size(323, 344);
+			listBoxMODS.Size = new System.Drawing.Size(298, 565);
 			listBoxMODS.TabIndex = 9;
 			listBoxMODS.SelectedIndexChanged += listBoxMODS_SelectedIndexChanged;
 			// 
@@ -455,9 +456,9 @@ namespace TWE_Launcher.Forms
 			modLogoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			modLogoPictureBox.BackColor = System.Drawing.Color.Transparent;
 			modLogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			modLogoPictureBox.Location = new System.Drawing.Point(353, 84);
+			modLogoPictureBox.Location = new System.Drawing.Point(318, 84);
 			modLogoPictureBox.Name = "modLogoPictureBox";
-			modLogoPictureBox.Size = new System.Drawing.Size(377, 563);
+			modLogoPictureBox.Size = new System.Drawing.Size(394, 353);
 			modLogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			modLogoPictureBox.TabIndex = 9;
 			modLogoPictureBox.TabStop = false;
@@ -575,6 +576,7 @@ namespace TWE_Launcher.Forms
 			Controls.Add(modMainTitleLabel);
 			Controls.Add(modStatusLabel);
 			Controls.Add(modLogoPictureBox);
+			Controls.Add(listBoxMODS);
 			Controls.Add(panelLauncherOptions);
 			Controls.Add(appStatusStrip);
 			Controls.Add(panelLauncherToolkit);

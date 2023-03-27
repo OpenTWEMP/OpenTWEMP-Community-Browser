@@ -411,9 +411,9 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigCleanerMode.Text = "Выберите операции очистки мод-контента";
 			checkBoxCleaner_MapRWM.Text = "Удалять файл map.rwm";
 			checkBoxCleaner_textBIN.Text = "Удалять файлы локализации *strings.bin";
-			checkBoxCleaner_soundPacks.Text = "Удалять звуковые pack-файлы (*.DAT + *.IDX)";
+			checkBoxCleaner_soundPacks.Text = "Удалять pack-файлы (*.DAT + *.IDX)";
 
-			groupBoxConfigLogMode.Text = "Выберите режим записи журнала system.log";
+			groupBoxConfigLogMode.Text = "Выберите режим записи журнала";
 			radioButtonLogOnlyError.Text = "Только ошибки";
 			radioButtonLogOnlyTrace.Text = "Только трассировка";
 			radioButtonLogErrorAndTrace.Text = "Ошибки + трассировка";
