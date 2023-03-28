@@ -467,7 +467,8 @@ namespace TWE_Launcher.Forms
 
 		private void configSettingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("configSettingsToolStripMenuItem_Click");
+			var modConfigSettingsForm = new ModConfigSettingsForm();
+			modConfigSettingsForm.Show();
 		}
 
 		private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
