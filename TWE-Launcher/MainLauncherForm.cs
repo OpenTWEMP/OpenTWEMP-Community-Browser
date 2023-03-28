@@ -452,7 +452,8 @@ namespace TWE_Launcher.Forms
 
 		private void applicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("applicationSettingsToolStripMenuItem_Click");
+			var appSettingsForm = new ApplicationSettingsForm();
+			appSettingsForm.Show();
 		}
 
 		private void gameSetupSettingsToolStripMenuItem_Click(object sender, EventArgs e)
