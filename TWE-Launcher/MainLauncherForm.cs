@@ -149,23 +149,8 @@ namespace TWE_Launcher.Forms
 
 		// COLOR THEMES FOR THE LAUNCHER
 
-		private void uiStyleByDefaultThemeRadioButton_Click(object sender, EventArgs e)
-		{
-			ApplyUIStyle(GuiStyle.Default);
-		}
 
-		private void uiStyleByLightThemeRadioButton_Click(object sender, EventArgs e)
-		{
-			ApplyUIStyle(GuiStyle.Light);
-		}
-
-		private void uiStyleByDarkThemeRadioButton_Click(object sender, EventArgs e)
-		{
-			ApplyUIStyle(GuiStyle.Dark);
-		}
-
-
-		private void ApplyUIStyle(GuiStyle style)
+		public void UpdateGUIStyle(GuiStyle style)
 		{
 			ColorTheme colorTheme = ColorTheme.SelectColorThemeByStyle(style);
 
@@ -210,10 +195,10 @@ namespace TWE_Launcher.Forms
 			checkBoxCleaner_textBIN.ForeColor = colorTheme.CommonControlsForeColor;
 			checkBoxCleaner_soundPacks.ForeColor = colorTheme.CommonControlsForeColor;
 
-			appColorThemeGroupBox.ForeColor = colorTheme.CommonControlsForeColor;
-			uiStyleByDarkThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
-			uiStyleByLightThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
-			uiStyleByDefaultThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
+			//appColorThemeGroupBox.ForeColor = colorTheme.CommonControlsForeColor;
+			//uiStyleByDarkThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
+			//uiStyleByLightThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
+			//uiStyleByDefaultThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
 
 			appLocalizationGroupBox.ForeColor = colorTheme.CommonControlsForeColor;
 			enableEngLocaleRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
@@ -259,10 +244,10 @@ namespace TWE_Launcher.Forms
 			enableEngLocaleRadioButton.Text = "ENGLISH (by default)";
 			enableRusLocaleRadioButton.Text = "RUSSIAN (in progress)";
 
-			appColorThemeGroupBox.Text = "Select GUI style theme";
-			uiStyleByDefaultThemeRadioButton.Text = "Standard Theme (by default)";
-			uiStyleByLightThemeRadioButton.Text = "Light Theme";
-			uiStyleByDarkThemeRadioButton.Text = "Dark Theme";
+			//appColorThemeGroupBox.Text = "Select GUI style theme";
+			//uiStyleByDefaultThemeRadioButton.Text = "Standard Theme (by default)";
+			//uiStyleByLightThemeRadioButton.Text = "Light Theme";
+			//uiStyleByDarkThemeRadioButton.Text = "Dark Theme";
 
 			groupBoxConfigCleanerMode.Text = "Select mod clean routines";
 			checkBoxCleaner_MapRWM.Text = "Delete map.rwm file";
@@ -292,10 +277,10 @@ namespace TWE_Launcher.Forms
 			enableEngLocaleRadioButton.Text = "Английский (по умолчанию)";
 			enableRusLocaleRadioButton.Text = "Русский (в процессе)";
 
-			appColorThemeGroupBox.Text = "Выберите тему GUI программы";
-			uiStyleByDefaultThemeRadioButton.Text = "Стандартная тема (по умолчанию)";
-			uiStyleByLightThemeRadioButton.Text = "Светлая тема";
-			uiStyleByDarkThemeRadioButton.Text = "Темная тема";
+			//appColorThemeGroupBox.Text = "Выберите тему GUI программы";
+			//uiStyleByDefaultThemeRadioButton.Text = "Стандартная тема (по умолчанию)";
+			//uiStyleByLightThemeRadioButton.Text = "Светлая тема";
+			//uiStyleByDarkThemeRadioButton.Text = "Темная тема";
 
 			groupBoxConfigCleanerMode.Text = "Выберите операции очистки для мода";
 			checkBoxCleaner_MapRWM.Text = "Удалять файл map.rwm";
@@ -341,7 +326,7 @@ namespace TWE_Launcher.Forms
 
 		private void applicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var appSettingsForm = new ApplicationSettingsForm();
+			var appSettingsForm = new ApplicationSettingsForm(this);
 			appSettingsForm.Show();
 		}
 

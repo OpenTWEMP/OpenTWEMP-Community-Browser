@@ -31,10 +31,6 @@ namespace TWE_Launcher.Forms
 		{
 			buttonLaunch = new System.Windows.Forms.Button();
 			panelLauncherOptions = new System.Windows.Forms.Panel();
-			appColorThemeGroupBox = new System.Windows.Forms.GroupBox();
-			uiStyleByDarkThemeRadioButton = new System.Windows.Forms.RadioButton();
-			uiStyleByLightThemeRadioButton = new System.Windows.Forms.RadioButton();
-			uiStyleByDefaultThemeRadioButton = new System.Windows.Forms.RadioButton();
 			groupBoxConfigCleanerMode = new System.Windows.Forms.GroupBox();
 			checkBoxCleaner_soundPacks = new System.Windows.Forms.CheckBox();
 			checkBoxCleaner_textBIN = new System.Windows.Forms.CheckBox();
@@ -73,7 +69,6 @@ namespace TWE_Launcher.Forms
 			toolStripModItem = new System.Windows.Forms.ToolStripMenuItem();
 			configSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			panelLauncherOptions.SuspendLayout();
-			appColorThemeGroupBox.SuspendLayout();
 			groupBoxConfigCleanerMode.SuspendLayout();
 			appLocalizationGroupBox.SuspendLayout();
 			groupBoxConfigLogMode.SuspendLayout();
@@ -107,7 +102,6 @@ namespace TWE_Launcher.Forms
 			panelLauncherOptions.AutoScroll = true;
 			panelLauncherOptions.BackColor = System.Drawing.Color.MediumAquamarine;
 			panelLauncherOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			panelLauncherOptions.Controls.Add(appColorThemeGroupBox);
 			panelLauncherOptions.Controls.Add(groupBoxConfigCleanerMode);
 			panelLauncherOptions.Controls.Add(appLocalizationGroupBox);
 			panelLauncherOptions.Controls.Add(groupBoxConfigLogMode);
@@ -118,54 +112,6 @@ namespace TWE_Launcher.Forms
 			panelLauncherOptions.Name = "panelLauncherOptions";
 			panelLauncherOptions.Size = new System.Drawing.Size(276, 567);
 			panelLauncherOptions.TabIndex = 2;
-			// 
-			// appColorThemeGroupBox
-			// 
-			appColorThemeGroupBox.BackColor = System.Drawing.Color.Transparent;
-			appColorThemeGroupBox.Controls.Add(uiStyleByDarkThemeRadioButton);
-			appColorThemeGroupBox.Controls.Add(uiStyleByLightThemeRadioButton);
-			appColorThemeGroupBox.Controls.Add(uiStyleByDefaultThemeRadioButton);
-			appColorThemeGroupBox.Location = new System.Drawing.Point(3, 451);
-			appColorThemeGroupBox.Name = "appColorThemeGroupBox";
-			appColorThemeGroupBox.Size = new System.Drawing.Size(238, 101);
-			appColorThemeGroupBox.TabIndex = 14;
-			appColorThemeGroupBox.TabStop = false;
-			appColorThemeGroupBox.Text = "Select GUI style theme";
-			// 
-			// uiStyleByDarkThemeRadioButton
-			// 
-			uiStyleByDarkThemeRadioButton.AutoSize = true;
-			uiStyleByDarkThemeRadioButton.Location = new System.Drawing.Point(12, 74);
-			uiStyleByDarkThemeRadioButton.Name = "uiStyleByDarkThemeRadioButton";
-			uiStyleByDarkThemeRadioButton.Size = new System.Drawing.Size(88, 19);
-			uiStyleByDarkThemeRadioButton.TabIndex = 2;
-			uiStyleByDarkThemeRadioButton.Text = "Dark Theme";
-			uiStyleByDarkThemeRadioButton.UseVisualStyleBackColor = true;
-			uiStyleByDarkThemeRadioButton.Click += uiStyleByDarkThemeRadioButton_Click;
-			// 
-			// uiStyleByLightThemeRadioButton
-			// 
-			uiStyleByLightThemeRadioButton.AutoSize = true;
-			uiStyleByLightThemeRadioButton.Location = new System.Drawing.Point(12, 49);
-			uiStyleByLightThemeRadioButton.Name = "uiStyleByLightThemeRadioButton";
-			uiStyleByLightThemeRadioButton.Size = new System.Drawing.Size(91, 19);
-			uiStyleByLightThemeRadioButton.TabIndex = 1;
-			uiStyleByLightThemeRadioButton.Text = "Light Theme";
-			uiStyleByLightThemeRadioButton.UseVisualStyleBackColor = true;
-			uiStyleByLightThemeRadioButton.Click += uiStyleByLightThemeRadioButton_Click;
-			// 
-			// uiStyleByDefaultThemeRadioButton
-			// 
-			uiStyleByDefaultThemeRadioButton.AutoSize = true;
-			uiStyleByDefaultThemeRadioButton.Checked = true;
-			uiStyleByDefaultThemeRadioButton.Location = new System.Drawing.Point(12, 24);
-			uiStyleByDefaultThemeRadioButton.Name = "uiStyleByDefaultThemeRadioButton";
-			uiStyleByDefaultThemeRadioButton.Size = new System.Drawing.Size(175, 19);
-			uiStyleByDefaultThemeRadioButton.TabIndex = 0;
-			uiStyleByDefaultThemeRadioButton.TabStop = true;
-			uiStyleByDefaultThemeRadioButton.Text = "Standard Theme (by default)";
-			uiStyleByDefaultThemeRadioButton.UseVisualStyleBackColor = true;
-			uiStyleByDefaultThemeRadioButton.Click += uiStyleByDefaultThemeRadioButton_Click;
 			// 
 			// groupBoxConfigCleanerMode
 			// 
@@ -549,7 +495,7 @@ namespace TWE_Launcher.Forms
 			// aboutProgramToolStripMenuItem
 			// 
 			aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-			aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
 			aboutProgramToolStripMenuItem.Text = "About Program";
 			aboutProgramToolStripMenuItem.Click += aboutProgramToolStripMenuItem_Click;
 			// 
@@ -593,8 +539,6 @@ namespace TWE_Launcher.Forms
 			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			panelLauncherOptions.ResumeLayout(false);
-			appColorThemeGroupBox.ResumeLayout(false);
-			appColorThemeGroupBox.PerformLayout();
 			groupBoxConfigCleanerMode.ResumeLayout(false);
 			groupBoxConfigCleanerMode.PerformLayout();
 			appLocalizationGroupBox.ResumeLayout(false);
@@ -634,10 +578,6 @@ namespace TWE_Launcher.Forms
 		private System.Windows.Forms.Button buttonExplore;
 		private System.Windows.Forms.Label modMainTitleLabel;
 		private System.Windows.Forms.PictureBox modLogoPictureBox;
-		private System.Windows.Forms.GroupBox appColorThemeGroupBox;
-		private System.Windows.Forms.RadioButton uiStyleByDarkThemeRadioButton;
-		private System.Windows.Forms.RadioButton uiStyleByLightThemeRadioButton;
-		private System.Windows.Forms.RadioButton uiStyleByDefaultThemeRadioButton;
 		private System.Windows.Forms.GroupBox appLocalizationGroupBox;
 		private System.Windows.Forms.RadioButton enableEngLocaleRadioButton;
 		private System.Windows.Forms.RadioButton enableRusLocaleRadioButton;

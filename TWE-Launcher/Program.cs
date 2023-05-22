@@ -7,6 +7,14 @@ namespace TWE_Launcher
 {
 	internal static class Program
 	{
+		internal static GuiStyle CurrentGUIStyle { get; set; }
+
+		static Program()
+		{
+			CurrentGUIStyle = GuiStyle.Default;
+		}
+
+
 		/// <summary>
 		///  The main entry point for the application.
 		/// </summary>
