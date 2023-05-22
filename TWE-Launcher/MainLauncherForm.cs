@@ -147,192 +147,81 @@ namespace TWE_Launcher.Forms
 
 
 
+		// COLOR THEMES FOR THE LAUNCHER
+
 		private void uiStyleByDefaultThemeRadioButton_Click(object sender, EventArgs e)
 		{
-			ApplyUIStyle();
+			ApplyUIStyle(GuiStyle.Default);
 		}
 
 		private void uiStyleByLightThemeRadioButton_Click(object sender, EventArgs e)
 		{
-			ApplyUIStyle();
+			ApplyUIStyle(GuiStyle.Light);
 		}
 
 		private void uiStyleByDarkThemeRadioButton_Click(object sender, EventArgs e)
 		{
-			ApplyUIStyle();
+			ApplyUIStyle(GuiStyle.Dark);
 		}
 
 
-		private void ApplyUIStyle()
+		private void ApplyUIStyle(GuiStyle style)
 		{
-			if (uiStyleByDefaultThemeRadioButton.Checked)
-			{
-				ApplyUIStyleByDefaultTheme();
-			}
+			ColorTheme colorTheme = ColorTheme.SelectColorThemeByStyle(style);
 
-			if (uiStyleByLightThemeRadioButton.Checked)
-			{
-				ApplyUIStyleByLightTheme();
-			}
+			// Set back color for main form.
+			BackColor = colorTheme.MainFormBackColor;
 
-			if (uiStyleByDarkThemeRadioButton.Checked)
-			{
-				ApplyUIStyleByDarkTheme();
-			}
-		}
+			// Set back color for panels.
+			panelLauncherToolkit.BackColor = colorTheme.PanelsBackColor;
+			panelLauncherOptions.BackColor = colorTheme.PanelsBackColor;
 
+			// Set back color for mod UI controls.
+			listBoxMODS.BackColor = colorTheme.ModControlsBackColor;
+			modMainTitleLabel.BackColor = colorTheme.ModControlsBackColor;
+			modStatusLabel.BackColor = colorTheme.ModControlsBackColor;
 
-		private void ApplyUIStyleByDefaultTheme()
-		{
-			BackColor = Color.DarkSeaGreen;
-
-			panelLauncherToolkit.BackColor = Color.MediumAquamarine;
-			panelLauncherOptions.BackColor = Color.MediumAquamarine;
-
-			listBoxMODS.BackColor = Color.MediumSeaGreen;
-			modMainTitleLabel.BackColor = Color.MediumSeaGreen;
-			modStatusLabel.BackColor = Color.MediumSeaGreen;
-
-			buttonLaunch.BackColor = Color.LightGreen;
-			modQuickNavigationButton.BackColor = Color.LightGreen;
-			buttonExplore.BackColor = Color.LightGreen;
+			// Set back color for common UI controls.
+			buttonLaunch.BackColor = colorTheme.CommonControlsBackColor;
+			modQuickNavigationButton.BackColor = colorTheme.CommonControlsBackColor;
+			buttonExplore.BackColor = colorTheme.CommonControlsBackColor;
 
 
-			buttonLaunch.ForeColor = Color.Black;
-			modQuickNavigationButton.ForeColor = Color.Black;
-			buttonExplore.ForeColor = Color.Black;
+			// Set fore color for common UI controls.
 
-			groupBoxConfigLaunchMode.ForeColor = Color.Black;
-			radioButtonLaunchWindowScreen.ForeColor = Color.Black;
-			radioButtonLaunchFullScreen.ForeColor = Color.Black;
-			checkBoxVideo.ForeColor = Color.Black;
-			checkBoxBorderless.ForeColor = Color.Black;
+			buttonLaunch.ForeColor = colorTheme.CommonControlsForeColor;
+			modQuickNavigationButton.ForeColor = colorTheme.CommonControlsForeColor;
+			buttonExplore.ForeColor = colorTheme.CommonControlsForeColor;
 
-			groupBoxConfigLogMode.ForeColor = Color.Black;
-			radioButtonLogOnlyError.ForeColor = Color.Black;
-			radioButtonLogOnlyTrace.ForeColor = Color.Black;
-			radioButtonLogErrorAndTrace.ForeColor = Color.Black;
-			checkBoxLogHistory.ForeColor = Color.Black;
+			groupBoxConfigLaunchMode.ForeColor = colorTheme.CommonControlsForeColor;
+			radioButtonLaunchWindowScreen.ForeColor = colorTheme.CommonControlsForeColor;
+			radioButtonLaunchFullScreen.ForeColor = colorTheme.CommonControlsForeColor;
+			checkBoxVideo.ForeColor = colorTheme.CommonControlsForeColor;
+			checkBoxBorderless.ForeColor = colorTheme.CommonControlsForeColor;
 
-			groupBoxConfigCleanerMode.ForeColor = Color.Black;
-			checkBoxCleaner_MapRWM.ForeColor = Color.Black;
-			checkBoxCleaner_textBIN.ForeColor = Color.Black;
-			checkBoxCleaner_soundPacks.ForeColor = Color.Black;
+			groupBoxConfigLogMode.ForeColor = colorTheme.CommonControlsForeColor;
+			radioButtonLogOnlyError.ForeColor = colorTheme.CommonControlsForeColor;
+			radioButtonLogOnlyTrace.ForeColor = colorTheme.CommonControlsForeColor;
+			radioButtonLogErrorAndTrace.ForeColor = colorTheme.CommonControlsForeColor;
+			checkBoxLogHistory.ForeColor = colorTheme.CommonControlsForeColor;
 
-			appColorThemeGroupBox.ForeColor = Color.Black;
-			uiStyleByDarkThemeRadioButton.ForeColor = Color.Black;
-			uiStyleByLightThemeRadioButton.ForeColor = Color.Black;
-			uiStyleByDefaultThemeRadioButton.ForeColor = Color.Black;
+			groupBoxConfigCleanerMode.ForeColor = colorTheme.CommonControlsForeColor;
+			checkBoxCleaner_MapRWM.ForeColor = colorTheme.CommonControlsForeColor;
+			checkBoxCleaner_textBIN.ForeColor = colorTheme.CommonControlsForeColor;
+			checkBoxCleaner_soundPacks.ForeColor = colorTheme.CommonControlsForeColor;
 
-			appLocalizationGroupBox.ForeColor = Color.Black;
-			enableEngLocaleRadioButton.ForeColor = Color.Black;
-			enableRusLocaleRadioButton.ForeColor = Color.Black;
+			appColorThemeGroupBox.ForeColor = colorTheme.CommonControlsForeColor;
+			uiStyleByDarkThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
+			uiStyleByLightThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
+			uiStyleByDefaultThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
 
-			listBoxMODS.ForeColor = Color.Black;
-			modMainTitleLabel.ForeColor = Color.Black;
-			modStatusLabel.ForeColor = Color.Black;
-		}
+			appLocalizationGroupBox.ForeColor = colorTheme.CommonControlsForeColor;
+			enableEngLocaleRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
+			enableRusLocaleRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
 
-		private void ApplyUIStyleByLightTheme()
-		{
-			BackColor = Color.SeaShell;
-
-			panelLauncherToolkit.BackColor = Color.Azure;
-			panelLauncherOptions.BackColor = Color.Azure;
-
-			listBoxMODS.BackColor = Color.AliceBlue;
-			modMainTitleLabel.BackColor = Color.AliceBlue;
-			modStatusLabel.BackColor = Color.AliceBlue;
-
-			buttonLaunch.BackColor = Color.GhostWhite;
-			modQuickNavigationButton.BackColor = Color.GhostWhite;
-			buttonExplore.BackColor = Color.GhostWhite;
-
-
-			buttonLaunch.ForeColor = Color.Black;
-			modQuickNavigationButton.ForeColor = Color.Black;
-			buttonExplore.ForeColor = Color.Black;
-
-			groupBoxConfigLaunchMode.ForeColor = Color.Black;
-			radioButtonLaunchWindowScreen.ForeColor = Color.Black;
-			radioButtonLaunchFullScreen.ForeColor = Color.Black;
-			checkBoxVideo.ForeColor = Color.Black;
-			checkBoxBorderless.ForeColor = Color.Black;
-
-			groupBoxConfigLogMode.ForeColor = Color.Black;
-			radioButtonLogOnlyError.ForeColor = Color.Black;
-			radioButtonLogOnlyTrace.ForeColor = Color.Black;
-			radioButtonLogErrorAndTrace.ForeColor = Color.Black;
-			checkBoxLogHistory.ForeColor = Color.Black;
-
-			groupBoxConfigCleanerMode.ForeColor = Color.Black;
-			checkBoxCleaner_MapRWM.ForeColor = Color.Black;
-			checkBoxCleaner_textBIN.ForeColor = Color.Black;
-			checkBoxCleaner_soundPacks.ForeColor = Color.Black;
-
-			appColorThemeGroupBox.ForeColor = Color.Black;
-			uiStyleByDarkThemeRadioButton.ForeColor = Color.Black;
-			uiStyleByLightThemeRadioButton.ForeColor = Color.Black;
-			uiStyleByDefaultThemeRadioButton.ForeColor = Color.Black;
-
-			appLocalizationGroupBox.ForeColor = Color.Black;
-			enableEngLocaleRadioButton.ForeColor = Color.Black;
-			enableRusLocaleRadioButton.ForeColor = Color.Black;
-
-			listBoxMODS.ForeColor = Color.Black;
-			modMainTitleLabel.ForeColor = Color.Black;
-			modStatusLabel.ForeColor = Color.Black;
-		}
-
-		private void ApplyUIStyleByDarkTheme()
-		{
-			BackColor = Color.DarkSlateGray;
-
-			panelLauncherToolkit.BackColor = Color.LightSlateGray;
-			panelLauncherOptions.BackColor = Color.LightSlateGray;
-
-			listBoxMODS.BackColor = Color.SlateGray;
-			modMainTitleLabel.BackColor = Color.SlateGray;
-			modStatusLabel.BackColor = Color.SlateGray;
-
-			buttonLaunch.BackColor = Color.DarkGray;
-			modQuickNavigationButton.BackColor = Color.DarkGray;
-			buttonExplore.BackColor = Color.DarkGray;
-
-
-			buttonLaunch.ForeColor = Color.Snow;
-			modQuickNavigationButton.ForeColor = Color.Snow;
-			buttonExplore.ForeColor = Color.Snow;
-
-			groupBoxConfigLaunchMode.ForeColor = Color.Snow;
-			radioButtonLaunchWindowScreen.ForeColor = Color.Snow;
-			radioButtonLaunchFullScreen.ForeColor = Color.Snow;
-			checkBoxVideo.ForeColor = Color.Snow;
-			checkBoxBorderless.ForeColor = Color.Snow;
-
-			groupBoxConfigLogMode.ForeColor = Color.Snow;
-			radioButtonLogOnlyError.ForeColor = Color.Snow;
-			radioButtonLogOnlyTrace.ForeColor = Color.Snow;
-			radioButtonLogErrorAndTrace.ForeColor = Color.Snow;
-			checkBoxLogHistory.ForeColor = Color.Snow;
-
-			groupBoxConfigCleanerMode.ForeColor = Color.Snow;
-			checkBoxCleaner_MapRWM.ForeColor = Color.Snow;
-			checkBoxCleaner_textBIN.ForeColor = Color.Snow;
-			checkBoxCleaner_soundPacks.ForeColor = Color.Snow;
-
-			appColorThemeGroupBox.ForeColor = Color.Snow;
-			uiStyleByDarkThemeRadioButton.ForeColor = Color.Snow;
-			uiStyleByLightThemeRadioButton.ForeColor = Color.Snow;
-			uiStyleByDefaultThemeRadioButton.ForeColor = Color.Snow;
-
-			appLocalizationGroupBox.ForeColor = Color.Snow;
-			enableEngLocaleRadioButton.ForeColor = Color.Snow;
-			enableRusLocaleRadioButton.ForeColor = Color.Snow;
-
-			listBoxMODS.ForeColor = Color.Snow;
-			modMainTitleLabel.ForeColor = Color.Snow;
-			modStatusLabel.ForeColor = Color.Snow;
+			listBoxMODS.ForeColor = colorTheme.CommonControlsForeColor;
+			modMainTitleLabel.ForeColor = colorTheme.CommonControlsForeColor;
+			modStatusLabel.ForeColor = colorTheme.CommonControlsForeColor;
 		}
 
 
