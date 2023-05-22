@@ -68,10 +68,10 @@ namespace TWE_Launcher.Forms
 			toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			applicationHomeFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			exitFromApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			toolStripModItem = new System.Windows.Forms.ToolStripMenuItem();
-			configSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripHelpItem = new System.Windows.Forms.ToolStripMenuItem();
 			aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			toolStripModItem = new System.Windows.Forms.ToolStripMenuItem();
+			configSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			panelLauncherOptions.SuspendLayout();
 			appColorThemeGroupBox.SuspendLayout();
 			groupBoxConfigCleanerMode.SuspendLayout();
@@ -487,7 +487,7 @@ namespace TWE_Launcher.Forms
 			// 
 			// appMenuStrip
 			// 
-			appMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripAppItem, toolStripModItem, toolStripHelpItem });
+			appMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripAppItem, toolStripHelpItem, toolStripModItem });
 			appMenuStrip.Location = new System.Drawing.Point(0, 0);
 			appMenuStrip.Name = "appMenuStrip";
 			appMenuStrip.Size = new System.Drawing.Size(1008, 24);
@@ -504,54 +504,40 @@ namespace TWE_Launcher.Forms
 			// gameSetupSettingsToolStripMenuItem
 			// 
 			gameSetupSettingsToolStripMenuItem.Name = "gameSetupSettingsToolStripMenuItem";
-			gameSetupSettingsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-			gameSetupSettingsToolStripMenuItem.Text = "GAME SETUP SETTINGS";
+			gameSetupSettingsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			gameSetupSettingsToolStripMenuItem.Text = "Game Setup Settings";
 			gameSetupSettingsToolStripMenuItem.Click += gameSetupSettingsToolStripMenuItem_Click;
 			// 
 			// toolStripSeparator1
 			// 
 			toolStripSeparator1.Name = "toolStripSeparator1";
-			toolStripSeparator1.Size = new System.Drawing.Size(204, 6);
+			toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
 			// 
 			// applicationSettingsToolStripMenuItem
 			// 
 			applicationSettingsToolStripMenuItem.Name = "applicationSettingsToolStripMenuItem";
-			applicationSettingsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+			applicationSettingsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
 			applicationSettingsToolStripMenuItem.Text = "Application Settings";
 			applicationSettingsToolStripMenuItem.Click += applicationSettingsToolStripMenuItem_Click;
 			// 
 			// toolStripSeparator2
 			// 
 			toolStripSeparator2.Name = "toolStripSeparator2";
-			toolStripSeparator2.Size = new System.Drawing.Size(204, 6);
+			toolStripSeparator2.Size = new System.Drawing.Size(180, 6);
 			// 
 			// applicationHomeFolderToolStripMenuItem
 			// 
 			applicationHomeFolderToolStripMenuItem.Name = "applicationHomeFolderToolStripMenuItem";
-			applicationHomeFolderToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-			applicationHomeFolderToolStripMenuItem.Text = "Application Home Folder";
+			applicationHomeFolderToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			applicationHomeFolderToolStripMenuItem.Text = "Go to Home Folder";
 			applicationHomeFolderToolStripMenuItem.Click += applicationHomeFolderToolStripMenuItem_Click;
 			// 
 			// exitFromApplicationToolStripMenuItem
 			// 
 			exitFromApplicationToolStripMenuItem.Name = "exitFromApplicationToolStripMenuItem";
-			exitFromApplicationToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-			exitFromApplicationToolStripMenuItem.Text = "Exit from Application";
+			exitFromApplicationToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+			exitFromApplicationToolStripMenuItem.Text = "Exit from Program";
 			exitFromApplicationToolStripMenuItem.Click += exitFromApplicationToolStripMenuItem_Click;
-			// 
-			// toolStripModItem
-			// 
-			toolStripModItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { configSettingsToolStripMenuItem });
-			toolStripModItem.Name = "toolStripModItem";
-			toolStripModItem.Size = new System.Drawing.Size(101, 20);
-			toolStripModItem.Text = "MODIFICATION";
-			// 
-			// configSettingsToolStripMenuItem
-			// 
-			configSettingsToolStripMenuItem.Name = "configSettingsToolStripMenuItem";
-			configSettingsToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-			configSettingsToolStripMenuItem.Text = "Configuration Settings";
-			configSettingsToolStripMenuItem.Click += configSettingsToolStripMenuItem_Click;
 			// 
 			// toolStripHelpItem
 			// 
@@ -563,9 +549,25 @@ namespace TWE_Launcher.Forms
 			// aboutProgramToolStripMenuItem
 			// 
 			aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-			aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+			aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			aboutProgramToolStripMenuItem.Text = "About Program";
 			aboutProgramToolStripMenuItem.Click += aboutProgramToolStripMenuItem_Click;
+			// 
+			// toolStripModItem
+			// 
+			toolStripModItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { configSettingsToolStripMenuItem });
+			toolStripModItem.Enabled = false;
+			toolStripModItem.Name = "toolStripModItem";
+			toolStripModItem.Size = new System.Drawing.Size(101, 20);
+			toolStripModItem.Text = "MODIFICATION";
+			toolStripModItem.Visible = false;
+			// 
+			// configSettingsToolStripMenuItem
+			// 
+			configSettingsToolStripMenuItem.Name = "configSettingsToolStripMenuItem";
+			configSettingsToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+			configSettingsToolStripMenuItem.Text = "Configuration Settings";
+			configSettingsToolStripMenuItem.Click += configSettingsToolStripMenuItem_Click;
 			// 
 			// MainLauncherForm
 			// 

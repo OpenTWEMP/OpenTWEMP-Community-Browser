@@ -399,25 +399,25 @@ namespace TWE_Launcher.Forms
 			modQuickNavigationButton.Text = "БЫСТРАЯ МОД-НАВИГАЦИЯ";
 			buttonExplore.Text = "РАЗМЕЩЕНИЕ МОДИФИКАЦИИ";
 
-			appLocalizationGroupBox.Text = "Выберите язык интерфейса программы";
+			appLocalizationGroupBox.Text = "Выберите язык GUI программы";
 			enableEngLocaleRadioButton.Text = "Английский (по умолчанию)";
 			enableRusLocaleRadioButton.Text = "Русский (в процессе)";
 
-			appColorThemeGroupBox.Text = "Выберите тему интерфейса программы";
+			appColorThemeGroupBox.Text = "Выберите тему GUI программы";
 			uiStyleByDefaultThemeRadioButton.Text = "Стандартная тема (по умолчанию)";
 			uiStyleByLightThemeRadioButton.Text = "Светлая тема";
 			uiStyleByDarkThemeRadioButton.Text = "Темная тема";
 
-			groupBoxConfigCleanerMode.Text = "Выберите операции очистки мод-контента";
+			groupBoxConfigCleanerMode.Text = "Выберите операции очистки для мода";
 			checkBoxCleaner_MapRWM.Text = "Удалять файл map.rwm";
-			checkBoxCleaner_textBIN.Text = "Удалять файлы локализации *strings.bin";
+			checkBoxCleaner_textBIN.Text = "Удалять файлы *strings.bin";
 			checkBoxCleaner_soundPacks.Text = "Удалять pack-файлы (*.DAT + *.IDX)";
 
 			groupBoxConfigLogMode.Text = "Выберите режим записи журнала";
 			radioButtonLogOnlyError.Text = "Только ошибки";
 			radioButtonLogOnlyTrace.Text = "Только трассировка";
 			radioButtonLogErrorAndTrace.Text = "Ошибки + трассировка";
-			checkBoxLogHistory.Text = "Сохранять игровые логи system.log";
+			checkBoxLogHistory.Text = "Сохранять журналы system.log";
 
 			groupBoxConfigLaunchMode.Text = "Выберите режим запуска игры";
 			radioButtonLaunchWindowScreen.Text = "Оконный режим";
