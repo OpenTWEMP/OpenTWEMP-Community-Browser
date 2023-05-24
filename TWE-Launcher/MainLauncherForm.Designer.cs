@@ -29,8 +29,19 @@ namespace TWE_Launcher.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("My Favorite Mods");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("My Collections");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("All Modifications");
 			buttonLaunch = new System.Windows.Forms.Button();
 			panelLauncherOptions = new System.Windows.Forms.Panel();
+			groupBoxConfigProfiles = new System.Windows.Forms.GroupBox();
+			radioButtonConfigProfile_Modding = new System.Windows.Forms.RadioButton();
+			radioButtonConfigProfile_Gaming = new System.Windows.Forms.RadioButton();
+			groupBoxLauncherProviders = new System.Windows.Forms.GroupBox();
+			radioButtonLauncherProvider_TWEMP = new System.Windows.Forms.RadioButton();
+			radioButtonLauncherProvider_BatchScript = new System.Windows.Forms.RadioButton();
+			radioButtonLauncherProvider_NativeSetup = new System.Windows.Forms.RadioButton();
+			radioButtonLauncherProvider_M2TWEOP = new System.Windows.Forms.RadioButton();
 			groupBoxConfigCleanerMode = new System.Windows.Forms.GroupBox();
 			checkBoxCleaner_soundPacks = new System.Windows.Forms.CheckBox();
 			checkBoxCleaner_textBIN = new System.Windows.Forms.CheckBox();
@@ -65,7 +76,13 @@ namespace TWE_Launcher.Forms
 			aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripModItem = new System.Windows.Forms.ToolStripMenuItem();
 			configSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			treeViewGameMods = new System.Windows.Forms.TreeView();
+			buttonMarkFavoriteMod = new System.Windows.Forms.Button();
+			buttonCollectionCreate = new System.Windows.Forms.Button();
+			buttonCollectionManage = new System.Windows.Forms.Button();
 			panelLauncherOptions.SuspendLayout();
+			groupBoxConfigProfiles.SuspendLayout();
+			groupBoxLauncherProviders.SuspendLayout();
 			groupBoxConfigCleanerMode.SuspendLayout();
 			groupBoxConfigLogMode.SuspendLayout();
 			groupBoxConfigLaunchMode.SuspendLayout();
@@ -98,6 +115,8 @@ namespace TWE_Launcher.Forms
 			panelLauncherOptions.AutoScroll = true;
 			panelLauncherOptions.BackColor = System.Drawing.Color.MediumAquamarine;
 			panelLauncherOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			panelLauncherOptions.Controls.Add(groupBoxConfigProfiles);
+			panelLauncherOptions.Controls.Add(groupBoxLauncherProviders);
 			panelLauncherOptions.Controls.Add(groupBoxConfigCleanerMode);
 			panelLauncherOptions.Controls.Add(groupBoxConfigLogMode);
 			panelLauncherOptions.Controls.Add(groupBoxConfigLaunchMode);
@@ -108,17 +127,111 @@ namespace TWE_Launcher.Forms
 			panelLauncherOptions.Size = new System.Drawing.Size(276, 567);
 			panelLauncherOptions.TabIndex = 2;
 			// 
+			// groupBoxConfigProfiles
+			// 
+			groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Modding);
+			groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Gaming);
+			groupBoxConfigProfiles.Location = new System.Drawing.Point(4, 130);
+			groupBoxConfigProfiles.Name = "groupBoxConfigProfiles";
+			groupBoxConfigProfiles.Size = new System.Drawing.Size(267, 63);
+			groupBoxConfigProfiles.TabIndex = 7;
+			groupBoxConfigProfiles.TabStop = false;
+			groupBoxConfigProfiles.Text = "Configuration Profiles";
+			// 
+			// radioButtonConfigProfile_Modding
+			// 
+			radioButtonConfigProfile_Modding.AutoSize = true;
+			radioButtonConfigProfile_Modding.Location = new System.Drawing.Point(119, 22);
+			radioButtonConfigProfile_Modding.Name = "radioButtonConfigProfile_Modding";
+			radioButtonConfigProfile_Modding.Size = new System.Drawing.Size(118, 19);
+			radioButtonConfigProfile_Modding.TabIndex = 1;
+			radioButtonConfigProfile_Modding.Text = "MODDING MODE";
+			radioButtonConfigProfile_Modding.UseVisualStyleBackColor = true;
+			radioButtonConfigProfile_Modding.CheckedChanged += radioButtonConfigProfile_Modding_CheckedChanged;
+			// 
+			// radioButtonConfigProfile_Gaming
+			// 
+			radioButtonConfigProfile_Gaming.AutoSize = true;
+			radioButtonConfigProfile_Gaming.Checked = true;
+			radioButtonConfigProfile_Gaming.Location = new System.Drawing.Point(6, 22);
+			radioButtonConfigProfile_Gaming.Name = "radioButtonConfigProfile_Gaming";
+			radioButtonConfigProfile_Gaming.Size = new System.Drawing.Size(109, 19);
+			radioButtonConfigProfile_Gaming.TabIndex = 0;
+			radioButtonConfigProfile_Gaming.TabStop = true;
+			radioButtonConfigProfile_Gaming.Text = "GAMING MODE";
+			radioButtonConfigProfile_Gaming.UseVisualStyleBackColor = true;
+			radioButtonConfigProfile_Gaming.CheckedChanged += radioButtonConfigProfile_Gaming_CheckedChanged;
+			// 
+			// groupBoxLauncherProviders
+			// 
+			groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_TWEMP);
+			groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_BatchScript);
+			groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_NativeSetup);
+			groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_M2TWEOP);
+			groupBoxLauncherProviders.Location = new System.Drawing.Point(4, 3);
+			groupBoxLauncherProviders.Name = "groupBoxLauncherProviders";
+			groupBoxLauncherProviders.Size = new System.Drawing.Size(267, 121);
+			groupBoxLauncherProviders.TabIndex = 6;
+			groupBoxLauncherProviders.TabStop = false;
+			groupBoxLauncherProviders.Text = "Launcher Providers";
+			// 
+			// radioButtonLauncherProvider_TWEMP
+			// 
+			radioButtonLauncherProvider_TWEMP.AutoSize = true;
+			radioButtonLauncherProvider_TWEMP.Checked = true;
+			radioButtonLauncherProvider_TWEMP.Location = new System.Drawing.Point(6, 97);
+			radioButtonLauncherProvider_TWEMP.Name = "radioButtonLauncherProvider_TWEMP";
+			radioButtonLauncherProvider_TWEMP.Size = new System.Drawing.Size(212, 19);
+			radioButtonLauncherProvider_TWEMP.TabIndex = 3;
+			radioButtonLauncherProvider_TWEMP.TabStop = true;
+			radioButtonLauncherProvider_TWEMP.Text = "Launch Game via TWEMP Launcher";
+			radioButtonLauncherProvider_TWEMP.UseVisualStyleBackColor = true;
+			radioButtonLauncherProvider_TWEMP.CheckedChanged += radioButtonLauncherProvider_TWEMP_CheckedChanged;
+			// 
+			// radioButtonLauncherProvider_BatchScript
+			// 
+			radioButtonLauncherProvider_BatchScript.AutoSize = true;
+			radioButtonLauncherProvider_BatchScript.Location = new System.Drawing.Point(6, 72);
+			radioButtonLauncherProvider_BatchScript.Name = "radioButtonLauncherProvider_BatchScript";
+			radioButtonLauncherProvider_BatchScript.Size = new System.Drawing.Size(182, 19);
+			radioButtonLauncherProvider_BatchScript.TabIndex = 2;
+			radioButtonLauncherProvider_BatchScript.Text = "Launch Game via Batch Script";
+			radioButtonLauncherProvider_BatchScript.UseVisualStyleBackColor = true;
+			radioButtonLauncherProvider_BatchScript.CheckedChanged += radioButtonLauncherProvider_BatchScript_CheckedChanged;
+			// 
+			// radioButtonLauncherProvider_NativeSetup
+			// 
+			radioButtonLauncherProvider_NativeSetup.AutoSize = true;
+			radioButtonLauncherProvider_NativeSetup.Location = new System.Drawing.Point(6, 47);
+			radioButtonLauncherProvider_NativeSetup.Name = "radioButtonLauncherProvider_NativeSetup";
+			radioButtonLauncherProvider_NativeSetup.Size = new System.Drawing.Size(186, 19);
+			radioButtonLauncherProvider_NativeSetup.TabIndex = 1;
+			radioButtonLauncherProvider_NativeSetup.Text = "Launch Game via Native Setup";
+			radioButtonLauncherProvider_NativeSetup.UseVisualStyleBackColor = true;
+			radioButtonLauncherProvider_NativeSetup.CheckedChanged += radioButtonLauncherProvider_NativeSetup_CheckedChanged;
+			// 
+			// radioButtonLauncherProvider_M2TWEOP
+			// 
+			radioButtonLauncherProvider_M2TWEOP.AutoSize = true;
+			radioButtonLauncherProvider_M2TWEOP.Location = new System.Drawing.Point(6, 22);
+			radioButtonLauncherProvider_M2TWEOP.Name = "radioButtonLauncherProvider_M2TWEOP";
+			radioButtonLauncherProvider_M2TWEOP.Size = new System.Drawing.Size(197, 19);
+			radioButtonLauncherProvider_M2TWEOP.TabIndex = 0;
+			radioButtonLauncherProvider_M2TWEOP.Text = "Launch Game via M2TWEOP GUI";
+			radioButtonLauncherProvider_M2TWEOP.UseVisualStyleBackColor = true;
+			radioButtonLauncherProvider_M2TWEOP.CheckedChanged += radioButtonLauncherProvider_M2TWEOP_CheckedChanged;
+			// 
 			// groupBoxConfigCleanerMode
 			// 
 			groupBoxConfigCleanerMode.BackColor = System.Drawing.Color.Transparent;
 			groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_soundPacks);
 			groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_textBIN);
 			groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_MapRWM);
-			groupBoxConfigCleanerMode.Location = new System.Drawing.Point(4, 263);
+			groupBoxConfigCleanerMode.Location = new System.Drawing.Point(4, 459);
 			groupBoxConfigCleanerMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigCleanerMode.Name = "groupBoxConfigCleanerMode";
 			groupBoxConfigCleanerMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			groupBoxConfigCleanerMode.Size = new System.Drawing.Size(237, 103);
+			groupBoxConfigCleanerMode.Size = new System.Drawing.Size(266, 103);
 			groupBoxConfigCleanerMode.TabIndex = 5;
 			groupBoxConfigCleanerMode.TabStop = false;
 			groupBoxConfigCleanerMode.Text = "Select mod clean routines";
@@ -163,11 +276,11 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigLogMode.Controls.Add(radioButtonLogErrorAndTrace);
 			groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyTrace);
 			groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyError);
-			groupBoxConfigLogMode.Location = new System.Drawing.Point(4, 131);
+			groupBoxConfigLogMode.Location = new System.Drawing.Point(4, 327);
 			groupBoxConfigLogMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigLogMode.Name = "groupBoxConfigLogMode";
 			groupBoxConfigLogMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			groupBoxConfigLogMode.Size = new System.Drawing.Size(237, 126);
+			groupBoxConfigLogMode.Size = new System.Drawing.Size(266, 126);
 			groupBoxConfigLogMode.TabIndex = 1;
 			groupBoxConfigLogMode.TabStop = false;
 			groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
@@ -227,11 +340,11 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigLaunchMode.Controls.Add(checkBoxVideo);
 			groupBoxConfigLaunchMode.Controls.Add(radioButtonLaunchFullScreen);
 			groupBoxConfigLaunchMode.Controls.Add(radioButtonLaunchWindowScreen);
-			groupBoxConfigLaunchMode.Location = new System.Drawing.Point(4, 3);
+			groupBoxConfigLaunchMode.Location = new System.Drawing.Point(4, 199);
 			groupBoxConfigLaunchMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigLaunchMode.Name = "groupBoxConfigLaunchMode";
 			groupBoxConfigLaunchMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			groupBoxConfigLaunchMode.Size = new System.Drawing.Size(237, 122);
+			groupBoxConfigLaunchMode.Size = new System.Drawing.Size(266, 122);
 			groupBoxConfigLaunchMode.TabIndex = 0;
 			groupBoxConfigLaunchMode.TabStop = false;
 			groupBoxConfigLaunchMode.Text = "Select game launch mode";
@@ -338,10 +451,10 @@ namespace TWE_Launcher.Forms
 			listBoxMODS.ForeColor = System.Drawing.SystemColors.WindowText;
 			listBoxMODS.FormattingEnabled = true;
 			listBoxMODS.ItemHeight = 17;
-			listBoxMODS.Location = new System.Drawing.Point(13, 84);
+			listBoxMODS.Location = new System.Drawing.Point(12, 341);
 			listBoxMODS.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			listBoxMODS.Name = "listBoxMODS";
-			listBoxMODS.Size = new System.Drawing.Size(298, 565);
+			listBoxMODS.Size = new System.Drawing.Size(303, 310);
 			listBoxMODS.TabIndex = 9;
 			listBoxMODS.SelectedIndexChanged += listBoxMODS_SelectedIndexChanged;
 			// 
@@ -474,6 +587,61 @@ namespace TWE_Launcher.Forms
 			configSettingsToolStripMenuItem.Text = "Configuration Settings";
 			configSettingsToolStripMenuItem.Click += configSettingsToolStripMenuItem_Click;
 			// 
+			// treeViewGameMods
+			// 
+			treeViewGameMods.BackColor = System.Drawing.Color.MediumSeaGreen;
+			treeViewGameMods.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			treeViewGameMods.Location = new System.Drawing.Point(13, 84);
+			treeViewGameMods.Name = "treeViewGameMods";
+			treeNode1.Name = "NodeMyFavoriteMods";
+			treeNode1.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			treeNode1.Text = "My Favorite Mods";
+			treeNode2.Name = "NodeMyCollections";
+			treeNode2.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			treeNode2.Text = "My Collections";
+			treeNode3.Name = "NodeAllMods";
+			treeNode3.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			treeNode3.Text = "All Modifications";
+			treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode3 });
+			treeViewGameMods.Size = new System.Drawing.Size(302, 163);
+			treeViewGameMods.TabIndex = 16;
+			// 
+			// buttonMarkFavoriteMod
+			// 
+			buttonMarkFavoriteMod.BackColor = System.Drawing.Color.LightGreen;
+			buttonMarkFavoriteMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			buttonMarkFavoriteMod.Location = new System.Drawing.Point(13, 253);
+			buttonMarkFavoriteMod.Name = "buttonMarkFavoriteMod";
+			buttonMarkFavoriteMod.Size = new System.Drawing.Size(302, 23);
+			buttonMarkFavoriteMod.TabIndex = 18;
+			buttonMarkFavoriteMod.Text = "ADD THIS MOD TO FAVORITE";
+			buttonMarkFavoriteMod.UseVisualStyleBackColor = false;
+			buttonMarkFavoriteMod.Click += buttonMarkFavoriteMod_Click;
+			// 
+			// buttonCollectionCreate
+			// 
+			buttonCollectionCreate.BackColor = System.Drawing.Color.LightGreen;
+			buttonCollectionCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			buttonCollectionCreate.Location = new System.Drawing.Point(12, 278);
+			buttonCollectionCreate.Name = "buttonCollectionCreate";
+			buttonCollectionCreate.Size = new System.Drawing.Size(303, 23);
+			buttonCollectionCreate.TabIndex = 19;
+			buttonCollectionCreate.Text = "CREATE A NEW COLLECTION";
+			buttonCollectionCreate.UseVisualStyleBackColor = false;
+			buttonCollectionCreate.Click += buttonCollectionCreate_Click;
+			// 
+			// buttonCollectionManage
+			// 
+			buttonCollectionManage.BackColor = System.Drawing.Color.LightGreen;
+			buttonCollectionManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			buttonCollectionManage.Location = new System.Drawing.Point(13, 302);
+			buttonCollectionManage.Name = "buttonCollectionManage";
+			buttonCollectionManage.Size = new System.Drawing.Size(302, 23);
+			buttonCollectionManage.TabIndex = 20;
+			buttonCollectionManage.Text = "MANAGE YOUR COLLECTIONS";
+			buttonCollectionManage.UseVisualStyleBackColor = false;
+			buttonCollectionManage.Click += buttonCollectionManage_Click;
+			// 
 			// MainLauncherForm
 			// 
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -481,10 +649,14 @@ namespace TWE_Launcher.Forms
 			BackColor = System.Drawing.Color.DarkSeaGreen;
 			BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			ClientSize = new System.Drawing.Size(1008, 729);
+			Controls.Add(buttonCollectionManage);
+			Controls.Add(treeViewGameMods);
+			Controls.Add(listBoxMODS);
+			Controls.Add(buttonCollectionCreate);
+			Controls.Add(buttonMarkFavoriteMod);
 			Controls.Add(modMainTitleLabel);
 			Controls.Add(modStatusLabel);
 			Controls.Add(modLogoPictureBox);
-			Controls.Add(listBoxMODS);
 			Controls.Add(panelLauncherOptions);
 			Controls.Add(appStatusStrip);
 			Controls.Add(panelLauncherToolkit);
@@ -498,6 +670,10 @@ namespace TWE_Launcher.Forms
 			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			panelLauncherOptions.ResumeLayout(false);
+			groupBoxConfigProfiles.ResumeLayout(false);
+			groupBoxConfigProfiles.PerformLayout();
+			groupBoxLauncherProviders.ResumeLayout(false);
+			groupBoxLauncherProviders.PerformLayout();
 			groupBoxConfigCleanerMode.ResumeLayout(false);
 			groupBoxConfigCleanerMode.PerformLayout();
 			groupBoxConfigLogMode.ResumeLayout(false);
@@ -550,5 +726,17 @@ namespace TWE_Launcher.Forms
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripMenuItem applicationHomeFolderToolStripMenuItem;
+		private System.Windows.Forms.GroupBox groupBoxLauncherProviders;
+		private System.Windows.Forms.RadioButton radioButtonLauncherProvider_BatchScript;
+		private System.Windows.Forms.RadioButton radioButtonLauncherProvider_NativeSetup;
+		private System.Windows.Forms.RadioButton radioButtonLauncherProvider_M2TWEOP;
+		private System.Windows.Forms.RadioButton radioButtonLauncherProvider_TWEMP;
+		private System.Windows.Forms.GroupBox groupBoxConfigProfiles;
+		private System.Windows.Forms.RadioButton radioButtonConfigProfile_Modding;
+		private System.Windows.Forms.RadioButton radioButtonConfigProfile_Gaming;
+		private System.Windows.Forms.TreeView treeViewGameMods;
+		private System.Windows.Forms.Button buttonMarkFavoriteMod;
+		private System.Windows.Forms.Button buttonCollectionCreate;
+		private System.Windows.Forms.Button buttonCollectionManage;
 	}
 }

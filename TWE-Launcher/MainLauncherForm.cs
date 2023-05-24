@@ -40,10 +40,9 @@ namespace TWE_Launcher.Forms
 		private static string GetApplicationFullName()
 		{
 			string appProjectTitle = "OpenTWEMP Community Browser";
-			string appCurrentVersion = "Preview 2023.1";
 			string appHomeFolder = Application.ExecutablePath;
 
-			return appProjectTitle + " - " + appCurrentVersion + " [ " + appHomeFolder + " ]";
+			return appProjectTitle + " [ " + appHomeFolder + " ]";
 		}
 
 		public void UpdateModificationsListBox()
@@ -288,6 +287,61 @@ namespace TWE_Launcher.Forms
 		{
 			var aboutProjectForm = new AboutProjectForm();
 			aboutProjectForm.Show();
+		}
+
+
+		// QUICK CONFIGURING VIA PROFILES
+
+		private void radioButtonConfigProfile_Gaming_CheckedChanged(object sender, EventArgs e)
+		{
+			//
+		}
+
+		private void radioButtonConfigProfile_Modding_CheckedChanged(object sender, EventArgs e)
+		{
+			//
+		}
+
+
+
+		// LAUNCHER PROVIDERS TO RUN THE SELECTED MODIFICATION
+
+		private void radioButtonLauncherProvider_M2TWEOP_CheckedChanged(object sender, EventArgs e)
+		{
+			//
+		}
+
+		private void radioButtonLauncherProvider_NativeSetup_CheckedChanged(object sender, EventArgs e)
+		{
+			//
+		}
+
+		private void radioButtonLauncherProvider_BatchScript_CheckedChanged(object sender, EventArgs e)
+		{
+			//
+		}
+
+		private void radioButtonLauncherProvider_TWEMP_CheckedChanged(object sender, EventArgs e)
+		{
+			//
+		}
+
+
+		// MODS COLLECTIONS MANAGEMENT
+
+		private void buttonMarkFavoriteMod_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("buttonMarkFavoriteMod_Click");
+		}
+
+		private void buttonCollectionCreate_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("buttonCollectionCreate_Click");
+		}
+
+		private void buttonCollectionManage_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("buttonCollectionManage_Click");
 		}
 	}
 }
