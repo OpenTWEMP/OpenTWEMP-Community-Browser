@@ -13,6 +13,12 @@ namespace TWE_Launcher.Sources.Models
 	{
 		public class GuiLocale
 		{
+			public const string LOCALE_NAME_ENG = "ENG";
+			public const string LOCALE_TEXT_ENG = "English";
+
+			public const string LOCALE_NAME_RUS = "RUS";
+			public const string LOCALE_TEXT_RUS = "Russian";
+
 			private static List<FormLocaleDescription> supportedGuiLocaleDescriptions;
 
 			public string Name { get; }
@@ -42,9 +48,6 @@ namespace TWE_Launcher.Sources.Models
 
 			public static GuiLocale GenerateGuiLocaleFor_ENG()
 			{
-				const string LOCALE_NAME_ENG = "ENG";
-				const string LOCALE_TEXT_ENG = "English";
-
 				var localeContent_ENG = new List<FormLocaleSnapshot>();
 				foreach (var description in supportedGuiLocaleDescriptions)
 				{
@@ -57,9 +60,6 @@ namespace TWE_Launcher.Sources.Models
 
 			public static GuiLocale GenerateGuiLocaleFor_RUS()
 			{
-				const string LOCALE_NAME_RUS = "RUS";
-				const string LOCALE_TEXT_RUS = "Russian";
-
 				var localeContent_RUS = new List<FormLocaleSnapshot>();
 				foreach (var description in supportedGuiLocaleDescriptions)
 				{
@@ -96,7 +96,8 @@ namespace TWE_Launcher.Sources.Models
 
 		public interface ICanChangeMyLocalization
 		{
-			public Dictionary<string, string> GetLocalizableGUIControls();
+			public void SetupCurrentLocalizationForGUIControls();
+			public void UpdateLocalizationForGUIControls(GuiLocale guiLocale);
 		}
 	}
 
@@ -119,6 +120,11 @@ namespace TWE_Launcher.Sources.Models
 			}
 
 			availableLocalizations = new List<GuiLocale>();
+		}
+
+		public static bool IsCurrentLocalizationName(string guiLocaleName)
+		{
+			return Program.CurrentLocalization.Name.Equals(guiLocaleName);
 		}
 
 		public static List<GuiLocale> GetSupportedLocalizations()
@@ -192,11 +198,6 @@ namespace TWE_Launcher.Sources.Models
 				string localeObjectDump = localization.ToJsonText();
 				localeWriter.WriteLine(localeObjectDump);
 			}
-		}
-
-		internal static void ChangeLocalization(GuiLocale targetLocale)
-		{
-			//
 		}
 	}
 }

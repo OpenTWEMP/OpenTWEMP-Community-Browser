@@ -35,8 +35,12 @@
 			uiStyleByLightThemeRadioButton = new System.Windows.Forms.RadioButton();
 			uiStyleByDefaultThemeRadioButton = new System.Windows.Forms.RadioButton();
 			exitAppSettingsButton = new System.Windows.Forms.Button();
+			appLocalizationGroupBox = new System.Windows.Forms.GroupBox();
+			enableEngLocaleRadioButton = new System.Windows.Forms.RadioButton();
+			enableRusLocaleRadioButton = new System.Windows.Forms.RadioButton();
 			appSettingsPanel.SuspendLayout();
 			appColorThemeGroupBox.SuspendLayout();
+			appLocalizationGroupBox.SuspendLayout();
 			SuspendLayout();
 			// 
 			// saveAppSettingsButton
@@ -52,6 +56,7 @@
 			// appSettingsPanel
 			// 
 			appSettingsPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			appSettingsPanel.Controls.Add(appLocalizationGroupBox);
 			appSettingsPanel.Controls.Add(appColorThemeGroupBox);
 			appSettingsPanel.Location = new System.Drawing.Point(12, 12);
 			appSettingsPanel.Name = "appSettingsPanel";
@@ -116,7 +121,41 @@
 			exitAppSettingsButton.UseVisualStyleBackColor = true;
 			exitAppSettingsButton.Click += ExitAppSettingsButton_Click;
 			// 
-			// ApplicationSettingsForm
+			// appLocalizationGroupBox
+			// 
+			appLocalizationGroupBox.BackColor = System.Drawing.Color.Transparent;
+			appLocalizationGroupBox.Controls.Add(enableEngLocaleRadioButton);
+			appLocalizationGroupBox.Controls.Add(enableRusLocaleRadioButton);
+			appLocalizationGroupBox.Location = new System.Drawing.Point(3, 110);
+			appLocalizationGroupBox.Name = "appLocalizationGroupBox";
+			appLocalizationGroupBox.Size = new System.Drawing.Size(238, 73);
+			appLocalizationGroupBox.TabIndex = 16;
+			appLocalizationGroupBox.TabStop = false;
+			appLocalizationGroupBox.Text = "Select GUI language";
+			// 
+			// enableEngLocaleRadioButton
+			// 
+			enableEngLocaleRadioButton.AutoSize = true;
+			enableEngLocaleRadioButton.Checked = true;
+			enableEngLocaleRadioButton.Location = new System.Drawing.Point(10, 22);
+			enableEngLocaleRadioButton.Name = "enableEngLocaleRadioButton";
+			enableEngLocaleRadioButton.Size = new System.Drawing.Size(136, 19);
+			enableEngLocaleRadioButton.TabIndex = 1;
+			enableEngLocaleRadioButton.TabStop = true;
+			enableEngLocaleRadioButton.Text = "ENGLISH (by default)";
+			enableEngLocaleRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// enableRusLocaleRadioButton
+			// 
+			enableRusLocaleRadioButton.AutoSize = true;
+			enableRusLocaleRadioButton.Location = new System.Drawing.Point(10, 47);
+			enableRusLocaleRadioButton.Name = "enableRusLocaleRadioButton";
+			enableRusLocaleRadioButton.Size = new System.Drawing.Size(141, 19);
+			enableRusLocaleRadioButton.TabIndex = 0;
+			enableRusLocaleRadioButton.Text = "RUSSIAN (in progress)";
+			enableRusLocaleRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// AppSettingsForm
 			// 
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,13 +167,15 @@
 			MaximumSize = new System.Drawing.Size(800, 600);
 			MinimizeBox = false;
 			MinimumSize = new System.Drawing.Size(800, 600);
-			Name = "ApplicationSettingsForm";
+			Name = "AppSettingsForm";
 			ShowIcon = false;
 			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			Text = "ApplicationSettingsForm";
 			appSettingsPanel.ResumeLayout(false);
 			appColorThemeGroupBox.ResumeLayout(false);
 			appColorThemeGroupBox.PerformLayout();
+			appLocalizationGroupBox.ResumeLayout(false);
+			appLocalizationGroupBox.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -147,5 +188,8 @@
 		private System.Windows.Forms.RadioButton uiStyleByDarkThemeRadioButton;
 		private System.Windows.Forms.RadioButton uiStyleByLightThemeRadioButton;
 		private System.Windows.Forms.RadioButton uiStyleByDefaultThemeRadioButton;
+		private System.Windows.Forms.GroupBox appLocalizationGroupBox;
+		private System.Windows.Forms.RadioButton enableEngLocaleRadioButton;
+		private System.Windows.Forms.RadioButton enableRusLocaleRadioButton;
 	}
 }

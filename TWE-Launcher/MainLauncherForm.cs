@@ -284,11 +284,6 @@ namespace TWE_Launcher.Forms
 			enableEngLocaleRadioButton.Text = "Английский (по умолчанию)";
 			enableRusLocaleRadioButton.Text = "Русский (в процессе)";
 
-			//appColorThemeGroupBox.Text = "Выберите тему GUI программы";
-			//uiStyleByDefaultThemeRadioButton.Text = "Стандартная тема (по умолчанию)";
-			//uiStyleByLightThemeRadioButton.Text = "Светлая тема";
-			//uiStyleByDarkThemeRadioButton.Text = "Темная тема";
-
 			groupBoxConfigCleanerMode.Text = "Выберите операции очистки для мода";
 			checkBoxCleaner_MapRWM.Text = "Удалять файл map.rwm";
 			checkBoxCleaner_textBIN.Text = "Удалять файлы *strings.bin";

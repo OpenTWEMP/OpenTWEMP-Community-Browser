@@ -17,6 +17,31 @@ namespace TWE_Launcher.Forms.Localization
 
 	public class GuiLocaleDescr_MainLauncher : FormLocaleDescription
 	{
+		private const string KEY_buttonLaunch = "buttonLaunch";
+		private const string KEY_modQuickNavigationButton = "modQuickNavigationButton";
+		private const string KEY_buttonExplore = "buttonExplore";
+
+		private const string KEY_appLocalizationGroupBox = "appLocalizationGroupBox";
+		private const string KEY_enableEngLocaleRadioButton = "enableEngLocaleRadioButton";
+		private const string KEY_enableRusLocaleRadioButton = "enableRusLocaleRadioButton";
+
+		private const string KEY_groupBoxConfigCleanerMode = "groupBoxConfigCleanerMode";
+		private const string KEY_checkBoxCleaner_MapRWM = "checkBoxCleaner_MapRWM";
+		private const string KEY_checkBoxCleaner_textBIN = "checkBoxCleaner_textBIN";
+		private const string KEY_checkBoxCleaner_soundPacks = "checkBoxCleaner_soundPacks";
+
+		private const string KEY_groupBoxConfigLogMode = "groupBoxConfigLogMode";
+		private const string KEY_radioButtonLogOnlyError = "radioButtonLogOnlyError";
+		private const string KEY_radioButtonLogOnlyTrace = "radioButtonLogOnlyTrace";
+		private const string KEY_radioButtonLogErrorAndTrace = "radioButtonLogErrorAndTrace";
+		private const string KEY_checkBoxLogHistory = "checkBoxLogHistory";
+
+		private const string KEY_groupBoxConfigLaunchMode = "groupBoxConfigLaunchMode";
+		private const string KEY_radioButtonLaunchWindowScreen = "radioButtonLaunchWindowScreen";
+		private const string KEY_radioButtonLaunchFullScreen = "radioButtonLaunchFullScreen";
+		private const string KEY_checkBoxVideo = "checkBoxVideo";
+		private const string KEY_checkBoxBorderless = "checkBoxBorderless";
+
 		public override string FormName { get; }
 		public override List<string> LocalizedControls { get; }
 
@@ -30,39 +55,65 @@ namespace TWE_Launcher.Forms.Localization
 		{
 			return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
 				{
-					{ "buttonLaunch", "LAUNCH" },
-					{ "modQuickNavigationButton", "MOD QUICK NAVIGATION" },
-					{ "buttonExplore", "MOD HOME FOLDER" },
+					{ KEY_buttonLaunch, "LAUNCH" },
+					{ KEY_modQuickNavigationButton, "MOD QUICK NAVIGATION" },
+					{ KEY_buttonExplore, "MOD HOME FOLDER" },
 
-					{ "appLocalizationGroupBox", "Select GUI language" },
-					{ "enableEngLocaleRadioButton", "ENGLISH (by default)" },
-					{ "enableRusLocaleRadioButton", "RUSSIAN (in progress)" },
+					{ KEY_appLocalizationGroupBox, "Select GUI language" },
+					{ KEY_enableEngLocaleRadioButton, "ENGLISH (by default)" },
+					{ KEY_enableRusLocaleRadioButton, "RUSSIAN (in progress)" },
 
-					{ "groupBoxConfigCleanerMode", "Select mod clean routines" },
-					{ "checkBoxCleaner_MapRWM", "Delete map.rwm file" },
-					{ "checkBoxCleaner_textBIN", "Delete localization *strings.bin files" },
-					{ "checkBoxCleaner_soundPacks", "Delete sound pack files (*.DAT + *.IDX)" },
+					{ KEY_groupBoxConfigCleanerMode, "Select mod clean routines" },
+					{ KEY_checkBoxCleaner_MapRWM, "Delete map.rwm file" },
+					{ KEY_checkBoxCleaner_textBIN, "Delete localization *strings.bin files" },
+					{ KEY_checkBoxCleaner_soundPacks, "Delete sound pack files (*.DAT + *.IDX)" },
 
-					{ "groupBoxConfigLogMode", "Select a mode of creating system.log file" },
-					{ "radioButtonLogOnlyError", "Only Errors" },
-					{ "radioButtonLogOnlyTrace", "Only Trace" },
-					{ "radioButtonLogErrorAndTrace", "Errors + Trace" },
-					{ "checkBoxLogHistory", "Save game system.log files" },
+					{ KEY_groupBoxConfigLogMode, "Select a mode of creating system.log file" },
+					{ KEY_radioButtonLogOnlyError, "Only Errors" },
+					{ KEY_radioButtonLogOnlyTrace, "Only Trace" },
+					{ KEY_radioButtonLogErrorAndTrace, "Errors + Trace" },
+					{ KEY_checkBoxLogHistory, "Save game system.log files" },
 
-					{ "groupBoxConfigLaunchMode", "Select game launch mode" },
-					{ "radioButtonLaunchWindowScreen", "Windowed Mode" },
-					{ "radioButtonLaunchFullScreen", "Full-Screen Mode" },
-					{ "checkBoxVideo", "Enable Game Video" },
-					{ "checkBoxBorderless", "Borderless Windowed Mode" }
+					{ KEY_groupBoxConfigLaunchMode, "Select game launch mode" },
+					{ KEY_radioButtonLaunchWindowScreen, "Windowed Mode" },
+					{ KEY_radioButtonLaunchFullScreen, "Full-Screen Mode" },
+					{ KEY_checkBoxVideo, "Enable Game Video" },
+					{ KEY_checkBoxBorderless, "Borderless Windowed Mode" }
 				}
-			); // test
+			);
 		}
 
 		public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
 		{
-			return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
-		}
+			return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+				{
+					{ KEY_buttonLaunch, "ИГРАТЬ" },
+					{ KEY_modQuickNavigationButton, "БЫСТРАЯ МОД-НАВИГАЦИЯ" },
+					{ KEY_buttonExplore, "РАЗМЕЩЕНИЕ МОДИФИКАЦИИ" },
 
+					{ KEY_appLocalizationGroupBox, "Выберите язык GUI программы" },
+					{ KEY_enableEngLocaleRadioButton, "Английский (по умолчанию)" },
+					{ KEY_enableRusLocaleRadioButton, "Русский (в процессе)" },
+
+					{ KEY_groupBoxConfigCleanerMode, "Выберите операции очистки для мода" },
+					{ KEY_checkBoxCleaner_MapRWM, "Удалять файл map.rwm" },
+					{ KEY_checkBoxCleaner_textBIN, "Удалять файлы *strings.bin" },
+					{ KEY_checkBoxCleaner_soundPacks, "Удалять pack-файлы (*.DAT + *.IDX)" },
+
+					{ KEY_groupBoxConfigLogMode, "Выберите режим записи журнала" },
+					{ KEY_radioButtonLogOnlyError, "Только ошибки" },
+					{ KEY_radioButtonLogOnlyTrace, "Только трассировка" },
+					{ KEY_radioButtonLogErrorAndTrace, "Ошибки + трассировка" },
+					{ KEY_checkBoxLogHistory, "Сохранять журналы system.log" },
+
+					{ KEY_groupBoxConfigLaunchMode, "Выберите режим запуска игры" },
+					{ KEY_radioButtonLaunchWindowScreen, "Оконный режим" },
+					{ KEY_radioButtonLaunchFullScreen, "Полноэкранный режим" },
+					{ KEY_checkBoxVideo, "Игровое видео" },
+					{ KEY_checkBoxBorderless, "Оконный режим без границ" }
+				}
+			);
+		}
 	}
 
 
@@ -71,30 +122,49 @@ namespace TWE_Launcher.Forms.Localization
 
 	public class GuiLocaleDescr_AppSettings : FormLocaleDescription
 	{
+		private const string KEY_appColorThemeGroupBox = "appColorThemeGroupBox";
+		private const string KEY_uiStyleByDefaultThemeRadioButton = "uiStyleByDefaultThemeRadioButton";
+		private const string KEY_uiStyleByLightThemeRadioButton = "uiStyleByLightThemeRadioButton";
+		private const string KEY_uiStyleByDarkThemeRadioButton = "uiStyleByDarkThemeRadioButton";
+
 		public override string FormName { get; }
 		public override List<string> LocalizedControls { get; }
 
 		public GuiLocaleDescr_AppSettings()
 		{
-			FormName = "ApplicationSettingsForm";
-			LocalizedControls = new List<string>();
+			FormName = "AppSettingsForm";
+
+			LocalizedControls = new List<string>()
+			{
+				KEY_appColorThemeGroupBox,
+				KEY_uiStyleByDefaultThemeRadioButton,
+				KEY_uiStyleByLightThemeRadioButton,
+				KEY_uiStyleByDarkThemeRadioButton
+			};
 		}
 
 		public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
 		{
 			return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
 				{
-					{ "appColorThemeGroupBox", "Select GUI style theme" },
-					{ "uiStyleByDefaultThemeRadioButton", "Standard Theme (by default)" },
-					{ "uiStyleByLightThemeRadioButton", "Light Theme" },
-					{ "uiStyleByDarkThemeRadioButton", "Dark Theme" }
+					{ KEY_appColorThemeGroupBox, "Select GUI style theme" },
+					{ KEY_uiStyleByDefaultThemeRadioButton, "Standard Theme (by default)" },
+					{ KEY_uiStyleByLightThemeRadioButton, "Light Theme" },
+					{ KEY_uiStyleByDarkThemeRadioButton, "Dark Theme" }
 				}
-			); // test
+			);
 		}
 
 		public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
 		{
-			return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
+			return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+				{
+					{ KEY_appColorThemeGroupBox, "Выберите тему GUI программы" },
+					{ KEY_uiStyleByDefaultThemeRadioButton, "Стандартная тема (по умолчанию)" },
+					{ KEY_uiStyleByLightThemeRadioButton, "Светлая тема" },
+					{ KEY_uiStyleByDarkThemeRadioButton, "Темная тема" }
+				}
+			);
 		}
 	}
 

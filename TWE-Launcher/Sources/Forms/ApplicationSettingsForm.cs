@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using TWE_Launcher.Forms;
+using TWE_Launcher.Sources.Models;
 using TWE_Launcher.Sources.Models.Localizations;
 
 namespace TWE_Launcher.Forms
@@ -11,11 +12,6 @@ namespace TWE_Launcher.Forms
 		private MainLauncherForm currentCallingForm;
 		private GuiStyle currentGuiStyle;
 
-		public AppSettingsForm()
-		{
-			InitializeComponent();
-		}
-
 		public AppSettingsForm(MainLauncherForm callingForm)
 		{
 			InitializeComponent();
@@ -23,9 +19,19 @@ namespace TWE_Launcher.Forms
 			currentCallingForm = callingForm;
 			currentGuiStyle = InitializeCurrentGUIStyle();
 
+			if (LocalizationManager.IsCurrentLocalizationName(GuiLocale.LOCALE_NAME_ENG))
+			{
+				enableEngLocaleRadioButton.Checked = true;
+				enableRusLocaleRadioButton.Checked = false;
+			}
 
-			// check and update gui locale - if a form will be initialized again
-			// update gui locale - if the form is already opened
+			if (LocalizationManager.IsCurrentLocalizationName(GuiLocale.LOCALE_NAME_RUS))
+			{
+				enableEngLocaleRadioButton.Checked = false;
+				enableRusLocaleRadioButton.Checked = true;
+			}
+
+			SetupCurrentLocalizationForGUIControls();
 		}
 
 
@@ -59,10 +65,28 @@ namespace TWE_Launcher.Forms
 
 		private void SaveAppSettingsButton_Click(object sender, EventArgs e)
 		{
-			// Change GUI localization.
-			//AppLocalizationManager.InitializeLocaleData();
-
+			// 1. Change GUI style.
+		
 			SaveGUIChanges(currentGuiStyle);
+
+			// 2. Change GUI localization.
+
+			if (enableEngLocaleRadioButton.Checked)
+			{
+				string guiLocaleName_ENG = "ENG";
+				Program.SetCurrentLocalizationByName(guiLocaleName_ENG);
+			}
+
+			if (enableRusLocaleRadioButton.Checked)
+			{
+				string guiLocaleName_RUS = "RUS";
+				Program.SetCurrentLocalizationByName(guiLocaleName_RUS);
+			}
+
+			SetupCurrentLocalizationForGUIControls();
+
+			// 3. Close the form.
+
 			Close();
 		}
 
@@ -95,19 +119,77 @@ namespace TWE_Launcher.Forms
 
 
 
-
-
-
-		// apply the current gui locale to form's controls
-		public Dictionary<string, string> GetLocalizableGUIControls()
+		public void SetupCurrentLocalizationForGUIControls()
 		{
-			return new Dictionary<string, string>()
+			List<FormLocaleSnapshot> allLocaleContent = Program.CurrentLocalization.Content;
+
+			var targetFormContent = new Dictionary<string, string>();
+			foreach (FormLocaleSnapshot snapshot in allLocaleContent)
 			{
-				{ appColorThemeGroupBox.Name, appColorThemeGroupBox.Text },
-				{ uiStyleByDefaultThemeRadioButton.Name, uiStyleByDefaultThemeRadioButton.Text },
-				{ uiStyleByLightThemeRadioButton.Name, uiStyleByLightThemeRadioButton.Text },
-				{ uiStyleByDarkThemeRadioButton.Name, uiStyleByDarkThemeRadioButton.Text }
-			};
+				if (snapshot.FormName == Name)
+				{
+					targetFormContent = snapshot.FormContent;
+					break;
+				}
+			}
+
+
+			foreach (var key in targetFormContent.Keys)
+			{
+				if (key == appColorThemeGroupBox.Name)
+				{
+					appColorThemeGroupBox.Text = targetFormContent[appColorThemeGroupBox.Name];
+				}
+
+				if (key == uiStyleByDefaultThemeRadioButton.Name)
+				{
+					uiStyleByDefaultThemeRadioButton.Text = targetFormContent[uiStyleByDefaultThemeRadioButton.Name];
+				}
+
+				if (key == uiStyleByLightThemeRadioButton.Name)
+				{
+					uiStyleByLightThemeRadioButton.Text = targetFormContent[uiStyleByLightThemeRadioButton.Name];
+				}
+
+				if (key == uiStyleByDarkThemeRadioButton.Name)
+				{
+					uiStyleByDarkThemeRadioButton.Text = targetFormContent[uiStyleByDarkThemeRadioButton.Name];
+				}
+			}
+		}
+
+		public void UpdateLocalizationForGUIControls(GuiLocale guiLocale)
+		{
+			List<FormLocaleSnapshot> allLocaleContent = guiLocale.Content;
+
+			var targetFormContent = new Dictionary<string, string>();
+			foreach (FormLocaleSnapshot snapshot in allLocaleContent)
+			{
+				if (snapshot.FormName == Name)
+				{
+					targetFormContent = snapshot.FormContent;
+				}
+			}
+
+			if (targetFormContent.ContainsKey(appColorThemeGroupBox.Name))
+			{
+				appColorThemeGroupBox.Text = targetFormContent[appColorThemeGroupBox.Name];
+			}
+
+			if (targetFormContent.ContainsKey(uiStyleByDefaultThemeRadioButton.Name))
+			{
+				uiStyleByDefaultThemeRadioButton.Text = targetFormContent[uiStyleByDefaultThemeRadioButton.Name];
+			}
+
+			if (targetFormContent.ContainsKey(uiStyleByLightThemeRadioButton.Name))
+			{
+				uiStyleByLightThemeRadioButton.Text = targetFormContent[uiStyleByLightThemeRadioButton.Name];
+			}
+
+			if (targetFormContent.ContainsKey(uiStyleByDarkThemeRadioButton.Name))
+			{
+				uiStyleByDarkThemeRadioButton.Text = targetFormContent[uiStyleByDarkThemeRadioButton.Name];
+			}
 		}
 	}
 }

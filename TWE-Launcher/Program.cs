@@ -13,12 +13,49 @@ namespace TWE_Launcher
 	internal static class Program
 	{
 		internal static GuiStyle CurrentGUIStyle { get; set; }
-		internal static List<GuiLocale> CurrentGUILocales { get; set; }
+		internal static List<GuiLocale> AvailableLocalizations { get; set; }
+		internal static GuiLocale CurrentLocalization { get; set; }
 
 		static Program()
 		{
+			// 1. Setup GUI style by default.
+
 			CurrentGUIStyle = GuiStyle.Default;
-			CurrentGUILocales = new List<GuiLocale>();
+
+
+			// 2. Setup GUI localization by default.
+
+			AvailableLocalizations = LocalizationManager.GetSupportedLocalizations();
+			InitializeLocalizationByDefault(AvailableLocalizations);
+		}
+
+		private static void InitializeLocalizationByDefault(List<GuiLocale> guiLocales)
+		{
+			string guiLocaleNameByDefault = "ENG";
+			
+			foreach (var localization in AvailableLocalizations)
+			{
+				if (localization.Name == guiLocaleNameByDefault)
+				{
+					CurrentLocalization = localization;
+					break;
+				}
+			}
+		}
+
+		internal static void SetCurrentLocalizationByName(string guiLocaleName)
+		{
+			if (CurrentLocalization.Name != guiLocaleName)
+			{
+				foreach (var localization in AvailableLocalizations)
+				{
+					if (localization.Name == guiLocaleName)
+					{
+						CurrentLocalization = localization;
+						break;
+					}
+				}
+			}
 		}
 
 
@@ -30,7 +67,6 @@ namespace TWE_Launcher
 		{
 			// 1. Prepare configuration settings before launching GUI.
 
-			CurrentGUILocales = LocalizationManager.GetSupportedLocalizations();
 			Settings.SynchronizeGameSetupSettings();
 
 
