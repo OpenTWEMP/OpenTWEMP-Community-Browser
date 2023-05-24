@@ -79,6 +79,19 @@ namespace TWE_Launcher.Sources.Models
 			{
 				return JsonConvert.SerializeObject(this, Formatting.Indented);
 			}
+
+			public FormLocaleSnapshot GetFormLocaleSnapshotByKey(string targetKey)
+			{
+				foreach (FormLocaleSnapshot snapshot in Content)
+				{
+					if (snapshot.FormName == targetKey)
+					{
+						return snapshot;
+					}
+				}
+
+				return new FormLocaleSnapshot(targetKey, new Dictionary<string, string>());
+			}
 		}
 
 		public class FormLocaleSnapshot
@@ -90,6 +103,16 @@ namespace TWE_Launcher.Sources.Models
 			{
 				FormName = formName;
 				FormContent = formContent;
+			}
+
+			public string GetLocalizedValueByKey(string targetKey)
+			{
+				if (FormContent.ContainsKey(targetKey))
+				{
+					return FormContent[targetKey];
+				}
+
+				return string.Empty;
 			}
 		}
 

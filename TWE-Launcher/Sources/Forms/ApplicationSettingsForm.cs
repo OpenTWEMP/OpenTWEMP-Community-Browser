@@ -119,59 +119,23 @@ namespace TWE_Launcher.Forms
 		}
 
 
-
 		public void SetupCurrentLocalizationForGUIControls()
 		{
-			List<FormLocaleSnapshot> allLocaleContent = Program.CurrentLocalization.Content;
+			FormLocaleSnapshot snapshot = Program.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
 
-			var targetFormContent = new Dictionary<string, string>();
-			foreach (FormLocaleSnapshot snapshot in allLocaleContent)
-			{
-				if (snapshot.FormName == Name)
-				{
-					targetFormContent = snapshot.FormContent;
-					break;
-				}
-			}
+			this.Text = snapshot.GetLocalizedValueByKey(this.Name);
 
+			appColorThemeGroupBox.Text = snapshot.GetLocalizedValueByKey(appColorThemeGroupBox.Name);
+			uiStyleByDefaultThemeRadioButton.Text = snapshot.GetLocalizedValueByKey(uiStyleByDefaultThemeRadioButton.Name);
+			uiStyleByLightThemeRadioButton.Text = snapshot.GetLocalizedValueByKey(uiStyleByLightThemeRadioButton.Name);
+			uiStyleByDarkThemeRadioButton.Text = snapshot.GetLocalizedValueByKey(uiStyleByDarkThemeRadioButton.Name);
 
-			foreach (var key in targetFormContent.Keys)
-			{
-				if (key == appColorThemeGroupBox.Name)
-				{
-					appColorThemeGroupBox.Text = targetFormContent[appColorThemeGroupBox.Name];
-				}
+			appLocalizationGroupBox.Text = snapshot.GetLocalizedValueByKey(appLocalizationGroupBox.Name);
+			enableEngLocaleRadioButton.Text = snapshot.GetLocalizedValueByKey(enableEngLocaleRadioButton.Name);
+			enableRusLocaleRadioButton.Text = snapshot.GetLocalizedValueByKey(enableRusLocaleRadioButton.Name);
 
-				if (key == uiStyleByDefaultThemeRadioButton.Name)
-				{
-					uiStyleByDefaultThemeRadioButton.Text = targetFormContent[uiStyleByDefaultThemeRadioButton.Name];
-				}
-
-				if (key == uiStyleByLightThemeRadioButton.Name)
-				{
-					uiStyleByLightThemeRadioButton.Text = targetFormContent[uiStyleByLightThemeRadioButton.Name];
-				}
-
-				if (key == uiStyleByDarkThemeRadioButton.Name)
-				{
-					uiStyleByDarkThemeRadioButton.Text = targetFormContent[uiStyleByDarkThemeRadioButton.Name];
-				}
-
-				if (key == appLocalizationGroupBox.Name)
-				{
-					appLocalizationGroupBox.Text = targetFormContent[appLocalizationGroupBox.Name];
-				}
-
-				if (key == enableEngLocaleRadioButton.Name)
-				{
-					enableEngLocaleRadioButton.Text = targetFormContent[enableEngLocaleRadioButton.Name];
-				}
-
-				if (key == enableRusLocaleRadioButton.Name)
-				{
-					enableRusLocaleRadioButton.Text = targetFormContent[enableRusLocaleRadioButton.Name];
-				}
-			}
+			saveAppSettingsButton.Text = snapshot.GetLocalizedValueByKey(saveAppSettingsButton.Name);
+			exitAppSettingsButton.Text = snapshot.GetLocalizedValueByKey(exitAppSettingsButton.Name);
 		}
 	}
 }

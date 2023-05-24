@@ -47,7 +47,7 @@
 			saveAppSettingsButton.Name = "saveAppSettingsButton";
 			saveAppSettingsButton.Size = new System.Drawing.Size(360, 23);
 			saveAppSettingsButton.TabIndex = 0;
-			saveAppSettingsButton.Text = "SAVE APP SETTINGS";
+			saveAppSettingsButton.Text = "OK";
 			saveAppSettingsButton.UseVisualStyleBackColor = true;
 			saveAppSettingsButton.Click += SaveAppSettingsButton_Click;
 			// 
@@ -139,7 +139,7 @@
 			exitAppSettingsButton.Name = "exitAppSettingsButton";
 			exitAppSettingsButton.Size = new System.Drawing.Size(360, 23);
 			exitAppSettingsButton.TabIndex = 2;
-			exitAppSettingsButton.Text = "EXIT APP SETTINGS";
+			exitAppSettingsButton.Text = "CANCEL";
 			exitAppSettingsButton.UseVisualStyleBackColor = true;
 			exitAppSettingsButton.Click += ExitAppSettingsButton_Click;
 			// 

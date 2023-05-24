@@ -38,13 +38,55 @@ namespace TWE_Launcher.Forms.Localization
 		private const string KEY_checkBoxVideo = "checkBoxVideo";
 		private const string KEY_checkBoxBorderless = "checkBoxBorderless";
 
+		private const string KEY_toolStripAppItem = "toolStripAppItem";
+		private const string KEY_gameSetupSettingsToolStripMenuItem = "gameSetupSettingsToolStripMenuItem";
+		private const string KEY_applicationSettingsToolStripMenuItem = "applicationSettingsToolStripMenuItem";
+		private const string KEY_applicationHomeFolderToolStripMenuItem = "applicationHomeFolderToolStripMenuItem";
+		private const string KEY_exitFromApplicationToolStripMenuItem = "exitFromApplicationToolStripMenuItem";
+
+		private const string KEY_toolStripHelpItem = "toolStripHelpItem";
+		private const string KEY_aboutProgramToolStripMenuItem = "aboutProgramToolStripMenuItem";
+
+
 		public override string FormName { get; }
 		public override List<string> LocalizedControls { get; }
 
 		public GuiLocaleDescr_MainLauncher()
 		{
 			FormName = "MainLauncherForm";
-			LocalizedControls = new List<string>();
+
+			LocalizedControls = new List<string>()
+			{
+				KEY_buttonLaunch,
+				KEY_modQuickNavigationButton,
+				KEY_buttonExplore,
+
+				KEY_groupBoxConfigCleanerMode,
+				KEY_checkBoxCleaner_MapRWM,
+				KEY_checkBoxCleaner_textBIN,
+				KEY_checkBoxCleaner_soundPacks,
+
+				KEY_groupBoxConfigLogMode,
+				KEY_radioButtonLogOnlyError,
+				KEY_radioButtonLogOnlyTrace,
+				KEY_radioButtonLogErrorAndTrace,
+				KEY_checkBoxLogHistory,
+
+				KEY_groupBoxConfigLaunchMode,
+				KEY_radioButtonLaunchWindowScreen,
+				KEY_radioButtonLaunchFullScreen,
+				KEY_checkBoxVideo,
+				KEY_checkBoxBorderless,
+
+				KEY_toolStripAppItem,
+				KEY_gameSetupSettingsToolStripMenuItem,
+				KEY_applicationSettingsToolStripMenuItem,
+				KEY_applicationHomeFolderToolStripMenuItem,
+				KEY_exitFromApplicationToolStripMenuItem,
+
+				KEY_toolStripHelpItem,
+				KEY_aboutProgramToolStripMenuItem
+			};
 		}
 
 		public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
@@ -70,7 +112,16 @@ namespace TWE_Launcher.Forms.Localization
 					{ KEY_radioButtonLaunchWindowScreen, "Windowed Mode" },
 					{ KEY_radioButtonLaunchFullScreen, "Full-Screen Mode" },
 					{ KEY_checkBoxVideo, "Enable Game Video" },
-					{ KEY_checkBoxBorderless, "Borderless Windowed Mode" }
+					{ KEY_checkBoxBorderless, "Borderless Windowed Mode" },
+
+					{ KEY_toolStripAppItem, "BROWSER" },
+					{ KEY_gameSetupSettingsToolStripMenuItem, "Game Setup Settings" },
+					{ KEY_applicationSettingsToolStripMenuItem, "Application Settings" },
+					{ KEY_applicationHomeFolderToolStripMenuItem, "Go to Home Directory" },
+					{ KEY_exitFromApplicationToolStripMenuItem, "Exit form Program" },
+
+					{ KEY_toolStripHelpItem, "HELP" },
+					{ KEY_aboutProgramToolStripMenuItem, "About Program" }
 				}
 			);
 		}
@@ -98,7 +149,16 @@ namespace TWE_Launcher.Forms.Localization
 					{ KEY_radioButtonLaunchWindowScreen, "Оконный режим" },
 					{ KEY_radioButtonLaunchFullScreen, "Полноэкранный режим" },
 					{ KEY_checkBoxVideo, "Игровое видео" },
-					{ KEY_checkBoxBorderless, "Оконный режим без границ" }
+					{ KEY_checkBoxBorderless, "Оконный режим без границ" },
+
+					{ KEY_toolStripAppItem, "БРАУЗЕР" },
+					{ KEY_gameSetupSettingsToolStripMenuItem, "Игровые Установки" },
+					{ KEY_applicationSettingsToolStripMenuItem, "Настройки Программы" },
+					{ KEY_applicationHomeFolderToolStripMenuItem, "Домашняя Директория" },
+					{ KEY_exitFromApplicationToolStripMenuItem, "Выйти из Программы" },
+
+					{ KEY_toolStripHelpItem, "ПОМОЩЬ" },
+					{ KEY_aboutProgramToolStripMenuItem, "О Программе" }
 				}
 			);
 		}
@@ -110,6 +170,8 @@ namespace TWE_Launcher.Forms.Localization
 
 	public class GuiLocaleDescr_AppSettings : FormLocaleDescription
 	{
+		private const string KEY_This = "AppSettingsForm";
+
 		private const string KEY_appColorThemeGroupBox = "appColorThemeGroupBox";
 		private const string KEY_uiStyleByDefaultThemeRadioButton = "uiStyleByDefaultThemeRadioButton";
 		private const string KEY_uiStyleByLightThemeRadioButton = "uiStyleByLightThemeRadioButton";
@@ -118,6 +180,9 @@ namespace TWE_Launcher.Forms.Localization
 		private const string KEY_appLocalizationGroupBox = "appLocalizationGroupBox";
 		private const string KEY_enableEngLocaleRadioButton = "enableEngLocaleRadioButton";
 		private const string KEY_enableRusLocaleRadioButton = "enableRusLocaleRadioButton";
+
+		private const string KEY_saveAppSettingsButton = "saveAppSettingsButton";
+		private const string KEY_exitAppSettingsButton = "exitAppSettingsButton";
 
 		public override string FormName { get; }
 		public override List<string> LocalizedControls { get; }
@@ -128,10 +193,18 @@ namespace TWE_Launcher.Forms.Localization
 
 			LocalizedControls = new List<string>()
 			{
+				KEY_This,
 				KEY_appColorThemeGroupBox,
 				KEY_uiStyleByDefaultThemeRadioButton,
 				KEY_uiStyleByLightThemeRadioButton,
-				KEY_uiStyleByDarkThemeRadioButton
+				KEY_uiStyleByDarkThemeRadioButton,
+
+				KEY_appLocalizationGroupBox,
+				KEY_enableEngLocaleRadioButton,
+				KEY_enableRusLocaleRadioButton,
+
+				KEY_saveAppSettingsButton,
+				KEY_exitAppSettingsButton
 			};
 		}
 
@@ -139,6 +212,8 @@ namespace TWE_Launcher.Forms.Localization
 		{
 			return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
 				{
+					{ KEY_This, "Application Settings" },
+
 					{ KEY_appColorThemeGroupBox, "Select GUI style theme" },
 					{ KEY_uiStyleByDefaultThemeRadioButton, "Standard Theme (by default)" },
 					{ KEY_uiStyleByLightThemeRadioButton, "Light Theme" },
@@ -146,7 +221,10 @@ namespace TWE_Launcher.Forms.Localization
 
 					{ KEY_appLocalizationGroupBox, "Select GUI language" },
 					{ KEY_enableEngLocaleRadioButton, "ENGLISH (by default)" },
-					{ KEY_enableRusLocaleRadioButton, "RUSSIAN (in progress)" }
+					{ KEY_enableRusLocaleRadioButton, "RUSSIAN (in progress)" },
+
+					{ KEY_saveAppSettingsButton, "OK" },
+					{ KEY_exitAppSettingsButton, "CANCEL" }
 				}
 			);
 		}
@@ -155,6 +233,8 @@ namespace TWE_Launcher.Forms.Localization
 		{
 			return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
 				{
+					{ KEY_This, "Настройки Программы" },
+
 					{ KEY_appColorThemeGroupBox, "Выберите тему GUI программы" },
 					{ KEY_uiStyleByDefaultThemeRadioButton, "Стандартная тема (по умолчанию)" },
 					{ KEY_uiStyleByLightThemeRadioButton, "Светлая тема" },
@@ -162,7 +242,10 @@ namespace TWE_Launcher.Forms.Localization
 
 					{ KEY_appLocalizationGroupBox, "Выберите язык GUI программы" },
 					{ KEY_enableEngLocaleRadioButton, "Английский (по умолчанию)" },
-					{ KEY_enableRusLocaleRadioButton, "Русский (в процессе)" }
+					{ KEY_enableRusLocaleRadioButton, "Русский (в процессе)" },
+
+					{ KEY_saveAppSettingsButton, "СОХРАНИТЬ" },
+					{ KEY_exitAppSettingsButton, "ОТМЕНА" }
 				}
 			);
 		}

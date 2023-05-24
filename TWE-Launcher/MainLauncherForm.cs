@@ -205,105 +205,38 @@ namespace TWE_Launcher.Forms
 
 		public void SetupCurrentLocalizationForGUIControls()
 		{
-			List<FormLocaleSnapshot> allLocaleContent = Program.CurrentLocalization.Content;
+			FormLocaleSnapshot snapshot = Program.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
 
-			var targetFormContent = new Dictionary<string, string>();
-			foreach (FormLocaleSnapshot snapshot in allLocaleContent)
-			{
-				if (snapshot.FormName == Name)
-				{
-					targetFormContent = snapshot.FormContent;
-					break;
-				}
-			}
+			buttonLaunch.Text = snapshot.GetLocalizedValueByKey(buttonLaunch.Name);
+			modQuickNavigationButton.Text = snapshot.GetLocalizedValueByKey(modQuickNavigationButton.Name);
+			buttonExplore.Text = snapshot.GetLocalizedValueByKey(buttonExplore.Name);
 
-			foreach (var key in targetFormContent.Keys)
-			{
-				if (key == buttonLaunch.Name)
-				{
-					buttonLaunch.Text = targetFormContent[buttonLaunch.Name];
-				}
+			groupBoxConfigCleanerMode.Text = snapshot.GetLocalizedValueByKey(groupBoxConfigCleanerMode.Name);
+			checkBoxCleaner_MapRWM.Text = snapshot.GetLocalizedValueByKey(checkBoxCleaner_MapRWM.Name);
+			checkBoxCleaner_textBIN.Text = snapshot.GetLocalizedValueByKey(checkBoxCleaner_textBIN.Name);
+			checkBoxCleaner_soundPacks.Text = snapshot.GetLocalizedValueByKey(checkBoxCleaner_soundPacks.Name);
 
-				if (key == modQuickNavigationButton.Name)
-				{
-					modQuickNavigationButton.Text = targetFormContent[modQuickNavigationButton.Name];
-				}
+			groupBoxConfigLogMode.Text = snapshot.GetLocalizedValueByKey(groupBoxConfigLogMode.Name);
+			radioButtonLogOnlyError.Text = snapshot.GetLocalizedValueByKey(radioButtonLogOnlyError.Name);
+			radioButtonLogOnlyTrace.Text = snapshot.GetLocalizedValueByKey(radioButtonLogOnlyTrace.Name);
+			radioButtonLogErrorAndTrace.Text = snapshot.GetLocalizedValueByKey(radioButtonLogErrorAndTrace.Name);
+			checkBoxLogHistory.Text = snapshot.GetLocalizedValueByKey(checkBoxLogHistory.Name);
 
-				if (key == buttonExplore.Name)
-				{
-					buttonExplore.Text = targetFormContent[buttonExplore.Name];
-				}
+			groupBoxConfigLaunchMode.Text = snapshot.GetLocalizedValueByKey(groupBoxConfigLaunchMode.Name);
+			radioButtonLaunchWindowScreen.Text = snapshot.GetLocalizedValueByKey(radioButtonLaunchWindowScreen.Name);
+			radioButtonLaunchFullScreen.Text = snapshot.GetLocalizedValueByKey(radioButtonLaunchFullScreen.Name);
+			checkBoxVideo.Text = snapshot.GetLocalizedValueByKey(checkBoxVideo.Name);
+			checkBoxBorderless.Text = snapshot.GetLocalizedValueByKey(checkBoxBorderless.Name);
+			checkBoxBorderless.Text = snapshot.GetLocalizedValueByKey(checkBoxBorderless.Name);
 
-				if (key == groupBoxConfigCleanerMode.Name)
-				{
-					groupBoxConfigCleanerMode.Text = targetFormContent[groupBoxConfigCleanerMode.Name];
-				}
+			toolStripAppItem.Text = snapshot.GetLocalizedValueByKey(toolStripAppItem.Name);
+			gameSetupSettingsToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(gameSetupSettingsToolStripMenuItem.Name);
+			applicationSettingsToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(applicationSettingsToolStripMenuItem.Name);
+			applicationHomeFolderToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(applicationHomeFolderToolStripMenuItem.Name);
+			exitFromApplicationToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(exitFromApplicationToolStripMenuItem.Name);
 
-				if (key == checkBoxCleaner_MapRWM.Name)
-				{
-					checkBoxCleaner_MapRWM.Text = targetFormContent[checkBoxCleaner_MapRWM.Name];
-				}
-
-				if (key == checkBoxCleaner_textBIN.Name)
-				{
-					checkBoxCleaner_textBIN.Text = targetFormContent[checkBoxCleaner_textBIN.Name];
-				}
-
-				if (key == checkBoxCleaner_soundPacks.Name)
-				{
-					checkBoxCleaner_soundPacks.Text = targetFormContent[checkBoxCleaner_soundPacks.Name];
-				}
-
-				if (key == groupBoxConfigLogMode.Name)
-				{
-					groupBoxConfigLogMode.Text = targetFormContent[groupBoxConfigLogMode.Name];
-				}
-
-				if (key == radioButtonLogOnlyError.Name)
-				{
-					radioButtonLogOnlyError.Text = targetFormContent[radioButtonLogOnlyError.Name];
-				}
-
-				if (key == radioButtonLogOnlyTrace.Name)
-				{
-					radioButtonLogOnlyTrace.Text = targetFormContent[radioButtonLogOnlyTrace.Name];
-				}
-
-				if (key == radioButtonLogErrorAndTrace.Name)
-				{
-					radioButtonLogErrorAndTrace.Text = targetFormContent[radioButtonLogErrorAndTrace.Name];
-				}
-
-				if (key == checkBoxLogHistory.Name)
-				{
-					checkBoxLogHistory.Text = targetFormContent[checkBoxLogHistory.Name];
-				}
-
-				if (key == groupBoxConfigLaunchMode.Name)
-				{
-					groupBoxConfigLaunchMode.Text = targetFormContent[groupBoxConfigLaunchMode.Name];
-				}
-
-				if (key == radioButtonLaunchWindowScreen.Name)
-				{
-					radioButtonLaunchWindowScreen.Text = targetFormContent[radioButtonLaunchWindowScreen.Name];
-				}
-
-				if (key == radioButtonLaunchFullScreen.Name)
-				{
-					radioButtonLaunchFullScreen.Text = targetFormContent[radioButtonLaunchFullScreen.Name];
-				}
-
-				if (key == checkBoxVideo.Name)
-				{
-					checkBoxVideo.Text = targetFormContent[checkBoxVideo.Name];
-				}
-
-				if (key == checkBoxBorderless.Name)
-				{
-					checkBoxBorderless.Text = targetFormContent[checkBoxBorderless.Name];
-				}
-			}
+			toolStripHelpItem.Text = snapshot.GetLocalizedValueByKey(toolStripHelpItem.Name);
+			aboutProgramToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(aboutProgramToolStripMenuItem.Name);
 		}
 
 
