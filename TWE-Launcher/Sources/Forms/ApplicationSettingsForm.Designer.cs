@@ -29,39 +29,61 @@
 		private void InitializeComponent()
 		{
 			saveAppSettingsButton = new System.Windows.Forms.Button();
-			appSettingsPanel = new System.Windows.Forms.Panel();
+			appLocalizationGroupBox = new System.Windows.Forms.GroupBox();
+			enableEngLocaleRadioButton = new System.Windows.Forms.RadioButton();
+			enableRusLocaleRadioButton = new System.Windows.Forms.RadioButton();
 			appColorThemeGroupBox = new System.Windows.Forms.GroupBox();
 			uiStyleByDarkThemeRadioButton = new System.Windows.Forms.RadioButton();
 			uiStyleByLightThemeRadioButton = new System.Windows.Forms.RadioButton();
 			uiStyleByDefaultThemeRadioButton = new System.Windows.Forms.RadioButton();
 			exitAppSettingsButton = new System.Windows.Forms.Button();
-			appLocalizationGroupBox = new System.Windows.Forms.GroupBox();
-			enableEngLocaleRadioButton = new System.Windows.Forms.RadioButton();
-			enableRusLocaleRadioButton = new System.Windows.Forms.RadioButton();
-			appSettingsPanel.SuspendLayout();
-			appColorThemeGroupBox.SuspendLayout();
 			appLocalizationGroupBox.SuspendLayout();
+			appColorThemeGroupBox.SuspendLayout();
 			SuspendLayout();
 			// 
 			// saveAppSettingsButton
 			// 
-			saveAppSettingsButton.Location = new System.Drawing.Point(12, 526);
+			saveAppSettingsButton.Location = new System.Drawing.Point(12, 198);
 			saveAppSettingsButton.Name = "saveAppSettingsButton";
-			saveAppSettingsButton.Size = new System.Drawing.Size(176, 23);
+			saveAppSettingsButton.Size = new System.Drawing.Size(360, 23);
 			saveAppSettingsButton.TabIndex = 0;
 			saveAppSettingsButton.Text = "SAVE APP SETTINGS";
 			saveAppSettingsButton.UseVisualStyleBackColor = true;
 			saveAppSettingsButton.Click += SaveAppSettingsButton_Click;
 			// 
-			// appSettingsPanel
+			// appLocalizationGroupBox
 			// 
-			appSettingsPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-			appSettingsPanel.Controls.Add(appLocalizationGroupBox);
-			appSettingsPanel.Controls.Add(appColorThemeGroupBox);
-			appSettingsPanel.Location = new System.Drawing.Point(12, 12);
-			appSettingsPanel.Name = "appSettingsPanel";
-			appSettingsPanel.Size = new System.Drawing.Size(760, 487);
-			appSettingsPanel.TabIndex = 1;
+			appLocalizationGroupBox.BackColor = System.Drawing.Color.Transparent;
+			appLocalizationGroupBox.Controls.Add(enableEngLocaleRadioButton);
+			appLocalizationGroupBox.Controls.Add(enableRusLocaleRadioButton);
+			appLocalizationGroupBox.Location = new System.Drawing.Point(12, 119);
+			appLocalizationGroupBox.Name = "appLocalizationGroupBox";
+			appLocalizationGroupBox.Size = new System.Drawing.Size(360, 73);
+			appLocalizationGroupBox.TabIndex = 16;
+			appLocalizationGroupBox.TabStop = false;
+			appLocalizationGroupBox.Text = "Select GUI language";
+			// 
+			// enableEngLocaleRadioButton
+			// 
+			enableEngLocaleRadioButton.AutoSize = true;
+			enableEngLocaleRadioButton.Checked = true;
+			enableEngLocaleRadioButton.Location = new System.Drawing.Point(97, 22);
+			enableEngLocaleRadioButton.Name = "enableEngLocaleRadioButton";
+			enableEngLocaleRadioButton.Size = new System.Drawing.Size(136, 19);
+			enableEngLocaleRadioButton.TabIndex = 1;
+			enableEngLocaleRadioButton.TabStop = true;
+			enableEngLocaleRadioButton.Text = "ENGLISH (by default)";
+			enableEngLocaleRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// enableRusLocaleRadioButton
+			// 
+			enableRusLocaleRadioButton.AutoSize = true;
+			enableRusLocaleRadioButton.Location = new System.Drawing.Point(97, 47);
+			enableRusLocaleRadioButton.Name = "enableRusLocaleRadioButton";
+			enableRusLocaleRadioButton.Size = new System.Drawing.Size(141, 19);
+			enableRusLocaleRadioButton.TabIndex = 0;
+			enableRusLocaleRadioButton.Text = "RUSSIAN (in progress)";
+			enableRusLocaleRadioButton.UseVisualStyleBackColor = true;
 			// 
 			// appColorThemeGroupBox
 			// 
@@ -69,9 +91,9 @@
 			appColorThemeGroupBox.Controls.Add(uiStyleByDarkThemeRadioButton);
 			appColorThemeGroupBox.Controls.Add(uiStyleByLightThemeRadioButton);
 			appColorThemeGroupBox.Controls.Add(uiStyleByDefaultThemeRadioButton);
-			appColorThemeGroupBox.Location = new System.Drawing.Point(3, 3);
+			appColorThemeGroupBox.Location = new System.Drawing.Point(12, 12);
 			appColorThemeGroupBox.Name = "appColorThemeGroupBox";
-			appColorThemeGroupBox.Size = new System.Drawing.Size(238, 101);
+			appColorThemeGroupBox.Size = new System.Drawing.Size(360, 101);
 			appColorThemeGroupBox.TabIndex = 15;
 			appColorThemeGroupBox.TabStop = false;
 			appColorThemeGroupBox.Text = "Select GUI style theme";
@@ -79,7 +101,7 @@
 			// uiStyleByDarkThemeRadioButton
 			// 
 			uiStyleByDarkThemeRadioButton.AutoSize = true;
-			uiStyleByDarkThemeRadioButton.Location = new System.Drawing.Point(12, 74);
+			uiStyleByDarkThemeRadioButton.Location = new System.Drawing.Point(97, 72);
 			uiStyleByDarkThemeRadioButton.Name = "uiStyleByDarkThemeRadioButton";
 			uiStyleByDarkThemeRadioButton.Size = new System.Drawing.Size(88, 19);
 			uiStyleByDarkThemeRadioButton.TabIndex = 2;
@@ -90,7 +112,7 @@
 			// uiStyleByLightThemeRadioButton
 			// 
 			uiStyleByLightThemeRadioButton.AutoSize = true;
-			uiStyleByLightThemeRadioButton.Location = new System.Drawing.Point(12, 49);
+			uiStyleByLightThemeRadioButton.Location = new System.Drawing.Point(97, 47);
 			uiStyleByLightThemeRadioButton.Name = "uiStyleByLightThemeRadioButton";
 			uiStyleByLightThemeRadioButton.Size = new System.Drawing.Size(91, 19);
 			uiStyleByLightThemeRadioButton.TabIndex = 1;
@@ -102,7 +124,7 @@
 			// 
 			uiStyleByDefaultThemeRadioButton.AutoSize = true;
 			uiStyleByDefaultThemeRadioButton.Checked = true;
-			uiStyleByDefaultThemeRadioButton.Location = new System.Drawing.Point(12, 24);
+			uiStyleByDefaultThemeRadioButton.Location = new System.Drawing.Point(97, 22);
 			uiStyleByDefaultThemeRadioButton.Name = "uiStyleByDefaultThemeRadioButton";
 			uiStyleByDefaultThemeRadioButton.Size = new System.Drawing.Size(175, 19);
 			uiStyleByDefaultThemeRadioButton.TabIndex = 0;
@@ -113,76 +135,41 @@
 			// 
 			// exitAppSettingsButton
 			// 
-			exitAppSettingsButton.Location = new System.Drawing.Point(610, 526);
+			exitAppSettingsButton.Location = new System.Drawing.Point(12, 226);
 			exitAppSettingsButton.Name = "exitAppSettingsButton";
-			exitAppSettingsButton.Size = new System.Drawing.Size(162, 23);
+			exitAppSettingsButton.Size = new System.Drawing.Size(360, 23);
 			exitAppSettingsButton.TabIndex = 2;
 			exitAppSettingsButton.Text = "EXIT APP SETTINGS";
 			exitAppSettingsButton.UseVisualStyleBackColor = true;
 			exitAppSettingsButton.Click += ExitAppSettingsButton_Click;
 			// 
-			// appLocalizationGroupBox
-			// 
-			appLocalizationGroupBox.BackColor = System.Drawing.Color.Transparent;
-			appLocalizationGroupBox.Controls.Add(enableEngLocaleRadioButton);
-			appLocalizationGroupBox.Controls.Add(enableRusLocaleRadioButton);
-			appLocalizationGroupBox.Location = new System.Drawing.Point(3, 110);
-			appLocalizationGroupBox.Name = "appLocalizationGroupBox";
-			appLocalizationGroupBox.Size = new System.Drawing.Size(238, 73);
-			appLocalizationGroupBox.TabIndex = 16;
-			appLocalizationGroupBox.TabStop = false;
-			appLocalizationGroupBox.Text = "Select GUI language";
-			// 
-			// enableEngLocaleRadioButton
-			// 
-			enableEngLocaleRadioButton.AutoSize = true;
-			enableEngLocaleRadioButton.Checked = true;
-			enableEngLocaleRadioButton.Location = new System.Drawing.Point(10, 22);
-			enableEngLocaleRadioButton.Name = "enableEngLocaleRadioButton";
-			enableEngLocaleRadioButton.Size = new System.Drawing.Size(136, 19);
-			enableEngLocaleRadioButton.TabIndex = 1;
-			enableEngLocaleRadioButton.TabStop = true;
-			enableEngLocaleRadioButton.Text = "ENGLISH (by default)";
-			enableEngLocaleRadioButton.UseVisualStyleBackColor = true;
-			// 
-			// enableRusLocaleRadioButton
-			// 
-			enableRusLocaleRadioButton.AutoSize = true;
-			enableRusLocaleRadioButton.Location = new System.Drawing.Point(10, 47);
-			enableRusLocaleRadioButton.Name = "enableRusLocaleRadioButton";
-			enableRusLocaleRadioButton.Size = new System.Drawing.Size(141, 19);
-			enableRusLocaleRadioButton.TabIndex = 0;
-			enableRusLocaleRadioButton.Text = "RUSSIAN (in progress)";
-			enableRusLocaleRadioButton.UseVisualStyleBackColor = true;
-			// 
 			// AppSettingsForm
 			// 
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			ClientSize = new System.Drawing.Size(784, 561);
+			ClientSize = new System.Drawing.Size(384, 261);
+			Controls.Add(appLocalizationGroupBox);
 			Controls.Add(exitAppSettingsButton);
-			Controls.Add(appSettingsPanel);
+			Controls.Add(appColorThemeGroupBox);
 			Controls.Add(saveAppSettingsButton);
 			MaximizeBox = false;
-			MaximumSize = new System.Drawing.Size(800, 600);
+			MaximumSize = new System.Drawing.Size(400, 300);
 			MinimizeBox = false;
-			MinimumSize = new System.Drawing.Size(800, 600);
+			MinimumSize = new System.Drawing.Size(400, 300);
 			Name = "AppSettingsForm";
 			ShowIcon = false;
 			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			Text = "ApplicationSettingsForm";
-			appSettingsPanel.ResumeLayout(false);
-			appColorThemeGroupBox.ResumeLayout(false);
-			appColorThemeGroupBox.PerformLayout();
+			Text = "Application Settings";
 			appLocalizationGroupBox.ResumeLayout(false);
 			appLocalizationGroupBox.PerformLayout();
+			appColorThemeGroupBox.ResumeLayout(false);
+			appColorThemeGroupBox.PerformLayout();
 			ResumeLayout(false);
 		}
 
 		#endregion
 
 		private System.Windows.Forms.Button saveAppSettingsButton;
-		private System.Windows.Forms.Panel appSettingsPanel;
 		private System.Windows.Forms.Button exitAppSettingsButton;
 		private System.Windows.Forms.GroupBox appColorThemeGroupBox;
 		private System.Windows.Forms.RadioButton uiStyleByDarkThemeRadioButton;

@@ -21,10 +21,6 @@ namespace TWE_Launcher.Forms.Localization
 		private const string KEY_modQuickNavigationButton = "modQuickNavigationButton";
 		private const string KEY_buttonExplore = "buttonExplore";
 
-		private const string KEY_appLocalizationGroupBox = "appLocalizationGroupBox";
-		private const string KEY_enableEngLocaleRadioButton = "enableEngLocaleRadioButton";
-		private const string KEY_enableRusLocaleRadioButton = "enableRusLocaleRadioButton";
-
 		private const string KEY_groupBoxConfigCleanerMode = "groupBoxConfigCleanerMode";
 		private const string KEY_checkBoxCleaner_MapRWM = "checkBoxCleaner_MapRWM";
 		private const string KEY_checkBoxCleaner_textBIN = "checkBoxCleaner_textBIN";
@@ -59,10 +55,6 @@ namespace TWE_Launcher.Forms.Localization
 					{ KEY_modQuickNavigationButton, "MOD QUICK NAVIGATION" },
 					{ KEY_buttonExplore, "MOD HOME FOLDER" },
 
-					{ KEY_appLocalizationGroupBox, "Select GUI language" },
-					{ KEY_enableEngLocaleRadioButton, "ENGLISH (by default)" },
-					{ KEY_enableRusLocaleRadioButton, "RUSSIAN (in progress)" },
-
 					{ KEY_groupBoxConfigCleanerMode, "Select mod clean routines" },
 					{ KEY_checkBoxCleaner_MapRWM, "Delete map.rwm file" },
 					{ KEY_checkBoxCleaner_textBIN, "Delete localization *strings.bin files" },
@@ -90,10 +82,6 @@ namespace TWE_Launcher.Forms.Localization
 					{ KEY_buttonLaunch, "ИГРАТЬ" },
 					{ KEY_modQuickNavigationButton, "БЫСТРАЯ МОД-НАВИГАЦИЯ" },
 					{ KEY_buttonExplore, "РАЗМЕЩЕНИЕ МОДИФИКАЦИИ" },
-
-					{ KEY_appLocalizationGroupBox, "Выберите язык GUI программы" },
-					{ KEY_enableEngLocaleRadioButton, "Английский (по умолчанию)" },
-					{ KEY_enableRusLocaleRadioButton, "Русский (в процессе)" },
 
 					{ KEY_groupBoxConfigCleanerMode, "Выберите операции очистки для мода" },
 					{ KEY_checkBoxCleaner_MapRWM, "Удалять файл map.rwm" },
@@ -127,6 +115,10 @@ namespace TWE_Launcher.Forms.Localization
 		private const string KEY_uiStyleByLightThemeRadioButton = "uiStyleByLightThemeRadioButton";
 		private const string KEY_uiStyleByDarkThemeRadioButton = "uiStyleByDarkThemeRadioButton";
 
+		private const string KEY_appLocalizationGroupBox = "appLocalizationGroupBox";
+		private const string KEY_enableEngLocaleRadioButton = "enableEngLocaleRadioButton";
+		private const string KEY_enableRusLocaleRadioButton = "enableRusLocaleRadioButton";
+
 		public override string FormName { get; }
 		public override List<string> LocalizedControls { get; }
 
@@ -150,7 +142,11 @@ namespace TWE_Launcher.Forms.Localization
 					{ KEY_appColorThemeGroupBox, "Select GUI style theme" },
 					{ KEY_uiStyleByDefaultThemeRadioButton, "Standard Theme (by default)" },
 					{ KEY_uiStyleByLightThemeRadioButton, "Light Theme" },
-					{ KEY_uiStyleByDarkThemeRadioButton, "Dark Theme" }
+					{ KEY_uiStyleByDarkThemeRadioButton, "Dark Theme" },
+
+					{ KEY_appLocalizationGroupBox, "Select GUI language" },
+					{ KEY_enableEngLocaleRadioButton, "ENGLISH (by default)" },
+					{ KEY_enableRusLocaleRadioButton, "RUSSIAN (in progress)" }
 				}
 			);
 		}
@@ -162,7 +158,11 @@ namespace TWE_Launcher.Forms.Localization
 					{ KEY_appColorThemeGroupBox, "Выберите тему GUI программы" },
 					{ KEY_uiStyleByDefaultThemeRadioButton, "Стандартная тема (по умолчанию)" },
 					{ KEY_uiStyleByLightThemeRadioButton, "Светлая тема" },
-					{ KEY_uiStyleByDarkThemeRadioButton, "Темная тема" }
+					{ KEY_uiStyleByDarkThemeRadioButton, "Темная тема" },
+
+					{ KEY_appLocalizationGroupBox, "Выберите язык GUI программы" },
+					{ KEY_enableEngLocaleRadioButton, "Английский (по умолчанию)" },
+					{ KEY_enableRusLocaleRadioButton, "Русский (в процессе)" }
 				}
 			);
 		}

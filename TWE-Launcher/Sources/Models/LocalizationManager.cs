@@ -97,7 +97,6 @@ namespace TWE_Launcher.Sources.Models
 		public interface ICanChangeMyLocalization
 		{
 			public void SetupCurrentLocalizationForGUIControls();
-			public void UpdateLocalizationForGUIControls(GuiLocale guiLocale);
 		}
 	}
 

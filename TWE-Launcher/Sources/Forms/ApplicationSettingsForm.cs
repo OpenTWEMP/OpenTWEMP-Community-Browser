@@ -66,7 +66,7 @@ namespace TWE_Launcher.Forms
 		private void SaveAppSettingsButton_Click(object sender, EventArgs e)
 		{
 			// 1. Change GUI style.
-		
+
 			SaveGUIChanges(currentGuiStyle);
 
 			// 2. Change GUI localization.
@@ -83,7 +83,8 @@ namespace TWE_Launcher.Forms
 				Program.SetCurrentLocalizationByName(guiLocaleName_RUS);
 			}
 
-			SetupCurrentLocalizationForGUIControls();
+			this.SetupCurrentLocalizationForGUIControls();
+			currentCallingForm.SetupCurrentLocalizationForGUIControls();
 
 			// 3. Close the form.
 
@@ -155,40 +156,21 @@ namespace TWE_Launcher.Forms
 				{
 					uiStyleByDarkThemeRadioButton.Text = targetFormContent[uiStyleByDarkThemeRadioButton.Name];
 				}
-			}
-		}
 
-		public void UpdateLocalizationForGUIControls(GuiLocale guiLocale)
-		{
-			List<FormLocaleSnapshot> allLocaleContent = guiLocale.Content;
-
-			var targetFormContent = new Dictionary<string, string>();
-			foreach (FormLocaleSnapshot snapshot in allLocaleContent)
-			{
-				if (snapshot.FormName == Name)
+				if (key == appLocalizationGroupBox.Name)
 				{
-					targetFormContent = snapshot.FormContent;
+					appLocalizationGroupBox.Text = targetFormContent[appLocalizationGroupBox.Name];
 				}
-			}
 
-			if (targetFormContent.ContainsKey(appColorThemeGroupBox.Name))
-			{
-				appColorThemeGroupBox.Text = targetFormContent[appColorThemeGroupBox.Name];
-			}
+				if (key == enableEngLocaleRadioButton.Name)
+				{
+					enableEngLocaleRadioButton.Text = targetFormContent[enableEngLocaleRadioButton.Name];
+				}
 
-			if (targetFormContent.ContainsKey(uiStyleByDefaultThemeRadioButton.Name))
-			{
-				uiStyleByDefaultThemeRadioButton.Text = targetFormContent[uiStyleByDefaultThemeRadioButton.Name];
-			}
-
-			if (targetFormContent.ContainsKey(uiStyleByLightThemeRadioButton.Name))
-			{
-				uiStyleByLightThemeRadioButton.Text = targetFormContent[uiStyleByLightThemeRadioButton.Name];
-			}
-
-			if (targetFormContent.ContainsKey(uiStyleByDarkThemeRadioButton.Name))
-			{
-				uiStyleByDarkThemeRadioButton.Text = targetFormContent[uiStyleByDarkThemeRadioButton.Name];
+				if (key == enableRusLocaleRadioButton.Name)
+				{
+					enableRusLocaleRadioButton.Text = targetFormContent[enableRusLocaleRadioButton.Name];
+				}
 			}
 		}
 	}

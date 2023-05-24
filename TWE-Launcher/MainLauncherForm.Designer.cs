@@ -35,9 +35,6 @@ namespace TWE_Launcher.Forms
 			checkBoxCleaner_soundPacks = new System.Windows.Forms.CheckBox();
 			checkBoxCleaner_textBIN = new System.Windows.Forms.CheckBox();
 			checkBoxCleaner_MapRWM = new System.Windows.Forms.CheckBox();
-			appLocalizationGroupBox = new System.Windows.Forms.GroupBox();
-			enableEngLocaleRadioButton = new System.Windows.Forms.RadioButton();
-			enableRusLocaleRadioButton = new System.Windows.Forms.RadioButton();
 			groupBoxConfigLogMode = new System.Windows.Forms.GroupBox();
 			checkBoxLogHistory = new System.Windows.Forms.CheckBox();
 			radioButtonLogErrorAndTrace = new System.Windows.Forms.RadioButton();
@@ -70,7 +67,6 @@ namespace TWE_Launcher.Forms
 			configSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			panelLauncherOptions.SuspendLayout();
 			groupBoxConfigCleanerMode.SuspendLayout();
-			appLocalizationGroupBox.SuspendLayout();
 			groupBoxConfigLogMode.SuspendLayout();
 			groupBoxConfigLaunchMode.SuspendLayout();
 			panelLauncherToolkit.SuspendLayout();
@@ -103,7 +99,6 @@ namespace TWE_Launcher.Forms
 			panelLauncherOptions.BackColor = System.Drawing.Color.MediumAquamarine;
 			panelLauncherOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			panelLauncherOptions.Controls.Add(groupBoxConfigCleanerMode);
-			panelLauncherOptions.Controls.Add(appLocalizationGroupBox);
 			panelLauncherOptions.Controls.Add(groupBoxConfigLogMode);
 			panelLauncherOptions.Controls.Add(groupBoxConfigLaunchMode);
 			panelLauncherOptions.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -160,42 +155,6 @@ namespace TWE_Launcher.Forms
 			checkBoxCleaner_MapRWM.TabIndex = 0;
 			checkBoxCleaner_MapRWM.Text = "Delete map.rwm file";
 			checkBoxCleaner_MapRWM.UseVisualStyleBackColor = true;
-			// 
-			// appLocalizationGroupBox
-			// 
-			appLocalizationGroupBox.BackColor = System.Drawing.Color.Transparent;
-			appLocalizationGroupBox.Controls.Add(enableEngLocaleRadioButton);
-			appLocalizationGroupBox.Controls.Add(enableRusLocaleRadioButton);
-			appLocalizationGroupBox.Location = new System.Drawing.Point(3, 372);
-			appLocalizationGroupBox.Name = "appLocalizationGroupBox";
-			appLocalizationGroupBox.Size = new System.Drawing.Size(238, 73);
-			appLocalizationGroupBox.TabIndex = 15;
-			appLocalizationGroupBox.TabStop = false;
-			appLocalizationGroupBox.Text = "Select GUI language";
-			// 
-			// enableEngLocaleRadioButton
-			// 
-			enableEngLocaleRadioButton.AutoSize = true;
-			enableEngLocaleRadioButton.Checked = true;
-			enableEngLocaleRadioButton.Location = new System.Drawing.Point(10, 22);
-			enableEngLocaleRadioButton.Name = "enableEngLocaleRadioButton";
-			enableEngLocaleRadioButton.Size = new System.Drawing.Size(136, 19);
-			enableEngLocaleRadioButton.TabIndex = 1;
-			enableEngLocaleRadioButton.TabStop = true;
-			enableEngLocaleRadioButton.Text = "ENGLISH (by default)";
-			enableEngLocaleRadioButton.UseVisualStyleBackColor = true;
-			enableEngLocaleRadioButton.Click += enableEngLocaleRadioButton_Click;
-			// 
-			// enableRusLocaleRadioButton
-			// 
-			enableRusLocaleRadioButton.AutoSize = true;
-			enableRusLocaleRadioButton.Location = new System.Drawing.Point(10, 47);
-			enableRusLocaleRadioButton.Name = "enableRusLocaleRadioButton";
-			enableRusLocaleRadioButton.Size = new System.Drawing.Size(141, 19);
-			enableRusLocaleRadioButton.TabIndex = 0;
-			enableRusLocaleRadioButton.Text = "RUSSIAN (in progress)";
-			enableRusLocaleRadioButton.UseVisualStyleBackColor = true;
-			enableRusLocaleRadioButton.Click += enableRusLocaleRadioButton_Click;
 			// 
 			// groupBoxConfigLogMode
 			// 
@@ -541,8 +500,6 @@ namespace TWE_Launcher.Forms
 			panelLauncherOptions.ResumeLayout(false);
 			groupBoxConfigCleanerMode.ResumeLayout(false);
 			groupBoxConfigCleanerMode.PerformLayout();
-			appLocalizationGroupBox.ResumeLayout(false);
-			appLocalizationGroupBox.PerformLayout();
 			groupBoxConfigLogMode.ResumeLayout(false);
 			groupBoxConfigLogMode.PerformLayout();
 			groupBoxConfigLaunchMode.ResumeLayout(false);
@@ -578,9 +535,6 @@ namespace TWE_Launcher.Forms
 		private System.Windows.Forms.Button buttonExplore;
 		private System.Windows.Forms.Label modMainTitleLabel;
 		private System.Windows.Forms.PictureBox modLogoPictureBox;
-		private System.Windows.Forms.GroupBox appLocalizationGroupBox;
-		private System.Windows.Forms.RadioButton enableEngLocaleRadioButton;
-		private System.Windows.Forms.RadioButton enableRusLocaleRadioButton;
 		private System.Windows.Forms.Label modStatusLabel;
 		private System.Windows.Forms.ListBox listBoxMODS;
 		private System.Windows.Forms.StatusStrip appStatusStrip;

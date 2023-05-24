@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-
 using TWE_Launcher.Models;
-
+using TWE_Launcher.Sources.Models.Localizations;
 
 namespace TWE_Launcher.Forms
 {
-	public partial class MainLauncherForm : Form
+	public partial class MainLauncherForm : Form, ICanChangeMyLocalization
 	{
 		public RadioButton RadioButton_FullScreenMode => radioButtonLaunchFullScreen;
 		public RadioButton RadioButton_WindowedMode => radioButtonLaunchWindowScreen;
@@ -29,18 +29,13 @@ namespace TWE_Launcher.Forms
 		public MainLauncherForm()
 		{
 			InitializeComponent();
+
+			SetupCurrentLocalizationForGUIControls();
+
 			UpdateModificationsListBox();
 
 			Text = GetApplicationFullName();
 		}
-
-		public MainLauncherForm(ref string localeSnapshotByDefault)
-		{
-			InitializeComponent();
-
-			//
-		}
-
 
 		private static string GetApplicationFullName()
 		{
@@ -202,106 +197,114 @@ namespace TWE_Launcher.Forms
 			checkBoxCleaner_textBIN.ForeColor = colorTheme.CommonControlsForeColor;
 			checkBoxCleaner_soundPacks.ForeColor = colorTheme.CommonControlsForeColor;
 
-			//appColorThemeGroupBox.ForeColor = colorTheme.CommonControlsForeColor;
-			//uiStyleByDarkThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
-			//uiStyleByLightThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
-			//uiStyleByDefaultThemeRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
-
-			appLocalizationGroupBox.ForeColor = colorTheme.CommonControlsForeColor;
-			enableEngLocaleRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
-			enableRusLocaleRadioButton.ForeColor = colorTheme.CommonControlsForeColor;
-
 			listBoxMODS.ForeColor = colorTheme.CommonControlsForeColor;
 			modMainTitleLabel.ForeColor = colorTheme.CommonControlsForeColor;
 			modStatusLabel.ForeColor = colorTheme.CommonControlsForeColor;
 		}
 
 
-		private void enableEngLocaleRadioButton_Click(object sender, EventArgs e)
+		public void SetupCurrentLocalizationForGUIControls()
 		{
-			ChangeUILanguage();
-		}
+			List<FormLocaleSnapshot> allLocaleContent = Program.CurrentLocalization.Content;
 
-		private void enableRusLocaleRadioButton_Click(object sender, EventArgs e)
-		{
-			ChangeUILanguage();
-		}
-
-		private void ChangeUILanguage()
-		{
-			if (enableEngLocaleRadioButton.Checked)
+			var targetFormContent = new Dictionary<string, string>();
+			foreach (FormLocaleSnapshot snapshot in allLocaleContent)
 			{
-				ApplyUILanguageOnEnglish();
+				if (snapshot.FormName == Name)
+				{
+					targetFormContent = snapshot.FormContent;
+					break;
+				}
 			}
 
-			if (enableRusLocaleRadioButton.Checked)
+			foreach (var key in targetFormContent.Keys)
 			{
-				ApplyUILanguageOnRussian();
+				if (key == buttonLaunch.Name)
+				{
+					buttonLaunch.Text = targetFormContent[buttonLaunch.Name];
+				}
+
+				if (key == modQuickNavigationButton.Name)
+				{
+					modQuickNavigationButton.Text = targetFormContent[modQuickNavigationButton.Name];
+				}
+
+				if (key == buttonExplore.Name)
+				{
+					buttonExplore.Text = targetFormContent[buttonExplore.Name];
+				}
+
+				if (key == groupBoxConfigCleanerMode.Name)
+				{
+					groupBoxConfigCleanerMode.Text = targetFormContent[groupBoxConfigCleanerMode.Name];
+				}
+
+				if (key == checkBoxCleaner_MapRWM.Name)
+				{
+					checkBoxCleaner_MapRWM.Text = targetFormContent[checkBoxCleaner_MapRWM.Name];
+				}
+
+				if (key == checkBoxCleaner_textBIN.Name)
+				{
+					checkBoxCleaner_textBIN.Text = targetFormContent[checkBoxCleaner_textBIN.Name];
+				}
+
+				if (key == checkBoxCleaner_soundPacks.Name)
+				{
+					checkBoxCleaner_soundPacks.Text = targetFormContent[checkBoxCleaner_soundPacks.Name];
+				}
+
+				if (key == groupBoxConfigLogMode.Name)
+				{
+					groupBoxConfigLogMode.Text = targetFormContent[groupBoxConfigLogMode.Name];
+				}
+
+				if (key == radioButtonLogOnlyError.Name)
+				{
+					radioButtonLogOnlyError.Text = targetFormContent[radioButtonLogOnlyError.Name];
+				}
+
+				if (key == radioButtonLogOnlyTrace.Name)
+				{
+					radioButtonLogOnlyTrace.Text = targetFormContent[radioButtonLogOnlyTrace.Name];
+				}
+
+				if (key == radioButtonLogErrorAndTrace.Name)
+				{
+					radioButtonLogErrorAndTrace.Text = targetFormContent[radioButtonLogErrorAndTrace.Name];
+				}
+
+				if (key == checkBoxLogHistory.Name)
+				{
+					checkBoxLogHistory.Text = targetFormContent[checkBoxLogHistory.Name];
+				}
+
+				if (key == groupBoxConfigLaunchMode.Name)
+				{
+					groupBoxConfigLaunchMode.Text = targetFormContent[groupBoxConfigLaunchMode.Name];
+				}
+
+				if (key == radioButtonLaunchWindowScreen.Name)
+				{
+					radioButtonLaunchWindowScreen.Text = targetFormContent[radioButtonLaunchWindowScreen.Name];
+				}
+
+				if (key == radioButtonLaunchFullScreen.Name)
+				{
+					radioButtonLaunchFullScreen.Text = targetFormContent[radioButtonLaunchFullScreen.Name];
+				}
+
+				if (key == checkBoxVideo.Name)
+				{
+					checkBoxVideo.Text = targetFormContent[checkBoxVideo.Name];
+				}
+
+				if (key == checkBoxBorderless.Name)
+				{
+					checkBoxBorderless.Text = targetFormContent[checkBoxBorderless.Name];
+				}
 			}
 		}
-
-
-		private void ApplyUILanguageOnEnglish()
-		{
-			buttonLaunch.Text = "LAUNCH";
-			modQuickNavigationButton.Text = "MOD QUICK NAVIGATION";
-			buttonExplore.Text = "MOD HOME FOLDER";
-
-			appLocalizationGroupBox.Text = "Select GUI language";
-			enableEngLocaleRadioButton.Text = "ENGLISH (by default)";
-			enableRusLocaleRadioButton.Text = "RUSSIAN (in progress)";
-
-			//appColorThemeGroupBox.Text = "Select GUI style theme";
-			//uiStyleByDefaultThemeRadioButton.Text = "Standard Theme (by default)";
-			//uiStyleByLightThemeRadioButton.Text = "Light Theme";
-			//uiStyleByDarkThemeRadioButton.Text = "Dark Theme";
-
-			groupBoxConfigCleanerMode.Text = "Select mod clean routines";
-			checkBoxCleaner_MapRWM.Text = "Delete map.rwm file";
-			checkBoxCleaner_textBIN.Text = "Delete localization *strings.bin files";
-			checkBoxCleaner_soundPacks.Text = "Delete sound pack files (*.DAT + *.IDX)";
-
-			groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
-			radioButtonLogOnlyError.Text = "Only Errors";
-			radioButtonLogOnlyTrace.Text = "Only Trace";
-			radioButtonLogErrorAndTrace.Text = "Errors + Trace";
-			checkBoxLogHistory.Text = "Save game system.log files";
-
-			groupBoxConfigLaunchMode.Text = "Select game launch mode";
-			radioButtonLaunchWindowScreen.Text = "Windowed Mode";
-			radioButtonLaunchFullScreen.Text = "Full-Screen Mode";
-			checkBoxVideo.Text = "Enable Game Video";
-			checkBoxBorderless.Text = "Borderless Windowed Mode";
-		}
-
-		private void ApplyUILanguageOnRussian()
-		{
-			buttonLaunch.Text = "ИГРАТЬ";
-			modQuickNavigationButton.Text = "БЫСТРАЯ МОД-НАВИГАЦИЯ";
-			buttonExplore.Text = "РАЗМЕЩЕНИЕ МОДИФИКАЦИИ";
-
-			appLocalizationGroupBox.Text = "Выберите язык GUI программы";
-			enableEngLocaleRadioButton.Text = "Английский (по умолчанию)";
-			enableRusLocaleRadioButton.Text = "Русский (в процессе)";
-
-			groupBoxConfigCleanerMode.Text = "Выберите операции очистки для мода";
-			checkBoxCleaner_MapRWM.Text = "Удалять файл map.rwm";
-			checkBoxCleaner_textBIN.Text = "Удалять файлы *strings.bin";
-			checkBoxCleaner_soundPacks.Text = "Удалять pack-файлы (*.DAT + *.IDX)";
-
-			groupBoxConfigLogMode.Text = "Выберите режим записи журнала";
-			radioButtonLogOnlyError.Text = "Только ошибки";
-			radioButtonLogOnlyTrace.Text = "Только трассировка";
-			radioButtonLogErrorAndTrace.Text = "Ошибки + трассировка";
-			checkBoxLogHistory.Text = "Сохранять журналы system.log";
-
-			groupBoxConfigLaunchMode.Text = "Выберите режим запуска игры";
-			radioButtonLaunchWindowScreen.Text = "Оконный режим";
-			radioButtonLaunchFullScreen.Text = "Полноэкранный режим";
-			checkBoxVideo.Text = "Игровое видео";
-			checkBoxBorderless.Text = "Оконный режим без границ";
-		}
-
 
 
 		private void exitFromApplicationToolStripMenuItem_Click(object sender, EventArgs e)
