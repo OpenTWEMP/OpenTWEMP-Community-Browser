@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
 using TWE_Launcher.Models;
-using TWE_Launcher.Sources.Forms;
+
 
 namespace TWE_Launcher.Forms
 {
@@ -34,6 +33,14 @@ namespace TWE_Launcher.Forms
 
 			Text = GetApplicationFullName();
 		}
+
+		public MainLauncherForm(ref string localeSnapshotByDefault)
+		{
+			InitializeComponent();
+
+			//
+		}
+
 
 		private static string GetApplicationFullName()
 		{
@@ -326,7 +333,7 @@ namespace TWE_Launcher.Forms
 
 		private void applicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var appSettingsForm = new ApplicationSettingsForm(this);
+			var appSettingsForm = new AppSettingsForm(this);
 			appSettingsForm.Show();
 		}
 

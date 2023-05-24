@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TWE_Launcher.Sources.Forms
+namespace TWE_Launcher.Forms
 {
 	public partial class ModConfigSettingsForm : Form
 	{

@@ -1,4 +1,4 @@
-﻿namespace TWE_Launcher.Sources.Forms
+﻿namespace TWE_Launcher.Forms
 {
 	partial class ModConfigSettingsForm
 	{

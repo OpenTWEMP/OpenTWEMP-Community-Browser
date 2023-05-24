@@ -1,15 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TWE_Launcher.Forms;
+using TWE_Launcher.Sources.Models.Localizations;
 
-namespace TWE_Launcher.Sources.Forms
+namespace TWE_Launcher.Forms
 {
-	public partial class ApplicationSettingsForm : Form
+	public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 	{
 		private MainLauncherForm currentCallingForm;
 		private GuiStyle currentGuiStyle;
 
-		public ApplicationSettingsForm(MainLauncherForm callingForm)
+		public AppSettingsForm()
+		{
+			InitializeComponent();
+		}
+
+		public AppSettingsForm(MainLauncherForm callingForm)
 		{
 			InitializeComponent();
 
@@ -17,7 +24,10 @@ namespace TWE_Launcher.Sources.Forms
 			currentGuiStyle = InitializeCurrentGUIStyle();
 
 
+			// check and update gui locale - if a form will be initialized again
+			// update gui locale - if the form is already opened
 		}
+
 
 		private GuiStyle InitializeCurrentGUIStyle()
 		{
@@ -49,6 +59,9 @@ namespace TWE_Launcher.Sources.Forms
 
 		private void SaveAppSettingsButton_Click(object sender, EventArgs e)
 		{
+			// Change GUI localization.
+			//AppLocalizationManager.InitializeLocaleData();
+
 			SaveGUIChanges(currentGuiStyle);
 			Close();
 		}
@@ -78,6 +91,23 @@ namespace TWE_Launcher.Sources.Forms
 		private void uiStyleByDarkThemeRadioButton_Click(object sender, EventArgs e)
 		{
 			currentGuiStyle = GuiStyle.Dark;
+		}
+
+
+
+
+
+
+		// apply the current gui locale to form's controls
+		public Dictionary<string, string> GetLocalizableGUIControls()
+		{
+			return new Dictionary<string, string>()
+			{
+				{ appColorThemeGroupBox.Name, appColorThemeGroupBox.Text },
+				{ uiStyleByDefaultThemeRadioButton.Name, uiStyleByDefaultThemeRadioButton.Text },
+				{ uiStyleByLightThemeRadioButton.Name, uiStyleByLightThemeRadioButton.Text },
+				{ uiStyleByDarkThemeRadioButton.Name, uiStyleByDarkThemeRadioButton.Text }
+			};
 		}
 	}
 }

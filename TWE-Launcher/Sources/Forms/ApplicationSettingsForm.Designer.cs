@@ -1,6 +1,6 @@
-﻿namespace TWE_Launcher.Sources.Forms
+﻿namespace TWE_Launcher.Forms
 {
-	partial class ApplicationSettingsForm
+	partial class AppSettingsForm
 	{
 		/// <summary>
 		/// Required designer variable.
