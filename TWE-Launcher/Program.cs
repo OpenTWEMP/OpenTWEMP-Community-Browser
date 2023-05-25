@@ -12,12 +12,40 @@ namespace TWE_Launcher
 {
 	internal static class Program
 	{
+		private const string APP_SUPPORT_DIRECTORY_NAME = "support";
+		private const string APP_SUPPORT_NODE1_M2TW = "M2TWK";
+		private const string APP_SUPPORT_NODE2_LOGO = "images";
+
+		internal static readonly DirectoryInfo AppSupportDirectoryInfo;
+		internal static readonly DirectoryInfo AppSupportNode_M2TW_LOGO_DirectoryInfo;
+
+
 		internal static GuiStyle CurrentGUIStyle { get; set; }
 		internal static List<GuiLocale> AvailableLocalizations { get; set; }
 		internal static GuiLocale CurrentLocalization { get; set; }
 
 		static Program()
 		{
+			// 0. Initialize app's file system.
+
+			string appSupportDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), APP_SUPPORT_DIRECTORY_NAME);
+			AppSupportDirectoryInfo = new DirectoryInfo(appSupportDirectoryPath);
+
+			if (!AppSupportDirectoryInfo.Exists)
+			{
+				AppSupportDirectoryInfo.Create();
+			}
+
+			string appSupportNode_M2TW_LOGO_DirectoryPath = Path.Combine(appSupportDirectoryPath, APP_SUPPORT_NODE1_M2TW, APP_SUPPORT_NODE2_LOGO);
+			AppSupportNode_M2TW_LOGO_DirectoryInfo = new DirectoryInfo(appSupportNode_M2TW_LOGO_DirectoryPath);
+
+			if (!AppSupportNode_M2TW_LOGO_DirectoryInfo.Exists)
+			{
+				AppSupportNode_M2TW_LOGO_DirectoryInfo.Create();
+			}
+			
+
+
 			// 1. Setup GUI style by default.
 
 			CurrentGUIStyle = GuiStyle.Default;

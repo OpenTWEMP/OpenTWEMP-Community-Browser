@@ -1,5 +1,12 @@
-﻿using System.IO;
+﻿#define PREVIEW_2023_1_IMPL
+#define PREVIEW_2023_2_IMPL
+
+#undef PREVIEW_2023_1_IMPL
+
+
+using System.IO;
 using System.Collections.Generic;
+
 
 namespace TWE_Launcher.Models
 {
@@ -50,6 +57,7 @@ namespace TWE_Launcher.Models
 			return InstalledModifications;
 		}
 
+#if PREVIEW_2023_1_IMPL
 		private bool IsModification(string modFolder)
 		{
 			const string modConfigExtension = ".cfg";
@@ -65,5 +73,15 @@ namespace TWE_Launcher.Models
 
 			return false;
 		}
+#endif
+
+
+#if PREVIEW_2023_2_IMPL
+		private bool IsModification(string modFolder)
+		{
+			return GamesSupport.GameProvider_M2TW.IsCompatibleModification(modFolder);
+		}
+#endif
+
 	}
 }

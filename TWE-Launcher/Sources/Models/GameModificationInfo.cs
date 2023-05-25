@@ -3,6 +3,9 @@ using System.IO;
 using System.Windows.Forms;
 using TWE_Launcher.Forms;
 
+using TWE_Launcher.Models.GamesSupport;
+
+
 namespace TWE_Launcher.Models
 {
 	public class GameModificationInfo
@@ -102,26 +105,67 @@ namespace TWE_Launcher.Models
 
 		private string InitializeCachedLogotypeImage(string modificationURI)
 		{
-			string cachedLogotypeImageExtension = ".png";
-			string cachedLogotypeImageFileName = ShortName + cachedLogotypeImageExtension;
+			string destLogoImageExtension = ".png";
+			string cachedLogotypeImageFileName = ShortName + destLogoImageExtension;
 			string cachedLogotypeImagePath = Path.Combine(CacheDirectory, cachedLogotypeImageFileName);
+
+			// 1. Find mod's logotype image in app's cache directory.
 
 			if (ContainsLogotypeImage(CacheDirectory, cachedLogotypeImageFileName))
 			{
 				return cachedLogotypeImagePath;
 			}
 
+			// 2. Find mod's logotype image in mod's home directory.
 
-			string sourceLogotypeImageDirectoryPath = $"{modificationURI}\\data\\menu\\";
-			string sourceLogotypeImageFileName = "splash.tga";
+			string srcLogoImageDirectoryPath = Path.Combine(modificationURI, GameProvider_M2TW.MOD_ROOT, GameProvider_M2TW.MOD_NODE1_MENU);
+			string srcLogoImageFileName = GameProvider_M2TW.MENU_IMAGE_LOGO;
 
-			if (ContainsLogotypeImage(sourceLogotypeImageDirectoryPath, sourceLogotypeImageFileName))
+			if (Directory.Exists(srcLogoImageDirectoryPath) && ContainsLogotypeImage(srcLogoImageDirectoryPath, srcLogoImageFileName))
 			{
-				string sourceLogotypeImagePath = Path.Combine(sourceLogotypeImageDirectoryPath, sourceLogotypeImageFileName);
+				string srcLogoImagePath = Path.Combine(srcLogoImageDirectoryPath, srcLogoImageFileName);
 
 				if (!ContainsLogotypeImage(CacheDirectory, cachedLogotypeImageFileName))
 				{
-					ImageConverter.ConvertTgaToPng(sourceLogotypeImagePath, cachedLogotypeImagePath);
+					ImageConverter.ConvertTgaToPng(srcLogoImagePath, cachedLogotypeImagePath);
+				}
+			}
+			else
+			{
+				// 3. Load mod's logotype image from app's support folder.
+
+				try
+				{
+					if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD1))
+					{
+						srcLogoImageFileName = AppGameSupportManager.M2TWK_MOD1_LOGO_FILENAME;
+					}
+
+					if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD2))
+					{
+						srcLogoImageFileName = AppGameSupportManager.M2TWK_MOD2_LOGO_FILENAME;
+					}
+
+					if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD3))
+					{
+						srcLogoImageFileName = AppGameSupportManager.M2TWK_MOD3_LOGO_FILENAME;
+					}
+
+					if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD4))
+					{
+						srcLogoImageFileName = AppGameSupportManager.M2TWK_MOD4_LOGO_FILENAME;
+					}
+
+					string srcLogoImagePath = Path.Combine(Program.AppSupportNode_M2TW_LOGO_DirectoryInfo.FullName, srcLogoImageFileName);
+					ImageConverter.ConvertTgaToPng(srcLogoImagePath, cachedLogotypeImagePath);
+				}
+				catch (DirectoryNotFoundException)
+				{
+					cachedLogotypeImagePath = null;
+				}
+				catch (FileNotFoundException)
+				{
+					cachedLogotypeImagePath = null;
 				}
 			}
 
