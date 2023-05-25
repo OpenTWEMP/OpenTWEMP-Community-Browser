@@ -4,6 +4,10 @@ namespace TWE_Launcher.Models.GamesSupport
 {
 	public static class GameProvider_M2TW
 	{
+		public const string GAME_EXECUTABLE_BASENAME_CLASSIC1 = "medieval2";
+		public const string GAME_EXECUTABLE_BASENAME_CLASSIC2 = "kingdoms";
+		public const string GAME_EXECUTABLE_BASENAME_STEAM = "medieval2";
+
 		public const string MOD_ROOT = "data";
 
 		private const string MOD_NODE1_ANIMATIONS = "animations";

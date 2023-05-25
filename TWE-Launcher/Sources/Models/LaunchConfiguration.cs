@@ -4,6 +4,8 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
+using TWE_Launcher.Models.GamesSupport;
+
 namespace TWE_Launcher.Models
 {
 	public struct CfgOption
@@ -80,11 +82,28 @@ namespace TWE_Launcher.Models
 				{
 					var modExecutionProcess = new Process();
 					modExecutionProcess.StartInfo = InitializeGameLaunch(mod_config);
-					modExecutionProcess.Start();
+					string modExecutableBaseName = Path.GetFileNameWithoutExtension(current_modification.CurrentSetup.ExecutableFileName);
 
-					int modExecProcID = modExecutionProcess.Id;
-					modExecutionProcess.WaitForExit();
-					gameLaunchProcessor.ExecutePostProcessing(modExecProcID);
+					if (modExecutableBaseName.Equals(GameProvider_M2TW.GAME_EXECUTABLE_BASENAME_CLASSIC2))
+					{
+						modExecutionProcess.Start();
+						modExecutionProcess.WaitForExit();
+						return;
+					}
+
+					if (modExecutableBaseName.Equals(GameProvider_M2TW.GAME_EXECUTABLE_BASENAME_STEAM))
+					{
+						modExecutionProcess.Start();
+						System.Threading.Thread.Sleep(20_000); // 20 seconds
+
+						foreach (var process in Process.GetProcesses())
+						{
+							if (process.ProcessName.Equals(modExecutableBaseName))
+							{
+								process.WaitForExit();
+							}
+						}
+					}
 				}
 			}
 			else
