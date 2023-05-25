@@ -308,22 +308,38 @@ namespace TWE_Launcher.Forms
 
 		private void radioButtonLauncherProvider_M2TWEOP_CheckedChanged(object sender, EventArgs e)
 		{
-			//
+			DisableLauncherSettingsControls();
 		}
 
 		private void radioButtonLauncherProvider_NativeSetup_CheckedChanged(object sender, EventArgs e)
 		{
-			//
+			DisableLauncherSettingsControls();
 		}
 
 		private void radioButtonLauncherProvider_BatchScript_CheckedChanged(object sender, EventArgs e)
 		{
-			//
+			DisableLauncherSettingsControls();
 		}
 
 		private void radioButtonLauncherProvider_TWEMP_CheckedChanged(object sender, EventArgs e)
 		{
-			//
+			EnableLauncherSettingsControls();
+		}
+
+		private void DisableLauncherSettingsControls()
+		{
+			groupBoxConfigProfiles.Enabled = false;
+			groupBoxConfigLaunchMode.Enabled = false;
+			groupBoxConfigLogMode.Enabled = false;
+			groupBoxConfigCleanerMode.Enabled = false;
+		}
+
+		private void EnableLauncherSettingsControls()
+		{
+			groupBoxConfigProfiles.Enabled = true;
+			groupBoxConfigLaunchMode.Enabled = true;
+			groupBoxConfigLogMode.Enabled = true;
+			groupBoxConfigCleanerMode.Enabled = true;
 		}
 
 
