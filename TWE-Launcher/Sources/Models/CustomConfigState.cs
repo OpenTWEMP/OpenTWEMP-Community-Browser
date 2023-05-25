@@ -4,6 +4,11 @@ namespace TWE_Launcher.Models
 {
 	public class CustomConfigState
 	{
+		private readonly bool useLauncherProvider_M2TWEOP;
+		private readonly bool useLauncherProvider_M2TWEOP_NativeSetup;
+		private readonly bool useLauncherProvider_M2TWEOP_NativeBatch;
+		private readonly bool useLauncherProvider_TWEMP;
+
 		private readonly bool isEnabledWindowedMode;
 		private readonly bool validatorVideo;
 		private readonly bool validatorBorderless;
@@ -14,6 +19,13 @@ namespace TWE_Launcher.Models
 		private readonly bool isShouldBeDeleted_TextBin;
 		private readonly bool isShouldBeDeleted_SoundPacks;
 		private readonly bool enabledLogsHistorySaving;
+
+
+		public bool UseLauncherProvider_M2TWEOP => useLauncherProvider_M2TWEOP;
+		public bool UseLauncherProvider_M2TWEOP_NativeSetup => useLauncherProvider_M2TWEOP_NativeSetup;
+		public bool UseLauncherProvider_M2TWEOP_NativeBatch => useLauncherProvider_M2TWEOP_NativeBatch;
+		public bool UseLauncherProvider_TWEMP => useLauncherProvider_TWEMP;
+
 
 		public bool IsEnabledWindowedMode => isEnabledWindowedMode;
 		public bool ValidatorVideo => validatorVideo;
@@ -29,6 +41,11 @@ namespace TWE_Launcher.Models
 
 		public CustomConfigState(MainLauncherForm form)
 		{
+			useLauncherProvider_M2TWEOP = form.LauncherProviderControl_M2TWEOP.Checked;
+			useLauncherProvider_M2TWEOP_NativeSetup = form.LauncherProviderControl_NativeSetup.Checked;
+			useLauncherProvider_M2TWEOP_NativeBatch = form.LauncherProviderControl_BatchScript.Checked;
+			useLauncherProvider_TWEMP = form.LauncherProviderControl_TWEMP.Checked;
+		
 			if (form.RadioButton_FullScreenMode.Checked)
 			{
 				isEnabledWindowedMode = false;

@@ -69,7 +69,52 @@ namespace TWE_Launcher.Models
 			custom_configuration = state;
 		}
 
+
 		public void Execute()
+		{
+			if (custom_configuration.UseLauncherProvider_M2TWEOP)
+			{
+				Launch(current_modification.CurrentPreset.LauncherProvider_M2TWEOP);
+			}
+
+			if (custom_configuration.UseLauncherProvider_M2TWEOP_NativeSetup)
+			{
+				Launch(current_modification.CurrentPreset.LauncherProvider_NativeSetup);
+			}
+
+			if (custom_configuration.UseLauncherProvider_M2TWEOP_NativeBatch)
+			{
+				Launch(current_modification.CurrentPreset.LauncherProvider_NativeBatch);
+			}
+
+			if (custom_configuration.UseLauncherProvider_TWEMP)
+			{
+				Launch();
+			}
+		}
+
+		private void Launch(string filename)
+		{
+			string executableFilePath = Path.Combine(current_modification.Location, filename);
+
+			if (File.Exists(executableFilePath))
+			{
+				var modProcessInfo = new ProcessStartInfo();
+				modProcessInfo.FileName = executableFilePath;
+				modProcessInfo.WorkingDirectory = current_modification.Location;
+
+				var process = new Process();
+				process.StartInfo = modProcessInfo;
+				process.Start();
+				process.WaitForExit();
+			}
+			else
+			{
+				MessageBox.Show("ERROR: Executable File Is Not Found !!!", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void Launch()
 		{
 			List<CfgOptionsSubSet> mod_settings = InitializeMinimalModSettings();
 			string mod_config = GenerateModConfigFile(mod_settings);

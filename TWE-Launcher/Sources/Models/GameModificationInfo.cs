@@ -20,6 +20,9 @@ namespace TWE_Launcher.Models
 		public string LogFileRelativePath { get; }
 		private string modLogotypeImage { get; }
 
+		public CustomModSupportPreset CurrentPreset { get; }
+
+
 		// example: modificationURI = "A:\TWEMP\modcenter_M2TW\MEDD"
 		public GameModificationInfo(string modificationURI, ModCenterInfo parentModCenter, GameSetupInfo setupInfo)
 		{
@@ -36,6 +39,29 @@ namespace TWE_Launcher.Models
 			LogFileRelativePath = InitializeLogFileRelativePath(ModCfgRelativePath, LogFileName);
 
 			modLogotypeImage = InitializeCachedLogotypeImage(Location);
+
+
+			// Read the existing preset else create the preset by default.
+
+
+			string presetHomeDirectoryPath = CustomModSupportPreset.GetPresetDirectoryPath(modificationURI);
+
+			if (!Directory.Exists(presetHomeDirectoryPath))
+			{
+				Directory.CreateDirectory(presetHomeDirectoryPath);
+			}
+
+			string presetFilePath = CustomModSupportPreset.GetPresetFilePath(modificationURI);
+
+			if (CustomModSupportPreset.Exists(modificationURI))
+			{
+				CurrentPreset = CustomModSupportPreset.ReadExistingPreset(modificationURI);
+			}
+			else
+			{
+				CurrentPreset = new CustomModSupportPreset();
+				CurrentPreset.CreatePresetByDefault(modificationURI);
+			}
 		}
 
 

@@ -9,6 +9,12 @@ namespace TWE_Launcher.Forms
 {
 	public partial class MainLauncherForm : Form, ICanChangeMyLocalization
 	{
+		public RadioButton LauncherProviderControl_M2TWEOP => radioButtonLauncherProvider_M2TWEOP;
+		public RadioButton LauncherProviderControl_NativeSetup => radioButtonLauncherProvider_NativeSetup;
+		public RadioButton LauncherProviderControl_BatchScript => radioButtonLauncherProvider_BatchScript;
+		public RadioButton LauncherProviderControl_TWEMP => radioButtonLauncherProvider_TWEMP;
+
+
 		public RadioButton RadioButton_FullScreenMode => radioButtonLaunchFullScreen;
 		public RadioButton RadioButton_WindowedMode => radioButtonLaunchWindowScreen;
 		public CheckBox CheckBox_Video => checkBoxVideo;
@@ -69,7 +75,17 @@ namespace TWE_Launcher.Forms
 		{
 			GameModificationInfo current_mod = Settings.GetActiveModificationInfo(listBoxMODS.SelectedIndex);
 			current_mod.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
-			modMainTitleLabel.Text = current_mod.ShortName;
+			
+			if (Program.UseExperimentalFeatures)
+			{
+				modMainTitleLabel.Text = current_mod.CurrentPreset.ModTitle;
+			}
+			else
+			{
+				modMainTitleLabel.Text = current_mod.ShortName;
+			}
+			
+			
 			EnableModUIControls();
 		}
 
@@ -140,12 +156,6 @@ namespace TWE_Launcher.Forms
 		{
 			MessageBox.Show("Config Settings");
 		}
-
-		private void buttonAboutProject_Click(object sender, EventArgs e)
-		{
-
-		}
-
 
 
 		// COLOR THEMES FOR THE LAUNCHER

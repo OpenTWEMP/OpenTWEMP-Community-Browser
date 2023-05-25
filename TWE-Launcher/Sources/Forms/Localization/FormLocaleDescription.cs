@@ -181,6 +181,9 @@ namespace TWE_Launcher.Forms.Localization
 		private const string KEY_enableEngLocaleRadioButton = "enableEngLocaleRadioButton";
 		private const string KEY_enableRusLocaleRadioButton = "enableRusLocaleRadioButton";
 
+		private const string KEY_appFeaturesGroupBox = "appFeaturesGroupBox";
+		private const string KEY_activatePresetsCheckBox = "activatePresetsCheckBox";
+
 		private const string KEY_saveAppSettingsButton = "saveAppSettingsButton";
 		private const string KEY_exitAppSettingsButton = "exitAppSettingsButton";
 
@@ -203,6 +206,9 @@ namespace TWE_Launcher.Forms.Localization
 				KEY_enableEngLocaleRadioButton,
 				KEY_enableRusLocaleRadioButton,
 
+				KEY_appFeaturesGroupBox,
+				KEY_activatePresetsCheckBox,
+
 				KEY_saveAppSettingsButton,
 				KEY_exitAppSettingsButton
 			};
@@ -222,6 +228,9 @@ namespace TWE_Launcher.Forms.Localization
 					{ KEY_appLocalizationGroupBox, "Select GUI language" },
 					{ KEY_enableEngLocaleRadioButton, "ENGLISH (by default)" },
 					{ KEY_enableRusLocaleRadioButton, "RUSSIAN (in progress)" },
+
+					{ KEY_appFeaturesGroupBox, "Experimental Settings" },
+					{ KEY_activatePresetsCheckBox, "Use Custom Presets to Initialize Your Mods" },
 
 					{ KEY_saveAppSettingsButton, "OK" },
 					{ KEY_exitAppSettingsButton, "CANCEL" }
@@ -243,6 +252,9 @@ namespace TWE_Launcher.Forms.Localization
 					{ KEY_appLocalizationGroupBox, "Выберите язык GUI программы" },
 					{ KEY_enableEngLocaleRadioButton, "Английский (по умолчанию)" },
 					{ KEY_enableRusLocaleRadioButton, "Русский (в процессе)" },
+
+					{ KEY_appFeaturesGroupBox, "Экспериментальные настройки программы" },
+					{ KEY_activatePresetsCheckBox, "Использовать пользовательские предустановки для инициализации Ваших модификаций" },
 
 					{ KEY_saveAppSettingsButton, "СОХРАНИТЬ" },
 					{ KEY_exitAppSettingsButton, "ОТМЕНА" }

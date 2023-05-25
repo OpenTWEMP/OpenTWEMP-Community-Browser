@@ -31,6 +31,8 @@ namespace TWE_Launcher.Forms
 				enableRusLocaleRadioButton.Checked = true;
 			}
 
+			activatePresetsCheckBox.Checked = Program.UseExperimentalFeatures;
+
 			SetupCurrentLocalizationForGUIControls();
 		}
 
@@ -86,7 +88,11 @@ namespace TWE_Launcher.Forms
 			this.SetupCurrentLocalizationForGUIControls();
 			currentCallingForm.SetupCurrentLocalizationForGUIControls();
 
-			// 3. Close the form.
+			// 3. Apply experimental settings.
+
+			Program.UseExperimentalFeatures = activatePresetsCheckBox.Checked;
+
+			// 4. Close the form.
 
 			Close();
 		}
@@ -133,6 +139,9 @@ namespace TWE_Launcher.Forms
 			appLocalizationGroupBox.Text = snapshot.GetLocalizedValueByKey(appLocalizationGroupBox.Name);
 			enableEngLocaleRadioButton.Text = snapshot.GetLocalizedValueByKey(enableEngLocaleRadioButton.Name);
 			enableRusLocaleRadioButton.Text = snapshot.GetLocalizedValueByKey(enableRusLocaleRadioButton.Name);
+
+			appFeaturesGroupBox.Text = snapshot.GetLocalizedValueByKey(appFeaturesGroupBox.Name);
+			activatePresetsCheckBox.Text = snapshot.GetLocalizedValueByKey(activatePresetsCheckBox.Name);
 
 			saveAppSettingsButton.Text = snapshot.GetLocalizedValueByKey(saveAppSettingsButton.Name);
 			exitAppSettingsButton.Text = snapshot.GetLocalizedValueByKey(exitAppSettingsButton.Name);

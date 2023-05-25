@@ -24,6 +24,9 @@ namespace TWE_Launcher
 		internal static List<GuiLocale> AvailableLocalizations { get; set; }
 		internal static GuiLocale CurrentLocalization { get; set; }
 
+		internal static bool UseExperimentalFeatures { get; set; }
+
+
 		static Program()
 		{
 			// 0. Initialize app's file system.
@@ -55,6 +58,11 @@ namespace TWE_Launcher
 
 			AvailableLocalizations = LocalizationManager.GetSupportedLocalizations();
 			InitializeLocalizationByDefault(AvailableLocalizations);
+
+			// 3. Initialize extra flags by default.
+
+			UseExperimentalFeatures = true;
+
 		}
 
 		private static void InitializeLocalizationByDefault(List<GuiLocale> guiLocales)
