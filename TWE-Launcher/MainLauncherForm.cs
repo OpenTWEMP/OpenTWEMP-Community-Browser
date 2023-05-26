@@ -239,23 +239,26 @@ namespace TWE_Launcher.Forms
 
 		private void buttonCollectionCreate_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("buttonCollectionCreate_Click");
+			var collectionCreateForm = new CollectionCreateForm(this);
+			collectionCreateForm.Show();
+		}
+
+		public void CreateModsCollection(string collectionName, List<string> shortNamesOfMods)
+		{
+			TreeNode customCollectionsRootNode = treeViewGameMods.Nodes[1];
+			TreeNode createdCollectionNode = customCollectionsRootNode.Nodes.Add(collectionName);
+
+			foreach (var modName in shortNamesOfMods)
+			{
+				TreeNode modChildNode = new TreeNode(modName);
+				createdCollectionNode.Nodes.Add(modChildNode);
+			}
 		}
 
 		private void buttonCollectionManage_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("buttonCollectionManage_Click");
 		}
-
-
-
-		// add to favorite
-
-		// create a collection
-
-		// collection management
-
-
 
 
 		private void DisableModUIControls()
