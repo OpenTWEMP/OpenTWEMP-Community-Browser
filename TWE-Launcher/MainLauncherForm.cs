@@ -127,38 +127,140 @@ namespace TWE_Launcher.Forms
 
 		private void treeViewGameMods_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			if (e.Node.Level == 3) // mod level
+			if (IsNotModificationNode(e.Node))
 			{
-				GameModificationInfo selectedModification = FindModificationBySelectedTreeNode(e.Node);
-
-				selectedModification.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
-
-				if (Program.UseExperimentalFeatures)
+				ChangeSelectedNodeView(e.Node);
+				return;
+			}
+			else
+			{
+				if (IsNodeOfFavoriteCollection(e.Node) || IsNodeOfModificationFromCustomCollection(e.Node))
 				{
-					modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle;
+					GameModificationInfo selectedModification = FindModBySelectedNodeFromCollection(e.Node);
+
+					selectedModification.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
+
+					if (Program.UseExperimentalFeatures)
+					{
+						modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle;
+					}
+					else
+					{
+						modMainTitleLabel.Text = selectedModification.ShortName;
+					}
+
+					EnableModUIControls();
+					return;
 				}
-				else
+
+				if (IsNodeOfModificationFromAllModsCollection(e.Node))
 				{
-					modMainTitleLabel.Text = selectedModification.ShortName;
+					GameModificationInfo selectedModification = FindModificationBySelectedTreeNode(e.Node);
+
+					selectedModification.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
+
+					if (Program.UseExperimentalFeatures)
+					{
+						modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle;
+					}
+					else
+					{
+						modMainTitleLabel.Text = selectedModification.ShortName;
+					}
+
+					EnableModUIControls();
 				}
-
-				EnableModUIControls();
 			}
+		}
 
-			if (e.Node.Level == 2) // modcenter level
+
+		private bool IsNotModificationNode(TreeNode node)
+		{
+			// Is 'node' is selected on the Collection Level ?
+
+			if (IsRootNodeOfTreeView(node))
 			{
-				ChangeSelectedNodeView(e.Node);
+				return true;
 			}
 
-			if (e.Node.Level == 1) // game setup level
+			// Is 'node' is selected on the Custom Collection Folders Level ?
+
+			if (IsCustomCollectionFolderNode(node))
 			{
-				ChangeSelectedNodeView(e.Node);
+				return true;
 			}
 
-			if (e.Node.Level == 0) // collection level
+			// Is 'node' is selected on the GameSetup Node Level ?
+
+			if (IsGameSetupNode(node))
 			{
-				ChangeSelectedNodeView(e.Node);
+				return true;
 			}
+
+			// Is 'node' is selected on the ModCentet Node Level ?
+
+			if (IsModCenterNode(node))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+
+		private bool IsRootNodeOfTreeView(TreeNode node)
+		{
+			return (node.Level == 0);
+		}
+
+		private bool IsCustomCollectionFolderNode(TreeNode node)
+		{
+			return ( (node.Level == 1) && node.Parent.Text.Equals("My Mod Collections") );
+		}
+
+		private bool IsGameSetupNode(TreeNode node)
+		{
+			return ((node.Level == 1) && node.Parent.Text.Equals("All Modifications"));
+		}
+
+		private bool IsModCenterNode(TreeNode node)
+		{
+			return ((node.Level == 2) && (node.Parent).Parent.Text.Equals("All Modifications"));
+		}
+
+		private bool IsNodeOfFavoriteCollection(TreeNode node)
+		{
+			bool isOnFavoriteModLevel = (node.Level == 1);
+			bool isFavoriteCollectionAsParent = (node.Parent.Text.Equals("My Favorite Mods"));
+
+			return (isOnFavoriteModLevel && isFavoriteCollectionAsParent);
+		}
+
+		private bool IsNodeOfModificationFromCustomCollection(TreeNode node)
+		{
+			bool isOnCustomCollectionLevel = (node.Level == 2);
+
+			TreeNode currentCollection = node.Parent;
+			bool hasCollectionRootAsTopParent = (currentCollection.Parent.Text.Equals("My Mod Collections"));
+
+			return (isOnCustomCollectionLevel && hasCollectionRootAsTopParent);
+		}
+
+		private bool IsNodeOfModificationFromAllModsCollection(TreeNode node)
+		{
+			bool isOnAllModsCollectionsLevel = (node.Level == 3);
+
+			TreeNode currentModCenterNode = node.Parent;
+			TreeNode currentGameSetupNode = currentModCenterNode.Parent;
+
+			bool hasAllModsCollectionAsTopParent = (currentGameSetupNode.Parent.Text.Equals("All Modifications"));
+
+			return (isOnAllModsCollectionsLevel && hasAllModsCollectionAsTopParent);
+		}
+
+		private GameModificationInfo FindModBySelectedNodeFromCollection(TreeNode selectedTreeNode)
+		{
+			return Settings.GetActiveModificationInfo(selectedTreeNode.Text);
 		}
 
 		private GameModificationInfo FindModificationBySelectedTreeNode(TreeNode selectedTreeNode)
@@ -226,14 +328,6 @@ namespace TWE_Launcher.Forms
 
 				treeViewGameMods.SelectedNode = treeViewGameMods.TopNode;
 			}
-		}
-
-		private bool IsNodeOfFavoriteCollection(TreeNode node)
-		{
-			bool isOnFavoriteModLevel = (node.Level == 1);
-			bool isFavoriteCollectionAsParent = (node.Parent.Text.Equals("My Favorite Mods"));
-
-			return (isOnFavoriteModLevel && isFavoriteCollectionAsParent);
 		}
 
 

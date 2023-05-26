@@ -110,6 +110,20 @@ namespace TWE_Launcher
 			return TotalModificationsList[mod_index];
 		}
 
+		public static GameModificationInfo GetActiveModificationInfo(string modShortName)
+		{
+			foreach (GameModificationInfo modInfo in TotalModificationsList)
+			{
+				if (modInfo.ShortName.Equals(modShortName))
+				{
+					return modInfo;
+				}
+			}
+
+			return null;
+		}
+
+
 		public static void ClearAllSettings()
 		{
 			TotalModificationsList.Clear();
