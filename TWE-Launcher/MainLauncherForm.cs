@@ -58,6 +58,10 @@ namespace TWE_Launcher.Forms
 
 			Settings.UpdateTotalModificationsList();
 
+
+			UpdateModificationsTreeView(); // test
+
+
 			foreach (GameModificationInfo modification in Settings.TotalModificationsList)
 			{
 				listBoxMODS.Items.Add(modification.ShortName);
@@ -75,7 +79,7 @@ namespace TWE_Launcher.Forms
 		{
 			GameModificationInfo current_mod = Settings.GetActiveModificationInfo(listBoxMODS.SelectedIndex);
 			current_mod.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
-			
+
 			if (Program.UseExperimentalFeatures)
 			{
 				modMainTitleLabel.Text = current_mod.CurrentPreset.ModTitle;
@@ -84,10 +88,99 @@ namespace TWE_Launcher.Forms
 			{
 				modMainTitleLabel.Text = current_mod.ShortName;
 			}
-			
-			
+
+
 			EnableModUIControls();
 		}
+
+
+		public void UpdateModificationsTreeView()
+		{
+			TreeNode allModsNode = treeViewGameMods.Nodes[2];
+			allModsNode.Nodes.Clear();
+
+			List<GameSetupInfo> gameInstallations = Settings.GameInstallations;
+			foreach (GameSetupInfo gameInstallation in gameInstallations)
+			{
+				TreeNode gameInstallationNode = new TreeNode(gameInstallation.Name);
+				allModsNode.Nodes.Add(gameInstallationNode);
+
+				List<ModCenterInfo> modCenters = gameInstallation.AttachedModCenters;
+				foreach (ModCenterInfo modcenter in modCenters)
+				{
+					TreeNode modcenterNode = new TreeNode(modcenter.Name);
+					gameInstallationNode.Nodes.Add(modcenterNode);
+
+					List<GameModificationInfo> mods = modcenter.InstalledModifications;
+					foreach (GameModificationInfo mod in mods)
+					{
+						TreeNode modNode = new TreeNode(mod.ShortName);
+						modcenterNode.Nodes.Add(modNode);
+					}
+				}
+			}
+		}
+
+		private void treeViewGameMods_AfterSelect(object sender, TreeViewEventArgs e)
+		{
+			if (e.Node.Level == 3) // mod level
+			{
+				GameModificationInfo selectedModification = FindModificationBySelectedTreeNode(e.Node);
+
+				selectedModification.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
+
+				if (Program.UseExperimentalFeatures)
+				{
+					modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle;
+				}
+				else
+				{
+					modMainTitleLabel.Text = selectedModification.ShortName;
+				}
+
+				EnableModUIControls();
+			}
+
+			if (e.Node.Level == 2) // modcenter level
+			{
+				ChangeSelectedNodeView(e.Node);
+			}
+
+			if (e.Node.Level == 1) // game setup level
+			{
+				ChangeSelectedNodeView(e.Node);
+			}
+
+			if (e.Node.Level == 0) // collection level
+			{
+				ChangeSelectedNodeView(e.Node);
+			}
+		}
+
+		private GameModificationInfo FindModificationBySelectedTreeNode(TreeNode selectedTreeNode)
+		{
+			TreeNode modcenterNode = selectedTreeNode.Parent;
+			TreeNode gamesetupNode = modcenterNode.Parent;
+
+			GameSetupInfo currentGameSetup = Settings.GameInstallations.Find(gamesetup => gamesetup.Name.Equals(gamesetupNode.Text));
+			ModCenterInfo currentModCenter = currentGameSetup.AttachedModCenters.Find(modcenter => modcenter.Name.Equals(modcenterNode.Text));
+
+			return currentModCenter.InstalledModifications[selectedTreeNode.Index];
+		}
+
+
+		private void ChangeSelectedNodeView(TreeNode node)
+		{
+			if (node.IsExpanded)
+			{
+				node.Collapse();
+			}
+			else
+			{
+				node.Expand();
+			}
+		}
+
 
 		private void DisableModUIControls()
 		{
@@ -129,7 +222,13 @@ namespace TWE_Launcher.Forms
 			changeLauncherGUIWhenGameStarting();
 
 			var custom_config_state = new CustomConfigState(this);
-			GameModificationInfo selected_modification = Settings.GetActiveModificationInfo(listBoxMODS.SelectedIndex);
+
+			// Code for using 'listBoxMODS'
+			//GameModificationInfo selected_modification = Settings.GetActiveModificationInfo(listBoxMODS.SelectedIndex);
+
+			GameModificationInfo selected_modification = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
+
+
 			LaunchConfiguration launchConfiguration = new LaunchConfiguration(selected_modification, custom_config_state);
 			launchConfiguration.Execute();
 
@@ -138,16 +237,24 @@ namespace TWE_Launcher.Forms
 
 		private void modQuickNavigationButton_Click(object sender, EventArgs e)
 		{
-			int selectedModIndex = listBoxMODS.SelectedIndex;
-			GameModificationInfo currentMod = Settings.GetActiveModificationInfo(selectedModIndex);
+			// Code for using 'listBoxMODS'
+			//int selectedModIndex = listBoxMODS.SelectedIndex;
+			//GameModificationInfo currentMod = Settings.GetActiveModificationInfo(selectedModIndex);
+
+			GameModificationInfo currentMod = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
+
 			var form = new ModQuickNavigatorForm(currentMod.Location);
 			form.ShowDialog();
 		}
 
 		private void buttonExplore_Click(object sender, EventArgs e)
 		{
-			int current_mod_index = listBoxMODS.SelectedIndex;
-			GameModificationInfo current_mod_info = Settings.GetActiveModificationInfo(current_mod_index);
+			// Code for using 'listBoxMODS'
+			//int current_mod_index = listBoxMODS.SelectedIndex;
+			//GameModificationInfo current_mod_info = Settings.GetActiveModificationInfo(current_mod_index);
+
+			GameModificationInfo current_mod_info = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
+
 			SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location);
 		}
 

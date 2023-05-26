@@ -451,10 +451,10 @@ namespace TWE_Launcher.Forms
 			listBoxMODS.ForeColor = System.Drawing.SystemColors.WindowText;
 			listBoxMODS.FormattingEnabled = true;
 			listBoxMODS.ItemHeight = 17;
-			listBoxMODS.Location = new System.Drawing.Point(12, 341);
+			listBoxMODS.Location = new System.Drawing.Point(12, 528);
 			listBoxMODS.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			listBoxMODS.Name = "listBoxMODS";
-			listBoxMODS.Size = new System.Drawing.Size(303, 310);
+			listBoxMODS.Size = new System.Drawing.Size(303, 123);
 			listBoxMODS.TabIndex = 9;
 			listBoxMODS.SelectedIndexChanged += listBoxMODS_SelectedIndexChanged;
 			// 
@@ -589,6 +589,7 @@ namespace TWE_Launcher.Forms
 			// 
 			// treeViewGameMods
 			// 
+			treeViewGameMods.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			treeViewGameMods.BackColor = System.Drawing.Color.MediumSeaGreen;
 			treeViewGameMods.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			treeViewGameMods.Location = new System.Drawing.Point(13, 84);
@@ -603,43 +604,53 @@ namespace TWE_Launcher.Forms
 			treeNode3.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
 			treeNode3.Text = "All Modifications";
 			treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode3 });
-			treeViewGameMods.Size = new System.Drawing.Size(302, 163);
+			treeViewGameMods.Size = new System.Drawing.Size(302, 353);
 			treeViewGameMods.TabIndex = 16;
+			treeViewGameMods.AfterSelect += treeViewGameMods_AfterSelect;
 			// 
 			// buttonMarkFavoriteMod
 			// 
+			buttonMarkFavoriteMod.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			buttonMarkFavoriteMod.BackColor = System.Drawing.Color.LightGreen;
+			buttonMarkFavoriteMod.Enabled = false;
 			buttonMarkFavoriteMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			buttonMarkFavoriteMod.Location = new System.Drawing.Point(13, 253);
+			buttonMarkFavoriteMod.Location = new System.Drawing.Point(13, 445);
 			buttonMarkFavoriteMod.Name = "buttonMarkFavoriteMod";
 			buttonMarkFavoriteMod.Size = new System.Drawing.Size(302, 23);
 			buttonMarkFavoriteMod.TabIndex = 18;
 			buttonMarkFavoriteMod.Text = "ADD THIS MOD TO FAVORITE";
 			buttonMarkFavoriteMod.UseVisualStyleBackColor = false;
+			buttonMarkFavoriteMod.Visible = false;
 			buttonMarkFavoriteMod.Click += buttonMarkFavoriteMod_Click;
 			// 
 			// buttonCollectionCreate
 			// 
+			buttonCollectionCreate.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			buttonCollectionCreate.BackColor = System.Drawing.Color.LightGreen;
+			buttonCollectionCreate.Enabled = false;
 			buttonCollectionCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			buttonCollectionCreate.Location = new System.Drawing.Point(12, 278);
+			buttonCollectionCreate.Location = new System.Drawing.Point(12, 470);
 			buttonCollectionCreate.Name = "buttonCollectionCreate";
 			buttonCollectionCreate.Size = new System.Drawing.Size(303, 23);
 			buttonCollectionCreate.TabIndex = 19;
 			buttonCollectionCreate.Text = "CREATE A NEW COLLECTION";
 			buttonCollectionCreate.UseVisualStyleBackColor = false;
+			buttonCollectionCreate.Visible = false;
 			buttonCollectionCreate.Click += buttonCollectionCreate_Click;
 			// 
 			// buttonCollectionManage
 			// 
+			buttonCollectionManage.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			buttonCollectionManage.BackColor = System.Drawing.Color.LightGreen;
+			buttonCollectionManage.Enabled = false;
 			buttonCollectionManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			buttonCollectionManage.Location = new System.Drawing.Point(13, 302);
+			buttonCollectionManage.Location = new System.Drawing.Point(13, 494);
 			buttonCollectionManage.Name = "buttonCollectionManage";
 			buttonCollectionManage.Size = new System.Drawing.Size(302, 23);
 			buttonCollectionManage.TabIndex = 20;
 			buttonCollectionManage.Text = "MANAGE YOUR COLLECTIONS";
 			buttonCollectionManage.UseVisualStyleBackColor = false;
+			buttonCollectionManage.Visible = false;
 			buttonCollectionManage.Click += buttonCollectionManage_Click;
 			// 
 			// MainLauncherForm
