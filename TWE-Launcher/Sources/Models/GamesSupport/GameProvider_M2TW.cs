@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿#define DEEP_M2TW_COMPATIBILITY_ANALYSIS
+#undef DEEP_M2TW_COMPATIBILITY_ANALYSIS
+
+using System.IO;
 
 namespace TWE_Launcher.Models.GamesSupport
 {
@@ -71,7 +74,7 @@ namespace TWE_Launcher.Models.GamesSupport
 				return false;
 			}
 
-
+#if DEEP_M2TW_COMPATIBILITY_ANALYSIS
 			// 2. Check mod's 'data/world/maps/campaign/imperial_campaign' folder.
 
 			string modCampaignNodePath = Path.Combine(modRootPath, MOD_NODE1_WORLD, MOD_NODE2_MAPS, MOD_NODE3_MAPS_CAMPAIGN, MOD_NODE4_MAPS_IMPERIALCAMPAIGN);
@@ -226,7 +229,6 @@ namespace TWE_Launcher.Models.GamesSupport
 				}
 			}
 
-
 			// 5. Check mod's 'data/animations' folder.
 
 			string modAnimationsNodePath = Path.Combine(modRootPath, MOD_NODE1_ANIMATIONS);
@@ -257,7 +259,7 @@ namespace TWE_Launcher.Models.GamesSupport
 					return false;
 				}
 			}
-
+#endif
 
 			return true;
 		}
