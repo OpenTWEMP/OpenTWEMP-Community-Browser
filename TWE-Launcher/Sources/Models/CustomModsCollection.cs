@@ -10,7 +10,8 @@ namespace TWE_Launcher.Models
 	public class CustomModsCollection
 	{
 		private const string COLLECTIONS_FILENAME = "collections.json";
-		private static readonly string collectionsFilePath;
+		private const string FAVORITE_COLLECTION_FILENAME = "favorite.json";
+		public const string FAVORITE_COLLECTION_NAME = "My Favorite Mods";
 
 		public string Name { get; set; }
 
@@ -22,18 +23,13 @@ namespace TWE_Launcher.Models
 			Modifications = modifications;
 		}
 
-		static CustomModsCollection()
-		{
-			collectionsFilePath = Path.Combine(Settings.CacheDirectoryPath, COLLECTIONS_FILENAME);
-		}
-
 		public static void WriteExistingCollections(List<CustomModsCollection> collections)
 		{
 			string collectionsTextContent = JsonConvert.SerializeObject(collections, Formatting.Indented);
 
 			try
 			{
-				File.WriteAllText(collectionsFilePath, collectionsTextContent);
+				File.WriteAllText(Path.Combine(Settings.CacheDirectoryPath, COLLECTIONS_FILENAME), collectionsTextContent);
 			}
 			catch (FileNotFoundException)
 			{
@@ -43,8 +39,44 @@ namespace TWE_Launcher.Models
 
 		public static List<CustomModsCollection> ReadExistingCollections()
 		{
-			string collectionsTextContent = File.ReadAllText(collectionsFilePath);
+			string collectionsTextContent = File.ReadAllText(Path.Combine(Settings.CacheDirectoryPath, COLLECTIONS_FILENAME));
 			return JsonConvert.DeserializeObject<List<CustomModsCollection>>(collectionsTextContent);
 		}
+
+
+		public static CustomModsCollection CreateFavoriteCollection()
+		{
+			return new CustomModsCollection(FAVORITE_COLLECTION_NAME, new Dictionary<string, string>());
+		}
+
+
+		public static void WriteFavoriteCollection()
+		{
+			string favoriteCollectionTextContent = JsonConvert.SerializeObject(Settings.FavoriteModsCollection, Formatting.Indented);
+
+			try
+			{
+				File.WriteAllText(Path.Combine(Settings.CacheDirectoryPath, FAVORITE_COLLECTION_FILENAME), favoriteCollectionTextContent);
+			}
+			catch (FileNotFoundException)
+			{
+				throw;
+			}
+		}
+
+		public static CustomModsCollection ReadFavoriteCollection()
+		{
+			string favoriteCollectionFilePath = Path.Combine(Settings.CacheDirectoryPath, FAVORITE_COLLECTION_FILENAME);
+
+			if (File.Exists(favoriteCollectionFilePath))
+			{
+				string favoriteCollectionTextContent = File.ReadAllText(favoriteCollectionFilePath);
+				return JsonConvert.DeserializeObject<CustomModsCollection>(favoriteCollectionTextContent);
+			}
+
+			return Settings.FavoriteModsCollection;
+		}
+
+
 	}
 }

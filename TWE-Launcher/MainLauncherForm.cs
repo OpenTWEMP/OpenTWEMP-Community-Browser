@@ -63,6 +63,7 @@ namespace TWE_Launcher.Forms
 
 			UpdateAllModificationsInTreeView();
 			UpdateCustomCollectionsInTreeView();
+			UpdateFavoriteCollectionInTreeView();
 
 			foreach (GameModificationInfo modification in Settings.TotalModificationsList)
 			{
@@ -94,6 +95,25 @@ namespace TWE_Launcher.Forms
 
 			EnableModUIControls();
 		}
+
+
+		private void UpdateFavoriteCollectionInTreeView()
+		{
+			CustomModsCollection favoriteModCollection = CustomModsCollection.ReadFavoriteCollection();
+			TreeNode favoriteCollectionNode = treeViewGameMods.Nodes[0];
+			favoriteCollectionNode.Nodes.Clear();
+			CreateFavoriteCollectionChildNodes(favoriteModCollection, favoriteCollectionNode);
+		}
+		
+		private void CreateFavoriteCollectionChildNodes(CustomModsCollection favoriteCollection, TreeNode favoriteCollectionRootNode)
+		{
+			foreach (KeyValuePair<string, string> modPair in favoriteCollection.Modifications)
+			{
+				var modNode = CreateCollectionChildNode(modPair);
+				favoriteCollectionRootNode.Nodes.Add(modNode);
+			}
+		}
+
 
 
 		private void UpdateCustomCollectionsInTreeView()
@@ -339,10 +359,10 @@ namespace TWE_Launcher.Forms
 
 		private void buttonMarkFavoriteMod_Click(object sender, EventArgs e)
 		{
-			if (treeViewGameMods.SelectedNode.Level == 3) // mod level
-			{
-				GameModificationInfo selectedModification = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
+			GameModificationInfo selectedModification = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
 
+			if (treeViewGameMods.SelectedNode.Level == 3)
+			{
 				if (selectedModification.IsFavoriteMod)
 				{
 					MessageBox.Show("This mod is already added to Favorite Mods!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -353,9 +373,10 @@ namespace TWE_Launcher.Forms
 					favoriteModificationNode.NodeFont = new Font("Segoe UI Historic", 12F, FontStyle.Italic, GraphicsUnit.Point);
 					TreeNode allFavoriteModsNode = treeViewGameMods.Nodes[0];
 					allFavoriteModsNode.Nodes.Add(favoriteModificationNode);
-
 					selectedModification.IsFavoriteMod = true;
-					MessageBox.Show("This mod is successfully added to Favorite Mods!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					Settings.FavoriteModsCollection.Modifications.Add(selectedModification.Location, selectedModification.ShortName);
+					CustomModsCollection.WriteFavoriteCollection();
+					MessageBox.Show("This mod was successfully ADDED to Favorite Mods!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 			}
 
@@ -368,6 +389,10 @@ namespace TWE_Launcher.Forms
 					if (node.Text.Equals(treeViewGameMods.SelectedNode.Text))
 					{
 						favoriteModsNode.Nodes.Remove(node);
+						selectedModification.IsFavoriteMod = false;
+						Settings.FavoriteModsCollection.Modifications.Remove(selectedModification.Location);
+						CustomModsCollection.WriteFavoriteCollection();
+						MessageBox.Show("This mod was successfully REMOVED from Favorite Mods!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						break;
 					}
 				}
