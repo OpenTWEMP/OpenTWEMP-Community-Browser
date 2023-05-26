@@ -61,9 +61,8 @@ namespace TWE_Launcher.Forms
 
 			Settings.UpdateTotalModificationsList();
 
-
-			UpdateModificationsTreeView(); // test
-
+			UpdateAllModificationsInTreeView();
+			UpdateCustomCollectionsInTreeView();
 
 			foreach (GameModificationInfo modification in Settings.TotalModificationsList)
 			{
@@ -97,7 +96,54 @@ namespace TWE_Launcher.Forms
 		}
 
 
-		public void UpdateModificationsTreeView()
+		private void UpdateCustomCollectionsInTreeView()
+		{
+			TreeNode customCollectionsNode = treeViewGameMods.Nodes[1];
+			customCollectionsNode.Nodes.Clear();
+
+			var userCollections = new List<CustomModsCollection>();
+
+			if (Settings.UserCollections.Count == 0)
+			{
+				userCollections = CustomModsCollection.ReadExistingCollections();
+			}
+			else
+			{
+				userCollections = Settings.UserCollections;
+			}
+
+			foreach (CustomModsCollection collection in userCollections)
+			{
+				CreateCollectionNodeWithChilds(collection, customCollectionsNode);
+			}
+		}
+
+		private void CreateCollectionNodeWithChilds(CustomModsCollection collection, TreeNode collectionsParentNode)
+		{
+			var collectionNode = CreateCollectionParentNode(collection);
+
+			foreach (KeyValuePair<string, string> modPair in collection.Modifications)
+			{
+				var modNode = CreateCollectionChildNode(modPair);
+				collectionNode.Nodes.Add(modNode);
+			}
+
+			collectionsParentNode.Nodes.Add(collectionNode);
+		}
+
+		private TreeNode CreateCollectionParentNode(CustomModsCollection collection)
+		{
+			return new TreeNode(collection.Name);
+		}
+
+		private TreeNode CreateCollectionChildNode(KeyValuePair<string, string> collectionElement)
+		{
+			var childNode = new TreeNode(collectionElement.Value);
+			childNode.NodeFont = new Font("Segoe UI Historic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+			return childNode;
+		}
+
+		private void UpdateAllModificationsInTreeView()
 		{
 			TreeNode allModsNode = treeViewGameMods.Nodes[2];
 			allModsNode.Nodes.Clear();
@@ -337,14 +383,14 @@ namespace TWE_Launcher.Forms
 			collectionCreateForm.Show();
 		}
 
-		public void CreateModsCollection(string collectionName, List<string> shortNamesOfMods)
+		public void CreateModsCollectionTreeView(CustomModsCollection collection)
 		{
 			TreeNode customCollectionsRootNode = treeViewGameMods.Nodes[1];
-			TreeNode createdCollectionNode = customCollectionsRootNode.Nodes.Add(collectionName);
+			TreeNode createdCollectionNode = customCollectionsRootNode.Nodes.Add(collection.Name);
 
-			foreach (var modName in shortNamesOfMods)
+			foreach (KeyValuePair<string, string> modification in collection.Modifications)
 			{
-				TreeNode modChildNode = new TreeNode(modName);
+				TreeNode modChildNode = new TreeNode(modification.Value);
 				createdCollectionNode.Nodes.Add(modChildNode);
 			}
 		}

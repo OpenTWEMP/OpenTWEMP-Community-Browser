@@ -28,14 +28,20 @@ namespace TWE_Launcher.Forms
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			var namesOfSelectedMods = new List<string>();
+			var selectedModifications = new Dictionary<string, string>();
 
 			for (int i = 0; i < modsSelectionCheckedListBox.CheckedIndices.Count; i++)
 			{
-				namesOfSelectedMods.Add(modsSelectionCheckedListBox.CheckedItems[i].ToString());
+				string selectedModName = modsSelectionCheckedListBox.CheckedItems[i].ToString();
+				GameModificationInfo selecteModInfo = Settings.GetActiveModificationInfo(selectedModName);
+				selectedModifications.Add(selecteModInfo.Location, selecteModInfo.ShortName);
 			}
 
-			currentCallingForm.CreateModsCollection(collectionNameTextBox.Text, namesOfSelectedMods);
+			var collection = new CustomModsCollection(collectionNameTextBox.Text, selectedModifications);
+			Settings.UserCollections.Add(collection);
+			CustomModsCollection.WriteExistingCollections(Settings.UserCollections);
+
+			currentCallingForm.CreateModsCollectionTreeView(collection);
 			Close();
 		}
 
