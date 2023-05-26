@@ -394,15 +394,27 @@ namespace TWE_Launcher.Forms
 		{
 			changeLauncherGUIWhenGameStarting();
 
-			var custom_config_state = new CustomConfigState(this);
+			TreeNode modNode = treeViewGameMods.SelectedNode;
 
-			// Code for using 'listBoxMODS'
-			//GameModificationInfo selected_modification = Settings.GetActiveModificationInfo(listBoxMODS.SelectedIndex);
+			GameModificationInfo targetModInfo;
 
-			GameModificationInfo selected_modification = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
+			if (IsNodeOfFavoriteCollection(modNode) || IsNodeOfModificationFromCustomCollection(modNode))
+			{
+				targetModInfo = FindModBySelectedNodeFromCollection(modNode);
 
+			}
+			else if (IsNodeOfModificationFromAllModsCollection(modNode))
+			{
+				targetModInfo = FindModificationBySelectedTreeNode(modNode);
+			}
+			else
+			{
+				targetModInfo = null;
+				MessageBox.Show("ERROR: Cannot execute this MOD !!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 
-			LaunchConfiguration launchConfiguration = new LaunchConfiguration(selected_modification, custom_config_state);
+			var launchConfiguration = new LaunchConfiguration(targetModInfo, new CustomConfigState(this));
 			launchConfiguration.Execute();
 
 			changeLauncherGUIWhenGameExiting();
