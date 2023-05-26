@@ -22,6 +22,8 @@ namespace TWE_Launcher.Models
 
 		public CustomModSupportPreset CurrentPreset { get; }
 
+		public bool IsFavoriteMod { get; set; }
+
 
 		// example: modificationURI = "A:\TWEMP\modcenter_M2TW\MEDD"
 		public GameModificationInfo(string modificationURI, ModCenterInfo parentModCenter, GameSetupInfo setupInfo)
@@ -62,6 +64,9 @@ namespace TWE_Launcher.Models
 				CurrentPreset = new CustomModSupportPreset();
 				CurrentPreset.CreatePresetByDefault(modificationURI);
 			}
+
+
+			IsFavoriteMod = false;
 		}
 
 

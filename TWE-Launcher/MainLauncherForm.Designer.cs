@@ -30,7 +30,7 @@ namespace TWE_Launcher.Forms
 		private void InitializeComponent()
 		{
 			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("My Favorite Mods");
-			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("My Collections");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("My Mod Collections");
 			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("All Modifications");
 			buttonLaunch = new System.Windows.Forms.Button();
 			panelLauncherOptions = new System.Windows.Forms.Panel();
@@ -80,6 +80,7 @@ namespace TWE_Launcher.Forms
 			buttonMarkFavoriteMod = new System.Windows.Forms.Button();
 			buttonCollectionCreate = new System.Windows.Forms.Button();
 			buttonCollectionManage = new System.Windows.Forms.Button();
+			panelCollections = new System.Windows.Forms.Panel();
 			panelLauncherOptions.SuspendLayout();
 			groupBoxConfigProfiles.SuspendLayout();
 			groupBoxLauncherProviders.SuspendLayout();
@@ -89,6 +90,7 @@ namespace TWE_Launcher.Forms
 			panelLauncherToolkit.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)modLogoPictureBox).BeginInit();
 			appMenuStrip.SuspendLayout();
+			panelCollections.SuspendLayout();
 			SuspendLayout();
 			// 
 			// buttonLaunch
@@ -444,17 +446,17 @@ namespace TWE_Launcher.Forms
 			// 
 			// listBoxMODS
 			// 
-			listBoxMODS.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+			listBoxMODS.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			listBoxMODS.BackColor = System.Drawing.Color.MediumSeaGreen;
 			listBoxMODS.Cursor = System.Windows.Forms.Cursors.Hand;
 			listBoxMODS.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			listBoxMODS.ForeColor = System.Drawing.SystemColors.WindowText;
 			listBoxMODS.FormattingEnabled = true;
 			listBoxMODS.ItemHeight = 17;
-			listBoxMODS.Location = new System.Drawing.Point(12, 528);
+			listBoxMODS.Location = new System.Drawing.Point(12, 596);
 			listBoxMODS.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			listBoxMODS.Name = "listBoxMODS";
-			listBoxMODS.Size = new System.Drawing.Size(303, 123);
+			listBoxMODS.Size = new System.Drawing.Size(303, 55);
 			listBoxMODS.TabIndex = 9;
 			listBoxMODS.SelectedIndexChanged += listBoxMODS_SelectedIndexChanged;
 			// 
@@ -475,9 +477,9 @@ namespace TWE_Launcher.Forms
 			modLogoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			modLogoPictureBox.BackColor = System.Drawing.Color.Transparent;
 			modLogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			modLogoPictureBox.Location = new System.Drawing.Point(318, 84);
+			modLogoPictureBox.Location = new System.Drawing.Point(323, 84);
 			modLogoPictureBox.Name = "modLogoPictureBox";
-			modLogoPictureBox.Size = new System.Drawing.Size(394, 353);
+			modLogoPictureBox.Size = new System.Drawing.Size(389, 353);
 			modLogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			modLogoPictureBox.TabIndex = 9;
 			modLogoPictureBox.TabStop = false;
@@ -591,17 +593,18 @@ namespace TWE_Launcher.Forms
 			// 
 			treeViewGameMods.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			treeViewGameMods.BackColor = System.Drawing.Color.MediumSeaGreen;
-			treeViewGameMods.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			treeViewGameMods.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			treeViewGameMods.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			treeViewGameMods.FullRowSelect = true;
+			treeViewGameMods.Indent = 15;
+			treeViewGameMods.ItemHeight = 30;
 			treeViewGameMods.Location = new System.Drawing.Point(13, 84);
 			treeViewGameMods.Name = "treeViewGameMods";
-			treeNode1.Name = "NodeMyFavoriteMods";
-			treeNode1.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			treeNode1.Name = "Node0";
 			treeNode1.Text = "My Favorite Mods";
-			treeNode2.Name = "NodeMyCollections";
-			treeNode2.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			treeNode2.Text = "My Collections";
-			treeNode3.Name = "NodeAllMods";
-			treeNode3.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			treeNode2.Name = "Node1";
+			treeNode2.Text = "My Mod Collections";
+			treeNode3.Name = "Node2";
 			treeNode3.Text = "All Modifications";
 			treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode3 });
 			treeViewGameMods.Size = new System.Drawing.Size(302, 353);
@@ -610,48 +613,54 @@ namespace TWE_Launcher.Forms
 			// 
 			// buttonMarkFavoriteMod
 			// 
-			buttonMarkFavoriteMod.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+			buttonMarkFavoriteMod.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			buttonMarkFavoriteMod.BackColor = System.Drawing.Color.LightGreen;
-			buttonMarkFavoriteMod.Enabled = false;
 			buttonMarkFavoriteMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			buttonMarkFavoriteMod.Location = new System.Drawing.Point(13, 445);
+			buttonMarkFavoriteMod.Location = new System.Drawing.Point(3, 33);
 			buttonMarkFavoriteMod.Name = "buttonMarkFavoriteMod";
-			buttonMarkFavoriteMod.Size = new System.Drawing.Size(302, 23);
+			buttonMarkFavoriteMod.Size = new System.Drawing.Size(297, 23);
 			buttonMarkFavoriteMod.TabIndex = 18;
 			buttonMarkFavoriteMod.Text = "ADD THIS MOD TO FAVORITE";
 			buttonMarkFavoriteMod.UseVisualStyleBackColor = false;
-			buttonMarkFavoriteMod.Visible = false;
 			buttonMarkFavoriteMod.Click += buttonMarkFavoriteMod_Click;
 			// 
 			// buttonCollectionCreate
 			// 
-			buttonCollectionCreate.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+			buttonCollectionCreate.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			buttonCollectionCreate.BackColor = System.Drawing.Color.LightGreen;
-			buttonCollectionCreate.Enabled = false;
 			buttonCollectionCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			buttonCollectionCreate.Location = new System.Drawing.Point(12, 470);
+			buttonCollectionCreate.Location = new System.Drawing.Point(3, 62);
 			buttonCollectionCreate.Name = "buttonCollectionCreate";
-			buttonCollectionCreate.Size = new System.Drawing.Size(303, 23);
+			buttonCollectionCreate.Size = new System.Drawing.Size(297, 23);
 			buttonCollectionCreate.TabIndex = 19;
 			buttonCollectionCreate.Text = "CREATE A NEW COLLECTION";
 			buttonCollectionCreate.UseVisualStyleBackColor = false;
-			buttonCollectionCreate.Visible = false;
 			buttonCollectionCreate.Click += buttonCollectionCreate_Click;
 			// 
 			// buttonCollectionManage
 			// 
-			buttonCollectionManage.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+			buttonCollectionManage.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			buttonCollectionManage.BackColor = System.Drawing.Color.LightGreen;
-			buttonCollectionManage.Enabled = false;
 			buttonCollectionManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			buttonCollectionManage.Location = new System.Drawing.Point(13, 494);
+			buttonCollectionManage.Location = new System.Drawing.Point(3, 91);
 			buttonCollectionManage.Name = "buttonCollectionManage";
-			buttonCollectionManage.Size = new System.Drawing.Size(302, 23);
+			buttonCollectionManage.Size = new System.Drawing.Size(297, 23);
 			buttonCollectionManage.TabIndex = 20;
 			buttonCollectionManage.Text = "MANAGE YOUR COLLECTIONS";
 			buttonCollectionManage.UseVisualStyleBackColor = false;
-			buttonCollectionManage.Visible = false;
 			buttonCollectionManage.Click += buttonCollectionManage_Click;
+			// 
+			// panelCollections
+			// 
+			panelCollections.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+			panelCollections.BackColor = System.Drawing.Color.DarkOliveGreen;
+			panelCollections.Controls.Add(buttonCollectionManage);
+			panelCollections.Controls.Add(buttonCollectionCreate);
+			panelCollections.Controls.Add(buttonMarkFavoriteMod);
+			panelCollections.Location = new System.Drawing.Point(12, 443);
+			panelCollections.Name = "panelCollections";
+			panelCollections.Size = new System.Drawing.Size(303, 147);
+			panelCollections.TabIndex = 21;
 			// 
 			// MainLauncherForm
 			// 
@@ -660,11 +669,9 @@ namespace TWE_Launcher.Forms
 			BackColor = System.Drawing.Color.DarkSeaGreen;
 			BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 			ClientSize = new System.Drawing.Size(1008, 729);
-			Controls.Add(buttonCollectionManage);
+			Controls.Add(panelCollections);
 			Controls.Add(treeViewGameMods);
 			Controls.Add(listBoxMODS);
-			Controls.Add(buttonCollectionCreate);
-			Controls.Add(buttonMarkFavoriteMod);
 			Controls.Add(modMainTitleLabel);
 			Controls.Add(modStatusLabel);
 			Controls.Add(modLogoPictureBox);
@@ -695,6 +702,7 @@ namespace TWE_Launcher.Forms
 			((System.ComponentModel.ISupportInitialize)modLogoPictureBox).EndInit();
 			appMenuStrip.ResumeLayout(false);
 			appMenuStrip.PerformLayout();
+			panelCollections.ResumeLayout(false);
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -749,5 +757,6 @@ namespace TWE_Launcher.Forms
 		private System.Windows.Forms.Button buttonMarkFavoriteMod;
 		private System.Windows.Forms.Button buttonCollectionCreate;
 		private System.Windows.Forms.Button buttonCollectionManage;
+		private System.Windows.Forms.Panel panelCollections;
 	}
 }

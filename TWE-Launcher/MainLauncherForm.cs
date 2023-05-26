@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using TWE_Launcher.Models;
 using TWE_Launcher.Sources.Models.Localizations;
 
@@ -115,6 +118,7 @@ namespace TWE_Launcher.Forms
 					foreach (GameModificationInfo mod in mods)
 					{
 						TreeNode modNode = new TreeNode(mod.ShortName);
+						modNode.NodeFont = new Font("Segoe UI Historic", 10F, FontStyle.Regular, GraphicsUnit.Point);
 						modcenterNode.Nodes.Add(modNode);
 					}
 				}
@@ -180,6 +184,78 @@ namespace TWE_Launcher.Forms
 				node.Expand();
 			}
 		}
+
+
+
+		// MODS COLLECTIONS MANAGEMENT
+
+		private void buttonMarkFavoriteMod_Click(object sender, EventArgs e)
+		{
+			if (treeViewGameMods.SelectedNode.Level == 3) // mod level
+			{
+				GameModificationInfo selectedModification = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
+
+				if (selectedModification.IsFavoriteMod)
+				{
+					MessageBox.Show("This mod is already added to Favorite Mods!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				else
+				{
+					var favoriteModificationNode = new TreeNode(selectedModification.ShortName);
+					favoriteModificationNode.NodeFont = new Font("Segoe UI Historic", 12F, FontStyle.Italic, GraphicsUnit.Point);
+					TreeNode allFavoriteModsNode = treeViewGameMods.Nodes[0];
+					allFavoriteModsNode.Nodes.Add(favoriteModificationNode);
+
+					selectedModification.IsFavoriteMod = true;
+					MessageBox.Show("This mod is successfully added to Favorite Mods!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
+
+			if (IsNodeOfFavoriteCollection(treeViewGameMods.SelectedNode))
+			{
+				TreeNode favoriteModsNode = treeViewGameMods.Nodes[0];
+
+				foreach (TreeNode node in favoriteModsNode.Nodes)
+				{
+					if (node.Text.Equals(treeViewGameMods.SelectedNode.Text))
+					{
+						favoriteModsNode.Nodes.Remove(node);
+						break;
+					}
+				}
+
+				treeViewGameMods.SelectedNode = treeViewGameMods.TopNode;
+			}
+		}
+
+		private bool IsNodeOfFavoriteCollection(TreeNode node)
+		{
+			bool isOnFavoriteModLevel = (node.Level == 1);
+			bool isFavoriteCollectionAsParent = (node.Parent.Text.Equals("My Favorite Mods"));
+
+			return (isOnFavoriteModLevel && isFavoriteCollectionAsParent);
+		}
+
+
+		private void buttonCollectionCreate_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("buttonCollectionCreate_Click");
+		}
+
+		private void buttonCollectionManage_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("buttonCollectionManage_Click");
+		}
+
+
+
+		// add to favorite
+
+		// create a collection
+
+		// collection management
+
+
 
 
 		private void DisableModUIControls()
@@ -457,24 +533,6 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigLaunchMode.Enabled = true;
 			groupBoxConfigLogMode.Enabled = true;
 			groupBoxConfigCleanerMode.Enabled = true;
-		}
-
-
-		// MODS COLLECTIONS MANAGEMENT
-
-		private void buttonMarkFavoriteMod_Click(object sender, EventArgs e)
-		{
-			MessageBox.Show("buttonMarkFavoriteMod_Click");
-		}
-
-		private void buttonCollectionCreate_Click(object sender, EventArgs e)
-		{
-			MessageBox.Show("buttonCollectionCreate_Click");
-		}
-
-		private void buttonCollectionManage_Click(object sender, EventArgs e)
-		{
-			MessageBox.Show("buttonCollectionManage_Click");
 		}
 	}
 }
