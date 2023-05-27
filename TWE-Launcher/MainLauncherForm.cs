@@ -108,7 +108,7 @@ namespace TWE_Launcher.Forms
 		{
 			foreach (KeyValuePair<string, string> modPair in favoriteCollection.Modifications)
 			{
-				var modNode = CreateCollectionChildNode(modPair);
+				var modNode = CreateCollectionChildNode(modPair.Value);
 				favoriteCollectionRootNode.Nodes.Add(modNode);
 			}
 		}
@@ -143,7 +143,7 @@ namespace TWE_Launcher.Forms
 
 			foreach (KeyValuePair<string, string> modPair in collection.Modifications)
 			{
-				var modNode = CreateCollectionChildNode(modPair);
+				var modNode = CreateCollectionChildNode(modPair.Value);
 				collectionNode.Nodes.Add(modNode);
 			}
 
@@ -155,9 +155,9 @@ namespace TWE_Launcher.Forms
 			return new TreeNode(collection.Name);
 		}
 
-		private TreeNode CreateCollectionChildNode(KeyValuePair<string, string> collectionElement)
+		private TreeNode CreateCollectionChildNode(string childNodeText)
 		{
-			var childNode = new TreeNode(collectionElement.Value);
+			var childNode = new TreeNode(childNodeText);
 			childNode.NodeFont = new Font("Segoe UI Historic", 10F, FontStyle.Regular, GraphicsUnit.Point);
 			return childNode;
 		}
@@ -295,32 +295,46 @@ namespace TWE_Launcher.Forms
 
 		private bool IsNodeOfFavoriteCollection(TreeNode node)
 		{
-			bool isOnFavoriteModLevel = (node.Level == 1);
-			bool isFavoriteCollectionAsParent = (node.Parent.Text.Equals("My Favorite Mods"));
+			if (node.Level == 1)
+			{
+				if (node.Parent.Text.Equals("My Favorite Mods"))
+				{
+					return true;
+				}
+			}
 
-			return (isOnFavoriteModLevel && isFavoriteCollectionAsParent);
+			return false;
 		}
 
 		private bool IsNodeOfModificationFromCustomCollection(TreeNode node)
 		{
-			bool isOnCustomCollectionLevel = (node.Level == 2);
+			if (node.Level == 2)
+			{
+				TreeNode currentCollection = node.Parent;
 
-			TreeNode currentCollection = node.Parent;
-			bool hasCollectionRootAsTopParent = (currentCollection.Parent.Text.Equals("My Mod Collections"));
+				if (currentCollection.Parent.Text.Equals("My Mod Collections"))
+				{
+					return true;
+				}
+			}
 
-			return (isOnCustomCollectionLevel && hasCollectionRootAsTopParent);
+			return false;
 		}
 
 		private bool IsNodeOfModificationFromAllModsCollection(TreeNode node)
 		{
-			bool isOnAllModsCollectionsLevel = (node.Level == 3);
+			if (node.Level == 3)
+			{
+				TreeNode currentModCenterNode = node.Parent;
+				TreeNode currentGameSetupNode = currentModCenterNode.Parent;
 
-			TreeNode currentModCenterNode = node.Parent;
-			TreeNode currentGameSetupNode = currentModCenterNode.Parent;
+				if (currentGameSetupNode.Parent.Text.Equals("All Modifications"))
+				{
+					return true;
+				}
+			}
 
-			bool hasAllModsCollectionAsTopParent = (currentGameSetupNode.Parent.Text.Equals("All Modifications"));
-
-			return (isOnAllModsCollectionsLevel && hasAllModsCollectionAsTopParent);
+			return false;
 		}
 
 		private GameModificationInfo FindModBySelectedNodeFromCollection(TreeNode selectedTreeNode)
@@ -358,45 +372,50 @@ namespace TWE_Launcher.Forms
 
 		private void buttonMarkFavoriteMod_Click(object sender, EventArgs e)
 		{
-			GameModificationInfo selectedModification = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
+			TreeNode modNode = treeViewGameMods.SelectedNode;
+			GameModificationInfo selectedModInfo = FindModBySelectedNodeFromCollection(modNode);
 
-			if (treeViewGameMods.SelectedNode.Level == 3)
+			if (IsNodeOfModificationFromAllModsCollection(modNode) || IsNodeOfModificationFromCustomCollection(modNode))
 			{
-				if (selectedModification.IsFavoriteMod)
+				if (selectedModInfo.IsFavoriteMod)
 				{
 					MessageBox.Show("This mod is already added to Favorite Mods!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
 				}
 				else
 				{
-					var favoriteModificationNode = new TreeNode(selectedModification.ShortName);
-					favoriteModificationNode.NodeFont = new Font("Segoe UI Historic", 12F, FontStyle.Italic, GraphicsUnit.Point);
+					TreeNode favoriteModNode = CreateCollectionChildNode(selectedModInfo.ShortName);
+
 					TreeNode allFavoriteModsNode = treeViewGameMods.Nodes[0];
-					allFavoriteModsNode.Nodes.Add(favoriteModificationNode);
-					selectedModification.IsFavoriteMod = true;
-					Settings.FavoriteModsCollection.Modifications.Add(selectedModification.Location, selectedModification.ShortName);
+					allFavoriteModsNode.Nodes.Add(favoriteModNode);
+
+					selectedModInfo.IsFavoriteMod = true;
+					Settings.FavoriteModsCollection.Modifications.Add(selectedModInfo.Location, selectedModInfo.ShortName);
 					CustomModsCollection.WriteFavoriteCollection();
+
 					MessageBox.Show("This mod was successfully ADDED to Favorite Mods!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
 				}
 			}
 
-			if (IsNodeOfFavoriteCollection(treeViewGameMods.SelectedNode))
+			if (IsNodeOfFavoriteCollection(modNode))
 			{
 				TreeNode favoriteModsNode = treeViewGameMods.Nodes[0];
 
 				foreach (TreeNode node in favoriteModsNode.Nodes)
 				{
-					if (node.Text.Equals(treeViewGameMods.SelectedNode.Text))
+					if (node.Text.Equals(modNode.Text))
 					{
 						favoriteModsNode.Nodes.Remove(node);
-						selectedModification.IsFavoriteMod = false;
-						Settings.FavoriteModsCollection.Modifications.Remove(selectedModification.Location);
+
+						selectedModInfo.IsFavoriteMod = false;
+						Settings.FavoriteModsCollection.Modifications.Remove(selectedModInfo.Location);
 						CustomModsCollection.WriteFavoriteCollection();
+
 						MessageBox.Show("This mod was successfully REMOVED from Favorite Mods!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						break;
 					}
 				}
-
-				treeViewGameMods.SelectedNode = treeViewGameMods.TopNode;
 			}
 		}
 
