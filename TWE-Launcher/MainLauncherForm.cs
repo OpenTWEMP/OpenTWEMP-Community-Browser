@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using TWE_Launcher.Models;
+using TWE_Launcher.Properties;
 using TWE_Launcher.Sources.Models.Localizations;
 
 namespace TWE_Launcher.Forms
@@ -439,9 +440,14 @@ namespace TWE_Launcher.Forms
 			modQuickNavigationButton.Enabled = false;
 			buttonMarkFavoriteMod.Enabled = false;
 
-			modLogoPictureBox.Visible = false;
 			modMainTitleLabel.Text = string.Empty;
 			modStatusLabel.Text = string.Empty;
+
+			if (modLogoPictureBox.Image != null)
+			{
+				modLogoPictureBox.Image.Dispose();
+				modLogoPictureBox.Image = Resources.BROWSER_LOGO;
+			}
 		}
 
 		private void EnableModUIControls()

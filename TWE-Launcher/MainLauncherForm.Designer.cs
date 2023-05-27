@@ -29,9 +29,9 @@ namespace TWE_Launcher.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("My Favorite Mods");
-			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("My Mod Collections");
-			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("All Modifications");
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("My Favorite Mods");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("My Mod Collections");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("All Modifications");
 			buttonLaunch = new System.Windows.Forms.Button();
 			panelLauncherOptions = new System.Windows.Forms.Panel();
 			groupBoxConfigProfiles = new System.Windows.Forms.GroupBox();
@@ -460,6 +460,7 @@ namespace TWE_Launcher.Forms
 			modLogoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			modLogoPictureBox.BackColor = System.Drawing.Color.Transparent;
 			modLogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			modLogoPictureBox.Image = Properties.Resources.BROWSER_LOGO;
 			modLogoPictureBox.Location = new System.Drawing.Point(323, 84);
 			modLogoPictureBox.Name = "modLogoPictureBox";
 			modLogoPictureBox.Size = new System.Drawing.Size(389, 353);
@@ -552,7 +553,7 @@ namespace TWE_Launcher.Forms
 			// aboutProgramToolStripMenuItem
 			// 
 			aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-			aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+			aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			aboutProgramToolStripMenuItem.Text = "About Program";
 			aboutProgramToolStripMenuItem.Click += aboutProgramToolStripMenuItem_Click;
 			// 
@@ -583,13 +584,13 @@ namespace TWE_Launcher.Forms
 			treeViewGameMods.ItemHeight = 30;
 			treeViewGameMods.Location = new System.Drawing.Point(13, 84);
 			treeViewGameMods.Name = "treeViewGameMods";
-			treeNode4.Name = "Node0";
-			treeNode4.Text = "My Favorite Mods";
-			treeNode5.Name = "Node1";
-			treeNode5.Text = "My Mod Collections";
-			treeNode6.Name = "Node2";
-			treeNode6.Text = "All Modifications";
-			treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode4, treeNode5, treeNode6 });
+			treeNode1.Name = "Node0";
+			treeNode1.Text = "My Favorite Mods";
+			treeNode2.Name = "Node1";
+			treeNode2.Text = "My Mod Collections";
+			treeNode3.Name = "Node2";
+			treeNode3.Text = "All Modifications";
+			treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode3 });
 			treeViewGameMods.Size = new System.Drawing.Size(302, 353);
 			treeViewGameMods.TabIndex = 16;
 			treeViewGameMods.AfterSelect += treeViewGameMods_AfterSelect;
