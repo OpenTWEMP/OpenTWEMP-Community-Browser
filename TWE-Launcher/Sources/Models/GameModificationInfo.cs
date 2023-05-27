@@ -1,10 +1,13 @@
-﻿using System.Drawing;
+﻿#define LEGACY_LOGO_CACHING_IMPL
+#undef LEGACY_LOGO_CACHING_IMPL
+
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using TWE_Launcher.Forms;
 
 using TWE_Launcher.Models.GamesSupport;
-
+using TWE_Launcher.Properties;
 
 namespace TWE_Launcher.Models
 {
@@ -18,7 +21,7 @@ namespace TWE_Launcher.Models
 		public string ModCfgRelativePath { get; }
 		public string LogFileName { get; }
 		public string LogFileRelativePath { get; }
-		private string modLogotypeImage { get; }
+		//private string modLogotypeImage { get; }
 
 		public CustomModSupportPreset CurrentPreset { get; }
 
@@ -40,31 +43,11 @@ namespace TWE_Launcher.Models
 			LogFileName = InitializeLogFileName();
 			LogFileRelativePath = InitializeLogFileRelativePath(ModCfgRelativePath, LogFileName);
 
+#if LEGACY_LOGO_CACHING_IMPL
 			modLogotypeImage = InitializeCachedLogotypeImage(Location);
+#endif
 
-
-			// Read the existing preset else create the preset by default.
-
-
-			string presetHomeDirectoryPath = CustomModSupportPreset.GetPresetDirectoryPath(modificationURI);
-
-			if (!Directory.Exists(presetHomeDirectoryPath))
-			{
-				Directory.CreateDirectory(presetHomeDirectoryPath);
-			}
-
-			string presetFilePath = CustomModSupportPreset.GetPresetFilePath(modificationURI);
-
-			if (CustomModSupportPreset.Exists(modificationURI))
-			{
-				CurrentPreset = CustomModSupportPreset.ReadExistingPreset(modificationURI);
-			}
-			else
-			{
-				CurrentPreset = new CustomModSupportPreset();
-				CurrentPreset.CreatePresetByDefault(modificationURI);
-			}
-
+			CurrentPreset = InitializeModificationPreset(modificationURI);
 
 			IsFavoriteMod = false;
 		}
@@ -72,7 +55,7 @@ namespace TWE_Launcher.Models
 
 		public void ShowModVisitingCard(PictureBox modLogotypePictureBox, Label modStatusLabel)
 		{
-			const string modLogoErrorMsg = "Mod Caching Error: Logotype image was not found.";
+			const string modLogoErrorMsg = "Add your own logotype image to '.twemp' folder and replace default 'DEFAULT.png' value into 'mod_support.json'.";
 
 			if (modLogotypePictureBox.Image != null)
 			{
@@ -80,15 +63,27 @@ namespace TWE_Launcher.Models
 				modLogotypePictureBox.Image = null;
 			}
 
+
+			string modPresetLogoImageFilePath = Path.Combine(Location, CustomModSupportPreset.MOD_PRESET_FOLDERNAME, CurrentPreset.LogotypeImage);
+
+			if (File.Exists(modPresetLogoImageFilePath))
+			{
+				modLogotypePictureBox.Load(modPresetLogoImageFilePath);
+				//modLogotypePictureBox.Visible = true;
+				modStatusLabel.Text = Location;
+			}
+
+#if LEGACY_LOGO_CACHING_IMPL
 			if (File.Exists(modLogotypeImage))
 			{
 				modLogotypePictureBox.Load(modLogotypeImage);
 				modLogotypePictureBox.Visible = true;
 				modStatusLabel.Text = Location;
 			}
+#endif
 			else
 			{
-				modLogotypePictureBox.Visible = true;
+				//modLogotypePictureBox.Visible = true;
 				modStatusLabel.Text = modLogoErrorMsg;
 			}
 		}
@@ -133,10 +128,25 @@ namespace TWE_Launcher.Models
 			return fileBaseName + fileExtension;
 		}
 
+
+		private CustomModSupportPreset InitializeModificationPreset(string modificationURI)
+		{
+			if (CustomModSupportPreset.Exists(modificationURI))
+			{
+				return CustomModSupportPreset.ReadExistingPreset(modificationURI);
+			}
+			else
+			{
+				return CustomModSupportPreset.CreatePresetByDefault(modificationURI);
+			}
+		}
+
+#if LEGACY_LOGO_CACHING_IMPL
 		private string InitializeCachedLogotypeImage(string modificationURI)
 		{
 			string destLogoImageExtension = ".png";
-			string cachedLogotypeImageFileName = ShortName + destLogoImageExtension;
+			//string cachedLogotypeImageFileName = ShortName + destLogoImageExtension;
+			string cachedLogotypeImageFileName = "SPLASH" + destLogoImageExtension;
 			string cachedLogotypeImagePath = Path.Combine(CacheDirectory, cachedLogotypeImageFileName);
 
 			// 1. Find mod's logotype image in app's cache directory.
@@ -145,57 +155,61 @@ namespace TWE_Launcher.Models
 			{
 				return cachedLogotypeImagePath;
 			}
-
-			// 2. Find mod's logotype image in mod's home directory.
-
-			string srcLogoImageDirectoryPath = Path.Combine(modificationURI, GameProvider_M2TW.MOD_ROOT, GameProvider_M2TW.MOD_NODE1_MENU);
-			string srcLogoImageFileName = GameProvider_M2TW.MENU_IMAGE_LOGO;
-
-			if (Directory.Exists(srcLogoImageDirectoryPath) && ContainsLogotypeImage(srcLogoImageDirectoryPath, srcLogoImageFileName))
-			{
-				string srcLogoImagePath = Path.Combine(srcLogoImageDirectoryPath, srcLogoImageFileName);
-
-				if (!ContainsLogotypeImage(CacheDirectory, cachedLogotypeImageFileName))
-				{
-					ImageConverter.ConvertTgaToPng(srcLogoImagePath, cachedLogotypeImagePath);
-				}
-			}
 			else
 			{
-				// 3. Load mod's logotype image from app's support folder.
+				// 2. Find mod's logotype image in mod's home directory.
 
-				try
+				string srcLogoImageDirectoryPath = Path.Combine(modificationURI, GameProvider_M2TW.MOD_ROOT, GameProvider_M2TW.MOD_NODE1_MENU);
+				string srcLogoImageFileName = GameProvider_M2TW.MENU_IMAGE_LOGO;
+
+				if (Directory.Exists(srcLogoImageDirectoryPath) && ContainsLogotypeImage(srcLogoImageDirectoryPath, srcLogoImageFileName))
 				{
-					if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD1))
+					try
 					{
-						srcLogoImageFileName = AppGameSupportManager.M2TWK_MOD1_LOGO_FILENAME;
+						ImageConverter.ConvertTgaToPng(Path.Combine(srcLogoImageDirectoryPath, srcLogoImageFileName), cachedLogotypeImagePath);
 					}
-
-					if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD2))
+					catch (System.Exception)
 					{
-						srcLogoImageFileName = AppGameSupportManager.M2TWK_MOD2_LOGO_FILENAME;
+						cachedLogotypeImagePath = Path.Combine(Program.AppSupportDirectoryInfo.FullName, AppGameSupportManager.M2TWK_DEFAULT_LOGO_FILENAME);
 					}
-
-					if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD3))
-					{
-						srcLogoImageFileName = AppGameSupportManager.M2TWK_MOD3_LOGO_FILENAME;
-					}
-
-					if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD4))
-					{
-						srcLogoImageFileName = AppGameSupportManager.M2TWK_MOD4_LOGO_FILENAME;
-					}
-
-					string srcLogoImagePath = Path.Combine(Program.AppSupportNode_M2TW_LOGO_DirectoryInfo.FullName, srcLogoImageFileName);
-					ImageConverter.ConvertTgaToPng(srcLogoImagePath, cachedLogotypeImagePath);
 				}
-				catch (DirectoryNotFoundException)
+				else
 				{
-					cachedLogotypeImagePath = null;
-				}
-				catch (FileNotFoundException)
-				{
-					cachedLogotypeImagePath = null;
+					// 3. Load mod's logotype image from app's support folder.
+					try
+					{
+						if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD1))
+						{
+							ImageConverter.ConvertTgaToPng(Path.Combine(Program.AppSupportNode_M2TW_LOGO_DirectoryInfo.FullName, AppGameSupportManager.M2TWK_MOD1_LOGO_FILENAME), cachedLogotypeImagePath);
+							return cachedLogotypeImagePath;
+						}
+
+						if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD2))
+						{
+							ImageConverter.ConvertTgaToPng(Path.Combine(Program.AppSupportNode_M2TW_LOGO_DirectoryInfo.FullName, AppGameSupportManager.M2TWK_MOD2_LOGO_FILENAME), cachedLogotypeImagePath);
+							return cachedLogotypeImagePath;
+						}
+
+						if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD3))
+						{
+							ImageConverter.ConvertTgaToPng(Path.Combine(Program.AppSupportNode_M2TW_LOGO_DirectoryInfo.FullName, AppGameSupportManager.M2TWK_MOD3_LOGO_FILENAME), cachedLogotypeImagePath);
+							return cachedLogotypeImagePath;
+						}
+
+						if (ShortName.Equals(GameProvider_M2TW.M2TWK_FOLDERNAME_MOD4))
+						{
+							ImageConverter.ConvertTgaToPng(Path.Combine(Program.AppSupportNode_M2TW_LOGO_DirectoryInfo.FullName, AppGameSupportManager.M2TWK_MOD4_LOGO_FILENAME), cachedLogotypeImagePath);
+							return cachedLogotypeImagePath;
+						}
+					}
+					catch (DirectoryNotFoundException)
+					{
+						cachedLogotypeImagePath = null;
+					}
+					catch (FileNotFoundException)
+					{
+						cachedLogotypeImagePath = null;
+					}
 				}
 			}
 
@@ -218,5 +232,6 @@ namespace TWE_Launcher.Models
 
 			return false;
 		}
+#endif
 	}
 }

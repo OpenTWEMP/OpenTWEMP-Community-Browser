@@ -8,12 +8,12 @@ namespace TWE_Launcher.Models
 {
 	public class CustomModSupportPreset
 	{
-		private const string MOD_PRESET_FOLDERNAME = ".twemp";
+		public const string MOD_PRESET_FOLDERNAME = ".twemp";
 		private const string MOD_PRESET_FILENAME = "mod_support.json";
 
 		private const string MOD_TITLE = "My_Mod_Title";
 		private const string MOD_VERSION = "My_Mod_Version";
-		private const string LOGOTYPE_IMAGE = "My_Logotype_Image.png";
+		private const string LOGOTYPE_IMAGE = "DEFAULT.png";
 		private const string BACKGROUND_SOUNDTRACK = "My_Background_SoundTrack.mp3";
 		private const string LAUNCHER_PROVIDER_M2TWEOP = "M2TWEOP GUI.exe";
 		private const string LAUNCHER_PROVIDER_NATIVE_SETUP = "My_Setup_Program.exe";
@@ -26,7 +26,7 @@ namespace TWE_Launcher.Models
 		public string LauncherProvider_M2TWEOP { get; set; }
 		public string LauncherProvider_NativeSetup { get; set; }
 		public string LauncherProvider_NativeBatch { get; set; }
-		public Dictionary<string, string> ModURLs { get; }
+		public Dictionary<string, string> ModURLs { get; set; }
 
 		public CustomModSupportPreset()
 		{
@@ -48,21 +48,42 @@ namespace TWE_Launcher.Models
 			};
 		}
 
-		public void CreatePresetByDefault(string modificationURI)
+		public static CustomModSupportPreset CreatePresetByDefault(string modificationURI)
 		{
-			string presetFilePath = Path.Combine(modificationURI, MOD_PRESET_FOLDERNAME, MOD_PRESET_FILENAME);
-			string presetJsonText = JsonConvert.SerializeObject(this, Formatting.Indented);
+			// 1. Prepare preset's folder into modification's home directory.
+
+			string presetHomeDirectoryPath = Path.Combine(modificationURI, MOD_PRESET_FOLDERNAME);
+
+			if (!Directory.Exists(presetHomeDirectoryPath))
+			{
+				Directory.CreateDirectory(presetHomeDirectoryPath);
+			}
+
+
+			// 2. Prepare default assets for the default preset.
+
+			// 2.1. Add mod's logotype image by default.
+
+			string supportAssetsDirectoryPath = Program.AppSupportDirectoryInfo.FullName;
+
+			string srcLogoImageFilePath = Path.Combine(supportAssetsDirectoryPath, AppGameSupportManager.M2TWK_DEFAULT_LOGO_FILENAME);
+			string destLogoImageFilePath = Path.Combine(presetHomeDirectoryPath, AppGameSupportManager.M2TWK_DEFAULT_LOGO_FILENAME);
+
+			if (File.Exists(srcLogoImageFilePath))
+			{
+				File.Copy(srcLogoImageFilePath, destLogoImageFilePath);
+			}
+
+
+			// 3. Generate 'mod_support.json' preset configuration file.
+
+			var presetByDefault = new CustomModSupportPreset();
+			string presetJsonText = JsonConvert.SerializeObject(presetByDefault, Formatting.Indented);
+			string presetFilePath = Path.Combine(presetHomeDirectoryPath, MOD_PRESET_FILENAME);
+
 			File.WriteAllText(presetFilePath, presetJsonText);
-		}
 
-		public static string GetPresetDirectoryPath(string modificationURI)
-		{
-			return Path.Combine(modificationURI, MOD_PRESET_FOLDERNAME);
-		}
-
-		public static string GetPresetFilePath(string modificationURI)
-		{
-			return Path.Combine(modificationURI, MOD_PRESET_FOLDERNAME, MOD_PRESET_FILENAME);
+			return presetByDefault;
 		}
 
 		public static bool Exists(string modificationURI)

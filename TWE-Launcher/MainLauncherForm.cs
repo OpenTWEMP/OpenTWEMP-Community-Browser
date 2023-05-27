@@ -170,7 +170,9 @@ namespace TWE_Launcher.Forms
 			}
 			else
 			{
-				if (IsNodeOfFavoriteCollection(e.Node) || IsNodeOfModificationFromCustomCollection(e.Node))
+				if (IsNodeOfFavoriteCollection(e.Node) || 
+						IsNodeOfModificationFromCustomCollection(e.Node) ||
+							IsNodeOfModificationFromAllModsCollection(e.Node))
 				{
 					GameModificationInfo selectedModification = FindModBySelectedNodeFromCollection(e.Node);
 
@@ -187,24 +189,6 @@ namespace TWE_Launcher.Forms
 
 					EnableModUIControls();
 					return;
-				}
-
-				if (IsNodeOfModificationFromAllModsCollection(e.Node))
-				{
-					GameModificationInfo selectedModification = FindModificationBySelectedTreeNode(e.Node);
-
-					selectedModification.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
-
-					if (Program.UseExperimentalFeatures)
-					{
-						modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle;
-					}
-					else
-					{
-						modMainTitleLabel.Text = selectedModification.ShortName;
-					}
-
-					EnableModUIControls();
 				}
 			}
 		}
