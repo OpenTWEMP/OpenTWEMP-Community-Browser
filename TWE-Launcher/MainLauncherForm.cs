@@ -153,8 +153,7 @@ namespace TWE_Launcher.Forms
 					List<GameModificationInfo> mods = modcenter.InstalledModifications;
 					foreach (GameModificationInfo mod in mods)
 					{
-						TreeNode modNode = new TreeNode(mod.ShortName);
-						modNode.NodeFont = new Font("Segoe UI Historic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+						TreeNode modNode = CreateCollectionChildNode(mod.ShortName);
 						modcenterNode.Nodes.Add(modNode);
 					}
 				}
@@ -405,7 +404,7 @@ namespace TWE_Launcher.Forms
 
 			foreach (KeyValuePair<string, string> modification in collection.Modifications)
 			{
-				TreeNode modChildNode = new TreeNode(modification.Value);
+				TreeNode modChildNode = CreateCollectionChildNode(modification.Value);
 				createdCollectionNode.Nodes.Add(modChildNode);
 			}
 		}
