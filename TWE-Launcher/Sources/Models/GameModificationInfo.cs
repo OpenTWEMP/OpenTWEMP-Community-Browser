@@ -89,7 +89,6 @@ namespace TWE_Launcher.Models
 			else
 			{
 				modLogotypePictureBox.Visible = true;
-				modLogotypePictureBox.BackColor = Color.Silver;
 				modStatusLabel.Text = modLogoErrorMsg;
 			}
 		}
