@@ -509,14 +509,14 @@ namespace TWE_Launcher.Forms
 
 		private void modQuickNavigationButton_Click(object sender, EventArgs e)
 		{
-			GameModificationInfo currentMod = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
+			GameModificationInfo currentMod = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
 			var form = new ModQuickNavigatorForm(currentMod.Location);
 			form.ShowDialog();
 		}
 
 		private void buttonExplore_Click(object sender, EventArgs e)
 		{
-			GameModificationInfo current_mod_info = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
+			GameModificationInfo current_mod_info = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
 			SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location);
 		}
 
