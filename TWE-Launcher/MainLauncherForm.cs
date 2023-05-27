@@ -41,7 +41,7 @@ namespace TWE_Launcher.Forms
 
 			SetupCurrentLocalizationForGUIControls();
 
-			UpdateModificationsListBox();
+			UpdateModificationsTreeView();
 
 			Text = GetApplicationFullName();
 		}
@@ -54,10 +54,9 @@ namespace TWE_Launcher.Forms
 			return appProjectTitle + " [ " + appHomeFolder + " ]";
 		}
 
-		public void UpdateModificationsListBox()
+		public void UpdateModificationsTreeView()
 		{
-			listBoxMODS.Enabled = false;
-			listBoxMODS.Items.Clear();
+			treeViewGameMods.Enabled = false;
 
 			Settings.UpdateTotalModificationsList();
 
@@ -65,37 +64,12 @@ namespace TWE_Launcher.Forms
 			UpdateCustomCollectionsInTreeView();
 			UpdateFavoriteCollectionInTreeView();
 
-			foreach (GameModificationInfo modification in Settings.TotalModificationsList)
-			{
-				listBoxMODS.Items.Add(modification.ShortName);
-			}
-
 			DisableModUIControls();
-			listBoxMODS.Enabled = true;
-
+			treeViewGameMods.Enabled = true;
 			modMainTitleLabel.Text = string.Empty;
 			modStatusLabel.Text = string.Empty;
 			modLogoPictureBox.Visible = false;
 		}
-
-		private void listBoxMODS_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			GameModificationInfo current_mod = Settings.GetActiveModificationInfo(listBoxMODS.SelectedIndex);
-			current_mod.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
-
-			if (Program.UseExperimentalFeatures)
-			{
-				modMainTitleLabel.Text = current_mod.CurrentPreset.ModTitle;
-			}
-			else
-			{
-				modMainTitleLabel.Text = current_mod.ShortName;
-			}
-
-
-			EnableModUIControls();
-		}
-
 
 		private void UpdateFavoriteCollectionInTreeView()
 		{
@@ -515,24 +489,14 @@ namespace TWE_Launcher.Forms
 
 		private void modQuickNavigationButton_Click(object sender, EventArgs e)
 		{
-			// Code for using 'listBoxMODS'
-			//int selectedModIndex = listBoxMODS.SelectedIndex;
-			//GameModificationInfo currentMod = Settings.GetActiveModificationInfo(selectedModIndex);
-
 			GameModificationInfo currentMod = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
-
 			var form = new ModQuickNavigatorForm(currentMod.Location);
 			form.ShowDialog();
 		}
 
 		private void buttonExplore_Click(object sender, EventArgs e)
 		{
-			// Code for using 'listBoxMODS'
-			//int current_mod_index = listBoxMODS.SelectedIndex;
-			//GameModificationInfo current_mod_info = Settings.GetActiveModificationInfo(current_mod_index);
-
 			GameModificationInfo current_mod_info = FindModificationBySelectedTreeNode(treeViewGameMods.SelectedNode);
-
 			SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location);
 		}
 
@@ -558,7 +522,7 @@ namespace TWE_Launcher.Forms
 			panelLauncherOptions.BackColor = colorTheme.PanelsBackColor;
 
 			// Set back color for mod UI controls.
-			listBoxMODS.BackColor = colorTheme.ModControlsBackColor;
+			treeViewGameMods.BackColor = colorTheme.ModControlsBackColor;
 			modMainTitleLabel.BackColor = colorTheme.ModControlsBackColor;
 			modStatusLabel.BackColor = colorTheme.ModControlsBackColor;
 
@@ -591,7 +555,7 @@ namespace TWE_Launcher.Forms
 			checkBoxCleaner_textBIN.ForeColor = colorTheme.CommonControlsForeColor;
 			checkBoxCleaner_soundPacks.ForeColor = colorTheme.CommonControlsForeColor;
 
-			listBoxMODS.ForeColor = colorTheme.CommonControlsForeColor;
+			treeViewGameMods.ForeColor = colorTheme.CommonControlsForeColor;
 			modMainTitleLabel.ForeColor = colorTheme.CommonControlsForeColor;
 			modStatusLabel.ForeColor = colorTheme.CommonControlsForeColor;
 		}

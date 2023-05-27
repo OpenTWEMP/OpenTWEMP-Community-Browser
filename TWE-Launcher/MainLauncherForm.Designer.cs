@@ -59,7 +59,6 @@ namespace TWE_Launcher.Forms
 			buttonExplore = new System.Windows.Forms.Button();
 			modQuickNavigationButton = new System.Windows.Forms.Button();
 			panelLauncherToolkit = new System.Windows.Forms.Panel();
-			listBoxMODS = new System.Windows.Forms.ListBox();
 			modMainTitleLabel = new System.Windows.Forms.Label();
 			modLogoPictureBox = new System.Windows.Forms.PictureBox();
 			modStatusLabel = new System.Windows.Forms.Label();
@@ -444,22 +443,6 @@ namespace TWE_Launcher.Forms
 			panelLauncherToolkit.Size = new System.Drawing.Size(394, 208);
 			panelLauncherToolkit.TabIndex = 6;
 			// 
-			// listBoxMODS
-			// 
-			listBoxMODS.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-			listBoxMODS.BackColor = System.Drawing.Color.MediumSeaGreen;
-			listBoxMODS.Cursor = System.Windows.Forms.Cursors.Hand;
-			listBoxMODS.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			listBoxMODS.ForeColor = System.Drawing.SystemColors.WindowText;
-			listBoxMODS.FormattingEnabled = true;
-			listBoxMODS.ItemHeight = 17;
-			listBoxMODS.Location = new System.Drawing.Point(12, 596);
-			listBoxMODS.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			listBoxMODS.Name = "listBoxMODS";
-			listBoxMODS.Size = new System.Drawing.Size(303, 55);
-			listBoxMODS.TabIndex = 9;
-			listBoxMODS.SelectedIndexChanged += listBoxMODS_SelectedIndexChanged;
-			// 
 			// modMainTitleLabel
 			// 
 			modMainTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
@@ -671,7 +654,6 @@ namespace TWE_Launcher.Forms
 			ClientSize = new System.Drawing.Size(1008, 729);
 			Controls.Add(panelCollections);
 			Controls.Add(treeViewGameMods);
-			Controls.Add(listBoxMODS);
 			Controls.Add(modMainTitleLabel);
 			Controls.Add(modStatusLabel);
 			Controls.Add(modLogoPictureBox);
@@ -731,7 +713,6 @@ namespace TWE_Launcher.Forms
 		private System.Windows.Forms.Label modMainTitleLabel;
 		private System.Windows.Forms.PictureBox modLogoPictureBox;
 		private System.Windows.Forms.Label modStatusLabel;
-		private System.Windows.Forms.ListBox listBoxMODS;
 		private System.Windows.Forms.StatusStrip appStatusStrip;
 		private System.Windows.Forms.MenuStrip appMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem toolStripAppItem;

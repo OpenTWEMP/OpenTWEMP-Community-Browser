@@ -74,7 +74,7 @@ namespace TWE_Launcher.Forms
 		{
 			gameSetupPathsListBox.Items.Clear();
 			Settings.ClearAllSettings();
-			currentCallingForm.UpdateModificationsListBox();
+			currentCallingForm.UpdateModificationsTreeView();
 		}
 
 		private void formOkButton_Click(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace TWE_Launcher.Forms
 
 		private void UpdateCallingFormState()
 		{
-			currentCallingForm.UpdateModificationsListBox();
+			currentCallingForm.UpdateModificationsTreeView();
 			currentCallingForm.Visible = true;
 			currentCallingForm.Enabled = true;
 		}
