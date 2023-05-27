@@ -97,23 +97,12 @@ namespace TWE_Launcher.Forms
 
 
 
-		private void UpdateCustomCollectionsInTreeView()
+		public void UpdateCustomCollectionsInTreeView()
 		{
 			TreeNode customCollectionsNode = treeViewGameMods.Nodes[1];
 			customCollectionsNode.Nodes.Clear();
 
-			var userCollections = new List<CustomModsCollection>();
-
-			if (Settings.UserCollections.Count == 0)
-			{
-				userCollections = CustomModsCollection.ReadExistingCollections();
-			}
-			else
-			{
-				userCollections = Settings.UserCollections;
-			}
-
-			foreach (CustomModsCollection collection in userCollections)
+			foreach (CustomModsCollection collection in Settings.UserCollections)
 			{
 				CreateCollectionNodeWithChilds(collection, customCollectionsNode);
 			}
@@ -423,7 +412,8 @@ namespace TWE_Launcher.Forms
 
 		private void buttonCollectionManage_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("buttonCollectionManage_Click");
+			var collectionManageForm = new CollectionManageForm(this);
+			collectionManageForm.Show();
 		}
 
 

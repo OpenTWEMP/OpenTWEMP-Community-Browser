@@ -21,11 +21,12 @@ namespace TWE_Launcher
 		{
 			GameInstallations = new List<GameSetupInfo>();
 			TotalModificationsList = new List<GameModificationInfo>();
-			UserCollections = new List<CustomModsCollection>();
+
 			CacheDirectoryPath = GetCacheDirectory();
 			gameSetupConfFile = GetSetupConfFileName();
 
 			FavoriteModsCollection = CustomModsCollection.LoadFavoriteCollectionFromCache(CacheDirectoryPath);
+			UserCollections = CustomModsCollection.LoadExistingCollectionsFromCache(CacheDirectoryPath);
 		}
 
 		private static string GetCacheDirectory()

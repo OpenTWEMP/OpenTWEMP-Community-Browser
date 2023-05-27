@@ -37,10 +37,17 @@ namespace TWE_Launcher.Models
 			}
 		}
 
-		public static List<CustomModsCollection> ReadExistingCollections()
+		public static List<CustomModsCollection> LoadExistingCollectionsFromCache(string cacheDirectoryPath)
 		{
-			string collectionsTextContent = File.ReadAllText(Path.Combine(Settings.CacheDirectoryPath, COLLECTIONS_FILENAME));
-			return JsonConvert.DeserializeObject<List<CustomModsCollection>>(collectionsTextContent);
+			string collectionsFilePath = Path.Combine(cacheDirectoryPath, COLLECTIONS_FILENAME);
+
+			if (File.Exists(collectionsFilePath))
+			{
+				string collectionsTextContent = File.ReadAllText(collectionsFilePath);
+				return JsonConvert.DeserializeObject<List<CustomModsCollection>>(collectionsTextContent);
+			}
+
+			return new List<CustomModsCollection>();
 		}
 
 		public static void WriteFavoriteCollection()
@@ -69,7 +76,5 @@ namespace TWE_Launcher.Models
 
 			return new CustomModsCollection(FAVORITE_COLLECTION_NAME, new Dictionary<string, string>());
 		}
-
-
 	}
 }
