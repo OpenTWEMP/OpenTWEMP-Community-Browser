@@ -130,6 +130,7 @@ namespace TWE_Launcher.Forms
 			// 
 			// groupBoxConfigProfiles
 			// 
+			groupBoxConfigProfiles.BackColor = System.Drawing.Color.Transparent;
 			groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Modding);
 			groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Gaming);
 			groupBoxConfigProfiles.Location = new System.Drawing.Point(3, 3);
@@ -142,6 +143,7 @@ namespace TWE_Launcher.Forms
 			// radioButtonConfigProfile_Modding
 			// 
 			radioButtonConfigProfile_Modding.AutoSize = true;
+			radioButtonConfigProfile_Modding.BackColor = System.Drawing.Color.Transparent;
 			radioButtonConfigProfile_Modding.Checked = true;
 			radioButtonConfigProfile_Modding.Location = new System.Drawing.Point(119, 22);
 			radioButtonConfigProfile_Modding.Name = "radioButtonConfigProfile_Modding";
@@ -149,18 +151,19 @@ namespace TWE_Launcher.Forms
 			radioButtonConfigProfile_Modding.TabIndex = 1;
 			radioButtonConfigProfile_Modding.TabStop = true;
 			radioButtonConfigProfile_Modding.Text = "MODDING MODE";
-			radioButtonConfigProfile_Modding.UseVisualStyleBackColor = true;
+			radioButtonConfigProfile_Modding.UseVisualStyleBackColor = false;
 			radioButtonConfigProfile_Modding.CheckedChanged += radioButtonConfigProfile_Modding_CheckedChanged;
 			// 
 			// radioButtonConfigProfile_Gaming
 			// 
 			radioButtonConfigProfile_Gaming.AutoSize = true;
+			radioButtonConfigProfile_Gaming.BackColor = System.Drawing.Color.Transparent;
 			radioButtonConfigProfile_Gaming.Location = new System.Drawing.Point(6, 22);
 			radioButtonConfigProfile_Gaming.Name = "radioButtonConfigProfile_Gaming";
 			radioButtonConfigProfile_Gaming.Size = new System.Drawing.Size(109, 19);
 			radioButtonConfigProfile_Gaming.TabIndex = 0;
 			radioButtonConfigProfile_Gaming.Text = "GAMING MODE";
-			radioButtonConfigProfile_Gaming.UseVisualStyleBackColor = true;
+			radioButtonConfigProfile_Gaming.UseVisualStyleBackColor = false;
 			radioButtonConfigProfile_Gaming.CheckedChanged += radioButtonConfigProfile_Gaming_CheckedChanged;
 			// 
 			// groupBoxLauncherProviders
@@ -553,7 +556,7 @@ namespace TWE_Launcher.Forms
 			// aboutProgramToolStripMenuItem
 			// 
 			aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-			aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
 			aboutProgramToolStripMenuItem.Text = "About Program";
 			aboutProgramToolStripMenuItem.Click += aboutProgramToolStripMenuItem_Click;
 			// 

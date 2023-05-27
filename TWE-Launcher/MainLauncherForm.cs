@@ -558,6 +558,10 @@ namespace TWE_Launcher.Forms
 			modQuickNavigationButton.ForeColor = colorTheme.CommonControlsForeColor;
 			buttonExplore.ForeColor = colorTheme.CommonControlsForeColor;
 
+			groupBoxConfigProfiles.ForeColor = colorTheme.CommonControlsForeColor;
+			radioButtonConfigProfile_Gaming.ForeColor = colorTheme.CommonControlsForeColor;
+			radioButtonConfigProfile_Modding.ForeColor = colorTheme.CommonControlsForeColor;
+
 			groupBoxConfigLaunchMode.ForeColor = colorTheme.CommonControlsForeColor;
 			radioButtonLaunchWindowScreen.ForeColor = colorTheme.CommonControlsForeColor;
 			radioButtonLaunchFullScreen.ForeColor = colorTheme.CommonControlsForeColor;
