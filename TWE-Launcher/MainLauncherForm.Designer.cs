@@ -142,10 +142,12 @@ namespace TWE_Launcher.Forms
 			// radioButtonConfigProfile_Modding
 			// 
 			radioButtonConfigProfile_Modding.AutoSize = true;
+			radioButtonConfigProfile_Modding.Checked = true;
 			radioButtonConfigProfile_Modding.Location = new System.Drawing.Point(119, 22);
 			radioButtonConfigProfile_Modding.Name = "radioButtonConfigProfile_Modding";
 			radioButtonConfigProfile_Modding.Size = new System.Drawing.Size(118, 19);
 			radioButtonConfigProfile_Modding.TabIndex = 1;
+			radioButtonConfigProfile_Modding.TabStop = true;
 			radioButtonConfigProfile_Modding.Text = "MODDING MODE";
 			radioButtonConfigProfile_Modding.UseVisualStyleBackColor = true;
 			radioButtonConfigProfile_Modding.CheckedChanged += radioButtonConfigProfile_Modding_CheckedChanged;
@@ -153,12 +155,10 @@ namespace TWE_Launcher.Forms
 			// radioButtonConfigProfile_Gaming
 			// 
 			radioButtonConfigProfile_Gaming.AutoSize = true;
-			radioButtonConfigProfile_Gaming.Checked = true;
 			radioButtonConfigProfile_Gaming.Location = new System.Drawing.Point(6, 22);
 			radioButtonConfigProfile_Gaming.Name = "radioButtonConfigProfile_Gaming";
 			radioButtonConfigProfile_Gaming.Size = new System.Drawing.Size(109, 19);
 			radioButtonConfigProfile_Gaming.TabIndex = 0;
-			radioButtonConfigProfile_Gaming.TabStop = true;
 			radioButtonConfigProfile_Gaming.Text = "GAMING MODE";
 			radioButtonConfigProfile_Gaming.UseVisualStyleBackColor = true;
 			radioButtonConfigProfile_Gaming.CheckedChanged += radioButtonConfigProfile_Gaming_CheckedChanged;

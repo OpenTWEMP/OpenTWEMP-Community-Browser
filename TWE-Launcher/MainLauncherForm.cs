@@ -77,7 +77,7 @@ namespace TWE_Launcher.Forms
 			favoriteCollectionNode.Nodes.Clear();
 			CreateFavoriteCollectionChildNodes(Settings.FavoriteModsCollection, favoriteCollectionNode);
 		}
-		
+
 		private void CreateFavoriteCollectionChildNodes(CustomModsCollection favoriteCollection, TreeNode favoriteCollectionRootNode)
 		{
 			foreach (KeyValuePair<string, string> modPair in favoriteCollection.Modifications)
@@ -254,7 +254,7 @@ namespace TWE_Launcher.Forms
 
 		private bool IsCustomCollectionFolderNode(TreeNode node)
 		{
-			return ( (node.Level == 1) && node.Parent.Text.Equals("My Mod Collections") );
+			return ((node.Level == 1) && node.Parent.Text.Equals("My Mod Collections"));
 		}
 
 		private bool IsGameSetupNode(TreeNode node)
@@ -653,12 +653,26 @@ namespace TWE_Launcher.Forms
 
 		private void radioButtonConfigProfile_Gaming_CheckedChanged(object sender, EventArgs e)
 		{
-			//
+			radioButtonLaunchWindowScreen.Checked = false;
+			radioButtonLaunchFullScreen.Checked = true;
+			checkBoxVideo.Checked = true;
+			checkBoxBorderless.Checked = false;
+
+			radioButtonLogOnlyError.Checked = true;
+			radioButtonLogOnlyTrace.Checked = false;
+			radioButtonLogErrorAndTrace.Checked = false;
 		}
 
 		private void radioButtonConfigProfile_Modding_CheckedChanged(object sender, EventArgs e)
 		{
-			//
+			radioButtonLaunchWindowScreen.Checked = true;
+			radioButtonLaunchFullScreen.Checked = false;
+			checkBoxVideo.Checked = false;
+			checkBoxBorderless.Checked = false;
+
+			radioButtonLogOnlyError.Checked = false;
+			radioButtonLogOnlyTrace.Checked = false;
+			radioButtonLogErrorAndTrace.Checked = true;
 		}
 
 
