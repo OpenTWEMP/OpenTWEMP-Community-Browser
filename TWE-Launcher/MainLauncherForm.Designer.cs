@@ -104,7 +104,7 @@ namespace TWE_Launcher.Forms
 			buttonLaunch.Location = new System.Drawing.Point(4, 3);
 			buttonLaunch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			buttonLaunch.Name = "buttonLaunch";
-			buttonLaunch.Size = new System.Drawing.Size(384, 88);
+			buttonLaunch.Size = new System.Drawing.Size(362, 88);
 			buttonLaunch.TabIndex = 0;
 			buttonLaunch.Text = "LAUNCH";
 			buttonLaunch.UseVisualStyleBackColor = false;
@@ -409,7 +409,7 @@ namespace TWE_Launcher.Forms
 			buttonExplore.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			buttonExplore.Location = new System.Drawing.Point(4, 151);
 			buttonExplore.Name = "buttonExplore";
-			buttonExplore.Size = new System.Drawing.Size(384, 52);
+			buttonExplore.Size = new System.Drawing.Size(362, 52);
 			buttonExplore.TabIndex = 8;
 			buttonExplore.Text = "MOD HOME FOLDER";
 			buttonExplore.UseVisualStyleBackColor = false;
@@ -426,7 +426,7 @@ namespace TWE_Launcher.Forms
 			modQuickNavigationButton.Location = new System.Drawing.Point(4, 97);
 			modQuickNavigationButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			modQuickNavigationButton.Name = "modQuickNavigationButton";
-			modQuickNavigationButton.Size = new System.Drawing.Size(384, 48);
+			modQuickNavigationButton.Size = new System.Drawing.Size(362, 48);
 			modQuickNavigationButton.TabIndex = 7;
 			modQuickNavigationButton.Text = "MOD QUICK NAVIGATION";
 			modQuickNavigationButton.UseVisualStyleBackColor = false;
@@ -440,10 +440,10 @@ namespace TWE_Launcher.Forms
 			panelLauncherToolkit.Controls.Add(modQuickNavigationButton);
 			panelLauncherToolkit.Controls.Add(buttonExplore);
 			panelLauncherToolkit.Controls.Add(buttonLaunch);
-			panelLauncherToolkit.Location = new System.Drawing.Point(318, 443);
+			panelLauncherToolkit.Location = new System.Drawing.Point(340, 443);
 			panelLauncherToolkit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			panelLauncherToolkit.Name = "panelLauncherToolkit";
-			panelLauncherToolkit.Size = new System.Drawing.Size(394, 208);
+			panelLauncherToolkit.Size = new System.Drawing.Size(372, 208);
 			panelLauncherToolkit.TabIndex = 6;
 			// 
 			// modMainTitleLabel
@@ -452,9 +452,9 @@ namespace TWE_Launcher.Forms
 			modMainTitleLabel.BackColor = System.Drawing.Color.MediumSeaGreen;
 			modMainTitleLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			modMainTitleLabel.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			modMainTitleLabel.Location = new System.Drawing.Point(13, 35);
+			modMainTitleLabel.Location = new System.Drawing.Point(12, 35);
 			modMainTitleLabel.Name = "modMainTitleLabel";
-			modMainTitleLabel.Size = new System.Drawing.Size(982, 46);
+			modMainTitleLabel.Size = new System.Drawing.Size(983, 46);
 			modMainTitleLabel.TabIndex = 8;
 			modMainTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
@@ -464,9 +464,9 @@ namespace TWE_Launcher.Forms
 			modLogoPictureBox.BackColor = System.Drawing.Color.Transparent;
 			modLogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			modLogoPictureBox.Image = Properties.Resources.BROWSER_LOGO;
-			modLogoPictureBox.Location = new System.Drawing.Point(323, 84);
+			modLogoPictureBox.Location = new System.Drawing.Point(340, 84);
 			modLogoPictureBox.Name = "modLogoPictureBox";
-			modLogoPictureBox.Size = new System.Drawing.Size(389, 353);
+			modLogoPictureBox.Size = new System.Drawing.Size(372, 353);
 			modLogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			modLogoPictureBox.TabIndex = 9;
 			modLogoPictureBox.TabStop = false;
@@ -581,7 +581,7 @@ namespace TWE_Launcher.Forms
 			treeViewGameMods.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			treeViewGameMods.BackColor = System.Drawing.Color.MediumSeaGreen;
 			treeViewGameMods.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			treeViewGameMods.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			treeViewGameMods.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
 			treeViewGameMods.FullRowSelect = true;
 			treeViewGameMods.Indent = 15;
 			treeViewGameMods.ItemHeight = 30;
@@ -594,7 +594,7 @@ namespace TWE_Launcher.Forms
 			treeNode3.Name = "Node2";
 			treeNode3.Text = "All Modifications";
 			treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode3 });
-			treeViewGameMods.Size = new System.Drawing.Size(302, 451);
+			treeViewGameMods.Size = new System.Drawing.Size(320, 451);
 			treeViewGameMods.TabIndex = 16;
 			treeViewGameMods.AfterSelect += treeViewGameMods_AfterSelect;
 			// 
@@ -605,9 +605,9 @@ namespace TWE_Launcher.Forms
 			buttonMarkFavoriteMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			buttonMarkFavoriteMod.Location = new System.Drawing.Point(3, 14);
 			buttonMarkFavoriteMod.Name = "buttonMarkFavoriteMod";
-			buttonMarkFavoriteMod.Size = new System.Drawing.Size(295, 23);
+			buttonMarkFavoriteMod.Size = new System.Drawing.Size(313, 23);
 			buttonMarkFavoriteMod.TabIndex = 18;
-			buttonMarkFavoriteMod.Text = "ADD THIS MOD TO FAVORITE";
+			buttonMarkFavoriteMod.Text = "MARK or UNMARK THIS MOD as FAVORITE";
 			buttonMarkFavoriteMod.UseVisualStyleBackColor = false;
 			buttonMarkFavoriteMod.Click += buttonMarkFavoriteMod_Click;
 			// 
@@ -618,7 +618,7 @@ namespace TWE_Launcher.Forms
 			buttonCollectionCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			buttonCollectionCreate.Location = new System.Drawing.Point(3, 43);
 			buttonCollectionCreate.Name = "buttonCollectionCreate";
-			buttonCollectionCreate.Size = new System.Drawing.Size(295, 23);
+			buttonCollectionCreate.Size = new System.Drawing.Size(313, 23);
 			buttonCollectionCreate.TabIndex = 19;
 			buttonCollectionCreate.Text = "CREATE A NEW COLLECTION";
 			buttonCollectionCreate.UseVisualStyleBackColor = false;
@@ -631,7 +631,7 @@ namespace TWE_Launcher.Forms
 			buttonCollectionManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			buttonCollectionManage.Location = new System.Drawing.Point(3, 72);
 			buttonCollectionManage.Name = "buttonCollectionManage";
-			buttonCollectionManage.Size = new System.Drawing.Size(295, 23);
+			buttonCollectionManage.Size = new System.Drawing.Size(313, 23);
 			buttonCollectionManage.TabIndex = 20;
 			buttonCollectionManage.Text = "MANAGE YOUR COLLECTIONS";
 			buttonCollectionManage.UseVisualStyleBackColor = false;
@@ -647,7 +647,7 @@ namespace TWE_Launcher.Forms
 			panelCollections.Controls.Add(buttonMarkFavoriteMod);
 			panelCollections.Location = new System.Drawing.Point(12, 541);
 			panelCollections.Name = "panelCollections";
-			panelCollections.Size = new System.Drawing.Size(303, 110);
+			panelCollections.Size = new System.Drawing.Size(321, 110);
 			panelCollections.TabIndex = 21;
 			// 
 			// MainLauncherForm

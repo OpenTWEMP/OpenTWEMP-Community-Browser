@@ -113,6 +113,7 @@
 			Name = "CollectionManageForm";
 			ShowIcon = false;
 			ShowInTaskbar = false;
+			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			Text = "Manage Your Collections";
 			groupBoxCollectionsDelete.ResumeLayout(false);
 			groupBoxCollectionsDelete.PerformLayout();

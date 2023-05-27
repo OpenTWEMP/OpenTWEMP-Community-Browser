@@ -77,7 +77,7 @@ namespace TWE_Launcher.Forms
 			const string msgCaption = "WARNING: Empty Collection";
 			const MessageBoxButtons buttons = MessageBoxButtons.OK;
 			const MessageBoxIcon icon = MessageBoxIcon.Warning;
-		
+
 			MessageBox.Show(msgText, msgCaption, buttons, icon);
 		}
 

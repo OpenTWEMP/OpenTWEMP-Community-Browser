@@ -109,6 +109,7 @@
 			Name = "CollectionCreateForm";
 			ShowIcon = false;
 			ShowInTaskbar = false;
+			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			Text = "Create a New Collection";
 			ResumeLayout(false);
 			PerformLayout();
