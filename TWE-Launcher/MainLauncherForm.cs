@@ -74,10 +74,8 @@ namespace TWE_Launcher.Forms
 			UpdateFavoriteCollectionInTreeView();
 
 			DisableModUIControls();
+
 			treeViewGameMods.Enabled = true;
-			modMainTitleLabel.Text = string.Empty;
-			modStatusLabel.Text = string.Empty;
-			modLogoPictureBox.Visible = false;
 		}
 
 		private void UpdateFavoriteCollectionInTreeView()
@@ -178,6 +176,7 @@ namespace TWE_Launcher.Forms
 			if (IsNotModificationNode(e.Node))
 			{
 				ChangeSelectedNodeView(e.Node);
+				DisableModUIControls();
 				return;
 			}
 			else
@@ -438,6 +437,11 @@ namespace TWE_Launcher.Forms
 			buttonLaunch.Enabled = false;
 			buttonExplore.Enabled = false;
 			modQuickNavigationButton.Enabled = false;
+			buttonMarkFavoriteMod.Enabled = false;
+
+			modLogoPictureBox.Visible = false;
+			modMainTitleLabel.Text = string.Empty;
+			modStatusLabel.Text = string.Empty;
 		}
 
 		private void EnableModUIControls()
@@ -451,6 +455,7 @@ namespace TWE_Launcher.Forms
 			buttonLaunch.Enabled = true;
 			buttonExplore.Enabled = true;
 			modQuickNavigationButton.Enabled = true;
+			buttonMarkFavoriteMod.Enabled = true;
 		}
 
 		private void changeLauncherGUIWhenGameStarting()
