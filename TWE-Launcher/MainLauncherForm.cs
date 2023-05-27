@@ -181,6 +181,42 @@ namespace TWE_Launcher.Forms
 					if (Program.UseExperimentalFeatures)
 					{
 						modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle;
+
+						if (selectedModification.CanBeLaunchedViaNativeBatch())
+						{
+							radioButtonLauncherProvider_BatchScript.Enabled = true;
+							ColorTheme currentColorTheme = ColorTheme.SelectColorThemeByStyle(Program.CurrentGUIStyle);
+							radioButtonLauncherProvider_BatchScript.ForeColor = currentColorTheme.CommonControlsForeColor;
+						}
+						else
+						{
+							radioButtonLauncherProvider_BatchScript.Enabled = false;
+							radioButtonLauncherProvider_BatchScript.ForeColor = Color.DarkRed;
+						}
+
+						if (selectedModification.CanBeLaunchedViaNativeSetup())
+						{
+							radioButtonLauncherProvider_NativeSetup.Enabled = true;
+							ColorTheme currentColorTheme = ColorTheme.SelectColorThemeByStyle(Program.CurrentGUIStyle);
+							radioButtonLauncherProvider_NativeSetup.ForeColor = currentColorTheme.CommonControlsForeColor;
+						}
+						else
+						{
+							radioButtonLauncherProvider_NativeSetup.Enabled = false;
+							radioButtonLauncherProvider_NativeSetup.ForeColor = Color.DarkRed;
+						}
+
+						if (selectedModification.CanBeLaunchedViaM2TWEOP())
+						{
+							radioButtonLauncherProvider_M2TWEOP.Enabled = true;
+							ColorTheme currentColorTheme = ColorTheme.SelectColorThemeByStyle(Program.CurrentGUIStyle);
+							radioButtonLauncherProvider_M2TWEOP.ForeColor = currentColorTheme.CommonControlsForeColor;
+						}
+						else
+						{
+							radioButtonLauncherProvider_M2TWEOP.Enabled = false;
+							radioButtonLauncherProvider_M2TWEOP.ForeColor = Color.DarkRed;
+						}
 					}
 					else
 					{

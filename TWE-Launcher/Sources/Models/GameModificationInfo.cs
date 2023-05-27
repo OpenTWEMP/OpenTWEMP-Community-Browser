@@ -53,6 +53,22 @@ namespace TWE_Launcher.Models
 		}
 
 
+		public bool CanBeLaunchedViaNativeBatch()
+		{
+			return File.Exists(Path.Combine(Location, CurrentPreset.LauncherProvider_NativeBatch));
+		}
+
+		public bool CanBeLaunchedViaNativeSetup()
+		{
+			return File.Exists(Path.Combine(Location, CurrentPreset.LauncherProvider_NativeSetup));
+		}
+
+		public bool CanBeLaunchedViaM2TWEOP()
+		{
+			return File.Exists(Path.Combine(Location, CurrentPreset.LauncherProvider_M2TWEOP));
+		}
+
+
 		public void ShowModVisitingCard(PictureBox modLogotypePictureBox, Label modStatusLabel)
 		{
 			const string modLogoErrorMsg = "Add your own logotype image to '.twemp' folder and replace default 'DEFAULT.png' value into 'mod_support.json'.";
