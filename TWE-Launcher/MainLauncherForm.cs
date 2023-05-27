@@ -99,10 +99,9 @@ namespace TWE_Launcher.Forms
 
 		private void UpdateFavoriteCollectionInTreeView()
 		{
-			CustomModsCollection favoriteModCollection = CustomModsCollection.ReadFavoriteCollection();
 			TreeNode favoriteCollectionNode = treeViewGameMods.Nodes[0];
 			favoriteCollectionNode.Nodes.Clear();
-			CreateFavoriteCollectionChildNodes(favoriteModCollection, favoriteCollectionNode);
+			CreateFavoriteCollectionChildNodes(Settings.FavoriteModsCollection, favoriteCollectionNode);
 		}
 		
 		private void CreateFavoriteCollectionChildNodes(CustomModsCollection favoriteCollection, TreeNode favoriteCollectionRootNode)

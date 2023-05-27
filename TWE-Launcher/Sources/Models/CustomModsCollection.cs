@@ -43,13 +43,6 @@ namespace TWE_Launcher.Models
 			return JsonConvert.DeserializeObject<List<CustomModsCollection>>(collectionsTextContent);
 		}
 
-
-		public static CustomModsCollection CreateFavoriteCollection()
-		{
-			return new CustomModsCollection(FAVORITE_COLLECTION_NAME, new Dictionary<string, string>());
-		}
-
-
 		public static void WriteFavoriteCollection()
 		{
 			string favoriteCollectionTextContent = JsonConvert.SerializeObject(Settings.FavoriteModsCollection, Formatting.Indented);
@@ -64,9 +57,9 @@ namespace TWE_Launcher.Models
 			}
 		}
 
-		public static CustomModsCollection ReadFavoriteCollection()
+		public static CustomModsCollection LoadFavoriteCollectionFromCache(string cacheDirectoryPath)
 		{
-			string favoriteCollectionFilePath = Path.Combine(Settings.CacheDirectoryPath, FAVORITE_COLLECTION_FILENAME);
+			string favoriteCollectionFilePath = Path.Combine(cacheDirectoryPath, FAVORITE_COLLECTION_FILENAME);
 
 			if (File.Exists(favoriteCollectionFilePath))
 			{
@@ -74,7 +67,7 @@ namespace TWE_Launcher.Models
 				return JsonConvert.DeserializeObject<CustomModsCollection>(favoriteCollectionTextContent);
 			}
 
-			return Settings.FavoriteModsCollection;
+			return new CustomModsCollection(FAVORITE_COLLECTION_NAME, new Dictionary<string, string>());
 		}
 
 
