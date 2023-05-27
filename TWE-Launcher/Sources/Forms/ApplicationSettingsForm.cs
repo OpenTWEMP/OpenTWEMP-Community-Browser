@@ -90,7 +90,7 @@ namespace TWE_Launcher.Forms
 
 			// 3. Apply experimental settings.
 
-			Program.UseExperimentalFeatures = activatePresetsCheckBox.Checked;
+			currentCallingForm.ApplyExperimentalChanges(activatePresetsCheckBox.Checked);
 
 			// 4. Close the form.
 

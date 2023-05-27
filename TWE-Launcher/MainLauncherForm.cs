@@ -54,6 +54,15 @@ namespace TWE_Launcher.Forms
 			return appProjectTitle + " [ " + appHomeFolder + " ]";
 		}
 
+
+		public void ApplyExperimentalChanges(bool isEnabledChangesStatus)
+		{
+			groupBoxLauncherProviders.Visible = isEnabledChangesStatus;
+			radioButtonLauncherProvider_TWEMP.Checked = true;
+			Program.UseExperimentalFeatures = isEnabledChangesStatus;
+		}
+
+
 		public void UpdateModificationsTreeView()
 		{
 			treeViewGameMods.Enabled = false;

@@ -29,9 +29,9 @@ namespace TWE_Launcher.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("My Favorite Mods");
-			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("My Mod Collections");
-			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("All Modifications");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("My Favorite Mods");
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("My Mod Collections");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("All Modifications");
 			buttonLaunch = new System.Windows.Forms.Button();
 			panelLauncherOptions = new System.Windows.Forms.Panel();
 			groupBoxConfigProfiles = new System.Windows.Forms.GroupBox();
@@ -132,9 +132,9 @@ namespace TWE_Launcher.Forms
 			// 
 			groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Modding);
 			groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Gaming);
-			groupBoxConfigProfiles.Location = new System.Drawing.Point(4, 130);
+			groupBoxConfigProfiles.Location = new System.Drawing.Point(3, 3);
 			groupBoxConfigProfiles.Name = "groupBoxConfigProfiles";
-			groupBoxConfigProfiles.Size = new System.Drawing.Size(267, 63);
+			groupBoxConfigProfiles.Size = new System.Drawing.Size(267, 53);
 			groupBoxConfigProfiles.TabIndex = 7;
 			groupBoxConfigProfiles.TabStop = false;
 			groupBoxConfigProfiles.Text = "Configuration Profiles";
@@ -169,9 +169,9 @@ namespace TWE_Launcher.Forms
 			groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_BatchScript);
 			groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_NativeSetup);
 			groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_M2TWEOP);
-			groupBoxLauncherProviders.Location = new System.Drawing.Point(4, 3);
+			groupBoxLauncherProviders.Location = new System.Drawing.Point(3, 431);
 			groupBoxLauncherProviders.Name = "groupBoxLauncherProviders";
-			groupBoxLauncherProviders.Size = new System.Drawing.Size(267, 121);
+			groupBoxLauncherProviders.Size = new System.Drawing.Size(267, 131);
 			groupBoxLauncherProviders.TabIndex = 6;
 			groupBoxLauncherProviders.TabStop = false;
 			groupBoxLauncherProviders.Text = "Launcher Providers";
@@ -180,7 +180,7 @@ namespace TWE_Launcher.Forms
 			// 
 			radioButtonLauncherProvider_TWEMP.AutoSize = true;
 			radioButtonLauncherProvider_TWEMP.Checked = true;
-			radioButtonLauncherProvider_TWEMP.Location = new System.Drawing.Point(6, 97);
+			radioButtonLauncherProvider_TWEMP.Location = new System.Drawing.Point(12, 20);
 			radioButtonLauncherProvider_TWEMP.Name = "radioButtonLauncherProvider_TWEMP";
 			radioButtonLauncherProvider_TWEMP.Size = new System.Drawing.Size(212, 19);
 			radioButtonLauncherProvider_TWEMP.TabIndex = 3;
@@ -192,7 +192,7 @@ namespace TWE_Launcher.Forms
 			// radioButtonLauncherProvider_BatchScript
 			// 
 			radioButtonLauncherProvider_BatchScript.AutoSize = true;
-			radioButtonLauncherProvider_BatchScript.Location = new System.Drawing.Point(6, 72);
+			radioButtonLauncherProvider_BatchScript.Location = new System.Drawing.Point(12, 47);
 			radioButtonLauncherProvider_BatchScript.Name = "radioButtonLauncherProvider_BatchScript";
 			radioButtonLauncherProvider_BatchScript.Size = new System.Drawing.Size(182, 19);
 			radioButtonLauncherProvider_BatchScript.TabIndex = 2;
@@ -203,7 +203,7 @@ namespace TWE_Launcher.Forms
 			// radioButtonLauncherProvider_NativeSetup
 			// 
 			radioButtonLauncherProvider_NativeSetup.AutoSize = true;
-			radioButtonLauncherProvider_NativeSetup.Location = new System.Drawing.Point(6, 47);
+			radioButtonLauncherProvider_NativeSetup.Location = new System.Drawing.Point(12, 72);
 			radioButtonLauncherProvider_NativeSetup.Name = "radioButtonLauncherProvider_NativeSetup";
 			radioButtonLauncherProvider_NativeSetup.Size = new System.Drawing.Size(186, 19);
 			radioButtonLauncherProvider_NativeSetup.TabIndex = 1;
@@ -214,7 +214,7 @@ namespace TWE_Launcher.Forms
 			// radioButtonLauncherProvider_M2TWEOP
 			// 
 			radioButtonLauncherProvider_M2TWEOP.AutoSize = true;
-			radioButtonLauncherProvider_M2TWEOP.Location = new System.Drawing.Point(6, 22);
+			radioButtonLauncherProvider_M2TWEOP.Location = new System.Drawing.Point(12, 97);
 			radioButtonLauncherProvider_M2TWEOP.Name = "radioButtonLauncherProvider_M2TWEOP";
 			radioButtonLauncherProvider_M2TWEOP.Size = new System.Drawing.Size(197, 19);
 			radioButtonLauncherProvider_M2TWEOP.TabIndex = 0;
@@ -228,7 +228,7 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_soundPacks);
 			groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_textBIN);
 			groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_MapRWM);
-			groupBoxConfigCleanerMode.Location = new System.Drawing.Point(4, 459);
+			groupBoxConfigCleanerMode.Location = new System.Drawing.Point(4, 322);
 			groupBoxConfigCleanerMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigCleanerMode.Name = "groupBoxConfigCleanerMode";
 			groupBoxConfigCleanerMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -277,7 +277,7 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigLogMode.Controls.Add(radioButtonLogErrorAndTrace);
 			groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyTrace);
 			groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyError);
-			groupBoxConfigLogMode.Location = new System.Drawing.Point(4, 327);
+			groupBoxConfigLogMode.Location = new System.Drawing.Point(4, 190);
 			groupBoxConfigLogMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigLogMode.Name = "groupBoxConfigLogMode";
 			groupBoxConfigLogMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -341,7 +341,7 @@ namespace TWE_Launcher.Forms
 			groupBoxConfigLaunchMode.Controls.Add(checkBoxVideo);
 			groupBoxConfigLaunchMode.Controls.Add(radioButtonLaunchFullScreen);
 			groupBoxConfigLaunchMode.Controls.Add(radioButtonLaunchWindowScreen);
-			groupBoxConfigLaunchMode.Location = new System.Drawing.Point(4, 199);
+			groupBoxConfigLaunchMode.Location = new System.Drawing.Point(3, 62);
 			groupBoxConfigLaunchMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBoxConfigLaunchMode.Name = "groupBoxConfigLaunchMode";
 			groupBoxConfigLaunchMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -583,13 +583,13 @@ namespace TWE_Launcher.Forms
 			treeViewGameMods.ItemHeight = 30;
 			treeViewGameMods.Location = new System.Drawing.Point(13, 84);
 			treeViewGameMods.Name = "treeViewGameMods";
-			treeNode1.Name = "Node0";
-			treeNode1.Text = "My Favorite Mods";
-			treeNode2.Name = "Node1";
-			treeNode2.Text = "My Mod Collections";
-			treeNode3.Name = "Node2";
-			treeNode3.Text = "All Modifications";
-			treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode3 });
+			treeNode4.Name = "Node0";
+			treeNode4.Text = "My Favorite Mods";
+			treeNode5.Name = "Node1";
+			treeNode5.Text = "My Mod Collections";
+			treeNode6.Name = "Node2";
+			treeNode6.Text = "All Modifications";
+			treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode4, treeNode5, treeNode6 });
 			treeViewGameMods.Size = new System.Drawing.Size(302, 353);
 			treeViewGameMods.TabIndex = 16;
 			treeViewGameMods.AfterSelect += treeViewGameMods_AfterSelect;
