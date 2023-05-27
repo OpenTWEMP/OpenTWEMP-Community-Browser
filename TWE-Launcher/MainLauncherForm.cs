@@ -430,18 +430,34 @@ namespace TWE_Launcher.Forms
 		private void DisableModUIControls()
 		{
 			groupBoxLauncherProviders.Enabled = false;
+			groupBoxLauncherProviders.Visible = false;
+
 			groupBoxConfigProfiles.Enabled = false;
+			groupBoxConfigProfiles.Visible = false;
+
 			groupBoxConfigLaunchMode.Enabled = false;
+			groupBoxConfigLaunchMode.Visible = false;
+
 			groupBoxConfigLogMode.Enabled = false;
+			groupBoxConfigLogMode.Visible = false;
+
 			groupBoxConfigCleanerMode.Enabled = false;
+			groupBoxConfigCleanerMode.Visible = false;
 
 			buttonLaunch.Enabled = false;
-			buttonExplore.Enabled = false;
-			modQuickNavigationButton.Enabled = false;
-			buttonMarkFavoriteMod.Enabled = false;
+			buttonLaunch.Visible = false;
 
-			modMainTitleLabel.Text = string.Empty;
-			modStatusLabel.Text = string.Empty;
+			buttonExplore.Enabled = false;
+			buttonExplore.Visible = false;
+
+			modQuickNavigationButton.Enabled = false;
+			modQuickNavigationButton.Visible = false;
+
+			buttonMarkFavoriteMod.Enabled = false;
+			buttonMarkFavoriteMod.Visible = false;
+
+			modMainTitleLabel.Text = "OpenTWEMP Community Browser";
+			modStatusLabel.Text = Application.ExecutablePath;
 
 			if (modLogoPictureBox.Image != null)
 			{
@@ -453,15 +469,31 @@ namespace TWE_Launcher.Forms
 		private void EnableModUIControls()
 		{
 			groupBoxLauncherProviders.Enabled = true;
+			groupBoxLauncherProviders.Visible = true;
+
 			groupBoxConfigProfiles.Enabled = true;
+			groupBoxConfigProfiles.Visible = true;
+
 			groupBoxConfigLaunchMode.Enabled = true;
+			groupBoxConfigLaunchMode.Visible = true;
+
 			groupBoxConfigLogMode.Enabled = true;
+			groupBoxConfigLogMode.Visible = true;
+
 			groupBoxConfigCleanerMode.Enabled = true;
+			groupBoxConfigCleanerMode.Visible = true;
 
 			buttonLaunch.Enabled = true;
+			buttonLaunch.Visible = true;
+
 			buttonExplore.Enabled = true;
+			buttonExplore.Visible = true;
+
 			modQuickNavigationButton.Enabled = true;
+			modQuickNavigationButton.Visible = true;
+
 			buttonMarkFavoriteMod.Enabled = true;
+			buttonMarkFavoriteMod.Visible = true;
 		}
 
 		private void changeLauncherGUIWhenGameStarting()
