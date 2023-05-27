@@ -446,6 +446,8 @@ namespace TWE_Launcher.Forms
 
 		private void DisableModUIControls()
 		{
+			groupBoxLauncherProviders.Enabled = false;
+			groupBoxConfigProfiles.Enabled = false;
 			groupBoxConfigLaunchMode.Enabled = false;
 			groupBoxConfigLogMode.Enabled = false;
 			groupBoxConfigCleanerMode.Enabled = false;
@@ -457,6 +459,8 @@ namespace TWE_Launcher.Forms
 
 		private void EnableModUIControls()
 		{
+			groupBoxLauncherProviders.Enabled = true;
+			groupBoxConfigProfiles.Enabled = true;
 			groupBoxConfigLaunchMode.Enabled = true;
 			groupBoxConfigLogMode.Enabled = true;
 			groupBoxConfigCleanerMode.Enabled = true;
