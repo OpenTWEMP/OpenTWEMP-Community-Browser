@@ -1,4 +1,7 @@
-﻿using System;
+﻿#define FUTURE_SUPPORT
+#undef FUTURE_SUPPORT
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -11,34 +14,42 @@ namespace TWE_Launcher.Models
 		public const string MOD_PRESET_FOLDERNAME = ".twemp";
 		private const string MOD_PRESET_FILENAME = "mod_support.json";
 
-		private const string MOD_TITLE = "My_Mod_Title";
-		private const string MOD_VERSION = "My_Mod_Version";
+		private const string MOD_TITLE = "My_Title";
+		private const string MOD_VERSION = "My_Version";
 		private const string LOGOTYPE_IMAGE = "DEFAULT.png";
-		private const string BACKGROUND_SOUNDTRACK = "My_Background_SoundTrack.mp3";
-		private const string LAUNCHER_PROVIDER_M2TWEOP = "M2TWEOP GUI.exe";
-		private const string LAUNCHER_PROVIDER_NATIVE_SETUP = "My_Setup_Program.exe";
+
 		private const string LAUNCHER_PROVIDER_NATIVE_BATCH = "My_Batch_Script.bat";
+		private const string LAUNCHER_PROVIDER_NATIVE_SETUP = "My_Setup_Program.exe";
+		private const string LAUNCHER_PROVIDER_M2TWEOP = "M2TWEOP GUI.exe";
 
 		public string ModTitle { get; set; }
 		public string ModVersion { get; set; }
 		public string LogotypeImage { get; set; }
-		public string BackgroundSoundTrack { get; set; }
-		public string LauncherProvider_M2TWEOP { get; set; }
-		public string LauncherProvider_NativeSetup { get; set; }
+
 		public string LauncherProvider_NativeBatch { get; set; }
+		public string LauncherProvider_NativeSetup { get; set; }
+		public string LauncherProvider_M2TWEOP { get; set; }
+
+#if FUTURE_SUPPORT
+		private const string BACKGROUND_SOUNDTRACK = "My_Background_SoundTrack.mp3";
+
+		public string BackgroundSoundTrack { get; set; }
+
 		public Dictionary<string, string> ModURLs { get; set; }
+#endif
 
 		public CustomModSupportPreset()
 		{
 			ModTitle = MOD_TITLE;
 			ModVersion = MOD_VERSION;
-
 			LogotypeImage = LOGOTYPE_IMAGE;
-			BackgroundSoundTrack = BACKGROUND_SOUNDTRACK;
 
-			LauncherProvider_M2TWEOP = LAUNCHER_PROVIDER_M2TWEOP;
-			LauncherProvider_NativeSetup = LAUNCHER_PROVIDER_NATIVE_SETUP;
 			LauncherProvider_NativeBatch = LAUNCHER_PROVIDER_NATIVE_BATCH;
+			LauncherProvider_NativeSetup = LAUNCHER_PROVIDER_NATIVE_SETUP;
+			LauncherProvider_M2TWEOP = LAUNCHER_PROVIDER_M2TWEOP;
+
+#if FUTURE_SUPPORT
+			BackgroundSoundTrack = BACKGROUND_SOUNDTRACK;
 
 			ModURLs = new Dictionary<string, string>()
 			{
@@ -46,6 +57,7 @@ namespace TWE_Launcher.Models
 				{ "URL2", "file://my-example-url2.mod" },
 				{ "URL3", "file://my-example-url3.mod" },
 			};
+#endif
 		}
 
 		public static CustomModSupportPreset CreatePresetByDefault(string modificationURI)
@@ -96,6 +108,12 @@ namespace TWE_Launcher.Models
 			string modPresetFilePath = Path.Combine(modificationURI, MOD_PRESET_FOLDERNAME, MOD_PRESET_FILENAME);
 			string presetJsonText = File.ReadAllText(modPresetFilePath);
 			return JsonConvert.DeserializeObject<CustomModSupportPreset>(presetJsonText);
+		}
+
+
+		public static string GetPresetFilePath(string modificationURI)
+		{
+			return Path.Combine(modificationURI, MOD_PRESET_FOLDERNAME, MOD_PRESET_FILENAME);
 		}
 	}
 }

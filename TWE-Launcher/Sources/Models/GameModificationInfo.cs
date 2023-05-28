@@ -21,7 +21,6 @@ namespace TWE_Launcher.Models
 		public string ModCfgRelativePath { get; }
 		public string LogFileName { get; }
 		public string LogFileRelativePath { get; }
-		//private string modLogotypeImage { get; }
 
 		public CustomModSupportPreset CurrentPreset { get; }
 
@@ -43,15 +42,21 @@ namespace TWE_Launcher.Models
 			LogFileName = InitializeLogFileName();
 			LogFileRelativePath = InitializeLogFileRelativePath(ModCfgRelativePath, LogFileName);
 
-#if LEGACY_LOGO_CACHING_IMPL
-			modLogotypeImage = InitializeCachedLogotypeImage(Location);
-#endif
-
 			CurrentPreset = InitializeModificationPreset(modificationURI);
 
 			IsFavoriteMod = false;
 		}
 
+
+		public string GetPresetFilePath()
+		{
+			return CustomModSupportPreset.GetPresetFilePath(Location);
+		}
+
+		public string GetModPresetLogoImageFilePath()
+		{
+			return Path.Combine(Location, CustomModSupportPreset.MOD_PRESET_FOLDERNAME, CurrentPreset.LogotypeImage);
+		}
 
 		public bool CanBeLaunchedViaNativeBatch()
 		{
@@ -66,42 +71,6 @@ namespace TWE_Launcher.Models
 		public bool CanBeLaunchedViaM2TWEOP()
 		{
 			return File.Exists(Path.Combine(Location, CurrentPreset.LauncherProvider_M2TWEOP));
-		}
-
-
-		public void ShowModVisitingCard(PictureBox modLogotypePictureBox, Label modStatusLabel)
-		{
-			const string modLogoErrorMsg = "Add your own logotype image to '.twemp' folder and replace default 'DEFAULT.png' value into 'mod_support.json'.";
-
-			if (modLogotypePictureBox.Image != null)
-			{
-				modLogotypePictureBox.Image.Dispose();
-				modLogotypePictureBox.Image = null;
-			}
-
-
-			string modPresetLogoImageFilePath = Path.Combine(Location, CustomModSupportPreset.MOD_PRESET_FOLDERNAME, CurrentPreset.LogotypeImage);
-
-			if (File.Exists(modPresetLogoImageFilePath))
-			{
-				modLogotypePictureBox.Load(modPresetLogoImageFilePath);
-				//modLogotypePictureBox.Visible = true;
-				modStatusLabel.Text = Location;
-			}
-
-#if LEGACY_LOGO_CACHING_IMPL
-			if (File.Exists(modLogotypeImage))
-			{
-				modLogotypePictureBox.Load(modLogotypeImage);
-				modLogotypePictureBox.Visible = true;
-				modStatusLabel.Text = Location;
-			}
-#endif
-			else
-			{
-				//modLogotypePictureBox.Visible = true;
-				modStatusLabel.Text = modLogoErrorMsg;
-			}
 		}
 
 

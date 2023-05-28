@@ -176,11 +176,26 @@ namespace TWE_Launcher.Forms
 				{
 					GameModificationInfo selectedModification = FindModBySelectedNodeFromCollection(e.Node);
 
-					selectedModification.ShowModVisitingCard(modLogoPictureBox, modStatusLabel);
+					
 
 					if (Program.UseExperimentalFeatures)
 					{
-						modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle;
+						modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle + " [" + selectedModification.CurrentPreset.ModVersion + "]";
+						modStatusLabel.Text = "Customize Your Mod via Preset Configuration File: " + selectedModification.GetPresetFilePath();
+						
+						if (modLogoPictureBox.Image != null)
+						{
+							modLogoPictureBox.Image.Dispose();
+							modLogoPictureBox.Image = null;
+						}
+
+						string modLogoImageFilePath = selectedModification.GetModPresetLogoImageFilePath();
+
+						if (File.Exists(modLogoImageFilePath))
+						{
+							modLogoPictureBox.Load(modLogoImageFilePath);
+						}
+
 
 						if (selectedModification.CanBeLaunchedViaNativeBatch())
 						{
@@ -221,6 +236,7 @@ namespace TWE_Launcher.Forms
 					else
 					{
 						modMainTitleLabel.Text = selectedModification.ShortName;
+						modStatusLabel.Text = selectedModification.Location;
 					}
 
 					EnableModUIControls();
