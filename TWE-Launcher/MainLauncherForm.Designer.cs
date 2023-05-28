@@ -463,7 +463,7 @@ namespace TWE_Launcher.Forms
 			modLogoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			modLogoPictureBox.BackColor = System.Drawing.Color.Transparent;
 			modLogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			modLogoPictureBox.Image = Properties.Resources.BROWSER_LOGO;
+			modLogoPictureBox.Image = Properties.Resources.OPENTWEMP_LOGO;
 			modLogoPictureBox.Location = new System.Drawing.Point(340, 84);
 			modLogoPictureBox.Name = "modLogoPictureBox";
 			modLogoPictureBox.Size = new System.Drawing.Size(372, 353);

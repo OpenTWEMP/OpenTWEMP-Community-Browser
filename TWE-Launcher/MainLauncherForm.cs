@@ -170,30 +170,34 @@ namespace TWE_Launcher.Forms
 			}
 			else
 			{
-				if (IsNodeOfFavoriteCollection(e.Node) || 
+				if (IsNodeOfFavoriteCollection(e.Node) ||
 						IsNodeOfModificationFromCustomCollection(e.Node) ||
 							IsNodeOfModificationFromAllModsCollection(e.Node))
 				{
 					GameModificationInfo selectedModification = FindModBySelectedNodeFromCollection(e.Node);
 
-					
+
 
 					if (Program.UseExperimentalFeatures)
 					{
 						modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle + " [" + selectedModification.CurrentPreset.ModVersion + "]";
 						modStatusLabel.Text = "Customize Your Mod via Preset Configuration File: " + selectedModification.GetPresetFilePath();
-						
-						if (modLogoPictureBox.Image != null)
-						{
-							modLogoPictureBox.Image.Dispose();
-							modLogoPictureBox.Image = null;
-						}
 
 						string modLogoImageFilePath = selectedModification.GetModPresetLogoImageFilePath();
 
 						if (File.Exists(modLogoImageFilePath))
 						{
+							if (modLogoPictureBox.Image != null)
+							{
+								modLogoPictureBox.Image.Dispose();
+								modLogoPictureBox.Image = null;
+							}
+
 							modLogoPictureBox.Load(modLogoImageFilePath);
+						}
+						else
+						{
+							modLogoPictureBox.Image = Resources.TWEMP_PRESETS_ON;
 						}
 
 
@@ -237,6 +241,7 @@ namespace TWE_Launcher.Forms
 					{
 						modMainTitleLabel.Text = selectedModification.ShortName;
 						modStatusLabel.Text = selectedModification.Location;
+						modLogoPictureBox.Image = Resources.TWEMP_PRESETS_OFF;
 					}
 
 					EnableModUIControls();
@@ -487,7 +492,7 @@ namespace TWE_Launcher.Forms
 			if (modLogoPictureBox.Image != null)
 			{
 				modLogoPictureBox.Image.Dispose();
-				modLogoPictureBox.Image = Resources.BROWSER_LOGO;
+				modLogoPictureBox.Image = Resources.OPENTWEMP_LOGO;
 			}
 		}
 
