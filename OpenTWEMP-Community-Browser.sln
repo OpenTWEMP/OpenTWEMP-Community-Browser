@@ -11,12 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWE-BrowserUnitTesting", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWE-WPF-Assets", "TWE-WPF-Assets\TWE-WPF-Assets.csproj", "{2757568F-98BA-42BB-B330-75717AD95233}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonsterClient", "MonsterClient\MonsterClient.csproj", "{2C889C3C-35E2-4D4A-B197-EDEC387E7D83}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonsterEngine", "MonsterEngine\MonsterEngine.csproj", "{1F45FD5C-D710-41CD-A0DD-5B948DF41FFF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonsterLabEnv", "MonsterLabEnv\MonsterLabEnv.csproj", "{5C67337B-23E1-4935-B925-26060E17A3E5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,18 +33,6 @@ Global
 		{2757568F-98BA-42BB-B330-75717AD95233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2757568F-98BA-42BB-B330-75717AD95233}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2757568F-98BA-42BB-B330-75717AD95233}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C889C3C-35E2-4D4A-B197-EDEC387E7D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C889C3C-35E2-4D4A-B197-EDEC387E7D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C889C3C-35E2-4D4A-B197-EDEC387E7D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C889C3C-35E2-4D4A-B197-EDEC387E7D83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F45FD5C-D710-41CD-A0DD-5B948DF41FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F45FD5C-D710-41CD-A0DD-5B948DF41FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F45FD5C-D710-41CD-A0DD-5B948DF41FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F45FD5C-D710-41CD-A0DD-5B948DF41FFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C67337B-23E1-4935-B925-26060E17A3E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C67337B-23E1-4935-B925-26060E17A3E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C67337B-23E1-4935-B925-26060E17A3E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C67337B-23E1-4935-B925-26060E17A3E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
