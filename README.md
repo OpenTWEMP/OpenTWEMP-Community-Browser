@@ -1,6 +1,6 @@
-# OpenTWEMP-Community-Browser
+# OpenTWEMP Community Browser
 
-This is an initial readme file for OpenTWEMP Community Browser project.
+OpenTWEMP Community Browser implements a universal launcher application for M2TW mods.
 
 ## Current Development
 
