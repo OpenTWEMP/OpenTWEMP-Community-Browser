@@ -12,9 +12,11 @@ namespace TWE_Launcher.Models
 	public class CustomModSupportPreset
 	{
 		public const string MOD_PRESET_FOLDERNAME = ".twemp";
-		private const string MOD_PRESET_FILENAME = "mod_support.json";
 
-		private const string MOD_TITLE = "My_Title";
+		private const string MOD_PRESET_FILENAME = "mod_support.json";
+        private const string MOD_DEFAULT_LOGO_FILENAME = "DEFAULT.png";
+
+        private const string MOD_TITLE = "My_Title";
 		private const string MOD_VERSION = "My_Version";
 		private const string LOGOTYPE_IMAGE = "DEFAULT.png";
 
@@ -78,8 +80,8 @@ namespace TWE_Launcher.Models
 
 			string supportAssetsDirectoryPath = Program.AppSupportDirectoryInfo.FullName;
 
-			string srcLogoImageFilePath = Path.Combine(supportAssetsDirectoryPath, AppGameSupportManager.M2TWK_DEFAULT_LOGO_FILENAME);
-			string destLogoImageFilePath = Path.Combine(presetHomeDirectoryPath, AppGameSupportManager.M2TWK_DEFAULT_LOGO_FILENAME);
+			string srcLogoImageFilePath = Path.Combine(supportAssetsDirectoryPath, MOD_DEFAULT_LOGO_FILENAME);
+			string destLogoImageFilePath = Path.Combine(presetHomeDirectoryPath, MOD_DEFAULT_LOGO_FILENAME);
 
 			if (File.Exists(srcLogoImageFilePath))
 			{
