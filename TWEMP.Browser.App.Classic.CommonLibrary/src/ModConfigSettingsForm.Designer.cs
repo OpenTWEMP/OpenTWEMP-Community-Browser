@@ -1,4 +1,4 @@
-﻿namespace TWE_Launcher.Forms
+﻿namespace TWEMP.Browser.App.Classic.CommonLibrary
 {
 	partial class ModConfigSettingsForm
 	{
@@ -64,7 +64,7 @@
 			saveConfigSettingsButton.TabIndex = 0;
 			saveConfigSettingsButton.Text = "SAVE CONFIG SETTINGS";
 			saveConfigSettingsButton.UseVisualStyleBackColor = true;
-			saveConfigSettingsButton.Click += saveConfigSettingsButton_Click;
+			saveConfigSettingsButton.Click += SaveConfigSettingsButton_Click;
 			// 
 			// tabControl1
 			// 
@@ -207,7 +207,7 @@
 			resetConfigSettingsButton.TabIndex = 2;
 			resetConfigSettingsButton.Text = "RESET CONFIG SETTINGS";
 			resetConfigSettingsButton.UseVisualStyleBackColor = true;
-			resetConfigSettingsButton.Click += resetConfigSettingsButton_Click;
+			resetConfigSettingsButton.Click += ResetConfigSettingsButton_Click;
 			// 
 			// importConfigSettingsButton
 			// 
@@ -217,7 +217,7 @@
 			importConfigSettingsButton.TabIndex = 3;
 			importConfigSettingsButton.Text = "IMPORT CONFIG SETTINGS";
 			importConfigSettingsButton.UseVisualStyleBackColor = true;
-			importConfigSettingsButton.Click += importConfigSettingsButton_Click;
+			importConfigSettingsButton.Click += ImportConfigSettingsButton_Click;
 			// 
 			// exportConfigSettingsButton
 			// 
@@ -227,7 +227,7 @@
 			exportConfigSettingsButton.TabIndex = 4;
 			exportConfigSettingsButton.Text = "EXPORT CONFIG SETTINGS";
 			exportConfigSettingsButton.UseVisualStyleBackColor = true;
-			exportConfigSettingsButton.Click += exportConfigSettingsButton_Click;
+			exportConfigSettingsButton.Click += ExportConfigSettingsButton_Click;
 			// 
 			// settingDescriptionLabel
 			// 
@@ -246,7 +246,7 @@
 			exitConfigSettingsButton.TabIndex = 6;
 			exitConfigSettingsButton.Text = "RETURN TO MAIN WINDOW";
 			exitConfigSettingsButton.UseVisualStyleBackColor = true;
-			exitConfigSettingsButton.Click += exitConfigSettingsButton_Click;
+			exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
 			// 
 			// ModConfigSettingsForm
 			// 
