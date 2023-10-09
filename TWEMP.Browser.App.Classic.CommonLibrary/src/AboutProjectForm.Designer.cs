@@ -1,4 +1,4 @@
-﻿namespace TWE_Launcher.Forms
+﻿namespace TWEMP.Browser.App.Classic.CommonLibrary
 {
 	partial class AboutProjectForm
 	{
@@ -77,7 +77,7 @@
 			aboutProjectNameLabel3.Name = "aboutProjectNameLabel3";
 			aboutProjectNameLabel3.Size = new System.Drawing.Size(486, 45);
 			aboutProjectNameLabel3.TabIndex = 13;
-			aboutProjectNameLabel3.Text = "Version Preview 2023.2";
+			aboutProjectNameLabel3.Text = "Version Preview 2023.3";
 			aboutProjectNameLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// AboutProjectForm

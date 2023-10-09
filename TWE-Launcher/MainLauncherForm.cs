@@ -752,8 +752,11 @@ namespace TWE_Launcher.Forms
 
 		private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+#if DISABLE_WHEN_MIGRATION
 			var aboutProjectForm = new AboutProjectForm();
 			aboutProjectForm.Show();
+#endif
+            MessageBox.Show("AboutProjectForm", "TEST", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 
