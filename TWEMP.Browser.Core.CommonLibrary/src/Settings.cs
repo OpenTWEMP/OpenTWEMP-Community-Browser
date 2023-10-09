@@ -1,24 +1,18 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Windows.Forms;
-using TWE_Launcher.Models;
+﻿using System.Text;
 
-namespace TWE_Launcher
+namespace TWEMP.Browser.Core.CommonLibrary
 {
-	public class Settings
+	public static class Settings
 	{
-		public static List<GameSetupInfo> GameInstallations { get; }
-		public static List<GameModificationInfo> TotalModificationsList { get; }
-		public static CustomModsCollection FavoriteModsCollection { get; set; }
-		public static List<CustomModsCollection> UserCollections { get; set; }
-
-		public static string CacheDirectoryPath { get; }
+		private const string APP_SUPPORT_DIRECTORY_NAME = "support";
 
 		private static readonly string gameSetupConfFile;
 
 		static Settings()
 		{
+			string appSupportDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), APP_SUPPORT_DIRECTORY_NAME);
+			AppSupportDirectoryInfo = new DirectoryInfo(appSupportDirectoryPath);
+
 			GameInstallations = new List<GameSetupInfo>();
 			TotalModificationsList = new List<GameModificationInfo>();
 
@@ -28,6 +22,18 @@ namespace TWE_Launcher
 			FavoriteModsCollection = CustomModsCollection.LoadFavoriteCollectionFromCache(CacheDirectoryPath);
 			UserCollections = CustomModsCollection.LoadExistingCollectionsFromCache(CacheDirectoryPath);
 		}
+
+		public static DirectoryInfo AppSupportDirectoryInfo { get; }
+
+		public static List<GameSetupInfo> GameInstallations { get; }
+
+		public static List<GameModificationInfo> TotalModificationsList { get; }
+
+		public static CustomModsCollection FavoriteModsCollection { get; set; }
+
+		public static List<CustomModsCollection> UserCollections { get; set; }
+
+		public static string CacheDirectoryPath { get; }
 
 		private static string GetCacheDirectory()
 		{
@@ -127,7 +133,7 @@ namespace TWE_Launcher
 				}
 			}
 
-			return null;
+			return null!;
 		}
 
 
@@ -186,7 +192,7 @@ namespace TWE_Launcher
 			string elemBegTag = "<" + rootElementName + ">";
 			string elemEndTag = "</" + rootElementName + ">";
 
-			writer.WriteLine($"{elemBegTag}{Application.ProductVersion}{elemEndTag}");
+			writer.WriteLine($"{elemBegTag}{rootElementName}{elemEndTag}"); // paste config version
 
 			writer.Close();
 			stream.Close();

@@ -1,6 +1,6 @@
-﻿namespace TWEMP.Browser.App.Classic.WinForms
+﻿namespace TWEMP.Browser.App.Classic
 {
-    partial class Form1
+    partial class MainBrowserForm
     {
         /// <summary>
         ///  Required designer variable.

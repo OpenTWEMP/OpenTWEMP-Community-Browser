@@ -1,4 +1,4 @@
-﻿namespace TWE_Launcher.Forms
+﻿namespace TWEMP.Browser.App.Classic.CommonLibrary
 {
 	partial class AddNewGameSetupForm
 	{
@@ -59,7 +59,7 @@
 			this.saveButton.TabIndex = 0;
 			this.saveButton.Text = "OK";
 			this.saveButton.UseVisualStyleBackColor = true;
-			this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+			this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
 			// 
 			// cancelButton
 			// 
@@ -69,7 +69,7 @@
 			this.cancelButton.TabIndex = 1;
 			this.cancelButton.Text = "Cancel";
 			this.cancelButton.UseVisualStyleBackColor = true;
-			this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+			this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
 			// gameSetupNameTextBox
 			// 
@@ -108,7 +108,7 @@
 			this.modcentersListBox.Name = "modcentersListBox";
 			this.modcentersListBox.Size = new System.Drawing.Size(396, 214);
 			this.modcentersListBox.TabIndex = 24;
-			this.modcentersListBox.SelectedIndexChanged += new System.EventHandler(this.modcentersListBox_SelectedIndexChanged);
+			this.modcentersListBox.SelectedIndexChanged += new System.EventHandler(this.ModcentersListBox_SelectedIndexChanged);
 			// 
 			// modcenterAppendButton
 			// 
@@ -118,7 +118,7 @@
 			this.modcenterAppendButton.TabIndex = 14;
 			this.modcenterAppendButton.Text = "Append ModCenter";
 			this.modcenterAppendButton.UseVisualStyleBackColor = true;
-			this.modcenterAppendButton.Click += new System.EventHandler(this.modcenterAppendButton_Click);
+			this.modcenterAppendButton.Click += new System.EventHandler(this.ModcenterAppendButton_Click);
 			// 
 			// modcenterRemoveButton
 			// 
@@ -129,7 +129,7 @@
 			this.modcenterRemoveButton.TabIndex = 15;
 			this.modcenterRemoveButton.Text = "Remove ModCenter";
 			this.modcenterRemoveButton.UseVisualStyleBackColor = true;
-			this.modcenterRemoveButton.Click += new System.EventHandler(this.modcenterRemoveButton_Click);
+			this.modcenterRemoveButton.Click += new System.EventHandler(this.ModcenterRemoveButton_Click);
 			// 
 			// gameExecutableSelectPathButton
 			// 
@@ -139,7 +139,7 @@
 			this.gameExecutableSelectPathButton.TabIndex = 11;
 			this.gameExecutableSelectPathButton.Text = "Select";
 			this.gameExecutableSelectPathButton.UseVisualStyleBackColor = true;
-			this.gameExecutableSelectPathButton.Click += new System.EventHandler(this.gameExecutableSelectPathButton_Click);
+			this.gameExecutableSelectPathButton.Click += new System.EventHandler(this.GameExecutableSelectPathButton_Click);
 			// 
 			// gameExecutablePathLabel
 			// 
@@ -198,7 +198,7 @@
 			this.setupNameResetButton.TabIndex = 14;
 			this.setupNameResetButton.Text = "Reset";
 			this.setupNameResetButton.UseVisualStyleBackColor = true;
-			this.setupNameResetButton.Click += new System.EventHandler(this.setupNameResetButton_Click);
+			this.setupNameResetButton.Click += new System.EventHandler(this.SetupNameResetButton_Click);
 			// 
 			// panelGameSetupButtons
 			// 

@@ -1,4 +1,4 @@
-﻿namespace TWE_Launcher.Forms
+﻿namespace TWEMP.Browser.App.Classic.CommonLibrary
 {
 	partial class GameSetupConfigForm
 	{
@@ -44,7 +44,7 @@
 			setupPathAddButton.TabIndex = 0;
 			setupPathAddButton.Text = "ADD SETUP PATH";
 			setupPathAddButton.UseVisualStyleBackColor = true;
-			setupPathAddButton.Click += setupPathAddButton_Click;
+			setupPathAddButton.Click += SetupPathAddButton_Click;
 			// 
 			// setupPathDeleteButton
 			// 
@@ -55,7 +55,7 @@
 			setupPathDeleteButton.TabIndex = 2;
 			setupPathDeleteButton.Text = "DELETE SETUP PATH";
 			setupPathDeleteButton.UseVisualStyleBackColor = true;
-			setupPathDeleteButton.Click += setupPathDeleteButton_Click;
+			setupPathDeleteButton.Click += SetupPathDeleteButton_Click;
 			// 
 			// gameSetupPathsListBox
 			// 
@@ -65,8 +65,8 @@
 			gameSetupPathsListBox.Name = "gameSetupPathsListBox";
 			gameSetupPathsListBox.Size = new System.Drawing.Size(583, 289);
 			gameSetupPathsListBox.TabIndex = 4;
-			gameSetupPathsListBox.Click += gameSetupPathsListBox_Click;
-			gameSetupPathsListBox.SelectedIndexChanged += gameSetupPathsListBox_SelectedIndexChanged;
+			gameSetupPathsListBox.Click += GameSetupPathsListBox_Click;
+			gameSetupPathsListBox.SelectedIndexChanged += GameSetupPathsListBox_SelectedIndexChanged;
 			// 
 			// allPathsClearButton
 			// 
@@ -76,7 +76,7 @@
 			allPathsClearButton.TabIndex = 5;
 			allPathsClearButton.Text = "CLEAR ALL PATHS";
 			allPathsClearButton.UseVisualStyleBackColor = true;
-			allPathsClearButton.Click += allPathsClearButton_Click;
+			allPathsClearButton.Click += AllPathsClearButton_Click;
 			// 
 			// setupViewButton
 			// 
@@ -87,7 +87,7 @@
 			setupViewButton.TabIndex = 6;
 			setupViewButton.Text = "VIEW GAME SETUP INFO";
 			setupViewButton.UseVisualStyleBackColor = true;
-			setupViewButton.Click += setupViewButton_Click;
+			setupViewButton.Click += SetupViewButton_Click;
 			// 
 			// formOkButton
 			// 
@@ -97,7 +97,7 @@
 			formOkButton.TabIndex = 7;
 			formOkButton.Text = "OK";
 			formOkButton.UseVisualStyleBackColor = true;
-			formOkButton.Click += formOkButton_Click;
+			formOkButton.Click += FormOkButton_Click;
 			// 
 			// GameSetupConfigForm
 			// 

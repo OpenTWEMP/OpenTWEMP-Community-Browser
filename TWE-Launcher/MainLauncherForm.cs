@@ -5,7 +5,6 @@ using System.Drawing.Text;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using TWE_Launcher.Models;
 using TWE_Launcher.Properties;
 using TWE_Launcher.Sources.Models.Localizations;
 
@@ -13,29 +12,6 @@ namespace TWE_Launcher.Forms
 {
     public partial class MainLauncherForm : Form, ICanChangeMyLocalization
     {
-        public RadioButton LauncherProviderControl_M2TWEOP => radioButtonLauncherProvider_M2TWEOP;
-        public RadioButton LauncherProviderControl_NativeSetup => radioButtonLauncherProvider_NativeSetup;
-        public RadioButton LauncherProviderControl_BatchScript => radioButtonLauncherProvider_BatchScript;
-        public RadioButton LauncherProviderControl_TWEMP => radioButtonLauncherProvider_TWEMP;
-
-
-        public RadioButton RadioButton_FullScreenMode => radioButtonLaunchFullScreen;
-        public RadioButton RadioButton_WindowedMode => radioButtonLaunchWindowScreen;
-        public CheckBox CheckBox_Video => checkBoxVideo;
-        public CheckBox CheckBox_Borderless => checkBoxBorderless;
-
-        public RadioButton RadioButton_LogErrorAndTrace => radioButtonLogErrorAndTrace;
-
-        public RadioButton RadioButton_LogOnlyTrace => radioButtonLogOnlyTrace;
-        public RadioButton RadioButton_LogOnlyError => radioButtonLogOnlyError;
-
-        public CheckBox CheckBox_Cleaner_MapRWM => checkBoxCleaner_MapRWM;
-        public CheckBox CheckBox_Cleaner_textBIN => checkBoxCleaner_textBIN;
-        public CheckBox CheckBox_Cleaner_soundPacks => checkBoxCleaner_soundPacks;
-
-        public CheckBox CheckBox_LogHistory => checkBoxLogHistory;
-
-
         public MainLauncherForm()
         {
             InitializeComponent();
@@ -67,9 +43,9 @@ namespace TWE_Launcher.Forms
         public void UpdateModificationsTreeView()
         {
             treeViewGameMods.Enabled = false;
-
+#if DISABLE_WHEN_MIGRATION
             Settings.UpdateTotalModificationsList();
-
+#endif
             UpdateAllModificationsInTreeView();
             UpdateCustomCollectionsInTreeView();
             UpdateFavoriteCollectionInTreeView();
@@ -81,11 +57,13 @@ namespace TWE_Launcher.Forms
 
         private void UpdateFavoriteCollectionInTreeView()
         {
+#if DISABLE_WHEN_MIGRATION
             TreeNode favoriteCollectionNode = treeViewGameMods.Nodes[0];
             favoriteCollectionNode.Nodes.Clear();
             CreateFavoriteCollectionChildNodes(Settings.FavoriteModsCollection, favoriteCollectionNode);
+#endif
         }
-
+#if DISABLE_WHEN_MIGRATION
         private void CreateFavoriteCollectionChildNodes(CustomModsCollection favoriteCollection, TreeNode favoriteCollectionRootNode)
         {
             foreach (KeyValuePair<string, string> modPair in favoriteCollection.Modifications)
@@ -94,11 +72,12 @@ namespace TWE_Launcher.Forms
                 favoriteCollectionRootNode.Nodes.Add(modNode);
             }
         }
-
+#endif
 
 
         public void UpdateCustomCollectionsInTreeView()
         {
+#if DISABLE_WHEN_MIGRATION
             TreeNode customCollectionsNode = treeViewGameMods.Nodes[1];
             customCollectionsNode.Nodes.Clear();
 
@@ -106,8 +85,9 @@ namespace TWE_Launcher.Forms
             {
                 CreateCollectionNodeWithChilds(collection, customCollectionsNode);
             }
+#endif
         }
-
+#if DISABLE_WHEN_MIGRATION
         private void CreateCollectionNodeWithChilds(CustomModsCollection collection, TreeNode collectionsParentNode)
         {
             var collectionNode = CreateCollectionParentNode(collection);
@@ -125,7 +105,7 @@ namespace TWE_Launcher.Forms
         {
             return new TreeNode(collection.Name);
         }
-
+#endif
         private TreeNode CreateCollectionChildNode(string childNodeText)
         {
             var childNode = new TreeNode(childNodeText);
@@ -135,6 +115,7 @@ namespace TWE_Launcher.Forms
 
         private void UpdateAllModificationsInTreeView()
         {
+#if DISABLE_WHEN_MIGRATION
             TreeNode allModsNode = treeViewGameMods.Nodes[2];
             allModsNode.Nodes.Clear();
 
@@ -158,10 +139,12 @@ namespace TWE_Launcher.Forms
                     }
                 }
             }
+#endif
         }
 
         private void treeViewGameMods_AfterSelect(object sender, TreeViewEventArgs e)
         {
+#if DISABLE_WHEN_MIGRATION
             if (IsNotModificationNode(e.Node))
             {
                 ChangeSelectedNodeView(e.Node);
@@ -248,6 +231,7 @@ namespace TWE_Launcher.Forms
                     return;
                 }
             }
+#endif
         }
 
 
@@ -349,6 +333,7 @@ namespace TWE_Launcher.Forms
             return false;
         }
 
+#if DISABLE_WHEN_MIGRATION
         private GameModificationInfo FindModBySelectedNodeFromCollection(TreeNode selectedTreeNode)
         {
             return Settings.GetActiveModificationInfo(selectedTreeNode.Text);
@@ -364,6 +349,7 @@ namespace TWE_Launcher.Forms
 
             return currentModCenter.InstalledModifications[selectedTreeNode.Index];
         }
+#endif
 
 
         private void ChangeSelectedNodeView(TreeNode node)
@@ -384,6 +370,7 @@ namespace TWE_Launcher.Forms
 
         private void buttonMarkFavoriteMod_Click(object sender, EventArgs e)
         {
+#if DISABLE_WHEN_MIGRATION
             TreeNode modNode = treeViewGameMods.SelectedNode;
             GameModificationInfo selectedModInfo = FindModBySelectedNodeFromCollection(modNode);
 
@@ -429,15 +416,20 @@ namespace TWE_Launcher.Forms
                     }
                 }
             }
+#endif
+            MessageBox.Show("buttonMarkFavoriteMod_Click", "TEST", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
         private void buttonCollectionCreate_Click(object sender, EventArgs e)
         {
+#if DISABLE_WHEN_MIGRATION
             var collectionCreateForm = new CollectionCreateForm(this);
             collectionCreateForm.Show();
+#endif
+            MessageBox.Show("CollectionCreateForm", "TEST", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+#if DISABLE_WHEN_MIGRATION
         public void CreateModsCollectionTreeView(CustomModsCollection collection)
         {
             TreeNode customCollectionsRootNode = treeViewGameMods.Nodes[1];
@@ -449,11 +441,14 @@ namespace TWE_Launcher.Forms
                 createdCollectionNode.Nodes.Add(modChildNode);
             }
         }
-
+#endif
         private void buttonCollectionManage_Click(object sender, EventArgs e)
         {
+#if DISABLE_WHEN_MIGRATION
             var collectionManageForm = new CollectionManageForm(this);
             collectionManageForm.Show();
+#endif
+            MessageBox.Show("CollectionManageForm", "TEST", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -541,6 +536,7 @@ namespace TWE_Launcher.Forms
 
         private void buttonLaunch_Click(object sender, EventArgs e)
         {
+#if DISABLE_WHEN_MIGRATION
             changeLauncherGUIWhenGameStarting();
 
             TreeNode modNode = treeViewGameMods.SelectedNode;
@@ -567,12 +563,15 @@ namespace TWE_Launcher.Forms
             launchConfiguration.Execute();
 
             changeLauncherGUIWhenGameExiting();
+#endif
+
+            MessageBox.Show("buttonLaunch_Click", "TEST", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void modQuickNavigationButton_Click(object sender, EventArgs e)
         {
-            GameModificationInfo currentMod = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
 #if DISABLE_WHEN_MIGRATION
+            GameModificationInfo currentMod = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
 			var form = new ModQuickNavigatorForm(currentMod.Location);
 			form.ShowDialog();
 #endif
@@ -581,10 +580,11 @@ namespace TWE_Launcher.Forms
 
         private void buttonExplore_Click(object sender, EventArgs e)
         {
-            GameModificationInfo current_mod_info = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
 #if DISABLE_WHEN_MIGRATION
+            GameModificationInfo current_mod_info = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
 			SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location);
 #endif
+            MessageBox.Show("ShowFileSystemDirectory", "TEST", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -736,12 +736,15 @@ namespace TWE_Launcher.Forms
 
         private void gameSetupSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+#if DISABLE_WHEN_MIGRATION
             var gameSetupConfigForm = new GameSetupConfigForm(this);
 
             Enabled = false;
             Visible = false;
 
             gameSetupConfigForm.Show();
+#endif
+            MessageBox.Show("GameSetupConfigForm", "TEST", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void configSettingsToolStripMenuItem_Click(object sender, EventArgs e)

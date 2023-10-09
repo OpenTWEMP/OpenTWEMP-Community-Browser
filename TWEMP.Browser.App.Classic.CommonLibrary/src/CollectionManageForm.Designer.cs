@@ -1,4 +1,4 @@
-﻿namespace TWE_Launcher.Forms
+﻿namespace TWEMP.Browser.App.Classic.CommonLibrary
 {
 	partial class CollectionManageForm
 	{
@@ -45,7 +45,7 @@
 			buttonCollectionsSelectAll.TabIndex = 1;
 			buttonCollectionsSelectAll.Text = "Select All";
 			buttonCollectionsSelectAll.UseVisualStyleBackColor = true;
-			buttonCollectionsSelectAll.Click += buttonCollectionsSelectAll_Click;
+			buttonCollectionsSelectAll.Click += ButtonCollectionsSelectAll_Click;
 			// 
 			// collectionsCheckedListBox
 			// 
@@ -73,7 +73,7 @@
 			buttonCollectionsDelete.TabIndex = 6;
 			buttonCollectionsDelete.Text = "Delete Selected";
 			buttonCollectionsDelete.UseVisualStyleBackColor = true;
-			buttonCollectionsDelete.Click += buttonCollectionsDelete_Click;
+			buttonCollectionsDelete.Click += ButtonCollectionsDelete_Click;
 			// 
 			// groupBoxCollectionsDelete
 			// 
@@ -97,7 +97,7 @@
 			buttonCollectionsDeselectAll.TabIndex = 7;
 			buttonCollectionsDeselectAll.Text = "Deselect All";
 			buttonCollectionsDeselectAll.UseVisualStyleBackColor = true;
-			buttonCollectionsDeselectAll.Click += buttonCollectionsDeselectAll_Click;
+			buttonCollectionsDeselectAll.Click += ButtonCollectionsDeselectAll_Click;
 			// 
 			// CollectionManageForm
 			// 

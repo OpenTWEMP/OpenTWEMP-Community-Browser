@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="src\" />
+    <ProjectReference Include="..\TWEMP.Browser.App.Classic.CommonLibrary\TWEMP.Browser.App.Classic.CommonLibrary.csproj" />
+    <ProjectReference Include="..\TWEMP.Browser.Core.CommonLibrary\TWEMP.Browser.Core.CommonLibrary.csproj" />
   </ItemGroup>
 
 </Project>

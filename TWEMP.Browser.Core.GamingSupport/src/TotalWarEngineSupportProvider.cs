@@ -3,11 +3,42 @@
 
 using System.IO;
 
-namespace TWE_Launcher.Models.GamesSupport
+namespace TWEMP.Browser.Core.GamingSupport
 {
-	public static class GameProvider_M2TW
+	public static class TotalWarEngineSupportProvider
 	{
-		public const string GAME_EXECUTABLE_BASENAME_CLASSIC1 = "medieval2";
+        public const string ModDataFolderName = "data";
+
+        public const string ModSavesFolderName = "saves";
+
+        public const string ModLogsFolderName = "logs";
+
+        public const string DataTextFolderName = "text";
+
+        public const string DataLoadingScreenFolderName = "loading_screen";
+
+        public const string DataUiFolderName = "ui";
+
+        public const string DataFmvFolderName = "fmv";
+
+        public const string DataSoundsFolderName = "sounds";
+
+        public const string DataUnitModelsFolderName = "unit_models";
+
+        public const string DataUnitSpritesFolderName = "unit_sprites";
+
+        public const string DataAnimationsFolderName = "animations";
+
+        public const string DataBannersFolderName = "banners";
+
+        public const string DataModelsStratFolderName = "models_strat";
+
+        public const string WorldMapsBaseFolderName = "world\\maps\\base";
+
+        public const string WorldMapsCampaignFolderName = "world\\maps\\campaign\\imperial_campaign";
+
+
+        public const string GAME_EXECUTABLE_BASENAME_CLASSIC1 = "medieval2";
 		public const string GAME_EXECUTABLE_BASENAME_CLASSIC2 = "kingdoms";
 		public const string GAME_EXECUTABLE_BASENAME_STEAM = "medieval2";
 
