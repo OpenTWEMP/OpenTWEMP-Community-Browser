@@ -81,7 +81,7 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 		currentBrowser.UpdateLocalizationForGUIControls();
 
 		Settings.UseExperimentalFeatures = activatePresetsCheckBox.Checked;
-		currentBrowser.UpdateExperimentalGUIChanges();
+		currentBrowser.UpdateExperimentalGUIChanges(activatePresetsCheckBox.Checked);
 
 		Close();
 	}

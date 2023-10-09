@@ -111,7 +111,7 @@ namespace TWEMP.Browser.App.Classic
             buttonLaunch.TabIndex = 0;
             buttonLaunch.Text = "LAUNCH";
             buttonLaunch.UseVisualStyleBackColor = false;
-            buttonLaunch.Click += buttonLaunch_Click;
+            buttonLaunch.Click += ButtonLaunch_Click;
             // 
             // panelLauncherOptions
             // 
@@ -155,7 +155,7 @@ namespace TWEMP.Browser.App.Classic
             radioButtonConfigProfile_Modding.TabStop = true;
             radioButtonConfigProfile_Modding.Text = "MODDING MODE";
             radioButtonConfigProfile_Modding.UseVisualStyleBackColor = false;
-            radioButtonConfigProfile_Modding.CheckedChanged += radioButtonConfigProfile_Modding_CheckedChanged;
+            radioButtonConfigProfile_Modding.CheckedChanged += RadioButtonConfigProfile_Modding_CheckedChanged;
             // 
             // radioButtonConfigProfile_Gaming
             // 
@@ -167,7 +167,7 @@ namespace TWEMP.Browser.App.Classic
             radioButtonConfigProfile_Gaming.TabIndex = 0;
             radioButtonConfigProfile_Gaming.Text = "GAMING MODE";
             radioButtonConfigProfile_Gaming.UseVisualStyleBackColor = false;
-            radioButtonConfigProfile_Gaming.CheckedChanged += radioButtonConfigProfile_Gaming_CheckedChanged;
+            radioButtonConfigProfile_Gaming.CheckedChanged += RadioButtonConfigProfile_Gaming_CheckedChanged;
             // 
             // groupBoxLauncherProviders
             // 
@@ -193,7 +193,7 @@ namespace TWEMP.Browser.App.Classic
             radioButtonLauncherProvider_TWEMP.TabStop = true;
             radioButtonLauncherProvider_TWEMP.Text = "Launch Game via TWEMP Launcher";
             radioButtonLauncherProvider_TWEMP.UseVisualStyleBackColor = true;
-            radioButtonLauncherProvider_TWEMP.CheckedChanged += radioButtonLauncherProvider_TWEMP_CheckedChanged;
+            radioButtonLauncherProvider_TWEMP.CheckedChanged += RadioButtonLauncherProvider_TWEMP_CheckedChanged;
             // 
             // radioButtonLauncherProvider_BatchScript
             // 
@@ -204,7 +204,7 @@ namespace TWEMP.Browser.App.Classic
             radioButtonLauncherProvider_BatchScript.TabIndex = 2;
             radioButtonLauncherProvider_BatchScript.Text = "Launch Game via Batch Script";
             radioButtonLauncherProvider_BatchScript.UseVisualStyleBackColor = true;
-            radioButtonLauncherProvider_BatchScript.CheckedChanged += radioButtonLauncherProvider_BatchScript_CheckedChanged;
+            radioButtonLauncherProvider_BatchScript.CheckedChanged += RadioButtonLauncherProvider_BatchScript_CheckedChanged;
             // 
             // radioButtonLauncherProvider_NativeSetup
             // 
@@ -215,7 +215,7 @@ namespace TWEMP.Browser.App.Classic
             radioButtonLauncherProvider_NativeSetup.TabIndex = 1;
             radioButtonLauncherProvider_NativeSetup.Text = "Launch Game via Native Setup";
             radioButtonLauncherProvider_NativeSetup.UseVisualStyleBackColor = true;
-            radioButtonLauncherProvider_NativeSetup.CheckedChanged += radioButtonLauncherProvider_NativeSetup_CheckedChanged;
+            radioButtonLauncherProvider_NativeSetup.CheckedChanged += RadioButtonLauncherProvider_NativeSetup_CheckedChanged;
             // 
             // radioButtonLauncherProvider_M2TWEOP
             // 
@@ -226,7 +226,7 @@ namespace TWEMP.Browser.App.Classic
             radioButtonLauncherProvider_M2TWEOP.TabIndex = 0;
             radioButtonLauncherProvider_M2TWEOP.Text = "Launch Game via M2TWEOP GUI";
             radioButtonLauncherProvider_M2TWEOP.UseVisualStyleBackColor = true;
-            radioButtonLauncherProvider_M2TWEOP.CheckedChanged += radioButtonLauncherProvider_M2TWEOP_CheckedChanged;
+            radioButtonLauncherProvider_M2TWEOP.CheckedChanged += RadioButtonLauncherProvider_M2TWEOP_CheckedChanged;
             // 
             // groupBoxConfigCleanerMode
             // 
@@ -416,7 +416,7 @@ namespace TWEMP.Browser.App.Classic
             buttonExplore.TabIndex = 8;
             buttonExplore.Text = "MOD HOME FOLDER";
             buttonExplore.UseVisualStyleBackColor = false;
-            buttonExplore.Click += buttonExplore_Click;
+            buttonExplore.Click += ButtonExplore_Click;
             // 
             // modQuickNavigationButton
             // 
@@ -433,7 +433,7 @@ namespace TWEMP.Browser.App.Classic
             modQuickNavigationButton.TabIndex = 7;
             modQuickNavigationButton.Text = "MOD QUICK NAVIGATION";
             modQuickNavigationButton.UseVisualStyleBackColor = false;
-            modQuickNavigationButton.Click += modQuickNavigationButton_Click;
+            modQuickNavigationButton.Click += ModQuickNavigationButton_Click;
             // 
             // panelLauncherToolkit
             // 
@@ -516,7 +516,7 @@ namespace TWEMP.Browser.App.Classic
             gameSetupSettingsToolStripMenuItem.Name = "gameSetupSettingsToolStripMenuItem";
             gameSetupSettingsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             gameSetupSettingsToolStripMenuItem.Text = "Game Setup Settings";
-            gameSetupSettingsToolStripMenuItem.Click += gameSetupSettingsToolStripMenuItem_Click;
+            gameSetupSettingsToolStripMenuItem.Click += GameSetupSettingsToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
@@ -528,7 +528,7 @@ namespace TWEMP.Browser.App.Classic
             applicationSettingsToolStripMenuItem.Name = "applicationSettingsToolStripMenuItem";
             applicationSettingsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             applicationSettingsToolStripMenuItem.Text = "Application Settings";
-            applicationSettingsToolStripMenuItem.Click += applicationSettingsToolStripMenuItem_Click;
+            applicationSettingsToolStripMenuItem.Click += ApplicationSettingsToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
@@ -540,14 +540,14 @@ namespace TWEMP.Browser.App.Classic
             applicationHomeFolderToolStripMenuItem.Name = "applicationHomeFolderToolStripMenuItem";
             applicationHomeFolderToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             applicationHomeFolderToolStripMenuItem.Text = "Go to Home Folder";
-            applicationHomeFolderToolStripMenuItem.Click += applicationHomeFolderToolStripMenuItem_Click;
+            applicationHomeFolderToolStripMenuItem.Click += ApplicationHomeFolderToolStripMenuItem_Click;
             // 
             // exitFromApplicationToolStripMenuItem
             // 
             exitFromApplicationToolStripMenuItem.Name = "exitFromApplicationToolStripMenuItem";
             exitFromApplicationToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             exitFromApplicationToolStripMenuItem.Text = "Exit from Program";
-            exitFromApplicationToolStripMenuItem.Click += exitFromApplicationToolStripMenuItem_Click;
+            exitFromApplicationToolStripMenuItem.Click += ExitFromApplicationToolStripMenuItem_Click;
             // 
             // toolStripHelpItem
             // 
@@ -561,7 +561,7 @@ namespace TWEMP.Browser.App.Classic
             aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
             aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             aboutProgramToolStripMenuItem.Text = "About Program";
-            aboutProgramToolStripMenuItem.Click += aboutProgramToolStripMenuItem_Click;
+            aboutProgramToolStripMenuItem.Click += AboutProgramToolStripMenuItem_Click;
             // 
             // toolStripModItem
             // 
@@ -575,7 +575,7 @@ namespace TWEMP.Browser.App.Classic
             configSettingsToolStripMenuItem.Name = "configSettingsToolStripMenuItem";
             configSettingsToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             configSettingsToolStripMenuItem.Text = "Configuration Settings";
-            configSettingsToolStripMenuItem.Click += configSettingsToolStripMenuItem_Click;
+            configSettingsToolStripMenuItem.Click += ConfigSettingsToolStripMenuItem_Click;
             // 
             // treeViewGameMods
             // 
@@ -597,7 +597,7 @@ namespace TWEMP.Browser.App.Classic
             treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode3 });
             treeViewGameMods.Size = new System.Drawing.Size(320, 451);
             treeViewGameMods.TabIndex = 16;
-            treeViewGameMods.AfterSelect += treeViewGameMods_AfterSelect;
+            treeViewGameMods.AfterSelect += TreeViewGameMods_AfterSelect;
             // 
             // buttonMarkFavoriteMod
             // 
@@ -610,7 +610,7 @@ namespace TWEMP.Browser.App.Classic
             buttonMarkFavoriteMod.TabIndex = 18;
             buttonMarkFavoriteMod.Text = "MARK or UNMARK THIS MOD as FAVORITE";
             buttonMarkFavoriteMod.UseVisualStyleBackColor = false;
-            buttonMarkFavoriteMod.Click += buttonMarkFavoriteMod_Click;
+            buttonMarkFavoriteMod.Click += ButtonMarkFavoriteMod_Click;
             // 
             // buttonCollectionCreate
             // 
@@ -623,7 +623,7 @@ namespace TWEMP.Browser.App.Classic
             buttonCollectionCreate.TabIndex = 19;
             buttonCollectionCreate.Text = "CREATE A NEW COLLECTION";
             buttonCollectionCreate.UseVisualStyleBackColor = false;
-            buttonCollectionCreate.Click += buttonCollectionCreate_Click;
+            buttonCollectionCreate.Click += ButtonCollectionCreate_Click;
             // 
             // buttonCollectionManage
             // 
@@ -636,7 +636,7 @@ namespace TWEMP.Browser.App.Classic
             buttonCollectionManage.TabIndex = 20;
             buttonCollectionManage.Text = "MANAGE YOUR COLLECTIONS";
             buttonCollectionManage.UseVisualStyleBackColor = false;
-            buttonCollectionManage.Click += buttonCollectionManage_Click;
+            buttonCollectionManage.Click += ButtonCollectionManage_Click;
             // 
             // panelCollections
             // 

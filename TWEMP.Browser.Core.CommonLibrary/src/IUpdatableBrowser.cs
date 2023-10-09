@@ -14,7 +14,7 @@ public interface IUpdatableBrowser
 
     public abstract void UpdateGUIStyle(GuiStyle style);
 
-    public abstract void UpdateExperimentalGUIChanges();
+    public abstract void UpdateExperimentalGUIChanges(bool enabled);
 
     public abstract void UpdateLocalizationForGUIControls();
 }

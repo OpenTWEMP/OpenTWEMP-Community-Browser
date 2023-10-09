@@ -13,7 +13,6 @@ internal partial class MainBrowserForm: IUpdatableBrowser, ICanChangeMyLocalizat
     {
         FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
 
-#if DISABLE_WHEN_MIGRATION
         buttonLaunch.Text = snapshot.GetLocalizedValueByKey(buttonLaunch.Name);
         modQuickNavigationButton.Text = snapshot.GetLocalizedValueByKey(modQuickNavigationButton.Name);
         buttonExplore.Text = snapshot.GetLocalizedValueByKey(buttonExplore.Name);
@@ -44,6 +43,5 @@ internal partial class MainBrowserForm: IUpdatableBrowser, ICanChangeMyLocalizat
 
         toolStripHelpItem.Text = snapshot.GetLocalizedValueByKey(toolStripHelpItem.Name);
         aboutProgramToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(aboutProgramToolStripMenuItem.Name);
-#endif
     }
 }

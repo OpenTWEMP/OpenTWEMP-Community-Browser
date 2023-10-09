@@ -11,7 +11,6 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         // Set back color for main form.
         BackColor = colorTheme.MainFormBackColor;
 
-#if DISABLE_WHEN_MIGRATION
         // Set back color for panels.
         panelCollections.BackColor = colorTheme.PanelsBackColor;
         panelLauncherToolkit.BackColor = colorTheme.PanelsBackColor;
@@ -72,6 +71,5 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         treeViewGameMods.ForeColor = colorTheme.CommonControlsForeColor;
         modMainTitleLabel.ForeColor = colorTheme.CommonControlsForeColor;
         modStatusLabel.ForeColor = colorTheme.CommonControlsForeColor;
-#endif
     }
 }

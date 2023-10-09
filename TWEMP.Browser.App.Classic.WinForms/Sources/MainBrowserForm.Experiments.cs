@@ -4,11 +4,9 @@ using TWEMP.Browser.Core.CommonLibrary;
 
 internal partial class MainBrowserForm : IUpdatableBrowser
 {
-    public void UpdateExperimentalGUIChanges()
+    public void UpdateExperimentalGUIChanges(bool enabled)
     {
-#if DISABLE_WHEN_MIGRATION
-        groupBoxLauncherProviders.Visible = isEnabledChangesStatus;
+        groupBoxLauncherProviders.Visible = enabled;
         radioButtonLauncherProvider_TWEMP.Checked = true;
-#endif
     }
 }
