@@ -2,7 +2,7 @@
 
 using TWEMP.Browser.Core.CommonLibrary;
 
-internal partial class MainBrowserForm : Form, IGameConfigState
+internal partial class MainBrowserForm : IGameConfigState
 {
     internal RadioButton LauncherProviderControl_M2TWEOP { get; set; }
 

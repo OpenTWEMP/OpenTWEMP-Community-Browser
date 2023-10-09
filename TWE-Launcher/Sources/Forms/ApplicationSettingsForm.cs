@@ -10,15 +10,19 @@ namespace TWE_Launcher.Forms
 	public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 	{
 		private MainLauncherForm currentCallingForm;
+
+#if DISABLE_WHEN_MIGRATION
 		private GuiStyle currentGuiStyle;
+#endif
 
 		public AppSettingsForm(MainLauncherForm callingForm)
 		{
 			InitializeComponent();
 
 			currentCallingForm = callingForm;
+#if DISABLE_WHEN_MIGRATION
 			currentGuiStyle = InitializeCurrentGUIStyle();
-
+#endif
 			if (LocalizationManager.IsCurrentLocalizationName(GuiLocale.LOCALE_NAME_ENG))
 			{
 				enableEngLocaleRadioButton.Checked = true;
@@ -36,7 +40,7 @@ namespace TWE_Launcher.Forms
 			SetupCurrentLocalizationForGUIControls();
 		}
 
-
+#if DISABLE_WHEN_MIGRATION
 		private GuiStyle InitializeCurrentGUIStyle()
 		{
 			GuiStyle activeStyle = Program.CurrentGUIStyle;
@@ -64,16 +68,18 @@ namespace TWE_Launcher.Forms
 
 			return activeStyle;
 		}
+#endif
 
-		private void SaveAppSettingsButton_Click(object sender, EventArgs e)
+        private void SaveAppSettingsButton_Click(object sender, EventArgs e)
 		{
+#if DISABLE_WHEN_MIGRATION
 			// 1. Change GUI style.
-
 			SaveGUIChanges(currentGuiStyle);
+#endif
 
-			// 2. Change GUI localization.
+            // 2. Change GUI localization.
 
-			if (enableEngLocaleRadioButton.Checked)
+            if (enableEngLocaleRadioButton.Checked)
 			{
 				string guiLocaleName_ENG = "ENG";
 				Program.SetCurrentLocalizationByName(guiLocaleName_ENG);
@@ -97,11 +103,13 @@ namespace TWE_Launcher.Forms
 			Close();
 		}
 
+#if DISABLE_WHEN_MIGRATION
 		private void SaveGUIChanges(GuiStyle style)
 		{
 			currentCallingForm.UpdateGUIStyle(style);
 			Program.CurrentGUIStyle = style;
 		}
+#endif
 
 
 		private void ExitAppSettingsButton_Click(object sender, EventArgs e)
@@ -111,21 +119,27 @@ namespace TWE_Launcher.Forms
 
 		private void uiStyleByDefaultThemeRadioButton_Click(object sender, EventArgs e)
 		{
+#if DISABLE_WHEN_MIGRATION
 			currentGuiStyle = GuiStyle.Default;
+#endif
 		}
 
 		private void uiStyleByLightThemeRadioButton_Click(object sender, EventArgs e)
 		{
+#if DISABLE_WHEN_MIGRATION
 			currentGuiStyle = GuiStyle.Light;
-		}
+#endif
+        }
 
-		private void uiStyleByDarkThemeRadioButton_Click(object sender, EventArgs e)
+        private void uiStyleByDarkThemeRadioButton_Click(object sender, EventArgs e)
 		{
+#if DISABLE_WHEN_MIGRATION
 			currentGuiStyle = GuiStyle.Dark;
-		}
+#endif
+        }
 
 
-		public void SetupCurrentLocalizationForGUIControls()
+        public void SetupCurrentLocalizationForGUIControls()
 		{
 			FormLocaleSnapshot snapshot = Program.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
 

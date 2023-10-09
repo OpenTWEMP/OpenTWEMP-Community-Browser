@@ -15,8 +15,9 @@ namespace TWE_Launcher
 		private const string APP_SUPPORT_NODE2_LOGO = "images";
 
 		internal static readonly DirectoryInfo AppSupportNode_M2TW_LOGO_DirectoryInfo;
-
+#if DISABLE_WHEN_MIGRATION
 		internal static GuiStyle CurrentGUIStyle { get; set; }
+#endif
 		internal static List<GuiLocale> AvailableLocalizations { get; set; }
 		internal static GuiLocale CurrentLocalization { get; set; }
 
@@ -40,14 +41,13 @@ namespace TWE_Launcher
 			{
 				AppSupportNode_M2TW_LOGO_DirectoryInfo.Create();
 			}
+
+			// 1. Setup GUI style by default.
+			CurrentGUIStyle = GuiStyle.Default;
 #endif
 
-            // 1. Setup GUI style by default.
-            CurrentGUIStyle = GuiStyle.Default;
-
-
-			// 2. Setup GUI localization by default.
-			AvailableLocalizations = LocalizationManager.GetSupportedLocalizations();
+            // 2. Setup GUI localization by default.
+            AvailableLocalizations = LocalizationManager.GetSupportedLocalizations();
 			InitializeLocalizationByDefault(AvailableLocalizations);
 
 			// 3. Initialize extra flags by default.
