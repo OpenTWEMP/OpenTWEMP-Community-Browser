@@ -66,7 +66,15 @@ namespace TWE_Launcher.Forms
 			worldMapsCampaignNavigateButton.Text = $"{modLocationPrefix}\\{modDataFolderName}\\{worldMapsCampaignFolderName}";
 		}
 
-		private void formExitButton_Click(object sender, EventArgs e)
+		private static void NavigateToModDirectory(string directoryPath)
+		{
+#if DISABLE_WHEN_MIGRATION
+			SystemToolbox.ShowFileSystemDirectory(directoryPath);
+#endif
+			MessageBox.Show(directoryPath, "TEST", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void formExitButton_Click(object sender, EventArgs e)
 		{
 			Close();
 		}
@@ -74,121 +82,91 @@ namespace TWE_Launcher.Forms
 		private void modDataNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
+			NavigateToModDirectory(targetFolderPath);
         }
 
         private void modSavesNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modSavesFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void modLogsNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modLogsFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataTextNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataTextFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataLoadingScreenNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataLoadingScreenFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataUiNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataUiFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataFmvNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataFmvFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataSoundsNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataSoundsFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataUnitModelsNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataUnitModelsFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataUnitSpritesNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataUnitSpritesFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataAnimationsNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataAnimationsFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataBannersNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataBannersFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void dataModelsStratNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataModelsStratFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void worldMapsBaseNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, worldMapsBaseFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 
 		private void worldMapsCampaignNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, worldMapsCampaignFolderName);
-#if DISABLE_WHEN_MIGRATION
-			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-#endif
-		}
+            NavigateToModDirectory(targetFolderPath);
+        }
 	}
 }
