@@ -1,0 +1,11 @@
+{
+  "ModTitle": "My Mod Title",
+  "ModVersion": "Mod Mod Version",
+  "LogotypeImage": "SPLASH.png",
+  "BackgroundSoundTrack": "MUSIC.mp3",
+  "ModURLs": {
+    "URL1": "https://mymod1.mod",
+    "URL2": "https://mymod1.org",
+    "URL3": "https://mymod1.com"
+  }
+}

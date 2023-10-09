@@ -1,0 +1,23 @@
+[
+{
+  "Coord_X": 0,
+  "Coord_Y": 0,
+  "Coord_Z": 0
+},
+{
+  "Coord_X": 1,
+  "Coord_Y": 2,
+  "Coord_Z": 3
+},
+{
+  "Coord_X": 2,
+  "Coord_Y": 4,
+  "Coord_Z": 6
+},
+{
+  "Coord_X": 3,
+  "Coord_Y": 6,
+  "Coord_Z": 9
+}
+]
+
