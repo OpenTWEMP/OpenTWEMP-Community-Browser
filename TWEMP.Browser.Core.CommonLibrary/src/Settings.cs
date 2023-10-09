@@ -5,15 +5,33 @@ namespace TWEMP.Browser.Core.CommonLibrary
 	public static class Settings
 	{
 		private const string APP_SUPPORT_DIRECTORY_NAME = "support";
+        private const string APP_SUPPORT_NODE1_M2TW = "M2TWK";
+        private const string APP_SUPPORT_NODE2_LOGO = "images";
 
-		private static readonly string gameSetupConfFile;
+        private static readonly string gameSetupConfFile;
 
-		static Settings()
+        internal static readonly DirectoryInfo AppSupportNode_M2TW_LOGO_DirectoryInfo;
+
+        static Settings()
 		{
-			string appSupportDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), APP_SUPPORT_DIRECTORY_NAME);
-			AppSupportDirectoryInfo = new DirectoryInfo(appSupportDirectoryPath);
+            string appSupportDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), APP_SUPPORT_DIRECTORY_NAME);
+            AppSupportDirectoryInfo = new DirectoryInfo(appSupportDirectoryPath);
 
-			GameInstallations = new List<GameSetupInfo>();
+            // Initialize app's file system.
+            if (!AppSupportDirectoryInfo.Exists)
+            {
+                AppSupportDirectoryInfo.Create();
+            }
+
+            string appSupportNode_M2TW_LOGO_DirectoryPath = Path.Combine(appSupportDirectoryPath, APP_SUPPORT_NODE1_M2TW, APP_SUPPORT_NODE2_LOGO);
+            AppSupportNode_M2TW_LOGO_DirectoryInfo = new DirectoryInfo(appSupportNode_M2TW_LOGO_DirectoryPath);
+
+            if (!AppSupportNode_M2TW_LOGO_DirectoryInfo.Exists)
+            {
+                AppSupportNode_M2TW_LOGO_DirectoryInfo.Create();
+            }
+
+            GameInstallations = new List<GameSetupInfo>();
 			TotalModificationsList = new List<GameModificationInfo>();
 
 			CacheDirectoryPath = GetCacheDirectory();

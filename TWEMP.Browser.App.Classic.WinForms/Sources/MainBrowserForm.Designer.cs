@@ -1,17 +1,18 @@
-﻿
-namespace TWE_Launcher.Forms
+﻿using TWEMP.Browser.App.Classic.WinForms.Properties;
+
+namespace TWEMP.Browser.App.Classic
 {
-    public partial class MainLauncherForm
+    partial class MainBrowserForm
     {
         /// <summary>
-        /// Обязательная переменная конструктора.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Освободить все используемые ресурсы.
+        ///  Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,14 +22,16 @@ namespace TWE_Launcher.Forms
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windows
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("My Favorite Mods");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("My Mod Collections");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("All Modifications");
@@ -463,7 +466,7 @@ namespace TWE_Launcher.Forms
             modLogoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             modLogoPictureBox.BackColor = System.Drawing.Color.Transparent;
             modLogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            modLogoPictureBox.Image = Properties.Resources.OPENTWEMP_LOGO;
+            modLogoPictureBox.Image = Resources.OPENTWEMP_LOGO;
             modLogoPictureBox.Location = new System.Drawing.Point(340, 84);
             modLogoPictureBox.Name = "modLogoPictureBox";
             modLogoPictureBox.Size = new System.Drawing.Size(372, 353);
