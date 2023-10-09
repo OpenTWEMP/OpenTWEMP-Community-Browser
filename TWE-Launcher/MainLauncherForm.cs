@@ -6,17 +6,18 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using TWE_Launcher.Properties;
-using TWE_Launcher.Sources.Models.Localizations;
 
 namespace TWE_Launcher.Forms
 {
-    public partial class MainLauncherForm : Form, ICanChangeMyLocalization
+    public partial class MainLauncherForm : Form
     {
         public MainLauncherForm()
         {
             InitializeComponent();
 
+#if DISABLE_WHEN_MIGRATION
             SetupCurrentLocalizationForGUIControls();
+#endif
 
             UpdateModificationsTreeView();
 
@@ -34,9 +35,8 @@ namespace TWE_Launcher.Forms
 
         public void ApplyExperimentalChanges(bool isEnabledChangesStatus)
         {
-            groupBoxLauncherProviders.Visible = isEnabledChangesStatus;
-            radioButtonLauncherProvider_TWEMP.Checked = true;
-            Program.UseExperimentalFeatures = isEnabledChangesStatus;
+
+            
         }
 
 
@@ -591,43 +591,6 @@ namespace TWE_Launcher.Forms
         private void modConfigSettingsButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Config Settings");
-        }
-
-
-        public void SetupCurrentLocalizationForGUIControls()
-        {
-            FormLocaleSnapshot snapshot = Program.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-            buttonLaunch.Text = snapshot.GetLocalizedValueByKey(buttonLaunch.Name);
-            modQuickNavigationButton.Text = snapshot.GetLocalizedValueByKey(modQuickNavigationButton.Name);
-            buttonExplore.Text = snapshot.GetLocalizedValueByKey(buttonExplore.Name);
-
-            groupBoxConfigCleanerMode.Text = snapshot.GetLocalizedValueByKey(groupBoxConfigCleanerMode.Name);
-            checkBoxCleaner_MapRWM.Text = snapshot.GetLocalizedValueByKey(checkBoxCleaner_MapRWM.Name);
-            checkBoxCleaner_textBIN.Text = snapshot.GetLocalizedValueByKey(checkBoxCleaner_textBIN.Name);
-            checkBoxCleaner_soundPacks.Text = snapshot.GetLocalizedValueByKey(checkBoxCleaner_soundPacks.Name);
-
-            groupBoxConfigLogMode.Text = snapshot.GetLocalizedValueByKey(groupBoxConfigLogMode.Name);
-            radioButtonLogOnlyError.Text = snapshot.GetLocalizedValueByKey(radioButtonLogOnlyError.Name);
-            radioButtonLogOnlyTrace.Text = snapshot.GetLocalizedValueByKey(radioButtonLogOnlyTrace.Name);
-            radioButtonLogErrorAndTrace.Text = snapshot.GetLocalizedValueByKey(radioButtonLogErrorAndTrace.Name);
-            checkBoxLogHistory.Text = snapshot.GetLocalizedValueByKey(checkBoxLogHistory.Name);
-
-            groupBoxConfigLaunchMode.Text = snapshot.GetLocalizedValueByKey(groupBoxConfigLaunchMode.Name);
-            radioButtonLaunchWindowScreen.Text = snapshot.GetLocalizedValueByKey(radioButtonLaunchWindowScreen.Name);
-            radioButtonLaunchFullScreen.Text = snapshot.GetLocalizedValueByKey(radioButtonLaunchFullScreen.Name);
-            checkBoxVideo.Text = snapshot.GetLocalizedValueByKey(checkBoxVideo.Name);
-            checkBoxBorderless.Text = snapshot.GetLocalizedValueByKey(checkBoxBorderless.Name);
-            checkBoxBorderless.Text = snapshot.GetLocalizedValueByKey(checkBoxBorderless.Name);
-
-            toolStripAppItem.Text = snapshot.GetLocalizedValueByKey(toolStripAppItem.Name);
-            gameSetupSettingsToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(gameSetupSettingsToolStripMenuItem.Name);
-            applicationSettingsToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(applicationSettingsToolStripMenuItem.Name);
-            applicationHomeFolderToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(applicationHomeFolderToolStripMenuItem.Name);
-            exitFromApplicationToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(exitFromApplicationToolStripMenuItem.Name);
-
-            toolStripHelpItem.Text = snapshot.GetLocalizedValueByKey(toolStripHelpItem.Name);
-            aboutProgramToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(aboutProgramToolStripMenuItem.Name);
         }
 
 

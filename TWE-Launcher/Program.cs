@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-
 using TWE_Launcher.Forms;
-using TWE_Launcher.Sources.Models;
-using TWE_Launcher.Sources.Models.Localizations;
 
 namespace TWE_Launcher
 {
@@ -15,13 +12,6 @@ namespace TWE_Launcher
 		private const string APP_SUPPORT_NODE2_LOGO = "images";
 
 		internal static readonly DirectoryInfo AppSupportNode_M2TW_LOGO_DirectoryInfo;
-#if DISABLE_WHEN_MIGRATION
-		internal static GuiStyle CurrentGUIStyle { get; set; }
-#endif
-		internal static List<GuiLocale> AvailableLocalizations { get; set; }
-		internal static GuiLocale CurrentLocalization { get; set; }
-
-		internal static bool UseExperimentalFeatures { get; set; }
 
 
 		static Program()
@@ -41,55 +31,13 @@ namespace TWE_Launcher
 			{
 				AppSupportNode_M2TW_LOGO_DirectoryInfo.Create();
 			}
-
-			// 1. Setup GUI style by default.
-			CurrentGUIStyle = GuiStyle.Default;
 #endif
-
-            // 2. Setup GUI localization by default.
-            AvailableLocalizations = LocalizationManager.GetSupportedLocalizations();
-			InitializeLocalizationByDefault(AvailableLocalizations);
-
-			// 3. Initialize extra flags by default.
-
-			UseExperimentalFeatures = true;
-
 		}
 
-		private static void InitializeLocalizationByDefault(List<GuiLocale> guiLocales)
-		{
-			string guiLocaleNameByDefault = "ENG";
-			
-			foreach (var localization in AvailableLocalizations)
-			{
-				if (localization.Name == guiLocaleNameByDefault)
-				{
-					CurrentLocalization = localization;
-					break;
-				}
-			}
-		}
-
-		internal static void SetCurrentLocalizationByName(string guiLocaleName)
-		{
-			if (CurrentLocalization.Name != guiLocaleName)
-			{
-				foreach (var localization in AvailableLocalizations)
-				{
-					if (localization.Name == guiLocaleName)
-					{
-						CurrentLocalization = localization;
-						break;
-					}
-				}
-			}
-		}
-
-
-		/// <summary>
-		///  The main entry point for the application.
-		/// </summary>
-		[STAThread]
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
+        [STAThread]
 		static void Main()
 		{
 #if DISABLE_WHEN_MIGRATION

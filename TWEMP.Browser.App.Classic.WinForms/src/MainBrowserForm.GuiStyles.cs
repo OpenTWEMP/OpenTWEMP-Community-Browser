@@ -2,7 +2,7 @@
 
 using TWEMP.Browser.Core.CommonLibrary;
 
-internal partial class MainBrowserForm
+internal partial class MainBrowserForm : IUpdatableBrowser
 {
     public void UpdateGUIStyle(GuiStyle style)
     {

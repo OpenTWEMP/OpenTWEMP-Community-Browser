@@ -1,4 +1,4 @@
-﻿namespace TWE_Launcher.Forms
+﻿namespace TWEMP.Browser.App.Classic.CommonLibrary
 {
 	partial class AppSettingsForm
 	{

@@ -21,6 +21,17 @@ namespace TWEMP.Browser.Core.CommonLibrary
 
 			FavoriteModsCollection = CustomModsCollection.LoadFavoriteCollectionFromCache(CacheDirectoryPath);
 			UserCollections = CustomModsCollection.LoadExistingCollectionsFromCache(CacheDirectoryPath);
+
+
+			// Setup GUI style by default.
+			CurrentGUIStyle = GuiStyle.Default;
+
+			// Setup GUI localization by default.
+			AvailableLocalizations = LocalizationManager.GetSupportedLocalizations();
+			CurrentLocalization = InitializeLocalizationByDefault(AvailableLocalizations);
+
+			// Initialize extra flags by default.
+			UseExperimentalFeatures = true;
 		}
 
 		public static DirectoryInfo AppSupportDirectoryInfo { get; }
@@ -34,6 +45,14 @@ namespace TWEMP.Browser.Core.CommonLibrary
 		public static List<CustomModsCollection> UserCollections { get; set; }
 
 		public static string CacheDirectoryPath { get; }
+
+		public static GuiStyle CurrentGUIStyle { get; set; }
+
+		public static List<GuiLocale> AvailableLocalizations { get; set; }
+
+		public static GuiLocale CurrentLocalization { get; set; }
+
+		public static bool UseExperimentalFeatures { get; set; }
 
 		private static string GetCacheDirectory()
 		{
@@ -381,6 +400,36 @@ namespace TWEMP.Browser.Core.CommonLibrary
 			}
 
 			writer.Close();
+		}
+
+		private static GuiLocale InitializeLocalizationByDefault(List<GuiLocale> guiLocales)
+		{
+			string guiLocaleNameByDefault = "ENG";
+			
+			foreach (GuiLocale localization in AvailableLocalizations)
+			{
+				if (localization.Name == guiLocaleNameByDefault)
+				{
+					return localization;
+				}
+			}
+
+			return GuiLocale.GenerateGuiLocaleFor_ENG();
+		}
+
+		public static void SetCurrentLocalizationByName(string guiLocaleName)
+		{
+			if (CurrentLocalization.Name != guiLocaleName)
+			{
+				foreach (var localization in AvailableLocalizations)
+				{
+					if (localization.Name == guiLocaleName)
+					{
+						CurrentLocalization = localization;
+						break;
+					}
+				}
+			}
 		}
 	}
 }
