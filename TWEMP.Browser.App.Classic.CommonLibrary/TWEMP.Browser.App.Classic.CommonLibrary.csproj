@@ -7,4 +7,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TWEMP.Browser.Core.GamingSupport\TWEMP.Browser.Core.GamingSupport.csproj" />
+  </ItemGroup>
+
 </Project>

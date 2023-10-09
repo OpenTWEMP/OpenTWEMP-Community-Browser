@@ -572,8 +572,11 @@ namespace TWE_Launcher.Forms
 		private void modQuickNavigationButton_Click(object sender, EventArgs e)
 		{
 			GameModificationInfo currentMod = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
+#if DISABLE_WHEN_MIGRATION
 			var form = new ModQuickNavigatorForm(currentMod.Location);
 			form.ShowDialog();
+#endif
+			MessageBox.Show("ModQuickNavigatorForm", "TEST", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void buttonExplore_Click(object sender, EventArgs e)

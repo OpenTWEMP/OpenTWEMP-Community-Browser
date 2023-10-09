@@ -1,4 +1,4 @@
-﻿namespace TWE_Launcher.Forms
+﻿namespace TWEMP.Browser.App.Classic.CommonLibrary
 {
 	partial class ModQuickNavigatorForm
 	{
@@ -84,7 +84,7 @@
 			this.modDataNavigateButton.Text = "modDataNavigateButton";
 			this.modDataNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.modDataNavigateButton.UseVisualStyleBackColor = false;
-			this.modDataNavigateButton.Click += new System.EventHandler(this.modDataNavigateButton_Click);
+			this.modDataNavigateButton.Click += new System.EventHandler(this.ModDataNavigateButton_Click);
 			// 
 			// modSavesNavigateButton
 			// 
@@ -100,7 +100,7 @@
 			this.modSavesNavigateButton.Text = "modSavesNavigateButton";
 			this.modSavesNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.modSavesNavigateButton.UseVisualStyleBackColor = false;
-			this.modSavesNavigateButton.Click += new System.EventHandler(this.modSavesNavigateButton_Click);
+			this.modSavesNavigateButton.Click += new System.EventHandler(this.ModSavesNavigateButton_Click);
 			// 
 			// modLogsNavigateButton
 			// 
@@ -116,7 +116,7 @@
 			this.modLogsNavigateButton.Text = "modLogsNavigateButton";
 			this.modLogsNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.modLogsNavigateButton.UseVisualStyleBackColor = false;
-			this.modLogsNavigateButton.Click += new System.EventHandler(this.modLogsNavigateButton_Click);
+			this.modLogsNavigateButton.Click += new System.EventHandler(this.ModLogsNavigateButton_Click);
 			// 
 			// dataTextNavigateButton
 			// 
@@ -132,7 +132,7 @@
 			this.dataTextNavigateButton.Text = "dataTextNavigateButton";
 			this.dataTextNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataTextNavigateButton.UseVisualStyleBackColor = false;
-			this.dataTextNavigateButton.Click += new System.EventHandler(this.dataTextNavigateButton_Click);
+			this.dataTextNavigateButton.Click += new System.EventHandler(this.DataTextNavigateButton_Click);
 			// 
 			// dataLoadingScreenNavigateButton
 			// 
@@ -148,7 +148,7 @@
 			this.dataLoadingScreenNavigateButton.Text = "dataLoadingScreenNavigateButton";
 			this.dataLoadingScreenNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataLoadingScreenNavigateButton.UseVisualStyleBackColor = false;
-			this.dataLoadingScreenNavigateButton.Click += new System.EventHandler(this.dataLoadingScreenNavigateButton_Click);
+			this.dataLoadingScreenNavigateButton.Click += new System.EventHandler(this.DataLoadingScreenNavigateButton_Click);
 			// 
 			// dataUiNavigateButton
 			// 
@@ -164,7 +164,7 @@
 			this.dataUiNavigateButton.Text = "dataUiNavigateButton";
 			this.dataUiNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataUiNavigateButton.UseVisualStyleBackColor = false;
-			this.dataUiNavigateButton.Click += new System.EventHandler(this.dataUiNavigateButton_Click);
+			this.dataUiNavigateButton.Click += new System.EventHandler(this.DataUiNavigateButton_Click);
 			// 
 			// dataFmvNavigateButton
 			// 
@@ -180,7 +180,7 @@
 			this.dataFmvNavigateButton.Text = "dataFmvNavigateButton";
 			this.dataFmvNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataFmvNavigateButton.UseVisualStyleBackColor = false;
-			this.dataFmvNavigateButton.Click += new System.EventHandler(this.dataFmvNavigateButton_Click);
+			this.dataFmvNavigateButton.Click += new System.EventHandler(this.DataFmvNavigateButton_Click);
 			// 
 			// dataSoundsNavigateButton
 			// 
@@ -196,7 +196,7 @@
 			this.dataSoundsNavigateButton.Text = "dataSoundsNavigateButton";
 			this.dataSoundsNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataSoundsNavigateButton.UseVisualStyleBackColor = false;
-			this.dataSoundsNavigateButton.Click += new System.EventHandler(this.dataSoundsNavigateButton_Click);
+			this.dataSoundsNavigateButton.Click += new System.EventHandler(this.DataSoundsNavigateButton_Click);
 			// 
 			// dataUnitModelsNavigateButton
 			// 
@@ -212,7 +212,7 @@
 			this.dataUnitModelsNavigateButton.Text = "dataUnitModelsNavigateButton";
 			this.dataUnitModelsNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataUnitModelsNavigateButton.UseVisualStyleBackColor = false;
-			this.dataUnitModelsNavigateButton.Click += new System.EventHandler(this.dataUnitModelsNavigateButton_Click);
+			this.dataUnitModelsNavigateButton.Click += new System.EventHandler(this.DataUnitModelsNavigateButton_Click);
 			// 
 			// dataUnitSpritesNavigateButton
 			// 
@@ -228,7 +228,7 @@
 			this.dataUnitSpritesNavigateButton.Text = "dataUnitSpritesNavigateButton";
 			this.dataUnitSpritesNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataUnitSpritesNavigateButton.UseVisualStyleBackColor = false;
-			this.dataUnitSpritesNavigateButton.Click += new System.EventHandler(this.dataUnitSpritesNavigateButton_Click);
+			this.dataUnitSpritesNavigateButton.Click += new System.EventHandler(this.DataUnitSpritesNavigateButton_Click);
 			// 
 			// dataAnimationsNavigateButton
 			// 
@@ -244,7 +244,7 @@
 			this.dataAnimationsNavigateButton.Text = "dataAnimationsNavigateButton";
 			this.dataAnimationsNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataAnimationsNavigateButton.UseVisualStyleBackColor = false;
-			this.dataAnimationsNavigateButton.Click += new System.EventHandler(this.dataAnimationsNavigateButton_Click);
+			this.dataAnimationsNavigateButton.Click += new System.EventHandler(this.DataAnimationsNavigateButton_Click);
 			// 
 			// dataBannersNavigateButton
 			// 
@@ -260,7 +260,7 @@
 			this.dataBannersNavigateButton.Text = "dataBannersNavigateButton";
 			this.dataBannersNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataBannersNavigateButton.UseVisualStyleBackColor = false;
-			this.dataBannersNavigateButton.Click += new System.EventHandler(this.dataBannersNavigateButton_Click);
+			this.dataBannersNavigateButton.Click += new System.EventHandler(this.DataBannersNavigateButton_Click);
 			// 
 			// quickNavigationPanel_1
 			// 
@@ -300,7 +300,7 @@
 			this.worldMapsCampaignNavigateButton.Text = "worldMapsCampaignNavigateButton";
 			this.worldMapsCampaignNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.worldMapsCampaignNavigateButton.UseVisualStyleBackColor = false;
-			this.worldMapsCampaignNavigateButton.Click += new System.EventHandler(this.worldMapsCampaignNavigateButton_Click);
+			this.worldMapsCampaignNavigateButton.Click += new System.EventHandler(this.WorldMapsCampaignNavigateButton_Click);
 			// 
 			// worldMapsBaseNavigateButton
 			// 
@@ -316,7 +316,7 @@
 			this.worldMapsBaseNavigateButton.Text = "worldMapsBaseNavigateButton";
 			this.worldMapsBaseNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.worldMapsBaseNavigateButton.UseVisualStyleBackColor = false;
-			this.worldMapsBaseNavigateButton.Click += new System.EventHandler(this.worldMapsBaseNavigateButton_Click);
+			this.worldMapsBaseNavigateButton.Click += new System.EventHandler(this.WorldMapsBaseNavigateButton_Click);
 			// 
 			// dataModelsStratNavigateButton
 			// 
@@ -332,7 +332,7 @@
 			this.dataModelsStratNavigateButton.Text = "dataModelsStratNavigateButton";
 			this.dataModelsStratNavigateButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.dataModelsStratNavigateButton.UseVisualStyleBackColor = false;
-			this.dataModelsStratNavigateButton.Click += new System.EventHandler(this.dataModelsStratNavigateButton_Click);
+			this.dataModelsStratNavigateButton.Click += new System.EventHandler(this.DataModelsStratNavigateButton_Click);
 			// 
 			// ModQuickNavigatorForm
 			// 
