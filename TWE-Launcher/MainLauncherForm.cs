@@ -579,11 +579,13 @@ namespace TWE_Launcher.Forms
 		private void buttonExplore_Click(object sender, EventArgs e)
 		{
 			GameModificationInfo current_mod_info = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location);
-		}
+#endif
+        }
 
 
-		private void modConfigSettingsButton_Click(object sender, EventArgs e)
+        private void modConfigSettingsButton_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("Config Settings");
 		}
@@ -718,10 +720,12 @@ namespace TWE_Launcher.Forms
 		private void applicationHomeFolderToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			string appWorkDirectory = Directory.GetCurrentDirectory();
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(appWorkDirectory);
-		}
+#endif
+        }
 
-		private void applicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void applicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			var appSettingsForm = new AppSettingsForm(this);
 			appSettingsForm.Show();

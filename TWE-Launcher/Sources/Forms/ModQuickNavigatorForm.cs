@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using TWE_Launcher.Models;
 
 namespace TWE_Launcher.Forms
 {
@@ -75,91 +74,121 @@ namespace TWE_Launcher.Forms
 		private void modDataNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
-		}
+#endif
+        }
 
-		private void modSavesNavigateButton_Click(object sender, EventArgs e)
+        private void modSavesNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modSavesFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void modLogsNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modLogsFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataTextNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataTextFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataLoadingScreenNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataLoadingScreenFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataUiNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataUiFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataFmvNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataFmvFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataSoundsNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataSoundsFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataUnitModelsNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataUnitModelsFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataUnitSpritesNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataUnitSpritesFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataAnimationsNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataAnimationsFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataBannersNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataBannersFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void dataModelsStratNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataModelsStratFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void worldMapsBaseNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, worldMapsBaseFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 
 		private void worldMapsCampaignNavigateButton_Click(object sender, EventArgs e)
 		{
 			string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, worldMapsCampaignFolderName);
+#if DISABLE_WHEN_MIGRATION
 			SystemToolbox.ShowFileSystemDirectory(targetFolderPath);
+#endif
 		}
 	}
 }
