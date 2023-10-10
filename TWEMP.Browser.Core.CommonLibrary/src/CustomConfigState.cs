@@ -1,10 +1,16 @@
-﻿namespace TWEMP.Browser.Core.CommonLibrary;
+﻿// <copyright file="CustomConfigState.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+
+namespace TWEMP.Browser.Core.CommonLibrary;
 
 public record CustomConfigState
 {
-	public bool UseLauncherProvider_M2TWEOP { get; init; }
+    public bool UseLauncherProvider_M2TWEOP { get; init; }
 
-	public bool UseLauncherProvider_M2TWEOP_NativeSetup { get; init; }
+    public bool UseLauncherProvider_M2TWEOP_NativeSetup { get; init; }
 
     public bool UseLauncherProvider_M2TWEOP_NativeBatch { get; init; }
 

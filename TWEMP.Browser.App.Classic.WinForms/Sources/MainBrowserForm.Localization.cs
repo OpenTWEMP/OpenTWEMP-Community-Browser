@@ -1,8 +1,16 @@
-﻿namespace TWEMP.Browser.App.Classic;
+﻿// <copyright file="MainBrowserForm.Localization.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+#pragma warning disable SA1601 // PartialElementsMustBeDocumented
+#pragma warning disable SA1101 // PrefixLocalCallsWithThis
+
+namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.Core.CommonLibrary;
 
-internal partial class MainBrowserForm: IUpdatableBrowser, ICanChangeMyLocalization
+internal partial class MainBrowserForm : IUpdatableBrowser, ICanChangeMyLocalization
 {
     public void UpdateLocalizationForGUIControls()
     {

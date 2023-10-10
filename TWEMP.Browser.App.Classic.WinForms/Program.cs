@@ -1,3 +1,9 @@
+// <copyright file="Program.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+
 namespace TWEMP.Browser.App.Classic.WinForms;
 
 using TWEMP.Browser.Core.CommonLibrary;
@@ -8,10 +14,10 @@ internal static class Program
     ///  The main entry point for the application.
     /// </summary>
     [STAThread]
-    static void Main()
+    internal static void Main()
     {
-		// Prepare configuration settings before launching GUI.
-		Settings.SynchronizeGameSetupSettings();
+        // Prepare configuration settings before launching GUI.
+        Settings.SynchronizeGameSetupSettings();
 
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.

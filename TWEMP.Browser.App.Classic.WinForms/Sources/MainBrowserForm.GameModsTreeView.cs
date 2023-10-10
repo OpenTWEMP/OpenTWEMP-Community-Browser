@@ -1,4 +1,12 @@
-﻿namespace TWEMP.Browser.App.Classic;
+﻿// <copyright file="MainBrowserForm.GameModsTreeView.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+#pragma warning disable SA1601 // PartialElementsMustBeDocumented
+#pragma warning disable SA1101 // PrefixLocalCallsWithThis
+
+namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.WinForms.Properties;
 using TWEMP.Browser.Core.CommonLibrary;
@@ -101,7 +109,6 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                         modLogoPictureBox.Image = Resources.TWEMP_PRESETS_ON;
                     }
 
-
                     if (selectedModification.CanBeLaunchedViaNativeBatch())
                     {
                         radioButtonLauncherProvider_BatchScript.Enabled = true;
@@ -154,28 +161,24 @@ internal partial class MainBrowserForm : IUpdatableBrowser
     private bool IsNotModificationNode(TreeNode node)
     {
         // Is 'node' is selected on the Collection Level ?
-
         if (IsRootNodeOfTreeView(node))
         {
             return true;
         }
 
         // Is 'node' is selected on the Custom Collection Folders Level ?
-
         if (IsCustomCollectionFolderNode(node))
         {
             return true;
         }
 
         // Is 'node' is selected on the GameSetup Node Level ?
-
         if (IsGameSetupNode(node))
         {
             return true;
         }
 
         // Is 'node' is selected on the ModCentet Node Level ?
-
         if (IsModCenterNode(node))
         {
             return true;
@@ -186,22 +189,22 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 
     private bool IsRootNodeOfTreeView(TreeNode node)
     {
-        return (node.Level == 0);
+        return node.Level == 0;
     }
 
     private bool IsCustomCollectionFolderNode(TreeNode node)
     {
-        return ((node.Level == 1) && node.Parent.Text.Equals("My Mod Collections"));
+        return (node.Level == 1) && node.Parent.Text.Equals("My Mod Collections");
     }
 
     private bool IsGameSetupNode(TreeNode node)
     {
-        return ((node.Level == 1) && node.Parent.Text.Equals("All Modifications"));
+        return (node.Level == 1) && node.Parent.Text.Equals("All Modifications");
     }
 
     private bool IsModCenterNode(TreeNode node)
     {
-        return ((node.Level == 2) && (node.Parent).Parent.Text.Equals("All Modifications"));
+        return (node.Level == 2) && node.Parent.Parent.Text.Equals("All Modifications");
     }
 
     private bool IsNodeOfFavoriteCollection(TreeNode node)
@@ -258,8 +261,8 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         TreeNode modcenterNode = selectedTreeNode.Parent;
         TreeNode gamesetupNode = modcenterNode.Parent;
 
-        GameSetupInfo currentGameSetup = Settings.GameInstallations.Find(gamesetup => gamesetup.Name.Equals(gamesetupNode.Text))!;
-        ModCenterInfo currentModCenter = currentGameSetup.AttachedModCenters.Find(modcenter => modcenter.Name.Equals(modcenterNode.Text))!;
+        GameSetupInfo currentGameSetup = Settings.GameInstallations.Find(gamesetup => gamesetup.Name.Equals(gamesetupNode.Text)) !;
+        ModCenterInfo currentModCenter = currentGameSetup.AttachedModCenters.Find(modcenter => modcenter.Name.Equals(modcenterNode.Text)) !;
 
         return currentModCenter.InstalledModifications[selectedTreeNode.Index];
     }

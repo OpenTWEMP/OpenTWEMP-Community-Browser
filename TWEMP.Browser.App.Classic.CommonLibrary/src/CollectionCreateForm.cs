@@ -1,4 +1,12 @@
-﻿namespace TWEMP.Browser.App.Classic.CommonLibrary;
+﻿// <copyright file="CollectionCreateForm.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+#pragma warning disable SA1601 // PartialElementsMustBeDocumented
+#pragma warning disable SA1101 // PrefixLocalCallsWithThis
+
+namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
 
@@ -78,7 +86,7 @@ public partial class CollectionCreateForm : Form
 
             for (int i = 0; i < modsSelectionCheckedListBox.CheckedIndices.Count; i++)
             {
-                string selectedModName = modsSelectionCheckedListBox.CheckedItems[i]!.ToString()!;
+                string selectedModName = modsSelectionCheckedListBox.CheckedItems[i] !.ToString() !;
                 GameModificationInfo selecteModInfo = Settings.GetActiveModificationInfo(selectedModName);
                 selectedModifications.Add(selecteModInfo.Location, selecteModInfo.ShortName);
             }

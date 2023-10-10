@@ -110,7 +110,7 @@
 			uiStyleByDarkThemeRadioButton.TabIndex = 2;
 			uiStyleByDarkThemeRadioButton.Text = "Dark Theme";
 			uiStyleByDarkThemeRadioButton.UseVisualStyleBackColor = true;
-			uiStyleByDarkThemeRadioButton.Click += uiStyleByDarkThemeRadioButton_Click;
+			uiStyleByDarkThemeRadioButton.Click += UiStyleByDarkThemeRadioButton_Click;
 			// 
 			// uiStyleByLightThemeRadioButton
 			// 
@@ -121,7 +121,7 @@
 			uiStyleByLightThemeRadioButton.TabIndex = 1;
 			uiStyleByLightThemeRadioButton.Text = "Light Theme";
 			uiStyleByLightThemeRadioButton.UseVisualStyleBackColor = true;
-			uiStyleByLightThemeRadioButton.Click += uiStyleByLightThemeRadioButton_Click;
+			uiStyleByLightThemeRadioButton.Click += UiStyleByLightThemeRadioButton_Click;
 			// 
 			// uiStyleByDefaultThemeRadioButton
 			// 
@@ -134,7 +134,7 @@
 			uiStyleByDefaultThemeRadioButton.TabStop = true;
 			uiStyleByDefaultThemeRadioButton.Text = "Standard Theme (by default)";
 			uiStyleByDefaultThemeRadioButton.UseVisualStyleBackColor = true;
-			uiStyleByDefaultThemeRadioButton.Click += uiStyleByDefaultThemeRadioButton_Click;
+			uiStyleByDefaultThemeRadioButton.Click += UiStyleByDefaultThemeRadioButton_Click;
 			// 
 			// exitAppSettingsButton
 			// 

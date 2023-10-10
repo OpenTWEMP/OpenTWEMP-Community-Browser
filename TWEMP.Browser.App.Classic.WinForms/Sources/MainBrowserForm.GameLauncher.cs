@@ -1,12 +1,18 @@
-﻿using TWEMP.Browser.App.Classic.CommonLibrary;
-using TWEMP.Browser.Core.CommonLibrary;
+﻿// <copyright file="MainBrowserForm.GameLauncher.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1601 // PartialElementsMustBeDocumented
+#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic;
+
+using TWEMP.Browser.App.Classic.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary;
 
 internal partial class MainBrowserForm
 {
     // LAUNCHER FEATURE TO RUN THE SELECTED MODIFICATION
-
     private void ButtonLaunch_Click(object sender, EventArgs e)
     {
         ChangeLauncherGUIWhenGameStarting();
@@ -18,7 +24,6 @@ internal partial class MainBrowserForm
         if (IsNodeOfFavoriteCollection(modNode) || IsNodeOfModificationFromCustomCollection(modNode))
         {
             targetModInfo = FindModBySelectedNodeFromCollection(modNode);
-
         }
         else if (IsNodeOfModificationFromAllModsCollection(modNode))
         {
@@ -64,7 +69,6 @@ internal partial class MainBrowserForm
     }
 
     // PROVIDERS TO RUN THE SELECTED MODIFICATION
-
     private void RadioButtonLauncherProvider_M2TWEOP_CheckedChanged(object sender, EventArgs e)
     {
         DisableLauncherSettingsControls();

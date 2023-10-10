@@ -58,7 +58,7 @@
 			this.formExitButton.TabIndex = 0;
 			this.formExitButton.Text = "CLOSE";
 			this.formExitButton.UseVisualStyleBackColor = true;
-			this.formExitButton.Click += new System.EventHandler(this.formExitButton_Click);
+			this.formExitButton.Click += new System.EventHandler(this.FormExitButton_Click);
 			// 
 			// labelCommonInfo
 			// 

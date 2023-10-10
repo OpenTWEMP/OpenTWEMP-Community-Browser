@@ -1,6 +1,14 @@
-using TWEMP.Browser.App.Classic.WinForms.Properties;
+// <copyright file="MainBrowserForm.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+#pragma warning disable SA1601 // PartialElementsMustBeDocumented
+#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic;
+
+using TWEMP.Browser.App.Classic.WinForms.Properties;
 
 internal partial class MainBrowserForm : Form
 {

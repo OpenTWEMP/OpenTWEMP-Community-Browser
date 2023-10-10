@@ -1,4 +1,12 @@
-﻿namespace TWEMP.Browser.App.Classic;
+﻿// <copyright file="MainBrowserForm.GuiStyles.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+#pragma warning disable SA1601 // PartialElementsMustBeDocumented
+#pragma warning disable SA1101 // PrefixLocalCallsWithThis
+
+namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.Core.CommonLibrary;
 
@@ -30,9 +38,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         buttonCollectionCreate.BackColor = colorTheme.CommonControlsBackColor;
         buttonCollectionManage.BackColor = colorTheme.CommonControlsBackColor;
 
-
         // Set fore color for common UI controls.
-
         buttonLaunch.ForeColor = colorTheme.CommonControlsForeColor;
         modQuickNavigationButton.ForeColor = colorTheme.CommonControlsForeColor;
         buttonExplore.ForeColor = colorTheme.CommonControlsForeColor;

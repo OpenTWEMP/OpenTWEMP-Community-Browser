@@ -1,4 +1,11 @@
-﻿namespace TWEMP.Browser.App.Classic;
+﻿// <copyright file="MainBrowserForm.GameConfigState.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+#pragma warning disable SA1601 // PartialElementsMustBeDocumented
+
+namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.Core.CommonLibrary;
 
@@ -8,31 +15,31 @@ internal partial class MainBrowserForm : IGameConfigState
 
     internal RadioButton LauncherProviderControl_NativeSetup { get; set; } = new ();
 
-    internal RadioButton LauncherProviderControl_BatchScript { get; set; } = new();
+    internal RadioButton LauncherProviderControl_BatchScript { get; set; } = new ();
 
-    internal RadioButton LauncherProviderControl_TWEMP { get; set; } = new();
+    internal RadioButton LauncherProviderControl_TWEMP { get; set; } = new ();
 
-    internal RadioButton RadioButton_FullScreenMode { get; set; } = new();
+    internal RadioButton RadioButton_FullScreenMode { get; set; } = new ();
 
-    internal RadioButton RadioButton_WindowedMode { get; set; } = new();
+    internal RadioButton RadioButton_WindowedMode { get; set; } = new ();
 
-    internal CheckBox CheckBox_Video { get; set; } = new();
+    internal CheckBox CheckBox_Video { get; set; } = new ();
 
-    internal CheckBox CheckBox_Borderless { get; set; } = new();
+    internal CheckBox CheckBox_Borderless { get; set; } = new ();
 
-    internal RadioButton RadioButton_LogErrorAndTrace { get; set; } = new();
+    internal RadioButton RadioButton_LogErrorAndTrace { get; set; } = new ();
 
-    internal RadioButton RadioButton_LogOnlyTrace { get; set; } = new();
+    internal RadioButton RadioButton_LogOnlyTrace { get; set; } = new ();
 
-    internal RadioButton RadioButton_LogOnlyError { get; set; } = new();
+    internal RadioButton RadioButton_LogOnlyError { get; set; } = new ();
 
-    internal CheckBox CheckBox_Cleaner_MapRWM { get; set; } = new();
+    internal CheckBox CheckBox_Cleaner_MapRWM { get; set; } = new ();
 
-    internal CheckBox CheckBox_Cleaner_textBIN { get; set; } = new();
+    internal CheckBox CheckBox_Cleaner_textBIN { get; set; } = new ();
 
-    internal CheckBox CheckBox_Cleaner_soundPacks { get; set; } = new();
+    internal CheckBox CheckBox_Cleaner_soundPacks { get; set; } = new ();
 
-    internal CheckBox CheckBox_LogHistory { get; set; } = new();
+    internal CheckBox CheckBox_LogHistory { get; set; } = new ();
 
     public CustomConfigState GetCurrentGameConfigState()
     {

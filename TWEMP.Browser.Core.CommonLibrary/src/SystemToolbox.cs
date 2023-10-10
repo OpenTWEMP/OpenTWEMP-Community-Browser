@@ -1,4 +1,10 @@
-﻿namespace TWEMP.Browser.Core.CommonLibrary;
+﻿// <copyright file="SystemToolbox.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+
+namespace TWEMP.Browser.Core.CommonLibrary;
 
 using System.Diagnostics;
 

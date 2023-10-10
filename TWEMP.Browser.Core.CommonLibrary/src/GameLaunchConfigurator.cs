@@ -1,20 +1,61 @@
-﻿using System.Diagnostics;
-using System.Text;
+﻿// <copyright file="GameLaunchConfigurator.cs" company="The OpenTWEMP Project">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+#pragma warning disable SA1600 // ElementsMustBeDocumented
+#pragma warning disable SA1310 // FieldNamesMustNotContainUnderscore
+#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.Core.CommonLibrary;
+
+using System.Diagnostics;
+using System.Text;
 
 using TWEMP.Browser.Core.GamingSupport;
 
 public class GameLaunchConfigurator
 {
-	private GameModificationInfo current_modification;
-	private CustomConfigState custom_configuration;
+    private GameModificationInfo current_modification;
+    private CustomConfigState custom_configuration;
 
-	public GameLaunchConfigurator(GameModificationInfo mod_info, CustomConfigState state)
-	{
-		current_modification = mod_info;
-		custom_configuration = state;
-	}
+    public GameLaunchConfigurator(GameModificationInfo mod_info, CustomConfigState state)
+    {
+        current_modification = mod_info;
+        custom_configuration = state;
+    }
+
+    public static List<CfgOptionsSubSet> GetBaseOptsSet()
+    {
+        return new List<CfgOptionsSubSet>();
+    }
+
+    public static List<CfgOptionsSubSet> GetFullOptsSet()
+    {
+        return new List<CfgOptionsSubSet>();
+    }
+
+    public static CfgOptionsSubSet GenerateOptsSubSet(string subsetName, Dictionary<string, object> settings)
+    {
+        var subsetOptions = new List<CfgOption>();
+
+        foreach (var setting in settings)
+        {
+            subsetOptions.Add(new CfgOption(setting.Key, setting.Value));
+        }
+
+        return new CfgOptionsSubSet(subsetName, subsetOptions);
+    }
+
+    public void ExecutePostProcessing(int modExecutionProcessID)
+    {
+        if (IsModExecutionProcessFinished(modExecutionProcessID))
+        {
+            if (custom_configuration.EnabledLogsHistorySaving)
+            {
+                SaveModLogFile();
+            }
+        }
+    }
 
     public void Execute()
     {
@@ -73,7 +114,7 @@ public class GameLaunchConfigurator
             {
                 var modExecutionProcess = new Process();
                 modExecutionProcess.StartInfo = InitializeGameLaunch(mod_config);
-                string modExecutableBaseName = Path.GetFileNameWithoutExtension(current_modification.CurrentSetup.ExecutableFileName)!;
+                string modExecutableBaseName = Path.GetFileNameWithoutExtension(current_modification.CurrentSetup.ExecutableFileName) !;
 
                 if (modExecutableBaseName.Equals(TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_CLASSIC2))
                 {
@@ -142,12 +183,15 @@ public class GameLaunchConfigurator
         // [features]
         CfgOptionsSubSet features_subset = GetFeaturesSubSet();
         settings.Add(features_subset);
+
         // [io]
         CfgOptionsSubSet io_subset = GetIOSubSet();
         settings.Add(io_subset);
+
         // [log]
         CfgOptionsSubSet log_subset = GetLogSubSet();
         settings.Add(log_subset);
+
         // [video]
         CfgOptionsSubSet video_subset = GetVideoSubSet();
         settings.Add(video_subset);
@@ -155,13 +199,13 @@ public class GameLaunchConfigurator
         return settings;
     }
 
-
     private CfgOptionsSubSet GetFeaturesSubSet()
     {
         string subsetName = "features";
 
         var subsetOptions = new List<CfgOption>();
-        //subsetOptions.Add(new CfgOption("editor", true));
+
+        // subsetOptions.Add(new CfgOption("editor", true));
         subsetOptions.Add(new CfgOption("mod", current_modification.ModCfgRelativePath));
 
         return new CfgOptionsSubSet(subsetName, subsetOptions);
@@ -225,34 +269,6 @@ public class GameLaunchConfigurator
         return new CfgOptionsSubSet(subsetName, subsetOptions);
     }
 
-
-
-    public List<CfgOptionsSubSet> GetBaseOptsSet()
-    {
-        // todo
-
-        return new List<CfgOptionsSubSet>();
-    }
-
-    public List<CfgOptionsSubSet> GetFullOptsSet()
-    {
-        // todo
-
-        return new List<CfgOptionsSubSet>();
-    }
-
-    public CfgOptionsSubSet GenerateOptsSubSet(string subsetName, Dictionary<string, object> settings)
-    {
-        var subsetOptions = new List<CfgOption>();
-
-        foreach (var setting in settings)
-        {
-            subsetOptions.Add(new CfgOption(setting.Key, setting.Value));
-        }
-
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
-    }
-
     private Dictionary<string, object> GenerateDefaultVideoSettings()
     {
         Dictionary<string, object> settings;
@@ -283,8 +299,8 @@ public class GameLaunchConfigurator
             { "building_detail", "high" },
             { "effect_quality", "highest" },
             { "terrain_quality", "custom" },
-            { "unit_detail", "highest"},
-            { "vegetation_quality", "high"},
+            { "unit_detail", "highest" },
+            { "vegetation_quality", "high" },
             { "anisotropic_level", 16 },
             { "antialiasing", 8 },
             { "depth_shadows", 2 },
@@ -298,8 +314,8 @@ public class GameLaunchConfigurator
             { "sprite_buffers_per_node", 4 },
             { "texture_filtering", 2 },
             { "water_buffers_per_node", 4 },
-            { "battle_resolution", new uint[] {1600, 900} },
-            { "campaign_resolution", new uint[] { 1600, 900 } }
+            { "battle_resolution", new uint[] { 1600, 900 } },
+            { "campaign_resolution", new uint[] { 1600, 900 } },
         };
 
         return settings;
@@ -307,7 +323,6 @@ public class GameLaunchConfigurator
 
     private CfgOptionsSubSet GetHotseatSubSet()
     {
-
         string subsetName = "hotseat";
 
         var subsetOptions = new List<CfgOption>();
@@ -376,7 +391,7 @@ public class GameLaunchConfigurator
             { "mute_advisor", false },
             { "no_campaign_battle_time_limit", false },
             { "tutorial_battle_played", true },
-            { "use_quickchat", false }
+            { "use_quickchat", false },
         };
     }
 
@@ -392,12 +407,12 @@ public class GameLaunchConfigurator
     {
         return new Dictionary<string, object>
         {
-            {"full_battle_HUD", true },
-            {"show_tooltips", true },
-            {"buttons", "slide" },
-            {"radar", "slide" },
-            {"unit_cards", "slide" },
-            {"SA_cards", "slide" }
+            { "full_battle_HUD", true },
+            { "show_tooltips", true },
+            { "buttons", "slide" },
+            { "radar", "slide" },
+            { "unit_cards", "slide" },
+            { "SA_cards", "slide" },
         };
     }
 
@@ -418,7 +433,6 @@ public class GameLaunchConfigurator
         bool[] preProcessingFlags = ExecuteModPreProcessing();
 
         // Preprocessing has success only when all flags are 'true'.
-
         foreach (var flag in preProcessingFlags)
         {
             if (flag == false)
@@ -434,36 +448,35 @@ public class GameLaunchConfigurator
     {
         const int operationsCount = 3;
         var preProcessingFlags = new bool[operationsCount];
-    
+
         // The flag can assign 'true' value because of preprocessing might be skipped by a user.
         const bool skippedOperationStatus = true;
-    
+
         bool isMapFileSuccessfullyProcessed =
-            (custom_configuration.IsShouldBeDeleted_MapRWM) ? DeleteMapFile() : skippedOperationStatus;
-    
+            custom_configuration.IsShouldBeDeleted_MapRWM ? DeleteMapFile() : skippedOperationStatus;
+
         bool areStringsBinFilesSuccessfullyPreprocessed =
-            (custom_configuration.IsShouldBeDeleted_TextBin) ? DeleteStringsBinFiles() : skippedOperationStatus;
-    
+            custom_configuration.IsShouldBeDeleted_TextBin ? DeleteStringsBinFiles() : skippedOperationStatus;
+
         bool areSoundPackFilesSuccessfullyPreprocessed =
-            (custom_configuration.IsShouldBeDeleted_SoundPacks) ? DeleteSoundPackFiles() : skippedOperationStatus;
-    
+            custom_configuration.IsShouldBeDeleted_SoundPacks ? DeleteSoundPackFiles() : skippedOperationStatus;
+
         preProcessingFlags[0] = isMapFileSuccessfullyProcessed;
         preProcessingFlags[1] = areStringsBinFilesSuccessfullyPreprocessed;
         preProcessingFlags[2] = areSoundPackFilesSuccessfullyPreprocessed;
-    
+
         return preProcessingFlags;
     }
-
 
     private bool DeleteMapFile()
     {
         bool hasOperationSuccessExecutionStatus = false;
-    
+
         string mapFileName = "map.rwm";
         string mapRelativePath = "data\\world\\maps\\base\\";
-    
+
         string mapFullPath = Path.Combine(current_modification.Location, mapRelativePath, mapFileName);
-    
+
         if (File.Exists(mapFullPath))
         {
             File.Delete(mapFullPath);
@@ -512,24 +525,24 @@ public class GameLaunchConfigurator
     private bool DeleteSoundPackFiles()
     {
         bool hasOperationSuccessExecutionStatus = false;
-    
+
         string soundPacksRelativePath = "data\\sounds";
         string soundPacksFullPath = Path.Combine(current_modification.Location, soundPacksRelativePath);
-    
+
         if (Directory.Exists(soundPacksFullPath))
         {
             string[] soundPacksFiles = Directory.GetFiles(soundPacksFullPath);
-    
+
             for (int i = 0; i < soundPacksFiles.Length; i++)
             {
                 string pack_file = soundPacksFiles[i];
-    
+
                 if (IsBinDatPack(pack_file) || IsBinIdxPack(pack_file))
                 {
                     File.Delete(pack_file);
                 }
             }
-    
+
             hasOperationSuccessExecutionStatus = true;
         }
 #if DISABLE_WHEN_MIGRATION
@@ -544,12 +557,12 @@ public class GameLaunchConfigurator
     private bool IsBinDatPack(string filename)
     {
         string binDatFileExtension = ".dat";
-    
+
         if (filename.EndsWith(binDatFileExtension))
         {
             return true;
         }
-    
+
         return false;
     }
 
@@ -565,22 +578,10 @@ public class GameLaunchConfigurator
         return false;
     }
 
-
-    public void ExecutePostProcessing(int modExecutionProcessID)
-    {
-        if (IsModExecutionProcessFinished(modExecutionProcessID))
-        {
-            if (custom_configuration.EnabledLogsHistorySaving)
-            {
-                SaveModLogFile();
-            }
-        }
-    }
-
     private bool IsModExecutionProcessFinished(int modExecutionProcessID)
     {
         Process[] currentProcesses = Process.GetProcesses();
-    
+
         foreach (var process in currentProcesses)
         {
             if (process.Id == modExecutionProcessID)
@@ -588,23 +589,23 @@ public class GameLaunchConfigurator
                 return false;
             }
         }
-    
+
         return true;
     }
 
     private void SaveModLogFile()
     {
         string modLogFilePath = Path.Combine(current_modification.Location, current_modification.LogFileName);
-    
+
         if (File.Exists(modLogFilePath))
         {
             string modLogsDirectory = GetModLogsDirectory();
-    
+
             if (!Directory.Exists(modLogsDirectory))
             {
                 Directory.CreateDirectory(modLogsDirectory);
             }
-    
+
             string savedModLogFilePath = GenerateModLogFilePath(modLogsDirectory);
             File.Copy(modLogFilePath, savedModLogFilePath);
         }
@@ -623,67 +624,67 @@ public class GameLaunchConfigurator
         string dt_hour = DateTime.Now.Hour.ToString();
         string dt_min = DateTime.Now.Minute.ToString();
         string dt_sec = DateTime.Now.Second.ToString();
-    
+
         string modLogDateTime =
             " [ " +
                 dt_year + "." + dt_month + "." + dt_day
                 + " " +
                 dt_hour + "-" + dt_min + "-" + dt_sec
             + " ]";
-    
+
         string cfgFileNamePrefix = "twe-mod-log";
         string cfgFileExtension = ".log";
-    
+
         string modLogFileName = cfgFileNamePrefix + modLogDateTime + cfgFileExtension;
-    
+
         return Path.Combine(modLogsDirectoryPath, modLogFileName);
     }
 }
 
 public struct CfgOption
 {
-	private string name;
-	private object value;
+    private string name;
+    private object value;
 
-	public CfgOption(string option_name, object option_value)
-	{
-		name = option_name;
-		value = option_value;
-	}
+    public CfgOption(string option_name, object option_value)
+    {
+        name = option_name;
+        value = option_value;
+    }
 
-	public string ToConfigFormat()
-	{
-		return (name + " = " + value.ToString());
-	}
+    public string ToConfigFormat()
+    {
+        return name + " = " + value.ToString();
+    }
 }
 
 public struct CfgOptionsSubSet
 {
-	private string name;
-	private List<CfgOption> options;
+    private string name;
+    private List<CfgOption> options;
 
-	public CfgOptionsSubSet(string subset_name, List<CfgOption> config_options)
-	{
-		name = subset_name;
-		options = config_options;
-	}
+    public CfgOptionsSubSet(string subset_name, List<CfgOption> config_options)
+    {
+        name = subset_name;
+        options = config_options;
+    }
 
-	public string FormatToCfg()
-	{
-		string optionsSubSet;
+    public string FormatToCfg()
+    {
+        string optionsSubSet;
 
-		optionsSubSet = FormatNameToCfg() + "\n";
+        optionsSubSet = FormatNameToCfg() + "\n";
 
-		foreach (var option in options)
-		{
-			optionsSubSet += option.ToConfigFormat() + "\n";
-		}
+        foreach (var option in options)
+        {
+            optionsSubSet += option.ToConfigFormat() + "\n";
+        }
 
-		return optionsSubSet;
-	}
+        return optionsSubSet;
+    }
 
-	private string FormatNameToCfg()
-	{
-		return ("[" + name + "]");
-	}
+    private string FormatNameToCfg()
+    {
+        return "[" + name + "]";
+    }
 }
