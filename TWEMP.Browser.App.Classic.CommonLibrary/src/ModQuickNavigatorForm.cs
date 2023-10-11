@@ -11,7 +11,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
 using M2TW = TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider;
 
-public partial class ModQuickNavigatorForm : Form
+public partial class ModQuickNavigatorForm : Form, ICanChangeMyLocalization
 {
     private const string ModLocationPrefix = "[MOD]";
 
@@ -37,6 +37,8 @@ public partial class ModQuickNavigatorForm : Form
     public ModQuickNavigatorForm(string modHomeDirectory)
     {
         InitializeComponent();
+
+        SetupCurrentLocalizationForGUIControls();
 
         currentMessageProvider = BrowserMessageProvider.CurrentProvider;
 
@@ -74,6 +76,15 @@ public partial class ModQuickNavigatorForm : Form
         dataModelsStratNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataModelsStratFolderName}";
         worldMapsBaseNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{worldMapsBaseFolderName}";
         worldMapsCampaignNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{worldMapsCampaignFolderName}";
+    }
+
+    public void SetupCurrentLocalizationForGUIControls()
+    {
+        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
+
+        Text = snapshot.GetLocalizedValueByKey(Name);
+        labelCommonInfo.Text = snapshot.GetLocalizedValueByKey(labelCommonInfo.Name);
+        formExitButton.Text = snapshot.GetLocalizedValueByKey(formExitButton.Name);
     }
 
     private void NavigateToModDirectory(string directoryPath)

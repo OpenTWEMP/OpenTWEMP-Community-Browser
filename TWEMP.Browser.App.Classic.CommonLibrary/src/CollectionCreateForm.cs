@@ -10,13 +10,15 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
 
-public partial class CollectionCreateForm : Form
+public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
 {
     private readonly IUpdatableBrowser currentBrowser;
 
     public CollectionCreateForm(IUpdatableBrowser browser)
     {
         InitializeComponent();
+
+        SetupCurrentLocalizationForGUIControls();
 
         currentBrowser = browser;
         collectionNameTextBox.Text = "My New Collection";
@@ -25,6 +27,17 @@ public partial class CollectionCreateForm : Form
         {
             modsSelectionCheckedListBox.Items.Add(mod.ShortName);
         }
+    }
+
+    public void SetupCurrentLocalizationForGUIControls()
+    {
+        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
+
+        Text = snapshot.GetLocalizedValueByKey(Name);
+        collectionNameLabel.Text = snapshot.GetLocalizedValueByKey(collectionNameLabel.Name);
+        modsSelectionLabel.Text = snapshot.GetLocalizedValueByKey(modsSelectionLabel.Name);
+        buttonOK.Text = snapshot.GetLocalizedValueByKey(buttonOK.Name);
+        buttonCancel.Text = snapshot.GetLocalizedValueByKey(buttonCancel.Name);
     }
 
     private static void ShowMessageAboutEmptyCollectionCreation()
@@ -86,7 +99,7 @@ public partial class CollectionCreateForm : Form
 
             for (int i = 0; i < modsSelectionCheckedListBox.CheckedIndices.Count; i++)
             {
-                string selectedModName = modsSelectionCheckedListBox.CheckedItems[i] !.ToString() !;
+                string selectedModName = modsSelectionCheckedListBox.CheckedItems[i]!.ToString()!;
                 GameModificationInfo selecteModInfo = Settings.GetActiveModificationInfo(selectedModName);
                 selectedModifications.Add(selecteModInfo.Location, selecteModInfo.ShortName);
             }

@@ -10,23 +10,34 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
 
-public partial class AddNewGameSetupForm : Form
+public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
 {
     private GameSetupConfigForm currentCallingForm;
 
     public AddNewGameSetupForm(GameSetupConfigForm callingForm)
     {
         InitializeComponent();
+
+        SetupCurrentLocalizationForGUIControls();
+
         currentCallingForm = callingForm;
     }
 
-    public AddNewGameSetupForm(GameSetupConfigForm callingForm, GameSetupInfo gameSetupInfo)
+    public void SetupCurrentLocalizationForGUIControls()
     {
-        InitializeComponent();
-        InitializeViewOnlyMode();
+        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
 
-        currentCallingForm = callingForm;
-        LoadGameSetupObject(gameSetupInfo);
+        Text = snapshot.GetLocalizedValueByKey(Name);
+        gameSetupGroupBox.Text = snapshot.GetLocalizedValueByKey(gameSetupGroupBox.Name);
+        gameSetupNameLabel.Text = snapshot.GetLocalizedValueByKey(gameSetupNameLabel.Name);
+        setupNameResetButton.Text = snapshot.GetLocalizedValueByKey(setupNameResetButton.Name);
+        gameExecutablePathLabel.Text = snapshot.GetLocalizedValueByKey(gameExecutablePathLabel.Name);
+        gameExecutableSelectPathButton.Text = snapshot.GetLocalizedValueByKey(gameExecutableSelectPathButton.Name);
+        modcentersGroupBox.Text = snapshot.GetLocalizedValueByKey(modcentersGroupBox.Name);
+        modcenterAppendButton.Text = snapshot.GetLocalizedValueByKey(modcenterAppendButton.Name);
+        modcenterRemoveButton.Text = snapshot.GetLocalizedValueByKey(modcenterRemoveButton.Name);
+        saveButton.Text = snapshot.GetLocalizedValueByKey(saveButton.Name);
+        cancelButton.Text = snapshot.GetLocalizedValueByKey(cancelButton.Name);
     }
 
     private static bool CanSaveNewGameSetup(string setupName, string executable, List<string> modcenters)

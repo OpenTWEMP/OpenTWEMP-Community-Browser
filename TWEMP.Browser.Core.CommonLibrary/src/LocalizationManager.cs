@@ -27,6 +27,8 @@ public class GuiLocale
             new GuiLocaleDescr_AppSettings(),
             new GuiLocaleDescr_GameSetupConfig(),
             new GuiLocaleDescr_AddNewGameSetup(),
+            new GuiLocaleDescr_CollectionManageForm(),
+            new GuiLocaleDescr_CollectionCreateForm(),
             new GuiLocaleDescr_ModConfigSettings(),
             new GuiLocaleDescr_ModQuickNavigator(),
             new GuiLocaleDescr_AboutProject(),

@@ -10,23 +10,36 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
 
-public partial class GameSetupConfigForm : Form
+public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
 {
     private readonly IUpdatableBrowser currentBrowser;
 
     public GameSetupConfigForm(IUpdatableBrowser browser)
     {
         InitializeComponent();
+
+        SetupCurrentLocalizationForGUIControls();
+
         currentBrowser = browser;
     }
 
     public void UpdateGameSetupListBox()
     {
         gameSetupPathsListBox.Items.Clear();
-        setupViewButton.Enabled = false;
         setupPathDeleteButton.Enabled = false;
 
         InitializeGameSetupListBox(Settings.GameInstallations);
+    }
+
+    public void SetupCurrentLocalizationForGUIControls()
+    {
+        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
+
+        Text = snapshot.GetLocalizedValueByKey(Name);
+        setupPathAddButton.Text = snapshot.GetLocalizedValueByKey(setupPathAddButton.Name);
+        setupPathDeleteButton.Text = snapshot.GetLocalizedValueByKey(setupPathDeleteButton.Name);
+        allPathsClearButton.Text = snapshot.GetLocalizedValueByKey(allPathsClearButton.Name);
+        formOkButton.Text = snapshot.GetLocalizedValueByKey(formOkButton.Name);
     }
 
     private static string InitializeGameSetupObjectItem(GameSetupInfo gameSetupObject)
@@ -68,8 +81,6 @@ public partial class GameSetupConfigForm : Form
         int selectedIndex = gameSetupPathsListBox.SelectedIndex;
         gameSetupPathsListBox.Items.RemoveAt(selectedIndex);
         Settings.DeleteGameSetupByIndex(selectedIndex);
-
-        setupViewButton.Enabled = false;
         setupPathDeleteButton.Enabled = false;
     }
 
@@ -93,18 +104,8 @@ public partial class GameSetupConfigForm : Form
         currentBrowser.Enabled = true;
     }
 
-    private void SetupViewButton_Click(object sender, EventArgs e)
-    {
-        int selectedGameSetupIndex = gameSetupPathsListBox.SelectedIndex;
-        GameSetupInfo editableGameSetup = Settings.GameInstallations[selectedGameSetupIndex];
-        var gameSetupConfigForm = new AddNewGameSetupForm(this, editableGameSetup);
-        Enabled = false;
-        gameSetupConfigForm.Show();
-    }
-
     private void GameSetupPathsListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        setupViewButton.Enabled = true;
         setupPathDeleteButton.Enabled = true;
     }
 
@@ -112,7 +113,6 @@ public partial class GameSetupConfigForm : Form
     {
         if (gameSetupPathsListBox.SelectedItems.Count > 0)
         {
-            setupViewButton.Enabled = true;
             setupPathDeleteButton.Enabled = true;
         }
     }

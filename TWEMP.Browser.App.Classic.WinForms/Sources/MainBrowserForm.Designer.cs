@@ -30,59 +30,57 @@ namespace TWEMP.Browser.App.Classic
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("My Favorite Mods");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("My Mod Collections");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("All Modifications");
-            buttonLaunch = new System.Windows.Forms.Button();
-            panelLauncherOptions = new System.Windows.Forms.Panel();
-            groupBoxConfigProfiles = new System.Windows.Forms.GroupBox();
-            radioButtonConfigProfile_Modding = new System.Windows.Forms.RadioButton();
-            radioButtonConfigProfile_Gaming = new System.Windows.Forms.RadioButton();
-            groupBoxLauncherProviders = new System.Windows.Forms.GroupBox();
-            radioButtonLauncherProvider_TWEMP = new System.Windows.Forms.RadioButton();
-            radioButtonLauncherProvider_BatchScript = new System.Windows.Forms.RadioButton();
-            radioButtonLauncherProvider_NativeSetup = new System.Windows.Forms.RadioButton();
-            radioButtonLauncherProvider_M2TWEOP = new System.Windows.Forms.RadioButton();
-            groupBoxConfigCleanerMode = new System.Windows.Forms.GroupBox();
-            checkBoxCleaner_soundPacks = new System.Windows.Forms.CheckBox();
-            checkBoxCleaner_textBIN = new System.Windows.Forms.CheckBox();
-            checkBoxCleaner_MapRWM = new System.Windows.Forms.CheckBox();
-            groupBoxConfigLogMode = new System.Windows.Forms.GroupBox();
-            checkBoxLogHistory = new System.Windows.Forms.CheckBox();
-            radioButtonLogErrorAndTrace = new System.Windows.Forms.RadioButton();
-            radioButtonLogOnlyTrace = new System.Windows.Forms.RadioButton();
-            radioButtonLogOnlyError = new System.Windows.Forms.RadioButton();
-            groupBoxConfigLaunchMode = new System.Windows.Forms.GroupBox();
-            checkBoxBorderless = new System.Windows.Forms.CheckBox();
-            checkBoxVideo = new System.Windows.Forms.CheckBox();
-            radioButtonLaunchFullScreen = new System.Windows.Forms.RadioButton();
-            radioButtonLaunchWindowScreen = new System.Windows.Forms.RadioButton();
-            buttonExplore = new System.Windows.Forms.Button();
-            modQuickNavigationButton = new System.Windows.Forms.Button();
-            panelLauncherToolkit = new System.Windows.Forms.Panel();
-            modMainTitleLabel = new System.Windows.Forms.Label();
-            modLogoPictureBox = new System.Windows.Forms.PictureBox();
-            modStatusLabel = new System.Windows.Forms.Label();
-            appStatusStrip = new System.Windows.Forms.StatusStrip();
-            appMenuStrip = new System.Windows.Forms.MenuStrip();
-            toolStripAppItem = new System.Windows.Forms.ToolStripMenuItem();
-            gameSetupSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            applicationSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            applicationHomeFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            exitFromApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripHelpItem = new System.Windows.Forms.ToolStripMenuItem();
-            aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripModItem = new System.Windows.Forms.ToolStripMenuItem();
-            configSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            treeViewGameMods = new System.Windows.Forms.TreeView();
-            buttonMarkFavoriteMod = new System.Windows.Forms.Button();
-            buttonCollectionCreate = new System.Windows.Forms.Button();
-            buttonCollectionManage = new System.Windows.Forms.Button();
-            panelCollections = new System.Windows.Forms.Panel();
+            TreeNode treeNode1 = new TreeNode("My Favorite Mods");
+            TreeNode treeNode2 = new TreeNode("My Mod Collections");
+            TreeNode treeNode3 = new TreeNode("All Modifications");
+            buttonLaunch = new Button();
+            panelLauncherOptions = new Panel();
+            groupBoxConfigProfiles = new GroupBox();
+            radioButtonConfigProfile_Modding = new RadioButton();
+            radioButtonConfigProfile_Gaming = new RadioButton();
+            groupBoxLauncherProviders = new GroupBox();
+            radioButtonLauncherProvider_TWEMP = new RadioButton();
+            radioButtonLauncherProvider_BatchScript = new RadioButton();
+            radioButtonLauncherProvider_NativeSetup = new RadioButton();
+            radioButtonLauncherProvider_M2TWEOP = new RadioButton();
+            groupBoxConfigCleanerMode = new GroupBox();
+            checkBoxCleaner_soundPacks = new CheckBox();
+            checkBoxCleaner_textBIN = new CheckBox();
+            checkBoxCleaner_MapRWM = new CheckBox();
+            groupBoxConfigLogMode = new GroupBox();
+            checkBoxLogHistory = new CheckBox();
+            radioButtonLogErrorAndTrace = new RadioButton();
+            radioButtonLogOnlyTrace = new RadioButton();
+            radioButtonLogOnlyError = new RadioButton();
+            groupBoxConfigLaunchMode = new GroupBox();
+            checkBoxBorderless = new CheckBox();
+            checkBoxVideo = new CheckBox();
+            radioButtonLaunchFullScreen = new RadioButton();
+            radioButtonLaunchWindowScreen = new RadioButton();
+            buttonExplore = new Button();
+            modQuickNavigationButton = new Button();
+            panelLauncherToolkit = new Panel();
+            modMainTitleLabel = new Label();
+            modLogoPictureBox = new PictureBox();
+            modStatusLabel = new Label();
+            appStatusStrip = new StatusStrip();
+            appMenuStrip = new MenuStrip();
+            toolStripAppItem = new ToolStripMenuItem();
+            gameSetupSettingsToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            applicationSettingsToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
+            applicationHomeFolderToolStripMenuItem = new ToolStripMenuItem();
+            exitFromApplicationToolStripMenuItem = new ToolStripMenuItem();
+            toolStripHelpItem = new ToolStripMenuItem();
+            aboutProgramToolStripMenuItem = new ToolStripMenuItem();
+            toolStripModItem = new ToolStripMenuItem();
+            configSettingsToolStripMenuItem = new ToolStripMenuItem();
+            treeViewGameMods = new TreeView();
+            buttonMarkFavoriteMod = new Button();
+            buttonCollectionCreate = new Button();
+            buttonCollectionManage = new Button();
+            panelCollections = new Panel();
             panelLauncherOptions.SuspendLayout();
             groupBoxConfigProfiles.SuspendLayout();
             groupBoxLauncherProviders.SuspendLayout();
@@ -97,17 +95,17 @@ namespace TWEMP.Browser.App.Classic
             // 
             // buttonLaunch
             // 
-            buttonLaunch.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            buttonLaunch.BackColor = System.Drawing.Color.LightGreen;
-            buttonLaunch.Cursor = System.Windows.Forms.Cursors.Hand;
+            buttonLaunch.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            buttonLaunch.BackColor = Color.LightGreen;
+            buttonLaunch.Cursor = Cursors.Hand;
             buttonLaunch.Enabled = false;
-            buttonLaunch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonLaunch.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            buttonLaunch.ForeColor = System.Drawing.SystemColors.ControlText;
-            buttonLaunch.Location = new System.Drawing.Point(4, 3);
-            buttonLaunch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonLaunch.FlatStyle = FlatStyle.Flat;
+            buttonLaunch.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonLaunch.ForeColor = SystemColors.ControlText;
+            buttonLaunch.Location = new Point(4, 3);
+            buttonLaunch.Margin = new Padding(4, 3, 4, 3);
             buttonLaunch.Name = "buttonLaunch";
-            buttonLaunch.Size = new System.Drawing.Size(362, 88);
+            buttonLaunch.Size = new Size(362, 88);
             buttonLaunch.TabIndex = 0;
             buttonLaunch.Text = "LAUNCH";
             buttonLaunch.UseVisualStyleBackColor = false;
@@ -115,30 +113,30 @@ namespace TWEMP.Browser.App.Classic
             // 
             // panelLauncherOptions
             // 
-            panelLauncherOptions.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            panelLauncherOptions.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panelLauncherOptions.AutoScroll = true;
-            panelLauncherOptions.BackColor = System.Drawing.Color.MediumAquamarine;
-            panelLauncherOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panelLauncherOptions.BackColor = Color.MediumAquamarine;
+            panelLauncherOptions.BorderStyle = BorderStyle.FixedSingle;
             panelLauncherOptions.Controls.Add(groupBoxConfigProfiles);
             panelLauncherOptions.Controls.Add(groupBoxLauncherProviders);
             panelLauncherOptions.Controls.Add(groupBoxConfigCleanerMode);
             panelLauncherOptions.Controls.Add(groupBoxConfigLogMode);
             panelLauncherOptions.Controls.Add(groupBoxConfigLaunchMode);
-            panelLauncherOptions.Cursor = System.Windows.Forms.Cursors.Hand;
-            panelLauncherOptions.Location = new System.Drawing.Point(719, 84);
-            panelLauncherOptions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            panelLauncherOptions.Cursor = Cursors.Hand;
+            panelLauncherOptions.Location = new Point(719, 84);
+            panelLauncherOptions.Margin = new Padding(4, 3, 4, 3);
             panelLauncherOptions.Name = "panelLauncherOptions";
-            panelLauncherOptions.Size = new System.Drawing.Size(276, 567);
+            panelLauncherOptions.Size = new Size(276, 567);
             panelLauncherOptions.TabIndex = 2;
             // 
             // groupBoxConfigProfiles
             // 
-            groupBoxConfigProfiles.BackColor = System.Drawing.Color.Transparent;
+            groupBoxConfigProfiles.BackColor = Color.Transparent;
             groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Modding);
             groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Gaming);
-            groupBoxConfigProfiles.Location = new System.Drawing.Point(3, 3);
+            groupBoxConfigProfiles.Location = new Point(3, 3);
             groupBoxConfigProfiles.Name = "groupBoxConfigProfiles";
-            groupBoxConfigProfiles.Size = new System.Drawing.Size(267, 53);
+            groupBoxConfigProfiles.Size = new Size(267, 53);
             groupBoxConfigProfiles.TabIndex = 7;
             groupBoxConfigProfiles.TabStop = false;
             groupBoxConfigProfiles.Text = "Configuration Profiles";
@@ -146,11 +144,11 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonConfigProfile_Modding
             // 
             radioButtonConfigProfile_Modding.AutoSize = true;
-            radioButtonConfigProfile_Modding.BackColor = System.Drawing.Color.Transparent;
+            radioButtonConfigProfile_Modding.BackColor = Color.Transparent;
             radioButtonConfigProfile_Modding.Checked = true;
-            radioButtonConfigProfile_Modding.Location = new System.Drawing.Point(119, 22);
+            radioButtonConfigProfile_Modding.Location = new Point(119, 22);
             radioButtonConfigProfile_Modding.Name = "radioButtonConfigProfile_Modding";
-            radioButtonConfigProfile_Modding.Size = new System.Drawing.Size(118, 19);
+            radioButtonConfigProfile_Modding.Size = new Size(118, 19);
             radioButtonConfigProfile_Modding.TabIndex = 1;
             radioButtonConfigProfile_Modding.TabStop = true;
             radioButtonConfigProfile_Modding.Text = "MODDING MODE";
@@ -160,10 +158,10 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonConfigProfile_Gaming
             // 
             radioButtonConfigProfile_Gaming.AutoSize = true;
-            radioButtonConfigProfile_Gaming.BackColor = System.Drawing.Color.Transparent;
-            radioButtonConfigProfile_Gaming.Location = new System.Drawing.Point(6, 22);
+            radioButtonConfigProfile_Gaming.BackColor = Color.Transparent;
+            radioButtonConfigProfile_Gaming.Location = new Point(6, 22);
             radioButtonConfigProfile_Gaming.Name = "radioButtonConfigProfile_Gaming";
-            radioButtonConfigProfile_Gaming.Size = new System.Drawing.Size(109, 19);
+            radioButtonConfigProfile_Gaming.Size = new Size(109, 19);
             radioButtonConfigProfile_Gaming.TabIndex = 0;
             radioButtonConfigProfile_Gaming.Text = "GAMING MODE";
             radioButtonConfigProfile_Gaming.UseVisualStyleBackColor = false;
@@ -175,9 +173,9 @@ namespace TWEMP.Browser.App.Classic
             groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_BatchScript);
             groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_NativeSetup);
             groupBoxLauncherProviders.Controls.Add(radioButtonLauncherProvider_M2TWEOP);
-            groupBoxLauncherProviders.Location = new System.Drawing.Point(3, 431);
+            groupBoxLauncherProviders.Location = new Point(3, 431);
             groupBoxLauncherProviders.Name = "groupBoxLauncherProviders";
-            groupBoxLauncherProviders.Size = new System.Drawing.Size(267, 131);
+            groupBoxLauncherProviders.Size = new Size(267, 131);
             groupBoxLauncherProviders.TabIndex = 6;
             groupBoxLauncherProviders.TabStop = false;
             groupBoxLauncherProviders.Text = "Launcher Providers";
@@ -186,9 +184,9 @@ namespace TWEMP.Browser.App.Classic
             // 
             radioButtonLauncherProvider_TWEMP.AutoSize = true;
             radioButtonLauncherProvider_TWEMP.Checked = true;
-            radioButtonLauncherProvider_TWEMP.Location = new System.Drawing.Point(12, 20);
+            radioButtonLauncherProvider_TWEMP.Location = new Point(12, 20);
             radioButtonLauncherProvider_TWEMP.Name = "radioButtonLauncherProvider_TWEMP";
-            radioButtonLauncherProvider_TWEMP.Size = new System.Drawing.Size(212, 19);
+            radioButtonLauncherProvider_TWEMP.Size = new Size(212, 19);
             radioButtonLauncherProvider_TWEMP.TabIndex = 3;
             radioButtonLauncherProvider_TWEMP.TabStop = true;
             radioButtonLauncherProvider_TWEMP.Text = "Launch Game via TWEMP Launcher";
@@ -198,9 +196,9 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonLauncherProvider_BatchScript
             // 
             radioButtonLauncherProvider_BatchScript.AutoSize = true;
-            radioButtonLauncherProvider_BatchScript.Location = new System.Drawing.Point(12, 47);
+            radioButtonLauncherProvider_BatchScript.Location = new Point(12, 47);
             radioButtonLauncherProvider_BatchScript.Name = "radioButtonLauncherProvider_BatchScript";
-            radioButtonLauncherProvider_BatchScript.Size = new System.Drawing.Size(182, 19);
+            radioButtonLauncherProvider_BatchScript.Size = new Size(182, 19);
             radioButtonLauncherProvider_BatchScript.TabIndex = 2;
             radioButtonLauncherProvider_BatchScript.Text = "Launch Game via Batch Script";
             radioButtonLauncherProvider_BatchScript.UseVisualStyleBackColor = true;
@@ -209,9 +207,9 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonLauncherProvider_NativeSetup
             // 
             radioButtonLauncherProvider_NativeSetup.AutoSize = true;
-            radioButtonLauncherProvider_NativeSetup.Location = new System.Drawing.Point(12, 72);
+            radioButtonLauncherProvider_NativeSetup.Location = new Point(12, 72);
             radioButtonLauncherProvider_NativeSetup.Name = "radioButtonLauncherProvider_NativeSetup";
-            radioButtonLauncherProvider_NativeSetup.Size = new System.Drawing.Size(186, 19);
+            radioButtonLauncherProvider_NativeSetup.Size = new Size(186, 19);
             radioButtonLauncherProvider_NativeSetup.TabIndex = 1;
             radioButtonLauncherProvider_NativeSetup.Text = "Launch Game via Native Setup";
             radioButtonLauncherProvider_NativeSetup.UseVisualStyleBackColor = true;
@@ -220,9 +218,9 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonLauncherProvider_M2TWEOP
             // 
             radioButtonLauncherProvider_M2TWEOP.AutoSize = true;
-            radioButtonLauncherProvider_M2TWEOP.Location = new System.Drawing.Point(12, 97);
+            radioButtonLauncherProvider_M2TWEOP.Location = new Point(12, 97);
             radioButtonLauncherProvider_M2TWEOP.Name = "radioButtonLauncherProvider_M2TWEOP";
-            radioButtonLauncherProvider_M2TWEOP.Size = new System.Drawing.Size(197, 19);
+            radioButtonLauncherProvider_M2TWEOP.Size = new Size(197, 19);
             radioButtonLauncherProvider_M2TWEOP.TabIndex = 0;
             radioButtonLauncherProvider_M2TWEOP.Text = "Launch Game via M2TWEOP GUI";
             radioButtonLauncherProvider_M2TWEOP.UseVisualStyleBackColor = true;
@@ -230,15 +228,15 @@ namespace TWEMP.Browser.App.Classic
             // 
             // groupBoxConfigCleanerMode
             // 
-            groupBoxConfigCleanerMode.BackColor = System.Drawing.Color.Transparent;
+            groupBoxConfigCleanerMode.BackColor = Color.Transparent;
             groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_soundPacks);
             groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_textBIN);
             groupBoxConfigCleanerMode.Controls.Add(checkBoxCleaner_MapRWM);
-            groupBoxConfigCleanerMode.Location = new System.Drawing.Point(4, 322);
-            groupBoxConfigCleanerMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxConfigCleanerMode.Location = new Point(4, 322);
+            groupBoxConfigCleanerMode.Margin = new Padding(4, 3, 4, 3);
             groupBoxConfigCleanerMode.Name = "groupBoxConfigCleanerMode";
-            groupBoxConfigCleanerMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            groupBoxConfigCleanerMode.Size = new System.Drawing.Size(266, 103);
+            groupBoxConfigCleanerMode.Padding = new Padding(4, 3, 4, 3);
+            groupBoxConfigCleanerMode.Size = new Size(266, 103);
             groupBoxConfigCleanerMode.TabIndex = 5;
             groupBoxConfigCleanerMode.TabStop = false;
             groupBoxConfigCleanerMode.Text = "Select mod clean routines";
@@ -246,10 +244,10 @@ namespace TWEMP.Browser.App.Classic
             // checkBoxCleaner_soundPacks
             // 
             checkBoxCleaner_soundPacks.AutoSize = true;
-            checkBoxCleaner_soundPacks.Location = new System.Drawing.Point(10, 75);
-            checkBoxCleaner_soundPacks.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxCleaner_soundPacks.Location = new Point(10, 75);
+            checkBoxCleaner_soundPacks.Margin = new Padding(4, 3, 4, 3);
             checkBoxCleaner_soundPacks.Name = "checkBoxCleaner_soundPacks";
-            checkBoxCleaner_soundPacks.Size = new System.Drawing.Size(227, 19);
+            checkBoxCleaner_soundPacks.Size = new Size(227, 19);
             checkBoxCleaner_soundPacks.TabIndex = 2;
             checkBoxCleaner_soundPacks.Text = "Delete sound pack files (*.DAT + *.IDX)";
             checkBoxCleaner_soundPacks.UseVisualStyleBackColor = true;
@@ -257,10 +255,10 @@ namespace TWEMP.Browser.App.Classic
             // checkBoxCleaner_textBIN
             // 
             checkBoxCleaner_textBIN.AutoSize = true;
-            checkBoxCleaner_textBIN.Location = new System.Drawing.Point(10, 48);
-            checkBoxCleaner_textBIN.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxCleaner_textBIN.Location = new Point(10, 48);
+            checkBoxCleaner_textBIN.Margin = new Padding(4, 3, 4, 3);
             checkBoxCleaner_textBIN.Name = "checkBoxCleaner_textBIN";
-            checkBoxCleaner_textBIN.Size = new System.Drawing.Size(209, 19);
+            checkBoxCleaner_textBIN.Size = new Size(209, 19);
             checkBoxCleaner_textBIN.TabIndex = 1;
             checkBoxCleaner_textBIN.Text = "Delete localization *strings.bin files";
             checkBoxCleaner_textBIN.UseVisualStyleBackColor = true;
@@ -268,26 +266,26 @@ namespace TWEMP.Browser.App.Classic
             // checkBoxCleaner_MapRWM
             // 
             checkBoxCleaner_MapRWM.AutoSize = true;
-            checkBoxCleaner_MapRWM.Location = new System.Drawing.Point(10, 22);
-            checkBoxCleaner_MapRWM.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxCleaner_MapRWM.Location = new Point(10, 22);
+            checkBoxCleaner_MapRWM.Margin = new Padding(4, 3, 4, 3);
             checkBoxCleaner_MapRWM.Name = "checkBoxCleaner_MapRWM";
-            checkBoxCleaner_MapRWM.Size = new System.Drawing.Size(132, 19);
+            checkBoxCleaner_MapRWM.Size = new Size(132, 19);
             checkBoxCleaner_MapRWM.TabIndex = 0;
             checkBoxCleaner_MapRWM.Text = "Delete map.rwm file";
             checkBoxCleaner_MapRWM.UseVisualStyleBackColor = true;
             // 
             // groupBoxConfigLogMode
             // 
-            groupBoxConfigLogMode.BackColor = System.Drawing.Color.Transparent;
+            groupBoxConfigLogMode.BackColor = Color.Transparent;
             groupBoxConfigLogMode.Controls.Add(checkBoxLogHistory);
             groupBoxConfigLogMode.Controls.Add(radioButtonLogErrorAndTrace);
             groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyTrace);
             groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyError);
-            groupBoxConfigLogMode.Location = new System.Drawing.Point(4, 190);
-            groupBoxConfigLogMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxConfigLogMode.Location = new Point(4, 190);
+            groupBoxConfigLogMode.Margin = new Padding(4, 3, 4, 3);
             groupBoxConfigLogMode.Name = "groupBoxConfigLogMode";
-            groupBoxConfigLogMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            groupBoxConfigLogMode.Size = new System.Drawing.Size(266, 126);
+            groupBoxConfigLogMode.Padding = new Padding(4, 3, 4, 3);
+            groupBoxConfigLogMode.Size = new Size(266, 126);
             groupBoxConfigLogMode.TabIndex = 1;
             groupBoxConfigLogMode.TabStop = false;
             groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
@@ -296,11 +294,11 @@ namespace TWEMP.Browser.App.Classic
             // 
             checkBoxLogHistory.AutoSize = true;
             checkBoxLogHistory.Checked = true;
-            checkBoxLogHistory.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxLogHistory.Location = new System.Drawing.Point(11, 97);
-            checkBoxLogHistory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxLogHistory.CheckState = CheckState.Checked;
+            checkBoxLogHistory.Location = new Point(11, 97);
+            checkBoxLogHistory.Margin = new Padding(4, 3, 4, 3);
             checkBoxLogHistory.Name = "checkBoxLogHistory";
-            checkBoxLogHistory.Size = new System.Drawing.Size(167, 19);
+            checkBoxLogHistory.Size = new Size(167, 19);
             checkBoxLogHistory.TabIndex = 3;
             checkBoxLogHistory.Text = "Save game system.log files";
             checkBoxLogHistory.UseVisualStyleBackColor = true;
@@ -309,10 +307,10 @@ namespace TWEMP.Browser.App.Classic
             // 
             radioButtonLogErrorAndTrace.AutoSize = true;
             radioButtonLogErrorAndTrace.Checked = true;
-            radioButtonLogErrorAndTrace.Location = new System.Drawing.Point(10, 72);
-            radioButtonLogErrorAndTrace.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radioButtonLogErrorAndTrace.Location = new Point(10, 72);
+            radioButtonLogErrorAndTrace.Margin = new Padding(4, 3, 4, 3);
             radioButtonLogErrorAndTrace.Name = "radioButtonLogErrorAndTrace";
-            radioButtonLogErrorAndTrace.Size = new System.Drawing.Size(96, 19);
+            radioButtonLogErrorAndTrace.Size = new Size(96, 19);
             radioButtonLogErrorAndTrace.TabIndex = 2;
             radioButtonLogErrorAndTrace.TabStop = true;
             radioButtonLogErrorAndTrace.Text = "Errors + Trace";
@@ -321,10 +319,10 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonLogOnlyTrace
             // 
             radioButtonLogOnlyTrace.AutoSize = true;
-            radioButtonLogOnlyTrace.Location = new System.Drawing.Point(10, 47);
-            radioButtonLogOnlyTrace.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radioButtonLogOnlyTrace.Location = new Point(10, 47);
+            radioButtonLogOnlyTrace.Margin = new Padding(4, 3, 4, 3);
             radioButtonLogOnlyTrace.Name = "radioButtonLogOnlyTrace";
-            radioButtonLogOnlyTrace.Size = new System.Drawing.Size(80, 19);
+            radioButtonLogOnlyTrace.Size = new Size(80, 19);
             radioButtonLogOnlyTrace.TabIndex = 1;
             radioButtonLogOnlyTrace.Text = "Only Trace";
             radioButtonLogOnlyTrace.UseVisualStyleBackColor = true;
@@ -332,26 +330,26 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonLogOnlyError
             // 
             radioButtonLogOnlyError.AutoSize = true;
-            radioButtonLogOnlyError.Location = new System.Drawing.Point(10, 22);
-            radioButtonLogOnlyError.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radioButtonLogOnlyError.Location = new Point(10, 22);
+            radioButtonLogOnlyError.Margin = new Padding(4, 3, 4, 3);
             radioButtonLogOnlyError.Name = "radioButtonLogOnlyError";
-            radioButtonLogOnlyError.Size = new System.Drawing.Size(83, 19);
+            radioButtonLogOnlyError.Size = new Size(83, 19);
             radioButtonLogOnlyError.TabIndex = 0;
             radioButtonLogOnlyError.Text = "Only Errors";
             radioButtonLogOnlyError.UseVisualStyleBackColor = true;
             // 
             // groupBoxConfigLaunchMode
             // 
-            groupBoxConfigLaunchMode.BackColor = System.Drawing.Color.Transparent;
+            groupBoxConfigLaunchMode.BackColor = Color.Transparent;
             groupBoxConfigLaunchMode.Controls.Add(checkBoxBorderless);
             groupBoxConfigLaunchMode.Controls.Add(checkBoxVideo);
             groupBoxConfigLaunchMode.Controls.Add(radioButtonLaunchFullScreen);
             groupBoxConfigLaunchMode.Controls.Add(radioButtonLaunchWindowScreen);
-            groupBoxConfigLaunchMode.Location = new System.Drawing.Point(3, 62);
-            groupBoxConfigLaunchMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBoxConfigLaunchMode.Location = new Point(3, 62);
+            groupBoxConfigLaunchMode.Margin = new Padding(4, 3, 4, 3);
             groupBoxConfigLaunchMode.Name = "groupBoxConfigLaunchMode";
-            groupBoxConfigLaunchMode.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            groupBoxConfigLaunchMode.Size = new System.Drawing.Size(266, 122);
+            groupBoxConfigLaunchMode.Padding = new Padding(4, 3, 4, 3);
+            groupBoxConfigLaunchMode.Size = new Size(266, 122);
             groupBoxConfigLaunchMode.TabIndex = 0;
             groupBoxConfigLaunchMode.TabStop = false;
             groupBoxConfigLaunchMode.Text = "Select game launch mode";
@@ -359,10 +357,10 @@ namespace TWEMP.Browser.App.Classic
             // checkBoxBorderless
             // 
             checkBoxBorderless.AutoSize = true;
-            checkBoxBorderless.Location = new System.Drawing.Point(8, 97);
-            checkBoxBorderless.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxBorderless.Location = new Point(8, 97);
+            checkBoxBorderless.Margin = new Padding(4, 3, 4, 3);
             checkBoxBorderless.Name = "checkBoxBorderless";
-            checkBoxBorderless.Size = new System.Drawing.Size(174, 19);
+            checkBoxBorderless.Size = new Size(174, 19);
             checkBoxBorderless.TabIndex = 2;
             checkBoxBorderless.Text = "Borderless Windowed Mode";
             checkBoxBorderless.UseVisualStyleBackColor = true;
@@ -370,10 +368,10 @@ namespace TWEMP.Browser.App.Classic
             // checkBoxVideo
             // 
             checkBoxVideo.AutoSize = true;
-            checkBoxVideo.Location = new System.Drawing.Point(8, 72);
-            checkBoxVideo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxVideo.Location = new Point(8, 72);
+            checkBoxVideo.Margin = new Padding(4, 3, 4, 3);
             checkBoxVideo.Name = "checkBoxVideo";
-            checkBoxVideo.Size = new System.Drawing.Size(128, 19);
+            checkBoxVideo.Size = new Size(128, 19);
             checkBoxVideo.TabIndex = 0;
             checkBoxVideo.Text = "Enable Game Video";
             checkBoxVideo.UseVisualStyleBackColor = true;
@@ -381,10 +379,10 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonLaunchFullScreen
             // 
             radioButtonLaunchFullScreen.AutoSize = true;
-            radioButtonLaunchFullScreen.Location = new System.Drawing.Point(8, 47);
-            radioButtonLaunchFullScreen.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radioButtonLaunchFullScreen.Location = new Point(8, 47);
+            radioButtonLaunchFullScreen.Margin = new Padding(4, 3, 4, 3);
             radioButtonLaunchFullScreen.Name = "radioButtonLaunchFullScreen";
-            radioButtonLaunchFullScreen.Size = new System.Drawing.Size(118, 19);
+            radioButtonLaunchFullScreen.Size = new Size(118, 19);
             radioButtonLaunchFullScreen.TabIndex = 1;
             radioButtonLaunchFullScreen.Text = "Full-Screen Mode";
             radioButtonLaunchFullScreen.UseVisualStyleBackColor = true;
@@ -393,10 +391,10 @@ namespace TWEMP.Browser.App.Classic
             // 
             radioButtonLaunchWindowScreen.AutoSize = true;
             radioButtonLaunchWindowScreen.Checked = true;
-            radioButtonLaunchWindowScreen.Location = new System.Drawing.Point(8, 22);
-            radioButtonLaunchWindowScreen.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            radioButtonLaunchWindowScreen.Location = new Point(8, 22);
+            radioButtonLaunchWindowScreen.Margin = new Padding(4, 3, 4, 3);
             radioButtonLaunchWindowScreen.Name = "radioButtonLaunchWindowScreen";
-            radioButtonLaunchWindowScreen.Size = new System.Drawing.Size(116, 19);
+            radioButtonLaunchWindowScreen.Size = new Size(116, 19);
             radioButtonLaunchWindowScreen.TabIndex = 0;
             radioButtonLaunchWindowScreen.TabStop = true;
             radioButtonLaunchWindowScreen.Text = "Windowed Mode";
@@ -404,15 +402,15 @@ namespace TWEMP.Browser.App.Classic
             // 
             // buttonExplore
             // 
-            buttonExplore.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            buttonExplore.BackColor = System.Drawing.Color.LightGreen;
-            buttonExplore.Cursor = System.Windows.Forms.Cursors.Hand;
+            buttonExplore.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            buttonExplore.BackColor = Color.LightGreen;
+            buttonExplore.Cursor = Cursors.Hand;
             buttonExplore.Enabled = false;
-            buttonExplore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonExplore.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            buttonExplore.Location = new System.Drawing.Point(4, 151);
+            buttonExplore.FlatStyle = FlatStyle.Flat;
+            buttonExplore.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonExplore.Location = new Point(4, 151);
             buttonExplore.Name = "buttonExplore";
-            buttonExplore.Size = new System.Drawing.Size(362, 52);
+            buttonExplore.Size = new Size(362, 52);
             buttonExplore.TabIndex = 8;
             buttonExplore.Text = "MOD HOME FOLDER";
             buttonExplore.UseVisualStyleBackColor = false;
@@ -420,16 +418,16 @@ namespace TWEMP.Browser.App.Classic
             // 
             // modQuickNavigationButton
             // 
-            modQuickNavigationButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            modQuickNavigationButton.BackColor = System.Drawing.Color.LightGreen;
-            modQuickNavigationButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            modQuickNavigationButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            modQuickNavigationButton.BackColor = Color.LightGreen;
+            modQuickNavigationButton.Cursor = Cursors.Hand;
             modQuickNavigationButton.Enabled = false;
-            modQuickNavigationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            modQuickNavigationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            modQuickNavigationButton.Location = new System.Drawing.Point(4, 97);
-            modQuickNavigationButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            modQuickNavigationButton.FlatStyle = FlatStyle.Flat;
+            modQuickNavigationButton.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            modQuickNavigationButton.Location = new Point(4, 97);
+            modQuickNavigationButton.Margin = new Padding(4, 3, 4, 3);
             modQuickNavigationButton.Name = "modQuickNavigationButton";
-            modQuickNavigationButton.Size = new System.Drawing.Size(362, 48);
+            modQuickNavigationButton.Size = new Size(362, 48);
             modQuickNavigationButton.TabIndex = 7;
             modQuickNavigationButton.Text = "MOD QUICK NAVIGATION";
             modQuickNavigationButton.UseVisualStyleBackColor = false;
@@ -437,156 +435,158 @@ namespace TWEMP.Browser.App.Classic
             // 
             // panelLauncherToolkit
             // 
-            panelLauncherToolkit.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            panelLauncherToolkit.BackColor = System.Drawing.Color.MediumAquamarine;
-            panelLauncherToolkit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panelLauncherToolkit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelLauncherToolkit.BackColor = Color.MediumAquamarine;
+            panelLauncherToolkit.BorderStyle = BorderStyle.FixedSingle;
             panelLauncherToolkit.Controls.Add(modQuickNavigationButton);
             panelLauncherToolkit.Controls.Add(buttonExplore);
             panelLauncherToolkit.Controls.Add(buttonLaunch);
-            panelLauncherToolkit.Location = new System.Drawing.Point(340, 443);
-            panelLauncherToolkit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            panelLauncherToolkit.Location = new Point(340, 443);
+            panelLauncherToolkit.Margin = new Padding(4, 3, 4, 3);
             panelLauncherToolkit.Name = "panelLauncherToolkit";
-            panelLauncherToolkit.Size = new System.Drawing.Size(372, 208);
+            panelLauncherToolkit.Size = new Size(372, 208);
             panelLauncherToolkit.TabIndex = 6;
             // 
             // modMainTitleLabel
             // 
-            modMainTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            modMainTitleLabel.BackColor = System.Drawing.Color.MediumSeaGreen;
-            modMainTitleLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            modMainTitleLabel.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            modMainTitleLabel.Location = new System.Drawing.Point(12, 35);
+            modMainTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            modMainTitleLabel.BackColor = Color.MediumSeaGreen;
+            modMainTitleLabel.BorderStyle = BorderStyle.FixedSingle;
+            modMainTitleLabel.Font = new Font("Palatino Linotype", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            modMainTitleLabel.Location = new Point(12, 35);
             modMainTitleLabel.Name = "modMainTitleLabel";
-            modMainTitleLabel.Size = new System.Drawing.Size(983, 46);
+            modMainTitleLabel.Size = new Size(983, 46);
             modMainTitleLabel.TabIndex = 8;
-            modMainTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            modMainTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // modLogoPictureBox
             // 
-            modLogoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            modLogoPictureBox.BackColor = System.Drawing.Color.Transparent;
-            modLogoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            modLogoPictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            modLogoPictureBox.BackColor = Color.Transparent;
+            modLogoPictureBox.BorderStyle = BorderStyle.FixedSingle;
             modLogoPictureBox.Image = Resources.OPENTWEMP_LOGO;
-            modLogoPictureBox.Location = new System.Drawing.Point(340, 84);
+            modLogoPictureBox.Location = new Point(340, 84);
             modLogoPictureBox.Name = "modLogoPictureBox";
-            modLogoPictureBox.Size = new System.Drawing.Size(372, 353);
-            modLogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            modLogoPictureBox.Size = new Size(372, 353);
+            modLogoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             modLogoPictureBox.TabIndex = 9;
             modLogoPictureBox.TabStop = false;
             // 
             // modStatusLabel
             // 
-            modStatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            modStatusLabel.BackColor = System.Drawing.Color.MediumSeaGreen;
-            modStatusLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            modStatusLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            modStatusLabel.ForeColor = System.Drawing.Color.Black;
-            modStatusLabel.Location = new System.Drawing.Point(12, 654);
+            modStatusLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            modStatusLabel.BackColor = Color.MediumSeaGreen;
+            modStatusLabel.BorderStyle = BorderStyle.FixedSingle;
+            modStatusLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            modStatusLabel.ForeColor = Color.Black;
+            modStatusLabel.Location = new Point(12, 654);
             modStatusLabel.Name = "modStatusLabel";
-            modStatusLabel.Size = new System.Drawing.Size(983, 42);
+            modStatusLabel.Size = new Size(983, 42);
             modStatusLabel.TabIndex = 12;
-            modStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            modStatusLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // appStatusStrip
             // 
-            appStatusStrip.Location = new System.Drawing.Point(0, 707);
+            appStatusStrip.Location = new Point(0, 707);
             appStatusStrip.Name = "appStatusStrip";
-            appStatusStrip.Size = new System.Drawing.Size(1008, 22);
+            appStatusStrip.Size = new Size(1008, 22);
             appStatusStrip.TabIndex = 13;
             appStatusStrip.Text = "statusStrip1";
             // 
             // appMenuStrip
             // 
-            appMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripAppItem, toolStripHelpItem, toolStripModItem });
-            appMenuStrip.Location = new System.Drawing.Point(0, 0);
+            appMenuStrip.Items.AddRange(new ToolStripItem[] { toolStripAppItem, toolStripHelpItem, toolStripModItem });
+            appMenuStrip.Location = new Point(0, 0);
             appMenuStrip.Name = "appMenuStrip";
-            appMenuStrip.Size = new System.Drawing.Size(1008, 24);
+            appMenuStrip.Size = new Size(1008, 24);
             appMenuStrip.TabIndex = 15;
             appMenuStrip.Text = "menuStrip1";
             // 
             // toolStripAppItem
             // 
-            toolStripAppItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { gameSetupSettingsToolStripMenuItem, toolStripSeparator1, applicationSettingsToolStripMenuItem, toolStripSeparator2, applicationHomeFolderToolStripMenuItem, exitFromApplicationToolStripMenuItem });
+            toolStripAppItem.DropDownItems.AddRange(new ToolStripItem[] { gameSetupSettingsToolStripMenuItem, toolStripSeparator1, applicationSettingsToolStripMenuItem, toolStripSeparator2, applicationHomeFolderToolStripMenuItem, exitFromApplicationToolStripMenuItem });
             toolStripAppItem.Name = "toolStripAppItem";
-            toolStripAppItem.Size = new System.Drawing.Size(72, 20);
+            toolStripAppItem.Size = new Size(72, 20);
             toolStripAppItem.Text = "BROWSER";
             // 
             // gameSetupSettingsToolStripMenuItem
             // 
             gameSetupSettingsToolStripMenuItem.Name = "gameSetupSettingsToolStripMenuItem";
-            gameSetupSettingsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            gameSetupSettingsToolStripMenuItem.Size = new Size(183, 22);
             gameSetupSettingsToolStripMenuItem.Text = "Game Setup Settings";
             gameSetupSettingsToolStripMenuItem.Click += GameSetupSettingsToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
+            toolStripSeparator1.Size = new Size(180, 6);
             // 
             // applicationSettingsToolStripMenuItem
             // 
             applicationSettingsToolStripMenuItem.Name = "applicationSettingsToolStripMenuItem";
-            applicationSettingsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            applicationSettingsToolStripMenuItem.Size = new Size(183, 22);
             applicationSettingsToolStripMenuItem.Text = "Application Settings";
             applicationSettingsToolStripMenuItem.Click += ApplicationSettingsToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new System.Drawing.Size(180, 6);
+            toolStripSeparator2.Size = new Size(180, 6);
             // 
             // applicationHomeFolderToolStripMenuItem
             // 
             applicationHomeFolderToolStripMenuItem.Name = "applicationHomeFolderToolStripMenuItem";
-            applicationHomeFolderToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            applicationHomeFolderToolStripMenuItem.Size = new Size(183, 22);
             applicationHomeFolderToolStripMenuItem.Text = "Go to Home Folder";
             applicationHomeFolderToolStripMenuItem.Click += ApplicationHomeFolderToolStripMenuItem_Click;
             // 
             // exitFromApplicationToolStripMenuItem
             // 
             exitFromApplicationToolStripMenuItem.Name = "exitFromApplicationToolStripMenuItem";
-            exitFromApplicationToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            exitFromApplicationToolStripMenuItem.Size = new Size(183, 22);
             exitFromApplicationToolStripMenuItem.Text = "Exit from Program";
             exitFromApplicationToolStripMenuItem.Click += ExitFromApplicationToolStripMenuItem_Click;
             // 
             // toolStripHelpItem
             // 
-            toolStripHelpItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { aboutProgramToolStripMenuItem });
+            toolStripHelpItem.DropDownItems.AddRange(new ToolStripItem[] { aboutProgramToolStripMenuItem });
             toolStripHelpItem.Name = "toolStripHelpItem";
-            toolStripHelpItem.Size = new System.Drawing.Size(47, 20);
+            toolStripHelpItem.Size = new Size(47, 20);
             toolStripHelpItem.Text = "HELP";
             // 
             // aboutProgramToolStripMenuItem
             // 
             aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-            aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            aboutProgramToolStripMenuItem.Size = new Size(156, 22);
             aboutProgramToolStripMenuItem.Text = "About Program";
             aboutProgramToolStripMenuItem.Click += AboutProgramToolStripMenuItem_Click;
             // 
             // toolStripModItem
             // 
-            toolStripModItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { configSettingsToolStripMenuItem });
+            toolStripModItem.DropDownItems.AddRange(new ToolStripItem[] { configSettingsToolStripMenuItem });
+            toolStripModItem.Enabled = false;
             toolStripModItem.Name = "toolStripModItem";
-            toolStripModItem.Size = new System.Drawing.Size(101, 20);
+            toolStripModItem.Size = new Size(101, 20);
             toolStripModItem.Text = "MODIFICATION";
+            toolStripModItem.Visible = false;
             // 
             // configSettingsToolStripMenuItem
             // 
             configSettingsToolStripMenuItem.Name = "configSettingsToolStripMenuItem";
-            configSettingsToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            configSettingsToolStripMenuItem.Size = new Size(193, 22);
             configSettingsToolStripMenuItem.Text = "Configuration Settings";
             configSettingsToolStripMenuItem.Click += ConfigSettingsToolStripMenuItem_Click;
             // 
             // treeViewGameMods
             // 
-            treeViewGameMods.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            treeViewGameMods.BackColor = System.Drawing.Color.MediumSeaGreen;
-            treeViewGameMods.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            treeViewGameMods.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            treeViewGameMods.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            treeViewGameMods.BackColor = Color.MediumSeaGreen;
+            treeViewGameMods.BorderStyle = BorderStyle.FixedSingle;
+            treeViewGameMods.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             treeViewGameMods.FullRowSelect = true;
             treeViewGameMods.Indent = 15;
             treeViewGameMods.ItemHeight = 30;
-            treeViewGameMods.Location = new System.Drawing.Point(13, 84);
+            treeViewGameMods.Location = new Point(13, 84);
             treeViewGameMods.Name = "treeViewGameMods";
             treeNode1.Name = "Node0";
             treeNode1.Text = "My Favorite Mods";
@@ -594,19 +594,19 @@ namespace TWEMP.Browser.App.Classic
             treeNode2.Text = "My Mod Collections";
             treeNode3.Name = "Node2";
             treeNode3.Text = "All Modifications";
-            treeViewGameMods.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode3 });
-            treeViewGameMods.Size = new System.Drawing.Size(320, 451);
+            treeViewGameMods.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3 });
+            treeViewGameMods.Size = new Size(320, 451);
             treeViewGameMods.TabIndex = 16;
             treeViewGameMods.AfterSelect += TreeViewGameMods_AfterSelect;
             // 
             // buttonMarkFavoriteMod
             // 
-            buttonMarkFavoriteMod.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            buttonMarkFavoriteMod.BackColor = System.Drawing.Color.LightGreen;
-            buttonMarkFavoriteMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonMarkFavoriteMod.Location = new System.Drawing.Point(3, 14);
+            buttonMarkFavoriteMod.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            buttonMarkFavoriteMod.BackColor = Color.LightGreen;
+            buttonMarkFavoriteMod.FlatStyle = FlatStyle.Flat;
+            buttonMarkFavoriteMod.Location = new Point(3, 14);
             buttonMarkFavoriteMod.Name = "buttonMarkFavoriteMod";
-            buttonMarkFavoriteMod.Size = new System.Drawing.Size(313, 23);
+            buttonMarkFavoriteMod.Size = new Size(313, 23);
             buttonMarkFavoriteMod.TabIndex = 18;
             buttonMarkFavoriteMod.Text = "MARK or UNMARK THIS MOD as FAVORITE";
             buttonMarkFavoriteMod.UseVisualStyleBackColor = false;
@@ -614,12 +614,12 @@ namespace TWEMP.Browser.App.Classic
             // 
             // buttonCollectionCreate
             // 
-            buttonCollectionCreate.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            buttonCollectionCreate.BackColor = System.Drawing.Color.LightGreen;
-            buttonCollectionCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonCollectionCreate.Location = new System.Drawing.Point(3, 43);
+            buttonCollectionCreate.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            buttonCollectionCreate.BackColor = Color.LightGreen;
+            buttonCollectionCreate.FlatStyle = FlatStyle.Flat;
+            buttonCollectionCreate.Location = new Point(3, 43);
             buttonCollectionCreate.Name = "buttonCollectionCreate";
-            buttonCollectionCreate.Size = new System.Drawing.Size(313, 23);
+            buttonCollectionCreate.Size = new Size(313, 23);
             buttonCollectionCreate.TabIndex = 19;
             buttonCollectionCreate.Text = "CREATE A NEW COLLECTION";
             buttonCollectionCreate.UseVisualStyleBackColor = false;
@@ -627,12 +627,12 @@ namespace TWEMP.Browser.App.Classic
             // 
             // buttonCollectionManage
             // 
-            buttonCollectionManage.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            buttonCollectionManage.BackColor = System.Drawing.Color.LightGreen;
-            buttonCollectionManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonCollectionManage.Location = new System.Drawing.Point(3, 72);
+            buttonCollectionManage.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            buttonCollectionManage.BackColor = Color.LightGreen;
+            buttonCollectionManage.FlatStyle = FlatStyle.Flat;
+            buttonCollectionManage.Location = new Point(3, 72);
             buttonCollectionManage.Name = "buttonCollectionManage";
-            buttonCollectionManage.Size = new System.Drawing.Size(313, 23);
+            buttonCollectionManage.Size = new Size(313, 23);
             buttonCollectionManage.TabIndex = 20;
             buttonCollectionManage.Text = "MANAGE YOUR COLLECTIONS";
             buttonCollectionManage.UseVisualStyleBackColor = false;
@@ -640,24 +640,24 @@ namespace TWEMP.Browser.App.Classic
             // 
             // panelCollections
             // 
-            panelCollections.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            panelCollections.BackColor = System.Drawing.Color.MediumAquamarine;
-            panelCollections.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panelCollections.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            panelCollections.BackColor = Color.MediumAquamarine;
+            panelCollections.BorderStyle = BorderStyle.FixedSingle;
             panelCollections.Controls.Add(buttonCollectionManage);
             panelCollections.Controls.Add(buttonCollectionCreate);
             panelCollections.Controls.Add(buttonMarkFavoriteMod);
-            panelCollections.Location = new System.Drawing.Point(12, 541);
+            panelCollections.Location = new Point(12, 541);
             panelCollections.Name = "panelCollections";
-            panelCollections.Size = new System.Drawing.Size(321, 110);
+            panelCollections.Size = new Size(321, 110);
             panelCollections.TabIndex = 21;
             // 
             // MainBrowserForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackColor = System.Drawing.Color.DarkSeaGreen;
-            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            ClientSize = new System.Drawing.Size(1008, 729);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DarkSeaGreen;
+            BackgroundImageLayout = ImageLayout.Center;
+            ClientSize = new Size(1008, 729);
             Controls.Add(panelCollections);
             Controls.Add(treeViewGameMods);
             Controls.Add(modMainTitleLabel);
@@ -669,12 +669,12 @@ namespace TWEMP.Browser.App.Classic
             Controls.Add(appMenuStrip);
             DoubleBuffered = true;
             MainMenuStrip = appMenuStrip;
-            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            MinimumSize = new System.Drawing.Size(1024, 768);
+            Margin = new Padding(4, 3, 4, 3);
+            MinimumSize = new Size(1024, 768);
             Name = "MainBrowserForm";
             ShowIcon = false;
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Maximized;
             panelLauncherOptions.ResumeLayout(false);
             groupBoxConfigProfiles.ResumeLayout(false);
             groupBoxConfigProfiles.PerformLayout();
@@ -697,53 +697,53 @@ namespace TWEMP.Browser.App.Classic
 
         #endregion
 
-        private System.Windows.Forms.Button buttonLaunch;
-        private System.Windows.Forms.Panel panelLauncherOptions;
-        private System.Windows.Forms.CheckBox checkBoxVideo;
-        private System.Windows.Forms.GroupBox groupBoxConfigLogMode;
-        public System.Windows.Forms.RadioButton radioButtonLogErrorAndTrace;
-        private System.Windows.Forms.RadioButton radioButtonLogOnlyTrace;
-        private System.Windows.Forms.RadioButton radioButtonLogOnlyError;
-        private System.Windows.Forms.GroupBox groupBoxConfigLaunchMode;
-        private System.Windows.Forms.RadioButton radioButtonLaunchFullScreen;
-        private System.Windows.Forms.RadioButton radioButtonLaunchWindowScreen;
-        private System.Windows.Forms.Panel panelLauncherToolkit;
-        private System.Windows.Forms.GroupBox groupBoxConfigCleanerMode;
-        private System.Windows.Forms.CheckBox checkBoxCleaner_soundPacks;
-        private System.Windows.Forms.CheckBox checkBoxCleaner_textBIN;
-        private System.Windows.Forms.CheckBox checkBoxCleaner_MapRWM;
-        private System.Windows.Forms.CheckBox checkBoxLogHistory;
-        private System.Windows.Forms.CheckBox checkBoxBorderless;
-        private System.Windows.Forms.Button modQuickNavigationButton;
-        private System.Windows.Forms.Button buttonExplore;
-        private System.Windows.Forms.Label modMainTitleLabel;
-        private System.Windows.Forms.PictureBox modLogoPictureBox;
-        private System.Windows.Forms.Label modStatusLabel;
-        private System.Windows.Forms.StatusStrip appStatusStrip;
-        private System.Windows.Forms.MenuStrip appMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem toolStripAppItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripModItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripHelpItem;
-        private System.Windows.Forms.ToolStripMenuItem gameSetupSettingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem applicationSettingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitFromApplicationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configSettingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem applicationHomeFolderToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBoxLauncherProviders;
-        private System.Windows.Forms.RadioButton radioButtonLauncherProvider_BatchScript;
-        private System.Windows.Forms.RadioButton radioButtonLauncherProvider_NativeSetup;
-        private System.Windows.Forms.RadioButton radioButtonLauncherProvider_M2TWEOP;
-        private System.Windows.Forms.RadioButton radioButtonLauncherProvider_TWEMP;
-        private System.Windows.Forms.GroupBox groupBoxConfigProfiles;
-        private System.Windows.Forms.RadioButton radioButtonConfigProfile_Modding;
-        private System.Windows.Forms.RadioButton radioButtonConfigProfile_Gaming;
-        private System.Windows.Forms.TreeView treeViewGameMods;
-        private System.Windows.Forms.Button buttonMarkFavoriteMod;
-        private System.Windows.Forms.Button buttonCollectionCreate;
-        private System.Windows.Forms.Button buttonCollectionManage;
-        private System.Windows.Forms.Panel panelCollections;
+        private Button buttonLaunch;
+        private Panel panelLauncherOptions;
+        private CheckBox checkBoxVideo;
+        private GroupBox groupBoxConfigLogMode;
+        public RadioButton radioButtonLogErrorAndTrace;
+        private RadioButton radioButtonLogOnlyTrace;
+        private RadioButton radioButtonLogOnlyError;
+        private GroupBox groupBoxConfigLaunchMode;
+        private RadioButton radioButtonLaunchFullScreen;
+        private RadioButton radioButtonLaunchWindowScreen;
+        private Panel panelLauncherToolkit;
+        private GroupBox groupBoxConfigCleanerMode;
+        private CheckBox checkBoxCleaner_soundPacks;
+        private CheckBox checkBoxCleaner_textBIN;
+        private CheckBox checkBoxCleaner_MapRWM;
+        private CheckBox checkBoxLogHistory;
+        private CheckBox checkBoxBorderless;
+        private Button modQuickNavigationButton;
+        private Button buttonExplore;
+        private Label modMainTitleLabel;
+        private PictureBox modLogoPictureBox;
+        private Label modStatusLabel;
+        private StatusStrip appStatusStrip;
+        private MenuStrip appMenuStrip;
+        private ToolStripMenuItem toolStripAppItem;
+        private ToolStripMenuItem toolStripModItem;
+        private ToolStripMenuItem toolStripHelpItem;
+        private ToolStripMenuItem gameSetupSettingsToolStripMenuItem;
+        private ToolStripMenuItem applicationSettingsToolStripMenuItem;
+        private ToolStripMenuItem exitFromApplicationToolStripMenuItem;
+        private ToolStripMenuItem aboutProgramToolStripMenuItem;
+        private ToolStripMenuItem configSettingsToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem applicationHomeFolderToolStripMenuItem;
+        private GroupBox groupBoxLauncherProviders;
+        private RadioButton radioButtonLauncherProvider_BatchScript;
+        private RadioButton radioButtonLauncherProvider_NativeSetup;
+        private RadioButton radioButtonLauncherProvider_M2TWEOP;
+        private RadioButton radioButtonLauncherProvider_TWEMP;
+        private GroupBox groupBoxConfigProfiles;
+        private RadioButton radioButtonConfigProfile_Modding;
+        private RadioButton radioButtonConfigProfile_Gaming;
+        private TreeView treeViewGameMods;
+        private Button buttonMarkFavoriteMod;
+        private Button buttonCollectionCreate;
+        private Button buttonCollectionManage;
+        private Panel panelCollections;
     }
 }

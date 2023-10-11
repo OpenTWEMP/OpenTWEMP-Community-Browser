@@ -10,7 +10,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
 
-public partial class CollectionManageForm : Form
+public partial class CollectionManageForm : Form, ICanChangeMyLocalization
 {
     private readonly IUpdatableBrowser currentBrowser;
 
@@ -18,12 +18,26 @@ public partial class CollectionManageForm : Form
     {
         InitializeComponent();
 
+        SetupCurrentLocalizationForGUIControls();
+
         currentBrowser = browser;
 
         foreach (CustomModsCollection mod in Settings.UserCollections)
         {
             collectionsCheckedListBox.Items.Add(mod.Name);
         }
+    }
+
+    public void SetupCurrentLocalizationForGUIControls()
+    {
+        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
+
+        Text = snapshot.GetLocalizedValueByKey(Name);
+        groupBoxCollectionsDelete.Text = snapshot.GetLocalizedValueByKey(groupBoxCollectionsDelete.Name);
+        collectionsSelectionLabel.Text = snapshot.GetLocalizedValueByKey(collectionsSelectionLabel.Name);
+        buttonCollectionsDelete.Text = snapshot.GetLocalizedValueByKey(buttonCollectionsDelete.Name);
+        buttonCollectionsSelectAll.Text = snapshot.GetLocalizedValueByKey(buttonCollectionsSelectAll.Name);
+        buttonCollectionsDeselectAll.Text = snapshot.GetLocalizedValueByKey(buttonCollectionsDeselectAll.Name);
     }
 
     private void ButtonOK_Click(object sender, EventArgs e)
@@ -53,8 +67,8 @@ public partial class CollectionManageForm : Form
 
         for (int i = 0; i < collectionsCheckedListBox.CheckedIndices.Count; i++)
         {
-            string selectedCollectionName = collectionsCheckedListBox.CheckedItems[i] !.ToString() !;
-            CustomModsCollection selectedCollection = Settings.UserCollections.Find(collection => collection.Name == selectedCollectionName) !;
+            string selectedCollectionName = collectionsCheckedListBox.CheckedItems[i]!.ToString()!;
+            CustomModsCollection selectedCollection = Settings.UserCollections.Find(collection => collection.Name == selectedCollectionName)!;
             Settings.UserCollections.Remove(selectedCollection);
         }
 

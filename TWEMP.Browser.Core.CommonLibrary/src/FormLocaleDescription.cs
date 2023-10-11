@@ -297,10 +297,25 @@ public class GuiLocaleDescr_AppSettings : FormLocaleDescription
 // Derived class for 'GameSetupConfigForm' form.
 public class GuiLocaleDescr_GameSetupConfig : FormLocaleDescription
 {
+    private const string KEY_GameSetupConfigForm = "GameSetupConfigForm";
+    private const string KEY_setupViewButton = "setupViewButton";
+    private const string KEY_setupPathAddButton = "setupPathAddButton";
+    private const string KEY_setupPathDeleteButton = "setupPathDeleteButton";
+    private const string KEY_allPathsClearButton = "allPathsClearButton";
+    private const string KEY_formOkButton = "formOkButton";
+
     public GuiLocaleDescr_GameSetupConfig()
     {
         FormName = "GameSetupConfigForm";
-        LocalizedControls = new List<string>();
+        LocalizedControls = new List<string>
+        {
+            KEY_GameSetupConfigForm,
+            KEY_setupViewButton,
+            KEY_setupPathAddButton,
+            KEY_setupPathDeleteButton,
+            KEY_allPathsClearButton,
+            KEY_formOkButton,
+        };
     }
 
     public override string FormName { get; }
@@ -309,22 +324,63 @@ public class GuiLocaleDescr_GameSetupConfig : FormLocaleDescription
 
     public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_GameSetupConfigForm, "Game Setup Settings" },
+            { KEY_setupViewButton, "VIEW GAME SETUP INFO" },
+            { KEY_setupPathAddButton, "ADD SETUP PATH" },
+            { KEY_setupPathDeleteButton, "DELETE SETUP PATH" },
+            { KEY_allPathsClearButton, "CLEAR ALL PATHS" },
+            { KEY_formOkButton, "OK" },
+        });
     }
 
     public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_GameSetupConfigForm, "Настройка Игровой Установки" },
+            { KEY_setupViewButton, "Сведения об Установке" },
+            { KEY_setupPathAddButton, "Добавить Установку" },
+            { KEY_setupPathDeleteButton, "Удалить Установку" },
+            { KEY_allPathsClearButton, "Очистить Список Установок" },
+            { KEY_formOkButton, "СОХРАНИТЬ" },
+        });
     }
 }
 
 // Derived class for 'AddNewGameSetupForm' form.
 public class GuiLocaleDescr_AddNewGameSetup : FormLocaleDescription
 {
+    private const string KEY_AddNewGameSetupForm = "AddNewGameSetupForm";
+    private const string KEY_gameSetupGroupBox = "gameSetupGroupBox";
+    private const string KEY_gameSetupNameLabel = "gameSetupNameLabel";
+    private const string KEY_setupNameResetButton = "setupNameResetButton";
+    private const string KEY_gameExecutablePathLabel = "gameExecutablePathLabel";
+    private const string KEY_gameExecutableSelectPathButton = "gameExecutableSelectPathButton";
+    private const string KEY_modcentersGroupBox = "modcentersGroupBox";
+    private const string KEY_modcenterAppendButton = "modcenterAppendButton";
+    private const string KEY_modcenterRemoveButton = "modcenterRemoveButton";
+    private const string KEY_saveButton = "saveButton";
+    private const string KEY_cancelButton = "cancelButton";
+
     public GuiLocaleDescr_AddNewGameSetup()
     {
         FormName = "AddNewGameSetupForm";
-        LocalizedControls = new List<string>();
+        LocalizedControls = new List<string>
+        {
+            KEY_AddNewGameSetupForm,
+            KEY_gameSetupGroupBox,
+            KEY_gameSetupNameLabel,
+            KEY_setupNameResetButton,
+            KEY_gameExecutablePathLabel,
+            KEY_gameExecutableSelectPathButton,
+            KEY_modcentersGroupBox,
+            KEY_modcenterAppendButton,
+            KEY_modcenterRemoveButton,
+            KEY_saveButton,
+            KEY_cancelButton,
+        };
     }
 
     public override string FormName { get; }
@@ -333,12 +389,144 @@ public class GuiLocaleDescr_AddNewGameSetup : FormLocaleDescription
 
     public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_AddNewGameSetupForm, "Add New Game Setup" },
+            { KEY_gameSetupGroupBox, "Game Setup Main Settings" },
+            { KEY_gameSetupNameLabel, "Define Game Setup Name" },
+            { KEY_setupNameResetButton, "Reset" },
+            { KEY_gameExecutablePathLabel, "Set Game Executable Path" },
+            { KEY_gameExecutableSelectPathButton, "Select" },
+            { KEY_modcentersGroupBox, "Configure Paths to Your ModCenter" },
+            { KEY_modcenterAppendButton, "Append ModCenter" },
+            { KEY_modcenterRemoveButton, "Remove ModCenter" },
+            { KEY_saveButton, "OK" },
+            { KEY_cancelButton, "Cancel" },
+        });
     }
 
     public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_AddNewGameSetupForm, "Добавить Новую Игровую Установку" },
+            { KEY_gameSetupGroupBox, "Главные Настройки Игровой Установки" },
+            { KEY_gameSetupNameLabel, "Имя Установки" },
+            { KEY_setupNameResetButton, "Сброс" },
+            { KEY_gameExecutablePathLabel, "EXE-файл Установки" },
+            { KEY_gameExecutableSelectPathButton, "Выбрать" },
+            { KEY_modcentersGroupBox, "Конфигурировать Пути Мод-Центров" },
+            { KEY_modcenterAppendButton, "Добавить Мод-Центр" },
+            { KEY_modcenterRemoveButton, "Удалить Мод-Центр" },
+            { KEY_saveButton, "Добавить" },
+            { KEY_cancelButton, "Отмена" },
+        });
+    }
+}
+
+// Derived class for 'CollectionCreateForm' form.
+public class GuiLocaleDescr_CollectionCreateForm : FormLocaleDescription
+{
+    private const string KEY_CollectionCreateForm = "CollectionCreateForm";
+    private const string KEY_collectionNameLabel = "collectionNameLabel";
+    private const string KEY_modsSelectionLabel = "modsSelectionLabel";
+    private const string KEY_buttonOK = "buttonOK";
+    private const string KEY_buttonCancel = "buttonCancel";
+
+    public GuiLocaleDescr_CollectionCreateForm()
+    {
+        FormName = "CollectionCreateForm";
+        LocalizedControls = new List<string>
+        {
+            KEY_CollectionCreateForm,
+            KEY_collectionNameLabel,
+            KEY_modsSelectionLabel,
+            KEY_buttonOK,
+            KEY_buttonCancel
+        };
+    }
+
+    public override string FormName { get; }
+
+    public override List<string> LocalizedControls { get; }
+
+    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    {
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_CollectionCreateForm, "Create a New Collection" },
+            { KEY_collectionNameLabel, "Input a Name of a New Collection:" },
+            { KEY_modsSelectionLabel, "Select Mods for a New Collection:" },
+            { KEY_buttonOK, "OK" },
+            { KEY_buttonCancel, "Cancel" },
+        });
+    }
+
+    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    {
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_CollectionCreateForm, "Создать Новую Коллекцию" },
+            { KEY_collectionNameLabel, "Введите имя новой коллекции:" },
+            { KEY_modsSelectionLabel, "Выберите моды для новой коллекции:" },
+            { KEY_buttonOK, "Создать" },
+            { KEY_buttonCancel, "Отмена" },
+        });
+    }
+}
+
+// Derived class for 'CollectionManageForm' form.
+public class GuiLocaleDescr_CollectionManageForm : FormLocaleDescription
+{
+    private const string KEY_CollectionManageForm = "CollectionManageForm";
+    private const string KEY_groupBoxCollectionsDelete = "groupBoxCollectionsDelete";
+    private const string KEY_collectionsSelectionLabel = "collectionsSelectionLabel";
+    private const string KEY_buttonCollectionsDelete = "buttonCollectionsDelete";
+    private const string KEY_buttonCollectionsSelectAll = "buttonCollectionsSelectAll";
+    private const string KEY_buttonCollectionsDeselectAll = "buttonCollectionsDeselectAll";
+
+    public GuiLocaleDescr_CollectionManageForm()
+    {
+        FormName = "CollectionManageForm";
+        LocalizedControls = new List<string>
+        {
+            KEY_CollectionManageForm,
+            KEY_groupBoxCollectionsDelete,
+            KEY_collectionsSelectionLabel,
+            KEY_buttonCollectionsDelete,
+            KEY_buttonCollectionsSelectAll,
+            KEY_buttonCollectionsDeselectAll,
+        };
+    }
+
+    public override string FormName { get; }
+
+    public override List<string> LocalizedControls { get; }
+
+    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    {
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_CollectionManageForm, "Manage Your Collections" },
+            { KEY_groupBoxCollectionsDelete, "Select Collections to Delete" },
+            { KEY_collectionsSelectionLabel, "Delete Selected" },
+            { KEY_buttonCollectionsDelete, "Delete Selected" },
+            { KEY_buttonCollectionsSelectAll, "Select All" },
+            { KEY_buttonCollectionsDeselectAll, "Deselect All" },
+        });
+    }
+
+    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    {
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_CollectionManageForm, "Управление Коллекциями" },
+            { KEY_groupBoxCollectionsDelete, "Удаление существующих коллекций" },
+            { KEY_collectionsSelectionLabel, "Выберите коллекции для удаления" },
+            { KEY_buttonCollectionsDelete, "Удалить Выбранное" },
+            { KEY_buttonCollectionsSelectAll, "Выбрать ВСЕ" },
+            { KEY_buttonCollectionsDeselectAll, "Отменить ВСЕ" },
+        });
     }
 }
 
@@ -369,10 +557,20 @@ public class GuiLocaleDescr_ModConfigSettings : FormLocaleDescription
 // Derived class for 'ModQuickNavigatorForm' form.
 public class GuiLocaleDescr_ModQuickNavigator : FormLocaleDescription
 {
+    private const string KEY_ModQuickNavigatorForm = "ModQuickNavigatorForm";
+    private const string KEY_labelCommonInfo = "labelCommonInfo";
+    private const string KEY_formExitButton = "formExitButton";
+
     public GuiLocaleDescr_ModQuickNavigator()
     {
         FormName = "ModQuickNavigatorForm";
-        LocalizedControls = new List<string>();
+
+        LocalizedControls = new List<string>
+        {
+            KEY_ModQuickNavigatorForm,
+            KEY_labelCommonInfo,
+            KEY_formExitButton,
+        };
     }
 
     public override string FormName { get; }
@@ -381,22 +579,41 @@ public class GuiLocaleDescr_ModQuickNavigator : FormLocaleDescription
 
     public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_ModQuickNavigatorForm, "Mod Quick Navigation" },
+            { KEY_labelCommonInfo, "Navigate to specified mod folder by pressing the following buttons" },
+            { KEY_formExitButton, "CLOSE" },
+        });
     }
 
     public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_ModQuickNavigatorForm, "Быстрая Мод-Навигация" },
+            { KEY_labelCommonInfo, "Перейти в указанную мод-директорию с помощью следующих кнопок" },
+            { KEY_formExitButton, "ЗАКРЫТЬ" },
+        });
     }
 }
 
 // Derived class for 'AboutProjectForm' form.
 public class GuiLocaleDescr_AboutProject : FormLocaleDescription
 {
+    private const string KEY_AboutProjectForm = "AboutProjectForm";
+    private const string KEY_aboutProjectNameLabel3 = "aboutProjectNameLabel3";
+    private const string KEY_aboutProjectNameLabel4 = "aboutProjectNameLabel4";
+
     public GuiLocaleDescr_AboutProject()
     {
         FormName = "AboutProjectForm";
-        LocalizedControls = new List<string>();
+        LocalizedControls = new List<string>
+        {
+            KEY_AboutProjectForm,
+            KEY_aboutProjectNameLabel3,
+            KEY_aboutProjectNameLabel4,
+        };
     }
 
     public override string FormName { get; }
@@ -405,11 +622,21 @@ public class GuiLocaleDescr_AboutProject : FormLocaleDescription
 
     public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_AboutProjectForm, "About Program" },
+            { KEY_aboutProjectNameLabel3, "Version Preview 2023.3" },
+            { KEY_aboutProjectNameLabel4, "is Master_TW_DAR's initiative for M2TW community" },
+        });
     }
 
     public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()); // test
+        return new FormLocaleSnapshot(FormName, new Dictionary<string, string>()
+        {
+            { KEY_AboutProjectForm, "О программе" },
+            { KEY_aboutProjectNameLabel3, "Альфа-Версия 2023.3" },
+            { KEY_aboutProjectNameLabel4, "новый проект Master_TW_DAR в сообществе M2TW" },
+        });
     }
 }

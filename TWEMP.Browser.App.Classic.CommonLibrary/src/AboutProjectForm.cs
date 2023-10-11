@@ -8,10 +8,23 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
-public partial class AboutProjectForm : Form
+using TWEMP.Browser.Core.CommonLibrary;
+
+public partial class AboutProjectForm : Form, ICanChangeMyLocalization
 {
     public AboutProjectForm()
     {
         InitializeComponent();
+
+        SetupCurrentLocalizationForGUIControls();
+    }
+
+    public void SetupCurrentLocalizationForGUIControls()
+    {
+        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
+
+        Text = snapshot.GetLocalizedValueByKey(Name);
+        aboutProjectNameLabel3.Text = snapshot.GetLocalizedValueByKey(aboutProjectNameLabel3.Name);
+        aboutProjectNameLabel4.Text = snapshot.GetLocalizedValueByKey(aboutProjectNameLabel4.Name);
     }
 }
