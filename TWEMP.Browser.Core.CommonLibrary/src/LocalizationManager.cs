@@ -23,7 +23,7 @@ public class GuiLocale
     {
         supportedGuiLocaleDescriptions = new List<FormLocaleDescription>()
         {
-            new GuiLocaleDescr_MainLauncher(),
+            new GuiLocaleDescr_MainBrowser(),
             new GuiLocaleDescr_AppSettings(),
             new GuiLocaleDescr_GameSetupConfig(),
             new GuiLocaleDescr_AddNewGameSetup(),

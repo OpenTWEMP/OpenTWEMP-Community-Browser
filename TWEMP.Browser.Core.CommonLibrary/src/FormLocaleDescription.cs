@@ -19,8 +19,8 @@ public abstract class FormLocaleDescription
     public abstract FormLocaleSnapshot CreateLocaleSnapshotFor_RUS();
 }
 
-// Derived class for 'MainLauncherForm' form.
-public class GuiLocaleDescr_MainLauncher : FormLocaleDescription
+// Derived class for 'MainBrowserForm' form.
+public class GuiLocaleDescr_MainBrowser : FormLocaleDescription
 {
     private const string KEY_buttonLaunch = "buttonLaunch";
     private const string KEY_modQuickNavigationButton = "modQuickNavigationButton";
@@ -52,9 +52,23 @@ public class GuiLocaleDescr_MainLauncher : FormLocaleDescription
     private const string KEY_toolStripHelpItem = "toolStripHelpItem";
     private const string KEY_aboutProgramToolStripMenuItem = "aboutProgramToolStripMenuItem";
 
-    public GuiLocaleDescr_MainLauncher()
+    private const string KEY_groupBoxConfigProfiles = "groupBoxConfigProfiles";
+    private const string KEY_radioButtonConfigProfile_Gaming = "radioButtonConfigProfile_Gaming";
+    private const string KEY_radioButtonConfigProfile_Modding = "radioButtonConfigProfile_Modding";
+
+    private const string KEY_groupBoxLauncherProviders = "groupBoxLauncherProviders";
+    private const string KEY_radioButtonLauncherProvider_TWEMP = "radioButtonLauncherProvider_TWEMP";
+    private const string KEY_radioButtonLauncherProvider_BatchScript = "radioButtonLauncherProvider_BatchScript";
+    private const string KEY_radioButtonLauncherProvider_NativeSetup = "radioButtonLauncherProvider_NativeSetup";
+    private const string KEY_radioButtonLauncherProvider_M2TWEOP = "radioButtonLauncherProvider_M2TWEOP";
+
+    private const string KEY_buttonCollectionManage = "buttonCollectionManage";
+    private const string KEY_buttonCollectionCreate = "buttonCollectionCreate";
+    private const string KEY_buttonMarkFavoriteMod = "buttonMarkFavoriteMod";
+
+    public GuiLocaleDescr_MainBrowser()
     {
-        FormName = "MainLauncherForm";
+        FormName = "MainBrowserForm";
 
         LocalizedControls = new List<string>()
         {
@@ -87,6 +101,20 @@ public class GuiLocaleDescr_MainLauncher : FormLocaleDescription
 
             KEY_toolStripHelpItem,
             KEY_aboutProgramToolStripMenuItem,
+
+            KEY_groupBoxConfigProfiles,
+            KEY_radioButtonConfigProfile_Gaming,
+            KEY_radioButtonConfigProfile_Modding,
+
+            KEY_groupBoxLauncherProviders,
+            KEY_radioButtonLauncherProvider_TWEMP,
+            KEY_radioButtonLauncherProvider_BatchScript,
+            KEY_radioButtonLauncherProvider_NativeSetup,
+            KEY_radioButtonLauncherProvider_M2TWEOP,
+
+            KEY_buttonCollectionManage,
+            KEY_buttonCollectionCreate,
+            KEY_buttonMarkFavoriteMod,
         };
     }
 
@@ -122,6 +150,17 @@ public class GuiLocaleDescr_MainLauncher : FormLocaleDescription
                 { KEY_exitFromApplicationToolStripMenuItem, "Exit form Program" },
                 { KEY_toolStripHelpItem, "HELP" },
                 { KEY_aboutProgramToolStripMenuItem, "About Program" },
+                { KEY_groupBoxConfigProfiles, "Configuration Profiles" },
+                { KEY_radioButtonConfigProfile_Gaming, "GAMING MODE" },
+                { KEY_radioButtonConfigProfile_Modding, "MODDING MODE" },
+                { KEY_groupBoxLauncherProviders, "Launcher Providers" },
+                { KEY_radioButtonLauncherProvider_TWEMP, "Launch Game via TWEMP Launcher" },
+                { KEY_radioButtonLauncherProvider_BatchScript, "Launch Game via Batch Script" },
+                { KEY_radioButtonLauncherProvider_NativeSetup, "Launch Game via Native Setup" },
+                { KEY_radioButtonLauncherProvider_M2TWEOP, "Launch Game via M2TWEOP GUI" },
+                { KEY_buttonCollectionManage, "MANAGE YOUR COLLECTIONS" },
+                { KEY_buttonCollectionCreate, "CREATE A NEW COLLECTION" },
+                { KEY_buttonMarkFavoriteMod, "MARK or UNMARK THIS MOD as FAVORITE" },
             });
     }
 
@@ -153,6 +192,17 @@ public class GuiLocaleDescr_MainLauncher : FormLocaleDescription
                 { KEY_exitFromApplicationToolStripMenuItem, "Выйти из Программы" },
                 { KEY_toolStripHelpItem, "ПОМОЩЬ" },
                 { KEY_aboutProgramToolStripMenuItem, "О Программе" },
+                { KEY_groupBoxConfigProfiles, "Выберите профиль конфигурации" },
+                { KEY_radioButtonConfigProfile_Gaming, "РЕЖИМ ИГРЫ" },
+                { KEY_radioButtonConfigProfile_Modding, "МОДДИНГ-РЕЖИМ" },
+                { KEY_groupBoxLauncherProviders, "Выберите средство запуска мода" },
+                { KEY_radioButtonLauncherProvider_TWEMP, "Встроенный лаунчер TWEMP" },
+                { KEY_radioButtonLauncherProvider_BatchScript, "Пакетный сценарий запуска мода" },
+                { KEY_radioButtonLauncherProvider_NativeSetup, "Нативная программа запуска мода" },
+                { KEY_radioButtonLauncherProvider_M2TWEOP, "Лаунчер проекта M2TWEOP" },
+                { KEY_buttonCollectionManage, "УПРАВЛЕНИЕ КОЛЛЕКЦИЯМИ" },
+                { KEY_buttonCollectionCreate, "СОЗДАТЬ НОВУЮ КОЛЛЕКЦИЮ" },
+                { KEY_buttonMarkFavoriteMod, "ИЗБРАННОЕ (ДОБАВИТЬ/УДАЛИТЬ МОД)" },
             });
     }
 }

@@ -651,7 +651,7 @@ namespace TWEMP.Browser.App.Classic
             panelCollections.Size = new System.Drawing.Size(321, 110);
             panelCollections.TabIndex = 21;
             // 
-            // MainLauncherForm
+            // MainBrowserForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -671,7 +671,7 @@ namespace TWEMP.Browser.App.Classic
             MainMenuStrip = appMenuStrip;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             MinimumSize = new System.Drawing.Size(1024, 768);
-            Name = "MainLauncherForm";
+            Name = "MainBrowserForm";
             ShowIcon = false;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             WindowState = System.Windows.Forms.FormWindowState.Maximized;

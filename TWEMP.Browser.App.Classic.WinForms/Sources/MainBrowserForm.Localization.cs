@@ -51,5 +51,19 @@ internal partial class MainBrowserForm : IUpdatableBrowser, ICanChangeMyLocaliza
 
         toolStripHelpItem.Text = snapshot.GetLocalizedValueByKey(toolStripHelpItem.Name);
         aboutProgramToolStripMenuItem.Text = snapshot.GetLocalizedValueByKey(aboutProgramToolStripMenuItem.Name);
+
+        groupBoxConfigProfiles.Text = snapshot.GetLocalizedValueByKey(groupBoxConfigProfiles.Name);
+        radioButtonConfigProfile_Gaming.Text = snapshot.GetLocalizedValueByKey(radioButtonConfigProfile_Gaming.Name);
+        radioButtonConfigProfile_Modding.Text = snapshot.GetLocalizedValueByKey(radioButtonConfigProfile_Modding.Name);
+
+        groupBoxLauncherProviders.Text = snapshot.GetLocalizedValueByKey(groupBoxLauncherProviders.Name);
+        radioButtonLauncherProvider_TWEMP.Text = snapshot.GetLocalizedValueByKey(radioButtonLauncherProvider_TWEMP.Name);
+        radioButtonLauncherProvider_BatchScript.Text = snapshot.GetLocalizedValueByKey(radioButtonLauncherProvider_BatchScript.Name);
+        radioButtonLauncherProvider_NativeSetup.Text = snapshot.GetLocalizedValueByKey(radioButtonLauncherProvider_NativeSetup.Name);
+        radioButtonLauncherProvider_M2TWEOP.Text = snapshot.GetLocalizedValueByKey(radioButtonLauncherProvider_M2TWEOP.Name);
+
+        buttonCollectionManage.Text = snapshot.GetLocalizedValueByKey(buttonCollectionManage.Name);
+        buttonCollectionCreate.Text = snapshot.GetLocalizedValueByKey(buttonCollectionCreate.Name);
+        buttonMarkFavoriteMod.Text = snapshot.GetLocalizedValueByKey(buttonMarkFavoriteMod.Name);
     }
 }
