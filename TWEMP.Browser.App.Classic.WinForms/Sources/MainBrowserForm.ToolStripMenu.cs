@@ -37,7 +37,7 @@ internal partial class MainBrowserForm
     private void ApplicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var appSettingsForm = new AppSettingsForm(this);
-        appSettingsForm.Show();
+        appSettingsForm.ShowDialog();
     }
 
     private void GameSetupSettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,12 +53,12 @@ internal partial class MainBrowserForm
     private void ConfigSettingsToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var modConfigSettingsForm = new ModConfigSettingsForm();
-        modConfigSettingsForm.Show();
+        modConfigSettingsForm.ShowDialog();
     }
 
     private void AboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var aboutProjectForm = new AboutProjectForm();
-        aboutProjectForm.Show();
+        aboutProjectForm.ShowDialog();
     }
 }

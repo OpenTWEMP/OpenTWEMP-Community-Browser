@@ -147,7 +147,7 @@ public class GuiLocaleDescr_MainBrowser : FormLocaleDescription
                 { KEY_gameSetupSettingsToolStripMenuItem, "Game Setup Settings" },
                 { KEY_applicationSettingsToolStripMenuItem, "Application Settings" },
                 { KEY_applicationHomeFolderToolStripMenuItem, "Go to Home Directory" },
-                { KEY_exitFromApplicationToolStripMenuItem, "Exit form Program" },
+                { KEY_exitFromApplicationToolStripMenuItem, "Exit from Program" },
                 { KEY_toolStripHelpItem, "HELP" },
                 { KEY_aboutProgramToolStripMenuItem, "About Program" },
                 { KEY_groupBoxConfigProfiles, "Configuration Profiles" },

@@ -101,7 +101,7 @@
             Controls.Add(collectionNameTextBox);
             Controls.Add(buttonCancel);
             Controls.Add(buttonOK);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MaximumSize = new Size(400, 400);
             MinimizeBox = false;

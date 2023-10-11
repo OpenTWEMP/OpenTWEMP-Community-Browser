@@ -114,12 +114,12 @@ internal partial class MainBrowserForm : IUpdatableBrowser
     private void ButtonCollectionCreate_Click(object sender, EventArgs e)
     {
         var collectionCreateForm = new CollectionCreateForm(this);
-        collectionCreateForm.Show();
+        collectionCreateForm.ShowDialog();
     }
 
     private void ButtonCollectionManage_Click(object sender, EventArgs e)
     {
         var collectionManageForm = new CollectionManageForm(this);
-        collectionManageForm.Show();
+        collectionManageForm.ShowDialog();
     }
 }
