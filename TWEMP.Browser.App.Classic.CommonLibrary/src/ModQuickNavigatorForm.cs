@@ -42,7 +42,7 @@ public partial class ModQuickNavigatorForm : Form, ICanChangeMyLocalization
 
         currentMessageProvider = BrowserMessageProvider.CurrentProvider;
 
-        Text = $"Mod Quick Navigation: {modHomeDirectory}";
+        Text += $": {modHomeDirectory}";
 
         currentModHomeDirectory = modHomeDirectory;
         modDataFolderName = M2TW.ModDataFolderName;
