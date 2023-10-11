@@ -37,7 +37,8 @@ internal partial class MainBrowserForm
         }
 
         CustomConfigState targetConfigState = GetCurrentGameConfigState();
-        var launchConfiguration = new GameLaunchConfigurator(targetModInfo, targetConfigState);
+        var launchConfiguration = new GameLaunchConfigurator(
+            targetModInfo, targetConfigState, currentMessageProvider);
         launchConfiguration.Execute();
 
         ChangeLauncherGUIWhenGameExiting();
@@ -65,7 +66,7 @@ internal partial class MainBrowserForm
     private void ButtonExplore_Click(object sender, EventArgs e)
     {
         GameModificationInfo current_mod_info = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
-        SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location);
+        SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location, currentMessageProvider);
     }
 
     // PROVIDERS TO RUN THE SELECTED MODIFICATION

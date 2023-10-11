@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 public static class SystemToolbox
 {
-    public static void ShowFileSystemDirectory(string directory)
+    public static void ShowFileSystemDirectory(string directory, IBrowserMessageProvider messageProvider)
     {
         if (Directory.Exists(directory))
         {
@@ -22,12 +22,12 @@ public static class SystemToolbox
 
             Process.Start(explorerProcInfo);
         }
-#if DISABLE_WHEN_MIGRATION
         else
         {
-            // TODO: Replace to TWEMP.Browser.App.Classic.CommonLibrary.BrowserErrorMessage.ShowAboutDirectoryNotFound()
-            MessageBox.Show("ERROR: Specified directory does not exist.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            messageProvider.Show(
+                msgText: "ERROR: Specified directory does not exist.",
+                msgCaption: "Error Message",
+                msgType: BrowserMessageType.Error);
         }
-#endif
     }
 }

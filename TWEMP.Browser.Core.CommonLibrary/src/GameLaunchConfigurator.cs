@@ -15,13 +15,15 @@ using TWEMP.Browser.Core.GamingSupport;
 
 public class GameLaunchConfigurator
 {
-    private GameModificationInfo current_modification;
-    private CustomConfigState custom_configuration;
+    private readonly GameModificationInfo current_modification;
+    private readonly CustomConfigState custom_configuration;
+    private readonly IBrowserMessageProvider currentMessageProvider;
 
-    public GameLaunchConfigurator(GameModificationInfo mod_info, CustomConfigState state)
+    public GameLaunchConfigurator(GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
     {
         current_modification = mod_info;
         custom_configuration = state;
+        currentMessageProvider = messageProvider;
     }
 
     public static List<CfgOptionsSubSet> GetBaseOptsSet()
@@ -95,12 +97,13 @@ public class GameLaunchConfigurator
             process.Start();
             process.WaitForExit();
         }
-#if DISABLE_WHEN_MIGRATION
         else
         {
-            MessageBox.Show("ERROR: Executable File Is Not Found !!!", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            currentMessageProvider.Show(
+                msgText: "ERROR: Executable File Is Not Found !!!",
+                msgCaption: "Error Message",
+                msgType: BrowserMessageType.Error);
         }
-#endif
     }
 
     private void Launch()
@@ -138,12 +141,13 @@ public class GameLaunchConfigurator
                 }
             }
         }
-#if DISABLE_WHEN_MIGRATION
         else
         {
-            MessageBox.Show("ERROR: This mod does not pass preprocessing", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            currentMessageProvider.Show(
+                msgText: "ERROR: This mod does not pass preprocessing",
+                msgCaption: "Error Message",
+                msgType: BrowserMessageType.Error);
         }
-#endif
     }
 
     private ProcessStartInfo InitializeGameLaunch(string mod_config_file)
@@ -482,12 +486,14 @@ public class GameLaunchConfigurator
             File.Delete(mapFullPath);
             hasOperationSuccessExecutionStatus = true;
         }
-#if DISABLE_WHEN_MIGRATION
         else
         {
-            MessageBox.Show("ERROR: map.rwm does not exist", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            currentMessageProvider.Show(
+                msgText: "ERROR: map.rwm does not exist",
+                msgCaption: "Error Message",
+                msgType: BrowserMessageType.Error);
         }
-#endif
+
         return hasOperationSuccessExecutionStatus;
     }
 
@@ -513,12 +519,14 @@ public class GameLaunchConfigurator
 
             hasOperationSuccessExecutionStatus = true;
         }
-#if DISABLE_WHEN_MIGRATION
         else
         {
-            MessageBox.Show("ERROR: *.strings.bin files' directory is not found", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            currentMessageProvider.Show(
+                msgText: "ERROR: *.strings.bin files' directory is not found",
+                msgCaption: "Error Message",
+                msgType: BrowserMessageType.Error);
         }
-#endif
+
         return hasOperationSuccessExecutionStatus;
     }
 
@@ -545,12 +553,14 @@ public class GameLaunchConfigurator
 
             hasOperationSuccessExecutionStatus = true;
         }
-#if DISABLE_WHEN_MIGRATION
         else
         {
-            MessageBox.Show("ERROR: *.dat и *.idx files' directory is not found", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            currentMessageProvider.Show(
+                msgText: "ERROR: *.dat и *.idx files' directory is not found",
+                msgCaption: "Error Message",
+                msgType: BrowserMessageType.Error);
         }
-#endif
+
         return hasOperationSuccessExecutionStatus;
     }
 

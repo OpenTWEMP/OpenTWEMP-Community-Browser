@@ -31,7 +31,7 @@ internal partial class MainBrowserForm
     private void ApplicationHomeFolderToolStripMenuItem_Click(object sender, EventArgs e)
     {
         string appWorkDirectory = Directory.GetCurrentDirectory();
-        SystemToolbox.ShowFileSystemDirectory(appWorkDirectory);
+        SystemToolbox.ShowFileSystemDirectory(appWorkDirectory, currentMessageProvider);
     }
 
     private void ApplicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)

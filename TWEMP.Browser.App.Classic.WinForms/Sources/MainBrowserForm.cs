@@ -8,13 +8,18 @@
 
 namespace TWEMP.Browser.App.Classic;
 
+using TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.App.Classic.WinForms.Properties;
 
 internal partial class MainBrowserForm : Form
 {
+    private readonly BrowserMessageProvider currentMessageProvider;
+
     public MainBrowserForm()
     {
         InitializeComponent();
+
+        currentMessageProvider = BrowserMessageProvider.CurrentProvider;
 
         SetupCurrentLocalizationForGUIControls();
         UpdateModificationsTreeView();
