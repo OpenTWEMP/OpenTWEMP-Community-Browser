@@ -12,16 +12,6 @@ using System.Drawing;
 
 public readonly struct ColorTheme
 {
-    public ColorTheme()
-    {
-        // Initialize description for the default color theme.
-        MainFormBackColor = Color.DarkSeaGreen;
-        PanelsBackColor = Color.MediumAquamarine;
-        ModControlsBackColor = Color.MediumSeaGreen;
-        CommonControlsBackColor = Color.LightGreen;
-        CommonControlsForeColor = Color.Black;
-    }
-
     public ColorTheme(
         Color formBack,
         Color panelsBack,
@@ -49,12 +39,6 @@ public readonly struct ColorTheme
 
     public static ColorTheme SelectColorThemeByStyle(GuiStyle style)
     {
-        // Initialize description for a pre-defined color theme style.
-        if (style == GuiStyle.Default)
-        {
-            return default;
-        }
-
         if (style == GuiStyle.Light)
         {
             return new ColorTheme(
@@ -75,7 +59,13 @@ public readonly struct ColorTheme
                 commonUIFore: Color.Snow);
         }
 
-        return default;
+        // Initialize description for a default color theme style (GuiStyle.Default).
+        return new ColorTheme(
+            formBack: Color.DarkSeaGreen,
+            panelsBack: Color.MediumAquamarine,
+            modUIBack: Color.MediumSeaGreen,
+            commonUIBack: Color.LightGreen,
+            commonUIFore: Color.Black);
     }
 }
 
