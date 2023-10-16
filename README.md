@@ -6,17 +6,22 @@
 
 The **OpenTWEMP Community Browser** project is creating an feature-powered, super-customizable and user-friendly solution of a universal launcher application for [Medieval II Total War](https://store.steampowered.com/app/4700/Total_War_MEDIEVAL_II__Definitive_Edition/) modifications to provide excellent desktop mod management experience.
 
+You can look at this application in action on its official YouTube channel:
+
+:tv: [OpenTWEMP Community Browser Preview 2023.2 Release Demo](https://www.youtube.com/playlist?list=PLLgpEiC0ZVBEgV6UofrRX5WsL9M--PAkO)
+
 ---
 
 ## :fire: Current Development
 
-Currently, OpenTWEMP Community Browser development is on 'beta-2024' branch.
+Currently, OpenTWEMP Community Browser development is on the **Beta 2024 Release** version development.
 
 The Beta 2024 phase's goals:
 
-* Create Build/Test/Deploy infrastructure for the project.
-* Implement all planned Beta 2024 release features and fixes.
+* Resolve and close all planned Beta 2024 Release issues.
 * Prepare OpenTWEMP Community Browser to open-source life.
+
+See the [Beta 2024 Board](https://github.com/users/dar920910/projects/15/views/2) for details :date:
 
 ---
 
