@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>OpenTWEMP-Community-Browser</AssemblyName>
+    <StartupObject>TWEMP.Browser.App.Classic.WinForms.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
