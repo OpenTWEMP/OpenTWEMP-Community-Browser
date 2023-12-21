@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.QA.Benchmarki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.App.Classic.WinForms", "TWEMP.Browser.App.Classic.WinForms\TWEMP.Browser.App.Classic.WinForms.csproj", "{1E87C536-309C-428E-BB89-ED8D204BDE7A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.App.Classic.WPF", "TWEMP.Browser.App.Classic.WPF\TWEMP.Browser.App.Classic.WPF.csproj", "{2750D687-9E53-44EB-8AA8-DAA7B0AD0B77}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.Core.CommonLibrary", "TWEMP.Browser.Core.CommonLibrary\TWEMP.Browser.Core.CommonLibrary.csproj", "{382630AF-28E8-4BF4-968E-AAFE7335AA8B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.Core.GamingSupport", "TWEMP.Browser.Core.GamingSupport\TWEMP.Browser.Core.GamingSupport.csproj", "{A0C5A5BB-EA90-4579-9960-CB089DBD53C4}"
@@ -21,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.Core.EntityMo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.App.WorkerService", "TWEMP.Browser.App.WorkerService\TWEMP.Browser.App.WorkerService.csproj", "{58F07B16-4ABB-4872-B4AA-305E1D3D4C0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.Browser.App.Classic.CommonLibrary", "TWEMP.Browser.App.Classic.CommonLibrary\TWEMP.Browser.App.Classic.CommonLibrary.csproj", "{BDBD6864-F495-4B97-A6BA-FD7637B0079D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.App.Classic.CommonLibrary", "TWEMP.Browser.App.Classic.CommonLibrary\TWEMP.Browser.App.Classic.CommonLibrary.csproj", "{BDBD6864-F495-4B97-A6BA-FD7637B0079D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +39,6 @@ Global
 		{1E87C536-309C-428E-BB89-ED8D204BDE7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E87C536-309C-428E-BB89-ED8D204BDE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E87C536-309C-428E-BB89-ED8D204BDE7A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2750D687-9E53-44EB-8AA8-DAA7B0AD0B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2750D687-9E53-44EB-8AA8-DAA7B0AD0B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2750D687-9E53-44EB-8AA8-DAA7B0AD0B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2750D687-9E53-44EB-8AA8-DAA7B0AD0B77}.Release|Any CPU.Build.0 = Release|Any CPU
 		{382630AF-28E8-4BF4-968E-AAFE7335AA8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{382630AF-28E8-4BF4-968E-AAFE7335AA8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{382630AF-28E8-4BF4-968E-AAFE7335AA8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
