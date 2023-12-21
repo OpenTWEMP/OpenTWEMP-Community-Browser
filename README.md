@@ -12,16 +12,71 @@ You can look at this application in action on its official YouTube channel:
 
 ---
 
-## :fire: Current Development
+## :fire: Current Development - [Beta 2024 Release](https://github.com/users/dar920910/projects/15/views/2)
 
-Currently, OpenTWEMP Community Browser development is on the **Beta 2024 Release** version development.
+The current development is on the **twemp-2024** branch.
 
-The Beta 2024 phase's goals:
+The following child branches reflect independent activities of this release:
 
-* Resolve and close all planned Beta 2024 Release issues.
-* Prepare OpenTWEMP Community Browser to open-source life.
+### :small_blue_diamond: beta-announces
 
-See the [Beta 2024 Board](https://github.com/users/dar920910/projects/15/views/2) for details :date:
+This branch has to allow only commits related with preparation of planned release announces.
+
+### :small_blue_diamond: beta-browser-core
+
+This branch has to allow only commits related with development of browser's core features:
+
+* TWEMP.Browser.Core.CommonLibrary
+* TWEMP.Browser.QA.Benchmarking
+* TWEMP.Browser.QA.UnitTesting
+
+### :small_blue_diamond: beta-game-support
+
+This branch has to allow only commits related with the M2TW game support implementation:
+
+* TWEMP.Browser.Core.GamingSupport
+
+### :small_blue_diamond: beta-mods-presets
+
+This branch has to allow only commits related with preparation of presets for M2TW modifications.
+
+### :small_blue_diamond: beta-gui-classic
+
+This branch has to allow only commits related with improving the classic GUI of the browser:
+
+* TWEMP.Browser.App.Classic.CommonLibrary
+* TWEMP.Browser.App.Classic.WinForms
+
+### :small_blue_diamond: challenge-gui-modern
+
+This branch has to allow only commits related with experimental implementation of modern cross-platform GUI for the browser.
+
+This challenge encourages to try a new GUI framework (Avalonia/Uno/MAUI) as a replacement for the classic Windows Forms GUI.
+
+### :small_blue_diamond: challenge-database
+
+This branch has to allow only commits related with experimental implementation of the local SQLite database:
+
+* TWEMP.Browser.Core.DataContext
+* TWEMP.Browser.Core.EntityModels
+
+### :small_blue_diamond: challenge-worker
+
+This branch has to allow only commits related with experimental implementation of the local worker service:
+
+* TWEMP.Browser.App.WorkerService
+
+### :small_blue_diamond: sandbox
+
+This branch has to allow only commits related with experiments of any ideas beyound project's code base:
+
+* TWE-Testing-Sandbox
+
+### :small_blue_diamond: automation
+
+This branch has to allow only commits related with creation of automation for the project.
+
+These activities are GitHub Actions, configuration files, utilities, scripts and etc.
 
 ---
 
