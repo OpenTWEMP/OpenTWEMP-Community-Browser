@@ -16,13 +16,13 @@ You can look at this application in action on its official YouTube channel:
 
 The current development is on the **twemp-2024** branch.
 
-The following child branches reflect independent activities of this release:
+The following child branches reflect independent activities for this release:
 
-### :small_blue_diamond: beta-announces
+### :small_blue_diamond: beta24-announces
 
 This branch has to allow only commits related with preparation of planned release announces.
 
-### :small_blue_diamond: beta-browser-core
+### :small_blue_diamond: beta24-browser-core
 
 This branch has to allow only commits related with development of browser's core features:
 
@@ -30,53 +30,57 @@ This branch has to allow only commits related with development of browser's core
 * TWEMP.Browser.QA.Benchmarking
 * TWEMP.Browser.QA.UnitTesting
 
-### :small_blue_diamond: beta-game-support
+### :small_blue_diamond: beta24-game-support
 
 This branch has to allow only commits related with the M2TW game support implementation:
 
 * TWEMP.Browser.Core.GamingSupport
 
-### :small_blue_diamond: beta-mods-presets
+### :small_blue_diamond: beta24-mods-presets
 
 This branch has to allow only commits related with preparation of presets for M2TW modifications.
 
-### :small_blue_diamond: beta-gui-classic
+### :small_blue_diamond: beta24-gui-classic
 
 This branch has to allow only commits related with improving the classic GUI of the browser:
 
 * TWEMP.Browser.App.Classic.CommonLibrary
 * TWEMP.Browser.App.Classic.WinForms
 
-### :small_blue_diamond: challenge-gui-modern
+### :small_blue_diamond: beta24-gui-modern
 
-This branch has to allow only commits related with experimental implementation of modern cross-platform GUI for the browser.
+This branch has to allow only commits related with the implementation of a modern cross-platform GUI.
 
-This challenge encourages to try a new GUI framework (Avalonia/Uno/MAUI) as a replacement for the classic Windows Forms GUI.
+This challenge encourages to try a new GUI framework as a replacement for the classic GUI:
 
-### :small_blue_diamond: challenge-database
+* Avalonia
+* Uno
+* MAUI
 
-This branch has to allow only commits related with experimental implementation of the local SQLite database:
+### :small_blue_diamond: beta24-database
+
+This branch has to allow only commits related with the implementation of the local SQLite database:
 
 * TWEMP.Browser.Core.DataContext
 * TWEMP.Browser.Core.EntityModels
 
-### :small_blue_diamond: challenge-worker
+### :small_blue_diamond: beta24-worker
 
-This branch has to allow only commits related with experimental implementation of the local worker service:
+This branch has to allow only commits related with the implementation of the local worker service:
 
 * TWEMP.Browser.App.WorkerService
 
-### :small_blue_diamond: sandbox
-
-This branch has to allow only commits related with experiments of any ideas beyound project's code base:
-
-* TWE-Testing-Sandbox
-
-### :small_blue_diamond: automation
+### :small_blue_diamond: beta24-automation
 
 This branch has to allow only commits related with creation of automation for the project.
 
 These activities are GitHub Actions, configuration files, utilities, scripts and etc.
+
+### :small_blue_diamond: beta24-sandbox
+
+This branch has to allow only commits related with experiments of ideas beyound project's code base:
+
+* TWE-Testing-Sandbox
 
 ---
 
