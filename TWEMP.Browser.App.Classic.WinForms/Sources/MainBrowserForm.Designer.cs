@@ -100,7 +100,7 @@ namespace TWEMP.Browser.App.Classic
             buttonLaunch.Cursor = Cursors.Hand;
             buttonLaunch.Enabled = false;
             buttonLaunch.FlatStyle = FlatStyle.Flat;
-            buttonLaunch.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonLaunch.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold);
             buttonLaunch.ForeColor = SystemColors.ControlText;
             buttonLaunch.Location = new Point(4, 3);
             buttonLaunch.Margin = new Padding(4, 3, 4, 3);
@@ -407,7 +407,7 @@ namespace TWEMP.Browser.App.Classic
             buttonExplore.Cursor = Cursors.Hand;
             buttonExplore.Enabled = false;
             buttonExplore.FlatStyle = FlatStyle.Flat;
-            buttonExplore.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonExplore.Font = new Font("Segoe UI", 12F);
             buttonExplore.Location = new Point(4, 151);
             buttonExplore.Name = "buttonExplore";
             buttonExplore.Size = new Size(362, 52);
@@ -423,7 +423,7 @@ namespace TWEMP.Browser.App.Classic
             modQuickNavigationButton.Cursor = Cursors.Hand;
             modQuickNavigationButton.Enabled = false;
             modQuickNavigationButton.FlatStyle = FlatStyle.Flat;
-            modQuickNavigationButton.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            modQuickNavigationButton.Font = new Font("Microsoft Sans Serif", 12F);
             modQuickNavigationButton.Location = new Point(4, 97);
             modQuickNavigationButton.Margin = new Padding(4, 3, 4, 3);
             modQuickNavigationButton.Name = "modQuickNavigationButton";
@@ -452,7 +452,7 @@ namespace TWEMP.Browser.App.Classic
             modMainTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             modMainTitleLabel.BackColor = Color.MediumSeaGreen;
             modMainTitleLabel.BorderStyle = BorderStyle.FixedSingle;
-            modMainTitleLabel.Font = new Font("Palatino Linotype", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            modMainTitleLabel.Font = new Font("Palatino Linotype", 24F, FontStyle.Bold);
             modMainTitleLabel.Location = new Point(12, 35);
             modMainTitleLabel.Name = "modMainTitleLabel";
             modMainTitleLabel.Size = new Size(983, 46);
@@ -477,7 +477,7 @@ namespace TWEMP.Browser.App.Classic
             modStatusLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             modStatusLabel.BackColor = Color.MediumSeaGreen;
             modStatusLabel.BorderStyle = BorderStyle.FixedSingle;
-            modStatusLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            modStatusLabel.Font = new Font("Segoe UI", 14F);
             modStatusLabel.ForeColor = Color.Black;
             modStatusLabel.Location = new Point(12, 654);
             modStatusLabel.Name = "modStatusLabel";
@@ -495,7 +495,7 @@ namespace TWEMP.Browser.App.Classic
             // 
             // appMenuStrip
             // 
-            appMenuStrip.Items.AddRange(new ToolStripItem[] { toolStripAppItem, toolStripHelpItem, toolStripModItem });
+            appMenuStrip.Items.AddRange(new ToolStripItem[] { toolStripAppItem, toolStripModItem, toolStripHelpItem });
             appMenuStrip.Location = new Point(0, 0);
             appMenuStrip.Name = "appMenuStrip";
             appMenuStrip.Size = new Size(1008, 24);
@@ -564,11 +564,9 @@ namespace TWEMP.Browser.App.Classic
             // toolStripModItem
             // 
             toolStripModItem.DropDownItems.AddRange(new ToolStripItem[] { configSettingsToolStripMenuItem });
-            toolStripModItem.Enabled = false;
             toolStripModItem.Name = "toolStripModItem";
             toolStripModItem.Size = new Size(101, 20);
             toolStripModItem.Text = "MODIFICATION";
-            toolStripModItem.Visible = false;
             // 
             // configSettingsToolStripMenuItem
             // 
@@ -582,7 +580,7 @@ namespace TWEMP.Browser.App.Classic
             treeViewGameMods.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             treeViewGameMods.BackColor = Color.MediumSeaGreen;
             treeViewGameMods.BorderStyle = BorderStyle.FixedSingle;
-            treeViewGameMods.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            treeViewGameMods.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold | FontStyle.Underline);
             treeViewGameMods.FullRowSelect = true;
             treeViewGameMods.Indent = 15;
             treeViewGameMods.ItemHeight = 30;
