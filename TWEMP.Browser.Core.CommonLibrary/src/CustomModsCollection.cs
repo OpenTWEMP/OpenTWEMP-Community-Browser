@@ -9,6 +9,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using Newtonsoft.Json;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 public class CustomModsCollection
 {
@@ -33,7 +34,7 @@ public class CustomModsCollection
 
         try
         {
-            File.WriteAllText(Path.Combine(Settings.CacheDirectoryPath, COLLECTIONS_FILENAME), collectionsTextContent);
+            File.WriteAllText(Path.Combine(GameSettingsCacheStorage.Location, COLLECTIONS_FILENAME), collectionsTextContent);
         }
         catch (FileNotFoundException)
         {
@@ -60,7 +61,7 @@ public class CustomModsCollection
 
         try
         {
-            File.WriteAllText(Path.Combine(Settings.CacheDirectoryPath, FAVORITE_COLLECTION_FILENAME), favoriteCollectionTextContent);
+            File.WriteAllText(Path.Combine(GameSettingsCacheStorage.Location, FAVORITE_COLLECTION_FILENAME), favoriteCollectionTextContent);
         }
         catch (FileNotFoundException)
         {

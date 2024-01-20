@@ -8,6 +8,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using System.Text;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 
 public static class Settings
@@ -44,11 +45,10 @@ public static class Settings
         GameInstallations = new List<GameSetupInfo>();
         TotalModificationsList = new List<GameModificationInfo>();
 
-        CacheDirectoryPath = GetCacheDirectory();
         GameSetupConfFile = GetSetupConfFileName();
 
-        FavoriteModsCollection = CustomModsCollection.LoadFavoriteCollectionFromCache(CacheDirectoryPath);
-        UserCollections = CustomModsCollection.LoadExistingCollectionsFromCache(CacheDirectoryPath);
+        FavoriteModsCollection = CustomModsCollection.LoadFavoriteCollectionFromCache(GameSettingsCacheStorage.Location);
+        UserCollections = CustomModsCollection.LoadExistingCollectionsFromCache(GameSettingsCacheStorage.Location);
 
         // Setup the global object of the GUI style manager by default.
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
@@ -63,11 +63,17 @@ public static class Settings
 
     public static List<GameModificationInfo> TotalModificationsList { get; }
 
-    public static CustomModsCollection FavoriteModsCollection { get; set; }
+    public static CustomModsCollection FavoriteModsCollection
+    {
+        get;
+        set;
+    }
 
-    public static List<CustomModsCollection> UserCollections { get; set; }
-
-    public static string CacheDirectoryPath { get; }
+    public static List<CustomModsCollection> UserCollections
+    {
+        get;
+        set;
+    }
 
     public static GuiStyle CurrentGUIStyle
     {
@@ -153,7 +159,6 @@ public static class Settings
         if (ShouldGameSetupConfFileBeCreated(GameSetupConfFile))
         {
             CreateSetupConfFile(GameSetupConfFile);
-            PrepareCacheFolder();
         }
         else
         {
@@ -265,14 +270,6 @@ public static class Settings
 
         writer.Close();
         stream.Close();
-    }
-
-    private static void PrepareCacheFolder()
-    {
-        if (!Directory.Exists(CacheDirectoryPath))
-        {
-            Directory.CreateDirectory(CacheDirectoryPath);
-        }
     }
 
     private static uint ReadTotalGameSetupCount(string setupConfFileName)

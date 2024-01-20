@@ -5,6 +5,8 @@
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 public class GameSetupInfo
@@ -43,7 +45,7 @@ public class GameSetupInfo
 
     private static string InitializeCacheDirectory(string cacheFolderName)
     {
-        string cacheDirectoryPath = Path.Combine(Settings.CacheDirectoryPath, cacheFolderName);
+        string cacheDirectoryPath = Path.Combine(GameSettingsCacheStorage.Location, cacheFolderName);
 
         if (!Directory.Exists(cacheDirectoryPath))
         {
