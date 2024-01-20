@@ -8,6 +8,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using System.Text;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 
 public static class Settings
 {
@@ -16,6 +17,8 @@ public static class Settings
     private const string APP_SUPPORT_DIRECTORY_NAME = "support";
     private const string APP_SUPPORT_NODE1_M2TW = "M2TWK";
     private const string APP_SUPPORT_NODE2_LOGO = "images";
+
+    private static readonly AppGuiStyleManager AppGuiStyleManagerInstance;
 
     private static readonly string GameSetupConfFile;
 
@@ -47,8 +50,8 @@ public static class Settings
         FavoriteModsCollection = CustomModsCollection.LoadFavoriteCollectionFromCache(CacheDirectoryPath);
         UserCollections = CustomModsCollection.LoadExistingCollectionsFromCache(CacheDirectoryPath);
 
-        // Setup GUI style by default.
-        CurrentGUIStyle = GuiStyle.Default;
+        // Setup the global object of the GUI style manager by default.
+        AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
 
         // Setup GUI localization by default.
         AvailableLocalizations = LocalizationManager.GetSupportedLocalizations();
@@ -70,7 +73,18 @@ public static class Settings
 
     public static string CacheDirectoryPath { get; }
 
-    public static GuiStyle CurrentGUIStyle { get; set; }
+    public static GuiStyle CurrentGUIStyle
+    {
+        get
+        {
+            return AppGuiStyleManagerInstance.CurrentStyle;
+        }
+
+        set
+        {
+            AppGuiStyleManagerInstance.CurrentStyle = value;
+        }
+    }
 
     public static List<GuiLocale> AvailableLocalizations { get; set; }
 
