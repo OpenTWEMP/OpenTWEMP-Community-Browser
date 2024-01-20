@@ -68,10 +68,3 @@ public readonly struct ColorTheme
             commonUIFore: Color.Black);
     }
 }
-
-public enum GuiStyle
-{
-    Default,
-    Light,
-    Dark,
-}
