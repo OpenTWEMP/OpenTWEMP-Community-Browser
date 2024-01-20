@@ -8,7 +8,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using System.Text;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 
 public static class Settings
@@ -47,9 +47,6 @@ public static class Settings
 
         GameSetupConfFile = GetSetupConfFileName();
 
-        FavoriteModsCollection = CustomModsCollection.LoadFavoriteCollectionFromCache(GameSettingsCacheStorage.Location);
-        UserCollections = CustomModsCollection.LoadExistingCollectionsFromCache(GameSettingsCacheStorage.Location);
-
         // Setup the global object of the GUI style manager by default.
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
 
@@ -65,14 +62,18 @@ public static class Settings
 
     public static CustomModsCollection FavoriteModsCollection
     {
-        get;
-        set;
+        get
+        {
+            return CustomGameCollectionsManager.FavoriteModsCollection;
+        }
     }
 
     public static List<CustomModsCollection> UserCollections
     {
-        get;
-        set;
+        get
+        {
+            return CustomGameCollectionsManager.UserCollections;
+        }
     }
 
     public static GuiStyle CurrentGUIStyle
