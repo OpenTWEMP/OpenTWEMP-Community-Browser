@@ -12,7 +12,6 @@ public static class LocalizationManager
     private const string GuiLocaleFileExtension = ".json";
 
     private static readonly string GuiLocalesHomeDirectoryPath;
-    private static List<GuiLocale> availableLocalizations;
 
     static LocalizationManager()
     {
@@ -23,7 +22,27 @@ public static class LocalizationManager
             Directory.CreateDirectory(GuiLocalesHomeDirectoryPath);
         }
 
-        availableLocalizations = new List<GuiLocale>();
+        AvailableLocalizations = InitializeSupportedLocalizations();
+        CurrentLocalization = InitializeLocalizationByDefault();
+    }
+
+    public static List<GuiLocale> AvailableLocalizations { get; private set; }
+
+    public static GuiLocale CurrentLocalization { get; private set; }
+
+    public static void SetCurrentLocalizationByName(string guiLocaleName)
+    {
+        if (CurrentLocalization.Name != guiLocaleName)
+        {
+            foreach (GuiLocale localization in AvailableLocalizations)
+            {
+                if (localization.Name == guiLocaleName)
+                {
+                    CurrentLocalization = localization;
+                    break;
+                }
+            }
+        }
     }
 
     public static bool IsCurrentLocalizationName(string guiLocaleName)
@@ -31,8 +50,10 @@ public static class LocalizationManager
         return Settings.CurrentLocalization.Name.Equals(guiLocaleName);
     }
 
-    public static List<GuiLocale> GetSupportedLocalizations()
+    private static List<GuiLocale> InitializeSupportedLocalizations()
     {
+        var supportedLocalizations = new List<GuiLocale>();
+
         List<string> currentLocaleFiles = FindAvailableLocalizationFiles();
 
         if (currentLocaleFiles.Count == 0)
@@ -41,11 +62,25 @@ public static class LocalizationManager
         }
         else
         {
-            List<GuiLocale> localeObjects = ReadObjectsFromLocaleFiles(currentLocaleFiles);
-            availableLocalizations = localeObjects;
+            supportedLocalizations = ReadObjectsFromLocaleFiles(currentLocaleFiles);
         }
 
-        return availableLocalizations;
+        return supportedLocalizations;
+    }
+
+    private static GuiLocale InitializeLocalizationByDefault()
+    {
+        const string guiLocaleNameByDefault = "ENG";
+
+        foreach (GuiLocale localization in AvailableLocalizations)
+        {
+            if (localization.Name == guiLocaleNameByDefault)
+            {
+                return localization;
+            }
+        }
+
+        return GuiLocale.GenerateGuiLocaleFor_ENG();
     }
 
     private static List<string> FindAvailableLocalizationFiles()
@@ -83,10 +118,10 @@ public static class LocalizationManager
         GuiLocale guiLocale_ENG = GuiLocale.GenerateGuiLocaleFor_ENG();
         GuiLocale guiLocale_RUS = GuiLocale.GenerateGuiLocaleFor_RUS();
 
-        availableLocalizations.Add(guiLocale_ENG);
-        availableLocalizations.Add(guiLocale_RUS);
+        AvailableLocalizations.Add(guiLocale_ENG);
+        AvailableLocalizations.Add(guiLocale_RUS);
 
-        foreach (var localization in availableLocalizations)
+        foreach (var localization in AvailableLocalizations)
         {
             SerializeLocalization(localization);
         }

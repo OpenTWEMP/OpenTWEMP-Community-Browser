@@ -53,10 +53,6 @@ public static class Settings
         // Setup the global object of the GUI style manager by default.
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
 
-        // Setup GUI localization by default.
-        AvailableLocalizations = LocalizationManager.GetSupportedLocalizations();
-        CurrentLocalization = InitializeLocalizationByDefault(AvailableLocalizations);
-
         // Initialize extra flags by default.
         UseExperimentalFeatures = true;
     }
@@ -86,11 +82,20 @@ public static class Settings
         }
     }
 
-    public static List<GuiLocale> AvailableLocalizations { get; set; }
-
-    public static GuiLocale CurrentLocalization { get; set; }
+    public static GuiLocale CurrentLocalization
+    {
+        get
+        {
+            return LocalizationManager.CurrentLocalization;
+        }
+    }
 
     public static bool UseExperimentalFeatures { get; set; }
+
+    public static void SetCurrentLocalizationByName(string guiLocaleName)
+    {
+        LocalizationManager.SetCurrentLocalizationByName(guiLocaleName);
+    }
 
     public static GameSetupInfo RegistrateGameInstallation(string setupName, string executableFullPath, List<string> modcenterPaths)
     {
@@ -172,21 +177,6 @@ public static class Settings
         GameSetupInfo gameSetupInfo = GameInstallations[gameSetupIndex];
         DeleteGameSetupFromConfFile(gameSetupInfo);
         GameInstallations.RemoveAt(gameSetupIndex);
-    }
-
-    public static void SetCurrentLocalizationByName(string guiLocaleName)
-    {
-        if (CurrentLocalization.Name != guiLocaleName)
-        {
-            foreach (var localization in AvailableLocalizations)
-            {
-                if (localization.Name == guiLocaleName)
-                {
-                    CurrentLocalization = localization;
-                    break;
-                }
-            }
-        }
     }
 
     private static string GetCacheDirectory()
@@ -443,20 +433,5 @@ public static class Settings
         }
 
         writer.Close();
-    }
-
-    private static GuiLocale InitializeLocalizationByDefault(List<GuiLocale> guiLocales)
-    {
-        string guiLocaleNameByDefault = "ENG";
-
-        foreach (GuiLocale localization in AvailableLocalizations)
-        {
-            if (localization.Name == guiLocaleNameByDefault)
-            {
-                return localization;
-            }
-        }
-
-        return GuiLocale.GenerateGuiLocaleFor_ENG();
     }
 }
