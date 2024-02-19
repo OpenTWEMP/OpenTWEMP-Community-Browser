@@ -2,70 +2,93 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#pragma warning disable SA1124 // Do not use regions
+#pragma warning disable SA1201 // Elements should appear in the correct order
 #pragma warning disable SA1600 // ElementsMustBeDocumented
-#pragma warning disable SA1310 // FieldNamesMustNotContainUnderscore
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 
+/// <summary>
+/// Serves as a facade interface for available application settings. It is a temp design.
+/// </summary>
 public static class Settings
 {
-    internal static readonly DirectoryInfo AppSupportNode_M2TW_LOGO_DirectoryInfo;
-
-    private const string APP_SUPPORT_DIRECTORY_NAME = "support";
-    private const string APP_SUPPORT_NODE1_M2TW = "M2TWK";
-    private const string APP_SUPPORT_NODE2_LOGO = "images";
-
     private static readonly AppGuiStyleManager AppGuiStyleManagerInstance;
 
     static Settings()
     {
-        string appSupportDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), APP_SUPPORT_DIRECTORY_NAME);
-        AppSupportDirectoryInfo = new DirectoryInfo(appSupportDirectoryPath);
-
-        // Initialize app's file system.
-        if (!AppSupportDirectoryInfo.Exists)
-        {
-            AppSupportDirectoryInfo.Create();
-        }
-
-        string appSupportNode_M2TW_LOGO_DirectoryPath = Path.Combine(appSupportDirectoryPath, APP_SUPPORT_NODE1_M2TW, APP_SUPPORT_NODE2_LOGO);
-        AppSupportNode_M2TW_LOGO_DirectoryInfo = new DirectoryInfo(appSupportNode_M2TW_LOGO_DirectoryPath);
-
-        if (!AppSupportNode_M2TW_LOGO_DirectoryInfo.Exists)
-        {
-            AppSupportNode_M2TW_LOGO_DirectoryInfo.Create();
-        }
-
         // Setup the global object of the GUI style manager by default.
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
-
-        // Initialize extra flags by default.
-        UseExperimentalFeatures = true;
     }
 
-    public static DirectoryInfo AppSupportDirectoryInfo { get; }
+    #region Facade Interface: AppSystemSettingsManager
 
-    public static List<GameSetupInfo> GameInstallations
+    public static DirectoryInfo AppSupportDirectoryInfo
     {
         get
         {
-            return CustomGameSetupManager.GameInstallations;
+            return AppSystemSettingsManager.AppSupportDirectoryInfo;
         }
     }
 
-    public static List<GameModificationInfo> TotalModificationsList
+    public static bool UseExperimentalFeatures
     {
         get
         {
-            return CustomGameSetupManager.TotalModificationsList;
+            return AppSystemSettingsManager.UseExperimentalFeatures;
+        }
+
+        set
+        {
+            AppSystemSettingsManager.UseExperimentalFeatures = value;
         }
     }
+
+    #endregion
+
+    #region Facade Interface: AppGuiStyleManager
+
+    public static GuiStyle CurrentGUIStyle
+    {
+        get
+        {
+            return AppGuiStyleManagerInstance.CurrentStyle;
+        }
+
+        set
+        {
+            AppGuiStyleManagerInstance.CurrentStyle = value;
+        }
+    }
+
+    #endregion
+
+    #region Facade Interface: LocalizationManager
+
+    public static GuiLocale CurrentLocalization
+    {
+        get
+        {
+            return LocalizationManager.CurrentLocalization;
+        }
+    }
+
+    public static void SetCurrentLocalizationByName(string guiLocaleName)
+    {
+        LocalizationManager.SetCurrentLocalizationByName(guiLocaleName);
+    }
+
+    #endregion
+
+    #region Facade Interface: CustomGameCollectionsManager
 
     public static CustomModsCollection FavoriteModsCollection
+#pragma warning restore SA1201 // Elements should appear in the correct order
     {
         get
         {
@@ -81,32 +104,24 @@ public static class Settings
         }
     }
 
-    public static GuiStyle CurrentGUIStyle
+    #endregion
+
+    #region Facade Interface: CustomGameSetupManager
+
+    public static List<GameSetupInfo> GameInstallations
     {
         get
         {
-            return AppGuiStyleManagerInstance.CurrentStyle;
-        }
-
-        set
-        {
-            AppGuiStyleManagerInstance.CurrentStyle = value;
+            return CustomGameSetupManager.GameInstallations;
         }
     }
 
-    public static GuiLocale CurrentLocalization
+    public static List<GameModificationInfo> TotalModificationsList
     {
         get
         {
-            return LocalizationManager.CurrentLocalization;
+            return CustomGameSetupManager.TotalModificationsList;
         }
-    }
-
-    public static bool UseExperimentalFeatures { get; set; }
-
-    public static void SetCurrentLocalizationByName(string guiLocaleName)
-    {
-        LocalizationManager.SetCurrentLocalizationByName(guiLocaleName);
     }
 
     public static GameSetupInfo RegistrateGameInstallation(
@@ -140,4 +155,6 @@ public static class Settings
     {
         CustomGameSetupManager.DeleteGameSetupByIndex(gameSetupIndex);
     }
+
+    #endregion
 }
