@@ -78,7 +78,7 @@ public static class CustomGameCollectionsManager
         if (File.Exists(collectionsFilePath))
         {
             string collectionsTextContent = File.ReadAllText(collectionsFilePath);
-            return JsonConvert.DeserializeObject<List<CustomModsCollection>>(collectionsTextContent)!;
+            return JsonConvert.DeserializeObject<List<CustomModsCollection>>(collectionsTextContent) !;
         }
 
         return new List<CustomModsCollection>();
@@ -91,7 +91,7 @@ public static class CustomGameCollectionsManager
         if (File.Exists(favoriteCollectionFilePath))
         {
             string favoriteCollectionTextContent = File.ReadAllText(favoriteCollectionFilePath);
-            return JsonConvert.DeserializeObject<CustomModsCollection>(favoriteCollectionTextContent)!;
+            return JsonConvert.DeserializeObject<CustomModsCollection>(favoriteCollectionTextContent) !;
         }
 
         return new CustomModsCollection(FavoriteCollectionTitle, new Dictionary<string, string>());
