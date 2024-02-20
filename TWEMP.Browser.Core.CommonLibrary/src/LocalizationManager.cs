@@ -52,13 +52,13 @@ public static class LocalizationManager
 
     private static List<GuiLocale> InitializeSupportedLocalizations()
     {
-        var supportedLocalizations = new List<GuiLocale>();
+        List<GuiLocale> supportedLocalizations = new ();
 
         List<string> currentLocaleFiles = FindAvailableLocalizationFiles();
 
         if (currentLocaleFiles.Count == 0)
         {
-            CreateStandardLocalizations();
+            CreateStandardLocalizations(supportedLocalizations);
         }
         else
         {
@@ -113,15 +113,15 @@ public static class LocalizationManager
         return guiLocaleObjects;
     }
 
-    private static void CreateStandardLocalizations()
+    private static void CreateStandardLocalizations(List<GuiLocale> localizations)
     {
         GuiLocale guiLocale_ENG = GuiLocale.GenerateGuiLocaleFor_ENG();
         GuiLocale guiLocale_RUS = GuiLocale.GenerateGuiLocaleFor_RUS();
 
-        AvailableLocalizations.Add(guiLocale_ENG);
-        AvailableLocalizations.Add(guiLocale_RUS);
+        localizations.Add(guiLocale_ENG);
+        localizations.Add(guiLocale_RUS);
 
-        foreach (var localization in AvailableLocalizations)
+        foreach (GuiLocale localization in localizations)
         {
             SerializeLocalization(localization);
         }
