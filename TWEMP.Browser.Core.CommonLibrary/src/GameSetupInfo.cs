@@ -3,26 +3,22 @@
 // </copyright>
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
-
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+
 public class GameSetupInfo
 {
-    public GameSetupInfo(string setupName, string executableFullPath, List<string> modcenterPaths)
+    private GameSetupInfo(string name, string executable, List<string> modcenters)
     {
-        Name = setupName;
-        CacheDirectory = InitializeCacheDirectory(Name);
-        HomeDirectory = Path.GetDirectoryName(executableFullPath);
-        ExecutableFileName = Path.GetFileName(executableFullPath);
-        AttachedModCenters = InitializeModCentersList(modcenterPaths);
+        this.Name = name;
+        this.HomeDirectory = Path.GetDirectoryName(executable);
+        this.ExecutableFileName = Path.GetFileName(executable);
+        this.AttachedModCenters = InitializeModCenters(modcenters);
     }
 
     public string Name { get; }
-
-    public string CacheDirectory { get; }
 
     public string? HomeDirectory { get; }
 
@@ -30,22 +26,72 @@ public class GameSetupInfo
 
     public List<ModCenterInfo> AttachedModCenters { get; }
 
+    /// <summary>
+    /// Creates an instance of the <see cref="GameSetupInfo"/> class.
+    /// </summary>
+    /// <param name="name">Game setup name.</param>
+    /// <param name="executable">The executable file path of the game setup.</param>
+    /// <param name="modcenters">Directory paths to modcenters of the game setup.</param>
+    /// <returns>An instance of the <see cref="GameSetupInfo"/> class.</returns>
+    public static GameSetupInfo Create(string name, string executable, List<string> modcenters)
+    {
+        GameSetupInfo gameSetup = new (name, executable, modcenters);
+        InitializeGameSetupCache(gameSetup);
+        return gameSetup;
+    }
+
     public List<GameModificationInfo> GetInstalledMods()
     {
-        var installedMods = new List<GameModificationInfo>();
+        List<GameModificationInfo> installedMods = new ();
 
-        foreach (ModCenterInfo modCenter in AttachedModCenters)
+        foreach (ModCenterInfo modcenter in this.AttachedModCenters)
         {
-            List<GameModificationInfo> detectedMods = modCenter.FindAllModifications();
+            List<GameModificationInfo> detectedMods = GetValidGameModificationsFrom(this, modcenter);
             installedMods.AddRange(detectedMods);
         }
 
         return installedMods;
     }
 
-    private static string InitializeCacheDirectory(string cacheFolderName)
+    private static List<ModCenterInfo> InitializeModCenters(ICollection<string> modcenterPaths)
     {
-        string cacheDirectoryPath = Path.Combine(GameSettingsCacheStorage.Location, cacheFolderName);
+        List<ModCenterInfo> detectedModCenters = new ();
+
+        foreach (var modcenterPath in modcenterPaths)
+        {
+            if (Directory.Exists(modcenterPath))
+            {
+                ModCenterInfo modcenter = new (modcenterPath);
+                detectedModCenters.Add(modcenter);
+            }
+        }
+
+        return detectedModCenters;
+    }
+
+    private static void InitializeGameSetupCache(GameSetupInfo gamesetup)
+    {
+        string gamesetupCachePath = CreateCacheDirectoryPath(GameSettingsCacheStorage.Location, gamesetup.Name);
+
+        foreach (ModCenterInfo modcenter in gamesetup.AttachedModCenters)
+        {
+            InitializeModCenterCache(gamesetupCachePath, modcenter);
+        }
+    }
+
+    private static void InitializeModCenterCache(string gamesetupCachePath, ModCenterInfo modcenter)
+    {
+        string modcenterCachePath = CreateCacheDirectoryPath(gamesetupCachePath, modcenter.Name);
+
+        foreach (GameModificationInfo mod in modcenter.InstalledModifications)
+        {
+            CreateCacheDirectoryPath(modcenterCachePath, mod.ShortName);
+        }
+    }
+
+    private static string CreateCacheDirectoryPath(string parentDirectoryPath, string cacheFolderName)
+    {
+        string cacheDirectoryPath = Path.Combine(parentDirectoryPath, cacheFolderName);
 
         if (!Directory.Exists(cacheDirectoryPath))
         {
@@ -55,19 +101,19 @@ public class GameSetupInfo
         return cacheDirectoryPath;
     }
 
-    private List<ModCenterInfo> InitializeModCentersList(List<string> modcenterPaths)
+    private static List<GameModificationInfo> GetValidGameModificationsFrom(GameSetupInfo gamesetup, ModCenterInfo modcenter)
     {
-        var detectedModCenters = new List<ModCenterInfo>();
+        modcenter.InstalledModifications.Clear();
 
-        foreach (var modcenterPath in modcenterPaths)
+        foreach (string path in Directory.GetDirectories(modcenter.Location))
         {
-            if (Directory.Exists(modcenterPath))
+            if (GamingSupport.TotalWarEngineSupportProvider.IsCompatibleModification(path))
             {
-                var modcenterObject = new ModCenterInfo(modcenterPath, this);
-                detectedModCenters.Add(modcenterObject);
+                GameModificationInfo mod = new (gamesetup, modcenter, path);
+                modcenter.InstalledModifications.Add(mod);
             }
         }
 
-        return detectedModCenters;
+        return modcenter.InstalledModifications;
     }
 }

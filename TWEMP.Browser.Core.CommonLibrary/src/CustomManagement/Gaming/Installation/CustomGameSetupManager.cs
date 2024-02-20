@@ -36,7 +36,7 @@ public static class CustomGameSetupManager
     {
         WriteNewSetupToConfFile(GameSetupConfFile, setupName, executableFullPath, modcenterPaths);
 
-        var gameSetupInfo = new GameSetupInfo(setupName, executableFullPath, modcenterPaths);
+        GameSetupInfo gameSetupInfo = GameSetupInfo.Create(setupName, executableFullPath, modcenterPaths);
         GameInstallations.Add(gameSetupInfo);
 
         return gameSetupInfo;
@@ -266,7 +266,7 @@ public static class CustomGameSetupManager
             }
 
             // 4. Generate a new GameSetupInfo object.
-            var gameSetupInfo = new GameSetupInfo(gameSetupName, executableFullPath, attachedModCenters);
+            GameSetupInfo gameSetupInfo = GameSetupInfo.Create(gameSetupName, executableFullPath, attachedModCenters);
             readGameSetupObjects.Add(gameSetupInfo);
         }
 

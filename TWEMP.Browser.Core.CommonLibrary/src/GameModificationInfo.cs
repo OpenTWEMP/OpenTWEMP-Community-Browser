@@ -3,39 +3,40 @@
 // </copyright>
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 public class GameModificationInfo
 {
-    // example: modificationURI = "A:\TWEMP\modcenter_M2TW\MEDD"
-    public GameModificationInfo(string modificationURI, ModCenterInfo parentModCenter, GameSetupInfo setupInfo)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GameModificationInfo"/> class.
+    /// </summary>
+    /// <param name="gamesetup">The game setup of the current game modification.</param>
+    /// <param name="modcenter">The modcenter of the current game modification.</param>
+    /// <param name="path">The directory path to the current game modification.</param>
+    public GameModificationInfo(GameSetupInfo gamesetup, ModCenterInfo modcenter, string path)
     {
-        Location = modificationURI;
-        CurrentSetup = setupInfo;
+        this.CurrentSetup = gamesetup;
 
-        ShortName = new DirectoryInfo(modificationURI).Name;
-        CacheDirectory = InitializeCacheDirectory(parentModCenter.CacheDirectory, ShortName);
+        this.ShortName = new DirectoryInfo(path).Name;
+        this.Location = path; // for example: "A:\TWEMP\modcenter_M2TW\MEDD"
 
-        ModArgRelativePath = InitializeModArgRelativePath(ShortName, parentModCenter.Name);
-        ModCfgRelativePath = InitializeModCfgRelativePath(ShortName, parentModCenter.Name);
+        this.ModArgRelativePath = InitializeModArgRelativePath(this.ShortName, modcenter.Name);
+        this.ModCfgRelativePath = InitializeModCfgRelativePath(this.ShortName, modcenter.Name);
 
-        LogFileName = InitializeLogFileName();
-        LogFileRelativePath = InitializeLogFileRelativePath(ModCfgRelativePath, LogFileName);
+        this.LogFileName = InitializeLogFileName();
+        this.LogFileRelativePath = InitializeLogFileRelativePath(this.ModCfgRelativePath, this.LogFileName);
 
-        CurrentPreset = InitializeModificationPreset(modificationURI);
+        this.CurrentPreset = InitializeModificationPreset(path);
 
-        IsFavoriteMod = false;
+        this.IsFavoriteMod = false;
     }
-
-    public string Location { get; }
 
     public GameSetupInfo CurrentSetup { get; }
 
     public string ShortName { get; }
 
-    public string CacheDirectory { get; }
+    public string Location { get; }
 
     public string ModArgRelativePath { get; }
 
@@ -51,39 +52,27 @@ public class GameModificationInfo
 
     public string GetPresetFilePath()
     {
-        return CustomModSupportPreset.GetPresetFilePath(Location);
+        return CustomModSupportPreset.GetPresetFilePath(this.Location);
     }
 
     public string GetModPresetLogoImageFilePath()
     {
-        return Path.Combine(Location, CustomModSupportPreset.MOD_PRESET_FOLDERNAME, CurrentPreset.LogotypeImage);
+        return Path.Combine(this.Location, CustomModSupportPreset.MOD_PRESET_FOLDERNAME, this.CurrentPreset.LogotypeImage);
     }
 
     public bool CanBeLaunchedViaNativeBatch()
     {
-        return File.Exists(Path.Combine(Location, CurrentPreset.LauncherProvider_NativeBatch));
+        return File.Exists(Path.Combine(this.Location, this.CurrentPreset.LauncherProvider_NativeBatch));
     }
 
     public bool CanBeLaunchedViaNativeSetup()
     {
-        return File.Exists(Path.Combine(Location, CurrentPreset.LauncherProvider_NativeSetup));
+        return File.Exists(Path.Combine(this.Location, this.CurrentPreset.LauncherProvider_NativeSetup));
     }
 
     public bool CanBeLaunchedViaM2TWEOP()
     {
-        return File.Exists(Path.Combine(Location, CurrentPreset.LauncherProvider_M2TWEOP));
-    }
-
-    private static string InitializeCacheDirectory(string cacheModCenterDirectoryPath, string cacheModFolderName)
-    {
-        string cacheDirectoryPath = Path.Combine(cacheModCenterDirectoryPath, cacheModFolderName);
-
-        if (!Directory.Exists(cacheDirectoryPath))
-        {
-            Directory.CreateDirectory(cacheDirectoryPath);
-        }
-
-        return cacheDirectoryPath;
+        return File.Exists(Path.Combine(this.Location, this.CurrentPreset.LauncherProvider_M2TWEOP));
     }
 
     private static string InitializeModArgRelativePath(string modFolderName, string modcenterFolderName)

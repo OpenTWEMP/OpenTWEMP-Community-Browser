@@ -2,65 +2,39 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-#pragma warning disable SA1600 // ElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
-
 namespace TWEMP.Browser.Core.CommonLibrary;
 
-public class ModCenterInfo
+/// <summary>
+/// Represents information about a modcenter within a game setup.
+/// </summary>
+public record ModCenterInfo
 {
-    private readonly GameSetupInfo parentGameSetup;
-
-    public ModCenterInfo(string modcenterDirectory, GameSetupInfo gameSetupInfo)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ModCenterInfo"/> class.
+    /// </summary>
+    /// <param name="path">Modcenter's directory path.</param>
+    public ModCenterInfo(string path)
     {
-        parentGameSetup = gameSetupInfo;
-        var modcenterDirectoryInfo = new DirectoryInfo(modcenterDirectory);
-        Location = modcenterDirectoryInfo.FullName;
-        Name = modcenterDirectoryInfo.Name;
-        CacheDirectory = InitializeCacheDirectory(parentGameSetup.CacheDirectory, Name);
-        InstalledModifications = new List<GameModificationInfo>();
+        DirectoryInfo directoryInfo = new (path);
+
+        this.Location = directoryInfo.FullName;
+        this.Name = directoryInfo.Name;
+
+        this.InstalledModifications = new List<GameModificationInfo>();
     }
 
-    public string Location { get; }
-
+    /// <summary>
+    /// Gets modcenter's name.
+    /// </summary>
     public string Name { get; }
 
-    public string CacheDirectory { get; }
+    /// <summary>
+    /// Gets modcenter's directory path.
+    /// </summary>
+    public string Location { get; }
 
+    /// <summary>
+    /// Gets the list of installed game modifications for the modcenter.
+    /// </summary>
     public List<GameModificationInfo> InstalledModifications { get; }
-
-    public List<GameModificationInfo> FindAllModifications()
-    {
-        string[] modFolders = Directory.GetDirectories(Location);
-        InstalledModifications.Clear();
-
-        foreach (string modFolder in modFolders)
-        {
-            if (IsModification(modFolder))
-            {
-                var mod = new GameModificationInfo(modFolder, this, parentGameSetup);
-                InstalledModifications.Add(mod);
-            }
-        }
-
-        return InstalledModifications;
-    }
-
-    private static string InitializeCacheDirectory(string cacheGameSetupDirectoryPath, string cacheModCenterFolderName)
-    {
-        string cacheDirectoryPath = Path.Combine(cacheGameSetupDirectoryPath, cacheModCenterFolderName);
-
-        if (!Directory.Exists(cacheDirectoryPath))
-        {
-            Directory.CreateDirectory(cacheDirectoryPath);
-        }
-
-        return cacheDirectoryPath;
-    }
-
-    private static bool IsModification(string modFolder)
-    {
-        return TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider
-            .IsCompatibleModification(modFolder);
-    }
 }
