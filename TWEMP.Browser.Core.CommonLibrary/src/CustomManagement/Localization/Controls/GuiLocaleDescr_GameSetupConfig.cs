@@ -10,7 +10,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Control
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 // Derived class for 'GameSetupConfigForm' form.
-public class GuiLocaleDescr_GameSetupConfig : FormLocaleDescription
+public class GuiLocaleDescr_GameSetupConfig : LocaleDescription
 {
     private const string KEY_GameSetupConfigForm = "GameSetupConfigForm";
     private const string KEY_setupViewButton = "setupViewButton";
@@ -37,9 +37,9 @@ public class GuiLocaleDescr_GameSetupConfig : FormLocaleDescription
 
     public override List<string> LocalizedControls { get; }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_GameSetupConfigForm, "Game Setup Settings" },
             { KEY_setupViewButton, "VIEW GAME SETUP INFO" },
@@ -50,9 +50,9 @@ public class GuiLocaleDescr_GameSetupConfig : FormLocaleDescription
         });
     }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_GameSetupConfigForm, "Настройка Игровой Установки" },
             { KEY_setupViewButton, "Сведения об Установке" },

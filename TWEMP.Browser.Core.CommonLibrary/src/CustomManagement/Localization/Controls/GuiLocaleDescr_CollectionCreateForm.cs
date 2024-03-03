@@ -10,7 +10,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Control
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 // Derived class for 'CollectionCreateForm' form.
-public class GuiLocaleDescr_CollectionCreateForm : FormLocaleDescription
+public class GuiLocaleDescr_CollectionCreateForm : LocaleDescription
 {
     private const string KEY_CollectionCreateForm = "CollectionCreateForm";
     private const string KEY_collectionNameLabel = "collectionNameLabel";
@@ -35,9 +35,9 @@ public class GuiLocaleDescr_CollectionCreateForm : FormLocaleDescription
 
     public override List<string> LocalizedControls { get; }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_CollectionCreateForm, "Create a New Collection" },
             { KEY_collectionNameLabel, "Input a Name of a New Collection:" },
@@ -47,9 +47,9 @@ public class GuiLocaleDescr_CollectionCreateForm : FormLocaleDescription
         });
     }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_CollectionCreateForm, "Создать Новую Коллекцию" },
             { KEY_collectionNameLabel, "Введите имя новой коллекции:" },

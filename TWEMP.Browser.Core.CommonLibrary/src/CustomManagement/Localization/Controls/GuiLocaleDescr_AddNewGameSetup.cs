@@ -10,7 +10,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Control
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 // Derived class for 'AddNewGameSetupForm' form.
-public class GuiLocaleDescr_AddNewGameSetup : FormLocaleDescription
+public class GuiLocaleDescr_AddNewGameSetup : LocaleDescription
 {
     private const string KEY_AddNewGameSetupForm = "AddNewGameSetupForm";
     private const string KEY_gameSetupGroupBox = "gameSetupGroupBox";
@@ -47,9 +47,9 @@ public class GuiLocaleDescr_AddNewGameSetup : FormLocaleDescription
 
     public override List<string> LocalizedControls { get; }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_AddNewGameSetupForm, "Add New Game Setup" },
             { KEY_gameSetupGroupBox, "Game Setup Main Settings" },
@@ -65,9 +65,9 @@ public class GuiLocaleDescr_AddNewGameSetup : FormLocaleDescription
         });
     }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_AddNewGameSetupForm, "Добавить Новую Игровую Установку" },
             { KEY_gameSetupGroupBox, "Главные Настройки Игровой Установки" },

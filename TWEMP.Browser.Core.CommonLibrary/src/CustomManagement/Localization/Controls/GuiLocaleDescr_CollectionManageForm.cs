@@ -10,7 +10,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Control
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 // Derived class for 'CollectionManageForm' form.
-public class GuiLocaleDescr_CollectionManageForm : FormLocaleDescription
+public class GuiLocaleDescr_CollectionManageForm : LocaleDescription
 {
     private const string KEY_CollectionManageForm = "CollectionManageForm";
     private const string KEY_groupBoxCollectionsDelete = "groupBoxCollectionsDelete";
@@ -37,9 +37,9 @@ public class GuiLocaleDescr_CollectionManageForm : FormLocaleDescription
 
     public override List<string> LocalizedControls { get; }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_CollectionManageForm, "Manage Your Collections" },
             { KEY_groupBoxCollectionsDelete, "Select Collections to Delete" },
@@ -50,9 +50,9 @@ public class GuiLocaleDescr_CollectionManageForm : FormLocaleDescription
         });
     }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_CollectionManageForm, "Управление Коллекциями" },
             { KEY_groupBoxCollectionsDelete, "Удаление существующих коллекций" },

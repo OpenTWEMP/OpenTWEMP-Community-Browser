@@ -12,6 +12,7 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 /// <summary>
 /// Serves as a facade interface for available application settings. It is a temp design.
@@ -74,13 +75,13 @@ public static class Settings
     {
         get
         {
-            return LocalizationManager.CurrentLocalization;
+            return new GuiLocale(AppLocalizationManager.CurrentLocalization);
         }
     }
 
     public static void SetCurrentLocalizationByName(string guiLocaleName)
     {
-        LocalizationManager.SetCurrentLocalizationByName(guiLocaleName);
+        AppLocalizationManager.SetCurrentLocalizationByName(guiLocaleName);
     }
 
     #endregion
@@ -157,4 +158,71 @@ public static class Settings
     }
 
     #endregion
+}
+
+/// <summary>
+/// Serves as a facade interface for application's localization manager.
+/// It is a temp design.
+/// </summary>
+public static class LocalizationManager
+{
+    public static bool IsCurrentLocalizationName(string guiLocaleName)
+    {
+        return AppLocalizationManager.IsCurrentLocalizationName(guiLocaleName);
+    }
+}
+
+/// <summary>
+/// Serves as a facade interface for application's UI localization.
+/// It is a temp design.
+/// </summary>
+public class GuiLocale
+{
+    private readonly AppLocalization localization;
+
+    public GuiLocale(AppLocalization appLocalization)
+    {
+        this.localization = appLocalization;
+    }
+
+    public static string LOCALE_NAME_ENG
+    {
+        get
+        {
+            return AppLocalization.LOCALE_NAME_ENG;
+        }
+    }
+
+    public static string LOCALE_NAME_RUS
+    {
+        get
+        {
+            return AppLocalization.LOCALE_NAME_RUS;
+        }
+    }
+
+    public FormLocaleSnapshot GetFormLocaleSnapshotByKey(string targetKey)
+    {
+        LocaleSnapshot snapshot = this.localization.GetFormLocaleSnapshotByKey(targetKey);
+        return new FormLocaleSnapshot(snapshot);
+    }
+}
+
+/// <summary>
+/// Serves as a facade interface for a target UI control element's locale snapshot.
+/// It is a temp design.
+/// </summary>
+public class FormLocaleSnapshot
+{
+    private readonly LocaleSnapshot snapshot;
+
+    public FormLocaleSnapshot(LocaleSnapshot formLocaleSnapshot)
+    {
+        this.snapshot = formLocaleSnapshot;
+    }
+
+    public string GetLocalizedValueByKey(string targetKey)
+    {
+        return this.snapshot.GetLocalizedValueByKey(targetKey);
+    }
 }

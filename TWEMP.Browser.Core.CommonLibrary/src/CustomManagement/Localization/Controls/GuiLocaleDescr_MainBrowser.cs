@@ -10,7 +10,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Control
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 // Derived class for 'MainBrowserForm' form.
-public class GuiLocaleDescr_MainBrowser : FormLocaleDescription
+public class GuiLocaleDescr_MainBrowser : LocaleDescription
 {
     private const string KEY_buttonLaunch = "buttonLaunch";
     private const string KEY_modQuickNavigationButton = "modQuickNavigationButton";
@@ -112,9 +112,9 @@ public class GuiLocaleDescr_MainBrowser : FormLocaleDescription
 
     public override List<string> LocalizedControls { get; }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
             {
                 { KEY_buttonLaunch, "LAUNCH" },
                 { KEY_modQuickNavigationButton, "MOD QUICK NAVIGATION" },
@@ -154,9 +154,9 @@ public class GuiLocaleDescr_MainBrowser : FormLocaleDescription
             });
     }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
             {
                 { KEY_buttonLaunch, "»√–¿“‹" },
                 { KEY_modQuickNavigationButton, "¡€—“–¿ﬂ ÃŒƒ-Õ¿¬»√¿÷»ﬂ" },

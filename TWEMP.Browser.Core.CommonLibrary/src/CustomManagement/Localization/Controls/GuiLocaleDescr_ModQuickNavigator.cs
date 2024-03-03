@@ -10,7 +10,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Control
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 // Derived class for 'ModQuickNavigatorForm' form.
-public class GuiLocaleDescr_ModQuickNavigator : FormLocaleDescription
+public class GuiLocaleDescr_ModQuickNavigator : LocaleDescription
 {
     private const string KEY_ModQuickNavigatorForm = "ModQuickNavigatorForm";
     private const string KEY_labelCommonInfo = "labelCommonInfo";
@@ -32,9 +32,9 @@ public class GuiLocaleDescr_ModQuickNavigator : FormLocaleDescription
 
     public override List<string> LocalizedControls { get; }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_ModQuickNavigatorForm, "Mod Quick Navigation" },
             { KEY_labelCommonInfo, "Navigate to specified mod folder by pressing the following buttons" },
@@ -42,9 +42,9 @@ public class GuiLocaleDescr_ModQuickNavigator : FormLocaleDescription
         });
     }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_ModQuickNavigatorForm, "Быстрая Мод-Навигация" },
             { KEY_labelCommonInfo, "Перейти в указанную мод-директорию с помощью следующих кнопок" },

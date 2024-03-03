@@ -1,19 +1,19 @@
-﻿// <copyright file="LocalizationManager.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="AppLocalizationManager.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
-public static class LocalizationManager
+public static class AppLocalizationManager
 {
     private const string GuiLocaleFolderName = "locale";
     private const string GuiLocaleFileExtension = ".json";
 
     private static readonly string GuiLocalesHomeDirectoryPath;
 
-    static LocalizationManager()
+    static AppLocalizationManager()
     {
         GuiLocalesHomeDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), GuiLocaleFolderName);
 
@@ -26,15 +26,15 @@ public static class LocalizationManager
         CurrentLocalization = InitializeLocalizationByDefault();
     }
 
-    public static List<GuiLocale> AvailableLocalizations { get; private set; }
+    public static List<AppLocalization> AvailableLocalizations { get; private set; }
 
-    public static GuiLocale CurrentLocalization { get; private set; }
+    public static AppLocalization CurrentLocalization { get; private set; }
 
     public static void SetCurrentLocalizationByName(string guiLocaleName)
     {
         if (CurrentLocalization.Name != guiLocaleName)
         {
-            foreach (GuiLocale localization in AvailableLocalizations)
+            foreach (AppLocalization localization in AvailableLocalizations)
             {
                 if (localization.Name == guiLocaleName)
                 {
@@ -47,12 +47,12 @@ public static class LocalizationManager
 
     public static bool IsCurrentLocalizationName(string guiLocaleName)
     {
-        return Settings.CurrentLocalization.Name.Equals(guiLocaleName);
+        return CurrentLocalization.Name.Equals(guiLocaleName);
     }
 
-    private static List<GuiLocale> InitializeSupportedLocalizations()
+    private static List<AppLocalization> InitializeSupportedLocalizations()
     {
-        List<GuiLocale> supportedLocalizations = new ();
+        List<AppLocalization> supportedLocalizations = new ();
 
         List<string> currentLocaleFiles = FindAvailableLocalizationFiles();
 
@@ -68,11 +68,11 @@ public static class LocalizationManager
         return supportedLocalizations;
     }
 
-    private static GuiLocale InitializeLocalizationByDefault()
+    private static AppLocalization InitializeLocalizationByDefault()
     {
         const string guiLocaleNameByDefault = "ENG";
 
-        foreach (GuiLocale localization in AvailableLocalizations)
+        foreach (AppLocalization localization in AvailableLocalizations)
         {
             if (localization.Name == guiLocaleNameByDefault)
             {
@@ -80,7 +80,7 @@ public static class LocalizationManager
             }
         }
 
-        return GuiLocale.GenerateGuiLocaleFor_ENG();
+        return AppLocalization.GenerateGuiLocaleFor_ENG();
     }
 
     private static List<string> FindAvailableLocalizationFiles()
@@ -99,35 +99,35 @@ public static class LocalizationManager
         return guiLocaleFiles;
     }
 
-    private static List<GuiLocale> ReadObjectsFromLocaleFiles(List<string> files)
+    private static List<AppLocalization> ReadObjectsFromLocaleFiles(List<string> files)
     {
-        var guiLocaleObjects = new List<GuiLocale>();
+        var guiLocaleObjects = new List<AppLocalization>();
 
         foreach (var file in files)
         {
             string objectJsonText = File.ReadAllText(file);
-            GuiLocale localeObject = GuiLocale.FromJsonText(objectJsonText);
+            AppLocalization localeObject = AppLocalization.FromJsonText(objectJsonText);
             guiLocaleObjects.Add(localeObject);
         }
 
         return guiLocaleObjects;
     }
 
-    private static void CreateStandardLocalizations(List<GuiLocale> localizations)
+    private static void CreateStandardLocalizations(List<AppLocalization> localizations)
     {
-        GuiLocale guiLocale_ENG = GuiLocale.GenerateGuiLocaleFor_ENG();
-        GuiLocale guiLocale_RUS = GuiLocale.GenerateGuiLocaleFor_RUS();
+        AppLocalization guiLocale_ENG = AppLocalization.GenerateGuiLocaleFor_ENG();
+        AppLocalization guiLocale_RUS = AppLocalization.GenerateGuiLocaleFor_RUS();
 
         localizations.Add(guiLocale_ENG);
         localizations.Add(guiLocale_RUS);
 
-        foreach (GuiLocale localization in localizations)
+        foreach (AppLocalization localization in localizations)
         {
             SerializeLocalization(localization);
         }
     }
 
-    private static void SerializeLocalization(GuiLocale localization)
+    private static void SerializeLocalization(AppLocalization localization)
     {
         string outputFileName = GuiLocaleFolderName + '_' + localization.Name.ToLower() + GuiLocaleFileExtension;
         string outputFilePath = Path.Combine(GuiLocalesHomeDirectoryPath, outputFileName);

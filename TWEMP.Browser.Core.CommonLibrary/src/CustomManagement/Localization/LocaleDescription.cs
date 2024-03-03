@@ -7,7 +7,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 /// <summary>
 /// Represents an abstract base class for any derived classes of UI controls' locale descriptions.
 /// </summary>
-public abstract class FormLocaleDescription
+public abstract class LocaleDescription
 {
     /// <summary>
     /// Gets the name of the target UI control element.
@@ -23,11 +23,11 @@ public abstract class FormLocaleDescription
     /// Creates the standard locale snapshot for the English localization.
     /// </summary>
     /// <returns>The locale snapshot for the target UI control element.</returns>
-    public abstract FormLocaleSnapshot CreateLocaleSnapshotFor_ENG();
+    public abstract LocaleSnapshot CreateLocaleSnapshotFor_ENG();
 
     /// <summary>
     /// Creates the standard locale snapshot for the Russian localization.
     /// </summary>
     /// <returns>The locale snapshot for the target UI control element.</returns>
-    public abstract FormLocaleSnapshot CreateLocaleSnapshotFor_RUS();
+    public abstract LocaleSnapshot CreateLocaleSnapshotFor_RUS();
 }

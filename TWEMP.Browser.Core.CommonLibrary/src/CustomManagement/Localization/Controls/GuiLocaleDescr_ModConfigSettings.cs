@@ -10,7 +10,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Control
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 // Derived class for 'ModConfigSettingsForm' form.
-public class GuiLocaleDescr_ModConfigSettings : FormLocaleDescription
+public class GuiLocaleDescr_ModConfigSettings : LocaleDescription
 {
     public GuiLocaleDescr_ModConfigSettings()
     {
@@ -22,13 +22,13 @@ public class GuiLocaleDescr_ModConfigSettings : FormLocaleDescription
 
     public override List<string> LocalizedControls { get; }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()); // test
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()); // test
     }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()); // test
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()); // test
     }
 }

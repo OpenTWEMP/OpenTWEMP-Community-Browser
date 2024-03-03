@@ -1,28 +1,28 @@
-﻿// <copyright file="GuiLocale.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="AppLocalization.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1310 // FieldNamesMustNotContainUnderscore
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 using Newtonsoft.Json;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Controls;
 
-public class GuiLocale
+public class AppLocalization
 {
     public const string LOCALE_NAME_ENG = "ENG";
     public const string LOCALE_NAME_RUS = "RUS";
+
     public const string LOCALE_TEXT_ENG = "English";
     public const string LOCALE_TEXT_RUS = "Russian";
 
-    private static List<FormLocaleDescription> supportedGuiLocaleDescriptions;
+    private static List<LocaleDescription> supportedGuiLocaleDescriptions;
 
-    static GuiLocale()
+    static AppLocalization()
     {
-        supportedGuiLocaleDescriptions = new List<FormLocaleDescription>()
+        supportedGuiLocaleDescriptions = new List<LocaleDescription>()
         {
             new GuiLocaleDescr_MainBrowser(),
             new GuiLocaleDescr_AppSettings(),
@@ -36,7 +36,7 @@ public class GuiLocale
         };
     }
 
-    public GuiLocale(string name, string text, List<FormLocaleSnapshot> content)
+    public AppLocalization(string name, string text, List<LocaleSnapshot> content)
     {
         this.Name = name;
         this.Text = text;
@@ -47,35 +47,35 @@ public class GuiLocale
 
     public string Text { get; }
 
-    public List<FormLocaleSnapshot> Content { get; }
+    public List<LocaleSnapshot> Content { get; }
 
-    public static GuiLocale GenerateGuiLocaleFor_ENG()
+    public static AppLocalization GenerateGuiLocaleFor_ENG()
     {
-        var localeContent_ENG = new List<FormLocaleSnapshot>();
+        var localeContent_ENG = new List<LocaleSnapshot>();
         foreach (var description in supportedGuiLocaleDescriptions)
         {
-            FormLocaleSnapshot snapshot = description.CreateLocaleSnapshotFor_ENG();
+            LocaleSnapshot snapshot = description.CreateLocaleSnapshotFor_ENG();
             localeContent_ENG.Add(snapshot);
         }
 
-        return new GuiLocale(LOCALE_NAME_ENG, LOCALE_TEXT_ENG, localeContent_ENG);
+        return new AppLocalization(LOCALE_NAME_ENG, LOCALE_TEXT_ENG, localeContent_ENG);
     }
 
-    public static GuiLocale GenerateGuiLocaleFor_RUS()
+    public static AppLocalization GenerateGuiLocaleFor_RUS()
     {
-        var localeContent_RUS = new List<FormLocaleSnapshot>();
+        var localeContent_RUS = new List<LocaleSnapshot>();
         foreach (var description in supportedGuiLocaleDescriptions)
         {
-            FormLocaleSnapshot snapshot = description.CreateLocaleSnapshotFor_RUS();
+            LocaleSnapshot snapshot = description.CreateLocaleSnapshotFor_RUS();
             localeContent_RUS.Add(snapshot);
         }
 
-        return new GuiLocale(LOCALE_NAME_RUS, LOCALE_TEXT_RUS, localeContent_RUS);
+        return new AppLocalization(LOCALE_NAME_RUS, LOCALE_TEXT_RUS, localeContent_RUS);
     }
 
-    public static GuiLocale FromJsonText(string targetObjectJsonText)
+    public static AppLocalization FromJsonText(string targetObjectJsonText)
     {
-        return JsonConvert.DeserializeObject<GuiLocale>(targetObjectJsonText)!;
+        return JsonConvert.DeserializeObject<AppLocalization>(targetObjectJsonText)!;
     }
 
     public string ToJsonText()
@@ -83,9 +83,9 @@ public class GuiLocale
         return JsonConvert.SerializeObject(this, Formatting.Indented);
     }
 
-    public FormLocaleSnapshot GetFormLocaleSnapshotByKey(string targetKey)
+    public LocaleSnapshot GetFormLocaleSnapshotByKey(string targetKey)
     {
-        foreach (FormLocaleSnapshot snapshot in this.Content)
+        foreach (LocaleSnapshot snapshot in this.Content)
         {
             if (snapshot.FormName == targetKey)
             {
@@ -93,6 +93,6 @@ public class GuiLocale
             }
         }
 
-        return new FormLocaleSnapshot(targetKey, new Dictionary<string, string>());
+        return new LocaleSnapshot(targetKey, new Dictionary<string, string>());
     }
 }

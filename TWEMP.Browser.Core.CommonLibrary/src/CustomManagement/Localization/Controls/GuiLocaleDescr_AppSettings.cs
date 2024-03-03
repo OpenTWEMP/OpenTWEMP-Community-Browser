@@ -10,7 +10,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Control
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 // Derived class for 'ApplicationSettingsForm' form.
-public class GuiLocaleDescr_AppSettings : FormLocaleDescription
+public class GuiLocaleDescr_AppSettings : LocaleDescription
 {
     private const string KEY_This = "AppSettingsForm";
 
@@ -57,9 +57,9 @@ public class GuiLocaleDescr_AppSettings : FormLocaleDescription
 
     public override List<string> LocalizedControls { get; }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_ENG()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_ENG()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
             {
                 { KEY_This, "Application Settings" },
                 { KEY_appColorThemeGroupBox, "Select GUI style theme" },
@@ -76,9 +76,9 @@ public class GuiLocaleDescr_AppSettings : FormLocaleDescription
             });
     }
 
-    public override FormLocaleSnapshot CreateLocaleSnapshotFor_RUS()
+    public override LocaleSnapshot CreateLocaleSnapshotFor_RUS()
     {
-        return new FormLocaleSnapshot(this.FormName, new Dictionary<string, string>()
+        return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
             {
                 { KEY_This, "Настройки Программы" },
                 { KEY_appColorThemeGroupBox, "Выберите тему GUI программы" },
