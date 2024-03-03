@@ -7,7 +7,7 @@
 #define NON_IMPLEMENTED_SETTINGS
 #undef NON_IMPLEMENTED_SETTINGS
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
 
 public static class GameConfigSettings
 {

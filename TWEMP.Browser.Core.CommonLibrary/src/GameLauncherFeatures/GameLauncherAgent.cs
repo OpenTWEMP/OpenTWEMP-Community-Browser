@@ -1,23 +1,22 @@
-﻿// <copyright file="GameLaunchConfigurator.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="GameLauncherAgent.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
 
 using System.Diagnostics;
 using System.Text;
-
 using TWEMP.Browser.Core.GamingSupport;
 
-public class GameLaunchConfigurator
+public class GameLauncherAgent
 {
     private readonly GameModificationInfo currentGameMod;
     private readonly CustomConfigState currentCfgState;
     private readonly IBrowserMessageProvider currentMessageProvider;
 
-    public GameLaunchConfigurator(GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
+    public GameLauncherAgent(GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
     {
         this.currentGameMod = mod_info;
         this.currentCfgState = state;

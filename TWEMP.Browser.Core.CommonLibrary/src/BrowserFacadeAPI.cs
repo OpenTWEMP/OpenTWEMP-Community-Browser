@@ -1,4 +1,4 @@
-﻿// <copyright file="Settings.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="BrowserFacadeAPI.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -8,11 +8,14 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
+using System.Diagnostics;
+using System.Text;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
 
 /// <summary>
 /// Serves as a facade interface for available application settings. It is a temp design.
@@ -224,5 +227,24 @@ public class FormLocaleSnapshot
     public string GetLocalizedValueByKey(string targetKey)
     {
         return this.snapshot.GetLocalizedValueByKey(targetKey);
+    }
+}
+
+/// <summary>
+/// Serves as a facade interface for the original game launcher implementation.
+/// It is a temp design.
+/// </summary>
+public class GameLaunchConfigurator
+{
+    private readonly GameLauncherAgent agent;
+
+    public GameLaunchConfigurator(GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
+    {
+        this.agent = new GameLauncherAgent(mod_info, state, messageProvider);
+    }
+
+    public void Execute()
+    {
+        this.agent.Execute();
     }
 }
