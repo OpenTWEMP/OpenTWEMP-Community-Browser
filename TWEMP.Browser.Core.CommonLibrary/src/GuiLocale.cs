@@ -8,6 +8,8 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using Newtonsoft.Json;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization.Controls;
 
 public class GuiLocale
 {
