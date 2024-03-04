@@ -8,10 +8,9 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
-using System.Diagnostics;
-using System.Text;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
@@ -28,17 +27,12 @@ public static class Settings
     {
         // Setup the global object of the GUI style manager by default.
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
+
+        // Setup the global device for game support manager by default.
+        GameSupportManager.Initialize();
     }
 
     #region Facade Interface: AppSystemSettingsManager
-
-    public static DirectoryInfo AppSupportDirectoryInfo
-    {
-        get
-        {
-            return AppSystemSettingsManager.AppSupportDirectoryInfo;
-        }
-    }
 
     public static bool UseExperimentalFeatures
     {

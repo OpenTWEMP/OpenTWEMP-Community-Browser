@@ -12,6 +12,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using Newtonsoft.Json;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 public class CustomModSupportPreset
 {
@@ -80,7 +81,7 @@ public class CustomModSupportPreset
         }
 
         // 2. Prepare default assets for the default preset.
-        string supportAssetsDirectoryPath = Settings.AppSupportDirectoryInfo.FullName;
+        string supportAssetsDirectoryPath = GameSupportManager.PresetsHomeDirectoryInfo.FullName;
         string srcLogoImageFilePath = Path.Combine(supportAssetsDirectoryPath, MOD_DEFAULT_LOGO_FILENAME);
         string destLogoImageFilePath = Path.Combine(presetHomeDirectoryPath, MOD_DEFAULT_LOGO_FILENAME);
 
