@@ -11,10 +11,10 @@ public class ModSupportPresetPackage
     public ModSupportPresetPackage()
     {
         this.Name = string.Empty;
-        this.Presets = new List<CustomModSupportPreset>();
+        this.Presets = new List<ModSupportPreset>();
     }
 
-    public ModSupportPresetPackage(string name, ICollection<CustomModSupportPreset> presets)
+    public ModSupportPresetPackage(string name, ICollection<ModSupportPreset> presets)
     {
         this.Name = name;
         this.Presets = presets;
@@ -22,7 +22,7 @@ public class ModSupportPresetPackage
 
     public string Name { get; set; }
 
-    public ICollection<CustomModSupportPreset> Presets { get; set; }
+    public ICollection<ModSupportPreset> Presets { get; set; }
 
     public static List<ModSupportPresetPackage> CreateTestPackages()
     {
@@ -35,17 +35,18 @@ public class ModSupportPresetPackage
 
     private static ModSupportPresetPackage CreatePackage(string packageName)
     {
-        List<CustomModSupportPreset> presets = GenerateTestPresets();
+        List<ModSupportPreset> presets = GenerateTestPresets();
         return new ModSupportPresetPackage(packageName, presets);
     }
 
-    private static List<CustomModSupportPreset> GenerateTestPresets(byte presetsCount = 5)
+    private static List<ModSupportPreset> GenerateTestPresets(byte presetsCount = 5)
     {
-        List<CustomModSupportPreset> presets = new ();
+        List<ModSupportPreset> presets = new ();
 
         for (int i = 0; i < presetsCount; i++)
         {
-            presets.Add(new CustomModSupportPreset());
+            ModSupportPreset preset = ModSupportPreset.CreateDefaultTemplate();
+            presets.Add(preset);
         }
 
         return presets;
