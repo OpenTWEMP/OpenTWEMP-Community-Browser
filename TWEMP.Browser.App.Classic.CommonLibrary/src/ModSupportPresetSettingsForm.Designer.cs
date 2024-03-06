@@ -30,6 +30,7 @@
         {
             modsGridPanel = new Panel();
             modSupportPresetsDataGridView = new DataGridView();
+            idColumn = new DataGridViewTextBoxColumn();
             modNameColumn = new DataGridViewTextBoxColumn();
             gameSetupColumn = new DataGridViewTextBoxColumn();
             modcenterColumn = new DataGridViewTextBoxColumn();
@@ -49,6 +50,7 @@
             // 
             // modsGridPanel
             // 
+            modsGridPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             modsGridPanel.Controls.Add(modSupportPresetsDataGridView);
             modsGridPanel.Location = new Point(12, 12);
             modsGridPanel.Name = "modsGridPanel";
@@ -62,13 +64,20 @@
             modSupportPresetsDataGridView.AllowUserToResizeRows = false;
             modSupportPresetsDataGridView.BorderStyle = BorderStyle.Fixed3D;
             modSupportPresetsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            modSupportPresetsDataGridView.Columns.AddRange(new DataGridViewColumn[] { modNameColumn, gameSetupColumn, modcenterColumn, redistributablePresetStatusColumn, customizablePresetStatusColumn });
+            modSupportPresetsDataGridView.Columns.AddRange(new DataGridViewColumn[] { idColumn, modNameColumn, gameSetupColumn, modcenterColumn, redistributablePresetStatusColumn, customizablePresetStatusColumn });
             modSupportPresetsDataGridView.Dock = DockStyle.Fill;
             modSupportPresetsDataGridView.EnableHeadersVisualStyles = false;
             modSupportPresetsDataGridView.Location = new Point(0, 0);
             modSupportPresetsDataGridView.Name = "modSupportPresetsDataGridView";
             modSupportPresetsDataGridView.Size = new Size(776, 352);
             modSupportPresetsDataGridView.TabIndex = 0;
+            // 
+            // idColumn
+            // 
+            idColumn.HeaderText = "ID";
+            idColumn.Name = "idColumn";
+            idColumn.ReadOnly = true;
+            idColumn.Width = 50;
             // 
             // modNameColumn
             // 
@@ -105,6 +114,7 @@
             // 
             // presetActionsPanel
             // 
+            presetActionsPanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             presetActionsPanel.Controls.Add(openRedistributablePresetDirectoryButton);
             presetActionsPanel.Controls.Add(openCustomizablePresetDirectoryButton);
             presetActionsPanel.Controls.Add(allChangesResetButton);
@@ -196,6 +206,7 @@
         private Button allChangesDiscardButton;
         private Button applyButton;
         private Button exitButton;
+        private DataGridViewTextBoxColumn idColumn;
         private DataGridViewTextBoxColumn modNameColumn;
         private DataGridViewTextBoxColumn gameSetupColumn;
         private DataGridViewTextBoxColumn modcenterColumn;

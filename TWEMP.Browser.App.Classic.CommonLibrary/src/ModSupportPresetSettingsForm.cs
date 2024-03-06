@@ -29,11 +29,32 @@ public partial class ModSupportPresetSettingsForm : Form
             {
                 List<GameModificationInfo> mods = modcenter.InstalledModifications;
 
-                foreach (GameModificationInfo mod in mods)
+                for (int modIndex = 0; modIndex < mods.Count; modIndex++)
                 {
                     this.modSupportPresetsDataGridView.Rows.Add(new DataGridViewRow());
                 }
             }
+        }
+
+        DataGridViewRowCollection currentRows = this.modSupportPresetsDataGridView.Rows;
+
+        for (int rowIndex = 0; rowIndex < currentRows.Count; rowIndex++)
+        {
+            int idColumnIndex = this.modSupportPresetsDataGridView.Columns[0].Index;
+            DataGridViewCell idCell = currentRows[rowIndex].Cells[idColumnIndex];
+            idCell.Value = rowIndex;
+
+            int modNameColumnIndex = this.modSupportPresetsDataGridView.Columns[1].Index;
+            DataGridViewCell modNameCell = currentRows[rowIndex].Cells[modNameColumnIndex];
+            modNameCell.Value = $"Mod Name # {rowIndex}";
+
+            int gameSetupColumnIndex = this.modSupportPresetsDataGridView.Columns[2].Index;
+            DataGridViewCell gameSetupCell = currentRows[rowIndex].Cells[gameSetupColumnIndex];
+            gameSetupCell.Value = $"Game Setup Name";
+
+            int modCenterColumnIndex = this.modSupportPresetsDataGridView.Columns[3].Index;
+            DataGridViewCell modCenterCell = currentRows[rowIndex].Cells[modCenterColumnIndex];
+            modCenterCell.Value = $"Mod Center Name";
         }
     }
 }
