@@ -7,6 +7,7 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using System.Windows.Forms;
 using TWEMP.Browser.Core.CommonLibrary;
 
 public partial class ModSupportPresetSettingsForm : Form
@@ -55,6 +56,26 @@ public partial class ModSupportPresetSettingsForm : Form
             int modCenterColumnIndex = this.modSupportPresetsDataGridView.Columns[3].Index;
             DataGridViewCell modCenterCell = currentRows[rowIndex].Cells[modCenterColumnIndex];
             modCenterCell.Value = $"Mod Center Name";
+
+            int redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
+            DataGridViewCell redistributablePresetCell = currentRows[rowIndex].Cells[redistributablePresetColumnIndex];
+            redistributablePresetCell.Value = $"Redistributable Mod Support Preset Name # {rowIndex}";
+        }
+    }
+
+    private void ModSupportPresetsDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+    {
+        for (int rowIndex = 0; rowIndex < this.modSupportPresetsDataGridView.Rows[e.RowIndex].Cells.Count; rowIndex++)
+        {
+            this.modSupportPresetsDataGridView[rowIndex, e.RowIndex].Selected = true;
+        }
+    }
+
+    private void ModSupportPresetsDataGridView_RowLeave(object sender, DataGridViewCellEventArgs e)
+    {
+        for (int rowIndex = 0; rowIndex < this.modSupportPresetsDataGridView.Rows[e.RowIndex].Cells.Count; rowIndex++)
+        {
+            this.modSupportPresetsDataGridView[rowIndex, e.RowIndex].Selected = false;
         }
     }
 }
