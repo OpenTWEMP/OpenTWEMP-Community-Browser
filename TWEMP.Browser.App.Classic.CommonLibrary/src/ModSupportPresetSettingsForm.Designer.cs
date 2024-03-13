@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             customizablePresetCheckBoxColumn = new DataGridViewCheckBoxColumn();
             modsGridPanel = new Panel();
             modSupportPresetsDataGridView = new DataGridView();
@@ -77,9 +77,9 @@
             modSupportPresetsDataGridView.EnableHeadersVisualStyles = false;
             modSupportPresetsDataGridView.Location = new Point(0, 0);
             modSupportPresetsDataGridView.Name = "modSupportPresetsDataGridView";
-            dataGridViewCellStyle1.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            modSupportPresetsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.SelectionBackColor = Color.Yellow;
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            modSupportPresetsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
             modSupportPresetsDataGridView.Size = new Size(776, 352);
             modSupportPresetsDataGridView.TabIndex = 0;
             modSupportPresetsDataGridView.CellContentClick += ModSupportPresetsDataGridView_CellContentClick;
@@ -144,6 +144,7 @@
             openRedistributablePresetDirectoryButton.TabIndex = 5;
             openRedistributablePresetDirectoryButton.Text = "Open Redistributable Preset Directory";
             openRedistributablePresetDirectoryButton.UseVisualStyleBackColor = true;
+            openRedistributablePresetDirectoryButton.Click += OpenRedistributablePresetDirectoryButton_Click;
             // 
             // openCustomizablePresetDirectoryButton
             // 
@@ -153,6 +154,7 @@
             openCustomizablePresetDirectoryButton.TabIndex = 4;
             openCustomizablePresetDirectoryButton.Text = "Open Customizable Preset Directory";
             openCustomizablePresetDirectoryButton.UseVisualStyleBackColor = true;
+            openCustomizablePresetDirectoryButton.Click += OpenCustomizablePresetDirectoryButton_Click;
             // 
             // allChangesResetButton
             // 
@@ -162,6 +164,7 @@
             allChangesResetButton.TabIndex = 3;
             allChangesResetButton.Text = "Reset All Changes";
             allChangesResetButton.UseVisualStyleBackColor = true;
+            allChangesResetButton.Click += AllChangesResetButton_Click;
             // 
             // allChangesDiscardButton
             // 
@@ -171,6 +174,7 @@
             allChangesDiscardButton.TabIndex = 2;
             allChangesDiscardButton.Text = "Discard All Changes";
             allChangesDiscardButton.UseVisualStyleBackColor = true;
+            allChangesDiscardButton.Click += AllChangesDiscardButton_Click;
             // 
             // applyButton
             // 
@@ -180,6 +184,7 @@
             applyButton.TabIndex = 1;
             applyButton.Text = "Apply Changes";
             applyButton.UseVisualStyleBackColor = true;
+            applyButton.Click += ApplyButton_Click;
             // 
             // exitButton
             // 
@@ -189,6 +194,7 @@
             exitButton.TabIndex = 0;
             exitButton.Text = "Exit from the Window";
             exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += ExitButton_Click;
             // 
             // ModSupportPresetSettingsForm
             // 

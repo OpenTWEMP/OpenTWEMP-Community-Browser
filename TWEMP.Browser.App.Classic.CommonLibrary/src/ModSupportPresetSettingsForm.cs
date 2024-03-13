@@ -136,4 +136,34 @@ public partial class ModSupportPresetSettingsForm : Form
         DataGridViewCell customizablePresetCell = row.Cells[customizablePresetColumnIndex];
         customizablePresetCell.Style.BackColor = color;
     }
+
+    private void OpenCustomizablePresetDirectoryButton_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("OpenCustomizablePresetDirectoryButton_Click");
+    }
+
+    private void OpenRedistributablePresetDirectoryButton_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("OpenRedistributablePresetDirectoryButton_Click");
+    }
+
+    private void AllChangesDiscardButton_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("AllChangesDiscardButton_Click");
+    }
+
+    private void AllChangesResetButton_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("AllChangesResetButton_Click");
+    }
+
+    private void ApplyButton_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("ApplyButton_Click");
+    }
+
+    private void ExitButton_Click(object sender, EventArgs e)
+    {
+        this.Close();
+    }
 }
