@@ -78,4 +78,54 @@ public partial class ModSupportPresetSettingsForm : Form
             this.modSupportPresetsDataGridView[rowIndex, e.RowIndex].Selected = false;
         }
     }
+
+    private void ModSupportPresetsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+        const byte customizablePresetCheckBoxColumnIndex = 5;
+
+        if (e.ColumnIndex == customizablePresetCheckBoxColumnIndex)
+        {
+            this.modSupportPresetsDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+            DataGridViewRow row = this.modSupportPresetsDataGridView.Rows[e.RowIndex];
+            DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)row.Cells[e.ColumnIndex];
+            bool value = Convert.ToBoolean(cell.Value);
+
+            if (value)
+            {
+                this.ChangeDataGridViewRowBackgroundColor(row, Color.Green);
+            }
+            else
+            {
+                this.ChangeDataGridViewRowBackgroundColor(row, Color.Red);
+            }
+        }
+    }
+
+    private void ChangeDataGridViewRowBackgroundColor(DataGridViewRow row, Color color)
+    {
+        int idColumnIndex = this.modSupportPresetsDataGridView.Columns[0].Index;
+        DataGridViewCell idCell = row.Cells[idColumnIndex];
+        idCell.Style.BackColor = color;
+
+        int modNameColumnIndex = this.modSupportPresetsDataGridView.Columns[1].Index;
+        DataGridViewCell modNameCell = row.Cells[modNameColumnIndex];
+        modNameCell.Style.BackColor = color;
+
+        int gameSetupColumnIndex = this.modSupportPresetsDataGridView.Columns[2].Index;
+        DataGridViewCell gameSetupCell = row.Cells[gameSetupColumnIndex];
+        gameSetupCell.Style.BackColor = color;
+
+        int modCenterColumnIndex = this.modSupportPresetsDataGridView.Columns[3].Index;
+        DataGridViewCell modCenterCell = row.Cells[modCenterColumnIndex];
+        modCenterCell.Style.BackColor = color;
+
+        int redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
+        DataGridViewCell redistributablePresetCell = row.Cells[redistributablePresetColumnIndex];
+        redistributablePresetCell.Style.BackColor = color;
+
+        int customizablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[5].Index;
+        DataGridViewCell customizablePresetCell = row.Cells[customizablePresetColumnIndex];
+        customizablePresetCell.Style.BackColor = color;
+    }
 }

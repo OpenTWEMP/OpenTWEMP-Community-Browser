@@ -82,6 +82,7 @@
             modSupportPresetsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
             modSupportPresetsDataGridView.Size = new Size(776, 352);
             modSupportPresetsDataGridView.TabIndex = 0;
+            modSupportPresetsDataGridView.CellContentClick += ModSupportPresetsDataGridView_CellContentClick;
             modSupportPresetsDataGridView.RowEnter += ModSupportPresetsDataGridView_RowEnter;
             modSupportPresetsDataGridView.RowLeave += ModSupportPresetsDataGridView_RowLeave;
             // 
