@@ -81,13 +81,21 @@ public partial class ModSupportPresetSettingsForm : Form
 
     private void ModSupportPresetsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
+        const byte redistributablePresetButtonColumnIndex = 4;
         const byte customizablePresetCheckBoxColumnIndex = 5;
+
+        DataGridViewRow row = this.modSupportPresetsDataGridView.Rows[e.RowIndex];
+
+        this.modSupportPresetsDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+        if (e.ColumnIndex == redistributablePresetButtonColumnIndex)
+        {
+            DataGridViewButtonCell cell = (DataGridViewButtonCell)row.Cells[e.ColumnIndex];
+            MessageBox.Show($"{cell.Value}");
+        }
 
         if (e.ColumnIndex == customizablePresetCheckBoxColumnIndex)
         {
-            this.modSupportPresetsDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
-
-            DataGridViewRow row = this.modSupportPresetsDataGridView.Rows[e.RowIndex];
             DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)row.Cells[e.ColumnIndex];
             bool value = Convert.ToBoolean(cell.Value);
 
