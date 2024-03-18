@@ -78,7 +78,6 @@
             // 
             presetsListBox.FormattingEnabled = true;
             presetsListBox.ItemHeight = 15;
-            presetsListBox.Items.AddRange(new object[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
             presetsListBox.Location = new Point(12, 72);
             presetsListBox.Name = "presetsListBox";
             presetsListBox.Size = new Size(243, 184);
@@ -101,41 +100,41 @@
             // 
             // presetCreatorLabel
             // 
-            presetCreatorLabel.Location = new Point(19, 127);
+            presetCreatorLabel.Location = new Point(11, 124);
             presetCreatorLabel.Name = "presetCreatorLabel";
-            presetCreatorLabel.Size = new Size(100, 23);
+            presetCreatorLabel.Size = new Size(510, 23);
             presetCreatorLabel.TabIndex = 4;
             presetCreatorLabel.Text = "Creator";
             // 
             // packageLabel
             // 
-            packageLabel.Location = new Point(16, 101);
+            packageLabel.Location = new Point(11, 101);
             packageLabel.Name = "packageLabel";
-            packageLabel.Size = new Size(100, 23);
+            packageLabel.Size = new Size(505, 23);
             packageLabel.TabIndex = 3;
             packageLabel.Text = "Package";
             // 
             // presetVersionLabel
             // 
-            presetVersionLabel.Location = new Point(11, 74);
+            presetVersionLabel.Location = new Point(11, 78);
             presetVersionLabel.Name = "presetVersionLabel";
-            presetVersionLabel.Size = new Size(100, 23);
+            presetVersionLabel.Size = new Size(510, 23);
             presetVersionLabel.TabIndex = 2;
             presetVersionLabel.Text = "Preset Version";
             // 
             // presetNameLabel
             // 
-            presetNameLabel.Location = new Point(14, 50);
+            presetNameLabel.Location = new Point(11, 50);
             presetNameLabel.Name = "presetNameLabel";
-            presetNameLabel.Size = new Size(100, 23);
+            presetNameLabel.Size = new Size(507, 23);
             presetNameLabel.TabIndex = 1;
             presetNameLabel.Text = "Preset Name";
             // 
             // presetGuidLabel
             // 
-            presetGuidLabel.Location = new Point(11, 19);
+            presetGuidLabel.Location = new Point(16, 27);
             presetGuidLabel.Name = "presetGuidLabel";
-            presetGuidLabel.Size = new Size(100, 23);
+            presetGuidLabel.Size = new Size(510, 23);
             presetGuidLabel.TabIndex = 0;
             presetGuidLabel.Text = "GUID";
             // 
@@ -159,7 +158,7 @@
             // modUrl3LinkLabel
             // 
             modUrl3LinkLabel.AutoSize = true;
-            modUrl3LinkLabel.Location = new Point(278, 64);
+            modUrl3LinkLabel.Location = new Point(383, 64);
             modUrl3LinkLabel.Name = "modUrl3LinkLabel";
             modUrl3LinkLabel.Size = new Size(60, 15);
             modUrl3LinkLabel.TabIndex = 13;
@@ -169,7 +168,7 @@
             // modUrl2LinkLabel
             // 
             modUrl2LinkLabel.AutoSize = true;
-            modUrl2LinkLabel.Location = new Point(272, 44);
+            modUrl2LinkLabel.Location = new Point(381, 44);
             modUrl2LinkLabel.Name = "modUrl2LinkLabel";
             modUrl2LinkLabel.Size = new Size(60, 15);
             modUrl2LinkLabel.TabIndex = 12;
@@ -179,7 +178,7 @@
             // modUrl1LinkLabel
             // 
             modUrl1LinkLabel.AutoSize = true;
-            modUrl1LinkLabel.Location = new Point(268, 24);
+            modUrl1LinkLabel.Location = new Point(383, 19);
             modUrl1LinkLabel.Name = "modUrl1LinkLabel";
             modUrl1LinkLabel.Size = new Size(60, 15);
             modUrl1LinkLabel.TabIndex = 11;
@@ -189,7 +188,7 @@
             // modUrl3Label
             // 
             modUrl3Label.AutoSize = true;
-            modUrl3Label.Location = new Point(197, 64);
+            modUrl3Label.Location = new Point(302, 64);
             modUrl3Label.Name = "modUrl3Label";
             modUrl3Label.Size = new Size(75, 15);
             modUrl3Label.TabIndex = 10;
@@ -198,7 +197,7 @@
             // modUrl2Label
             // 
             modUrl2Label.AutoSize = true;
-            modUrl2Label.Location = new Point(191, 44);
+            modUrl2Label.Location = new Point(302, 44);
             modUrl2Label.Name = "modUrl2Label";
             modUrl2Label.Size = new Size(75, 15);
             modUrl2Label.TabIndex = 9;
@@ -207,7 +206,7 @@
             // modUrl1Label
             // 
             modUrl1Label.AutoSize = true;
-            modUrl1Label.Location = new Point(187, 24);
+            modUrl1Label.Location = new Point(302, 19);
             modUrl1Label.Name = "modUrl1Label";
             modUrl1Label.Size = new Size(75, 15);
             modUrl1Label.TabIndex = 8;
@@ -215,18 +214,17 @@
             // 
             // modVersionLabel
             // 
-            modVersionLabel.AutoSize = true;
-            modVersionLabel.Location = new Point(12, 64);
+            modVersionLabel.Location = new Point(12, 59);
             modVersionLabel.Name = "modVersionLabel";
-            modVersionLabel.Size = new Size(73, 15);
+            modVersionLabel.Size = new Size(284, 28);
             modVersionLabel.TabIndex = 7;
             modVersionLabel.Text = "Mod Version";
             // 
             // modNameLabel
             // 
-            modNameLabel.Location = new Point(15, 28);
+            modNameLabel.Location = new Point(12, 19);
             modNameLabel.Name = "modNameLabel";
-            modNameLabel.Size = new Size(100, 23);
+            modNameLabel.Size = new Size(284, 40);
             modNameLabel.TabIndex = 6;
             modNameLabel.Text = "Mod Name";
             // 
