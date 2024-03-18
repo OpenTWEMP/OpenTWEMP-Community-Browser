@@ -20,7 +20,9 @@ public class UpdatableGameModificationView
     {
         this.IdView = idView;
         this.CurrentInfo = info;
+
         this.ActivePreset = ModSupportPreset.CreateDefaultTemplate();
+        this.UseCustomizablePreset = false;
     }
 
     /// <summary>
@@ -37,6 +39,12 @@ public class UpdatableGameModificationView
     /// Gets the active mod support preset entity for this view.
     /// </summary>
     public ModSupportPreset ActivePreset { get; private set; }
+
+    /// <summary>
+    /// Gets a value indicating whether the current game modification uses a customizable preset.
+    /// This property is 'true' for a customizable preset and 'false' for a redistributable preset.
+    /// </summary>
+    public bool UseCustomizablePreset { get; private set; }
 
     /// <summary>
     /// Creates a new instance of the <see cref="UpdatableGameModificationView"/> record
@@ -71,6 +79,7 @@ public class UpdatableGameModificationView
     {
         UpdatableGameModificationView gameModificationView = CreateGameModificationView(idView, info);
         gameModificationView.ActivePreset = customizablePreset.Data;
+        gameModificationView.UseCustomizablePreset = true;
         return gameModificationView;
     }
 
