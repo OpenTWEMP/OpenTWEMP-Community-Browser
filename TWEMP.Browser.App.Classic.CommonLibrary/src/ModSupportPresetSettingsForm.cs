@@ -20,6 +20,13 @@ public partial class ModSupportPresetSettingsForm : Form
         this.InitializeModSupportPresetsDataGridView(gameInstallations);
     }
 
+    public void AttachRedistributablePresetToGameModification(string presetPlaceholder, int gameModId)
+    {
+        int redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
+        DataGridViewCell redistributablePresetCell = this.modSupportPresetsDataGridView.Rows[gameModId].Cells[redistributablePresetColumnIndex];
+        redistributablePresetCell.Value = $"Attached Preset: {presetPlaceholder}";
+    }
+
     private void InitializeModSupportPresetsDataGridView(ICollection<GameSetupInfo> gameInstallations)
     {
         foreach (GameSetupInfo gameInstallation in gameInstallations)
@@ -93,7 +100,7 @@ public partial class ModSupportPresetSettingsForm : Form
             DataGridViewButtonCell cell = (DataGridViewButtonCell)row.Cells[e.ColumnIndex];
             MessageBox.Show($"{cell.Value}");
 
-            var form = new RedistributablePresetSelectionForm();
+            RedistributablePresetSelectionForm form = new (this, e.RowIndex);
             form.Show();
         }
 

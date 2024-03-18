@@ -9,17 +9,25 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 public partial class RedistributablePresetSelectionForm : Form
 {
-    public RedistributablePresetSelectionForm()
+    private readonly ModSupportPresetSettingsForm presetSettingsForm;
+    private readonly int gameModId;
+
+    public RedistributablePresetSelectionForm(ModSupportPresetSettingsForm presetSettingsForm, int gameModId)
     {
         this.InitializeComponent();
+        this.presetSettingsForm = presetSettingsForm;
+        this.gameModId = gameModId;
     }
 
     private void PresetSelectionButton_Click(object sender, EventArgs e)
     {
         if (this.presetsListBox.SelectedItem != null)
         {
-            MessageBox.Show($"{this.presetsListBox.SelectedItem}");
+            string presetPlaceholder = this.presetsListBox.SelectedItem.ToString() !;
+            this.presetSettingsForm.AttachRedistributablePresetToGameModification(presetPlaceholder, this.gameModId);
         }
+
+        this.Close();
     }
 
     private void PresetCancelButton_Click(object sender, EventArgs e)
