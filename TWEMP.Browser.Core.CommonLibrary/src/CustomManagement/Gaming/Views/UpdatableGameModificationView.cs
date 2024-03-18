@@ -11,6 +11,9 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPreset
 /// </summary>
 public class UpdatableGameModificationView
 {
+    private readonly CustomizableModPreset customizableModPreset;
+    private RedistributableModPreset redistributableModPreset;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="UpdatableGameModificationView"/> class.
     /// </summary>
@@ -20,6 +23,9 @@ public class UpdatableGameModificationView
     {
         this.IdView = idView;
         this.CurrentInfo = info;
+
+        this.redistributableModPreset = RedistributableModPreset.CreateDefaultTemplate();
+        this.customizableModPreset = CustomizableModPreset.CreateDefaultTemplate(info.Location);
 
         this.ActivePreset = ModSupportPreset.CreateDefaultTemplate();
         this.UseCustomizablePreset = false;
@@ -52,15 +58,15 @@ public class UpdatableGameModificationView
     /// </summary>
     /// <param name="idView">The game modification identifier entity for this view.</param>
     /// <param name="info">The game modification info entity for this view.</param>
-    /// <param name="redistributablePreset">The redistributable preset for this game modification.</param>
+    /// <param name="preset">The redistributable preset for this game modification.</param>
     /// <returns>A new configured instance of the <see cref="UpdatableGameModificationView"/> record.</returns>
     public static UpdatableGameModificationView CreateGameModificationViewByRedistributablePreset(
         GameModificationIdView idView,
         GameModificationInfo info,
-        RedistributableModPreset redistributablePreset)
+        RedistributableModPreset preset)
     {
-        UpdatableGameModificationView gameModificationView = CreateGameModificationView(idView, info);
-        gameModificationView.ActivePreset = redistributablePreset.Data;
+        UpdatableGameModificationView gameModificationView = new (idView, info);
+        gameModificationView.SelectRedistributableModPreset(preset);
         return gameModificationView;
     }
 
@@ -70,21 +76,45 @@ public class UpdatableGameModificationView
     /// </summary>
     /// <param name="idView">The game modification identifier entity for this view.</param>
     /// <param name="info">The game modification info entity for this view.</param>
-    /// <param name="customizablePreset">The customizable preset for this game modification.</param>
     /// <returns>A new configured instance of the <see cref="UpdatableGameModificationView"/> record.</returns>
     public static UpdatableGameModificationView CreateGameModificationViewByCustomizablePreset(
         GameModificationIdView idView,
-        GameModificationInfo info,
-        CustomizableModPreset customizablePreset)
+        GameModificationInfo info)
     {
-        UpdatableGameModificationView gameModificationView = CreateGameModificationView(idView, info);
-        gameModificationView.ActivePreset = customizablePreset.Data;
-        gameModificationView.UseCustomizablePreset = true;
+        UpdatableGameModificationView gameModificationView = new (idView, info);
+        gameModificationView.SelectCustomizableModPreset();
         return gameModificationView;
     }
 
-    private static UpdatableGameModificationView CreateGameModificationView(GameModificationIdView idView, GameModificationInfo info)
+    /// <summary>
+    /// Selects the current preset of the <see cref="RedistributableModPreset"/> type
+    /// as the active mod support preset for this game modification.
+    /// </summary>
+    public void SelectRedistributableModPreset()
     {
-        return new UpdatableGameModificationView(idView, info);
+        this.ActivePreset = this.redistributableModPreset.Data;
+        this.UseCustomizablePreset = false;
+    }
+
+    /// <summary>
+    /// Selects the current preset of the <see cref="RedistributableModPreset"/> type
+    /// as the active mod support preset for this game modification.
+    /// </summary>
+    /// <param name="preset">The redistributable preset for this game modification.</param>
+    public void SelectRedistributableModPreset(RedistributableModPreset preset)
+    {
+        this.redistributableModPreset = preset;
+        this.ActivePreset = preset.Data;
+        this.UseCustomizablePreset = false;
+    }
+
+    /// <summary>
+    /// Selects the current preset of the <see cref="CustomizableModPreset"/> type
+    /// as the active mod support preset for this game modification.
+    /// </summary>
+    public void SelectCustomizableModPreset()
+    {
+        this.ActivePreset = this.customizableModPreset.Data;
+        this.UseCustomizablePreset = true;
     }
 }

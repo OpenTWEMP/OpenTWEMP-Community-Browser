@@ -4,6 +4,9 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
+using System;
+using System.Reflection;
+
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 public class ModSupportPreset
@@ -75,6 +78,12 @@ public class CustomizableModPreset
 
     public FileInfo Config { get; }
 
+    public static CustomizableModPreset CreateDefaultTemplate(string modURI)
+    {
+        ModSupportPreset preset = ModSupportPreset.CreateDefaultTemplate();
+        return new CustomizableModPreset(preset, modURI);
+    }
+
     private static DirectoryInfo InitializeModPresetHomeDirectoryInfo(string modURI)
     {
         string directoryPath = Path.Combine(modURI, PresetFolderName);
@@ -99,6 +108,14 @@ public class RedistributableModPreset
     public ModSupportPreset Data { get; }
 
     public ModPresetMetaInfo Metadata { get; }
+
+    public static RedistributableModPreset CreateDefaultTemplate()
+    {
+        ModSupportPreset preset = ModSupportPreset.CreateDefaultTemplate();
+        ModPresetMetaInfo metadata = ModPresetMetaInfo.CreateDefaultTemplate();
+
+        return new RedistributableModPreset(preset, metadata);
+    }
 }
 
 public record ModPresetMetaInfo
@@ -126,6 +143,16 @@ public record ModPresetMetaInfo
     public string PackageName { get; set; }
 
     public string Creator { get; set; }
+
+    public static ModPresetMetaInfo CreateDefaultTemplate()
+    {
+        return new ModPresetMetaInfo(
+            guid: Guid.NewGuid(),
+            version: "0.0.0",
+            presetName: "M2TW Game Engine Modification",
+            packageName: "M2TW Mod Support Presets",
+            creator: "The OpenTWEMP Project");
+    }
 }
 
 public record ModHeaderInfo
