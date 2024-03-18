@@ -12,9 +12,23 @@ using TWEMP.Browser.Core.CommonLibrary;
 
 public partial class ModSupportPresetSettingsForm : Form
 {
+    private readonly int idColumnIndex;
+    private readonly int modNameColumnIndex;
+    private readonly int gameSetupColumnIndex;
+    private readonly int modCenterColumnIndex;
+    private readonly int redistributablePresetColumnIndex;
+    private readonly int customizablePresetColumnIndex;
+
     public ModSupportPresetSettingsForm()
     {
         this.InitializeComponent();
+
+        this.idColumnIndex = this.modSupportPresetsDataGridView.Columns[0].Index;
+        this.modNameColumnIndex = this.modSupportPresetsDataGridView.Columns[1].Index;
+        this.gameSetupColumnIndex = this.modSupportPresetsDataGridView.Columns[2].Index;
+        this.modCenterColumnIndex = this.modSupportPresetsDataGridView.Columns[3].Index;
+        this.redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
+        this.customizablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[5].Index;
 
         List<GameSetupInfo> gameInstallations = Settings.GameInstallations;
         this.InitializeModSupportPresetsDataGridView(gameInstallations);
@@ -48,24 +62,19 @@ public partial class ModSupportPresetSettingsForm : Form
 
         for (int rowIndex = 0; rowIndex < currentRows.Count; rowIndex++)
         {
-            int idColumnIndex = this.modSupportPresetsDataGridView.Columns[0].Index;
-            DataGridViewCell idCell = currentRows[rowIndex].Cells[idColumnIndex];
+            DataGridViewCell idCell = currentRows[rowIndex].Cells[this.idColumnIndex];
             idCell.Value = rowIndex;
 
-            int modNameColumnIndex = this.modSupportPresetsDataGridView.Columns[1].Index;
-            DataGridViewCell modNameCell = currentRows[rowIndex].Cells[modNameColumnIndex];
+            DataGridViewCell modNameCell = currentRows[rowIndex].Cells[this.modNameColumnIndex];
             modNameCell.Value = $"Mod Name # {rowIndex}";
 
-            int gameSetupColumnIndex = this.modSupportPresetsDataGridView.Columns[2].Index;
-            DataGridViewCell gameSetupCell = currentRows[rowIndex].Cells[gameSetupColumnIndex];
+            DataGridViewCell gameSetupCell = currentRows[rowIndex].Cells[this.gameSetupColumnIndex];
             gameSetupCell.Value = $"Game Setup Name";
 
-            int modCenterColumnIndex = this.modSupportPresetsDataGridView.Columns[3].Index;
-            DataGridViewCell modCenterCell = currentRows[rowIndex].Cells[modCenterColumnIndex];
+            DataGridViewCell modCenterCell = currentRows[rowIndex].Cells[this.modCenterColumnIndex];
             modCenterCell.Value = $"Mod Center Name";
 
-            int redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
-            DataGridViewCell redistributablePresetCell = currentRows[rowIndex].Cells[redistributablePresetColumnIndex];
+            DataGridViewCell redistributablePresetCell = currentRows[rowIndex].Cells[this.redistributablePresetColumnIndex];
             redistributablePresetCell.Value = $"Redistributable Mod Support Preset Name # {rowIndex}";
         }
     }
@@ -88,14 +97,11 @@ public partial class ModSupportPresetSettingsForm : Form
 
     private void ModSupportPresetsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
-        const byte redistributablePresetButtonColumnIndex = 4;
-        const byte customizablePresetCheckBoxColumnIndex = 5;
-
         DataGridViewRow row = this.modSupportPresetsDataGridView.Rows[e.RowIndex];
 
         this.modSupportPresetsDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
-        if (e.ColumnIndex == redistributablePresetButtonColumnIndex)
+        if (e.ColumnIndex == this.redistributablePresetColumnIndex)
         {
             DataGridViewButtonCell cell = (DataGridViewButtonCell)row.Cells[e.ColumnIndex];
             MessageBox.Show($"{cell.Value}");
@@ -104,7 +110,7 @@ public partial class ModSupportPresetSettingsForm : Form
             form.Show();
         }
 
-        if (e.ColumnIndex == customizablePresetCheckBoxColumnIndex)
+        if (e.ColumnIndex == this.customizablePresetColumnIndex)
         {
             DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)row.Cells[e.ColumnIndex];
             bool value = Convert.ToBoolean(cell.Value);
@@ -122,28 +128,22 @@ public partial class ModSupportPresetSettingsForm : Form
 
     private void ChangeDataGridViewRowBackgroundColor(DataGridViewRow row, Color color)
     {
-        int idColumnIndex = this.modSupportPresetsDataGridView.Columns[0].Index;
-        DataGridViewCell idCell = row.Cells[idColumnIndex];
+        DataGridViewCell idCell = row.Cells[this.idColumnIndex];
         idCell.Style.BackColor = color;
 
-        int modNameColumnIndex = this.modSupportPresetsDataGridView.Columns[1].Index;
-        DataGridViewCell modNameCell = row.Cells[modNameColumnIndex];
+        DataGridViewCell modNameCell = row.Cells[this.modNameColumnIndex];
         modNameCell.Style.BackColor = color;
 
-        int gameSetupColumnIndex = this.modSupportPresetsDataGridView.Columns[2].Index;
-        DataGridViewCell gameSetupCell = row.Cells[gameSetupColumnIndex];
+        DataGridViewCell gameSetupCell = row.Cells[this.gameSetupColumnIndex];
         gameSetupCell.Style.BackColor = color;
 
-        int modCenterColumnIndex = this.modSupportPresetsDataGridView.Columns[3].Index;
-        DataGridViewCell modCenterCell = row.Cells[modCenterColumnIndex];
+        DataGridViewCell modCenterCell = row.Cells[this.modCenterColumnIndex];
         modCenterCell.Style.BackColor = color;
 
-        int redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
-        DataGridViewCell redistributablePresetCell = row.Cells[redistributablePresetColumnIndex];
+        DataGridViewCell redistributablePresetCell = row.Cells[this.redistributablePresetColumnIndex];
         redistributablePresetCell.Style.BackColor = color;
 
-        int customizablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[5].Index;
-        DataGridViewCell customizablePresetCell = row.Cells[customizablePresetColumnIndex];
+        DataGridViewCell customizablePresetCell = row.Cells[this.customizablePresetColumnIndex];
         customizablePresetCell.Style.BackColor = color;
     }
 
