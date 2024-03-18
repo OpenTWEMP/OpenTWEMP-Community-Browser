@@ -30,7 +30,7 @@ public partial class ModSupportPresetSettingsForm : Form
         this.redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
         this.customizablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[5].Index;
 
-        List<GameSetupInfo> gameInstallations = Settings.GameInstallations;
+        List<GameModificationInfo> gameInstallations = Settings.TotalModificationsList;
         this.InitializeModSupportPresetsDataGridView(gameInstallations);
     }
 
@@ -41,42 +41,50 @@ public partial class ModSupportPresetSettingsForm : Form
         redistributablePresetCell.Value = $"Attached Preset: {presetPlaceholder}";
     }
 
-    private void InitializeModSupportPresetsDataGridView(ICollection<GameSetupInfo> gameInstallations)
+    private void InitializeModSupportPresetsDataGridView(ICollection<GameModificationInfo> gameMods)
     {
-        foreach (GameSetupInfo gameInstallation in gameInstallations)
+        Dictionary<DataGridViewRow, GameModificationInfo> gameModInfoRows = new ();
+
+        for (int modIndex = 0; modIndex < gameMods.Count; modIndex++)
         {
-            List<ModCenterInfo> modCenters = gameInstallation.AttachedModCenters;
+            DataGridViewRow row = new ();
+            this.modSupportPresetsDataGridView.Rows.Add(row);
 
-            foreach (ModCenterInfo modcenter in modCenters)
-            {
-                List<GameModificationInfo> mods = modcenter.InstalledModifications;
-
-                for (int modIndex = 0; modIndex < mods.Count; modIndex++)
-                {
-                    this.modSupportPresetsDataGridView.Rows.Add(new DataGridViewRow());
-                }
-            }
+            GameModificationInfo gameModInfo = gameMods.ElementAt(modIndex);
+            gameModInfoRows.Add(row, gameModInfo);
         }
 
-        DataGridViewRowCollection currentRows = this.modSupportPresetsDataGridView.Rows;
-
-        for (int rowIndex = 0; rowIndex < currentRows.Count; rowIndex++)
+        for (int rowIndex = 0; rowIndex < this.modSupportPresetsDataGridView.Rows.Count; rowIndex++)
         {
-            DataGridViewCell idCell = currentRows[rowIndex].Cells[this.idColumnIndex];
-            idCell.Value = rowIndex;
-
-            DataGridViewCell modNameCell = currentRows[rowIndex].Cells[this.modNameColumnIndex];
-            modNameCell.Value = $"Mod Name # {rowIndex}";
-
-            DataGridViewCell gameSetupCell = currentRows[rowIndex].Cells[this.gameSetupColumnIndex];
-            gameSetupCell.Value = $"Game Setup Name";
-
-            DataGridViewCell modCenterCell = currentRows[rowIndex].Cells[this.modCenterColumnIndex];
-            modCenterCell.Value = $"Mod Center Name";
-
-            DataGridViewCell redistributablePresetCell = currentRows[rowIndex].Cells[this.redistributablePresetColumnIndex];
-            redistributablePresetCell.Value = $"Redistributable Mod Support Preset Name # {rowIndex}";
+            this.InitializeModSupportPresetDataGridViewRowId(rowIndex);
         }
+
+        foreach (KeyValuePair<DataGridViewRow, GameModificationInfo> gameModInfoRow in gameModInfoRows)
+        {
+            this.InitializeModSupportPresetDataGridViewRow(gameModInfoRow.Key, gameModInfoRow.Value);
+        }
+    }
+
+    private void InitializeModSupportPresetDataGridViewRowId(int rowIndex)
+    {
+        DataGridViewRow row = this.modSupportPresetsDataGridView.Rows[rowIndex];
+        DataGridViewCell idCell = row.Cells[this.idColumnIndex];
+        idCell.Value = rowIndex;
+    }
+
+    private void InitializeModSupportPresetDataGridViewRow(DataGridViewRow row, GameModificationInfo gameModInfo)
+    {
+        DataGridViewCell modNameCell = row.Cells[this.modNameColumnIndex];
+        modNameCell.Value = gameModInfo.ShortName;
+
+        DataGridViewCell gameSetupCell = row.Cells[this.gameSetupColumnIndex];
+        gameSetupCell.Value = gameModInfo.CurrentSetup.HomeDirectory;
+
+        DataGridViewCell modCenterCell = row.Cells[this.modCenterColumnIndex];
+        modCenterCell.Value = gameModInfo.Location;
+
+        DataGridViewCell redistributablePresetCell = row.Cells[this.redistributablePresetColumnIndex];
+        redistributablePresetCell.Value = $"{gameModInfo.CurrentPreset.ModTitle} [{gameModInfo.CurrentPreset.ModVersion}]";
     }
 
     private void ModSupportPresetsDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
