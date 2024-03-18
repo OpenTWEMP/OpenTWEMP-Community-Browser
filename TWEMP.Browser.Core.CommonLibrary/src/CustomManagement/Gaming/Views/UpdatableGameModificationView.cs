@@ -11,7 +11,7 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPreset
 /// </summary>
 public class UpdatableGameModificationView
 {
-    private readonly CustomizableModPreset customizableModPreset;
+    private CustomizableModPreset customizableModPreset;
     private RedistributableModPreset redistributableModPreset;
 
     /// <summary>
@@ -24,8 +24,8 @@ public class UpdatableGameModificationView
         this.IdView = idView;
         this.CurrentInfo = info;
 
-        this.redistributableModPreset = RedistributableModPreset.CreateDefaultTemplate();
         this.customizableModPreset = CustomizableModPreset.CreateDefaultTemplate(info.Location);
+        this.redistributableModPreset = RedistributableModPreset.CreateDefaultTemplate();
 
         this.ActivePreset = ModSupportPreset.CreateDefaultTemplate();
         this.UseCustomizablePreset = false;
@@ -116,5 +116,15 @@ public class UpdatableGameModificationView
     {
         this.ActivePreset = this.customizableModPreset.Data;
         this.UseCustomizablePreset = true;
+    }
+
+    /// <summary>
+    /// Resets both <see cref="CustomizableModPreset"/> and <see cref="RedistributableModPreset"/> presets
+    /// to its default settings for this game modification.
+    /// </summary>
+    public void ResetAllModPresetsToDefaultSettings()
+    {
+        this.customizableModPreset = CustomizableModPreset.CreateDefaultTemplate(this.CurrentInfo.Location);
+        this.redistributableModPreset = RedistributableModPreset.CreateDefaultTemplate();
     }
 }
