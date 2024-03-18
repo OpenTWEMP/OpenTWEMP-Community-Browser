@@ -66,6 +66,7 @@ public partial class ModSupportPresetSettingsForm : Form
         foreach (KeyValuePair<DataGridViewRow, GameModificationInfo> gameModInfoRow in gameModInfoRows)
         {
             this.InitializeModSupportPresetDataGridViewRow(gameModInfoRow.Key, gameModInfoRow.Value);
+            this.MarkModSupportPresetDataGridViewRowByPresetSettings(gameModInfoRow.Key);
         }
     }
 
@@ -89,6 +90,48 @@ public partial class ModSupportPresetSettingsForm : Form
 
         DataGridViewCell redistributablePresetCell = row.Cells[this.redistributablePresetColumnIndex];
         redistributablePresetCell.Value = $"{gameModInfo.CurrentPreset.ModTitle} [{gameModInfo.CurrentPreset.ModVersion}]";
+    }
+
+    private void MarkModSupportPresetDataGridViewRowByPresetSettings(DataGridViewRow row)
+    {
+        if (this.IsConfiguredByCustomizableModPreset(row))
+        {
+            this.MarkModSupportPresetDataGridViewRowAsCustomizablePreset(row);
+        }
+        else
+        {
+            this.MarkModSupportPresetDataGridViewRowAsRedistributablePreset(row);
+        }
+    }
+
+    private bool IsConfiguredByCustomizableModPreset(DataGridViewRow row)
+    {
+        const string presetDefaultPlaceholder = "My_Title [My_Version]";
+
+        object? sourceCellValue = row.Cells[this.redistributablePresetColumnIndex].Value;
+        string? convertedCellValue = Convert.ToString(sourceCellValue);
+
+        return convertedCellValue!.Equals(presetDefaultPlaceholder);
+    }
+
+    private void MarkModSupportPresetDataGridViewRowAsRedistributablePreset(DataGridViewRow row)
+    {
+        this.ChangeDataGridViewRowBackgroundColor(row, Color.LightGreen);
+        this.SetCustomizablePresetCheckboxState(row, false);
+    }
+
+    private void MarkModSupportPresetDataGridViewRowAsCustomizablePreset(DataGridViewRow row)
+    {
+        this.ChangeDataGridViewRowBackgroundColor(row, Color.LightGray);
+        this.SetCustomizablePresetCheckboxState(row, true);
+    }
+
+    private void SetCustomizablePresetCheckboxState(DataGridViewRow row, bool value)
+    {
+        DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)row.Cells[this.customizablePresetColumnIndex];
+        cell.Value = value;
+
+        // cell.ValueType = typeof(bool);
     }
 
     private void ModSupportPresetsDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
