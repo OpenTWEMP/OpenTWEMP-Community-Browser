@@ -19,7 +19,9 @@ public partial class ModSupportPresetSettingsForm : Form
     private readonly int redistributablePresetColumnIndex;
     private readonly int customizablePresetColumnIndex;
 
-    public ModSupportPresetSettingsForm()
+    private readonly IConfigurableGameModificationView currentGameModificationView;
+
+    public ModSupportPresetSettingsForm(IConfigurableGameModificationView gameModificationView)
     {
         this.InitializeComponent();
 
@@ -29,6 +31,8 @@ public partial class ModSupportPresetSettingsForm : Form
         this.modCenterColumnIndex = this.modSupportPresetsDataGridView.Columns[3].Index;
         this.redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
         this.customizablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[5].Index;
+
+        this.currentGameModificationView = gameModificationView;
 
         List<GameModificationInfo> gameInstallations = Settings.TotalModificationsList;
         this.InitializeModSupportPresetsDataGridView(gameInstallations);
@@ -177,7 +181,27 @@ public partial class ModSupportPresetSettingsForm : Form
 
     private void ApplyButton_Click(object sender, EventArgs e)
     {
-        MessageBox.Show("ApplyButton_Click");
+        Dictionary<int, string> currentPresetSettings = new ();
+
+        foreach (DataGridViewRow row in this.modSupportPresetsDataGridView.Rows)
+        {
+            var idObject = row.Cells[this.idColumnIndex].Value;
+            int id = Convert.ToInt32(idObject);
+
+            var presetObject = (DataGridViewCheckBoxCell)row.Cells[this.customizablePresetColumnIndex].Value;
+            bool useCustomizablePreset = Convert.ToBoolean(presetObject);
+
+            string preset = useCustomizablePreset ? "[CUSTOMIZABLE_PRESET]" : Convert.ToString(row.Cells[this.redistributablePresetColumnIndex].Value) !;
+
+            KeyValuePair<int, string> presetSetting = new (id, preset);
+            currentPresetSettings.Add(presetSetting.Key, presetSetting.Value);
+        }
+
+        this.currentGameModificationView.UpdateGameModificationViewAfterChangingPresetSettings(currentPresetSettings);
+
+        MessageBox.Show("Your new preset settings were successfully applied!", "Update Preset Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        this.Close();
     }
 
     private void ExitButton_Click(object sender, EventArgs e)

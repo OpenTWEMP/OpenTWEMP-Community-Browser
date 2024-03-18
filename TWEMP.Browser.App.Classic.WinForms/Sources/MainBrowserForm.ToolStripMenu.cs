@@ -52,7 +52,7 @@ internal partial class MainBrowserForm
 
     private void ModSupportPresetSettingsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var appSettingsForm = new ModSupportPresetSettingsForm();
+        var appSettingsForm = new ModSupportPresetSettingsForm(this);
         appSettingsForm.ShowDialog();
     }
 
