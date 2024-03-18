@@ -92,6 +92,9 @@ public partial class ModSupportPresetSettingsForm : Form
         {
             DataGridViewButtonCell cell = (DataGridViewButtonCell)row.Cells[e.ColumnIndex];
             MessageBox.Show($"{cell.Value}");
+
+            var form = new RedistributablePresetSelectionForm();
+            form.Show();
         }
 
         if (e.ColumnIndex == customizablePresetCheckBoxColumnIndex)
