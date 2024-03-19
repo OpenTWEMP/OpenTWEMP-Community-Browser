@@ -16,6 +16,8 @@ public static class GameSupportManager
 
     private static readonly FileInfo PresetsConfigFileInfo;
 
+    private static GameSupportConfiguration CurrentGameSupportConfiguration;
+
     static GameSupportManager()
     {
         string presetsHomeDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), PresetsHomeFolderName);
@@ -23,12 +25,20 @@ public static class GameSupportManager
 
         PresetsConfigFileInfo = new FileInfo(presetsConfigFilePath);
         PresetsHomeDirectoryInfo = new DirectoryInfo(presetsHomeDirectoryPath);
+
+        CurrentGameSupportConfiguration = GameSupportConfiguration.CreateTestConfigurationByDefault();
+        AvailableModSupportPresets = CurrentGameSupportConfiguration.GetAllRedistributablePresets();
     }
 
     /// <summary>
     /// Gets information about the home directory of game support presets.
     /// </summary>
     public static DirectoryInfo PresetsHomeDirectoryInfo { get; }
+
+    /// <summary>
+    /// Gets the list of available redistributable mod support presets.
+    /// </summary>
+    public static List<RedistributableModPreset> AvailableModSupportPresets { get; private set; }
 
     /// <summary>
     /// Initializes the global device for game support management.
@@ -40,17 +50,20 @@ public static class GameSupportManager
             PresetsHomeDirectoryInfo.Create();
         }
 
-        if (!PresetsConfigFileInfo.Exists)
+        if (PresetsConfigFileInfo.Exists)
         {
-            CreatePresetsConfigFileByDefault();
+            CurrentGameSupportConfiguration = ReadPresetsConfigFile();
+            AvailableModSupportPresets = CurrentGameSupportConfiguration.GetAllRedistributablePresets();
         }
-
-        // GameSupportConfiguration configuration = ReadPresetsConfigFile();
+        else
+        {
+            CreatePresetsConfigFileByDefault(CurrentGameSupportConfiguration);
+        }
     }
 
-    private static void CreatePresetsConfigFileByDefault()
+    private static void CreatePresetsConfigFileByDefault(GameSupportConfiguration configuration)
     {
-        AppSerializer.SerializeToJson(new GameSupportConfiguration(), PresetsConfigFileInfo.FullName);
+        AppSerializer.SerializeToJson(configuration, PresetsConfigFileInfo.FullName);
     }
 
     private static GameSupportConfiguration ReadPresetsConfigFile()

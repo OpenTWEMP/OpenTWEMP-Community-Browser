@@ -4,9 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-using System;
-using System.Reflection;
-
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 public class ModSupportPreset

@@ -2,8 +2,6 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-#pragma warning disable SA1600 // ElementsMustBeDocumented
-
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 /// <summary>
@@ -16,8 +14,8 @@ public class GameSupportConfiguration
     /// </summary>
     public GameSupportConfiguration()
     {
-        this.CurrentGameSupportProvider = new GameSupportProvider();
-        this.ModSupportPresetPackages = ModSupportPresetPackage.CreateTestPackages();
+        this.TargetGameSupportProvider = new GameSupportProvider();
+        this.RedistributablePackages = ModSupportPresetPackage.CreateTestPackages();
     }
 
     /// <summary>
@@ -28,11 +26,42 @@ public class GameSupportConfiguration
     public GameSupportConfiguration(
         GameSupportProvider provider, ICollection<ModSupportPresetPackage> packages)
     {
-        this.CurrentGameSupportProvider = provider;
-        this.ModSupportPresetPackages = packages;
+        this.TargetGameSupportProvider = provider;
+        this.RedistributablePackages = packages.ToList();
     }
 
-    public GameSupportProvider CurrentGameSupportProvider { get; set; }
+    /// <summary>
+    /// Gets or sets a target type of the game support provider for this configuration.
+    /// </summary>
+    public GameSupportProvider TargetGameSupportProvider { get; set; }
 
-    public ICollection<ModSupportPresetPackage> ModSupportPresetPackages { get; set; }
+    /// <summary>
+    /// Gets or sets a list of redistributable packages for this configuration.
+    /// </summary>
+    public List<ModSupportPresetPackage> RedistributablePackages { get; set; }
+
+    /// <summary>
+    /// Creates a test game support configuration object by default.
+    /// </summary>
+    /// <returns>The default instance of the <see cref="GameSupportConfiguration"/> class.</returns>
+    public static GameSupportConfiguration CreateTestConfigurationByDefault()
+    {
+        return new GameSupportConfiguration();
+    }
+
+    /// <summary>
+    /// Gets all redistributable mod presets from all available packages of the configuration.
+    /// </summary>
+    /// <returns>The list of redistributable mod preset objects.</returns>
+    public List<RedistributableModPreset> GetAllRedistributablePresets()
+    {
+        List<RedistributableModPreset> presets = new ();
+
+        foreach (ModSupportPresetPackage package in this.RedistributablePackages)
+        {
+            presets.AddRange(package.Presets);
+        }
+
+        return presets;
+    }
 }
