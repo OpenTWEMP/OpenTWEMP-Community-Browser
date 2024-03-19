@@ -4,6 +4,8 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
 /// <summary>
@@ -16,7 +18,7 @@ public static class GameSupportManager
 
     private static readonly FileInfo PresetsConfigFileInfo;
 
-    private static GameSupportConfiguration CurrentGameSupportConfiguration;
+    private static GameSupportConfiguration currentGameSupportConfiguration;
 
     static GameSupportManager()
     {
@@ -26,8 +28,8 @@ public static class GameSupportManager
         PresetsConfigFileInfo = new FileInfo(presetsConfigFilePath);
         PresetsHomeDirectoryInfo = new DirectoryInfo(presetsHomeDirectoryPath);
 
-        CurrentGameSupportConfiguration = GameSupportConfiguration.CreateTestConfigurationByDefault();
-        AvailableModSupportPresets = CurrentGameSupportConfiguration.GetAllRedistributablePresets();
+        currentGameSupportConfiguration = GameSupportConfiguration.CreateTestConfigurationByDefault();
+        AvailableModSupportPresets = currentGameSupportConfiguration.GetAllRedistributablePresets();
     }
 
     /// <summary>
@@ -52,13 +54,47 @@ public static class GameSupportManager
 
         if (PresetsConfigFileInfo.Exists)
         {
-            CurrentGameSupportConfiguration = ReadPresetsConfigFile();
-            AvailableModSupportPresets = CurrentGameSupportConfiguration.GetAllRedistributablePresets();
+            currentGameSupportConfiguration = ReadPresetsConfigFile();
+            AvailableModSupportPresets = currentGameSupportConfiguration.GetAllRedistributablePresets();
         }
         else
         {
-            CreatePresetsConfigFileByDefault(CurrentGameSupportConfiguration);
+            CreatePresetsConfigFileByDefault(currentGameSupportConfiguration);
         }
+    }
+
+    /// <summary>
+    /// Creates a game mods collection view via a collection of mod preset setting view entities.
+    /// </summary>
+    /// <param name="presetSettings">A collection containing objects of the <see cref="ModPresetSettingView"/> type.</param>
+    /// <returns>An instance of the <see cref="FullGameModsCollectionView"/> class.</returns>
+    public static FullGameModsCollectionView CreateGameModsCollectionViewByPresetSettings(
+        ICollection<ModPresetSettingView> presetSettings)
+    {
+        List<UpdatableGameModificationView> gameModificationViews = new ();
+
+        foreach (ModPresetSettingView setting in presetSettings)
+        {
+            GameModificationInfo gameModInfo = CustomGameSetupManager.TotalModificationsList.ElementAt(setting.Id.NumericId);
+
+            UpdatableGameModificationView gameModView;
+            if (setting.UseCustomizablePreset)
+            {
+                gameModView = UpdatableGameModificationView.CreateGameModificationViewByCustomizablePreset(setting.Id, gameModInfo);
+            }
+            else
+            {
+                RedistributableModPreset redistributableModPreset = AvailableModSupportPresets.Find(
+                    preset => preset.Metadata.Guid == setting.RedistributablePresetGuid) !;
+
+                gameModView = UpdatableGameModificationView.CreateGameModificationViewByRedistributablePreset(
+                    setting.Id, gameModInfo, redistributableModPreset);
+            }
+
+            gameModificationViews.Add(gameModView);
+        }
+
+        return new FullGameModsCollectionView(gameModificationViews);
     }
 
     private static void CreatePresetsConfigFileByDefault(GameSupportConfiguration configuration)

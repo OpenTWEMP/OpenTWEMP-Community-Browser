@@ -15,14 +15,14 @@ public record GameModificationIdView
     /// <param name="id">An object used by the game modification as the identifier.</param>
     public GameModificationIdView(object? id)
     {
-        this.NumericId = Convert.ToUInt32(id);
+        this.NumericId = Convert.ToInt32(id);
         this.TextId = Convert.ToString(this.NumericId);
     }
 
     /// <summary>
     /// Gets the identifier as a unsigned integer number.
     /// </summary>
-    public uint NumericId { get; }
+    public int NumericId { get; }
 
     /// <summary>
     /// Gets the identifier as a Unicode string.
