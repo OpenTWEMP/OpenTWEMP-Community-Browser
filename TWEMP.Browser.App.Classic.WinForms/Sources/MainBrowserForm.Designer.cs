@@ -67,6 +67,7 @@ namespace TWEMP.Browser.App.Classic
             appMenuStrip = new MenuStrip();
             toolStripAppItem = new ToolStripMenuItem();
             gameSetupSettingsToolStripMenuItem = new ToolStripMenuItem();
+            modSupportPresetSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             applicationSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
@@ -81,7 +82,7 @@ namespace TWEMP.Browser.App.Classic
             buttonCollectionCreate = new Button();
             buttonCollectionManage = new Button();
             panelCollections = new Panel();
-            modSupportPresetSettingsToolStripMenuItem = new ToolStripMenuItem();
+            gameMusicPlayerToolStripMenuItem = new ToolStripMenuItem();
             panelLauncherOptions.SuspendLayout();
             groupBoxConfigProfiles.SuspendLayout();
             groupBoxLauncherProviders.SuspendLayout();
@@ -505,7 +506,7 @@ namespace TWEMP.Browser.App.Classic
             // 
             // toolStripAppItem
             // 
-            toolStripAppItem.DropDownItems.AddRange(new ToolStripItem[] { gameSetupSettingsToolStripMenuItem, modSupportPresetSettingsToolStripMenuItem, toolStripSeparator1, applicationSettingsToolStripMenuItem, toolStripSeparator2, applicationHomeFolderToolStripMenuItem, exitFromApplicationToolStripMenuItem });
+            toolStripAppItem.DropDownItems.AddRange(new ToolStripItem[] { gameSetupSettingsToolStripMenuItem, modSupportPresetSettingsToolStripMenuItem, gameMusicPlayerToolStripMenuItem, toolStripSeparator1, applicationSettingsToolStripMenuItem, toolStripSeparator2, applicationHomeFolderToolStripMenuItem, exitFromApplicationToolStripMenuItem });
             toolStripAppItem.Name = "toolStripAppItem";
             toolStripAppItem.Size = new Size(72, 20);
             toolStripAppItem.Text = "BROWSER";
@@ -513,38 +514,45 @@ namespace TWEMP.Browser.App.Classic
             // gameSetupSettingsToolStripMenuItem
             // 
             gameSetupSettingsToolStripMenuItem.Name = "gameSetupSettingsToolStripMenuItem";
-            gameSetupSettingsToolStripMenuItem.Size = new Size(224, 22);
+            gameSetupSettingsToolStripMenuItem.Size = new Size(257, 22);
             gameSetupSettingsToolStripMenuItem.Text = "Game Setup Settings";
             gameSetupSettingsToolStripMenuItem.Click += GameSetupSettingsToolStripMenuItem_Click;
+            // 
+            // modSupportPresetSettingsToolStripMenuItem
+            // 
+            modSupportPresetSettingsToolStripMenuItem.Name = "modSupportPresetSettingsToolStripMenuItem";
+            modSupportPresetSettingsToolStripMenuItem.Size = new Size(257, 22);
+            modSupportPresetSettingsToolStripMenuItem.Text = "Mod Support Preset Settings";
+            modSupportPresetSettingsToolStripMenuItem.Click += ModSupportPresetSettingsToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(221, 6);
+            toolStripSeparator1.Size = new Size(254, 6);
             // 
             // applicationSettingsToolStripMenuItem
             // 
             applicationSettingsToolStripMenuItem.Name = "applicationSettingsToolStripMenuItem";
-            applicationSettingsToolStripMenuItem.Size = new Size(224, 22);
+            applicationSettingsToolStripMenuItem.Size = new Size(257, 22);
             applicationSettingsToolStripMenuItem.Text = "Application Settings";
             applicationSettingsToolStripMenuItem.Click += ApplicationSettingsToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(221, 6);
+            toolStripSeparator2.Size = new Size(254, 6);
             // 
             // applicationHomeFolderToolStripMenuItem
             // 
             applicationHomeFolderToolStripMenuItem.Name = "applicationHomeFolderToolStripMenuItem";
-            applicationHomeFolderToolStripMenuItem.Size = new Size(224, 22);
+            applicationHomeFolderToolStripMenuItem.Size = new Size(257, 22);
             applicationHomeFolderToolStripMenuItem.Text = "Go to Home Folder";
             applicationHomeFolderToolStripMenuItem.Click += ApplicationHomeFolderToolStripMenuItem_Click;
             // 
             // exitFromApplicationToolStripMenuItem
             // 
             exitFromApplicationToolStripMenuItem.Name = "exitFromApplicationToolStripMenuItem";
-            exitFromApplicationToolStripMenuItem.Size = new Size(224, 22);
+            exitFromApplicationToolStripMenuItem.Size = new Size(257, 22);
             exitFromApplicationToolStripMenuItem.Text = "Exit from Program";
             exitFromApplicationToolStripMenuItem.Click += ExitFromApplicationToolStripMenuItem_Click;
             // 
@@ -650,12 +658,12 @@ namespace TWEMP.Browser.App.Classic
             panelCollections.Size = new Size(321, 110);
             panelCollections.TabIndex = 21;
             // 
-            // modSupportPresetSettingsToolStripMenuItem
+            // gameMusicPlayerToolStripMenuItem
             // 
-            modSupportPresetSettingsToolStripMenuItem.Name = "modSupportPresetSettingsToolStripMenuItem";
-            modSupportPresetSettingsToolStripMenuItem.Size = new Size(224, 22);
-            modSupportPresetSettingsToolStripMenuItem.Text = "Mod Support Preset Settings";
-            modSupportPresetSettingsToolStripMenuItem.Click += ModSupportPresetSettingsToolStripMenuItem_Click;
+            gameMusicPlayerToolStripMenuItem.Name = "gameMusicPlayerToolStripMenuItem";
+            gameMusicPlayerToolStripMenuItem.Size = new Size(257, 22);
+            gameMusicPlayerToolStripMenuItem.Text = "Media Device - Game Music Player";
+            gameMusicPlayerToolStripMenuItem.Click += GameMusicPlayerToolStripMenuItem_Click;
             // 
             // MainBrowserForm
             // 
@@ -752,5 +760,6 @@ namespace TWEMP.Browser.App.Classic
         private Button buttonCollectionManage;
         private Panel panelCollections;
         private ToolStripMenuItem modSupportPresetSettingsToolStripMenuItem;
+        private ToolStripMenuItem gameMusicPlayerToolStripMenuItem;
     }
 }

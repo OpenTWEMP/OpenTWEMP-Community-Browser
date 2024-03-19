@@ -56,6 +56,12 @@ internal partial class MainBrowserForm
         appSettingsForm.ShowDialog();
     }
 
+    private void GameMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var gameMusicPlayerForm = new GameMusicPlayerForm();
+        gameMusicPlayerForm.ShowDialog();
+    }
+
     private void ConfigSettingsToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var modConfigSettingsForm = new ModConfigSettingsForm();
