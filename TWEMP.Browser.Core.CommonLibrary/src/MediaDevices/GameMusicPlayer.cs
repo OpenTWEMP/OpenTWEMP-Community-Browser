@@ -9,15 +9,30 @@ namespace TWEMP.Browser.Core.CommonLibrary.MediaDevices;
 /// </summary>
 public class GameMusicPlayer
 {
+    private static readonly FileInfo DefaultAudioFileInfo;
+
+    private readonly IAudioPlaybackDevice currentAudioPlaybackDevice;
+
     private FileInfo currentAudioFileInfo;
+
+    /// <summary>
+    /// Initializes static members of the <see cref="GameMusicPlayer"/> class.
+    /// </summary>
+    static GameMusicPlayer()
+    {
+        const string defaultAudioFilePath = "DefaultAudioFile.mp3"; // TODO: Define the default audio file for the game music player.
+        DefaultAudioFileInfo = new FileInfo(defaultAudioFilePath);
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GameMusicPlayer"/> class.
     /// </summary>
-    /// <param name="audioFileInfo">Information about an audio file.</param>
-    private GameMusicPlayer(FileInfo audioFileInfo)
+    /// <param name="audioPlaybackDevice">An instance of a target audio playback device.</param>
+    public GameMusicPlayer(IAudioPlaybackDevice audioPlaybackDevice)
     {
-        this.currentAudioFileInfo = audioFileInfo;
+        this.currentAudioPlaybackDevice = audioPlaybackDevice;
+
+        this.currentAudioFileInfo = DefaultAudioFileInfo;
 
         this.State = GameMusicPlaybackState.Cued;
         this.Volume = default;
@@ -34,23 +49,33 @@ public class GameMusicPlayer
     public MusicPlayerVolume Volume { get; }
 
     /// <summary>
-    /// Configures a new game music player to playback a target audio file.
-    /// </summary>
-    /// <param name="targetAudioFileInfo">Information about an audio file.</param>
-    /// <returns>A new instance of the <see cref="GameMusicPlayer"/> class.</returns>
-    public static GameMusicPlayer Configure(FileInfo targetAudioFileInfo)
-    {
-        return new GameMusicPlayer(targetAudioFileInfo);
-    }
-
-    /// <summary>
     /// Plays the loaded audio file via this game music player.
     /// </summary>
     public void Play()
     {
-        this.State = GameMusicPlaybackState.Playing;
+        if (this.State == GameMusicPlaybackState.Paused || this.State == GameMusicPlaybackState.Stopped)
+        {
+            this.StartPlayback();
+        }
+    }
 
-        // TODO: Add needed NAudio code
+    /// <summary>
+    /// Plays a target audio file via this game music player.
+    /// </summary>
+    /// <param name="targetAudioFileInfo">Information about an audio file.</param>
+    public void Play(FileInfo targetAudioFileInfo)
+    {
+        if (this.State != GameMusicPlaybackState.Uncued)
+        {
+            this.UnloadAudio();
+        }
+
+        this.LoadAudio(targetAudioFileInfo);
+
+        if (this.State == GameMusicPlaybackState.Cued)
+        {
+            this.StartPlayback();
+        }
     }
 
     /// <summary>
@@ -58,9 +83,10 @@ public class GameMusicPlayer
     /// </summary>
     public void Stop()
     {
-        this.State = GameMusicPlaybackState.Stopped;
-
-        // TODO: Add needed NAudio code
+        if (this.State == GameMusicPlaybackState.Playing || this.State == GameMusicPlaybackState.Paused)
+        {
+            this.StopPlayback();
+        }
     }
 
     /// <summary>
@@ -68,9 +94,10 @@ public class GameMusicPlayer
     /// </summary>
     public void Pause()
     {
-        this.State = GameMusicPlaybackState.Paused;
-
-        // TODO: Add needed NAudio code
+        if (this.State == GameMusicPlaybackState.Playing)
+        {
+            this.PausePlayback();
+        }
     }
 
     /// <summary>
@@ -78,20 +105,34 @@ public class GameMusicPlayer
     /// </summary>
     public void Rewind()
     {
-        this.State = GameMusicPlaybackState.Playing;
-
-        // TODO: Add needed NAudio code
+        if (this.State == GameMusicPlaybackState.Playing || this.State == GameMusicPlaybackState.Paused)
+        {
+            this.RewindPlayback();
+        }
     }
 
     /// <summary>
     /// Updates the music playback volume value by a target volume value.
     /// </summary>
-    /// <param name="targetVolumeValue">A target volume value.</param>
+    /// <param name="targetVolumeValue">A target volume integer value.</param>
     public void UpdateVolume(int targetVolumeValue)
     {
-        this.Volume.UpdateVolumeValue(targetVolumeValue);
+        if (this.Volume.UpdateVolumeValue(targetVolumeValue))
+        {
+            this.currentAudioPlaybackDevice.UpdateVolume(this.Volume.CurrentValue);
+        }
+    }
 
-        // TODO: Add needed NAudio code
+    /// <summary>
+    /// Updates the music playback volume value by a target volume value.
+    /// </summary>
+    /// <param name="targetVolumeValue">A target volume floating point value.</param>
+    public void UpdateVolume(float targetVolumeValue)
+    {
+        if (this.Volume.UpdateVolumeValue((float)targetVolumeValue))
+        {
+            this.currentAudioPlaybackDevice.UpdateVolume(this.Volume.CurrentValue);
+        }
     }
 
     /// <summary>
@@ -99,9 +140,7 @@ public class GameMusicPlayer
     /// </summary>
     public void MuteVolume()
     {
-        this.Volume.SetMinVolumeValue();
-
-        // TODO: Add needed NAudio code
+        this.UpdateVolume(MusicPlayerVolume.MinValue);
     }
 
     /// <summary>
@@ -109,8 +148,43 @@ public class GameMusicPlayer
     /// </summary>
     public void ChargeVolume()
     {
-        this.Volume.SetMaxVolumeValue();
+        this.UpdateVolume(MusicPlayerVolume.MaxValue);
+    }
 
-        // TODO: Add needed NAudio code
+    private void LoadAudio(FileInfo audioFileInfo)
+    {
+        this.currentAudioFileInfo = audioFileInfo;
+        this.currentAudioPlaybackDevice.Cue(this.currentAudioFileInfo.FullName);
+        this.State = GameMusicPlaybackState.Cued;
+    }
+
+    private void UnloadAudio()
+    {
+        this.currentAudioPlaybackDevice.Uncue();
+        this.State = GameMusicPlaybackState.Uncued;
+    }
+
+    private void StartPlayback()
+    {
+        this.currentAudioPlaybackDevice.Play();
+        this.State = GameMusicPlaybackState.Playing;
+    }
+
+    private void StopPlayback()
+    {
+        this.currentAudioPlaybackDevice.Stop();
+        this.State = GameMusicPlaybackState.Stopped;
+    }
+
+    private void PausePlayback()
+    {
+        this.currentAudioPlaybackDevice.Pause();
+        this.State = GameMusicPlaybackState.Paused;
+    }
+
+    private void RewindPlayback()
+    {
+        this.currentAudioPlaybackDevice.Rewind();
+        this.State = GameMusicPlaybackState.Playing;
     }
 }

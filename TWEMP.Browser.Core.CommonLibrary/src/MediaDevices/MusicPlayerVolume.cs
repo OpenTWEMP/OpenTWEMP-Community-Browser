@@ -47,39 +47,43 @@ public struct MusicPlayerVolume
     /// <summary>
     /// Updates the current volume value by a new volume value.
     /// </summary>
-    /// <param name="targetVolumeValue">A target volume value.</param>
-    public void UpdateVolumeValue(int targetVolumeValue)
+    /// <param name="targetVolumeValue">A target volume integer value.</param>
+    /// <returns>
+    /// Returns 'true' if the current volume value was succesfully updated else 'false'.
+    /// </returns>
+    public bool UpdateVolumeValue(int targetVolumeValue)
     {
-        if (targetVolumeValue != this.CurrentValue)
+        return this.UpdateVolumeValue((float)targetVolumeValue);
+    }
+
+    /// <summary>
+    /// Updates the current volume value by a new volume value.
+    /// </summary>
+    /// <param name="targetVolumeValue">A target volume floating point value.</param>
+    /// <returns>
+    /// Returns 'true' if the current volume value was succesfully updated else 'false'.
+    /// </returns>
+    public bool UpdateVolumeValue(float targetVolumeValue)
+    {
+        if (this.CurrentValue != targetVolumeValue)
         {
-            if ((targetVolumeValue > MinVolumeValue) && (targetVolumeValue < MinVolumeValue))
+            if (IsValidVolumeValue(targetVolumeValue))
             {
-                this.CurrentValue = targetVolumeValue / DivisorFloatingPointValue;
+                this.CurrentValue = targetVolumeValue;
+                return true;
             }
         }
+
+        return false;
     }
 
-    /// <summary>
-    /// Sets the current volume value to the minimum volume value.
-    /// </summary>
-    public void SetMinVolumeValue()
+    private static bool IsValidVolumeValue(float value)
     {
-        this.SetExtremeVolumeValue(MinValue);
-    }
-
-    /// <summary>
-    /// Sets the current volume value to the maximum volume value.
-    /// </summary>
-    public void SetMaxVolumeValue()
-    {
-        this.SetExtremeVolumeValue(MaxValue);
-    }
-
-    private void SetExtremeVolumeValue(float extremeVolumeValue)
-    {
-        if (this.CurrentValue != extremeVolumeValue)
+        if ((value < MinVolumeValue) || (value > MaxVolumeValue))
         {
-            this.CurrentValue = extremeVolumeValue;
+            return false;
         }
+
+        return true;
     }
 }
