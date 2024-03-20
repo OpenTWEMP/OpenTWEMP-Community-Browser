@@ -9,30 +9,20 @@ namespace TWEMP.Browser.Core.CommonLibrary.MediaDevices;
 /// </summary>
 public class GameMusicPlayer
 {
-    private static readonly FileInfo DefaultAudioFileInfo;
-
     private readonly IAudioPlaybackDevice currentAudioPlaybackDevice;
 
     private FileInfo currentAudioFileInfo;
 
     /// <summary>
-    /// Initializes static members of the <see cref="GameMusicPlayer"/> class.
-    /// </summary>
-    static GameMusicPlayer()
-    {
-        const string defaultAudioFilePath = "DefaultAudioFile.mp3"; // TODO: Define the default audio file for the game music player.
-        DefaultAudioFileInfo = new FileInfo(defaultAudioFilePath);
-    }
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="GameMusicPlayer"/> class.
     /// </summary>
     /// <param name="audioPlaybackDevice">An instance of a target audio playback device.</param>
-    public GameMusicPlayer(IAudioPlaybackDevice audioPlaybackDevice)
+    /// <param name="audioFileInfo">The information about a target audio file.</param>
+    public GameMusicPlayer(IAudioPlaybackDevice audioPlaybackDevice, FileInfo audioFileInfo)
     {
         this.currentAudioPlaybackDevice = audioPlaybackDevice;
 
-        this.currentAudioFileInfo = DefaultAudioFileInfo;
+        this.currentAudioFileInfo = audioFileInfo;
 
         this.State = GameMusicPlaybackState.Cued;
         this.Volume = default;
