@@ -166,7 +166,7 @@ public class GameMusicPlayer
 
     private void StartPlayback()
     {
-        this.currentAudioPlaybackDevice.Play();
+        this.currentAudioPlaybackDevice.Play(this.Volume.CurrentValue);
         this.State = GameMusicPlaybackState.Playing;
     }
 

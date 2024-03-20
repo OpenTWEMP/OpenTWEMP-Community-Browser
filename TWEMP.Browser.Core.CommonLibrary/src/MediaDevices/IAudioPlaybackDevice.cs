@@ -24,7 +24,8 @@ public interface IAudioPlaybackDevice
     /// <summary>
     ///  Plays the loaded audio file via this audio playback device.
     /// </summary>
-    public abstract void Play();
+    /// <param name="audioVolumeValue">A target audio volume value.</param>
+    public abstract void Play(float audioVolumeValue);
 
     /// <summary>
     ///  Stops playing the audio file into this audio playback device.
