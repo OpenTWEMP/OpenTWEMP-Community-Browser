@@ -15,6 +15,7 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
+using TWEMP.Browser.Core.CommonLibrary.Logging;
 
 /// <summary>
 /// Serves as a facade interface for available application settings. It is a temp design.
@@ -25,11 +26,22 @@ public static class Settings
 
     static Settings()
     {
+        // Initialize the default logging device.
+        Logger.InitializeByDefault();
+
+        Logger.CurrentInstance?.Open(); // test logging
+
         // Setup the global object of the GUI style manager by default.
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
+        Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
+            "AppGuiStyleManager", "AppGuiStyleManager.Create()", DateTime.Now)); // test logging
 
         // Setup the global device for game support manager by default.
         GameSupportManager.Initialize();
+        Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
+            "GameSupportManager", "GameSupportManager.Initialize()", DateTime.Now)); // test logging
+
+        Logger.CurrentInstance?.Close(); // test logging
     }
 
     #region Facade Interface: AppSystemSettingsManager
