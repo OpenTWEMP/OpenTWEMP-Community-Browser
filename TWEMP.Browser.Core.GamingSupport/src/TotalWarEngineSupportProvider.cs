@@ -58,45 +58,6 @@ public static class TotalWarEngineSupportProvider
     public const string M2TWK_FOLDERNAME_MOD3 = "crusades";
     public const string M2TWK_FOLDERNAME_MOD4 = "teutonic";
 
-    private const string MOD_NODE1_ANIMATIONS = "animations";
-    private const string ANIMATIONS_DAT_PACK = "pack.dat";
-    private const string ANIMATIONS_DAT_SKELETONS = "skeletons.dat";
-    private const string ANIMATIONS_IDX_PACK = "pack.idx";
-    private const string ANIMATIONS_IDX_SKELETONS = "skeletons.idx";
-
-    private const string MOD_NODE1_SOUNDS = "sounds";
-    private const string SOUNDS_IDX_EVENTS = "events.idx";
-    private const string SOUNDS_IDX_MUSIC = "Music.idx";
-    private const string SOUNDS_IDX_SFX = "SFX.idx";
-    private const string SOUNDS_IDX_VOICE = "Voice.idx";
-    private const string SOUNDS_DAT_EVENTS = "events.dat";
-    private const string SOUNDS_DAT_MUSIC = "Music.dat";
-    private const string SOUNDS_DAT_SFX = "SFX.dat";
-    private const string SOUNDS_DAT_VOICE = "Voice.dat";
-
-    private const string MOD_NODE1_WORLD = "world";
-    private const string MOD_NODE2_MAPS = "maps";
-
-    private const string MOD_NODE3_MAPS_BASE = "base";
-    private const string WORLD_MAPS_BASE_MAP_CLIMATES = "map_climates.tga";
-    private const string WORLD_MAPS_BASE_MAP_FE = "map_FE.tga";
-    private const string WORLD_MAPS_BASE_MAP_FEATURES = "map_features.tga";
-    private const string WORLD_MAPS_BASE_MAP_FOG = "map_fog.tga";
-    private const string WORLD_MAPS_BASE_MAP_GROUNDTYPES = "map_ground_types.tga";
-    private const string WORLD_MAPS_BASE_MAP_HEIGHTS = "map_heights.tga";
-    private const string WORLD_MAPS_BASE_MAP_REGIONS = "map_regions.tga";
-    private const string WORLD_MAPS_BASE_MAP_ROUGHNESS = "map_roughness.tga";
-    private const string WORLD_MAPS_BASE_MAP_TRADEROUTES = "map_trade_routes.tga";
-    private const string WORLD_MAPS_BASE_MAP_WATERSURFACES = "water_surface.tga";
-    private const string WORLD_MAPS_BASE_DESCR_REGIONS = "descr_regions.txt";
-    private const string WORLD_MAPS_BASE_DESCR_SOUNDMUSICTYPES = "descr_sounds_music_types.txt";
-
-    private const string MOD_NODE3_MAPS_CAMPAIGN = "campaign";
-    private const string MOD_NODE4_MAPS_IMPERIALCAMPAIGN = "imperial_campaign";
-    private const string WORLD_MAPS_CAMPAIGN_DESCR_STRAT = "descr_strat.txt";
-    private const string WORLD_MAPS_CAMPAIGN_DESCR_WINCONDITIONS = "descr_win_conditions.txt";
-    private const string WORLD_MAPS_CAMPAIGN_SCRIPT = "campaign_script.txt";
-
     public static bool IsCompatibleModification(string modHomeDirectoryPath)
     {
         // 1. Check mod's 'data' root folder.
