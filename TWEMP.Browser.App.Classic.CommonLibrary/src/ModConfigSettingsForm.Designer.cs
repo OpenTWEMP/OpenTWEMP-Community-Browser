@@ -79,6 +79,11 @@
             tabPage4 = new TabPage();
             label4 = new Label();
             tabPage5 = new TabPage();
+            cfgMiscGroupBox = new GroupBox();
+            cfgMiscBypassToStrategySavePanel = new Panel();
+            cfgMiscBypassToStrategySaveTextBox = new TextBox();
+            cfgMiscBypassToStrategySaveLabel = new Label();
+            cfgMiscUnlockCampaignCheckBox = new CheckBox();
             cfgIOGroupBox = new GroupBox();
             cfgIOFileFirstCheckBox = new CheckBox();
             cfgFeaturesGroupBox = new GroupBox();
@@ -99,6 +104,13 @@
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
+            cfgNetworkGroupBox = new GroupBox();
+            cfgNetworkUseIpPanel = new Panel();
+            cfgNetworkUsePortPanel = new Panel();
+            cfgNetworkUseIpLabel = new Label();
+            cfgNetworkUsePortLabel = new Label();
+            cfgNetworkUseIpTextBox = new TextBox();
+            cfgNetworkUsePortTextBox = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -129,11 +141,16 @@
             ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMaxZoomNumericUpDown).BeginInit();
             tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
+            cfgMiscGroupBox.SuspendLayout();
+            cfgMiscBypassToStrategySavePanel.SuspendLayout();
             cfgIOGroupBox.SuspendLayout();
             cfgFeaturesGroupBox.SuspendLayout();
             tabPage6.SuspendLayout();
             tabPage7.SuspendLayout();
             cfgUIGroupBox.SuspendLayout();
+            cfgNetworkGroupBox.SuspendLayout();
+            cfgNetworkUseIpPanel.SuspendLayout();
+            cfgNetworkUsePortPanel.SuspendLayout();
             SuspendLayout();
             // 
             // saveConfigSettingsButton
@@ -603,6 +620,8 @@
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(cfgNetworkGroupBox);
+            tabPage5.Controls.Add(cfgMiscGroupBox);
             tabPage5.Controls.Add(cfgIOGroupBox);
             tabPage5.Controls.Add(cfgFeaturesGroupBox);
             tabPage5.Controls.Add(label5);
@@ -613,6 +632,52 @@
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Game Settings";
             tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // cfgMiscGroupBox
+            // 
+            cfgMiscGroupBox.Controls.Add(cfgMiscBypassToStrategySavePanel);
+            cfgMiscGroupBox.Controls.Add(cfgMiscUnlockCampaignCheckBox);
+            cfgMiscGroupBox.Location = new Point(29, 195);
+            cfgMiscGroupBox.Name = "cfgMiscGroupBox";
+            cfgMiscGroupBox.Size = new Size(286, 100);
+            cfgMiscGroupBox.TabIndex = 5;
+            cfgMiscGroupBox.TabStop = false;
+            cfgMiscGroupBox.Text = "[misc]";
+            // 
+            // cfgMiscBypassToStrategySavePanel
+            // 
+            cfgMiscBypassToStrategySavePanel.BackColor = Color.DarkGray;
+            cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveTextBox);
+            cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveLabel);
+            cfgMiscBypassToStrategySavePanel.Location = new Point(15, 51);
+            cfgMiscBypassToStrategySavePanel.Name = "cfgMiscBypassToStrategySavePanel";
+            cfgMiscBypassToStrategySavePanel.Size = new Size(265, 43);
+            cfgMiscBypassToStrategySavePanel.TabIndex = 1;
+            // 
+            // cfgMiscBypassToStrategySaveTextBox
+            // 
+            cfgMiscBypassToStrategySaveTextBox.Location = new Point(157, 7);
+            cfgMiscBypassToStrategySaveTextBox.Name = "cfgMiscBypassToStrategySaveTextBox";
+            cfgMiscBypassToStrategySaveTextBox.Size = new Size(100, 23);
+            cfgMiscBypassToStrategySaveTextBox.TabIndex = 1;
+            // 
+            // cfgMiscBypassToStrategySaveLabel
+            // 
+            cfgMiscBypassToStrategySaveLabel.Location = new Point(8, 7);
+            cfgMiscBypassToStrategySaveLabel.Name = "cfgMiscBypassToStrategySaveLabel";
+            cfgMiscBypassToStrategySaveLabel.Size = new Size(143, 23);
+            cfgMiscBypassToStrategySaveLabel.TabIndex = 0;
+            cfgMiscBypassToStrategySaveLabel.Text = "bypass_to_strategy_save";
+            // 
+            // cfgMiscUnlockCampaignCheckBox
+            // 
+            cfgMiscUnlockCampaignCheckBox.AutoSize = true;
+            cfgMiscUnlockCampaignCheckBox.Location = new Point(14, 24);
+            cfgMiscUnlockCampaignCheckBox.Name = "cfgMiscUnlockCampaignCheckBox";
+            cfgMiscUnlockCampaignCheckBox.Size = new Size(120, 19);
+            cfgMiscUnlockCampaignCheckBox.TabIndex = 0;
+            cfgMiscUnlockCampaignCheckBox.Text = "unlock_campaign";
+            cfgMiscUnlockCampaignCheckBox.UseVisualStyleBackColor = true;
             // 
             // cfgIOGroupBox
             // 
@@ -816,6 +881,70 @@
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
             // 
+            // cfgNetworkGroupBox
+            // 
+            cfgNetworkGroupBox.Controls.Add(cfgNetworkUsePortPanel);
+            cfgNetworkGroupBox.Controls.Add(cfgNetworkUseIpPanel);
+            cfgNetworkGroupBox.Location = new Point(294, 25);
+            cfgNetworkGroupBox.Name = "cfgNetworkGroupBox";
+            cfgNetworkGroupBox.Size = new Size(426, 147);
+            cfgNetworkGroupBox.TabIndex = 6;
+            cfgNetworkGroupBox.TabStop = false;
+            cfgNetworkGroupBox.Text = "[network]";
+            // 
+            // cfgNetworkUseIpPanel
+            // 
+            cfgNetworkUseIpPanel.BackColor = Color.Silver;
+            cfgNetworkUseIpPanel.Controls.Add(cfgNetworkUseIpTextBox);
+            cfgNetworkUseIpPanel.Controls.Add(cfgNetworkUseIpLabel);
+            cfgNetworkUseIpPanel.Location = new Point(20, 30);
+            cfgNetworkUseIpPanel.Name = "cfgNetworkUseIpPanel";
+            cfgNetworkUseIpPanel.Size = new Size(400, 37);
+            cfgNetworkUseIpPanel.TabIndex = 0;
+            // 
+            // cfgNetworkUsePortPanel
+            // 
+            cfgNetworkUsePortPanel.BackColor = Color.Silver;
+            cfgNetworkUsePortPanel.Controls.Add(cfgNetworkUsePortTextBox);
+            cfgNetworkUsePortPanel.Controls.Add(cfgNetworkUsePortLabel);
+            cfgNetworkUsePortPanel.Location = new Point(20, 73);
+            cfgNetworkUsePortPanel.Name = "cfgNetworkUsePortPanel";
+            cfgNetworkUsePortPanel.Size = new Size(400, 42);
+            cfgNetworkUsePortPanel.TabIndex = 1;
+            // 
+            // cfgNetworkUseIpLabel
+            // 
+            cfgNetworkUseIpLabel.Location = new Point(11, 8);
+            cfgNetworkUseIpLabel.Name = "cfgNetworkUseIpLabel";
+            cfgNetworkUseIpLabel.Size = new Size(100, 23);
+            cfgNetworkUseIpLabel.TabIndex = 0;
+            cfgNetworkUseIpLabel.Text = "use_ip";
+            // 
+            // cfgNetworkUsePortLabel
+            // 
+            cfgNetworkUsePortLabel.Location = new Point(3, 0);
+            cfgNetworkUsePortLabel.Name = "cfgNetworkUsePortLabel";
+            cfgNetworkUsePortLabel.Size = new Size(100, 24);
+            cfgNetworkUsePortLabel.TabIndex = 0;
+            cfgNetworkUsePortLabel.Text = "use_port";
+            cfgNetworkUsePortLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cfgNetworkUseIpTextBox
+            // 
+            cfgNetworkUseIpTextBox.Location = new Point(84, 5);
+            cfgNetworkUseIpTextBox.Name = "cfgNetworkUseIpTextBox";
+            cfgNetworkUseIpTextBox.Size = new Size(182, 23);
+            cfgNetworkUseIpTextBox.TabIndex = 1;
+            cfgNetworkUseIpTextBox.Text = "xxx.xxx.xxx.xxx";
+            // 
+            // cfgNetworkUsePortTextBox
+            // 
+            cfgNetworkUsePortTextBox.Location = new Point(84, 2);
+            cfgNetworkUsePortTextBox.Name = "cfgNetworkUsePortTextBox";
+            cfgNetworkUsePortTextBox.Size = new Size(182, 23);
+            cfgNetworkUsePortTextBox.TabIndex = 1;
+            cfgNetworkUsePortTextBox.Text = "27750";
+            // 
             // ModConfigSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -873,6 +1002,10 @@
             tabPage4.PerformLayout();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
+            cfgMiscGroupBox.ResumeLayout(false);
+            cfgMiscGroupBox.PerformLayout();
+            cfgMiscBypassToStrategySavePanel.ResumeLayout(false);
+            cfgMiscBypassToStrategySavePanel.PerformLayout();
             cfgIOGroupBox.ResumeLayout(false);
             cfgIOGroupBox.PerformLayout();
             cfgFeaturesGroupBox.ResumeLayout(false);
@@ -882,6 +1015,11 @@
             tabPage7.ResumeLayout(false);
             cfgUIGroupBox.ResumeLayout(false);
             cfgUIGroupBox.PerformLayout();
+            cfgNetworkGroupBox.ResumeLayout(false);
+            cfgNetworkUseIpPanel.ResumeLayout(false);
+            cfgNetworkUseIpPanel.PerformLayout();
+            cfgNetworkUsePortPanel.ResumeLayout(false);
+            cfgNetworkUsePortPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -958,5 +1096,17 @@
         private CheckBox cfgUiFullBattleHudCheckBox;
         private CheckBox cfgUiButtonsCheckBox;
         private CheckBox cfgUiSaCardsCheckBox;
+        private GroupBox cfgMiscGroupBox;
+        private CheckBox cfgMiscUnlockCampaignCheckBox;
+        private Panel cfgMiscBypassToStrategySavePanel;
+        private Label cfgMiscBypassToStrategySaveLabel;
+        private TextBox cfgMiscBypassToStrategySaveTextBox;
+        private GroupBox cfgNetworkGroupBox;
+        private Panel cfgNetworkUsePortPanel;
+        private Label cfgNetworkUsePortLabel;
+        private Panel cfgNetworkUseIpPanel;
+        private TextBox cfgNetworkUseIpTextBox;
+        private Label cfgNetworkUseIpLabel;
+        private TextBox cfgNetworkUsePortTextBox;
     }
 }
