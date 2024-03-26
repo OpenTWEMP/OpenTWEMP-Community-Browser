@@ -54,6 +54,17 @@
             cfgAudioSubFactionAccentsEnableCheckBox = new CheckBox();
             label2 = new Label();
             tabPage3 = new TabPage();
+            cfgCameraGroupBox = new GroupBox();
+            cfgCameraDefaultInBattlePanel = new Panel();
+            cfgControlsDefaultInBattleComboBox = new ComboBox();
+            cfgControlsDefaultInBattleLabel = new Label();
+            cfgCameraRotatePanel = new Panel();
+            cfgCameraRotateNumericUpDown = new NumericUpDown();
+            cfgCameraRotateLabel = new Label();
+            cfgCameraMovePanel = new Panel();
+            cfgCameraMoveNumericUpDown = new NumericUpDown();
+            cfgCameraMoveLabel = new Label();
+            cfgCameraRestrictCheckBox = new CheckBox();
             cfgControlsGroupBox = new GroupBox();
             cfgControlsKeysetPanel = new Panel();
             cfgControlsKeysetNumericUpDown = new NumericUpDown();
@@ -75,22 +86,19 @@
             label5 = new Label();
             tabPage6 = new TabPage();
             label6 = new Label();
+            tabPage7 = new TabPage();
+            cfgUIGroupBox = new Panel();
+            cfgUiUnitCardsCheckBox = new CheckBox();
+            cfgUiShowTooltipsCheckBox = new CheckBox();
+            cfgUiRadarCheckBox = new CheckBox();
+            cfgUiFullBattleHudCheckBox = new CheckBox();
+            cfgUiButtonsCheckBox = new CheckBox();
+            cfgUiSaCardsCheckBox = new CheckBox();
             resetConfigSettingsButton = new Button();
             importConfigSettingsButton = new Button();
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
-            cfgCameraGroupBox = new GroupBox();
-            cfgCameraRestrictCheckBox = new CheckBox();
-            cfgCameraMovePanel = new Panel();
-            cfgCameraMoveNumericUpDown = new NumericUpDown();
-            cfgCameraMoveLabel = new Label();
-            cfgCameraRotatePanel = new Panel();
-            cfgCameraRotateNumericUpDown = new NumericUpDown();
-            cfgCameraRotateLabel = new Label();
-            cfgCameraDefaultInBattlePanel = new Panel();
-            cfgControlsDefaultInBattleLabel = new Label();
-            cfgControlsDefaultInBattleComboBox = new ComboBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -106,6 +114,12 @@
             ((System.ComponentModel.ISupportInitialize)cfgAudioMasterVolumeNumericUpDown).BeginInit();
             cfgAudioOptionsPanel.SuspendLayout();
             tabPage3.SuspendLayout();
+            cfgCameraGroupBox.SuspendLayout();
+            cfgCameraDefaultInBattlePanel.SuspendLayout();
+            cfgCameraRotatePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgCameraRotateNumericUpDown).BeginInit();
+            cfgCameraMovePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgCameraMoveNumericUpDown).BeginInit();
             cfgControlsGroupBox.SuspendLayout();
             cfgControlsKeysetPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)cfgControlsKeysetNumericUpDown).BeginInit();
@@ -118,12 +132,8 @@
             cfgIOGroupBox.SuspendLayout();
             cfgFeaturesGroupBox.SuspendLayout();
             tabPage6.SuspendLayout();
-            cfgCameraGroupBox.SuspendLayout();
-            cfgCameraMovePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)cfgCameraMoveNumericUpDown).BeginInit();
-            cfgCameraRotatePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)cfgCameraRotateNumericUpDown).BeginInit();
-            cfgCameraDefaultInBattlePanel.SuspendLayout();
+            tabPage7.SuspendLayout();
+            cfgUIGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // saveConfigSettingsButton
@@ -144,6 +154,7 @@
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
             tabControl1.Controls.Add(tabPage6);
+            tabControl1.Controls.Add(tabPage7);
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -375,6 +386,105 @@
             tabPage3.Text = "Camera & Controls";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cfgCameraGroupBox
+            // 
+            cfgCameraGroupBox.Controls.Add(cfgCameraDefaultInBattlePanel);
+            cfgCameraGroupBox.Controls.Add(cfgCameraRotatePanel);
+            cfgCameraGroupBox.Controls.Add(cfgCameraMovePanel);
+            cfgCameraGroupBox.Controls.Add(cfgCameraRestrictCheckBox);
+            cfgCameraGroupBox.Location = new Point(31, 200);
+            cfgCameraGroupBox.Name = "cfgCameraGroupBox";
+            cfgCameraGroupBox.Size = new Size(346, 171);
+            cfgCameraGroupBox.TabIndex = 2;
+            cfgCameraGroupBox.TabStop = false;
+            cfgCameraGroupBox.Text = "[camera]";
+            // 
+            // cfgCameraDefaultInBattlePanel
+            // 
+            cfgCameraDefaultInBattlePanel.BackColor = Color.Gray;
+            cfgCameraDefaultInBattlePanel.Controls.Add(cfgControlsDefaultInBattleComboBox);
+            cfgCameraDefaultInBattlePanel.Controls.Add(cfgControlsDefaultInBattleLabel);
+            cfgCameraDefaultInBattlePanel.Location = new Point(9, 115);
+            cfgCameraDefaultInBattlePanel.Name = "cfgCameraDefaultInBattlePanel";
+            cfgCameraDefaultInBattlePanel.Size = new Size(325, 30);
+            cfgCameraDefaultInBattlePanel.TabIndex = 27;
+            // 
+            // cfgControlsDefaultInBattleComboBox
+            // 
+            cfgControlsDefaultInBattleComboBox.FormattingEnabled = true;
+            cfgControlsDefaultInBattleComboBox.Location = new Point(202, 3);
+            cfgControlsDefaultInBattleComboBox.Name = "cfgControlsDefaultInBattleComboBox";
+            cfgControlsDefaultInBattleComboBox.Size = new Size(120, 23);
+            cfgControlsDefaultInBattleComboBox.TabIndex = 5;
+            // 
+            // cfgControlsDefaultInBattleLabel
+            // 
+            cfgControlsDefaultInBattleLabel.Location = new Point(3, 3);
+            cfgControlsDefaultInBattleLabel.Name = "cfgControlsDefaultInBattleLabel";
+            cfgControlsDefaultInBattleLabel.Size = new Size(193, 23);
+            cfgControlsDefaultInBattleLabel.TabIndex = 4;
+            cfgControlsDefaultInBattleLabel.Text = "default_in_battle";
+            // 
+            // cfgCameraRotatePanel
+            // 
+            cfgCameraRotatePanel.BackColor = Color.Gray;
+            cfgCameraRotatePanel.Controls.Add(cfgCameraRotateNumericUpDown);
+            cfgCameraRotatePanel.Controls.Add(cfgCameraRotateLabel);
+            cfgCameraRotatePanel.Location = new Point(9, 83);
+            cfgCameraRotatePanel.Name = "cfgCameraRotatePanel";
+            cfgCameraRotatePanel.Size = new Size(325, 30);
+            cfgCameraRotatePanel.TabIndex = 26;
+            // 
+            // cfgCameraRotateNumericUpDown
+            // 
+            cfgCameraRotateNumericUpDown.Location = new Point(202, 3);
+            cfgCameraRotateNumericUpDown.Name = "cfgCameraRotateNumericUpDown";
+            cfgCameraRotateNumericUpDown.Size = new Size(120, 23);
+            cfgCameraRotateNumericUpDown.TabIndex = 9;
+            // 
+            // cfgCameraRotateLabel
+            // 
+            cfgCameraRotateLabel.Location = new Point(3, 3);
+            cfgCameraRotateLabel.Name = "cfgCameraRotateLabel";
+            cfgCameraRotateLabel.Size = new Size(193, 23);
+            cfgCameraRotateLabel.TabIndex = 4;
+            cfgCameraRotateLabel.Text = "rotate";
+            // 
+            // cfgCameraMovePanel
+            // 
+            cfgCameraMovePanel.BackColor = Color.Gray;
+            cfgCameraMovePanel.Controls.Add(cfgCameraMoveNumericUpDown);
+            cfgCameraMovePanel.Controls.Add(cfgCameraMoveLabel);
+            cfgCameraMovePanel.Location = new Point(9, 51);
+            cfgCameraMovePanel.Name = "cfgCameraMovePanel";
+            cfgCameraMovePanel.Size = new Size(325, 30);
+            cfgCameraMovePanel.TabIndex = 26;
+            // 
+            // cfgCameraMoveNumericUpDown
+            // 
+            cfgCameraMoveNumericUpDown.Location = new Point(202, 3);
+            cfgCameraMoveNumericUpDown.Name = "cfgCameraMoveNumericUpDown";
+            cfgCameraMoveNumericUpDown.Size = new Size(120, 23);
+            cfgCameraMoveNumericUpDown.TabIndex = 9;
+            // 
+            // cfgCameraMoveLabel
+            // 
+            cfgCameraMoveLabel.Location = new Point(3, 3);
+            cfgCameraMoveLabel.Name = "cfgCameraMoveLabel";
+            cfgCameraMoveLabel.Size = new Size(193, 23);
+            cfgCameraMoveLabel.TabIndex = 4;
+            cfgCameraMoveLabel.Text = "move";
+            // 
+            // cfgCameraRestrictCheckBox
+            // 
+            cfgCameraRestrictCheckBox.AutoSize = true;
+            cfgCameraRestrictCheckBox.Location = new Point(16, 26);
+            cfgCameraRestrictCheckBox.Name = "cfgCameraRestrictCheckBox";
+            cfgCameraRestrictCheckBox.Size = new Size(62, 19);
+            cfgCameraRestrictCheckBox.TabIndex = 0;
+            cfgCameraRestrictCheckBox.Text = "restrict";
+            cfgCameraRestrictCheckBox.UseVisualStyleBackColor = true;
+            // 
             // cfgControlsGroupBox
             // 
             cfgControlsGroupBox.Controls.Add(cfgControlsKeysetPanel);
@@ -572,6 +682,91 @@
             label6.TabIndex = 0;
             label6.Text = "DIAGNOSTICS + LOGGING";
             // 
+            // tabPage7
+            // 
+            tabPage7.Controls.Add(cfgUIGroupBox);
+            tabPage7.Location = new Point(4, 24);
+            tabPage7.Name = "tabPage7";
+            tabPage7.Padding = new Padding(3);
+            tabPage7.Size = new Size(752, 400);
+            tabPage7.TabIndex = 6;
+            tabPage7.Text = "UI";
+            tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // cfgUIGroupBox
+            // 
+            cfgUIGroupBox.BackColor = Color.Gray;
+            cfgUIGroupBox.Controls.Add(cfgUiUnitCardsCheckBox);
+            cfgUIGroupBox.Controls.Add(cfgUiShowTooltipsCheckBox);
+            cfgUIGroupBox.Controls.Add(cfgUiRadarCheckBox);
+            cfgUIGroupBox.Controls.Add(cfgUiFullBattleHudCheckBox);
+            cfgUIGroupBox.Controls.Add(cfgUiButtonsCheckBox);
+            cfgUIGroupBox.Controls.Add(cfgUiSaCardsCheckBox);
+            cfgUIGroupBox.Location = new Point(35, 39);
+            cfgUIGroupBox.Name = "cfgUIGroupBox";
+            cfgUIGroupBox.Size = new Size(373, 294);
+            cfgUIGroupBox.TabIndex = 0;
+            // 
+            // cfgUiUnitCardsCheckBox
+            // 
+            cfgUiUnitCardsCheckBox.AutoSize = true;
+            cfgUiUnitCardsCheckBox.Location = new Point(27, 152);
+            cfgUiUnitCardsCheckBox.Name = "cfgUiUnitCardsCheckBox";
+            cfgUiUnitCardsCheckBox.Size = new Size(80, 19);
+            cfgUiUnitCardsCheckBox.TabIndex = 5;
+            cfgUiUnitCardsCheckBox.Text = "unit_cards";
+            cfgUiUnitCardsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgUiShowTooltipsCheckBox
+            // 
+            cfgUiShowTooltipsCheckBox.AutoSize = true;
+            cfgUiShowTooltipsCheckBox.Location = new Point(27, 127);
+            cfgUiShowTooltipsCheckBox.Name = "cfgUiShowTooltipsCheckBox";
+            cfgUiShowTooltipsCheckBox.Size = new Size(99, 19);
+            cfgUiShowTooltipsCheckBox.TabIndex = 4;
+            cfgUiShowTooltipsCheckBox.Text = "show_tooltips";
+            cfgUiShowTooltipsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgUiRadarCheckBox
+            // 
+            cfgUiRadarCheckBox.AutoSize = true;
+            cfgUiRadarCheckBox.Location = new Point(27, 102);
+            cfgUiRadarCheckBox.Name = "cfgUiRadarCheckBox";
+            cfgUiRadarCheckBox.Size = new Size(53, 19);
+            cfgUiRadarCheckBox.TabIndex = 3;
+            cfgUiRadarCheckBox.Text = "radar";
+            cfgUiRadarCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgUiFullBattleHudCheckBox
+            // 
+            cfgUiFullBattleHudCheckBox.AutoSize = true;
+            cfgUiFullBattleHudCheckBox.Location = new Point(27, 77);
+            cfgUiFullBattleHudCheckBox.Name = "cfgUiFullBattleHudCheckBox";
+            cfgUiFullBattleHudCheckBox.Size = new Size(108, 19);
+            cfgUiFullBattleHudCheckBox.TabIndex = 2;
+            cfgUiFullBattleHudCheckBox.Text = "full_battle_HUD";
+            cfgUiFullBattleHudCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgUiButtonsCheckBox
+            // 
+            cfgUiButtonsCheckBox.AutoSize = true;
+            cfgUiButtonsCheckBox.Location = new Point(27, 52);
+            cfgUiButtonsCheckBox.Name = "cfgUiButtonsCheckBox";
+            cfgUiButtonsCheckBox.Size = new Size(67, 19);
+            cfgUiButtonsCheckBox.TabIndex = 1;
+            cfgUiButtonsCheckBox.Text = "buttons";
+            cfgUiButtonsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgUiSaCardsCheckBox
+            // 
+            cfgUiSaCardsCheckBox.AutoSize = true;
+            cfgUiSaCardsCheckBox.Location = new Point(27, 27);
+            cfgUiSaCardsCheckBox.Name = "cfgUiSaCardsCheckBox";
+            cfgUiSaCardsCheckBox.Size = new Size(73, 19);
+            cfgUiSaCardsCheckBox.TabIndex = 0;
+            cfgUiSaCardsCheckBox.Text = "SA_cards";
+            cfgUiSaCardsCheckBox.UseVisualStyleBackColor = true;
+            // 
             // resetConfigSettingsButton
             // 
             resetConfigSettingsButton.Location = new Point(298, 498);
@@ -621,105 +816,6 @@
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
             // 
-            // cfgCameraGroupBox
-            // 
-            cfgCameraGroupBox.Controls.Add(cfgCameraDefaultInBattlePanel);
-            cfgCameraGroupBox.Controls.Add(cfgCameraRotatePanel);
-            cfgCameraGroupBox.Controls.Add(cfgCameraMovePanel);
-            cfgCameraGroupBox.Controls.Add(cfgCameraRestrictCheckBox);
-            cfgCameraGroupBox.Location = new Point(31, 200);
-            cfgCameraGroupBox.Name = "cfgCameraGroupBox";
-            cfgCameraGroupBox.Size = new Size(346, 171);
-            cfgCameraGroupBox.TabIndex = 2;
-            cfgCameraGroupBox.TabStop = false;
-            cfgCameraGroupBox.Text = "[camera]";
-            // 
-            // cfgCameraRestrictCheckBox
-            // 
-            cfgCameraRestrictCheckBox.AutoSize = true;
-            cfgCameraRestrictCheckBox.Location = new Point(16, 26);
-            cfgCameraRestrictCheckBox.Name = "cfgCameraRestrictCheckBox";
-            cfgCameraRestrictCheckBox.Size = new Size(62, 19);
-            cfgCameraRestrictCheckBox.TabIndex = 0;
-            cfgCameraRestrictCheckBox.Text = "restrict";
-            cfgCameraRestrictCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgCameraMovePanel
-            // 
-            cfgCameraMovePanel.BackColor = Color.Gray;
-            cfgCameraMovePanel.Controls.Add(cfgCameraMoveNumericUpDown);
-            cfgCameraMovePanel.Controls.Add(cfgCameraMoveLabel);
-            cfgCameraMovePanel.Location = new Point(9, 51);
-            cfgCameraMovePanel.Name = "cfgCameraMovePanel";
-            cfgCameraMovePanel.Size = new Size(325, 30);
-            cfgCameraMovePanel.TabIndex = 26;
-            // 
-            // cfgCameraMoveNumericUpDown
-            // 
-            cfgCameraMoveNumericUpDown.Location = new Point(202, 3);
-            cfgCameraMoveNumericUpDown.Name = "cfgCameraMoveNumericUpDown";
-            cfgCameraMoveNumericUpDown.Size = new Size(120, 23);
-            cfgCameraMoveNumericUpDown.TabIndex = 9;
-            // 
-            // cfgCameraMoveLabel
-            // 
-            cfgCameraMoveLabel.Location = new Point(3, 3);
-            cfgCameraMoveLabel.Name = "cfgCameraMoveLabel";
-            cfgCameraMoveLabel.Size = new Size(193, 23);
-            cfgCameraMoveLabel.TabIndex = 4;
-            cfgCameraMoveLabel.Text = "move";
-            // 
-            // cfgCameraRotatePanel
-            // 
-            cfgCameraRotatePanel.BackColor = Color.Gray;
-            cfgCameraRotatePanel.Controls.Add(cfgCameraRotateNumericUpDown);
-            cfgCameraRotatePanel.Controls.Add(cfgCameraRotateLabel);
-            cfgCameraRotatePanel.Location = new Point(9, 83);
-            cfgCameraRotatePanel.Name = "cfgCameraRotatePanel";
-            cfgCameraRotatePanel.Size = new Size(325, 30);
-            cfgCameraRotatePanel.TabIndex = 26;
-            // 
-            // cfgCameraRotateNumericUpDown
-            // 
-            cfgCameraRotateNumericUpDown.Location = new Point(202, 3);
-            cfgCameraRotateNumericUpDown.Name = "cfgCameraRotateNumericUpDown";
-            cfgCameraRotateNumericUpDown.Size = new Size(120, 23);
-            cfgCameraRotateNumericUpDown.TabIndex = 9;
-            // 
-            // cfgCameraRotateLabel
-            // 
-            cfgCameraRotateLabel.Location = new Point(3, 3);
-            cfgCameraRotateLabel.Name = "cfgCameraRotateLabel";
-            cfgCameraRotateLabel.Size = new Size(193, 23);
-            cfgCameraRotateLabel.TabIndex = 4;
-            cfgCameraRotateLabel.Text = "rotate";
-            // 
-            // cfgCameraDefaultInBattlePanel
-            // 
-            cfgCameraDefaultInBattlePanel.BackColor = Color.Gray;
-            cfgCameraDefaultInBattlePanel.Controls.Add(cfgControlsDefaultInBattleComboBox);
-            cfgCameraDefaultInBattlePanel.Controls.Add(cfgControlsDefaultInBattleLabel);
-            cfgCameraDefaultInBattlePanel.Location = new Point(9, 115);
-            cfgCameraDefaultInBattlePanel.Name = "cfgCameraDefaultInBattlePanel";
-            cfgCameraDefaultInBattlePanel.Size = new Size(325, 30);
-            cfgCameraDefaultInBattlePanel.TabIndex = 27;
-            // 
-            // cfgControlsDefaultInBattleLabel
-            // 
-            cfgControlsDefaultInBattleLabel.Location = new Point(3, 3);
-            cfgControlsDefaultInBattleLabel.Name = "cfgControlsDefaultInBattleLabel";
-            cfgControlsDefaultInBattleLabel.Size = new Size(193, 23);
-            cfgControlsDefaultInBattleLabel.TabIndex = 4;
-            cfgControlsDefaultInBattleLabel.Text = "default_in_battle";
-            // 
-            // cfgControlsDefaultInBattleComboBox
-            // 
-            cfgControlsDefaultInBattleComboBox.FormattingEnabled = true;
-            cfgControlsDefaultInBattleComboBox.Location = new Point(202, 3);
-            cfgControlsDefaultInBattleComboBox.Name = "cfgControlsDefaultInBattleComboBox";
-            cfgControlsDefaultInBattleComboBox.Size = new Size(120, 23);
-            cfgControlsDefaultInBattleComboBox.TabIndex = 5;
-            // 
             // ModConfigSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -759,6 +855,13 @@
             cfgAudioOptionsPanel.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            cfgCameraGroupBox.ResumeLayout(false);
+            cfgCameraGroupBox.PerformLayout();
+            cfgCameraDefaultInBattlePanel.ResumeLayout(false);
+            cfgCameraRotatePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)cfgCameraRotateNumericUpDown).EndInit();
+            cfgCameraMovePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)cfgCameraMoveNumericUpDown).EndInit();
             cfgControlsGroupBox.ResumeLayout(false);
             cfgControlsKeysetPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)cfgControlsKeysetNumericUpDown).EndInit();
@@ -776,13 +879,9 @@
             cfgFeaturesGroupBox.PerformLayout();
             tabPage6.ResumeLayout(false);
             tabPage6.PerformLayout();
-            cfgCameraGroupBox.ResumeLayout(false);
-            cfgCameraGroupBox.PerformLayout();
-            cfgCameraMovePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)cfgCameraMoveNumericUpDown).EndInit();
-            cfgCameraRotatePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)cfgCameraRotateNumericUpDown).EndInit();
-            cfgCameraDefaultInBattlePanel.ResumeLayout(false);
+            tabPage7.ResumeLayout(false);
+            cfgUIGroupBox.ResumeLayout(false);
+            cfgUIGroupBox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -851,5 +950,13 @@
         private Panel cfgCameraDefaultInBattlePanel;
         private ComboBox cfgControlsDefaultInBattleComboBox;
         private Label cfgControlsDefaultInBattleLabel;
+        private TabPage tabPage7;
+        private Panel cfgUIGroupBox;
+        private CheckBox cfgUiUnitCardsCheckBox;
+        private CheckBox cfgUiShowTooltipsCheckBox;
+        private CheckBox cfgUiRadarCheckBox;
+        private CheckBox cfgUiFullBattleHudCheckBox;
+        private CheckBox cfgUiButtonsCheckBox;
+        private CheckBox cfgUiSaCardsCheckBox;
     }
 }
