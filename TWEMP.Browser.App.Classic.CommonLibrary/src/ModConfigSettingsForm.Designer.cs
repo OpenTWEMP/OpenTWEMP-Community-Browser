@@ -54,10 +54,24 @@
             cfgAudioSubFactionAccentsEnableCheckBox = new CheckBox();
             label2 = new Label();
             tabPage3 = new TabPage();
+            cfgControlsGroupBox = new GroupBox();
+            cfgControlsKeysetPanel = new Panel();
+            cfgControlsKeysetNumericUpDown = new NumericUpDown();
+            cfgControlsKeysetLabel = new Label();
+            cfgControlsScrollMinZoomPanel = new Panel();
+            cfgControlsScrollMinZoomNumericUpDown = new NumericUpDown();
+            cfgControlsScrollMinZoomLabel = new Label();
+            cfgControlsScrollMaxZoomPanel = new Panel();
+            cfgControlsScrollMaxZoomNumericUpDown = new NumericUpDown();
+            cfgControlsScrollMaxZoomLabel = new Label();
             label3 = new Label();
             tabPage4 = new TabPage();
             label4 = new Label();
             tabPage5 = new TabPage();
+            cfgIOGroupBox = new GroupBox();
+            cfgIOFileFirstCheckBox = new CheckBox();
+            cfgFeaturesGroupBox = new GroupBox();
+            cfgFeaturesEditorCheckBox = new CheckBox();
             label5 = new Label();
             tabPage6 = new TabPage();
             label6 = new Label();
@@ -66,6 +80,17 @@
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
+            cfgCameraGroupBox = new GroupBox();
+            cfgCameraRestrictCheckBox = new CheckBox();
+            cfgCameraMovePanel = new Panel();
+            cfgCameraMoveNumericUpDown = new NumericUpDown();
+            cfgCameraMoveLabel = new Label();
+            cfgCameraRotatePanel = new Panel();
+            cfgCameraRotateNumericUpDown = new NumericUpDown();
+            cfgCameraRotateLabel = new Label();
+            cfgCameraDefaultInBattlePanel = new Panel();
+            cfgControlsDefaultInBattleLabel = new Label();
+            cfgControlsDefaultInBattleComboBox = new ComboBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -81,9 +106,24 @@
             ((System.ComponentModel.ISupportInitialize)cfgAudioMasterVolumeNumericUpDown).BeginInit();
             cfgAudioOptionsPanel.SuspendLayout();
             tabPage3.SuspendLayout();
+            cfgControlsGroupBox.SuspendLayout();
+            cfgControlsKeysetPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgControlsKeysetNumericUpDown).BeginInit();
+            cfgControlsScrollMinZoomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMinZoomNumericUpDown).BeginInit();
+            cfgControlsScrollMaxZoomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMaxZoomNumericUpDown).BeginInit();
             tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
+            cfgIOGroupBox.SuspendLayout();
+            cfgFeaturesGroupBox.SuspendLayout();
             tabPage6.SuspendLayout();
+            cfgCameraGroupBox.SuspendLayout();
+            cfgCameraMovePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgCameraMoveNumericUpDown).BeginInit();
+            cfgCameraRotatePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgCameraRotateNumericUpDown).BeginInit();
+            cfgCameraDefaultInBattlePanel.SuspendLayout();
             SuspendLayout();
             // 
             // saveConfigSettingsButton
@@ -324,6 +364,8 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(cfgCameraGroupBox);
+            tabPage3.Controls.Add(cfgControlsGroupBox);
             tabPage3.Controls.Add(label3);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
@@ -332,6 +374,93 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Camera & Controls";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // cfgControlsGroupBox
+            // 
+            cfgControlsGroupBox.Controls.Add(cfgControlsKeysetPanel);
+            cfgControlsGroupBox.Controls.Add(cfgControlsScrollMinZoomPanel);
+            cfgControlsGroupBox.Controls.Add(cfgControlsScrollMaxZoomPanel);
+            cfgControlsGroupBox.Location = new Point(31, 55);
+            cfgControlsGroupBox.Name = "cfgControlsGroupBox";
+            cfgControlsGroupBox.Size = new Size(346, 139);
+            cfgControlsGroupBox.TabIndex = 1;
+            cfgControlsGroupBox.TabStop = false;
+            cfgControlsGroupBox.Text = "[controls]";
+            // 
+            // cfgControlsKeysetPanel
+            // 
+            cfgControlsKeysetPanel.BackColor = Color.Gray;
+            cfgControlsKeysetPanel.Controls.Add(cfgControlsKeysetNumericUpDown);
+            cfgControlsKeysetPanel.Controls.Add(cfgControlsKeysetLabel);
+            cfgControlsKeysetPanel.Location = new Point(6, 94);
+            cfgControlsKeysetPanel.Name = "cfgControlsKeysetPanel";
+            cfgControlsKeysetPanel.Size = new Size(325, 30);
+            cfgControlsKeysetPanel.TabIndex = 25;
+            // 
+            // cfgControlsKeysetNumericUpDown
+            // 
+            cfgControlsKeysetNumericUpDown.Location = new Point(202, 3);
+            cfgControlsKeysetNumericUpDown.Name = "cfgControlsKeysetNumericUpDown";
+            cfgControlsKeysetNumericUpDown.Size = new Size(120, 23);
+            cfgControlsKeysetNumericUpDown.TabIndex = 9;
+            // 
+            // cfgControlsKeysetLabel
+            // 
+            cfgControlsKeysetLabel.Location = new Point(3, 3);
+            cfgControlsKeysetLabel.Name = "cfgControlsKeysetLabel";
+            cfgControlsKeysetLabel.Size = new Size(193, 23);
+            cfgControlsKeysetLabel.TabIndex = 4;
+            cfgControlsKeysetLabel.Text = "keyset";
+            // 
+            // cfgControlsScrollMinZoomPanel
+            // 
+            cfgControlsScrollMinZoomPanel.BackColor = Color.Gray;
+            cfgControlsScrollMinZoomPanel.Controls.Add(cfgControlsScrollMinZoomNumericUpDown);
+            cfgControlsScrollMinZoomPanel.Controls.Add(cfgControlsScrollMinZoomLabel);
+            cfgControlsScrollMinZoomPanel.Location = new Point(6, 58);
+            cfgControlsScrollMinZoomPanel.Name = "cfgControlsScrollMinZoomPanel";
+            cfgControlsScrollMinZoomPanel.Size = new Size(325, 30);
+            cfgControlsScrollMinZoomPanel.TabIndex = 24;
+            // 
+            // cfgControlsScrollMinZoomNumericUpDown
+            // 
+            cfgControlsScrollMinZoomNumericUpDown.Location = new Point(202, 3);
+            cfgControlsScrollMinZoomNumericUpDown.Name = "cfgControlsScrollMinZoomNumericUpDown";
+            cfgControlsScrollMinZoomNumericUpDown.Size = new Size(120, 23);
+            cfgControlsScrollMinZoomNumericUpDown.TabIndex = 9;
+            // 
+            // cfgControlsScrollMinZoomLabel
+            // 
+            cfgControlsScrollMinZoomLabel.Location = new Point(3, 3);
+            cfgControlsScrollMinZoomLabel.Name = "cfgControlsScrollMinZoomLabel";
+            cfgControlsScrollMinZoomLabel.Size = new Size(193, 23);
+            cfgControlsScrollMinZoomLabel.TabIndex = 4;
+            cfgControlsScrollMinZoomLabel.Text = "campaign_scroll_min_zoom";
+            // 
+            // cfgControlsScrollMaxZoomPanel
+            // 
+            cfgControlsScrollMaxZoomPanel.BackColor = Color.Gray;
+            cfgControlsScrollMaxZoomPanel.Controls.Add(cfgControlsScrollMaxZoomNumericUpDown);
+            cfgControlsScrollMaxZoomPanel.Controls.Add(cfgControlsScrollMaxZoomLabel);
+            cfgControlsScrollMaxZoomPanel.Location = new Point(6, 22);
+            cfgControlsScrollMaxZoomPanel.Name = "cfgControlsScrollMaxZoomPanel";
+            cfgControlsScrollMaxZoomPanel.Size = new Size(325, 30);
+            cfgControlsScrollMaxZoomPanel.TabIndex = 23;
+            // 
+            // cfgControlsScrollMaxZoomNumericUpDown
+            // 
+            cfgControlsScrollMaxZoomNumericUpDown.Location = new Point(202, 3);
+            cfgControlsScrollMaxZoomNumericUpDown.Name = "cfgControlsScrollMaxZoomNumericUpDown";
+            cfgControlsScrollMaxZoomNumericUpDown.Size = new Size(120, 23);
+            cfgControlsScrollMaxZoomNumericUpDown.TabIndex = 9;
+            // 
+            // cfgControlsScrollMaxZoomLabel
+            // 
+            cfgControlsScrollMaxZoomLabel.Location = new Point(3, 3);
+            cfgControlsScrollMaxZoomLabel.Name = "cfgControlsScrollMaxZoomLabel";
+            cfgControlsScrollMaxZoomLabel.Size = new Size(193, 23);
+            cfgControlsScrollMaxZoomLabel.TabIndex = 4;
+            cfgControlsScrollMaxZoomLabel.Text = "campaign_scroll_max_zoom";
             // 
             // label3
             // 
@@ -364,6 +493,8 @@
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(cfgIOGroupBox);
+            tabPage5.Controls.Add(cfgFeaturesGroupBox);
             tabPage5.Controls.Add(label5);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
@@ -372,6 +503,46 @@
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Game Settings";
             tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // cfgIOGroupBox
+            // 
+            cfgIOGroupBox.Controls.Add(cfgIOFileFirstCheckBox);
+            cfgIOGroupBox.Location = new Point(29, 115);
+            cfgIOGroupBox.Name = "cfgIOGroupBox";
+            cfgIOGroupBox.Size = new Size(183, 74);
+            cfgIOGroupBox.TabIndex = 4;
+            cfgIOGroupBox.TabStop = false;
+            cfgIOGroupBox.Text = "[io]";
+            // 
+            // cfgIOFileFirstCheckBox
+            // 
+            cfgIOFileFirstCheckBox.AutoSize = true;
+            cfgIOFileFirstCheckBox.Location = new Point(10, 22);
+            cfgIOFileFirstCheckBox.Name = "cfgIOFileFirstCheckBox";
+            cfgIOFileFirstCheckBox.Size = new Size(67, 19);
+            cfgIOFileFirstCheckBox.TabIndex = 0;
+            cfgIOFileFirstCheckBox.Text = "file_first";
+            cfgIOFileFirstCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgFeaturesGroupBox
+            // 
+            cfgFeaturesGroupBox.Controls.Add(cfgFeaturesEditorCheckBox);
+            cfgFeaturesGroupBox.Location = new Point(29, 46);
+            cfgFeaturesGroupBox.Name = "cfgFeaturesGroupBox";
+            cfgFeaturesGroupBox.Size = new Size(183, 63);
+            cfgFeaturesGroupBox.TabIndex = 3;
+            cfgFeaturesGroupBox.TabStop = false;
+            cfgFeaturesGroupBox.Text = "[features]";
+            // 
+            // cfgFeaturesEditorCheckBox
+            // 
+            cfgFeaturesEditorCheckBox.AutoSize = true;
+            cfgFeaturesEditorCheckBox.Location = new Point(18, 27);
+            cfgFeaturesEditorCheckBox.Name = "cfgFeaturesEditorCheckBox";
+            cfgFeaturesEditorCheckBox.Size = new Size(57, 19);
+            cfgFeaturesEditorCheckBox.TabIndex = 0;
+            cfgFeaturesEditorCheckBox.Text = "editor";
+            cfgFeaturesEditorCheckBox.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -450,6 +621,105 @@
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
             // 
+            // cfgCameraGroupBox
+            // 
+            cfgCameraGroupBox.Controls.Add(cfgCameraDefaultInBattlePanel);
+            cfgCameraGroupBox.Controls.Add(cfgCameraRotatePanel);
+            cfgCameraGroupBox.Controls.Add(cfgCameraMovePanel);
+            cfgCameraGroupBox.Controls.Add(cfgCameraRestrictCheckBox);
+            cfgCameraGroupBox.Location = new Point(31, 200);
+            cfgCameraGroupBox.Name = "cfgCameraGroupBox";
+            cfgCameraGroupBox.Size = new Size(346, 171);
+            cfgCameraGroupBox.TabIndex = 2;
+            cfgCameraGroupBox.TabStop = false;
+            cfgCameraGroupBox.Text = "[camera]";
+            // 
+            // cfgCameraRestrictCheckBox
+            // 
+            cfgCameraRestrictCheckBox.AutoSize = true;
+            cfgCameraRestrictCheckBox.Location = new Point(16, 26);
+            cfgCameraRestrictCheckBox.Name = "cfgCameraRestrictCheckBox";
+            cfgCameraRestrictCheckBox.Size = new Size(62, 19);
+            cfgCameraRestrictCheckBox.TabIndex = 0;
+            cfgCameraRestrictCheckBox.Text = "restrict";
+            cfgCameraRestrictCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgCameraMovePanel
+            // 
+            cfgCameraMovePanel.BackColor = Color.Gray;
+            cfgCameraMovePanel.Controls.Add(cfgCameraMoveNumericUpDown);
+            cfgCameraMovePanel.Controls.Add(cfgCameraMoveLabel);
+            cfgCameraMovePanel.Location = new Point(9, 51);
+            cfgCameraMovePanel.Name = "cfgCameraMovePanel";
+            cfgCameraMovePanel.Size = new Size(325, 30);
+            cfgCameraMovePanel.TabIndex = 26;
+            // 
+            // cfgCameraMoveNumericUpDown
+            // 
+            cfgCameraMoveNumericUpDown.Location = new Point(202, 3);
+            cfgCameraMoveNumericUpDown.Name = "cfgCameraMoveNumericUpDown";
+            cfgCameraMoveNumericUpDown.Size = new Size(120, 23);
+            cfgCameraMoveNumericUpDown.TabIndex = 9;
+            // 
+            // cfgCameraMoveLabel
+            // 
+            cfgCameraMoveLabel.Location = new Point(3, 3);
+            cfgCameraMoveLabel.Name = "cfgCameraMoveLabel";
+            cfgCameraMoveLabel.Size = new Size(193, 23);
+            cfgCameraMoveLabel.TabIndex = 4;
+            cfgCameraMoveLabel.Text = "move";
+            // 
+            // cfgCameraRotatePanel
+            // 
+            cfgCameraRotatePanel.BackColor = Color.Gray;
+            cfgCameraRotatePanel.Controls.Add(cfgCameraRotateNumericUpDown);
+            cfgCameraRotatePanel.Controls.Add(cfgCameraRotateLabel);
+            cfgCameraRotatePanel.Location = new Point(9, 83);
+            cfgCameraRotatePanel.Name = "cfgCameraRotatePanel";
+            cfgCameraRotatePanel.Size = new Size(325, 30);
+            cfgCameraRotatePanel.TabIndex = 26;
+            // 
+            // cfgCameraRotateNumericUpDown
+            // 
+            cfgCameraRotateNumericUpDown.Location = new Point(202, 3);
+            cfgCameraRotateNumericUpDown.Name = "cfgCameraRotateNumericUpDown";
+            cfgCameraRotateNumericUpDown.Size = new Size(120, 23);
+            cfgCameraRotateNumericUpDown.TabIndex = 9;
+            // 
+            // cfgCameraRotateLabel
+            // 
+            cfgCameraRotateLabel.Location = new Point(3, 3);
+            cfgCameraRotateLabel.Name = "cfgCameraRotateLabel";
+            cfgCameraRotateLabel.Size = new Size(193, 23);
+            cfgCameraRotateLabel.TabIndex = 4;
+            cfgCameraRotateLabel.Text = "rotate";
+            // 
+            // cfgCameraDefaultInBattlePanel
+            // 
+            cfgCameraDefaultInBattlePanel.BackColor = Color.Gray;
+            cfgCameraDefaultInBattlePanel.Controls.Add(cfgControlsDefaultInBattleComboBox);
+            cfgCameraDefaultInBattlePanel.Controls.Add(cfgControlsDefaultInBattleLabel);
+            cfgCameraDefaultInBattlePanel.Location = new Point(9, 115);
+            cfgCameraDefaultInBattlePanel.Name = "cfgCameraDefaultInBattlePanel";
+            cfgCameraDefaultInBattlePanel.Size = new Size(325, 30);
+            cfgCameraDefaultInBattlePanel.TabIndex = 27;
+            // 
+            // cfgControlsDefaultInBattleLabel
+            // 
+            cfgControlsDefaultInBattleLabel.Location = new Point(3, 3);
+            cfgControlsDefaultInBattleLabel.Name = "cfgControlsDefaultInBattleLabel";
+            cfgControlsDefaultInBattleLabel.Size = new Size(193, 23);
+            cfgControlsDefaultInBattleLabel.TabIndex = 4;
+            cfgControlsDefaultInBattleLabel.Text = "default_in_battle";
+            // 
+            // cfgControlsDefaultInBattleComboBox
+            // 
+            cfgControlsDefaultInBattleComboBox.FormattingEnabled = true;
+            cfgControlsDefaultInBattleComboBox.Location = new Point(202, 3);
+            cfgControlsDefaultInBattleComboBox.Name = "cfgControlsDefaultInBattleComboBox";
+            cfgControlsDefaultInBattleComboBox.Size = new Size(120, 23);
+            cfgControlsDefaultInBattleComboBox.TabIndex = 5;
+            // 
             // ModConfigSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -489,12 +759,30 @@
             cfgAudioOptionsPanel.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            cfgControlsGroupBox.ResumeLayout(false);
+            cfgControlsKeysetPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)cfgControlsKeysetNumericUpDown).EndInit();
+            cfgControlsScrollMinZoomPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMinZoomNumericUpDown).EndInit();
+            cfgControlsScrollMaxZoomPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMaxZoomNumericUpDown).EndInit();
             tabPage4.ResumeLayout(false);
             tabPage4.PerformLayout();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
+            cfgIOGroupBox.ResumeLayout(false);
+            cfgIOGroupBox.PerformLayout();
+            cfgFeaturesGroupBox.ResumeLayout(false);
+            cfgFeaturesGroupBox.PerformLayout();
             tabPage6.ResumeLayout(false);
             tabPage6.PerformLayout();
+            cfgCameraGroupBox.ResumeLayout(false);
+            cfgCameraGroupBox.PerformLayout();
+            cfgCameraMovePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)cfgCameraMoveNumericUpDown).EndInit();
+            cfgCameraRotatePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)cfgCameraRotateNumericUpDown).EndInit();
+            cfgCameraDefaultInBattlePanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -538,5 +826,30 @@
         private CheckBox cfgAudioSpeechEnableCheckBox;
         private CheckBox cfgAudioEnableCheckBox;
         private CheckBox cfgAudioSubFactionAccentsEnableCheckBox;
+        private GroupBox cfgIOGroupBox;
+        private CheckBox cfgIOFileFirstCheckBox;
+        private GroupBox cfgFeaturesGroupBox;
+        private CheckBox cfgFeaturesEditorCheckBox;
+        private GroupBox cfgControlsGroupBox;
+        private Panel cfgControlsKeysetPanel;
+        private NumericUpDown cfgControlsKeysetNumericUpDown;
+        private Label cfgControlsKeysetLabel;
+        private Panel cfgControlsScrollMinZoomPanel;
+        private NumericUpDown cfgControlsScrollMinZoomNumericUpDown;
+        private Label cfgControlsScrollMinZoomLabel;
+        private Panel cfgControlsScrollMaxZoomPanel;
+        private NumericUpDown cfgControlsScrollMaxZoomNumericUpDown;
+        private Label cfgControlsScrollMaxZoomLabel;
+        private GroupBox cfgCameraGroupBox;
+        private CheckBox cfgCameraRestrictCheckBox;
+        private Panel cfgCameraRotatePanel;
+        private NumericUpDown cfgCameraRotateNumericUpDown;
+        private Label cfgCameraRotateLabel;
+        private Panel cfgCameraMovePanel;
+        private NumericUpDown cfgCameraMoveNumericUpDown;
+        private Label cfgCameraMoveLabel;
+        private Panel cfgCameraDefaultInBattlePanel;
+        private ComboBox cfgControlsDefaultInBattleComboBox;
+        private Label cfgControlsDefaultInBattleLabel;
     }
 }
