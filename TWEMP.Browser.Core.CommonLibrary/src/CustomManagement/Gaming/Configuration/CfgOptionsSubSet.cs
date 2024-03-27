@@ -7,7 +7,7 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 public struct CfgOptionsSubSet
 {
