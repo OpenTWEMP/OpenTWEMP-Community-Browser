@@ -6,6 +6,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 
 using Newtonsoft.Json;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 /// <summary>
 /// Represents a device to manage custom game collections into the application.
@@ -18,9 +19,15 @@ public static class CustomGameCollectionsManager
 
     private static readonly string CacheStorageLocation;
 
+    private static List<UpdatableGameModsCollection> customCollections;
+    private static UpdatableGameModsCollection favoriteCollection;
+
     static CustomGameCollectionsManager()
     {
         CacheStorageLocation = GameSettingsCacheStorage.Location;
+
+        customCollections = InitializeCustomCollections();
+        favoriteCollection = InitializeFavoriteCollection();
 
         FavoriteModsCollection = LoadFavoriteCollectionFromCache(CacheStorageLocation);
         UserCollections = LoadExistingCollectionsFromCache(CacheStorageLocation);
@@ -95,5 +102,17 @@ public static class CustomGameCollectionsManager
         }
 
         return new CustomModsCollection(FavoriteCollectionTitle, new Dictionary<string, string>());
+    }
+
+    private static List<UpdatableGameModsCollection> InitializeCustomCollections()
+    {
+        return new List<UpdatableGameModsCollection>();
+    }
+
+    private static UpdatableGameModsCollection InitializeFavoriteCollection()
+    {
+        return new UpdatableGameModsCollection(
+            header: new GameModsCollectionHeader(FavoriteCollectionTitle),
+            gameMods: Array.Empty<UpdatableGameModificationView>());
     }
 }
