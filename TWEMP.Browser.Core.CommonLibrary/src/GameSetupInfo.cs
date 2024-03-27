@@ -6,6 +6,7 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
+using System.Xml.Linq;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 public class GameSetupInfo
@@ -25,6 +26,19 @@ public class GameSetupInfo
     public string? ExecutableFileName { get; }
 
     public List<ModCenterInfo> AttachedModCenters { get; }
+
+    /// <summary>
+    /// Creates the default instance of the <see cref="GameSetupInfo"/> class.
+    /// </summary>
+    /// <returns>An instance of the <see cref="GameSetupInfo"/> class.</returns>
+    public static GameSetupInfo Create()
+    {
+        string name = "Default TWEMP Game Setup Template for M2TW";
+        string executable = "twemp_game_executable.exe";
+        List<string> modcenters = new () { "mods" };
+
+        return Create(name, executable, modcenters);
+    }
 
     /// <summary>
     /// Creates an instance of the <see cref="GameSetupInfo"/> class.

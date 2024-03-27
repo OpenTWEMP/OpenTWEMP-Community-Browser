@@ -10,6 +10,7 @@ namespace TWEMP.Browser.Core.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
@@ -40,6 +41,11 @@ public static class Settings
         GameSupportManager.Initialize();
         Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
             "GameSupportManager", "GameSupportManager.Initialize()", DateTime.Now)); // test logging
+
+        // Setup the global device for game configuration profile manager by default.
+        GameConfigurationManager.Initialize();
+        Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
+            "GameConfigurationManager", "GameConfigurationManager.Initialize()", DateTime.Now)); // test logging
 
         Logger.CurrentInstance?.Close(); // test logging
     }
