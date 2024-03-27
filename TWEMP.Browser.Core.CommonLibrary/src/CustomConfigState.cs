@@ -6,7 +6,9 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
-public record CustomConfigState
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+
+public record CustomConfigState : ICustomConfigState
 {
     public bool UseLauncherProvider_M2TWEOP { get; init; }
 
@@ -37,4 +39,9 @@ public record CustomConfigState
     public bool IsShouldBeDeleted_SoundPacks { get; init; }
 
     public bool EnabledLogsHistorySaving { get; init; }
+
+    public CfgOptionsSubSet[] RetrieveCurrentSettings()
+    {
+        return new CfgOptionsSubSet[] { }; // TODO: Implement retrieving existing M2TW config settings from properties!
+    }
 }
