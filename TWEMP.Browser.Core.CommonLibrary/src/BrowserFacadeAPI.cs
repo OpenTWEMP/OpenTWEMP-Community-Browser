@@ -14,7 +14,7 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPreset
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
-using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
+using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins;
 using TWEMP.Browser.Core.CommonLibrary.Logging;
 
 /// <summary>
@@ -242,11 +242,11 @@ public class FormLocaleSnapshot
 /// </summary>
 public class GameLaunchConfigurator
 {
-    private readonly GameLauncherAgent agent;
+    private readonly M2TWGameLauncher agent;
 
     public GameLaunchConfigurator(GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
     {
-        this.agent = new GameLauncherAgent(mod_info, state, messageProvider);
+        this.agent = new M2TWGameLauncher(mod_info, state, messageProvider);
     }
 
     public void Execute()

@@ -1,10 +1,11 @@
-﻿// <copyright file="GameLauncherAgent.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="M2TWGameLauncher.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
+// TODO: Move this class definition to the TWEMP.Browser.Core.GamingSupport class library!
+namespace TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins;
 
 using System.Diagnostics;
 using System.Text;
@@ -12,17 +13,25 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Plugins;
 using TWEMP.Browser.Core.GamingSupport;
 
-public class GameLauncherAgent
+/// <summary>
+/// Implements the game launcher agent for the "Medieval 2 Total War" game engine (M2TW).
+/// </summary>
+public class M2TWGameLauncher : IGameLauncherAgent
 {
     private readonly GameModificationInfo currentGameMod;
     private readonly CustomConfigState currentCfgState;
     private readonly IBrowserMessageProvider currentMessageProvider;
 
-    public GameLauncherAgent(GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
+    private readonly M2TWGameConfigurator gameConfiguratorAgent; // TODO: Replace to the IGameConfiguratorAgent type!
+
+    public M2TWGameLauncher(
+        GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
     {
         this.currentGameMod = mod_info;
         this.currentCfgState = state;
         this.currentMessageProvider = messageProvider;
+
+        this.gameConfiguratorAgent = new M2TWGameConfigurator(this.currentGameMod);
     }
 
     public void Execute()
@@ -113,8 +122,7 @@ public class GameLauncherAgent
 
     private void Launch()
     {
-        M2TWGameConfigurator configurator = new M2TWGameConfigurator(this.currentGameMod);
-        List<CfgOptionsSubSet> mod_settings = configurator.InitializeMinimalModSettings(this.currentCfgState);
+        List<CfgOptionsSubSet> mod_settings = this.gameConfiguratorAgent.InitializeMinimalModSettings(this.currentCfgState);
 
         string mod_config = this.GenerateModConfigFile(mod_settings);
 
