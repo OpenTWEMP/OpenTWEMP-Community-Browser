@@ -2,9 +2,14 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+// TODO: Do not use GameLauncher property while M2TWGameLauncher is in progress!
+#define LAUNCHER_AGENT
+#undef LAUNCHER_AGENT
+
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
+using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins;
 
 /// <summary>
 /// Represents a game support provider type.
@@ -17,7 +22,10 @@ public class GameSupportProvider
     public GameSupportProvider()
     {
         this.GameEngine = GameEngineSupportType.TWEMP;
+
+#if LAUNCHER_AGENT
         this.GameLauncher = InitializeGameLauncher(this.GameEngine);
+#endif
     }
 
     /// <summary>
@@ -27,7 +35,10 @@ public class GameSupportProvider
     public GameSupportProvider(GameEngineSupportType gameEngineSupportType)
     {
         this.GameEngine = gameEngineSupportType;
+
+#if LAUNCHER_AGENT
         this.GameLauncher = InitializeGameLauncher(this.GameEngine);
+#endif
     }
 
     /// <summary>
@@ -35,6 +46,7 @@ public class GameSupportProvider
     /// </summary>
     public GameEngineSupportType GameEngine { get; }
 
+#if LAUNCHER_AGENTs
     /// <summary>
     /// Gets the game launcher agent used by the provider.
     /// </summary>
@@ -54,4 +66,5 @@ public class GameSupportProvider
                 return new TwempGameLauncher();
         }
     }
+#endif
 }
