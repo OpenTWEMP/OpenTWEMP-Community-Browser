@@ -1,4 +1,4 @@
-﻿// <copyright file="GameConfigSettings.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="M2TWGameConfigurator.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -7,21 +7,55 @@
 #define NON_IMPLEMENTED_SETTINGS
 #undef NON_IMPLEMENTED_SETTINGS
 
-namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+// TODO: Move this class definition to the TWEMP.Browser.Core.GamingSupport class library!
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Plugins;
 
-public static class GameConfigSettings
+/// <summary>
+/// Implements the game configurator agent for the "Medieval 2 Total War" game engine (M2TW).
+/// </summary>
+public class M2TWGameConfigurator : IGameConfiguratorAgent
 {
-    public static List<CfgOptionsSubSet> InitializeMinimalModSettings(GameModificationInfo mod, CustomConfigState cfg)
+    private readonly GameModificationInfo gameModificationInfo;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="M2TWGameConfigurator"/> class.
+    /// </summary>
+    /// <param name="info">Information about a target game modification.</param>
+    public M2TWGameConfigurator(GameModificationInfo info)
+    {
+        this.gameModificationInfo = info;
+    }
+
+    /// <summary>
+    /// Gets M2TW configuration settings by default.
+    /// </summary>
+    /// <returns>The array of game configuration settings.</returns>
+    public CfgOptionsSubSet[] GetDefaultConfigSettings()
+    {
+        return new CfgOptionsSubSet[] { }; // TODO: Implement using existing M2TW config settings!
+    }
+
+    /// <summary>
+    /// Gets M2TW configuration settings via a custom configuration state.
+    /// </summary>
+    /// <param name="state">A target custom game configuration state.</param>
+    /// <returns>The array of game configuration settings.</returns>
+    public CfgOptionsSubSet[] GetCustomConfigSettings(ICustomConfigState state)
+    {
+        return new CfgOptionsSubSet[] { }; // TODO: Implement using existing M2TW config settings!
+    }
+
+    public List<CfgOptionsSubSet> InitializeMinimalModSettings(CustomConfigState cfg)
     {
         List<CfgOptionsSubSet> settings = new ();
 
-        CfgOptionsSubSet features_subset = GetFeaturesSubSet(mod); // [features]
+        CfgOptionsSubSet features_subset = GetFeaturesSubSet(this.gameModificationInfo); // [features]
         settings.Add(features_subset);
 
         CfgOptionsSubSet io_subset = GetIOSubSet(); // [io]
         settings.Add(io_subset);
 
-        CfgOptionsSubSet log_subset = GetLogSubSet(mod, cfg); // [log]
+        CfgOptionsSubSet log_subset = GetLogSubSet(this.gameModificationInfo, cfg); // [log]
         settings.Add(log_subset);
 
         CfgOptionsSubSet video_subset = GetVideoSubSet(cfg); // [video]

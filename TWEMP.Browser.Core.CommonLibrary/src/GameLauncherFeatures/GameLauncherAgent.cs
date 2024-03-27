@@ -9,6 +9,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
 using System.Diagnostics;
 using System.Text;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Plugins;
 using TWEMP.Browser.Core.GamingSupport;
 
 public class GameLauncherAgent
@@ -112,7 +113,9 @@ public class GameLauncherAgent
 
     private void Launch()
     {
-        List<CfgOptionsSubSet> mod_settings = GameConfigSettings.InitializeMinimalModSettings(this.currentGameMod, this.currentCfgState);
+        M2TWGameConfigurator configurator = new M2TWGameConfigurator(this.currentGameMod);
+        List<CfgOptionsSubSet> mod_settings = configurator.InitializeMinimalModSettings(this.currentCfgState);
+
         string mod_config = this.GenerateModConfigFile(mod_settings);
 
         if (this.IsModificationReadyToExecution())
