@@ -9,7 +9,7 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPreset
 /// <summary>
 /// Represents an abstract entity for a game configuration profile.
 /// </summary>
-public abstract class GameConfigProfile
+public class GameConfigProfile
 {
     private const string DefaultName = "My Configuration by Default";
 
@@ -21,15 +21,37 @@ public abstract class GameConfigProfile
     protected GameConfigProfile(GameSupportProvider provider, GameModificationInfo info)
     {
         this.Id = Guid.NewGuid();
-        this.Name = DefaultName;
+        this.ConfigType = provider.GameEngine;
 
-        this.State = GameConfigState.CreateByDefault(provider, info);
+        this.Name = DefaultName;
+        this.ConfigState = GameConfigState.CreateByDefault(provider, info);
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GameConfigProfile"/> class.
+    /// </summary>
+    /// <param name="provider">A target game support provider type.</param>
+    /// <param name="info">Information about a target game modification.</param>
+    /// <param name="state">A target custom game configuration state.</param>
+    protected GameConfigProfile(
+        GameSupportProvider provider, GameModificationInfo info, ICustomConfigState state)
+    {
+        this.Id = Guid.NewGuid();
+        this.ConfigType = provider.GameEngine;
+
+        this.Name = DefaultName;
+        this.ConfigState = GameConfigState.Create(provider, info, state);
     }
 
     /// <summary>
     /// Gets the GUID of this game configuration profile.
     /// </summary>
     public Guid Id { get; }
+
+    /// <summary>
+    /// Gets the current game configuration type.
+    /// </summary>
+    public GameEngineSupportType ConfigType { get; }
 
     /// <summary>
     /// Gets or sets the name of this game configuration profile.
@@ -39,5 +61,5 @@ public abstract class GameConfigProfile
     /// <summary>
     /// Gets or sets the current game configuration state for this profile.
     /// </summary>
-    public GameConfigState State { get; set; }
+    public GameConfigState ConfigState { get; set; }
 }
