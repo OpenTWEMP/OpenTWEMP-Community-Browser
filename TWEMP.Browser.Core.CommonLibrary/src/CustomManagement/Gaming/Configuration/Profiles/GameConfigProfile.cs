@@ -18,7 +18,7 @@ public class GameConfigProfile
     /// </summary>
     /// <param name="provider">A target game support provider type.</param>
     /// <param name="info">Information about a target game modification.</param>
-    protected GameConfigProfile(GameSupportProvider provider, GameModificationInfo info)
+    public GameConfigProfile(GameSupportProvider provider, GameModificationInfo info)
     {
         this.Id = Guid.NewGuid();
         this.ConfigType = provider.GameEngine;
@@ -33,7 +33,7 @@ public class GameConfigProfile
     /// <param name="provider">A target game support provider type.</param>
     /// <param name="info">Information about a target game modification.</param>
     /// <param name="state">A target custom game configuration state.</param>
-    protected GameConfigProfile(
+    public GameConfigProfile(
         GameSupportProvider provider, GameModificationInfo info, ICustomConfigState state)
     {
         this.Id = Guid.NewGuid();
