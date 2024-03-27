@@ -4,9 +4,8 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 
-using Newtonsoft.Json;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
 /// <summary>
 /// Represents a device to manage custom game collections into the application.
@@ -19,15 +18,9 @@ public static class CustomGameCollectionsManager
 
     private static readonly string CacheStorageLocation;
 
-    private static List<UpdatableGameModsCollection> customCollections;
-    private static UpdatableGameModsCollection favoriteCollection;
-
     static CustomGameCollectionsManager()
     {
         CacheStorageLocation = GameSettingsCacheStorage.Location;
-
-        customCollections = InitializeCustomCollections();
-        favoriteCollection = InitializeFavoriteCollection();
 
         FavoriteModsCollection = LoadFavoriteCollectionFromCache(CacheStorageLocation);
         UserCollections = LoadExistingCollectionsFromCache(CacheStorageLocation);
@@ -49,11 +42,10 @@ public static class CustomGameCollectionsManager
     /// <param name="collections">The list of objects which are collections of game modifications.</param>
     public static void WriteExistingCollections(List<CustomModsCollection> collections)
     {
-        string collectionsTextContent = JsonConvert.SerializeObject(collections, Formatting.Indented);
-
         try
         {
-            File.WriteAllText(Path.Combine(GameSettingsCacheStorage.Location, CollectionsFileName), collectionsTextContent);
+            string path = Path.Combine(GameSettingsCacheStorage.Location, CollectionsFileName);
+            AppSerializer.SerializeToJson(collections, path);
         }
         catch (FileNotFoundException)
         {
@@ -66,11 +58,10 @@ public static class CustomGameCollectionsManager
     /// </summary>
     public static void WriteFavoriteCollection()
     {
-        string favoriteCollectionTextContent = JsonConvert.SerializeObject(FavoriteModsCollection, Formatting.Indented);
-
         try
         {
-            File.WriteAllText(Path.Combine(GameSettingsCacheStorage.Location, FavoriteCollectionFileName), favoriteCollectionTextContent);
+            string path = Path.Combine(GameSettingsCacheStorage.Location, FavoriteCollectionFileName);
+            AppSerializer.SerializeToJson(FavoriteModsCollection, path);
         }
         catch (FileNotFoundException)
         {
@@ -80,39 +71,37 @@ public static class CustomGameCollectionsManager
 
     private static List<CustomModsCollection> LoadExistingCollectionsFromCache(string cacheDirectoryPath)
     {
+        List<CustomModsCollection> collections;
+
         string collectionsFilePath = Path.Combine(cacheDirectoryPath, CollectionsFileName);
 
         if (File.Exists(collectionsFilePath))
         {
-            string collectionsTextContent = File.ReadAllText(collectionsFilePath);
-            return JsonConvert.DeserializeObject<List<CustomModsCollection>>(collectionsTextContent) !;
+            collections = AppSerializer.DeserializeFromJson<List<CustomModsCollection>>(collectionsFilePath);
+        }
+        else
+        {
+            collections = new List<CustomModsCollection>();
         }
 
-        return new List<CustomModsCollection>();
+        return collections;
     }
 
     private static CustomModsCollection LoadFavoriteCollectionFromCache(string cacheDirectoryPath)
     {
+        CustomModsCollection collection;
+
         string favoriteCollectionFilePath = Path.Combine(cacheDirectoryPath, FavoriteCollectionFileName);
 
         if (File.Exists(favoriteCollectionFilePath))
         {
-            string favoriteCollectionTextContent = File.ReadAllText(favoriteCollectionFilePath);
-            return JsonConvert.DeserializeObject<CustomModsCollection>(favoriteCollectionTextContent) !;
+            collection = AppSerializer.DeserializeFromJson<CustomModsCollection>(favoriteCollectionFilePath);
+        }
+        else
+        {
+            collection = new CustomModsCollection(FavoriteCollectionTitle, new Dictionary<string, string>());
         }
 
-        return new CustomModsCollection(FavoriteCollectionTitle, new Dictionary<string, string>());
-    }
-
-    private static List<UpdatableGameModsCollection> InitializeCustomCollections()
-    {
-        return new List<UpdatableGameModsCollection>();
-    }
-
-    private static UpdatableGameModsCollection InitializeFavoriteCollection()
-    {
-        return new UpdatableGameModsCollection(
-            header: new GameModsCollectionHeader(FavoriteCollectionTitle),
-            gameMods: Array.Empty<UpdatableGameModificationView>());
+        return collection;
     }
 }
