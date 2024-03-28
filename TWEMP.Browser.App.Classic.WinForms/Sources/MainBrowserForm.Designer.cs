@@ -68,6 +68,7 @@ namespace TWEMP.Browser.App.Classic
             toolStripAppItem = new ToolStripMenuItem();
             gameSetupSettingsToolStripMenuItem = new ToolStripMenuItem();
             modSupportPresetSettingsToolStripMenuItem = new ToolStripMenuItem();
+            gameMusicPlayerToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             applicationSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
@@ -82,7 +83,7 @@ namespace TWEMP.Browser.App.Classic
             buttonCollectionCreate = new Button();
             buttonCollectionManage = new Button();
             panelCollections = new Panel();
-            gameMusicPlayerToolStripMenuItem = new ToolStripMenuItem();
+            gameConfigProfilesToolStripMenuItem = new ToolStripMenuItem();
             panelLauncherOptions.SuspendLayout();
             groupBoxConfigProfiles.SuspendLayout();
             groupBoxLauncherProviders.SuspendLayout();
@@ -525,6 +526,13 @@ namespace TWEMP.Browser.App.Classic
             modSupportPresetSettingsToolStripMenuItem.Text = "Mod Support Preset Settings";
             modSupportPresetSettingsToolStripMenuItem.Click += ModSupportPresetSettingsToolStripMenuItem_Click;
             // 
+            // gameMusicPlayerToolStripMenuItem
+            // 
+            gameMusicPlayerToolStripMenuItem.Name = "gameMusicPlayerToolStripMenuItem";
+            gameMusicPlayerToolStripMenuItem.Size = new Size(257, 22);
+            gameMusicPlayerToolStripMenuItem.Text = "Media Device - Game Music Player";
+            gameMusicPlayerToolStripMenuItem.Click += GameMusicPlayerToolStripMenuItem_Click;
+            // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
@@ -558,7 +566,7 @@ namespace TWEMP.Browser.App.Classic
             // 
             // toolStripModItem
             // 
-            toolStripModItem.DropDownItems.AddRange(new ToolStripItem[] { configSettingsToolStripMenuItem });
+            toolStripModItem.DropDownItems.AddRange(new ToolStripItem[] { gameConfigProfilesToolStripMenuItem, configSettingsToolStripMenuItem });
             toolStripModItem.Name = "toolStripModItem";
             toolStripModItem.Size = new Size(101, 20);
             toolStripModItem.Text = "MODIFICATION";
@@ -658,12 +666,12 @@ namespace TWEMP.Browser.App.Classic
             panelCollections.Size = new Size(321, 110);
             panelCollections.TabIndex = 21;
             // 
-            // gameMusicPlayerToolStripMenuItem
+            // gameConfigProfilesToolStripMenuItem
             // 
-            gameMusicPlayerToolStripMenuItem.Name = "gameMusicPlayerToolStripMenuItem";
-            gameMusicPlayerToolStripMenuItem.Size = new Size(257, 22);
-            gameMusicPlayerToolStripMenuItem.Text = "Media Device - Game Music Player";
-            gameMusicPlayerToolStripMenuItem.Click += GameMusicPlayerToolStripMenuItem_Click;
+            gameConfigProfilesToolStripMenuItem.Name = "gameConfigProfilesToolStripMenuItem";
+            gameConfigProfilesToolStripMenuItem.Size = new Size(193, 22);
+            gameConfigProfilesToolStripMenuItem.Text = "Game Config Profiles";
+            gameConfigProfilesToolStripMenuItem.Click += GameConfigProfilesToolStripMenuItem_Click;
             // 
             // MainBrowserForm
             // 
@@ -761,5 +769,6 @@ namespace TWEMP.Browser.App.Classic
         private Panel panelCollections;
         private ToolStripMenuItem modSupportPresetSettingsToolStripMenuItem;
         private ToolStripMenuItem gameMusicPlayerToolStripMenuItem;
+        private ToolStripMenuItem gameConfigProfilesToolStripMenuItem;
     }
 }

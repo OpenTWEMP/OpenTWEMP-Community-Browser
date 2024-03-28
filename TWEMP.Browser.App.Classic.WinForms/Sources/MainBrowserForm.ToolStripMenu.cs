@@ -50,6 +50,12 @@ internal partial class MainBrowserForm
         gameSetupConfigForm.Show();
     }
 
+    private void GameConfigProfilesToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var gameConfigProfilesForm = new GameConfigProfilesForm();
+        gameConfigProfilesForm.ShowDialog();
+    }
+
     private void ModSupportPresetSettingsToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var appSettingsForm = new ModSupportPresetSettingsForm(this);
