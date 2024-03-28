@@ -79,6 +79,13 @@
             tabPage4 = new TabPage();
             label4 = new Label();
             tabPage5 = new TabPage();
+            cfgNetworkGroupBox = new GroupBox();
+            cfgNetworkUsePortPanel = new Panel();
+            cfgNetworkUsePortTextBox = new TextBox();
+            cfgNetworkUsePortLabel = new Label();
+            cfgNetworkUseIpPanel = new Panel();
+            cfgNetworkUseIpTextBox = new TextBox();
+            cfgNetworkUseIpLabel = new Label();
             cfgMiscGroupBox = new GroupBox();
             cfgMiscBypassToStrategySavePanel = new Panel();
             cfgMiscBypassToStrategySaveTextBox = new TextBox();
@@ -104,13 +111,28 @@
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
-            cfgNetworkGroupBox = new GroupBox();
-            cfgNetworkUseIpPanel = new Panel();
-            cfgNetworkUsePortPanel = new Panel();
-            cfgNetworkUseIpLabel = new Label();
-            cfgNetworkUsePortLabel = new Label();
-            cfgNetworkUseIpTextBox = new TextBox();
-            cfgNetworkUsePortTextBox = new TextBox();
+            cfgHotseatAutoresolveBattlesCheckBox = new CheckBox();
+            cfgHotseatScrollCheckBox = new CheckBox();
+            cfgHotseatTurnsCheckBox = new CheckBox();
+            cfgHotseatDisableConsoleCheckBox = new CheckBox();
+            cfgHotseatDisablePapalElectionsCheckBox = new CheckBox();
+            cfgHotseatSavePrefsCheckBox = new CheckBox();
+            cfgHotseatUpdateAiCameraCheckBox = new CheckBox();
+            cfgHotseatAutosaveCheckBox = new CheckBox();
+            cfgHotseatSaveConfigCheckBox = new CheckBox();
+            cfgHotseatCloseAfterSaveCheckBox = new CheckBox();
+            cfgHotseatValidateDataCheckBox = new CheckBox();
+            cfgHotseatAllowValidationFailuresCheckBox = new CheckBox();
+            cfgHotseatValidateDiplomacyCheckBox = new CheckBox();
+            cfgHotseatPasswordsPanel = new Panel();
+            cfgHotseatPasswordsLabel = new Label();
+            cfgHotseatPasswordsTextBox = new TextBox();
+            cfgHotseatAdminPasswordPanel = new Panel();
+            cfgHotseatAdminPasswordTextBox = new TextBox();
+            cfgHotseatAdminPasswordLabel = new Label();
+            cfgHotseatGameNamePanel = new Panel();
+            cfgHotseatGameNameTextBox = new TextBox();
+            cfgHotseatGameNameLabel = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -141,6 +163,9 @@
             ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMaxZoomNumericUpDown).BeginInit();
             tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
+            cfgNetworkGroupBox.SuspendLayout();
+            cfgNetworkUsePortPanel.SuspendLayout();
+            cfgNetworkUseIpPanel.SuspendLayout();
             cfgMiscGroupBox.SuspendLayout();
             cfgMiscBypassToStrategySavePanel.SuspendLayout();
             cfgIOGroupBox.SuspendLayout();
@@ -148,9 +173,9 @@
             tabPage6.SuspendLayout();
             tabPage7.SuspendLayout();
             cfgUIGroupBox.SuspendLayout();
-            cfgNetworkGroupBox.SuspendLayout();
-            cfgNetworkUseIpPanel.SuspendLayout();
-            cfgNetworkUsePortPanel.SuspendLayout();
+            cfgHotseatPasswordsPanel.SuspendLayout();
+            cfgHotseatAdminPasswordPanel.SuspendLayout();
+            cfgHotseatGameNamePanel.SuspendLayout();
             SuspendLayout();
             // 
             // saveConfigSettingsButton
@@ -600,6 +625,22 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(cfgHotseatGameNamePanel);
+            tabPage4.Controls.Add(cfgHotseatAdminPasswordPanel);
+            tabPage4.Controls.Add(cfgHotseatPasswordsPanel);
+            tabPage4.Controls.Add(cfgHotseatValidateDiplomacyCheckBox);
+            tabPage4.Controls.Add(cfgHotseatAllowValidationFailuresCheckBox);
+            tabPage4.Controls.Add(cfgHotseatValidateDataCheckBox);
+            tabPage4.Controls.Add(cfgHotseatCloseAfterSaveCheckBox);
+            tabPage4.Controls.Add(cfgHotseatSaveConfigCheckBox);
+            tabPage4.Controls.Add(cfgHotseatAutosaveCheckBox);
+            tabPage4.Controls.Add(cfgHotseatUpdateAiCameraCheckBox);
+            tabPage4.Controls.Add(cfgHotseatSavePrefsCheckBox);
+            tabPage4.Controls.Add(cfgHotseatDisablePapalElectionsCheckBox);
+            tabPage4.Controls.Add(cfgHotseatDisableConsoleCheckBox);
+            tabPage4.Controls.Add(cfgHotseatTurnsCheckBox);
+            tabPage4.Controls.Add(cfgHotseatScrollCheckBox);
+            tabPage4.Controls.Add(cfgHotseatAutoresolveBattlesCheckBox);
             tabPage4.Controls.Add(label4);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
@@ -632,6 +673,70 @@
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Game Settings";
             tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // cfgNetworkGroupBox
+            // 
+            cfgNetworkGroupBox.Controls.Add(cfgNetworkUsePortPanel);
+            cfgNetworkGroupBox.Controls.Add(cfgNetworkUseIpPanel);
+            cfgNetworkGroupBox.Location = new Point(294, 25);
+            cfgNetworkGroupBox.Name = "cfgNetworkGroupBox";
+            cfgNetworkGroupBox.Size = new Size(426, 147);
+            cfgNetworkGroupBox.TabIndex = 6;
+            cfgNetworkGroupBox.TabStop = false;
+            cfgNetworkGroupBox.Text = "[network]";
+            // 
+            // cfgNetworkUsePortPanel
+            // 
+            cfgNetworkUsePortPanel.BackColor = Color.Silver;
+            cfgNetworkUsePortPanel.Controls.Add(cfgNetworkUsePortTextBox);
+            cfgNetworkUsePortPanel.Controls.Add(cfgNetworkUsePortLabel);
+            cfgNetworkUsePortPanel.Location = new Point(20, 73);
+            cfgNetworkUsePortPanel.Name = "cfgNetworkUsePortPanel";
+            cfgNetworkUsePortPanel.Size = new Size(400, 42);
+            cfgNetworkUsePortPanel.TabIndex = 1;
+            // 
+            // cfgNetworkUsePortTextBox
+            // 
+            cfgNetworkUsePortTextBox.Location = new Point(84, 2);
+            cfgNetworkUsePortTextBox.Name = "cfgNetworkUsePortTextBox";
+            cfgNetworkUsePortTextBox.Size = new Size(182, 23);
+            cfgNetworkUsePortTextBox.TabIndex = 1;
+            cfgNetworkUsePortTextBox.Text = "27750";
+            // 
+            // cfgNetworkUsePortLabel
+            // 
+            cfgNetworkUsePortLabel.Location = new Point(3, 0);
+            cfgNetworkUsePortLabel.Name = "cfgNetworkUsePortLabel";
+            cfgNetworkUsePortLabel.Size = new Size(100, 24);
+            cfgNetworkUsePortLabel.TabIndex = 0;
+            cfgNetworkUsePortLabel.Text = "use_port";
+            cfgNetworkUsePortLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cfgNetworkUseIpPanel
+            // 
+            cfgNetworkUseIpPanel.BackColor = Color.Silver;
+            cfgNetworkUseIpPanel.Controls.Add(cfgNetworkUseIpTextBox);
+            cfgNetworkUseIpPanel.Controls.Add(cfgNetworkUseIpLabel);
+            cfgNetworkUseIpPanel.Location = new Point(20, 30);
+            cfgNetworkUseIpPanel.Name = "cfgNetworkUseIpPanel";
+            cfgNetworkUseIpPanel.Size = new Size(400, 37);
+            cfgNetworkUseIpPanel.TabIndex = 0;
+            // 
+            // cfgNetworkUseIpTextBox
+            // 
+            cfgNetworkUseIpTextBox.Location = new Point(84, 5);
+            cfgNetworkUseIpTextBox.Name = "cfgNetworkUseIpTextBox";
+            cfgNetworkUseIpTextBox.Size = new Size(182, 23);
+            cfgNetworkUseIpTextBox.TabIndex = 1;
+            cfgNetworkUseIpTextBox.Text = "xxx.xxx.xxx.xxx";
+            // 
+            // cfgNetworkUseIpLabel
+            // 
+            cfgNetworkUseIpLabel.Location = new Point(11, 8);
+            cfgNetworkUseIpLabel.Name = "cfgNetworkUseIpLabel";
+            cfgNetworkUseIpLabel.Size = new Size(100, 23);
+            cfgNetworkUseIpLabel.TabIndex = 0;
+            cfgNetworkUseIpLabel.Text = "use_ip";
             // 
             // cfgMiscGroupBox
             // 
@@ -881,69 +986,210 @@
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
             // 
-            // cfgNetworkGroupBox
+            // cfgHotseatAutoresolveBattlesCheckBox
             // 
-            cfgNetworkGroupBox.Controls.Add(cfgNetworkUsePortPanel);
-            cfgNetworkGroupBox.Controls.Add(cfgNetworkUseIpPanel);
-            cfgNetworkGroupBox.Location = new Point(294, 25);
-            cfgNetworkGroupBox.Name = "cfgNetworkGroupBox";
-            cfgNetworkGroupBox.Size = new Size(426, 147);
-            cfgNetworkGroupBox.TabIndex = 6;
-            cfgNetworkGroupBox.TabStop = false;
-            cfgNetworkGroupBox.Text = "[network]";
+            cfgHotseatAutoresolveBattlesCheckBox.AutoSize = true;
+            cfgHotseatAutoresolveBattlesCheckBox.Location = new Point(19, 57);
+            cfgHotseatAutoresolveBattlesCheckBox.Name = "cfgHotseatAutoresolveBattlesCheckBox";
+            cfgHotseatAutoresolveBattlesCheckBox.Size = new Size(127, 19);
+            cfgHotseatAutoresolveBattlesCheckBox.TabIndex = 1;
+            cfgHotseatAutoresolveBattlesCheckBox.Text = "autoresolve_battles";
+            cfgHotseatAutoresolveBattlesCheckBox.UseVisualStyleBackColor = true;
             // 
-            // cfgNetworkUseIpPanel
+            // cfgHotseatScrollCheckBox
             // 
-            cfgNetworkUseIpPanel.BackColor = Color.Silver;
-            cfgNetworkUseIpPanel.Controls.Add(cfgNetworkUseIpTextBox);
-            cfgNetworkUseIpPanel.Controls.Add(cfgNetworkUseIpLabel);
-            cfgNetworkUseIpPanel.Location = new Point(20, 30);
-            cfgNetworkUseIpPanel.Name = "cfgNetworkUseIpPanel";
-            cfgNetworkUseIpPanel.Size = new Size(400, 37);
-            cfgNetworkUseIpPanel.TabIndex = 0;
+            cfgHotseatScrollCheckBox.AutoSize = true;
+            cfgHotseatScrollCheckBox.Location = new Point(19, 82);
+            cfgHotseatScrollCheckBox.Name = "cfgHotseatScrollCheckBox";
+            cfgHotseatScrollCheckBox.Size = new Size(54, 19);
+            cfgHotseatScrollCheckBox.TabIndex = 2;
+            cfgHotseatScrollCheckBox.Text = "scroll";
+            cfgHotseatScrollCheckBox.UseVisualStyleBackColor = true;
             // 
-            // cfgNetworkUsePortPanel
+            // cfgHotseatTurnsCheckBox
             // 
-            cfgNetworkUsePortPanel.BackColor = Color.Silver;
-            cfgNetworkUsePortPanel.Controls.Add(cfgNetworkUsePortTextBox);
-            cfgNetworkUsePortPanel.Controls.Add(cfgNetworkUsePortLabel);
-            cfgNetworkUsePortPanel.Location = new Point(20, 73);
-            cfgNetworkUsePortPanel.Name = "cfgNetworkUsePortPanel";
-            cfgNetworkUsePortPanel.Size = new Size(400, 42);
-            cfgNetworkUsePortPanel.TabIndex = 1;
+            cfgHotseatTurnsCheckBox.AutoSize = true;
+            cfgHotseatTurnsCheckBox.Location = new Point(19, 107);
+            cfgHotseatTurnsCheckBox.Name = "cfgHotseatTurnsCheckBox";
+            cfgHotseatTurnsCheckBox.Size = new Size(53, 19);
+            cfgHotseatTurnsCheckBox.TabIndex = 3;
+            cfgHotseatTurnsCheckBox.Text = "turns";
+            cfgHotseatTurnsCheckBox.UseVisualStyleBackColor = true;
             // 
-            // cfgNetworkUseIpLabel
+            // cfgHotseatDisableConsoleCheckBox
             // 
-            cfgNetworkUseIpLabel.Location = new Point(11, 8);
-            cfgNetworkUseIpLabel.Name = "cfgNetworkUseIpLabel";
-            cfgNetworkUseIpLabel.Size = new Size(100, 23);
-            cfgNetworkUseIpLabel.TabIndex = 0;
-            cfgNetworkUseIpLabel.Text = "use_ip";
+            cfgHotseatDisableConsoleCheckBox.AutoSize = true;
+            cfgHotseatDisableConsoleCheckBox.Location = new Point(19, 132);
+            cfgHotseatDisableConsoleCheckBox.Name = "cfgHotseatDisableConsoleCheckBox";
+            cfgHotseatDisableConsoleCheckBox.Size = new Size(109, 19);
+            cfgHotseatDisableConsoleCheckBox.TabIndex = 4;
+            cfgHotseatDisableConsoleCheckBox.Text = "disable_console";
+            cfgHotseatDisableConsoleCheckBox.UseVisualStyleBackColor = true;
             // 
-            // cfgNetworkUsePortLabel
+            // cfgHotseatDisablePapalElectionsCheckBox
             // 
-            cfgNetworkUsePortLabel.Location = new Point(3, 0);
-            cfgNetworkUsePortLabel.Name = "cfgNetworkUsePortLabel";
-            cfgNetworkUsePortLabel.Size = new Size(100, 24);
-            cfgNetworkUsePortLabel.TabIndex = 0;
-            cfgNetworkUsePortLabel.Text = "use_port";
-            cfgNetworkUsePortLabel.TextAlign = ContentAlignment.MiddleLeft;
+            cfgHotseatDisablePapalElectionsCheckBox.AutoSize = true;
+            cfgHotseatDisablePapalElectionsCheckBox.Location = new Point(19, 157);
+            cfgHotseatDisablePapalElectionsCheckBox.Name = "cfgHotseatDisablePapalElectionsCheckBox";
+            cfgHotseatDisablePapalElectionsCheckBox.Size = new Size(149, 19);
+            cfgHotseatDisablePapalElectionsCheckBox.TabIndex = 5;
+            cfgHotseatDisablePapalElectionsCheckBox.Text = "disable_papal_elections";
+            cfgHotseatDisablePapalElectionsCheckBox.UseVisualStyleBackColor = true;
             // 
-            // cfgNetworkUseIpTextBox
+            // cfgHotseatSavePrefsCheckBox
             // 
-            cfgNetworkUseIpTextBox.Location = new Point(84, 5);
-            cfgNetworkUseIpTextBox.Name = "cfgNetworkUseIpTextBox";
-            cfgNetworkUseIpTextBox.Size = new Size(182, 23);
-            cfgNetworkUseIpTextBox.TabIndex = 1;
-            cfgNetworkUseIpTextBox.Text = "xxx.xxx.xxx.xxx";
+            cfgHotseatSavePrefsCheckBox.AutoSize = true;
+            cfgHotseatSavePrefsCheckBox.Location = new Point(19, 182);
+            cfgHotseatSavePrefsCheckBox.Name = "cfgHotseatSavePrefsCheckBox";
+            cfgHotseatSavePrefsCheckBox.Size = new Size(80, 19);
+            cfgHotseatSavePrefsCheckBox.TabIndex = 6;
+            cfgHotseatSavePrefsCheckBox.Text = "save_prefs";
+            cfgHotseatSavePrefsCheckBox.UseVisualStyleBackColor = true;
             // 
-            // cfgNetworkUsePortTextBox
+            // cfgHotseatUpdateAiCameraCheckBox
             // 
-            cfgNetworkUsePortTextBox.Location = new Point(84, 2);
-            cfgNetworkUsePortTextBox.Name = "cfgNetworkUsePortTextBox";
-            cfgNetworkUsePortTextBox.Size = new Size(182, 23);
-            cfgNetworkUsePortTextBox.TabIndex = 1;
-            cfgNetworkUsePortTextBox.Text = "27750";
+            cfgHotseatUpdateAiCameraCheckBox.AutoSize = true;
+            cfgHotseatUpdateAiCameraCheckBox.Location = new Point(19, 207);
+            cfgHotseatUpdateAiCameraCheckBox.Name = "cfgHotseatUpdateAiCameraCheckBox";
+            cfgHotseatUpdateAiCameraCheckBox.Size = new Size(121, 19);
+            cfgHotseatUpdateAiCameraCheckBox.TabIndex = 7;
+            cfgHotseatUpdateAiCameraCheckBox.Text = "update_ai_camera";
+            cfgHotseatUpdateAiCameraCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatAutosaveCheckBox
+            // 
+            cfgHotseatAutosaveCheckBox.AutoSize = true;
+            cfgHotseatAutosaveCheckBox.Location = new Point(19, 232);
+            cfgHotseatAutosaveCheckBox.Name = "cfgHotseatAutosaveCheckBox";
+            cfgHotseatAutosaveCheckBox.Size = new Size(73, 19);
+            cfgHotseatAutosaveCheckBox.TabIndex = 8;
+            cfgHotseatAutosaveCheckBox.Text = "autosave";
+            cfgHotseatAutosaveCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatSaveConfigCheckBox
+            // 
+            cfgHotseatSaveConfigCheckBox.AutoSize = true;
+            cfgHotseatSaveConfigCheckBox.Location = new Point(19, 257);
+            cfgHotseatSaveConfigCheckBox.Name = "cfgHotseatSaveConfigCheckBox";
+            cfgHotseatSaveConfigCheckBox.Size = new Size(88, 19);
+            cfgHotseatSaveConfigCheckBox.TabIndex = 9;
+            cfgHotseatSaveConfigCheckBox.Text = "save_config";
+            cfgHotseatSaveConfigCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatCloseAfterSaveCheckBox
+            // 
+            cfgHotseatCloseAfterSaveCheckBox.AutoSize = true;
+            cfgHotseatCloseAfterSaveCheckBox.Location = new Point(19, 282);
+            cfgHotseatCloseAfterSaveCheckBox.Name = "cfgHotseatCloseAfterSaveCheckBox";
+            cfgHotseatCloseAfterSaveCheckBox.Size = new Size(110, 19);
+            cfgHotseatCloseAfterSaveCheckBox.TabIndex = 10;
+            cfgHotseatCloseAfterSaveCheckBox.Text = "close_after_save";
+            cfgHotseatCloseAfterSaveCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatValidateDataCheckBox
+            // 
+            cfgHotseatValidateDataCheckBox.AutoSize = true;
+            cfgHotseatValidateDataCheckBox.Location = new Point(19, 307);
+            cfgHotseatValidateDataCheckBox.Name = "cfgHotseatValidateDataCheckBox";
+            cfgHotseatValidateDataCheckBox.Size = new Size(95, 19);
+            cfgHotseatValidateDataCheckBox.TabIndex = 11;
+            cfgHotseatValidateDataCheckBox.Text = "validate_data";
+            cfgHotseatValidateDataCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatAllowValidationFailuresCheckBox
+            // 
+            cfgHotseatAllowValidationFailuresCheckBox.AutoSize = true;
+            cfgHotseatAllowValidationFailuresCheckBox.Location = new Point(19, 332);
+            cfgHotseatAllowValidationFailuresCheckBox.Name = "cfgHotseatAllowValidationFailuresCheckBox";
+            cfgHotseatAllowValidationFailuresCheckBox.Size = new Size(154, 19);
+            cfgHotseatAllowValidationFailuresCheckBox.TabIndex = 12;
+            cfgHotseatAllowValidationFailuresCheckBox.Text = "allow_validation_failures";
+            cfgHotseatAllowValidationFailuresCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatValidateDiplomacyCheckBox
+            // 
+            cfgHotseatValidateDiplomacyCheckBox.AutoSize = true;
+            cfgHotseatValidateDiplomacyCheckBox.Location = new Point(19, 357);
+            cfgHotseatValidateDiplomacyCheckBox.Name = "cfgHotseatValidateDiplomacyCheckBox";
+            cfgHotseatValidateDiplomacyCheckBox.Size = new Size(128, 19);
+            cfgHotseatValidateDiplomacyCheckBox.TabIndex = 13;
+            cfgHotseatValidateDiplomacyCheckBox.Text = "validate_diplomacy";
+            cfgHotseatValidateDiplomacyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatPasswordsPanel
+            // 
+            cfgHotseatPasswordsPanel.BackColor = Color.LightGray;
+            cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsTextBox);
+            cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsLabel);
+            cfgHotseatPasswordsPanel.Location = new Point(248, 58);
+            cfgHotseatPasswordsPanel.Name = "cfgHotseatPasswordsPanel";
+            cfgHotseatPasswordsPanel.Size = new Size(231, 58);
+            cfgHotseatPasswordsPanel.TabIndex = 14;
+            // 
+            // cfgHotseatPasswordsLabel
+            // 
+            cfgHotseatPasswordsLabel.Location = new Point(16, 12);
+            cfgHotseatPasswordsLabel.Name = "cfgHotseatPasswordsLabel";
+            cfgHotseatPasswordsLabel.Size = new Size(106, 31);
+            cfgHotseatPasswordsLabel.TabIndex = 0;
+            cfgHotseatPasswordsLabel.Text = "passwords";
+            // 
+            // cfgHotseatPasswordsTextBox
+            // 
+            cfgHotseatPasswordsTextBox.Location = new Point(128, 12);
+            cfgHotseatPasswordsTextBox.Name = "cfgHotseatPasswordsTextBox";
+            cfgHotseatPasswordsTextBox.Size = new Size(100, 23);
+            cfgHotseatPasswordsTextBox.TabIndex = 1;
+            // 
+            // cfgHotseatAdminPasswordPanel
+            // 
+            cfgHotseatAdminPasswordPanel.BackColor = Color.LightGray;
+            cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordTextBox);
+            cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordLabel);
+            cfgHotseatAdminPasswordPanel.Location = new Point(248, 132);
+            cfgHotseatAdminPasswordPanel.Name = "cfgHotseatAdminPasswordPanel";
+            cfgHotseatAdminPasswordPanel.Size = new Size(231, 58);
+            cfgHotseatAdminPasswordPanel.TabIndex = 15;
+            // 
+            // cfgHotseatAdminPasswordTextBox
+            // 
+            cfgHotseatAdminPasswordTextBox.Location = new Point(128, 12);
+            cfgHotseatAdminPasswordTextBox.Name = "cfgHotseatAdminPasswordTextBox";
+            cfgHotseatAdminPasswordTextBox.Size = new Size(100, 23);
+            cfgHotseatAdminPasswordTextBox.TabIndex = 1;
+            // 
+            // cfgHotseatAdminPasswordLabel
+            // 
+            cfgHotseatAdminPasswordLabel.Location = new Point(16, 12);
+            cfgHotseatAdminPasswordLabel.Name = "cfgHotseatAdminPasswordLabel";
+            cfgHotseatAdminPasswordLabel.Size = new Size(106, 32);
+            cfgHotseatAdminPasswordLabel.TabIndex = 0;
+            cfgHotseatAdminPasswordLabel.Text = "admin_password";
+            // 
+            // cfgHotseatGameNamePanel
+            // 
+            cfgHotseatGameNamePanel.BackColor = Color.LightGray;
+            cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameTextBox);
+            cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameLabel);
+            cfgHotseatGameNamePanel.Location = new Point(248, 207);
+            cfgHotseatGameNamePanel.Name = "cfgHotseatGameNamePanel";
+            cfgHotseatGameNamePanel.Size = new Size(231, 58);
+            cfgHotseatGameNamePanel.TabIndex = 16;
+            // 
+            // cfgHotseatGameNameTextBox
+            // 
+            cfgHotseatGameNameTextBox.Location = new Point(128, 12);
+            cfgHotseatGameNameTextBox.Name = "cfgHotseatGameNameTextBox";
+            cfgHotseatGameNameTextBox.Size = new Size(100, 23);
+            cfgHotseatGameNameTextBox.TabIndex = 1;
+            // 
+            // cfgHotseatGameNameLabel
+            // 
+            cfgHotseatGameNameLabel.Location = new Point(16, 12);
+            cfgHotseatGameNameLabel.Name = "cfgHotseatGameNameLabel";
+            cfgHotseatGameNameLabel.Size = new Size(106, 32);
+            cfgHotseatGameNameLabel.TabIndex = 0;
+            cfgHotseatGameNameLabel.Text = "gamename";
             // 
             // ModConfigSettingsForm
             // 
@@ -1002,6 +1248,11 @@
             tabPage4.PerformLayout();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
+            cfgNetworkGroupBox.ResumeLayout(false);
+            cfgNetworkUsePortPanel.ResumeLayout(false);
+            cfgNetworkUsePortPanel.PerformLayout();
+            cfgNetworkUseIpPanel.ResumeLayout(false);
+            cfgNetworkUseIpPanel.PerformLayout();
             cfgMiscGroupBox.ResumeLayout(false);
             cfgMiscGroupBox.PerformLayout();
             cfgMiscBypassToStrategySavePanel.ResumeLayout(false);
@@ -1015,11 +1266,12 @@
             tabPage7.ResumeLayout(false);
             cfgUIGroupBox.ResumeLayout(false);
             cfgUIGroupBox.PerformLayout();
-            cfgNetworkGroupBox.ResumeLayout(false);
-            cfgNetworkUseIpPanel.ResumeLayout(false);
-            cfgNetworkUseIpPanel.PerformLayout();
-            cfgNetworkUsePortPanel.ResumeLayout(false);
-            cfgNetworkUsePortPanel.PerformLayout();
+            cfgHotseatPasswordsPanel.ResumeLayout(false);
+            cfgHotseatPasswordsPanel.PerformLayout();
+            cfgHotseatAdminPasswordPanel.ResumeLayout(false);
+            cfgHotseatAdminPasswordPanel.PerformLayout();
+            cfgHotseatGameNamePanel.ResumeLayout(false);
+            cfgHotseatGameNamePanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1108,5 +1360,27 @@
         private TextBox cfgNetworkUseIpTextBox;
         private Label cfgNetworkUseIpLabel;
         private TextBox cfgNetworkUsePortTextBox;
+        private CheckBox cfgHotseatScrollCheckBox;
+        private CheckBox cfgHotseatAutoresolveBattlesCheckBox;
+        private CheckBox cfgHotseatTurnsCheckBox;
+        private CheckBox cfgHotseatDisableConsoleCheckBox;
+        private CheckBox cfgHotseatDisablePapalElectionsCheckBox;
+        private CheckBox cfgHotseatSavePrefsCheckBox;
+        private CheckBox cfgHotseatUpdateAiCameraCheckBox;
+        private CheckBox cfgHotseatAutosaveCheckBox;
+        private CheckBox cfgHotseatSaveConfigCheckBox;
+        private CheckBox cfgHotseatCloseAfterSaveCheckBox;
+        private CheckBox cfgHotseatValidateDataCheckBox;
+        private CheckBox cfgHotseatValidateDiplomacyCheckBox;
+        private CheckBox cfgHotseatAllowValidationFailuresCheckBox;
+        private Panel cfgHotseatGameNamePanel;
+        private TextBox cfgHotseatGameNameTextBox;
+        private Label cfgHotseatGameNameLabel;
+        private Panel cfgHotseatAdminPasswordPanel;
+        private TextBox cfgHotseatAdminPasswordTextBox;
+        private Label cfgHotseatAdminPasswordLabel;
+        private Panel cfgHotseatPasswordsPanel;
+        private TextBox cfgHotseatPasswordsTextBox;
+        private Label cfgHotseatPasswordsLabel;
     }
 }
