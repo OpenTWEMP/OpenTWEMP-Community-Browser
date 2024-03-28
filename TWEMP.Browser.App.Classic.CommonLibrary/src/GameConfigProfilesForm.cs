@@ -21,7 +21,8 @@ public partial class GameConfigProfilesForm : Form
 
     private void ConfigProfileCreateButtonClick(object sender, EventArgs e)
     {
-        MessageBox.Show("ConfigProfileCreateButtonClick");
+        var gameConfigProfileCreateForm = new GameConfigProfileCreateForm();
+        gameConfigProfileCreateForm.ShowDialog();
     }
 
     private void ConfigProfileCopyButtonClick(object sender, EventArgs e)
