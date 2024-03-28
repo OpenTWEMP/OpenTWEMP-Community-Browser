@@ -62,6 +62,17 @@ public static class GameConfigurationManager
     }
 
     /// <summary>
+    /// Creates a new game configuration profile via copying an existing game configuration profile.
+    /// </summary>
+    /// <param name="templateProfile">A template game configuration profile.</param>
+    public static void CopyProfile(GameConfigProfile templateProfile)
+    {
+        GameConfigProfile profile = new (templateProfile);
+        AvailableProfiles.Add(profile);
+        RefreshAllGameConfigProfiles();
+    }
+
+    /// <summary>
     /// Selects an existing game configuration profile by its GUID.
     /// </summary>
     /// <param name="id">The GUID of a target game configuration profile.</param>

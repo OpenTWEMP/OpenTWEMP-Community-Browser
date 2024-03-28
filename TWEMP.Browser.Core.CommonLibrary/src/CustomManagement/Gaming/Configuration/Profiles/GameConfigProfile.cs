@@ -44,6 +44,19 @@ public class GameConfigProfile
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="GameConfigProfile"/> class.
+    /// </summary>
+    /// <param name="profile">A template game configuration profile.</param>
+    public GameConfigProfile(GameConfigProfile profile)
+    {
+        this.Id = Guid.NewGuid();
+        this.ConfigType = profile.ConfigType;
+
+        this.Name = $"{profile.Name} Copy";
+        this.ConfigState = profile.ConfigState;
+    }
+
+    /// <summary>
     /// Gets the GUID of this game configuration profile.
     /// </summary>
     public Guid Id { get; }
