@@ -8,9 +8,7 @@
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 public partial class GameConfigProfileCreateForm : Form
-
 {
-
     public GameConfigProfileCreateForm()
     {
         this.InitializeComponent();

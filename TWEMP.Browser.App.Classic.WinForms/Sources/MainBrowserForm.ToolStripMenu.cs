@@ -50,6 +50,12 @@ internal partial class MainBrowserForm
         gameSetupConfigForm.Show();
     }
 
+    private void GameConfigProfilesSwitcherToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var gameConfigProfileSwitchForm = new GameConfigProfileSwitchForm();
+        gameConfigProfileSwitchForm.ShowDialog();
+    }
+
     private void GameConfigProfilesToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var gameConfigProfilesForm = new GameConfigProfilesForm();
