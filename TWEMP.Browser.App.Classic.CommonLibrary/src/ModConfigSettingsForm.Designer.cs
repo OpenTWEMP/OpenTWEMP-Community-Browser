@@ -77,6 +77,28 @@
             cfgControlsScrollMaxZoomLabel = new Label();
             label3 = new Label();
             tabPage4 = new TabPage();
+            cfgHotseatGameNamePanel = new Panel();
+            cfgHotseatGameNameTextBox = new TextBox();
+            cfgHotseatGameNameLabel = new Label();
+            cfgHotseatAdminPasswordPanel = new Panel();
+            cfgHotseatAdminPasswordTextBox = new TextBox();
+            cfgHotseatAdminPasswordLabel = new Label();
+            cfgHotseatPasswordsPanel = new Panel();
+            cfgHotseatPasswordsTextBox = new TextBox();
+            cfgHotseatPasswordsLabel = new Label();
+            cfgHotseatValidateDiplomacyCheckBox = new CheckBox();
+            cfgHotseatAllowValidationFailuresCheckBox = new CheckBox();
+            cfgHotseatValidateDataCheckBox = new CheckBox();
+            cfgHotseatCloseAfterSaveCheckBox = new CheckBox();
+            cfgHotseatSaveConfigCheckBox = new CheckBox();
+            cfgHotseatAutosaveCheckBox = new CheckBox();
+            cfgHotseatUpdateAiCameraCheckBox = new CheckBox();
+            cfgHotseatSavePrefsCheckBox = new CheckBox();
+            cfgHotseatDisablePapalElectionsCheckBox = new CheckBox();
+            cfgHotseatDisableConsoleCheckBox = new CheckBox();
+            cfgHotseatTurnsCheckBox = new CheckBox();
+            cfgHotseatScrollCheckBox = new CheckBox();
+            cfgHotseatAutoresolveBattlesCheckBox = new CheckBox();
             label4 = new Label();
             tabPage5 = new TabPage();
             cfgNetworkGroupBox = new GroupBox();
@@ -111,28 +133,50 @@
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
-            cfgHotseatAutoresolveBattlesCheckBox = new CheckBox();
-            cfgHotseatScrollCheckBox = new CheckBox();
-            cfgHotseatTurnsCheckBox = new CheckBox();
-            cfgHotseatDisableConsoleCheckBox = new CheckBox();
-            cfgHotseatDisablePapalElectionsCheckBox = new CheckBox();
-            cfgHotseatSavePrefsCheckBox = new CheckBox();
-            cfgHotseatUpdateAiCameraCheckBox = new CheckBox();
-            cfgHotseatAutosaveCheckBox = new CheckBox();
-            cfgHotseatSaveConfigCheckBox = new CheckBox();
-            cfgHotseatCloseAfterSaveCheckBox = new CheckBox();
-            cfgHotseatValidateDataCheckBox = new CheckBox();
-            cfgHotseatAllowValidationFailuresCheckBox = new CheckBox();
-            cfgHotseatValidateDiplomacyCheckBox = new CheckBox();
-            cfgHotseatPasswordsPanel = new Panel();
-            cfgHotseatPasswordsLabel = new Label();
-            cfgHotseatPasswordsTextBox = new TextBox();
-            cfgHotseatAdminPasswordPanel = new Panel();
-            cfgHotseatAdminPasswordTextBox = new TextBox();
-            cfgHotseatAdminPasswordLabel = new Label();
-            cfgHotseatGameNamePanel = new Panel();
-            cfgHotseatGameNameTextBox = new TextBox();
-            cfgHotseatGameNameLabel = new Label();
+            cfgGameCampaignNumTimePlayPanel = new Panel();
+            cfgGameCampaignNumTimePlayLabel = new Label();
+            cfgGameAiFactionsPanel = new Panel();
+            cfgGameAiFactionsLabel = new Label();
+            cfgGameChatMsgDurationPanel = new Panel();
+            cfgGameChatMsgDurationLabel = new Label();
+            cfgGameCampaignMapSpeedUpPanel = new Panel();
+            cfgGameCampaignMapSpeedUpLabel = new Label();
+            cfgGameCampaignMapGameSpeedPanel = new Panel();
+            cfgGameCampaignMapGameSpeedLabel = new Label();
+            cfgGamePrefFactionsPlayedPanel = new Panel();
+            cfgGamePrefFactionsPlayedLabel = new Label();
+            cfgGameTutorialPathPanel = new Panel();
+            cfgGameTutorialPathLabel = new Label();
+            cfgGameUnitSizePanel = new Panel();
+            cfgGameUnitSizeLabel = new Label();
+            cfgGameCampaignNumTimePlayTextBox = new TextBox();
+            cfgGameTutorialPathTextBox = new TextBox();
+            cfgGamePrefFactionsPlayedTextBox = new TextBox();
+            cfgGameCampaignMapGameSpeedNumericUpDown = new NumericUpDown();
+            cfgGameCampaignMapSpeedUpNumericUpDown = new NumericUpDown();
+            cfgGameChatMsgDurationNumericUpDown = new NumericUpDown();
+            cfgGameAiFactionsComboBox = new ComboBox();
+            cfgGameUnitSizeComboBox = new ComboBox();
+            cfgGameAdvancedStatsAlwaysCheckBox = new CheckBox();
+            cfgGameAdvisorVerbosityCheckBox = new CheckBox();
+            cfgGameAllUsersCheckBox = new CheckBox();
+            cfgGameAutoSaveCheckBox = new CheckBox();
+            cfgGameBlindAdvisorCheckBox = new CheckBox();
+            cfgGameDisableArrowMarkersCheckBox = new CheckBox();
+            cfgGameDisableEventsCheckBox = new CheckBox();
+            cfgGameEnglishCheckBox = new CheckBox();
+            cfgGameEventCutscenesCheckBox = new CheckBox();
+            cfgGameFatigueCheckBox = new CheckBox();
+            cfgGameFirstTimePlayCheckBox = new CheckBox();
+            cfgGameGamespySavePasswrdCheckBox = new CheckBox();
+            cfgGameLabelCharactersCheckBox = new CheckBox();
+            cfgGameLabelSettlementsCheckBox = new CheckBox();
+            cfgGameMicromanageAllSettlementsCheckBox = new CheckBox();
+            cfgGameMoraleCheckBox = new CheckBox();
+            cfgGameMuteAdvisorCheckBox = new CheckBox();
+            cfgGameNoCampaignBattleTimeLimitCheckBox = new CheckBox();
+            cfgGameUnlimitedMenOnBattlefieldCheckBox = new CheckBox();
+            cfgGameUseQuickchatCheckBox = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -162,6 +206,9 @@
             cfgControlsScrollMaxZoomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMaxZoomNumericUpDown).BeginInit();
             tabPage4.SuspendLayout();
+            cfgHotseatGameNamePanel.SuspendLayout();
+            cfgHotseatAdminPasswordPanel.SuspendLayout();
+            cfgHotseatPasswordsPanel.SuspendLayout();
             tabPage5.SuspendLayout();
             cfgNetworkGroupBox.SuspendLayout();
             cfgNetworkUsePortPanel.SuspendLayout();
@@ -173,9 +220,17 @@
             tabPage6.SuspendLayout();
             tabPage7.SuspendLayout();
             cfgUIGroupBox.SuspendLayout();
-            cfgHotseatPasswordsPanel.SuspendLayout();
-            cfgHotseatAdminPasswordPanel.SuspendLayout();
-            cfgHotseatGameNamePanel.SuspendLayout();
+            cfgGameCampaignNumTimePlayPanel.SuspendLayout();
+            cfgGameAiFactionsPanel.SuspendLayout();
+            cfgGameChatMsgDurationPanel.SuspendLayout();
+            cfgGameCampaignMapSpeedUpPanel.SuspendLayout();
+            cfgGameCampaignMapGameSpeedPanel.SuspendLayout();
+            cfgGamePrefFactionsPlayedPanel.SuspendLayout();
+            cfgGameTutorialPathPanel.SuspendLayout();
+            cfgGameUnitSizePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapGameSpeedNumericUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapSpeedUpNumericUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cfgGameChatMsgDurationNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // saveConfigSettingsButton
@@ -205,6 +260,34 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(cfgGameUseQuickchatCheckBox);
+            tabPage1.Controls.Add(cfgGameUnlimitedMenOnBattlefieldCheckBox);
+            tabPage1.Controls.Add(cfgGameNoCampaignBattleTimeLimitCheckBox);
+            tabPage1.Controls.Add(cfgGameMuteAdvisorCheckBox);
+            tabPage1.Controls.Add(cfgGameMoraleCheckBox);
+            tabPage1.Controls.Add(cfgGameMicromanageAllSettlementsCheckBox);
+            tabPage1.Controls.Add(cfgGameLabelSettlementsCheckBox);
+            tabPage1.Controls.Add(cfgGameLabelCharactersCheckBox);
+            tabPage1.Controls.Add(cfgGameGamespySavePasswrdCheckBox);
+            tabPage1.Controls.Add(cfgGameFirstTimePlayCheckBox);
+            tabPage1.Controls.Add(cfgGameFatigueCheckBox);
+            tabPage1.Controls.Add(cfgGameEventCutscenesCheckBox);
+            tabPage1.Controls.Add(cfgGameEnglishCheckBox);
+            tabPage1.Controls.Add(cfgGameDisableEventsCheckBox);
+            tabPage1.Controls.Add(cfgGameDisableArrowMarkersCheckBox);
+            tabPage1.Controls.Add(cfgGameBlindAdvisorCheckBox);
+            tabPage1.Controls.Add(cfgGameAutoSaveCheckBox);
+            tabPage1.Controls.Add(cfgGameAllUsersCheckBox);
+            tabPage1.Controls.Add(cfgGameAdvisorVerbosityCheckBox);
+            tabPage1.Controls.Add(cfgGameAdvancedStatsAlwaysCheckBox);
+            tabPage1.Controls.Add(cfgGameUnitSizePanel);
+            tabPage1.Controls.Add(cfgGameChatMsgDurationPanel);
+            tabPage1.Controls.Add(cfgGameCampaignMapSpeedUpPanel);
+            tabPage1.Controls.Add(cfgGameCampaignMapGameSpeedPanel);
+            tabPage1.Controls.Add(cfgGamePrefFactionsPlayedPanel);
+            tabPage1.Controls.Add(cfgGameTutorialPathPanel);
+            tabPage1.Controls.Add(cfgGameAiFactionsPanel);
+            tabPage1.Controls.Add(cfgGameCampaignNumTimePlayPanel);
             tabPage1.Controls.Add(label1);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -650,6 +733,211 @@
             tabPage4.Text = "Multiplayer & Hotseat";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // cfgHotseatGameNamePanel
+            // 
+            cfgHotseatGameNamePanel.BackColor = Color.LightGray;
+            cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameTextBox);
+            cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameLabel);
+            cfgHotseatGameNamePanel.Location = new Point(248, 207);
+            cfgHotseatGameNamePanel.Name = "cfgHotseatGameNamePanel";
+            cfgHotseatGameNamePanel.Size = new Size(231, 58);
+            cfgHotseatGameNamePanel.TabIndex = 16;
+            // 
+            // cfgHotseatGameNameTextBox
+            // 
+            cfgHotseatGameNameTextBox.Location = new Point(128, 12);
+            cfgHotseatGameNameTextBox.Name = "cfgHotseatGameNameTextBox";
+            cfgHotseatGameNameTextBox.Size = new Size(100, 23);
+            cfgHotseatGameNameTextBox.TabIndex = 1;
+            // 
+            // cfgHotseatGameNameLabel
+            // 
+            cfgHotseatGameNameLabel.Location = new Point(16, 12);
+            cfgHotseatGameNameLabel.Name = "cfgHotseatGameNameLabel";
+            cfgHotseatGameNameLabel.Size = new Size(106, 32);
+            cfgHotseatGameNameLabel.TabIndex = 0;
+            cfgHotseatGameNameLabel.Text = "gamename";
+            // 
+            // cfgHotseatAdminPasswordPanel
+            // 
+            cfgHotseatAdminPasswordPanel.BackColor = Color.LightGray;
+            cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordTextBox);
+            cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordLabel);
+            cfgHotseatAdminPasswordPanel.Location = new Point(248, 132);
+            cfgHotseatAdminPasswordPanel.Name = "cfgHotseatAdminPasswordPanel";
+            cfgHotseatAdminPasswordPanel.Size = new Size(231, 58);
+            cfgHotseatAdminPasswordPanel.TabIndex = 15;
+            // 
+            // cfgHotseatAdminPasswordTextBox
+            // 
+            cfgHotseatAdminPasswordTextBox.Location = new Point(128, 12);
+            cfgHotseatAdminPasswordTextBox.Name = "cfgHotseatAdminPasswordTextBox";
+            cfgHotseatAdminPasswordTextBox.Size = new Size(100, 23);
+            cfgHotseatAdminPasswordTextBox.TabIndex = 1;
+            // 
+            // cfgHotseatAdminPasswordLabel
+            // 
+            cfgHotseatAdminPasswordLabel.Location = new Point(16, 12);
+            cfgHotseatAdminPasswordLabel.Name = "cfgHotseatAdminPasswordLabel";
+            cfgHotseatAdminPasswordLabel.Size = new Size(106, 32);
+            cfgHotseatAdminPasswordLabel.TabIndex = 0;
+            cfgHotseatAdminPasswordLabel.Text = "admin_password";
+            // 
+            // cfgHotseatPasswordsPanel
+            // 
+            cfgHotseatPasswordsPanel.BackColor = Color.LightGray;
+            cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsTextBox);
+            cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsLabel);
+            cfgHotseatPasswordsPanel.Location = new Point(248, 58);
+            cfgHotseatPasswordsPanel.Name = "cfgHotseatPasswordsPanel";
+            cfgHotseatPasswordsPanel.Size = new Size(231, 58);
+            cfgHotseatPasswordsPanel.TabIndex = 14;
+            // 
+            // cfgHotseatPasswordsTextBox
+            // 
+            cfgHotseatPasswordsTextBox.Location = new Point(128, 12);
+            cfgHotseatPasswordsTextBox.Name = "cfgHotseatPasswordsTextBox";
+            cfgHotseatPasswordsTextBox.Size = new Size(100, 23);
+            cfgHotseatPasswordsTextBox.TabIndex = 1;
+            // 
+            // cfgHotseatPasswordsLabel
+            // 
+            cfgHotseatPasswordsLabel.Location = new Point(16, 12);
+            cfgHotseatPasswordsLabel.Name = "cfgHotseatPasswordsLabel";
+            cfgHotseatPasswordsLabel.Size = new Size(106, 31);
+            cfgHotseatPasswordsLabel.TabIndex = 0;
+            cfgHotseatPasswordsLabel.Text = "passwords";
+            // 
+            // cfgHotseatValidateDiplomacyCheckBox
+            // 
+            cfgHotseatValidateDiplomacyCheckBox.AutoSize = true;
+            cfgHotseatValidateDiplomacyCheckBox.Location = new Point(19, 357);
+            cfgHotseatValidateDiplomacyCheckBox.Name = "cfgHotseatValidateDiplomacyCheckBox";
+            cfgHotseatValidateDiplomacyCheckBox.Size = new Size(128, 19);
+            cfgHotseatValidateDiplomacyCheckBox.TabIndex = 13;
+            cfgHotseatValidateDiplomacyCheckBox.Text = "validate_diplomacy";
+            cfgHotseatValidateDiplomacyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatAllowValidationFailuresCheckBox
+            // 
+            cfgHotseatAllowValidationFailuresCheckBox.AutoSize = true;
+            cfgHotseatAllowValidationFailuresCheckBox.Location = new Point(19, 332);
+            cfgHotseatAllowValidationFailuresCheckBox.Name = "cfgHotseatAllowValidationFailuresCheckBox";
+            cfgHotseatAllowValidationFailuresCheckBox.Size = new Size(154, 19);
+            cfgHotseatAllowValidationFailuresCheckBox.TabIndex = 12;
+            cfgHotseatAllowValidationFailuresCheckBox.Text = "allow_validation_failures";
+            cfgHotseatAllowValidationFailuresCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatValidateDataCheckBox
+            // 
+            cfgHotseatValidateDataCheckBox.AutoSize = true;
+            cfgHotseatValidateDataCheckBox.Location = new Point(19, 307);
+            cfgHotseatValidateDataCheckBox.Name = "cfgHotseatValidateDataCheckBox";
+            cfgHotseatValidateDataCheckBox.Size = new Size(95, 19);
+            cfgHotseatValidateDataCheckBox.TabIndex = 11;
+            cfgHotseatValidateDataCheckBox.Text = "validate_data";
+            cfgHotseatValidateDataCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatCloseAfterSaveCheckBox
+            // 
+            cfgHotseatCloseAfterSaveCheckBox.AutoSize = true;
+            cfgHotseatCloseAfterSaveCheckBox.Location = new Point(19, 282);
+            cfgHotseatCloseAfterSaveCheckBox.Name = "cfgHotseatCloseAfterSaveCheckBox";
+            cfgHotseatCloseAfterSaveCheckBox.Size = new Size(110, 19);
+            cfgHotseatCloseAfterSaveCheckBox.TabIndex = 10;
+            cfgHotseatCloseAfterSaveCheckBox.Text = "close_after_save";
+            cfgHotseatCloseAfterSaveCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatSaveConfigCheckBox
+            // 
+            cfgHotseatSaveConfigCheckBox.AutoSize = true;
+            cfgHotseatSaveConfigCheckBox.Location = new Point(19, 257);
+            cfgHotseatSaveConfigCheckBox.Name = "cfgHotseatSaveConfigCheckBox";
+            cfgHotseatSaveConfigCheckBox.Size = new Size(88, 19);
+            cfgHotseatSaveConfigCheckBox.TabIndex = 9;
+            cfgHotseatSaveConfigCheckBox.Text = "save_config";
+            cfgHotseatSaveConfigCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatAutosaveCheckBox
+            // 
+            cfgHotseatAutosaveCheckBox.AutoSize = true;
+            cfgHotseatAutosaveCheckBox.Location = new Point(19, 232);
+            cfgHotseatAutosaveCheckBox.Name = "cfgHotseatAutosaveCheckBox";
+            cfgHotseatAutosaveCheckBox.Size = new Size(73, 19);
+            cfgHotseatAutosaveCheckBox.TabIndex = 8;
+            cfgHotseatAutosaveCheckBox.Text = "autosave";
+            cfgHotseatAutosaveCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatUpdateAiCameraCheckBox
+            // 
+            cfgHotseatUpdateAiCameraCheckBox.AutoSize = true;
+            cfgHotseatUpdateAiCameraCheckBox.Location = new Point(19, 207);
+            cfgHotseatUpdateAiCameraCheckBox.Name = "cfgHotseatUpdateAiCameraCheckBox";
+            cfgHotseatUpdateAiCameraCheckBox.Size = new Size(121, 19);
+            cfgHotseatUpdateAiCameraCheckBox.TabIndex = 7;
+            cfgHotseatUpdateAiCameraCheckBox.Text = "update_ai_camera";
+            cfgHotseatUpdateAiCameraCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatSavePrefsCheckBox
+            // 
+            cfgHotseatSavePrefsCheckBox.AutoSize = true;
+            cfgHotseatSavePrefsCheckBox.Location = new Point(19, 182);
+            cfgHotseatSavePrefsCheckBox.Name = "cfgHotseatSavePrefsCheckBox";
+            cfgHotseatSavePrefsCheckBox.Size = new Size(80, 19);
+            cfgHotseatSavePrefsCheckBox.TabIndex = 6;
+            cfgHotseatSavePrefsCheckBox.Text = "save_prefs";
+            cfgHotseatSavePrefsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatDisablePapalElectionsCheckBox
+            // 
+            cfgHotseatDisablePapalElectionsCheckBox.AutoSize = true;
+            cfgHotseatDisablePapalElectionsCheckBox.Location = new Point(19, 157);
+            cfgHotseatDisablePapalElectionsCheckBox.Name = "cfgHotseatDisablePapalElectionsCheckBox";
+            cfgHotseatDisablePapalElectionsCheckBox.Size = new Size(149, 19);
+            cfgHotseatDisablePapalElectionsCheckBox.TabIndex = 5;
+            cfgHotseatDisablePapalElectionsCheckBox.Text = "disable_papal_elections";
+            cfgHotseatDisablePapalElectionsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatDisableConsoleCheckBox
+            // 
+            cfgHotseatDisableConsoleCheckBox.AutoSize = true;
+            cfgHotseatDisableConsoleCheckBox.Location = new Point(19, 132);
+            cfgHotseatDisableConsoleCheckBox.Name = "cfgHotseatDisableConsoleCheckBox";
+            cfgHotseatDisableConsoleCheckBox.Size = new Size(109, 19);
+            cfgHotseatDisableConsoleCheckBox.TabIndex = 4;
+            cfgHotseatDisableConsoleCheckBox.Text = "disable_console";
+            cfgHotseatDisableConsoleCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatTurnsCheckBox
+            // 
+            cfgHotseatTurnsCheckBox.AutoSize = true;
+            cfgHotseatTurnsCheckBox.Location = new Point(19, 107);
+            cfgHotseatTurnsCheckBox.Name = "cfgHotseatTurnsCheckBox";
+            cfgHotseatTurnsCheckBox.Size = new Size(53, 19);
+            cfgHotseatTurnsCheckBox.TabIndex = 3;
+            cfgHotseatTurnsCheckBox.Text = "turns";
+            cfgHotseatTurnsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatScrollCheckBox
+            // 
+            cfgHotseatScrollCheckBox.AutoSize = true;
+            cfgHotseatScrollCheckBox.Location = new Point(19, 82);
+            cfgHotseatScrollCheckBox.Name = "cfgHotseatScrollCheckBox";
+            cfgHotseatScrollCheckBox.Size = new Size(54, 19);
+            cfgHotseatScrollCheckBox.TabIndex = 2;
+            cfgHotseatScrollCheckBox.Text = "scroll";
+            cfgHotseatScrollCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatAutoresolveBattlesCheckBox
+            // 
+            cfgHotseatAutoresolveBattlesCheckBox.AutoSize = true;
+            cfgHotseatAutoresolveBattlesCheckBox.Location = new Point(19, 57);
+            cfgHotseatAutoresolveBattlesCheckBox.Name = "cfgHotseatAutoresolveBattlesCheckBox";
+            cfgHotseatAutoresolveBattlesCheckBox.Size = new Size(127, 19);
+            cfgHotseatAutoresolveBattlesCheckBox.TabIndex = 1;
+            cfgHotseatAutoresolveBattlesCheckBox.Text = "autoresolve_battles";
+            cfgHotseatAutoresolveBattlesCheckBox.UseVisualStyleBackColor = true;
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -986,210 +1274,415 @@
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
             // 
-            // cfgHotseatAutoresolveBattlesCheckBox
+            // cfgGameCampaignNumTimePlayPanel
             // 
-            cfgHotseatAutoresolveBattlesCheckBox.AutoSize = true;
-            cfgHotseatAutoresolveBattlesCheckBox.Location = new Point(19, 57);
-            cfgHotseatAutoresolveBattlesCheckBox.Name = "cfgHotseatAutoresolveBattlesCheckBox";
-            cfgHotseatAutoresolveBattlesCheckBox.Size = new Size(127, 19);
-            cfgHotseatAutoresolveBattlesCheckBox.TabIndex = 1;
-            cfgHotseatAutoresolveBattlesCheckBox.Text = "autoresolve_battles";
-            cfgHotseatAutoresolveBattlesCheckBox.UseVisualStyleBackColor = true;
+            cfgGameCampaignNumTimePlayPanel.BackColor = Color.DarkGray;
+            cfgGameCampaignNumTimePlayPanel.Controls.Add(cfgGameCampaignNumTimePlayTextBox);
+            cfgGameCampaignNumTimePlayPanel.Controls.Add(cfgGameCampaignNumTimePlayLabel);
+            cfgGameCampaignNumTimePlayPanel.Location = new Point(17, 32);
+            cfgGameCampaignNumTimePlayPanel.Name = "cfgGameCampaignNumTimePlayPanel";
+            cfgGameCampaignNumTimePlayPanel.Size = new Size(312, 38);
+            cfgGameCampaignNumTimePlayPanel.TabIndex = 1;
             // 
-            // cfgHotseatScrollCheckBox
+            // cfgGameCampaignNumTimePlayLabel
             // 
-            cfgHotseatScrollCheckBox.AutoSize = true;
-            cfgHotseatScrollCheckBox.Location = new Point(19, 82);
-            cfgHotseatScrollCheckBox.Name = "cfgHotseatScrollCheckBox";
-            cfgHotseatScrollCheckBox.Size = new Size(54, 19);
-            cfgHotseatScrollCheckBox.TabIndex = 2;
-            cfgHotseatScrollCheckBox.Text = "scroll";
-            cfgHotseatScrollCheckBox.UseVisualStyleBackColor = true;
+            cfgGameCampaignNumTimePlayLabel.AutoSize = true;
+            cfgGameCampaignNumTimePlayLabel.Location = new Point(9, 5);
+            cfgGameCampaignNumTimePlayLabel.Name = "cfgGameCampaignNumTimePlayLabel";
+            cfgGameCampaignNumTimePlayLabel.Size = new Size(146, 15);
+            cfgGameCampaignNumTimePlayLabel.TabIndex = 0;
+            cfgGameCampaignNumTimePlayLabel.Text = "campaign_num_time_play";
             // 
-            // cfgHotseatTurnsCheckBox
+            // cfgGameAiFactionsPanel
             // 
-            cfgHotseatTurnsCheckBox.AutoSize = true;
-            cfgHotseatTurnsCheckBox.Location = new Point(19, 107);
-            cfgHotseatTurnsCheckBox.Name = "cfgHotseatTurnsCheckBox";
-            cfgHotseatTurnsCheckBox.Size = new Size(53, 19);
-            cfgHotseatTurnsCheckBox.TabIndex = 3;
-            cfgHotseatTurnsCheckBox.Text = "turns";
-            cfgHotseatTurnsCheckBox.UseVisualStyleBackColor = true;
+            cfgGameAiFactionsPanel.BackColor = Color.DarkGray;
+            cfgGameAiFactionsPanel.Controls.Add(cfgGameAiFactionsComboBox);
+            cfgGameAiFactionsPanel.Controls.Add(cfgGameAiFactionsLabel);
+            cfgGameAiFactionsPanel.Location = new Point(17, 295);
+            cfgGameAiFactionsPanel.Name = "cfgGameAiFactionsPanel";
+            cfgGameAiFactionsPanel.Size = new Size(312, 38);
+            cfgGameAiFactionsPanel.TabIndex = 2;
             // 
-            // cfgHotseatDisableConsoleCheckBox
+            // cfgGameAiFactionsLabel
             // 
-            cfgHotseatDisableConsoleCheckBox.AutoSize = true;
-            cfgHotseatDisableConsoleCheckBox.Location = new Point(19, 132);
-            cfgHotseatDisableConsoleCheckBox.Name = "cfgHotseatDisableConsoleCheckBox";
-            cfgHotseatDisableConsoleCheckBox.Size = new Size(109, 19);
-            cfgHotseatDisableConsoleCheckBox.TabIndex = 4;
-            cfgHotseatDisableConsoleCheckBox.Text = "disable_console";
-            cfgHotseatDisableConsoleCheckBox.UseVisualStyleBackColor = true;
+            cfgGameAiFactionsLabel.AutoSize = true;
+            cfgGameAiFactionsLabel.Location = new Point(9, 5);
+            cfgGameAiFactionsLabel.Name = "cfgGameAiFactionsLabel";
+            cfgGameAiFactionsLabel.Size = new Size(63, 15);
+            cfgGameAiFactionsLabel.TabIndex = 0;
+            cfgGameAiFactionsLabel.Text = "ai_factions";
             // 
-            // cfgHotseatDisablePapalElectionsCheckBox
+            // cfgGameChatMsgDurationPanel
             // 
-            cfgHotseatDisablePapalElectionsCheckBox.AutoSize = true;
-            cfgHotseatDisablePapalElectionsCheckBox.Location = new Point(19, 157);
-            cfgHotseatDisablePapalElectionsCheckBox.Name = "cfgHotseatDisablePapalElectionsCheckBox";
-            cfgHotseatDisablePapalElectionsCheckBox.Size = new Size(149, 19);
-            cfgHotseatDisablePapalElectionsCheckBox.TabIndex = 5;
-            cfgHotseatDisablePapalElectionsCheckBox.Text = "disable_papal_elections";
-            cfgHotseatDisablePapalElectionsCheckBox.UseVisualStyleBackColor = true;
+            cfgGameChatMsgDurationPanel.BackColor = Color.DarkGray;
+            cfgGameChatMsgDurationPanel.Controls.Add(cfgGameChatMsgDurationNumericUpDown);
+            cfgGameChatMsgDurationPanel.Controls.Add(cfgGameChatMsgDurationLabel);
+            cfgGameChatMsgDurationPanel.Location = new Point(17, 251);
+            cfgGameChatMsgDurationPanel.Name = "cfgGameChatMsgDurationPanel";
+            cfgGameChatMsgDurationPanel.Size = new Size(312, 38);
+            cfgGameChatMsgDurationPanel.TabIndex = 2;
             // 
-            // cfgHotseatSavePrefsCheckBox
+            // cfgGameChatMsgDurationLabel
             // 
-            cfgHotseatSavePrefsCheckBox.AutoSize = true;
-            cfgHotseatSavePrefsCheckBox.Location = new Point(19, 182);
-            cfgHotseatSavePrefsCheckBox.Name = "cfgHotseatSavePrefsCheckBox";
-            cfgHotseatSavePrefsCheckBox.Size = new Size(80, 19);
-            cfgHotseatSavePrefsCheckBox.TabIndex = 6;
-            cfgHotseatSavePrefsCheckBox.Text = "save_prefs";
-            cfgHotseatSavePrefsCheckBox.UseVisualStyleBackColor = true;
+            cfgGameChatMsgDurationLabel.AutoSize = true;
+            cfgGameChatMsgDurationLabel.Location = new Point(9, 5);
+            cfgGameChatMsgDurationLabel.Name = "cfgGameChatMsgDurationLabel";
+            cfgGameChatMsgDurationLabel.Size = new Size(108, 15);
+            cfgGameChatMsgDurationLabel.TabIndex = 0;
+            cfgGameChatMsgDurationLabel.Text = "chat_msg_duration";
             // 
-            // cfgHotseatUpdateAiCameraCheckBox
+            // cfgGameCampaignMapSpeedUpPanel
             // 
-            cfgHotseatUpdateAiCameraCheckBox.AutoSize = true;
-            cfgHotseatUpdateAiCameraCheckBox.Location = new Point(19, 207);
-            cfgHotseatUpdateAiCameraCheckBox.Name = "cfgHotseatUpdateAiCameraCheckBox";
-            cfgHotseatUpdateAiCameraCheckBox.Size = new Size(121, 19);
-            cfgHotseatUpdateAiCameraCheckBox.TabIndex = 7;
-            cfgHotseatUpdateAiCameraCheckBox.Text = "update_ai_camera";
-            cfgHotseatUpdateAiCameraCheckBox.UseVisualStyleBackColor = true;
+            cfgGameCampaignMapSpeedUpPanel.BackColor = Color.DarkGray;
+            cfgGameCampaignMapSpeedUpPanel.Controls.Add(cfgGameCampaignMapSpeedUpNumericUpDown);
+            cfgGameCampaignMapSpeedUpPanel.Controls.Add(cfgGameCampaignMapSpeedUpLabel);
+            cfgGameCampaignMapSpeedUpPanel.Location = new Point(17, 207);
+            cfgGameCampaignMapSpeedUpPanel.Name = "cfgGameCampaignMapSpeedUpPanel";
+            cfgGameCampaignMapSpeedUpPanel.Size = new Size(312, 38);
+            cfgGameCampaignMapSpeedUpPanel.TabIndex = 2;
             // 
-            // cfgHotseatAutosaveCheckBox
+            // cfgGameCampaignMapSpeedUpLabel
             // 
-            cfgHotseatAutosaveCheckBox.AutoSize = true;
-            cfgHotseatAutosaveCheckBox.Location = new Point(19, 232);
-            cfgHotseatAutosaveCheckBox.Name = "cfgHotseatAutosaveCheckBox";
-            cfgHotseatAutosaveCheckBox.Size = new Size(73, 19);
-            cfgHotseatAutosaveCheckBox.TabIndex = 8;
-            cfgHotseatAutosaveCheckBox.Text = "autosave";
-            cfgHotseatAutosaveCheckBox.UseVisualStyleBackColor = true;
+            cfgGameCampaignMapSpeedUpLabel.AutoSize = true;
+            cfgGameCampaignMapSpeedUpLabel.Location = new Point(9, 5);
+            cfgGameCampaignMapSpeedUpLabel.Name = "cfgGameCampaignMapSpeedUpLabel";
+            cfgGameCampaignMapSpeedUpLabel.Size = new Size(144, 15);
+            cfgGameCampaignMapSpeedUpLabel.TabIndex = 0;
+            cfgGameCampaignMapSpeedUpLabel.Text = "campaign_map_speed_up";
             // 
-            // cfgHotseatSaveConfigCheckBox
+            // cfgGameCampaignMapGameSpeedPanel
             // 
-            cfgHotseatSaveConfigCheckBox.AutoSize = true;
-            cfgHotseatSaveConfigCheckBox.Location = new Point(19, 257);
-            cfgHotseatSaveConfigCheckBox.Name = "cfgHotseatSaveConfigCheckBox";
-            cfgHotseatSaveConfigCheckBox.Size = new Size(88, 19);
-            cfgHotseatSaveConfigCheckBox.TabIndex = 9;
-            cfgHotseatSaveConfigCheckBox.Text = "save_config";
-            cfgHotseatSaveConfigCheckBox.UseVisualStyleBackColor = true;
+            cfgGameCampaignMapGameSpeedPanel.BackColor = Color.DarkGray;
+            cfgGameCampaignMapGameSpeedPanel.Controls.Add(cfgGameCampaignMapGameSpeedNumericUpDown);
+            cfgGameCampaignMapGameSpeedPanel.Controls.Add(cfgGameCampaignMapGameSpeedLabel);
+            cfgGameCampaignMapGameSpeedPanel.Location = new Point(17, 163);
+            cfgGameCampaignMapGameSpeedPanel.Name = "cfgGameCampaignMapGameSpeedPanel";
+            cfgGameCampaignMapGameSpeedPanel.Size = new Size(312, 38);
+            cfgGameCampaignMapGameSpeedPanel.TabIndex = 2;
             // 
-            // cfgHotseatCloseAfterSaveCheckBox
+            // cfgGameCampaignMapGameSpeedLabel
             // 
-            cfgHotseatCloseAfterSaveCheckBox.AutoSize = true;
-            cfgHotseatCloseAfterSaveCheckBox.Location = new Point(19, 282);
-            cfgHotseatCloseAfterSaveCheckBox.Name = "cfgHotseatCloseAfterSaveCheckBox";
-            cfgHotseatCloseAfterSaveCheckBox.Size = new Size(110, 19);
-            cfgHotseatCloseAfterSaveCheckBox.TabIndex = 10;
-            cfgHotseatCloseAfterSaveCheckBox.Text = "close_after_save";
-            cfgHotseatCloseAfterSaveCheckBox.UseVisualStyleBackColor = true;
+            cfgGameCampaignMapGameSpeedLabel.AutoSize = true;
+            cfgGameCampaignMapGameSpeedLabel.Location = new Point(9, 5);
+            cfgGameCampaignMapGameSpeedLabel.Name = "cfgGameCampaignMapGameSpeedLabel";
+            cfgGameCampaignMapGameSpeedLabel.Size = new Size(160, 15);
+            cfgGameCampaignMapGameSpeedLabel.TabIndex = 0;
+            cfgGameCampaignMapGameSpeedLabel.Text = "campaign_map_game_speed";
             // 
-            // cfgHotseatValidateDataCheckBox
+            // cfgGamePrefFactionsPlayedPanel
             // 
-            cfgHotseatValidateDataCheckBox.AutoSize = true;
-            cfgHotseatValidateDataCheckBox.Location = new Point(19, 307);
-            cfgHotseatValidateDataCheckBox.Name = "cfgHotseatValidateDataCheckBox";
-            cfgHotseatValidateDataCheckBox.Size = new Size(95, 19);
-            cfgHotseatValidateDataCheckBox.TabIndex = 11;
-            cfgHotseatValidateDataCheckBox.Text = "validate_data";
-            cfgHotseatValidateDataCheckBox.UseVisualStyleBackColor = true;
+            cfgGamePrefFactionsPlayedPanel.BackColor = Color.DarkGray;
+            cfgGamePrefFactionsPlayedPanel.Controls.Add(cfgGamePrefFactionsPlayedTextBox);
+            cfgGamePrefFactionsPlayedPanel.Controls.Add(cfgGamePrefFactionsPlayedLabel);
+            cfgGamePrefFactionsPlayedPanel.Location = new Point(17, 120);
+            cfgGamePrefFactionsPlayedPanel.Name = "cfgGamePrefFactionsPlayedPanel";
+            cfgGamePrefFactionsPlayedPanel.Size = new Size(312, 38);
+            cfgGamePrefFactionsPlayedPanel.TabIndex = 2;
             // 
-            // cfgHotseatAllowValidationFailuresCheckBox
+            // cfgGamePrefFactionsPlayedLabel
             // 
-            cfgHotseatAllowValidationFailuresCheckBox.AutoSize = true;
-            cfgHotseatAllowValidationFailuresCheckBox.Location = new Point(19, 332);
-            cfgHotseatAllowValidationFailuresCheckBox.Name = "cfgHotseatAllowValidationFailuresCheckBox";
-            cfgHotseatAllowValidationFailuresCheckBox.Size = new Size(154, 19);
-            cfgHotseatAllowValidationFailuresCheckBox.TabIndex = 12;
-            cfgHotseatAllowValidationFailuresCheckBox.Text = "allow_validation_failures";
-            cfgHotseatAllowValidationFailuresCheckBox.UseVisualStyleBackColor = true;
+            cfgGamePrefFactionsPlayedLabel.AutoSize = true;
+            cfgGamePrefFactionsPlayedLabel.Location = new Point(9, 5);
+            cfgGamePrefFactionsPlayedLabel.Name = "cfgGamePrefFactionsPlayedLabel";
+            cfgGamePrefFactionsPlayedLabel.Size = new Size(115, 15);
+            cfgGamePrefFactionsPlayedLabel.TabIndex = 0;
+            cfgGamePrefFactionsPlayedLabel.Text = "pref_factions_played";
             // 
-            // cfgHotseatValidateDiplomacyCheckBox
+            // cfgGameTutorialPathPanel
             // 
-            cfgHotseatValidateDiplomacyCheckBox.AutoSize = true;
-            cfgHotseatValidateDiplomacyCheckBox.Location = new Point(19, 357);
-            cfgHotseatValidateDiplomacyCheckBox.Name = "cfgHotseatValidateDiplomacyCheckBox";
-            cfgHotseatValidateDiplomacyCheckBox.Size = new Size(128, 19);
-            cfgHotseatValidateDiplomacyCheckBox.TabIndex = 13;
-            cfgHotseatValidateDiplomacyCheckBox.Text = "validate_diplomacy";
-            cfgHotseatValidateDiplomacyCheckBox.UseVisualStyleBackColor = true;
+            cfgGameTutorialPathPanel.BackColor = Color.DarkGray;
+            cfgGameTutorialPathPanel.Controls.Add(cfgGameTutorialPathTextBox);
+            cfgGameTutorialPathPanel.Controls.Add(cfgGameTutorialPathLabel);
+            cfgGameTutorialPathPanel.Location = new Point(17, 76);
+            cfgGameTutorialPathPanel.Name = "cfgGameTutorialPathPanel";
+            cfgGameTutorialPathPanel.Size = new Size(312, 38);
+            cfgGameTutorialPathPanel.TabIndex = 2;
             // 
-            // cfgHotseatPasswordsPanel
+            // cfgGameTutorialPathLabel
             // 
-            cfgHotseatPasswordsPanel.BackColor = Color.LightGray;
-            cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsTextBox);
-            cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsLabel);
-            cfgHotseatPasswordsPanel.Location = new Point(248, 58);
-            cfgHotseatPasswordsPanel.Name = "cfgHotseatPasswordsPanel";
-            cfgHotseatPasswordsPanel.Size = new Size(231, 58);
-            cfgHotseatPasswordsPanel.TabIndex = 14;
+            cfgGameTutorialPathLabel.AutoSize = true;
+            cfgGameTutorialPathLabel.Location = new Point(9, 5);
+            cfgGameTutorialPathLabel.Name = "cfgGameTutorialPathLabel";
+            cfgGameTutorialPathLabel.Size = new Size(74, 15);
+            cfgGameTutorialPathLabel.TabIndex = 0;
+            cfgGameTutorialPathLabel.Text = "tutorial_path";
             // 
-            // cfgHotseatPasswordsLabel
+            // cfgGameUnitSizePanel
             // 
-            cfgHotseatPasswordsLabel.Location = new Point(16, 12);
-            cfgHotseatPasswordsLabel.Name = "cfgHotseatPasswordsLabel";
-            cfgHotseatPasswordsLabel.Size = new Size(106, 31);
-            cfgHotseatPasswordsLabel.TabIndex = 0;
-            cfgHotseatPasswordsLabel.Text = "passwords";
+            cfgGameUnitSizePanel.BackColor = Color.DarkGray;
+            cfgGameUnitSizePanel.Controls.Add(cfgGameUnitSizeComboBox);
+            cfgGameUnitSizePanel.Controls.Add(cfgGameUnitSizeLabel);
+            cfgGameUnitSizePanel.Location = new Point(17, 339);
+            cfgGameUnitSizePanel.Name = "cfgGameUnitSizePanel";
+            cfgGameUnitSizePanel.Size = new Size(312, 38);
+            cfgGameUnitSizePanel.TabIndex = 2;
             // 
-            // cfgHotseatPasswordsTextBox
+            // cfgGameUnitSizeLabel
             // 
-            cfgHotseatPasswordsTextBox.Location = new Point(128, 12);
-            cfgHotseatPasswordsTextBox.Name = "cfgHotseatPasswordsTextBox";
-            cfgHotseatPasswordsTextBox.Size = new Size(100, 23);
-            cfgHotseatPasswordsTextBox.TabIndex = 1;
+            cfgGameUnitSizeLabel.AutoSize = true;
+            cfgGameUnitSizeLabel.Location = new Point(9, 5);
+            cfgGameUnitSizeLabel.Name = "cfgGameUnitSizeLabel";
+            cfgGameUnitSizeLabel.Size = new Size(52, 15);
+            cfgGameUnitSizeLabel.TabIndex = 0;
+            cfgGameUnitSizeLabel.Text = "unit_size";
             // 
-            // cfgHotseatAdminPasswordPanel
+            // cfgGameCampaignNumTimePlayTextBox
             // 
-            cfgHotseatAdminPasswordPanel.BackColor = Color.LightGray;
-            cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordTextBox);
-            cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordLabel);
-            cfgHotseatAdminPasswordPanel.Location = new Point(248, 132);
-            cfgHotseatAdminPasswordPanel.Name = "cfgHotseatAdminPasswordPanel";
-            cfgHotseatAdminPasswordPanel.Size = new Size(231, 58);
-            cfgHotseatAdminPasswordPanel.TabIndex = 15;
+            cfgGameCampaignNumTimePlayTextBox.Location = new Point(161, 7);
+            cfgGameCampaignNumTimePlayTextBox.Name = "cfgGameCampaignNumTimePlayTextBox";
+            cfgGameCampaignNumTimePlayTextBox.Size = new Size(148, 23);
+            cfgGameCampaignNumTimePlayTextBox.TabIndex = 1;
             // 
-            // cfgHotseatAdminPasswordTextBox
+            // cfgGameTutorialPathTextBox
             // 
-            cfgHotseatAdminPasswordTextBox.Location = new Point(128, 12);
-            cfgHotseatAdminPasswordTextBox.Name = "cfgHotseatAdminPasswordTextBox";
-            cfgHotseatAdminPasswordTextBox.Size = new Size(100, 23);
-            cfgHotseatAdminPasswordTextBox.TabIndex = 1;
+            cfgGameTutorialPathTextBox.Location = new Point(161, 3);
+            cfgGameTutorialPathTextBox.Name = "cfgGameTutorialPathTextBox";
+            cfgGameTutorialPathTextBox.Size = new Size(148, 23);
+            cfgGameTutorialPathTextBox.TabIndex = 1;
             // 
-            // cfgHotseatAdminPasswordLabel
+            // cfgGamePrefFactionsPlayedTextBox
             // 
-            cfgHotseatAdminPasswordLabel.Location = new Point(16, 12);
-            cfgHotseatAdminPasswordLabel.Name = "cfgHotseatAdminPasswordLabel";
-            cfgHotseatAdminPasswordLabel.Size = new Size(106, 32);
-            cfgHotseatAdminPasswordLabel.TabIndex = 0;
-            cfgHotseatAdminPasswordLabel.Text = "admin_password";
+            cfgGamePrefFactionsPlayedTextBox.Location = new Point(161, 5);
+            cfgGamePrefFactionsPlayedTextBox.Name = "cfgGamePrefFactionsPlayedTextBox";
+            cfgGamePrefFactionsPlayedTextBox.Size = new Size(148, 23);
+            cfgGamePrefFactionsPlayedTextBox.TabIndex = 1;
             // 
-            // cfgHotseatGameNamePanel
+            // cfgGameCampaignMapGameSpeedNumericUpDown
             // 
-            cfgHotseatGameNamePanel.BackColor = Color.LightGray;
-            cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameTextBox);
-            cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameLabel);
-            cfgHotseatGameNamePanel.Location = new Point(248, 207);
-            cfgHotseatGameNamePanel.Name = "cfgHotseatGameNamePanel";
-            cfgHotseatGameNamePanel.Size = new Size(231, 58);
-            cfgHotseatGameNamePanel.TabIndex = 16;
+            cfgGameCampaignMapGameSpeedNumericUpDown.Location = new Point(175, 3);
+            cfgGameCampaignMapGameSpeedNumericUpDown.Name = "cfgGameCampaignMapGameSpeedNumericUpDown";
+            cfgGameCampaignMapGameSpeedNumericUpDown.Size = new Size(120, 23);
+            cfgGameCampaignMapGameSpeedNumericUpDown.TabIndex = 1;
             // 
-            // cfgHotseatGameNameTextBox
+            // cfgGameCampaignMapSpeedUpNumericUpDown
             // 
-            cfgHotseatGameNameTextBox.Location = new Point(128, 12);
-            cfgHotseatGameNameTextBox.Name = "cfgHotseatGameNameTextBox";
-            cfgHotseatGameNameTextBox.Size = new Size(100, 23);
-            cfgHotseatGameNameTextBox.TabIndex = 1;
+            cfgGameCampaignMapSpeedUpNumericUpDown.Location = new Point(175, 3);
+            cfgGameCampaignMapSpeedUpNumericUpDown.Name = "cfgGameCampaignMapSpeedUpNumericUpDown";
+            cfgGameCampaignMapSpeedUpNumericUpDown.Size = new Size(120, 23);
+            cfgGameCampaignMapSpeedUpNumericUpDown.TabIndex = 1;
             // 
-            // cfgHotseatGameNameLabel
+            // cfgGameChatMsgDurationNumericUpDown
             // 
-            cfgHotseatGameNameLabel.Location = new Point(16, 12);
-            cfgHotseatGameNameLabel.Name = "cfgHotseatGameNameLabel";
-            cfgHotseatGameNameLabel.Size = new Size(106, 32);
-            cfgHotseatGameNameLabel.TabIndex = 0;
-            cfgHotseatGameNameLabel.Text = "gamename";
+            cfgGameChatMsgDurationNumericUpDown.Location = new Point(175, 5);
+            cfgGameChatMsgDurationNumericUpDown.Name = "cfgGameChatMsgDurationNumericUpDown";
+            cfgGameChatMsgDurationNumericUpDown.Size = new Size(120, 23);
+            cfgGameChatMsgDurationNumericUpDown.TabIndex = 1;
+            // 
+            // cfgGameAiFactionsComboBox
+            // 
+            cfgGameAiFactionsComboBox.FormattingEnabled = true;
+            cfgGameAiFactionsComboBox.Location = new Point(103, 7);
+            cfgGameAiFactionsComboBox.Name = "cfgGameAiFactionsComboBox";
+            cfgGameAiFactionsComboBox.Size = new Size(121, 23);
+            cfgGameAiFactionsComboBox.TabIndex = 1;
+            // 
+            // cfgGameUnitSizeComboBox
+            // 
+            cfgGameUnitSizeComboBox.FormattingEnabled = true;
+            cfgGameUnitSizeComboBox.Location = new Point(103, 5);
+            cfgGameUnitSizeComboBox.Name = "cfgGameUnitSizeComboBox";
+            cfgGameUnitSizeComboBox.Size = new Size(121, 23);
+            cfgGameUnitSizeComboBox.TabIndex = 1;
+            // 
+            // cfgGameAdvancedStatsAlwaysCheckBox
+            // 
+            cfgGameAdvancedStatsAlwaysCheckBox.AutoSize = true;
+            cfgGameAdvancedStatsAlwaysCheckBox.Location = new Point(353, 18);
+            cfgGameAdvancedStatsAlwaysCheckBox.Name = "cfgGameAdvancedStatsAlwaysCheckBox";
+            cfgGameAdvancedStatsAlwaysCheckBox.Size = new Size(146, 19);
+            cfgGameAdvancedStatsAlwaysCheckBox.TabIndex = 3;
+            cfgGameAdvancedStatsAlwaysCheckBox.Text = "advanced_stats_always";
+            cfgGameAdvancedStatsAlwaysCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameAdvisorVerbosityCheckBox
+            // 
+            cfgGameAdvisorVerbosityCheckBox.AutoSize = true;
+            cfgGameAdvisorVerbosityCheckBox.Location = new Point(352, 44);
+            cfgGameAdvisorVerbosityCheckBox.Name = "cfgGameAdvisorVerbosityCheckBox";
+            cfgGameAdvisorVerbosityCheckBox.Size = new Size(117, 19);
+            cfgGameAdvisorVerbosityCheckBox.TabIndex = 4;
+            cfgGameAdvisorVerbosityCheckBox.Text = "advisor_verbosity";
+            cfgGameAdvisorVerbosityCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameAllUsersCheckBox
+            // 
+            cfgGameAllUsersCheckBox.AutoSize = true;
+            cfgGameAllUsersCheckBox.Location = new Point(352, 69);
+            cfgGameAllUsersCheckBox.Name = "cfgGameAllUsersCheckBox";
+            cfgGameAllUsersCheckBox.Size = new Size(65, 19);
+            cfgGameAllUsersCheckBox.TabIndex = 5;
+            cfgGameAllUsersCheckBox.Text = "allusers";
+            cfgGameAllUsersCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameAutoSaveCheckBox
+            // 
+            cfgGameAutoSaveCheckBox.AutoSize = true;
+            cfgGameAutoSaveCheckBox.Location = new Point(352, 95);
+            cfgGameAutoSaveCheckBox.Name = "cfgGameAutoSaveCheckBox";
+            cfgGameAutoSaveCheckBox.Size = new Size(78, 19);
+            cfgGameAutoSaveCheckBox.TabIndex = 6;
+            cfgGameAutoSaveCheckBox.Text = "auto_save";
+            cfgGameAutoSaveCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameBlindAdvisorCheckBox
+            // 
+            cfgGameBlindAdvisorCheckBox.AutoSize = true;
+            cfgGameBlindAdvisorCheckBox.Location = new Point(352, 121);
+            cfgGameBlindAdvisorCheckBox.Name = "cfgGameBlindAdvisorCheckBox";
+            cfgGameBlindAdvisorCheckBox.Size = new Size(96, 19);
+            cfgGameBlindAdvisorCheckBox.TabIndex = 7;
+            cfgGameBlindAdvisorCheckBox.Text = "blind_advisor";
+            cfgGameBlindAdvisorCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameDisableArrowMarkersCheckBox
+            // 
+            cfgGameDisableArrowMarkersCheckBox.AutoSize = true;
+            cfgGameDisableArrowMarkersCheckBox.Location = new Point(352, 146);
+            cfgGameDisableArrowMarkersCheckBox.Name = "cfgGameDisableArrowMarkersCheckBox";
+            cfgGameDisableArrowMarkersCheckBox.Size = new Size(145, 19);
+            cfgGameDisableArrowMarkersCheckBox.TabIndex = 8;
+            cfgGameDisableArrowMarkersCheckBox.Text = "disable_arrow_markers";
+            cfgGameDisableArrowMarkersCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameDisableEventsCheckBox
+            // 
+            cfgGameDisableEventsCheckBox.AutoSize = true;
+            cfgGameDisableEventsCheckBox.Location = new Point(352, 169);
+            cfgGameDisableEventsCheckBox.Name = "cfgGameDisableEventsCheckBox";
+            cfgGameDisableEventsCheckBox.Size = new Size(102, 19);
+            cfgGameDisableEventsCheckBox.TabIndex = 9;
+            cfgGameDisableEventsCheckBox.Text = "disable_events";
+            cfgGameDisableEventsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameEnglishCheckBox
+            // 
+            cfgGameEnglishCheckBox.AutoSize = true;
+            cfgGameEnglishCheckBox.Location = new Point(352, 194);
+            cfgGameEnglishCheckBox.Name = "cfgGameEnglishCheckBox";
+            cfgGameEnglishCheckBox.Size = new Size(64, 19);
+            cfgGameEnglishCheckBox.TabIndex = 10;
+            cfgGameEnglishCheckBox.Text = "english";
+            cfgGameEnglishCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameEventCutscenesCheckBox
+            // 
+            cfgGameEventCutscenesCheckBox.AutoSize = true;
+            cfgGameEventCutscenesCheckBox.Location = new Point(352, 219);
+            cfgGameEventCutscenesCheckBox.Name = "cfgGameEventCutscenesCheckBox";
+            cfgGameEventCutscenesCheckBox.Size = new Size(112, 19);
+            cfgGameEventCutscenesCheckBox.TabIndex = 11;
+            cfgGameEventCutscenesCheckBox.Text = "event_cutscenes";
+            cfgGameEventCutscenesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameFatigueCheckBox
+            // 
+            cfgGameFatigueCheckBox.AutoSize = true;
+            cfgGameFatigueCheckBox.Location = new Point(352, 244);
+            cfgGameFatigueCheckBox.Name = "cfgGameFatigueCheckBox";
+            cfgGameFatigueCheckBox.Size = new Size(63, 19);
+            cfgGameFatigueCheckBox.TabIndex = 12;
+            cfgGameFatigueCheckBox.Text = "fatigue";
+            cfgGameFatigueCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameFirstTimePlayCheckBox
+            // 
+            cfgGameFirstTimePlayCheckBox.AutoSize = true;
+            cfgGameFirstTimePlayCheckBox.Location = new Point(517, 18);
+            cfgGameFirstTimePlayCheckBox.Name = "cfgGameFirstTimePlayCheckBox";
+            cfgGameFirstTimePlayCheckBox.Size = new Size(102, 19);
+            cfgGameFirstTimePlayCheckBox.TabIndex = 13;
+            cfgGameFirstTimePlayCheckBox.Text = "first_time_play";
+            cfgGameFirstTimePlayCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameGamespySavePasswrdCheckBox
+            // 
+            cfgGameGamespySavePasswrdCheckBox.AutoSize = true;
+            cfgGameGamespySavePasswrdCheckBox.Location = new Point(517, 41);
+            cfgGameGamespySavePasswrdCheckBox.Name = "cfgGameGamespySavePasswrdCheckBox";
+            cfgGameGamespySavePasswrdCheckBox.Size = new Size(150, 19);
+            cfgGameGamespySavePasswrdCheckBox.TabIndex = 14;
+            cfgGameGamespySavePasswrdCheckBox.Text = "gamespy_save_passwrd";
+            cfgGameGamespySavePasswrdCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameLabelCharactersCheckBox
+            // 
+            cfgGameLabelCharactersCheckBox.AutoSize = true;
+            cfgGameLabelCharactersCheckBox.Location = new Point(517, 66);
+            cfgGameLabelCharactersCheckBox.Name = "cfgGameLabelCharactersCheckBox";
+            cfgGameLabelCharactersCheckBox.Size = new Size(110, 19);
+            cfgGameLabelCharactersCheckBox.TabIndex = 15;
+            cfgGameLabelCharactersCheckBox.Text = "label_characters";
+            cfgGameLabelCharactersCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameLabelSettlementsCheckBox
+            // 
+            cfgGameLabelSettlementsCheckBox.AutoSize = true;
+            cfgGameLabelSettlementsCheckBox.Location = new Point(517, 91);
+            cfgGameLabelSettlementsCheckBox.Name = "cfgGameLabelSettlementsCheckBox";
+            cfgGameLabelSettlementsCheckBox.Size = new Size(117, 19);
+            cfgGameLabelSettlementsCheckBox.TabIndex = 16;
+            cfgGameLabelSettlementsCheckBox.Text = "label_settlements";
+            cfgGameLabelSettlementsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameMicromanageAllSettlementsCheckBox
+            // 
+            cfgGameMicromanageAllSettlementsCheckBox.AutoSize = true;
+            cfgGameMicromanageAllSettlementsCheckBox.Location = new Point(517, 116);
+            cfgGameMicromanageAllSettlementsCheckBox.Name = "cfgGameMicromanageAllSettlementsCheckBox";
+            cfgGameMicromanageAllSettlementsCheckBox.Size = new Size(183, 19);
+            cfgGameMicromanageAllSettlementsCheckBox.TabIndex = 17;
+            cfgGameMicromanageAllSettlementsCheckBox.Text = "micromanage_all_settlements";
+            cfgGameMicromanageAllSettlementsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameMoraleCheckBox
+            // 
+            cfgGameMoraleCheckBox.AutoSize = true;
+            cfgGameMoraleCheckBox.Location = new Point(517, 141);
+            cfgGameMoraleCheckBox.Name = "cfgGameMoraleCheckBox";
+            cfgGameMoraleCheckBox.Size = new Size(63, 19);
+            cfgGameMoraleCheckBox.TabIndex = 18;
+            cfgGameMoraleCheckBox.Text = "morale";
+            cfgGameMoraleCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameMuteAdvisorCheckBox
+            // 
+            cfgGameMuteAdvisorCheckBox.AutoSize = true;
+            cfgGameMuteAdvisorCheckBox.Location = new Point(517, 166);
+            cfgGameMuteAdvisorCheckBox.Name = "cfgGameMuteAdvisorCheckBox";
+            cfgGameMuteAdvisorCheckBox.Size = new Size(97, 19);
+            cfgGameMuteAdvisorCheckBox.TabIndex = 19;
+            cfgGameMuteAdvisorCheckBox.Text = "mute_advisor";
+            cfgGameMuteAdvisorCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameNoCampaignBattleTimeLimitCheckBox
+            // 
+            cfgGameNoCampaignBattleTimeLimitCheckBox.AutoSize = true;
+            cfgGameNoCampaignBattleTimeLimitCheckBox.Location = new Point(517, 191);
+            cfgGameNoCampaignBattleTimeLimitCheckBox.Name = "cfgGameNoCampaignBattleTimeLimitCheckBox";
+            cfgGameNoCampaignBattleTimeLimitCheckBox.Size = new Size(191, 19);
+            cfgGameNoCampaignBattleTimeLimitCheckBox.TabIndex = 20;
+            cfgGameNoCampaignBattleTimeLimitCheckBox.Text = "no_campaign_battle_time_limit";
+            cfgGameNoCampaignBattleTimeLimitCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameUnlimitedMenOnBattlefieldCheckBox
+            // 
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.AutoSize = true;
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.Location = new Point(517, 216);
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.Name = "cfgGameUnlimitedMenOnBattlefieldCheckBox";
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.Size = new Size(183, 19);
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.TabIndex = 21;
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.Text = "unlimited_men_on_battlefield";
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameUseQuickchatCheckBox
+            // 
+            cfgGameUseQuickchatCheckBox.AutoSize = true;
+            cfgGameUseQuickchatCheckBox.Location = new Point(517, 241);
+            cfgGameUseQuickchatCheckBox.Name = "cfgGameUseQuickchatCheckBox";
+            cfgGameUseQuickchatCheckBox.Size = new Size(101, 19);
+            cfgGameUseQuickchatCheckBox.TabIndex = 22;
+            cfgGameUseQuickchatCheckBox.Text = "use_quickchat";
+            cfgGameUseQuickchatCheckBox.UseVisualStyleBackColor = true;
             // 
             // ModConfigSettingsForm
             // 
@@ -1246,6 +1739,12 @@
             ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMaxZoomNumericUpDown).EndInit();
             tabPage4.ResumeLayout(false);
             tabPage4.PerformLayout();
+            cfgHotseatGameNamePanel.ResumeLayout(false);
+            cfgHotseatGameNamePanel.PerformLayout();
+            cfgHotseatAdminPasswordPanel.ResumeLayout(false);
+            cfgHotseatAdminPasswordPanel.PerformLayout();
+            cfgHotseatPasswordsPanel.ResumeLayout(false);
+            cfgHotseatPasswordsPanel.PerformLayout();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
             cfgNetworkGroupBox.ResumeLayout(false);
@@ -1266,12 +1765,25 @@
             tabPage7.ResumeLayout(false);
             cfgUIGroupBox.ResumeLayout(false);
             cfgUIGroupBox.PerformLayout();
-            cfgHotseatPasswordsPanel.ResumeLayout(false);
-            cfgHotseatPasswordsPanel.PerformLayout();
-            cfgHotseatAdminPasswordPanel.ResumeLayout(false);
-            cfgHotseatAdminPasswordPanel.PerformLayout();
-            cfgHotseatGameNamePanel.ResumeLayout(false);
-            cfgHotseatGameNamePanel.PerformLayout();
+            cfgGameCampaignNumTimePlayPanel.ResumeLayout(false);
+            cfgGameCampaignNumTimePlayPanel.PerformLayout();
+            cfgGameAiFactionsPanel.ResumeLayout(false);
+            cfgGameAiFactionsPanel.PerformLayout();
+            cfgGameChatMsgDurationPanel.ResumeLayout(false);
+            cfgGameChatMsgDurationPanel.PerformLayout();
+            cfgGameCampaignMapSpeedUpPanel.ResumeLayout(false);
+            cfgGameCampaignMapSpeedUpPanel.PerformLayout();
+            cfgGameCampaignMapGameSpeedPanel.ResumeLayout(false);
+            cfgGameCampaignMapGameSpeedPanel.PerformLayout();
+            cfgGamePrefFactionsPlayedPanel.ResumeLayout(false);
+            cfgGamePrefFactionsPlayedPanel.PerformLayout();
+            cfgGameTutorialPathPanel.ResumeLayout(false);
+            cfgGameTutorialPathPanel.PerformLayout();
+            cfgGameUnitSizePanel.ResumeLayout(false);
+            cfgGameUnitSizePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapGameSpeedNumericUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapSpeedUpNumericUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cfgGameChatMsgDurationNumericUpDown).EndInit();
             ResumeLayout(false);
         }
 
@@ -1382,5 +1894,49 @@
         private Panel cfgHotseatPasswordsPanel;
         private TextBox cfgHotseatPasswordsTextBox;
         private Label cfgHotseatPasswordsLabel;
+        private Panel cfgGameAiFactionsPanel;
+        private Label cfgGameAiFactionsLabel;
+        private Panel cfgGameCampaignNumTimePlayPanel;
+        private Label cfgGameCampaignNumTimePlayLabel;
+        private CheckBox cfgGameUseQuickchatCheckBox;
+        private CheckBox cfgGameUnlimitedMenOnBattlefieldCheckBox;
+        private CheckBox cfgGameNoCampaignBattleTimeLimitCheckBox;
+        private CheckBox cfgGameMuteAdvisorCheckBox;
+        private CheckBox cfgGameMoraleCheckBox;
+        private CheckBox cfgGameMicromanageAllSettlementsCheckBox;
+        private CheckBox cfgGameLabelSettlementsCheckBox;
+        private CheckBox cfgGameLabelCharactersCheckBox;
+        private CheckBox cfgGameGamespySavePasswrdCheckBox;
+        private CheckBox cfgGameFirstTimePlayCheckBox;
+        private CheckBox cfgGameFatigueCheckBox;
+        private CheckBox cfgGameEventCutscenesCheckBox;
+        private CheckBox cfgGameEnglishCheckBox;
+        private CheckBox cfgGameDisableEventsCheckBox;
+        private CheckBox cfgGameDisableArrowMarkersCheckBox;
+        private CheckBox cfgGameBlindAdvisorCheckBox;
+        private CheckBox cfgGameAutoSaveCheckBox;
+        private CheckBox cfgGameAllUsersCheckBox;
+        private CheckBox cfgGameAdvisorVerbosityCheckBox;
+        private CheckBox cfgGameAdvancedStatsAlwaysCheckBox;
+        private Panel cfgGameUnitSizePanel;
+        private ComboBox cfgGameUnitSizeComboBox;
+        private Label cfgGameUnitSizeLabel;
+        private Panel cfgGameChatMsgDurationPanel;
+        private NumericUpDown cfgGameChatMsgDurationNumericUpDown;
+        private Label cfgGameChatMsgDurationLabel;
+        private Panel cfgGameCampaignMapSpeedUpPanel;
+        private NumericUpDown cfgGameCampaignMapSpeedUpNumericUpDown;
+        private Label cfgGameCampaignMapSpeedUpLabel;
+        private Panel cfgGameCampaignMapGameSpeedPanel;
+        private NumericUpDown cfgGameCampaignMapGameSpeedNumericUpDown;
+        private Label cfgGameCampaignMapGameSpeedLabel;
+        private Panel cfgGamePrefFactionsPlayedPanel;
+        private TextBox cfgGamePrefFactionsPlayedTextBox;
+        private Label cfgGamePrefFactionsPlayedLabel;
+        private Panel cfgGameTutorialPathPanel;
+        private TextBox cfgGameTutorialPathTextBox;
+        private Label cfgGameTutorialPathLabel;
+        private ComboBox cfgGameAiFactionsComboBox;
+        private TextBox cfgGameCampaignNumTimePlayTextBox;
     }
 }
