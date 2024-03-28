@@ -1,0 +1,13 @@
+.main_page {
+    background-color: aliceblue;
+}
+
+h1.display-4 {
+    color: rgb(48, 148, 48);
+    font-weight: bolder;
+}
+
+h2.display-5 {
+    color: rgb(48, 146, 48);
+    font-weight: bold;
+}
