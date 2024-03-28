@@ -31,6 +31,50 @@
             saveConfigSettingsButton = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            cfgGameUseQuickchatCheckBox = new CheckBox();
+            cfgGameUnlimitedMenOnBattlefieldCheckBox = new CheckBox();
+            cfgGameNoCampaignBattleTimeLimitCheckBox = new CheckBox();
+            cfgGameMuteAdvisorCheckBox = new CheckBox();
+            cfgGameMoraleCheckBox = new CheckBox();
+            cfgGameMicromanageAllSettlementsCheckBox = new CheckBox();
+            cfgGameLabelSettlementsCheckBox = new CheckBox();
+            cfgGameLabelCharactersCheckBox = new CheckBox();
+            cfgGameGamespySavePasswrdCheckBox = new CheckBox();
+            cfgGameFirstTimePlayCheckBox = new CheckBox();
+            cfgGameFatigueCheckBox = new CheckBox();
+            cfgGameEventCutscenesCheckBox = new CheckBox();
+            cfgGameEnglishCheckBox = new CheckBox();
+            cfgGameDisableEventsCheckBox = new CheckBox();
+            cfgGameDisableArrowMarkersCheckBox = new CheckBox();
+            cfgGameBlindAdvisorCheckBox = new CheckBox();
+            cfgGameAutoSaveCheckBox = new CheckBox();
+            cfgGameAllUsersCheckBox = new CheckBox();
+            cfgGameAdvisorVerbosityCheckBox = new CheckBox();
+            cfgGameAdvancedStatsAlwaysCheckBox = new CheckBox();
+            cfgGameUnitSizePanel = new Panel();
+            cfgGameUnitSizeComboBox = new ComboBox();
+            cfgGameUnitSizeLabel = new Label();
+            cfgGameChatMsgDurationPanel = new Panel();
+            cfgGameChatMsgDurationNumericUpDown = new NumericUpDown();
+            cfgGameChatMsgDurationLabel = new Label();
+            cfgGameCampaignMapSpeedUpPanel = new Panel();
+            cfgGameCampaignMapSpeedUpNumericUpDown = new NumericUpDown();
+            cfgGameCampaignMapSpeedUpLabel = new Label();
+            cfgGameCampaignMapGameSpeedPanel = new Panel();
+            cfgGameCampaignMapGameSpeedNumericUpDown = new NumericUpDown();
+            cfgGameCampaignMapGameSpeedLabel = new Label();
+            cfgGamePrefFactionsPlayedPanel = new Panel();
+            cfgGamePrefFactionsPlayedTextBox = new TextBox();
+            cfgGamePrefFactionsPlayedLabel = new Label();
+            cfgGameTutorialPathPanel = new Panel();
+            cfgGameTutorialPathTextBox = new TextBox();
+            cfgGameTutorialPathLabel = new Label();
+            cfgGameAiFactionsPanel = new Panel();
+            cfgGameAiFactionsComboBox = new ComboBox();
+            cfgGameAiFactionsLabel = new Label();
+            cfgGameCampaignNumTimePlayPanel = new Panel();
+            cfgGameCampaignNumTimePlayTextBox = new TextBox();
+            cfgGameCampaignNumTimePlayLabel = new Label();
             label1 = new Label();
             tabPage2 = new TabPage();
             cfgAudioSpeechVolumePanel = new Panel();
@@ -128,57 +172,105 @@
             cfgUiFullBattleHudCheckBox = new CheckBox();
             cfgUiButtonsCheckBox = new CheckBox();
             cfgUiSaCardsCheckBox = new CheckBox();
+            tabPage8 = new TabPage();
+            tabPage9 = new TabPage();
             resetConfigSettingsButton = new Button();
             importConfigSettingsButton = new Button();
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
-            cfgGameCampaignNumTimePlayPanel = new Panel();
-            cfgGameCampaignNumTimePlayLabel = new Label();
-            cfgGameAiFactionsPanel = new Panel();
-            cfgGameAiFactionsLabel = new Label();
-            cfgGameChatMsgDurationPanel = new Panel();
-            cfgGameChatMsgDurationLabel = new Label();
-            cfgGameCampaignMapSpeedUpPanel = new Panel();
-            cfgGameCampaignMapSpeedUpLabel = new Label();
-            cfgGameCampaignMapGameSpeedPanel = new Panel();
-            cfgGameCampaignMapGameSpeedLabel = new Label();
-            cfgGamePrefFactionsPlayedPanel = new Panel();
-            cfgGamePrefFactionsPlayedLabel = new Label();
-            cfgGameTutorialPathPanel = new Panel();
-            cfgGameTutorialPathLabel = new Label();
-            cfgGameUnitSizePanel = new Panel();
-            cfgGameUnitSizeLabel = new Label();
-            cfgGameCampaignNumTimePlayTextBox = new TextBox();
-            cfgGameTutorialPathTextBox = new TextBox();
-            cfgGamePrefFactionsPlayedTextBox = new TextBox();
-            cfgGameCampaignMapGameSpeedNumericUpDown = new NumericUpDown();
-            cfgGameCampaignMapSpeedUpNumericUpDown = new NumericUpDown();
-            cfgGameChatMsgDurationNumericUpDown = new NumericUpDown();
-            cfgGameAiFactionsComboBox = new ComboBox();
-            cfgGameUnitSizeComboBox = new ComboBox();
-            cfgGameAdvancedStatsAlwaysCheckBox = new CheckBox();
-            cfgGameAdvisorVerbosityCheckBox = new CheckBox();
-            cfgGameAllUsersCheckBox = new CheckBox();
-            cfgGameAutoSaveCheckBox = new CheckBox();
-            cfgGameBlindAdvisorCheckBox = new CheckBox();
-            cfgGameDisableArrowMarkersCheckBox = new CheckBox();
-            cfgGameDisableEventsCheckBox = new CheckBox();
-            cfgGameEnglishCheckBox = new CheckBox();
-            cfgGameEventCutscenesCheckBox = new CheckBox();
-            cfgGameFatigueCheckBox = new CheckBox();
-            cfgGameFirstTimePlayCheckBox = new CheckBox();
-            cfgGameGamespySavePasswrdCheckBox = new CheckBox();
-            cfgGameLabelCharactersCheckBox = new CheckBox();
-            cfgGameLabelSettlementsCheckBox = new CheckBox();
-            cfgGameMicromanageAllSettlementsCheckBox = new CheckBox();
-            cfgGameMoraleCheckBox = new CheckBox();
-            cfgGameMuteAdvisorCheckBox = new CheckBox();
-            cfgGameNoCampaignBattleTimeLimitCheckBox = new CheckBox();
-            cfgGameUnlimitedMenOnBattlefieldCheckBox = new CheckBox();
-            cfgGameUseQuickchatCheckBox = new CheckBox();
+            cfgVideoAnisotropicLevelPanel = new Panel();
+            cfgVideoAnisotropicLevelLabel = new Label();
+            cfgVideoAnisotropicLevelComboBox = new ComboBox();
+            cfgVideoAntiAliasModePanel = new Panel();
+            cfgVideoAntiAliasModeComboBox = new ComboBox();
+            cfgVideoAntiAliasModeLabel = new Label();
+            cfgVideoAntialiasingPanel = new Panel();
+            cfgVideoAntialiasingComboBox = new ComboBox();
+            cfgVideoAntialiasingLabel = new Label();
+            cfgVideoBattleResolutionPanel = new Panel();
+            cfgVideoBattleResolutionComboBox = new ComboBox();
+            cfgVideoBattleResolutionLabel = new Label();
+            cfgVideoBuildingDetailPanel = new Panel();
+            cfgVideoBuildingDetailComboBox = new ComboBox();
+            cfgVideoBuildingDetailLabel = new Label();
+            cfgVideoCampaignResolutionPanel = new Panel();
+            cfgVideoCampaignResolutionComboBox = new ComboBox();
+            cfgVideoCampaignResolutionLabel = new Label();
+            cfgVideoDepthShadowsPanel = new Panel();
+            cfgVideoDepthShadowsComboBox = new ComboBox();
+            cfgVideoDepthShadowsLabel = new Label();
+            cfgVideoDepthShadowsResolutionPanel = new Panel();
+            cfgVideoDepthShadowsResolutionComboBox = new ComboBox();
+            cfgVideoDepthShadowsResolutionLabel = new Label();
+            cfgVideoEffectQualityPanel = new Panel();
+            cfgVideoEffectQualityComboBox = new ComboBox();
+            cfgVideoEffectQualityLabel = new Label();
+            cfgVideoGrassDistancePanel = new Panel();
+            cfgVideoGrassDistanceComboBox = new ComboBox();
+            cfgVideoGrassDistanceLabel = new Label();
+            cfgVideoGroundBuffersPerNodePanel = new Panel();
+            cfgVideoGroundBuffersPerNodeComboBox = new ComboBox();
+            cfgVideoGroundBuffersPerNodeLabel = new Label();
+            cfgVideoGroundCoverBuffersPerNodePanel = new Panel();
+            cfgVideoGroundCoverBuffersPerNodeComboBox = new ComboBox();
+            cfgVideoGroundCoverBuffersPerNodeLabel = new Label();
+            cfgVideoModelBuffersPerNodePanel = new Panel();
+            cfgVideoModelBuffersPerNodeComboBox = new ComboBox();
+            cfgVideoModelBuffersPerNodeLabel = new Label();
+            cfgVideoShaderPanel = new Panel();
+            cfgVideoShaderComboBox = new ComboBox();
+            cfgVideoShaderLabel = new Label();
+            cfgVideoSpriteBuffersPerNodePanel = new Panel();
+            cfgVideoSpriteBuffersPerNodeComboBox = new ComboBox();
+            cfgVideoSpriteBuffersPerNodeLabel = new Label();
+            cfgVideoTerrainQualityPanel = new Panel();
+            cfgVideoTerrainQualityComboBox = new ComboBox();
+            cfgVideoTerrainQualityLabel = new Label();
+            cfgVideoTextureFilteringPanel = new Panel();
+            cfgVideoTextureFilteringComboBox = new ComboBox();
+            cfgVideoTextureFilteringLabel = new Label();
+            cfgVideoUnitDetailPanel = new Panel();
+            cfgVideoUnitDetailComboBox = new ComboBox();
+            cfgVideoUnitDetailLabel = new Label();
+            cfgVideoWaterBuffersPerNodePanel = new Panel();
+            cfgVideoWaterBuffersPerNodeComboBox = new ComboBox();
+            cfgVideoWaterBuffersPerNodeLabel = new Label();
+            cfgVideoGammaPanel = new Panel();
+            cfgVideoGammaLabel = new Label();
+            cfgVideoGammaNumericUpDown = new NumericUpDown();
+            cfgVideoAssassinationMoviesCheckBox = new CheckBox();
+            cfgVideoAutodetectCheckBox = new CheckBox();
+            cfgVideoBloomCheckBox = new CheckBox();
+            cfgVideoEventMoviesCheckBox = new CheckBox();
+            cfgVideoInfiltrationMoviesCheckBox = new CheckBox();
+            cfgVideoMoviesCheckBox = new CheckBox();
+            cfgVideoNoBackgroundFmvCheckBox = new CheckBox();
+            cfgVideoReflectionCheckBox = new CheckBox();
+            cfgVideoSabotageMoviesCheckBox = new CheckBox();
+            cfgVideoShowBannersCheckBox = new CheckBox();
+            cfgVideoShowPackageLitterCheckBox = new CheckBox();
+            cfgVideoSkipMipLevelsChecBox = new CheckBox();
+            cfgVideoSplashesCheckBox = new CheckBox();
+            cfgVideoStencilShadowsCheckBox = new CheckBox();
+            cfgVideoSubtitlesCheckBox = new CheckBox();
+            cfgVideoVegetationCheckBox = new CheckBox();
+            cfgVideoVsyncCheckBox = new CheckBox();
+            cfgVideoWidescreenCheckBox = new CheckBox();
+            cfgVideoWindowedCheckBox = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            cfgGameUnitSizePanel.SuspendLayout();
+            cfgGameChatMsgDurationPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgGameChatMsgDurationNumericUpDown).BeginInit();
+            cfgGameCampaignMapSpeedUpPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapSpeedUpNumericUpDown).BeginInit();
+            cfgGameCampaignMapGameSpeedPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapGameSpeedNumericUpDown).BeginInit();
+            cfgGamePrefFactionsPlayedPanel.SuspendLayout();
+            cfgGameTutorialPathPanel.SuspendLayout();
+            cfgGameAiFactionsPanel.SuspendLayout();
+            cfgGameCampaignNumTimePlayPanel.SuspendLayout();
             tabPage2.SuspendLayout();
             cfgAudioSpeechVolumePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)cfgAudioSpeechNumericUpDown).BeginInit();
@@ -220,17 +312,29 @@
             tabPage6.SuspendLayout();
             tabPage7.SuspendLayout();
             cfgUIGroupBox.SuspendLayout();
-            cfgGameCampaignNumTimePlayPanel.SuspendLayout();
-            cfgGameAiFactionsPanel.SuspendLayout();
-            cfgGameChatMsgDurationPanel.SuspendLayout();
-            cfgGameCampaignMapSpeedUpPanel.SuspendLayout();
-            cfgGameCampaignMapGameSpeedPanel.SuspendLayout();
-            cfgGamePrefFactionsPlayedPanel.SuspendLayout();
-            cfgGameTutorialPathPanel.SuspendLayout();
-            cfgGameUnitSizePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapGameSpeedNumericUpDown).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapSpeedUpNumericUpDown).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)cfgGameChatMsgDurationNumericUpDown).BeginInit();
+            tabPage8.SuspendLayout();
+            tabPage9.SuspendLayout();
+            cfgVideoAnisotropicLevelPanel.SuspendLayout();
+            cfgVideoAntiAliasModePanel.SuspendLayout();
+            cfgVideoAntialiasingPanel.SuspendLayout();
+            cfgVideoBattleResolutionPanel.SuspendLayout();
+            cfgVideoBuildingDetailPanel.SuspendLayout();
+            cfgVideoCampaignResolutionPanel.SuspendLayout();
+            cfgVideoDepthShadowsPanel.SuspendLayout();
+            cfgVideoDepthShadowsResolutionPanel.SuspendLayout();
+            cfgVideoEffectQualityPanel.SuspendLayout();
+            cfgVideoGrassDistancePanel.SuspendLayout();
+            cfgVideoGroundBuffersPerNodePanel.SuspendLayout();
+            cfgVideoGroundCoverBuffersPerNodePanel.SuspendLayout();
+            cfgVideoModelBuffersPerNodePanel.SuspendLayout();
+            cfgVideoShaderPanel.SuspendLayout();
+            cfgVideoSpriteBuffersPerNodePanel.SuspendLayout();
+            cfgVideoTerrainQualityPanel.SuspendLayout();
+            cfgVideoTextureFilteringPanel.SuspendLayout();
+            cfgVideoUnitDetailPanel.SuspendLayout();
+            cfgVideoWaterBuffersPerNodePanel.SuspendLayout();
+            cfgVideoGammaPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgVideoGammaNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // saveConfigSettingsButton
@@ -252,6 +356,8 @@
             tabControl1.Controls.Add(tabPage5);
             tabControl1.Controls.Add(tabPage6);
             tabControl1.Controls.Add(tabPage7);
+            tabControl1.Controls.Add(tabPage8);
+            tabControl1.Controls.Add(tabPage9);
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -296,6 +402,416 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Game Play Settings";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameUseQuickchatCheckBox
+            // 
+            cfgGameUseQuickchatCheckBox.AutoSize = true;
+            cfgGameUseQuickchatCheckBox.Location = new Point(517, 241);
+            cfgGameUseQuickchatCheckBox.Name = "cfgGameUseQuickchatCheckBox";
+            cfgGameUseQuickchatCheckBox.Size = new Size(101, 19);
+            cfgGameUseQuickchatCheckBox.TabIndex = 22;
+            cfgGameUseQuickchatCheckBox.Text = "use_quickchat";
+            cfgGameUseQuickchatCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameUnlimitedMenOnBattlefieldCheckBox
+            // 
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.AutoSize = true;
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.Location = new Point(517, 216);
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.Name = "cfgGameUnlimitedMenOnBattlefieldCheckBox";
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.Size = new Size(183, 19);
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.TabIndex = 21;
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.Text = "unlimited_men_on_battlefield";
+            cfgGameUnlimitedMenOnBattlefieldCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameNoCampaignBattleTimeLimitCheckBox
+            // 
+            cfgGameNoCampaignBattleTimeLimitCheckBox.AutoSize = true;
+            cfgGameNoCampaignBattleTimeLimitCheckBox.Location = new Point(517, 191);
+            cfgGameNoCampaignBattleTimeLimitCheckBox.Name = "cfgGameNoCampaignBattleTimeLimitCheckBox";
+            cfgGameNoCampaignBattleTimeLimitCheckBox.Size = new Size(191, 19);
+            cfgGameNoCampaignBattleTimeLimitCheckBox.TabIndex = 20;
+            cfgGameNoCampaignBattleTimeLimitCheckBox.Text = "no_campaign_battle_time_limit";
+            cfgGameNoCampaignBattleTimeLimitCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameMuteAdvisorCheckBox
+            // 
+            cfgGameMuteAdvisorCheckBox.AutoSize = true;
+            cfgGameMuteAdvisorCheckBox.Location = new Point(517, 166);
+            cfgGameMuteAdvisorCheckBox.Name = "cfgGameMuteAdvisorCheckBox";
+            cfgGameMuteAdvisorCheckBox.Size = new Size(97, 19);
+            cfgGameMuteAdvisorCheckBox.TabIndex = 19;
+            cfgGameMuteAdvisorCheckBox.Text = "mute_advisor";
+            cfgGameMuteAdvisorCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameMoraleCheckBox
+            // 
+            cfgGameMoraleCheckBox.AutoSize = true;
+            cfgGameMoraleCheckBox.Location = new Point(517, 141);
+            cfgGameMoraleCheckBox.Name = "cfgGameMoraleCheckBox";
+            cfgGameMoraleCheckBox.Size = new Size(63, 19);
+            cfgGameMoraleCheckBox.TabIndex = 18;
+            cfgGameMoraleCheckBox.Text = "morale";
+            cfgGameMoraleCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameMicromanageAllSettlementsCheckBox
+            // 
+            cfgGameMicromanageAllSettlementsCheckBox.AutoSize = true;
+            cfgGameMicromanageAllSettlementsCheckBox.Location = new Point(517, 116);
+            cfgGameMicromanageAllSettlementsCheckBox.Name = "cfgGameMicromanageAllSettlementsCheckBox";
+            cfgGameMicromanageAllSettlementsCheckBox.Size = new Size(183, 19);
+            cfgGameMicromanageAllSettlementsCheckBox.TabIndex = 17;
+            cfgGameMicromanageAllSettlementsCheckBox.Text = "micromanage_all_settlements";
+            cfgGameMicromanageAllSettlementsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameLabelSettlementsCheckBox
+            // 
+            cfgGameLabelSettlementsCheckBox.AutoSize = true;
+            cfgGameLabelSettlementsCheckBox.Location = new Point(517, 91);
+            cfgGameLabelSettlementsCheckBox.Name = "cfgGameLabelSettlementsCheckBox";
+            cfgGameLabelSettlementsCheckBox.Size = new Size(117, 19);
+            cfgGameLabelSettlementsCheckBox.TabIndex = 16;
+            cfgGameLabelSettlementsCheckBox.Text = "label_settlements";
+            cfgGameLabelSettlementsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameLabelCharactersCheckBox
+            // 
+            cfgGameLabelCharactersCheckBox.AutoSize = true;
+            cfgGameLabelCharactersCheckBox.Location = new Point(517, 66);
+            cfgGameLabelCharactersCheckBox.Name = "cfgGameLabelCharactersCheckBox";
+            cfgGameLabelCharactersCheckBox.Size = new Size(110, 19);
+            cfgGameLabelCharactersCheckBox.TabIndex = 15;
+            cfgGameLabelCharactersCheckBox.Text = "label_characters";
+            cfgGameLabelCharactersCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameGamespySavePasswrdCheckBox
+            // 
+            cfgGameGamespySavePasswrdCheckBox.AutoSize = true;
+            cfgGameGamespySavePasswrdCheckBox.Location = new Point(517, 41);
+            cfgGameGamespySavePasswrdCheckBox.Name = "cfgGameGamespySavePasswrdCheckBox";
+            cfgGameGamespySavePasswrdCheckBox.Size = new Size(150, 19);
+            cfgGameGamespySavePasswrdCheckBox.TabIndex = 14;
+            cfgGameGamespySavePasswrdCheckBox.Text = "gamespy_save_passwrd";
+            cfgGameGamespySavePasswrdCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameFirstTimePlayCheckBox
+            // 
+            cfgGameFirstTimePlayCheckBox.AutoSize = true;
+            cfgGameFirstTimePlayCheckBox.Location = new Point(517, 18);
+            cfgGameFirstTimePlayCheckBox.Name = "cfgGameFirstTimePlayCheckBox";
+            cfgGameFirstTimePlayCheckBox.Size = new Size(102, 19);
+            cfgGameFirstTimePlayCheckBox.TabIndex = 13;
+            cfgGameFirstTimePlayCheckBox.Text = "first_time_play";
+            cfgGameFirstTimePlayCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameFatigueCheckBox
+            // 
+            cfgGameFatigueCheckBox.AutoSize = true;
+            cfgGameFatigueCheckBox.Location = new Point(352, 244);
+            cfgGameFatigueCheckBox.Name = "cfgGameFatigueCheckBox";
+            cfgGameFatigueCheckBox.Size = new Size(63, 19);
+            cfgGameFatigueCheckBox.TabIndex = 12;
+            cfgGameFatigueCheckBox.Text = "fatigue";
+            cfgGameFatigueCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameEventCutscenesCheckBox
+            // 
+            cfgGameEventCutscenesCheckBox.AutoSize = true;
+            cfgGameEventCutscenesCheckBox.Location = new Point(352, 219);
+            cfgGameEventCutscenesCheckBox.Name = "cfgGameEventCutscenesCheckBox";
+            cfgGameEventCutscenesCheckBox.Size = new Size(112, 19);
+            cfgGameEventCutscenesCheckBox.TabIndex = 11;
+            cfgGameEventCutscenesCheckBox.Text = "event_cutscenes";
+            cfgGameEventCutscenesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameEnglishCheckBox
+            // 
+            cfgGameEnglishCheckBox.AutoSize = true;
+            cfgGameEnglishCheckBox.Location = new Point(352, 194);
+            cfgGameEnglishCheckBox.Name = "cfgGameEnglishCheckBox";
+            cfgGameEnglishCheckBox.Size = new Size(64, 19);
+            cfgGameEnglishCheckBox.TabIndex = 10;
+            cfgGameEnglishCheckBox.Text = "english";
+            cfgGameEnglishCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameDisableEventsCheckBox
+            // 
+            cfgGameDisableEventsCheckBox.AutoSize = true;
+            cfgGameDisableEventsCheckBox.Location = new Point(352, 169);
+            cfgGameDisableEventsCheckBox.Name = "cfgGameDisableEventsCheckBox";
+            cfgGameDisableEventsCheckBox.Size = new Size(102, 19);
+            cfgGameDisableEventsCheckBox.TabIndex = 9;
+            cfgGameDisableEventsCheckBox.Text = "disable_events";
+            cfgGameDisableEventsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameDisableArrowMarkersCheckBox
+            // 
+            cfgGameDisableArrowMarkersCheckBox.AutoSize = true;
+            cfgGameDisableArrowMarkersCheckBox.Location = new Point(352, 146);
+            cfgGameDisableArrowMarkersCheckBox.Name = "cfgGameDisableArrowMarkersCheckBox";
+            cfgGameDisableArrowMarkersCheckBox.Size = new Size(145, 19);
+            cfgGameDisableArrowMarkersCheckBox.TabIndex = 8;
+            cfgGameDisableArrowMarkersCheckBox.Text = "disable_arrow_markers";
+            cfgGameDisableArrowMarkersCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameBlindAdvisorCheckBox
+            // 
+            cfgGameBlindAdvisorCheckBox.AutoSize = true;
+            cfgGameBlindAdvisorCheckBox.Location = new Point(352, 121);
+            cfgGameBlindAdvisorCheckBox.Name = "cfgGameBlindAdvisorCheckBox";
+            cfgGameBlindAdvisorCheckBox.Size = new Size(96, 19);
+            cfgGameBlindAdvisorCheckBox.TabIndex = 7;
+            cfgGameBlindAdvisorCheckBox.Text = "blind_advisor";
+            cfgGameBlindAdvisorCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameAutoSaveCheckBox
+            // 
+            cfgGameAutoSaveCheckBox.AutoSize = true;
+            cfgGameAutoSaveCheckBox.Location = new Point(352, 95);
+            cfgGameAutoSaveCheckBox.Name = "cfgGameAutoSaveCheckBox";
+            cfgGameAutoSaveCheckBox.Size = new Size(78, 19);
+            cfgGameAutoSaveCheckBox.TabIndex = 6;
+            cfgGameAutoSaveCheckBox.Text = "auto_save";
+            cfgGameAutoSaveCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameAllUsersCheckBox
+            // 
+            cfgGameAllUsersCheckBox.AutoSize = true;
+            cfgGameAllUsersCheckBox.Location = new Point(352, 69);
+            cfgGameAllUsersCheckBox.Name = "cfgGameAllUsersCheckBox";
+            cfgGameAllUsersCheckBox.Size = new Size(65, 19);
+            cfgGameAllUsersCheckBox.TabIndex = 5;
+            cfgGameAllUsersCheckBox.Text = "allusers";
+            cfgGameAllUsersCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameAdvisorVerbosityCheckBox
+            // 
+            cfgGameAdvisorVerbosityCheckBox.AutoSize = true;
+            cfgGameAdvisorVerbosityCheckBox.Location = new Point(352, 44);
+            cfgGameAdvisorVerbosityCheckBox.Name = "cfgGameAdvisorVerbosityCheckBox";
+            cfgGameAdvisorVerbosityCheckBox.Size = new Size(117, 19);
+            cfgGameAdvisorVerbosityCheckBox.TabIndex = 4;
+            cfgGameAdvisorVerbosityCheckBox.Text = "advisor_verbosity";
+            cfgGameAdvisorVerbosityCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameAdvancedStatsAlwaysCheckBox
+            // 
+            cfgGameAdvancedStatsAlwaysCheckBox.AutoSize = true;
+            cfgGameAdvancedStatsAlwaysCheckBox.Location = new Point(353, 18);
+            cfgGameAdvancedStatsAlwaysCheckBox.Name = "cfgGameAdvancedStatsAlwaysCheckBox";
+            cfgGameAdvancedStatsAlwaysCheckBox.Size = new Size(146, 19);
+            cfgGameAdvancedStatsAlwaysCheckBox.TabIndex = 3;
+            cfgGameAdvancedStatsAlwaysCheckBox.Text = "advanced_stats_always";
+            cfgGameAdvancedStatsAlwaysCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameUnitSizePanel
+            // 
+            cfgGameUnitSizePanel.BackColor = Color.DarkGray;
+            cfgGameUnitSizePanel.Controls.Add(cfgGameUnitSizeComboBox);
+            cfgGameUnitSizePanel.Controls.Add(cfgGameUnitSizeLabel);
+            cfgGameUnitSizePanel.Location = new Point(17, 339);
+            cfgGameUnitSizePanel.Name = "cfgGameUnitSizePanel";
+            cfgGameUnitSizePanel.Size = new Size(312, 38);
+            cfgGameUnitSizePanel.TabIndex = 2;
+            // 
+            // cfgGameUnitSizeComboBox
+            // 
+            cfgGameUnitSizeComboBox.FormattingEnabled = true;
+            cfgGameUnitSizeComboBox.Location = new Point(103, 5);
+            cfgGameUnitSizeComboBox.Name = "cfgGameUnitSizeComboBox";
+            cfgGameUnitSizeComboBox.Size = new Size(121, 23);
+            cfgGameUnitSizeComboBox.TabIndex = 1;
+            // 
+            // cfgGameUnitSizeLabel
+            // 
+            cfgGameUnitSizeLabel.AutoSize = true;
+            cfgGameUnitSizeLabel.Location = new Point(9, 5);
+            cfgGameUnitSizeLabel.Name = "cfgGameUnitSizeLabel";
+            cfgGameUnitSizeLabel.Size = new Size(52, 15);
+            cfgGameUnitSizeLabel.TabIndex = 0;
+            cfgGameUnitSizeLabel.Text = "unit_size";
+            // 
+            // cfgGameChatMsgDurationPanel
+            // 
+            cfgGameChatMsgDurationPanel.BackColor = Color.DarkGray;
+            cfgGameChatMsgDurationPanel.Controls.Add(cfgGameChatMsgDurationNumericUpDown);
+            cfgGameChatMsgDurationPanel.Controls.Add(cfgGameChatMsgDurationLabel);
+            cfgGameChatMsgDurationPanel.Location = new Point(17, 251);
+            cfgGameChatMsgDurationPanel.Name = "cfgGameChatMsgDurationPanel";
+            cfgGameChatMsgDurationPanel.Size = new Size(312, 38);
+            cfgGameChatMsgDurationPanel.TabIndex = 2;
+            // 
+            // cfgGameChatMsgDurationNumericUpDown
+            // 
+            cfgGameChatMsgDurationNumericUpDown.Location = new Point(175, 5);
+            cfgGameChatMsgDurationNumericUpDown.Name = "cfgGameChatMsgDurationNumericUpDown";
+            cfgGameChatMsgDurationNumericUpDown.Size = new Size(120, 23);
+            cfgGameChatMsgDurationNumericUpDown.TabIndex = 1;
+            // 
+            // cfgGameChatMsgDurationLabel
+            // 
+            cfgGameChatMsgDurationLabel.AutoSize = true;
+            cfgGameChatMsgDurationLabel.Location = new Point(9, 5);
+            cfgGameChatMsgDurationLabel.Name = "cfgGameChatMsgDurationLabel";
+            cfgGameChatMsgDurationLabel.Size = new Size(108, 15);
+            cfgGameChatMsgDurationLabel.TabIndex = 0;
+            cfgGameChatMsgDurationLabel.Text = "chat_msg_duration";
+            // 
+            // cfgGameCampaignMapSpeedUpPanel
+            // 
+            cfgGameCampaignMapSpeedUpPanel.BackColor = Color.DarkGray;
+            cfgGameCampaignMapSpeedUpPanel.Controls.Add(cfgGameCampaignMapSpeedUpNumericUpDown);
+            cfgGameCampaignMapSpeedUpPanel.Controls.Add(cfgGameCampaignMapSpeedUpLabel);
+            cfgGameCampaignMapSpeedUpPanel.Location = new Point(17, 207);
+            cfgGameCampaignMapSpeedUpPanel.Name = "cfgGameCampaignMapSpeedUpPanel";
+            cfgGameCampaignMapSpeedUpPanel.Size = new Size(312, 38);
+            cfgGameCampaignMapSpeedUpPanel.TabIndex = 2;
+            // 
+            // cfgGameCampaignMapSpeedUpNumericUpDown
+            // 
+            cfgGameCampaignMapSpeedUpNumericUpDown.Location = new Point(175, 3);
+            cfgGameCampaignMapSpeedUpNumericUpDown.Name = "cfgGameCampaignMapSpeedUpNumericUpDown";
+            cfgGameCampaignMapSpeedUpNumericUpDown.Size = new Size(120, 23);
+            cfgGameCampaignMapSpeedUpNumericUpDown.TabIndex = 1;
+            // 
+            // cfgGameCampaignMapSpeedUpLabel
+            // 
+            cfgGameCampaignMapSpeedUpLabel.AutoSize = true;
+            cfgGameCampaignMapSpeedUpLabel.Location = new Point(9, 5);
+            cfgGameCampaignMapSpeedUpLabel.Name = "cfgGameCampaignMapSpeedUpLabel";
+            cfgGameCampaignMapSpeedUpLabel.Size = new Size(144, 15);
+            cfgGameCampaignMapSpeedUpLabel.TabIndex = 0;
+            cfgGameCampaignMapSpeedUpLabel.Text = "campaign_map_speed_up";
+            // 
+            // cfgGameCampaignMapGameSpeedPanel
+            // 
+            cfgGameCampaignMapGameSpeedPanel.BackColor = Color.DarkGray;
+            cfgGameCampaignMapGameSpeedPanel.Controls.Add(cfgGameCampaignMapGameSpeedNumericUpDown);
+            cfgGameCampaignMapGameSpeedPanel.Controls.Add(cfgGameCampaignMapGameSpeedLabel);
+            cfgGameCampaignMapGameSpeedPanel.Location = new Point(17, 163);
+            cfgGameCampaignMapGameSpeedPanel.Name = "cfgGameCampaignMapGameSpeedPanel";
+            cfgGameCampaignMapGameSpeedPanel.Size = new Size(312, 38);
+            cfgGameCampaignMapGameSpeedPanel.TabIndex = 2;
+            // 
+            // cfgGameCampaignMapGameSpeedNumericUpDown
+            // 
+            cfgGameCampaignMapGameSpeedNumericUpDown.Location = new Point(175, 3);
+            cfgGameCampaignMapGameSpeedNumericUpDown.Name = "cfgGameCampaignMapGameSpeedNumericUpDown";
+            cfgGameCampaignMapGameSpeedNumericUpDown.Size = new Size(120, 23);
+            cfgGameCampaignMapGameSpeedNumericUpDown.TabIndex = 1;
+            // 
+            // cfgGameCampaignMapGameSpeedLabel
+            // 
+            cfgGameCampaignMapGameSpeedLabel.AutoSize = true;
+            cfgGameCampaignMapGameSpeedLabel.Location = new Point(9, 5);
+            cfgGameCampaignMapGameSpeedLabel.Name = "cfgGameCampaignMapGameSpeedLabel";
+            cfgGameCampaignMapGameSpeedLabel.Size = new Size(160, 15);
+            cfgGameCampaignMapGameSpeedLabel.TabIndex = 0;
+            cfgGameCampaignMapGameSpeedLabel.Text = "campaign_map_game_speed";
+            // 
+            // cfgGamePrefFactionsPlayedPanel
+            // 
+            cfgGamePrefFactionsPlayedPanel.BackColor = Color.DarkGray;
+            cfgGamePrefFactionsPlayedPanel.Controls.Add(cfgGamePrefFactionsPlayedTextBox);
+            cfgGamePrefFactionsPlayedPanel.Controls.Add(cfgGamePrefFactionsPlayedLabel);
+            cfgGamePrefFactionsPlayedPanel.Location = new Point(17, 120);
+            cfgGamePrefFactionsPlayedPanel.Name = "cfgGamePrefFactionsPlayedPanel";
+            cfgGamePrefFactionsPlayedPanel.Size = new Size(312, 38);
+            cfgGamePrefFactionsPlayedPanel.TabIndex = 2;
+            // 
+            // cfgGamePrefFactionsPlayedTextBox
+            // 
+            cfgGamePrefFactionsPlayedTextBox.Location = new Point(161, 5);
+            cfgGamePrefFactionsPlayedTextBox.Name = "cfgGamePrefFactionsPlayedTextBox";
+            cfgGamePrefFactionsPlayedTextBox.Size = new Size(148, 23);
+            cfgGamePrefFactionsPlayedTextBox.TabIndex = 1;
+            // 
+            // cfgGamePrefFactionsPlayedLabel
+            // 
+            cfgGamePrefFactionsPlayedLabel.AutoSize = true;
+            cfgGamePrefFactionsPlayedLabel.Location = new Point(9, 5);
+            cfgGamePrefFactionsPlayedLabel.Name = "cfgGamePrefFactionsPlayedLabel";
+            cfgGamePrefFactionsPlayedLabel.Size = new Size(115, 15);
+            cfgGamePrefFactionsPlayedLabel.TabIndex = 0;
+            cfgGamePrefFactionsPlayedLabel.Text = "pref_factions_played";
+            // 
+            // cfgGameTutorialPathPanel
+            // 
+            cfgGameTutorialPathPanel.BackColor = Color.DarkGray;
+            cfgGameTutorialPathPanel.Controls.Add(cfgGameTutorialPathTextBox);
+            cfgGameTutorialPathPanel.Controls.Add(cfgGameTutorialPathLabel);
+            cfgGameTutorialPathPanel.Location = new Point(17, 76);
+            cfgGameTutorialPathPanel.Name = "cfgGameTutorialPathPanel";
+            cfgGameTutorialPathPanel.Size = new Size(312, 38);
+            cfgGameTutorialPathPanel.TabIndex = 2;
+            // 
+            // cfgGameTutorialPathTextBox
+            // 
+            cfgGameTutorialPathTextBox.Location = new Point(161, 3);
+            cfgGameTutorialPathTextBox.Name = "cfgGameTutorialPathTextBox";
+            cfgGameTutorialPathTextBox.Size = new Size(148, 23);
+            cfgGameTutorialPathTextBox.TabIndex = 1;
+            // 
+            // cfgGameTutorialPathLabel
+            // 
+            cfgGameTutorialPathLabel.AutoSize = true;
+            cfgGameTutorialPathLabel.Location = new Point(9, 5);
+            cfgGameTutorialPathLabel.Name = "cfgGameTutorialPathLabel";
+            cfgGameTutorialPathLabel.Size = new Size(74, 15);
+            cfgGameTutorialPathLabel.TabIndex = 0;
+            cfgGameTutorialPathLabel.Text = "tutorial_path";
+            // 
+            // cfgGameAiFactionsPanel
+            // 
+            cfgGameAiFactionsPanel.BackColor = Color.DarkGray;
+            cfgGameAiFactionsPanel.Controls.Add(cfgGameAiFactionsComboBox);
+            cfgGameAiFactionsPanel.Controls.Add(cfgGameAiFactionsLabel);
+            cfgGameAiFactionsPanel.Location = new Point(17, 295);
+            cfgGameAiFactionsPanel.Name = "cfgGameAiFactionsPanel";
+            cfgGameAiFactionsPanel.Size = new Size(312, 38);
+            cfgGameAiFactionsPanel.TabIndex = 2;
+            // 
+            // cfgGameAiFactionsComboBox
+            // 
+            cfgGameAiFactionsComboBox.FormattingEnabled = true;
+            cfgGameAiFactionsComboBox.Location = new Point(103, 7);
+            cfgGameAiFactionsComboBox.Name = "cfgGameAiFactionsComboBox";
+            cfgGameAiFactionsComboBox.Size = new Size(121, 23);
+            cfgGameAiFactionsComboBox.TabIndex = 1;
+            // 
+            // cfgGameAiFactionsLabel
+            // 
+            cfgGameAiFactionsLabel.AutoSize = true;
+            cfgGameAiFactionsLabel.Location = new Point(9, 5);
+            cfgGameAiFactionsLabel.Name = "cfgGameAiFactionsLabel";
+            cfgGameAiFactionsLabel.Size = new Size(63, 15);
+            cfgGameAiFactionsLabel.TabIndex = 0;
+            cfgGameAiFactionsLabel.Text = "ai_factions";
+            // 
+            // cfgGameCampaignNumTimePlayPanel
+            // 
+            cfgGameCampaignNumTimePlayPanel.BackColor = Color.DarkGray;
+            cfgGameCampaignNumTimePlayPanel.Controls.Add(cfgGameCampaignNumTimePlayTextBox);
+            cfgGameCampaignNumTimePlayPanel.Controls.Add(cfgGameCampaignNumTimePlayLabel);
+            cfgGameCampaignNumTimePlayPanel.Location = new Point(17, 32);
+            cfgGameCampaignNumTimePlayPanel.Name = "cfgGameCampaignNumTimePlayPanel";
+            cfgGameCampaignNumTimePlayPanel.Size = new Size(312, 38);
+            cfgGameCampaignNumTimePlayPanel.TabIndex = 1;
+            // 
+            // cfgGameCampaignNumTimePlayTextBox
+            // 
+            cfgGameCampaignNumTimePlayTextBox.Location = new Point(161, 7);
+            cfgGameCampaignNumTimePlayTextBox.Name = "cfgGameCampaignNumTimePlayTextBox";
+            cfgGameCampaignNumTimePlayTextBox.Size = new Size(148, 23);
+            cfgGameCampaignNumTimePlayTextBox.TabIndex = 1;
+            // 
+            // cfgGameCampaignNumTimePlayLabel
+            // 
+            cfgGameCampaignNumTimePlayLabel.AutoSize = true;
+            cfgGameCampaignNumTimePlayLabel.Location = new Point(9, 5);
+            cfgGameCampaignNumTimePlayLabel.Name = "cfgGameCampaignNumTimePlayLabel";
+            cfgGameCampaignNumTimePlayLabel.Size = new Size(146, 15);
+            cfgGameCampaignNumTimePlayLabel.TabIndex = 0;
+            cfgGameCampaignNumTimePlayLabel.Text = "campaign_num_time_play";
             // 
             // label1
             // 
@@ -1225,6 +1741,65 @@
             cfgUiSaCardsCheckBox.Text = "SA_cards";
             cfgUiSaCardsCheckBox.UseVisualStyleBackColor = true;
             // 
+            // tabPage8
+            // 
+            tabPage8.Controls.Add(cfgVideoGammaPanel);
+            tabPage8.Controls.Add(cfgVideoWaterBuffersPerNodePanel);
+            tabPage8.Controls.Add(cfgVideoUnitDetailPanel);
+            tabPage8.Controls.Add(cfgVideoTextureFilteringPanel);
+            tabPage8.Controls.Add(cfgVideoTerrainQualityPanel);
+            tabPage8.Controls.Add(cfgVideoSpriteBuffersPerNodePanel);
+            tabPage8.Controls.Add(cfgVideoShaderPanel);
+            tabPage8.Controls.Add(cfgVideoModelBuffersPerNodePanel);
+            tabPage8.Controls.Add(cfgVideoGroundCoverBuffersPerNodePanel);
+            tabPage8.Controls.Add(cfgVideoGroundBuffersPerNodePanel);
+            tabPage8.Controls.Add(cfgVideoGrassDistancePanel);
+            tabPage8.Controls.Add(cfgVideoEffectQualityPanel);
+            tabPage8.Controls.Add(cfgVideoDepthShadowsResolutionPanel);
+            tabPage8.Controls.Add(cfgVideoDepthShadowsPanel);
+            tabPage8.Controls.Add(cfgVideoCampaignResolutionPanel);
+            tabPage8.Controls.Add(cfgVideoBuildingDetailPanel);
+            tabPage8.Controls.Add(cfgVideoBattleResolutionPanel);
+            tabPage8.Controls.Add(cfgVideoAntialiasingPanel);
+            tabPage8.Controls.Add(cfgVideoAntiAliasModePanel);
+            tabPage8.Controls.Add(cfgVideoAnisotropicLevelPanel);
+            tabPage8.Location = new Point(4, 24);
+            tabPage8.Name = "tabPage8";
+            tabPage8.Padding = new Padding(3);
+            tabPage8.Size = new Size(752, 400);
+            tabPage8.TabIndex = 7;
+            tabPage8.Text = "Video_1";
+            tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            tabPage9.Controls.Add(cfgVideoWindowedCheckBox);
+            tabPage9.Controls.Add(cfgVideoWidescreenCheckBox);
+            tabPage9.Controls.Add(cfgVideoVsyncCheckBox);
+            tabPage9.Controls.Add(cfgVideoVegetationCheckBox);
+            tabPage9.Controls.Add(cfgVideoSubtitlesCheckBox);
+            tabPage9.Controls.Add(cfgVideoStencilShadowsCheckBox);
+            tabPage9.Controls.Add(cfgVideoSplashesCheckBox);
+            tabPage9.Controls.Add(cfgVideoSkipMipLevelsChecBox);
+            tabPage9.Controls.Add(cfgVideoShowPackageLitterCheckBox);
+            tabPage9.Controls.Add(cfgVideoShowBannersCheckBox);
+            tabPage9.Controls.Add(cfgVideoSabotageMoviesCheckBox);
+            tabPage9.Controls.Add(cfgVideoReflectionCheckBox);
+            tabPage9.Controls.Add(cfgVideoNoBackgroundFmvCheckBox);
+            tabPage9.Controls.Add(cfgVideoMoviesCheckBox);
+            tabPage9.Controls.Add(cfgVideoInfiltrationMoviesCheckBox);
+            tabPage9.Controls.Add(cfgVideoEventMoviesCheckBox);
+            tabPage9.Controls.Add(cfgVideoBloomCheckBox);
+            tabPage9.Controls.Add(cfgVideoAutodetectCheckBox);
+            tabPage9.Controls.Add(cfgVideoAssassinationMoviesCheckBox);
+            tabPage9.Location = new Point(4, 24);
+            tabPage9.Name = "tabPage9";
+            tabPage9.Padding = new Padding(3);
+            tabPage9.Size = new Size(752, 400);
+            tabPage9.TabIndex = 8;
+            tabPage9.Text = "Video_2";
+            tabPage9.UseVisualStyleBackColor = true;
+            // 
             // resetConfigSettingsButton
             // 
             resetConfigSettingsButton.Location = new Point(298, 498);
@@ -1274,415 +1849,714 @@
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
             // 
-            // cfgGameCampaignNumTimePlayPanel
-            // 
-            cfgGameCampaignNumTimePlayPanel.BackColor = Color.DarkGray;
-            cfgGameCampaignNumTimePlayPanel.Controls.Add(cfgGameCampaignNumTimePlayTextBox);
-            cfgGameCampaignNumTimePlayPanel.Controls.Add(cfgGameCampaignNumTimePlayLabel);
-            cfgGameCampaignNumTimePlayPanel.Location = new Point(17, 32);
-            cfgGameCampaignNumTimePlayPanel.Name = "cfgGameCampaignNumTimePlayPanel";
-            cfgGameCampaignNumTimePlayPanel.Size = new Size(312, 38);
-            cfgGameCampaignNumTimePlayPanel.TabIndex = 1;
-            // 
-            // cfgGameCampaignNumTimePlayLabel
-            // 
-            cfgGameCampaignNumTimePlayLabel.AutoSize = true;
-            cfgGameCampaignNumTimePlayLabel.Location = new Point(9, 5);
-            cfgGameCampaignNumTimePlayLabel.Name = "cfgGameCampaignNumTimePlayLabel";
-            cfgGameCampaignNumTimePlayLabel.Size = new Size(146, 15);
-            cfgGameCampaignNumTimePlayLabel.TabIndex = 0;
-            cfgGameCampaignNumTimePlayLabel.Text = "campaign_num_time_play";
-            // 
-            // cfgGameAiFactionsPanel
-            // 
-            cfgGameAiFactionsPanel.BackColor = Color.DarkGray;
-            cfgGameAiFactionsPanel.Controls.Add(cfgGameAiFactionsComboBox);
-            cfgGameAiFactionsPanel.Controls.Add(cfgGameAiFactionsLabel);
-            cfgGameAiFactionsPanel.Location = new Point(17, 295);
-            cfgGameAiFactionsPanel.Name = "cfgGameAiFactionsPanel";
-            cfgGameAiFactionsPanel.Size = new Size(312, 38);
-            cfgGameAiFactionsPanel.TabIndex = 2;
-            // 
-            // cfgGameAiFactionsLabel
-            // 
-            cfgGameAiFactionsLabel.AutoSize = true;
-            cfgGameAiFactionsLabel.Location = new Point(9, 5);
-            cfgGameAiFactionsLabel.Name = "cfgGameAiFactionsLabel";
-            cfgGameAiFactionsLabel.Size = new Size(63, 15);
-            cfgGameAiFactionsLabel.TabIndex = 0;
-            cfgGameAiFactionsLabel.Text = "ai_factions";
-            // 
-            // cfgGameChatMsgDurationPanel
-            // 
-            cfgGameChatMsgDurationPanel.BackColor = Color.DarkGray;
-            cfgGameChatMsgDurationPanel.Controls.Add(cfgGameChatMsgDurationNumericUpDown);
-            cfgGameChatMsgDurationPanel.Controls.Add(cfgGameChatMsgDurationLabel);
-            cfgGameChatMsgDurationPanel.Location = new Point(17, 251);
-            cfgGameChatMsgDurationPanel.Name = "cfgGameChatMsgDurationPanel";
-            cfgGameChatMsgDurationPanel.Size = new Size(312, 38);
-            cfgGameChatMsgDurationPanel.TabIndex = 2;
-            // 
-            // cfgGameChatMsgDurationLabel
-            // 
-            cfgGameChatMsgDurationLabel.AutoSize = true;
-            cfgGameChatMsgDurationLabel.Location = new Point(9, 5);
-            cfgGameChatMsgDurationLabel.Name = "cfgGameChatMsgDurationLabel";
-            cfgGameChatMsgDurationLabel.Size = new Size(108, 15);
-            cfgGameChatMsgDurationLabel.TabIndex = 0;
-            cfgGameChatMsgDurationLabel.Text = "chat_msg_duration";
-            // 
-            // cfgGameCampaignMapSpeedUpPanel
-            // 
-            cfgGameCampaignMapSpeedUpPanel.BackColor = Color.DarkGray;
-            cfgGameCampaignMapSpeedUpPanel.Controls.Add(cfgGameCampaignMapSpeedUpNumericUpDown);
-            cfgGameCampaignMapSpeedUpPanel.Controls.Add(cfgGameCampaignMapSpeedUpLabel);
-            cfgGameCampaignMapSpeedUpPanel.Location = new Point(17, 207);
-            cfgGameCampaignMapSpeedUpPanel.Name = "cfgGameCampaignMapSpeedUpPanel";
-            cfgGameCampaignMapSpeedUpPanel.Size = new Size(312, 38);
-            cfgGameCampaignMapSpeedUpPanel.TabIndex = 2;
-            // 
-            // cfgGameCampaignMapSpeedUpLabel
-            // 
-            cfgGameCampaignMapSpeedUpLabel.AutoSize = true;
-            cfgGameCampaignMapSpeedUpLabel.Location = new Point(9, 5);
-            cfgGameCampaignMapSpeedUpLabel.Name = "cfgGameCampaignMapSpeedUpLabel";
-            cfgGameCampaignMapSpeedUpLabel.Size = new Size(144, 15);
-            cfgGameCampaignMapSpeedUpLabel.TabIndex = 0;
-            cfgGameCampaignMapSpeedUpLabel.Text = "campaign_map_speed_up";
-            // 
-            // cfgGameCampaignMapGameSpeedPanel
-            // 
-            cfgGameCampaignMapGameSpeedPanel.BackColor = Color.DarkGray;
-            cfgGameCampaignMapGameSpeedPanel.Controls.Add(cfgGameCampaignMapGameSpeedNumericUpDown);
-            cfgGameCampaignMapGameSpeedPanel.Controls.Add(cfgGameCampaignMapGameSpeedLabel);
-            cfgGameCampaignMapGameSpeedPanel.Location = new Point(17, 163);
-            cfgGameCampaignMapGameSpeedPanel.Name = "cfgGameCampaignMapGameSpeedPanel";
-            cfgGameCampaignMapGameSpeedPanel.Size = new Size(312, 38);
-            cfgGameCampaignMapGameSpeedPanel.TabIndex = 2;
-            // 
-            // cfgGameCampaignMapGameSpeedLabel
-            // 
-            cfgGameCampaignMapGameSpeedLabel.AutoSize = true;
-            cfgGameCampaignMapGameSpeedLabel.Location = new Point(9, 5);
-            cfgGameCampaignMapGameSpeedLabel.Name = "cfgGameCampaignMapGameSpeedLabel";
-            cfgGameCampaignMapGameSpeedLabel.Size = new Size(160, 15);
-            cfgGameCampaignMapGameSpeedLabel.TabIndex = 0;
-            cfgGameCampaignMapGameSpeedLabel.Text = "campaign_map_game_speed";
-            // 
-            // cfgGamePrefFactionsPlayedPanel
-            // 
-            cfgGamePrefFactionsPlayedPanel.BackColor = Color.DarkGray;
-            cfgGamePrefFactionsPlayedPanel.Controls.Add(cfgGamePrefFactionsPlayedTextBox);
-            cfgGamePrefFactionsPlayedPanel.Controls.Add(cfgGamePrefFactionsPlayedLabel);
-            cfgGamePrefFactionsPlayedPanel.Location = new Point(17, 120);
-            cfgGamePrefFactionsPlayedPanel.Name = "cfgGamePrefFactionsPlayedPanel";
-            cfgGamePrefFactionsPlayedPanel.Size = new Size(312, 38);
-            cfgGamePrefFactionsPlayedPanel.TabIndex = 2;
-            // 
-            // cfgGamePrefFactionsPlayedLabel
-            // 
-            cfgGamePrefFactionsPlayedLabel.AutoSize = true;
-            cfgGamePrefFactionsPlayedLabel.Location = new Point(9, 5);
-            cfgGamePrefFactionsPlayedLabel.Name = "cfgGamePrefFactionsPlayedLabel";
-            cfgGamePrefFactionsPlayedLabel.Size = new Size(115, 15);
-            cfgGamePrefFactionsPlayedLabel.TabIndex = 0;
-            cfgGamePrefFactionsPlayedLabel.Text = "pref_factions_played";
-            // 
-            // cfgGameTutorialPathPanel
-            // 
-            cfgGameTutorialPathPanel.BackColor = Color.DarkGray;
-            cfgGameTutorialPathPanel.Controls.Add(cfgGameTutorialPathTextBox);
-            cfgGameTutorialPathPanel.Controls.Add(cfgGameTutorialPathLabel);
-            cfgGameTutorialPathPanel.Location = new Point(17, 76);
-            cfgGameTutorialPathPanel.Name = "cfgGameTutorialPathPanel";
-            cfgGameTutorialPathPanel.Size = new Size(312, 38);
-            cfgGameTutorialPathPanel.TabIndex = 2;
-            // 
-            // cfgGameTutorialPathLabel
-            // 
-            cfgGameTutorialPathLabel.AutoSize = true;
-            cfgGameTutorialPathLabel.Location = new Point(9, 5);
-            cfgGameTutorialPathLabel.Name = "cfgGameTutorialPathLabel";
-            cfgGameTutorialPathLabel.Size = new Size(74, 15);
-            cfgGameTutorialPathLabel.TabIndex = 0;
-            cfgGameTutorialPathLabel.Text = "tutorial_path";
-            // 
-            // cfgGameUnitSizePanel
-            // 
-            cfgGameUnitSizePanel.BackColor = Color.DarkGray;
-            cfgGameUnitSizePanel.Controls.Add(cfgGameUnitSizeComboBox);
-            cfgGameUnitSizePanel.Controls.Add(cfgGameUnitSizeLabel);
-            cfgGameUnitSizePanel.Location = new Point(17, 339);
-            cfgGameUnitSizePanel.Name = "cfgGameUnitSizePanel";
-            cfgGameUnitSizePanel.Size = new Size(312, 38);
-            cfgGameUnitSizePanel.TabIndex = 2;
-            // 
-            // cfgGameUnitSizeLabel
-            // 
-            cfgGameUnitSizeLabel.AutoSize = true;
-            cfgGameUnitSizeLabel.Location = new Point(9, 5);
-            cfgGameUnitSizeLabel.Name = "cfgGameUnitSizeLabel";
-            cfgGameUnitSizeLabel.Size = new Size(52, 15);
-            cfgGameUnitSizeLabel.TabIndex = 0;
-            cfgGameUnitSizeLabel.Text = "unit_size";
-            // 
-            // cfgGameCampaignNumTimePlayTextBox
-            // 
-            cfgGameCampaignNumTimePlayTextBox.Location = new Point(161, 7);
-            cfgGameCampaignNumTimePlayTextBox.Name = "cfgGameCampaignNumTimePlayTextBox";
-            cfgGameCampaignNumTimePlayTextBox.Size = new Size(148, 23);
-            cfgGameCampaignNumTimePlayTextBox.TabIndex = 1;
-            // 
-            // cfgGameTutorialPathTextBox
-            // 
-            cfgGameTutorialPathTextBox.Location = new Point(161, 3);
-            cfgGameTutorialPathTextBox.Name = "cfgGameTutorialPathTextBox";
-            cfgGameTutorialPathTextBox.Size = new Size(148, 23);
-            cfgGameTutorialPathTextBox.TabIndex = 1;
-            // 
-            // cfgGamePrefFactionsPlayedTextBox
-            // 
-            cfgGamePrefFactionsPlayedTextBox.Location = new Point(161, 5);
-            cfgGamePrefFactionsPlayedTextBox.Name = "cfgGamePrefFactionsPlayedTextBox";
-            cfgGamePrefFactionsPlayedTextBox.Size = new Size(148, 23);
-            cfgGamePrefFactionsPlayedTextBox.TabIndex = 1;
-            // 
-            // cfgGameCampaignMapGameSpeedNumericUpDown
-            // 
-            cfgGameCampaignMapGameSpeedNumericUpDown.Location = new Point(175, 3);
-            cfgGameCampaignMapGameSpeedNumericUpDown.Name = "cfgGameCampaignMapGameSpeedNumericUpDown";
-            cfgGameCampaignMapGameSpeedNumericUpDown.Size = new Size(120, 23);
-            cfgGameCampaignMapGameSpeedNumericUpDown.TabIndex = 1;
-            // 
-            // cfgGameCampaignMapSpeedUpNumericUpDown
-            // 
-            cfgGameCampaignMapSpeedUpNumericUpDown.Location = new Point(175, 3);
-            cfgGameCampaignMapSpeedUpNumericUpDown.Name = "cfgGameCampaignMapSpeedUpNumericUpDown";
-            cfgGameCampaignMapSpeedUpNumericUpDown.Size = new Size(120, 23);
-            cfgGameCampaignMapSpeedUpNumericUpDown.TabIndex = 1;
-            // 
-            // cfgGameChatMsgDurationNumericUpDown
-            // 
-            cfgGameChatMsgDurationNumericUpDown.Location = new Point(175, 5);
-            cfgGameChatMsgDurationNumericUpDown.Name = "cfgGameChatMsgDurationNumericUpDown";
-            cfgGameChatMsgDurationNumericUpDown.Size = new Size(120, 23);
-            cfgGameChatMsgDurationNumericUpDown.TabIndex = 1;
-            // 
-            // cfgGameAiFactionsComboBox
-            // 
-            cfgGameAiFactionsComboBox.FormattingEnabled = true;
-            cfgGameAiFactionsComboBox.Location = new Point(103, 7);
-            cfgGameAiFactionsComboBox.Name = "cfgGameAiFactionsComboBox";
-            cfgGameAiFactionsComboBox.Size = new Size(121, 23);
-            cfgGameAiFactionsComboBox.TabIndex = 1;
-            // 
-            // cfgGameUnitSizeComboBox
-            // 
-            cfgGameUnitSizeComboBox.FormattingEnabled = true;
-            cfgGameUnitSizeComboBox.Location = new Point(103, 5);
-            cfgGameUnitSizeComboBox.Name = "cfgGameUnitSizeComboBox";
-            cfgGameUnitSizeComboBox.Size = new Size(121, 23);
-            cfgGameUnitSizeComboBox.TabIndex = 1;
-            // 
-            // cfgGameAdvancedStatsAlwaysCheckBox
-            // 
-            cfgGameAdvancedStatsAlwaysCheckBox.AutoSize = true;
-            cfgGameAdvancedStatsAlwaysCheckBox.Location = new Point(353, 18);
-            cfgGameAdvancedStatsAlwaysCheckBox.Name = "cfgGameAdvancedStatsAlwaysCheckBox";
-            cfgGameAdvancedStatsAlwaysCheckBox.Size = new Size(146, 19);
-            cfgGameAdvancedStatsAlwaysCheckBox.TabIndex = 3;
-            cfgGameAdvancedStatsAlwaysCheckBox.Text = "advanced_stats_always";
-            cfgGameAdvancedStatsAlwaysCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameAdvisorVerbosityCheckBox
-            // 
-            cfgGameAdvisorVerbosityCheckBox.AutoSize = true;
-            cfgGameAdvisorVerbosityCheckBox.Location = new Point(352, 44);
-            cfgGameAdvisorVerbosityCheckBox.Name = "cfgGameAdvisorVerbosityCheckBox";
-            cfgGameAdvisorVerbosityCheckBox.Size = new Size(117, 19);
-            cfgGameAdvisorVerbosityCheckBox.TabIndex = 4;
-            cfgGameAdvisorVerbosityCheckBox.Text = "advisor_verbosity";
-            cfgGameAdvisorVerbosityCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameAllUsersCheckBox
-            // 
-            cfgGameAllUsersCheckBox.AutoSize = true;
-            cfgGameAllUsersCheckBox.Location = new Point(352, 69);
-            cfgGameAllUsersCheckBox.Name = "cfgGameAllUsersCheckBox";
-            cfgGameAllUsersCheckBox.Size = new Size(65, 19);
-            cfgGameAllUsersCheckBox.TabIndex = 5;
-            cfgGameAllUsersCheckBox.Text = "allusers";
-            cfgGameAllUsersCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameAutoSaveCheckBox
-            // 
-            cfgGameAutoSaveCheckBox.AutoSize = true;
-            cfgGameAutoSaveCheckBox.Location = new Point(352, 95);
-            cfgGameAutoSaveCheckBox.Name = "cfgGameAutoSaveCheckBox";
-            cfgGameAutoSaveCheckBox.Size = new Size(78, 19);
-            cfgGameAutoSaveCheckBox.TabIndex = 6;
-            cfgGameAutoSaveCheckBox.Text = "auto_save";
-            cfgGameAutoSaveCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameBlindAdvisorCheckBox
-            // 
-            cfgGameBlindAdvisorCheckBox.AutoSize = true;
-            cfgGameBlindAdvisorCheckBox.Location = new Point(352, 121);
-            cfgGameBlindAdvisorCheckBox.Name = "cfgGameBlindAdvisorCheckBox";
-            cfgGameBlindAdvisorCheckBox.Size = new Size(96, 19);
-            cfgGameBlindAdvisorCheckBox.TabIndex = 7;
-            cfgGameBlindAdvisorCheckBox.Text = "blind_advisor";
-            cfgGameBlindAdvisorCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameDisableArrowMarkersCheckBox
-            // 
-            cfgGameDisableArrowMarkersCheckBox.AutoSize = true;
-            cfgGameDisableArrowMarkersCheckBox.Location = new Point(352, 146);
-            cfgGameDisableArrowMarkersCheckBox.Name = "cfgGameDisableArrowMarkersCheckBox";
-            cfgGameDisableArrowMarkersCheckBox.Size = new Size(145, 19);
-            cfgGameDisableArrowMarkersCheckBox.TabIndex = 8;
-            cfgGameDisableArrowMarkersCheckBox.Text = "disable_arrow_markers";
-            cfgGameDisableArrowMarkersCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameDisableEventsCheckBox
-            // 
-            cfgGameDisableEventsCheckBox.AutoSize = true;
-            cfgGameDisableEventsCheckBox.Location = new Point(352, 169);
-            cfgGameDisableEventsCheckBox.Name = "cfgGameDisableEventsCheckBox";
-            cfgGameDisableEventsCheckBox.Size = new Size(102, 19);
-            cfgGameDisableEventsCheckBox.TabIndex = 9;
-            cfgGameDisableEventsCheckBox.Text = "disable_events";
-            cfgGameDisableEventsCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameEnglishCheckBox
-            // 
-            cfgGameEnglishCheckBox.AutoSize = true;
-            cfgGameEnglishCheckBox.Location = new Point(352, 194);
-            cfgGameEnglishCheckBox.Name = "cfgGameEnglishCheckBox";
-            cfgGameEnglishCheckBox.Size = new Size(64, 19);
-            cfgGameEnglishCheckBox.TabIndex = 10;
-            cfgGameEnglishCheckBox.Text = "english";
-            cfgGameEnglishCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameEventCutscenesCheckBox
-            // 
-            cfgGameEventCutscenesCheckBox.AutoSize = true;
-            cfgGameEventCutscenesCheckBox.Location = new Point(352, 219);
-            cfgGameEventCutscenesCheckBox.Name = "cfgGameEventCutscenesCheckBox";
-            cfgGameEventCutscenesCheckBox.Size = new Size(112, 19);
-            cfgGameEventCutscenesCheckBox.TabIndex = 11;
-            cfgGameEventCutscenesCheckBox.Text = "event_cutscenes";
-            cfgGameEventCutscenesCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameFatigueCheckBox
-            // 
-            cfgGameFatigueCheckBox.AutoSize = true;
-            cfgGameFatigueCheckBox.Location = new Point(352, 244);
-            cfgGameFatigueCheckBox.Name = "cfgGameFatigueCheckBox";
-            cfgGameFatigueCheckBox.Size = new Size(63, 19);
-            cfgGameFatigueCheckBox.TabIndex = 12;
-            cfgGameFatigueCheckBox.Text = "fatigue";
-            cfgGameFatigueCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameFirstTimePlayCheckBox
-            // 
-            cfgGameFirstTimePlayCheckBox.AutoSize = true;
-            cfgGameFirstTimePlayCheckBox.Location = new Point(517, 18);
-            cfgGameFirstTimePlayCheckBox.Name = "cfgGameFirstTimePlayCheckBox";
-            cfgGameFirstTimePlayCheckBox.Size = new Size(102, 19);
-            cfgGameFirstTimePlayCheckBox.TabIndex = 13;
-            cfgGameFirstTimePlayCheckBox.Text = "first_time_play";
-            cfgGameFirstTimePlayCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameGamespySavePasswrdCheckBox
-            // 
-            cfgGameGamespySavePasswrdCheckBox.AutoSize = true;
-            cfgGameGamespySavePasswrdCheckBox.Location = new Point(517, 41);
-            cfgGameGamespySavePasswrdCheckBox.Name = "cfgGameGamespySavePasswrdCheckBox";
-            cfgGameGamespySavePasswrdCheckBox.Size = new Size(150, 19);
-            cfgGameGamespySavePasswrdCheckBox.TabIndex = 14;
-            cfgGameGamespySavePasswrdCheckBox.Text = "gamespy_save_passwrd";
-            cfgGameGamespySavePasswrdCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameLabelCharactersCheckBox
-            // 
-            cfgGameLabelCharactersCheckBox.AutoSize = true;
-            cfgGameLabelCharactersCheckBox.Location = new Point(517, 66);
-            cfgGameLabelCharactersCheckBox.Name = "cfgGameLabelCharactersCheckBox";
-            cfgGameLabelCharactersCheckBox.Size = new Size(110, 19);
-            cfgGameLabelCharactersCheckBox.TabIndex = 15;
-            cfgGameLabelCharactersCheckBox.Text = "label_characters";
-            cfgGameLabelCharactersCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameLabelSettlementsCheckBox
-            // 
-            cfgGameLabelSettlementsCheckBox.AutoSize = true;
-            cfgGameLabelSettlementsCheckBox.Location = new Point(517, 91);
-            cfgGameLabelSettlementsCheckBox.Name = "cfgGameLabelSettlementsCheckBox";
-            cfgGameLabelSettlementsCheckBox.Size = new Size(117, 19);
-            cfgGameLabelSettlementsCheckBox.TabIndex = 16;
-            cfgGameLabelSettlementsCheckBox.Text = "label_settlements";
-            cfgGameLabelSettlementsCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameMicromanageAllSettlementsCheckBox
-            // 
-            cfgGameMicromanageAllSettlementsCheckBox.AutoSize = true;
-            cfgGameMicromanageAllSettlementsCheckBox.Location = new Point(517, 116);
-            cfgGameMicromanageAllSettlementsCheckBox.Name = "cfgGameMicromanageAllSettlementsCheckBox";
-            cfgGameMicromanageAllSettlementsCheckBox.Size = new Size(183, 19);
-            cfgGameMicromanageAllSettlementsCheckBox.TabIndex = 17;
-            cfgGameMicromanageAllSettlementsCheckBox.Text = "micromanage_all_settlements";
-            cfgGameMicromanageAllSettlementsCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameMoraleCheckBox
-            // 
-            cfgGameMoraleCheckBox.AutoSize = true;
-            cfgGameMoraleCheckBox.Location = new Point(517, 141);
-            cfgGameMoraleCheckBox.Name = "cfgGameMoraleCheckBox";
-            cfgGameMoraleCheckBox.Size = new Size(63, 19);
-            cfgGameMoraleCheckBox.TabIndex = 18;
-            cfgGameMoraleCheckBox.Text = "morale";
-            cfgGameMoraleCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameMuteAdvisorCheckBox
-            // 
-            cfgGameMuteAdvisorCheckBox.AutoSize = true;
-            cfgGameMuteAdvisorCheckBox.Location = new Point(517, 166);
-            cfgGameMuteAdvisorCheckBox.Name = "cfgGameMuteAdvisorCheckBox";
-            cfgGameMuteAdvisorCheckBox.Size = new Size(97, 19);
-            cfgGameMuteAdvisorCheckBox.TabIndex = 19;
-            cfgGameMuteAdvisorCheckBox.Text = "mute_advisor";
-            cfgGameMuteAdvisorCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameNoCampaignBattleTimeLimitCheckBox
-            // 
-            cfgGameNoCampaignBattleTimeLimitCheckBox.AutoSize = true;
-            cfgGameNoCampaignBattleTimeLimitCheckBox.Location = new Point(517, 191);
-            cfgGameNoCampaignBattleTimeLimitCheckBox.Name = "cfgGameNoCampaignBattleTimeLimitCheckBox";
-            cfgGameNoCampaignBattleTimeLimitCheckBox.Size = new Size(191, 19);
-            cfgGameNoCampaignBattleTimeLimitCheckBox.TabIndex = 20;
-            cfgGameNoCampaignBattleTimeLimitCheckBox.Text = "no_campaign_battle_time_limit";
-            cfgGameNoCampaignBattleTimeLimitCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameUnlimitedMenOnBattlefieldCheckBox
-            // 
-            cfgGameUnlimitedMenOnBattlefieldCheckBox.AutoSize = true;
-            cfgGameUnlimitedMenOnBattlefieldCheckBox.Location = new Point(517, 216);
-            cfgGameUnlimitedMenOnBattlefieldCheckBox.Name = "cfgGameUnlimitedMenOnBattlefieldCheckBox";
-            cfgGameUnlimitedMenOnBattlefieldCheckBox.Size = new Size(183, 19);
-            cfgGameUnlimitedMenOnBattlefieldCheckBox.TabIndex = 21;
-            cfgGameUnlimitedMenOnBattlefieldCheckBox.Text = "unlimited_men_on_battlefield";
-            cfgGameUnlimitedMenOnBattlefieldCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgGameUseQuickchatCheckBox
-            // 
-            cfgGameUseQuickchatCheckBox.AutoSize = true;
-            cfgGameUseQuickchatCheckBox.Location = new Point(517, 241);
-            cfgGameUseQuickchatCheckBox.Name = "cfgGameUseQuickchatCheckBox";
-            cfgGameUseQuickchatCheckBox.Size = new Size(101, 19);
-            cfgGameUseQuickchatCheckBox.TabIndex = 22;
-            cfgGameUseQuickchatCheckBox.Text = "use_quickchat";
-            cfgGameUseQuickchatCheckBox.UseVisualStyleBackColor = true;
+            // cfgVideoAnisotropicLevelPanel
+            // 
+            cfgVideoAnisotropicLevelPanel.BackColor = Color.Silver;
+            cfgVideoAnisotropicLevelPanel.Controls.Add(cfgVideoAnisotropicLevelComboBox);
+            cfgVideoAnisotropicLevelPanel.Controls.Add(cfgVideoAnisotropicLevelLabel);
+            cfgVideoAnisotropicLevelPanel.Location = new Point(15, 16);
+            cfgVideoAnisotropicLevelPanel.Name = "cfgVideoAnisotropicLevelPanel";
+            cfgVideoAnisotropicLevelPanel.Size = new Size(317, 30);
+            cfgVideoAnisotropicLevelPanel.TabIndex = 0;
+            // 
+            // cfgVideoAnisotropicLevelLabel
+            // 
+            cfgVideoAnisotropicLevelLabel.Location = new Point(7, 3);
+            cfgVideoAnisotropicLevelLabel.Name = "cfgVideoAnisotropicLevelLabel";
+            cfgVideoAnisotropicLevelLabel.Size = new Size(167, 23);
+            cfgVideoAnisotropicLevelLabel.TabIndex = 0;
+            cfgVideoAnisotropicLevelLabel.Text = "anisotropic_level";
+            // 
+            // cfgVideoAnisotropicLevelComboBox
+            // 
+            cfgVideoAnisotropicLevelComboBox.FormattingEnabled = true;
+            cfgVideoAnisotropicLevelComboBox.Location = new Point(180, 3);
+            cfgVideoAnisotropicLevelComboBox.Name = "cfgVideoAnisotropicLevelComboBox";
+            cfgVideoAnisotropicLevelComboBox.Size = new Size(121, 23);
+            cfgVideoAnisotropicLevelComboBox.TabIndex = 1;
+            // 
+            // cfgVideoAntiAliasModePanel
+            // 
+            cfgVideoAntiAliasModePanel.BackColor = Color.Silver;
+            cfgVideoAntiAliasModePanel.Controls.Add(cfgVideoAntiAliasModeComboBox);
+            cfgVideoAntiAliasModePanel.Controls.Add(cfgVideoAntiAliasModeLabel);
+            cfgVideoAntiAliasModePanel.Location = new Point(15, 52);
+            cfgVideoAntiAliasModePanel.Name = "cfgVideoAntiAliasModePanel";
+            cfgVideoAntiAliasModePanel.Size = new Size(317, 30);
+            cfgVideoAntiAliasModePanel.TabIndex = 1;
+            // 
+            // cfgVideoAntiAliasModeComboBox
+            // 
+            cfgVideoAntiAliasModeComboBox.FormattingEnabled = true;
+            cfgVideoAntiAliasModeComboBox.Location = new Point(180, 3);
+            cfgVideoAntiAliasModeComboBox.Name = "cfgVideoAntiAliasModeComboBox";
+            cfgVideoAntiAliasModeComboBox.Size = new Size(121, 23);
+            cfgVideoAntiAliasModeComboBox.TabIndex = 1;
+            // 
+            // cfgVideoAntiAliasModeLabel
+            // 
+            cfgVideoAntiAliasModeLabel.Location = new Point(7, 3);
+            cfgVideoAntiAliasModeLabel.Name = "cfgVideoAntiAliasModeLabel";
+            cfgVideoAntiAliasModeLabel.Size = new Size(167, 23);
+            cfgVideoAntiAliasModeLabel.TabIndex = 0;
+            cfgVideoAntiAliasModeLabel.Text = "anti_alias_mode";
+            // 
+            // cfgVideoAntialiasingPanel
+            // 
+            cfgVideoAntialiasingPanel.BackColor = Color.Silver;
+            cfgVideoAntialiasingPanel.Controls.Add(cfgVideoAntialiasingComboBox);
+            cfgVideoAntialiasingPanel.Controls.Add(cfgVideoAntialiasingLabel);
+            cfgVideoAntialiasingPanel.Location = new Point(15, 88);
+            cfgVideoAntialiasingPanel.Name = "cfgVideoAntialiasingPanel";
+            cfgVideoAntialiasingPanel.Size = new Size(317, 30);
+            cfgVideoAntialiasingPanel.TabIndex = 2;
+            // 
+            // cfgVideoAntialiasingComboBox
+            // 
+            cfgVideoAntialiasingComboBox.FormattingEnabled = true;
+            cfgVideoAntialiasingComboBox.Location = new Point(180, 3);
+            cfgVideoAntialiasingComboBox.Name = "cfgVideoAntialiasingComboBox";
+            cfgVideoAntialiasingComboBox.Size = new Size(121, 23);
+            cfgVideoAntialiasingComboBox.TabIndex = 1;
+            // 
+            // cfgVideoAntialiasingLabel
+            // 
+            cfgVideoAntialiasingLabel.Location = new Point(7, 3);
+            cfgVideoAntialiasingLabel.Name = "cfgVideoAntialiasingLabel";
+            cfgVideoAntialiasingLabel.Size = new Size(167, 23);
+            cfgVideoAntialiasingLabel.TabIndex = 0;
+            cfgVideoAntialiasingLabel.Text = "antialiasing";
+            // 
+            // cfgVideoBattleResolutionPanel
+            // 
+            cfgVideoBattleResolutionPanel.BackColor = Color.Silver;
+            cfgVideoBattleResolutionPanel.Controls.Add(cfgVideoBattleResolutionComboBox);
+            cfgVideoBattleResolutionPanel.Controls.Add(cfgVideoBattleResolutionLabel);
+            cfgVideoBattleResolutionPanel.Location = new Point(15, 124);
+            cfgVideoBattleResolutionPanel.Name = "cfgVideoBattleResolutionPanel";
+            cfgVideoBattleResolutionPanel.Size = new Size(317, 30);
+            cfgVideoBattleResolutionPanel.TabIndex = 3;
+            // 
+            // cfgVideoBattleResolutionComboBox
+            // 
+            cfgVideoBattleResolutionComboBox.FormattingEnabled = true;
+            cfgVideoBattleResolutionComboBox.Location = new Point(180, 3);
+            cfgVideoBattleResolutionComboBox.Name = "cfgVideoBattleResolutionComboBox";
+            cfgVideoBattleResolutionComboBox.Size = new Size(121, 23);
+            cfgVideoBattleResolutionComboBox.TabIndex = 1;
+            // 
+            // cfgVideoBattleResolutionLabel
+            // 
+            cfgVideoBattleResolutionLabel.Location = new Point(7, 3);
+            cfgVideoBattleResolutionLabel.Name = "cfgVideoBattleResolutionLabel";
+            cfgVideoBattleResolutionLabel.Size = new Size(167, 23);
+            cfgVideoBattleResolutionLabel.TabIndex = 0;
+            cfgVideoBattleResolutionLabel.Text = "battle_resolution";
+            // 
+            // cfgVideoBuildingDetailPanel
+            // 
+            cfgVideoBuildingDetailPanel.BackColor = Color.Silver;
+            cfgVideoBuildingDetailPanel.Controls.Add(cfgVideoBuildingDetailComboBox);
+            cfgVideoBuildingDetailPanel.Controls.Add(cfgVideoBuildingDetailLabel);
+            cfgVideoBuildingDetailPanel.Location = new Point(15, 160);
+            cfgVideoBuildingDetailPanel.Name = "cfgVideoBuildingDetailPanel";
+            cfgVideoBuildingDetailPanel.Size = new Size(317, 30);
+            cfgVideoBuildingDetailPanel.TabIndex = 4;
+            // 
+            // cfgVideoBuildingDetailComboBox
+            // 
+            cfgVideoBuildingDetailComboBox.FormattingEnabled = true;
+            cfgVideoBuildingDetailComboBox.Location = new Point(180, 3);
+            cfgVideoBuildingDetailComboBox.Name = "cfgVideoBuildingDetailComboBox";
+            cfgVideoBuildingDetailComboBox.Size = new Size(121, 23);
+            cfgVideoBuildingDetailComboBox.TabIndex = 1;
+            // 
+            // cfgVideoBuildingDetailLabel
+            // 
+            cfgVideoBuildingDetailLabel.Location = new Point(7, 3);
+            cfgVideoBuildingDetailLabel.Name = "cfgVideoBuildingDetailLabel";
+            cfgVideoBuildingDetailLabel.Size = new Size(167, 23);
+            cfgVideoBuildingDetailLabel.TabIndex = 0;
+            cfgVideoBuildingDetailLabel.Text = "building_detail";
+            // 
+            // cfgVideoCampaignResolutionPanel
+            // 
+            cfgVideoCampaignResolutionPanel.BackColor = Color.Silver;
+            cfgVideoCampaignResolutionPanel.Controls.Add(cfgVideoCampaignResolutionComboBox);
+            cfgVideoCampaignResolutionPanel.Controls.Add(cfgVideoCampaignResolutionLabel);
+            cfgVideoCampaignResolutionPanel.Location = new Point(15, 196);
+            cfgVideoCampaignResolutionPanel.Name = "cfgVideoCampaignResolutionPanel";
+            cfgVideoCampaignResolutionPanel.Size = new Size(317, 30);
+            cfgVideoCampaignResolutionPanel.TabIndex = 5;
+            // 
+            // cfgVideoCampaignResolutionComboBox
+            // 
+            cfgVideoCampaignResolutionComboBox.FormattingEnabled = true;
+            cfgVideoCampaignResolutionComboBox.Location = new Point(180, 3);
+            cfgVideoCampaignResolutionComboBox.Name = "cfgVideoCampaignResolutionComboBox";
+            cfgVideoCampaignResolutionComboBox.Size = new Size(121, 23);
+            cfgVideoCampaignResolutionComboBox.TabIndex = 1;
+            // 
+            // cfgVideoCampaignResolutionLabel
+            // 
+            cfgVideoCampaignResolutionLabel.Location = new Point(7, 3);
+            cfgVideoCampaignResolutionLabel.Name = "cfgVideoCampaignResolutionLabel";
+            cfgVideoCampaignResolutionLabel.Size = new Size(167, 23);
+            cfgVideoCampaignResolutionLabel.TabIndex = 0;
+            cfgVideoCampaignResolutionLabel.Text = "campaign_resolution";
+            // 
+            // cfgVideoDepthShadowsPanel
+            // 
+            cfgVideoDepthShadowsPanel.BackColor = Color.Silver;
+            cfgVideoDepthShadowsPanel.Controls.Add(cfgVideoDepthShadowsComboBox);
+            cfgVideoDepthShadowsPanel.Controls.Add(cfgVideoDepthShadowsLabel);
+            cfgVideoDepthShadowsPanel.Location = new Point(15, 232);
+            cfgVideoDepthShadowsPanel.Name = "cfgVideoDepthShadowsPanel";
+            cfgVideoDepthShadowsPanel.Size = new Size(317, 30);
+            cfgVideoDepthShadowsPanel.TabIndex = 6;
+            // 
+            // cfgVideoDepthShadowsComboBox
+            // 
+            cfgVideoDepthShadowsComboBox.FormattingEnabled = true;
+            cfgVideoDepthShadowsComboBox.Location = new Point(180, 3);
+            cfgVideoDepthShadowsComboBox.Name = "cfgVideoDepthShadowsComboBox";
+            cfgVideoDepthShadowsComboBox.Size = new Size(121, 23);
+            cfgVideoDepthShadowsComboBox.TabIndex = 1;
+            // 
+            // cfgVideoDepthShadowsLabel
+            // 
+            cfgVideoDepthShadowsLabel.Location = new Point(7, 3);
+            cfgVideoDepthShadowsLabel.Name = "cfgVideoDepthShadowsLabel";
+            cfgVideoDepthShadowsLabel.Size = new Size(167, 23);
+            cfgVideoDepthShadowsLabel.TabIndex = 0;
+            cfgVideoDepthShadowsLabel.Text = "depth_shadows";
+            // 
+            // cfgVideoDepthShadowsResolutionPanel
+            // 
+            cfgVideoDepthShadowsResolutionPanel.BackColor = Color.Silver;
+            cfgVideoDepthShadowsResolutionPanel.Controls.Add(cfgVideoDepthShadowsResolutionComboBox);
+            cfgVideoDepthShadowsResolutionPanel.Controls.Add(cfgVideoDepthShadowsResolutionLabel);
+            cfgVideoDepthShadowsResolutionPanel.Location = new Point(15, 268);
+            cfgVideoDepthShadowsResolutionPanel.Name = "cfgVideoDepthShadowsResolutionPanel";
+            cfgVideoDepthShadowsResolutionPanel.Size = new Size(317, 30);
+            cfgVideoDepthShadowsResolutionPanel.TabIndex = 7;
+            // 
+            // cfgVideoDepthShadowsResolutionComboBox
+            // 
+            cfgVideoDepthShadowsResolutionComboBox.FormattingEnabled = true;
+            cfgVideoDepthShadowsResolutionComboBox.Location = new Point(180, 3);
+            cfgVideoDepthShadowsResolutionComboBox.Name = "cfgVideoDepthShadowsResolutionComboBox";
+            cfgVideoDepthShadowsResolutionComboBox.Size = new Size(121, 23);
+            cfgVideoDepthShadowsResolutionComboBox.TabIndex = 1;
+            // 
+            // cfgVideoDepthShadowsResolutionLabel
+            // 
+            cfgVideoDepthShadowsResolutionLabel.Location = new Point(7, 3);
+            cfgVideoDepthShadowsResolutionLabel.Name = "cfgVideoDepthShadowsResolutionLabel";
+            cfgVideoDepthShadowsResolutionLabel.Size = new Size(167, 23);
+            cfgVideoDepthShadowsResolutionLabel.TabIndex = 0;
+            cfgVideoDepthShadowsResolutionLabel.Text = "depth_shadows_resolution";
+            // 
+            // cfgVideoEffectQualityPanel
+            // 
+            cfgVideoEffectQualityPanel.BackColor = Color.Silver;
+            cfgVideoEffectQualityPanel.Controls.Add(cfgVideoEffectQualityComboBox);
+            cfgVideoEffectQualityPanel.Controls.Add(cfgVideoEffectQualityLabel);
+            cfgVideoEffectQualityPanel.Location = new Point(15, 304);
+            cfgVideoEffectQualityPanel.Name = "cfgVideoEffectQualityPanel";
+            cfgVideoEffectQualityPanel.Size = new Size(317, 30);
+            cfgVideoEffectQualityPanel.TabIndex = 8;
+            // 
+            // cfgVideoEffectQualityComboBox
+            // 
+            cfgVideoEffectQualityComboBox.FormattingEnabled = true;
+            cfgVideoEffectQualityComboBox.Location = new Point(180, 3);
+            cfgVideoEffectQualityComboBox.Name = "cfgVideoEffectQualityComboBox";
+            cfgVideoEffectQualityComboBox.Size = new Size(121, 23);
+            cfgVideoEffectQualityComboBox.TabIndex = 1;
+            // 
+            // cfgVideoEffectQualityLabel
+            // 
+            cfgVideoEffectQualityLabel.Location = new Point(7, 3);
+            cfgVideoEffectQualityLabel.Name = "cfgVideoEffectQualityLabel";
+            cfgVideoEffectQualityLabel.Size = new Size(167, 23);
+            cfgVideoEffectQualityLabel.TabIndex = 0;
+            cfgVideoEffectQualityLabel.Text = "effect_quality";
+            // 
+            // cfgVideoGrassDistancePanel
+            // 
+            cfgVideoGrassDistancePanel.BackColor = Color.Silver;
+            cfgVideoGrassDistancePanel.Controls.Add(cfgVideoGrassDistanceComboBox);
+            cfgVideoGrassDistancePanel.Controls.Add(cfgVideoGrassDistanceLabel);
+            cfgVideoGrassDistancePanel.Location = new Point(15, 340);
+            cfgVideoGrassDistancePanel.Name = "cfgVideoGrassDistancePanel";
+            cfgVideoGrassDistancePanel.Size = new Size(317, 30);
+            cfgVideoGrassDistancePanel.TabIndex = 9;
+            // 
+            // cfgVideoGrassDistanceComboBox
+            // 
+            cfgVideoGrassDistanceComboBox.FormattingEnabled = true;
+            cfgVideoGrassDistanceComboBox.Location = new Point(180, 3);
+            cfgVideoGrassDistanceComboBox.Name = "cfgVideoGrassDistanceComboBox";
+            cfgVideoGrassDistanceComboBox.Size = new Size(121, 23);
+            cfgVideoGrassDistanceComboBox.TabIndex = 1;
+            // 
+            // cfgVideoGrassDistanceLabel
+            // 
+            cfgVideoGrassDistanceLabel.Location = new Point(7, 3);
+            cfgVideoGrassDistanceLabel.Name = "cfgVideoGrassDistanceLabel";
+            cfgVideoGrassDistanceLabel.Size = new Size(167, 23);
+            cfgVideoGrassDistanceLabel.TabIndex = 0;
+            cfgVideoGrassDistanceLabel.Text = "grass_distance";
+            // 
+            // cfgVideoGroundBuffersPerNodePanel
+            // 
+            cfgVideoGroundBuffersPerNodePanel.BackColor = Color.Silver;
+            cfgVideoGroundBuffersPerNodePanel.Controls.Add(cfgVideoGroundBuffersPerNodeComboBox);
+            cfgVideoGroundBuffersPerNodePanel.Controls.Add(cfgVideoGroundBuffersPerNodeLabel);
+            cfgVideoGroundBuffersPerNodePanel.Location = new Point(356, 16);
+            cfgVideoGroundBuffersPerNodePanel.Name = "cfgVideoGroundBuffersPerNodePanel";
+            cfgVideoGroundBuffersPerNodePanel.Size = new Size(317, 30);
+            cfgVideoGroundBuffersPerNodePanel.TabIndex = 10;
+            // 
+            // cfgVideoGroundBuffersPerNodeComboBox
+            // 
+            cfgVideoGroundBuffersPerNodeComboBox.FormattingEnabled = true;
+            cfgVideoGroundBuffersPerNodeComboBox.Location = new Point(180, 3);
+            cfgVideoGroundBuffersPerNodeComboBox.Name = "cfgVideoGroundBuffersPerNodeComboBox";
+            cfgVideoGroundBuffersPerNodeComboBox.Size = new Size(121, 23);
+            cfgVideoGroundBuffersPerNodeComboBox.TabIndex = 1;
+            // 
+            // cfgVideoGroundBuffersPerNodeLabel
+            // 
+            cfgVideoGroundBuffersPerNodeLabel.Location = new Point(7, 3);
+            cfgVideoGroundBuffersPerNodeLabel.Name = "cfgVideoGroundBuffersPerNodeLabel";
+            cfgVideoGroundBuffersPerNodeLabel.Size = new Size(167, 23);
+            cfgVideoGroundBuffersPerNodeLabel.TabIndex = 0;
+            cfgVideoGroundBuffersPerNodeLabel.Text = "ground_buffers_per_node";
+            // 
+            // cfgVideoGroundCoverBuffersPerNodePanel
+            // 
+            cfgVideoGroundCoverBuffersPerNodePanel.BackColor = Color.Silver;
+            cfgVideoGroundCoverBuffersPerNodePanel.Controls.Add(cfgVideoGroundCoverBuffersPerNodeComboBox);
+            cfgVideoGroundCoverBuffersPerNodePanel.Controls.Add(cfgVideoGroundCoverBuffersPerNodeLabel);
+            cfgVideoGroundCoverBuffersPerNodePanel.Location = new Point(356, 52);
+            cfgVideoGroundCoverBuffersPerNodePanel.Name = "cfgVideoGroundCoverBuffersPerNodePanel";
+            cfgVideoGroundCoverBuffersPerNodePanel.Size = new Size(317, 30);
+            cfgVideoGroundCoverBuffersPerNodePanel.TabIndex = 11;
+            // 
+            // cfgVideoGroundCoverBuffersPerNodeComboBox
+            // 
+            cfgVideoGroundCoverBuffersPerNodeComboBox.FormattingEnabled = true;
+            cfgVideoGroundCoverBuffersPerNodeComboBox.Location = new Point(193, 3);
+            cfgVideoGroundCoverBuffersPerNodeComboBox.Name = "cfgVideoGroundCoverBuffersPerNodeComboBox";
+            cfgVideoGroundCoverBuffersPerNodeComboBox.Size = new Size(121, 23);
+            cfgVideoGroundCoverBuffersPerNodeComboBox.TabIndex = 1;
+            // 
+            // cfgVideoGroundCoverBuffersPerNodeLabel
+            // 
+            cfgVideoGroundCoverBuffersPerNodeLabel.Location = new Point(7, 3);
+            cfgVideoGroundCoverBuffersPerNodeLabel.Name = "cfgVideoGroundCoverBuffersPerNodeLabel";
+            cfgVideoGroundCoverBuffersPerNodeLabel.Size = new Size(180, 23);
+            cfgVideoGroundCoverBuffersPerNodeLabel.TabIndex = 0;
+            cfgVideoGroundCoverBuffersPerNodeLabel.Text = "ground_cover_buffers_per_node";
+            // 
+            // cfgVideoModelBuffersPerNodePanel
+            // 
+            cfgVideoModelBuffersPerNodePanel.BackColor = Color.Silver;
+            cfgVideoModelBuffersPerNodePanel.Controls.Add(cfgVideoModelBuffersPerNodeComboBox);
+            cfgVideoModelBuffersPerNodePanel.Controls.Add(cfgVideoModelBuffersPerNodeLabel);
+            cfgVideoModelBuffersPerNodePanel.Location = new Point(356, 88);
+            cfgVideoModelBuffersPerNodePanel.Name = "cfgVideoModelBuffersPerNodePanel";
+            cfgVideoModelBuffersPerNodePanel.Size = new Size(317, 30);
+            cfgVideoModelBuffersPerNodePanel.TabIndex = 12;
+            // 
+            // cfgVideoModelBuffersPerNodeComboBox
+            // 
+            cfgVideoModelBuffersPerNodeComboBox.FormattingEnabled = true;
+            cfgVideoModelBuffersPerNodeComboBox.Location = new Point(180, 3);
+            cfgVideoModelBuffersPerNodeComboBox.Name = "cfgVideoModelBuffersPerNodeComboBox";
+            cfgVideoModelBuffersPerNodeComboBox.Size = new Size(121, 23);
+            cfgVideoModelBuffersPerNodeComboBox.TabIndex = 1;
+            // 
+            // cfgVideoModelBuffersPerNodeLabel
+            // 
+            cfgVideoModelBuffersPerNodeLabel.Location = new Point(7, 3);
+            cfgVideoModelBuffersPerNodeLabel.Name = "cfgVideoModelBuffersPerNodeLabel";
+            cfgVideoModelBuffersPerNodeLabel.Size = new Size(167, 23);
+            cfgVideoModelBuffersPerNodeLabel.TabIndex = 0;
+            cfgVideoModelBuffersPerNodeLabel.Text = "model_buffers_per_node";
+            // 
+            // cfgVideoShaderPanel
+            // 
+            cfgVideoShaderPanel.BackColor = Color.Silver;
+            cfgVideoShaderPanel.Controls.Add(cfgVideoShaderComboBox);
+            cfgVideoShaderPanel.Controls.Add(cfgVideoShaderLabel);
+            cfgVideoShaderPanel.Location = new Point(356, 124);
+            cfgVideoShaderPanel.Name = "cfgVideoShaderPanel";
+            cfgVideoShaderPanel.Size = new Size(317, 30);
+            cfgVideoShaderPanel.TabIndex = 13;
+            // 
+            // cfgVideoShaderComboBox
+            // 
+            cfgVideoShaderComboBox.FormattingEnabled = true;
+            cfgVideoShaderComboBox.Location = new Point(180, 3);
+            cfgVideoShaderComboBox.Name = "cfgVideoShaderComboBox";
+            cfgVideoShaderComboBox.Size = new Size(121, 23);
+            cfgVideoShaderComboBox.TabIndex = 1;
+            // 
+            // cfgVideoShaderLabel
+            // 
+            cfgVideoShaderLabel.Location = new Point(7, 3);
+            cfgVideoShaderLabel.Name = "cfgVideoShaderLabel";
+            cfgVideoShaderLabel.Size = new Size(167, 23);
+            cfgVideoShaderLabel.TabIndex = 0;
+            cfgVideoShaderLabel.Text = "shader";
+            // 
+            // cfgVideoSpriteBuffersPerNodePanel
+            // 
+            cfgVideoSpriteBuffersPerNodePanel.BackColor = Color.Silver;
+            cfgVideoSpriteBuffersPerNodePanel.Controls.Add(cfgVideoSpriteBuffersPerNodeComboBox);
+            cfgVideoSpriteBuffersPerNodePanel.Controls.Add(cfgVideoSpriteBuffersPerNodeLabel);
+            cfgVideoSpriteBuffersPerNodePanel.Location = new Point(356, 160);
+            cfgVideoSpriteBuffersPerNodePanel.Name = "cfgVideoSpriteBuffersPerNodePanel";
+            cfgVideoSpriteBuffersPerNodePanel.Size = new Size(317, 30);
+            cfgVideoSpriteBuffersPerNodePanel.TabIndex = 14;
+            // 
+            // cfgVideoSpriteBuffersPerNodeComboBox
+            // 
+            cfgVideoSpriteBuffersPerNodeComboBox.FormattingEnabled = true;
+            cfgVideoSpriteBuffersPerNodeComboBox.Location = new Point(180, 3);
+            cfgVideoSpriteBuffersPerNodeComboBox.Name = "cfgVideoSpriteBuffersPerNodeComboBox";
+            cfgVideoSpriteBuffersPerNodeComboBox.Size = new Size(121, 23);
+            cfgVideoSpriteBuffersPerNodeComboBox.TabIndex = 1;
+            // 
+            // cfgVideoSpriteBuffersPerNodeLabel
+            // 
+            cfgVideoSpriteBuffersPerNodeLabel.Location = new Point(7, 3);
+            cfgVideoSpriteBuffersPerNodeLabel.Name = "cfgVideoSpriteBuffersPerNodeLabel";
+            cfgVideoSpriteBuffersPerNodeLabel.Size = new Size(167, 23);
+            cfgVideoSpriteBuffersPerNodeLabel.TabIndex = 0;
+            cfgVideoSpriteBuffersPerNodeLabel.Text = "sprite_buffers_per_node";
+            // 
+            // cfgVideoTerrainQualityPanel
+            // 
+            cfgVideoTerrainQualityPanel.BackColor = Color.Silver;
+            cfgVideoTerrainQualityPanel.Controls.Add(cfgVideoTerrainQualityComboBox);
+            cfgVideoTerrainQualityPanel.Controls.Add(cfgVideoTerrainQualityLabel);
+            cfgVideoTerrainQualityPanel.Location = new Point(356, 196);
+            cfgVideoTerrainQualityPanel.Name = "cfgVideoTerrainQualityPanel";
+            cfgVideoTerrainQualityPanel.Size = new Size(317, 30);
+            cfgVideoTerrainQualityPanel.TabIndex = 15;
+            // 
+            // cfgVideoTerrainQualityComboBox
+            // 
+            cfgVideoTerrainQualityComboBox.FormattingEnabled = true;
+            cfgVideoTerrainQualityComboBox.Location = new Point(180, 3);
+            cfgVideoTerrainQualityComboBox.Name = "cfgVideoTerrainQualityComboBox";
+            cfgVideoTerrainQualityComboBox.Size = new Size(121, 23);
+            cfgVideoTerrainQualityComboBox.TabIndex = 1;
+            // 
+            // cfgVideoTerrainQualityLabel
+            // 
+            cfgVideoTerrainQualityLabel.Location = new Point(7, 3);
+            cfgVideoTerrainQualityLabel.Name = "cfgVideoTerrainQualityLabel";
+            cfgVideoTerrainQualityLabel.Size = new Size(167, 23);
+            cfgVideoTerrainQualityLabel.TabIndex = 0;
+            cfgVideoTerrainQualityLabel.Text = "terrain_quality";
+            // 
+            // cfgVideoTextureFilteringPanel
+            // 
+            cfgVideoTextureFilteringPanel.BackColor = Color.Silver;
+            cfgVideoTextureFilteringPanel.Controls.Add(cfgVideoTextureFilteringComboBox);
+            cfgVideoTextureFilteringPanel.Controls.Add(cfgVideoTextureFilteringLabel);
+            cfgVideoTextureFilteringPanel.Location = new Point(356, 232);
+            cfgVideoTextureFilteringPanel.Name = "cfgVideoTextureFilteringPanel";
+            cfgVideoTextureFilteringPanel.Size = new Size(317, 30);
+            cfgVideoTextureFilteringPanel.TabIndex = 16;
+            // 
+            // cfgVideoTextureFilteringComboBox
+            // 
+            cfgVideoTextureFilteringComboBox.FormattingEnabled = true;
+            cfgVideoTextureFilteringComboBox.Location = new Point(180, 3);
+            cfgVideoTextureFilteringComboBox.Name = "cfgVideoTextureFilteringComboBox";
+            cfgVideoTextureFilteringComboBox.Size = new Size(121, 23);
+            cfgVideoTextureFilteringComboBox.TabIndex = 1;
+            // 
+            // cfgVideoTextureFilteringLabel
+            // 
+            cfgVideoTextureFilteringLabel.Location = new Point(7, 3);
+            cfgVideoTextureFilteringLabel.Name = "cfgVideoTextureFilteringLabel";
+            cfgVideoTextureFilteringLabel.Size = new Size(167, 23);
+            cfgVideoTextureFilteringLabel.TabIndex = 0;
+            cfgVideoTextureFilteringLabel.Text = "texture_filtering";
+            // 
+            // cfgVideoUnitDetailPanel
+            // 
+            cfgVideoUnitDetailPanel.BackColor = Color.Silver;
+            cfgVideoUnitDetailPanel.Controls.Add(cfgVideoUnitDetailComboBox);
+            cfgVideoUnitDetailPanel.Controls.Add(cfgVideoUnitDetailLabel);
+            cfgVideoUnitDetailPanel.Location = new Point(356, 268);
+            cfgVideoUnitDetailPanel.Name = "cfgVideoUnitDetailPanel";
+            cfgVideoUnitDetailPanel.Size = new Size(317, 30);
+            cfgVideoUnitDetailPanel.TabIndex = 17;
+            // 
+            // cfgVideoUnitDetailComboBox
+            // 
+            cfgVideoUnitDetailComboBox.FormattingEnabled = true;
+            cfgVideoUnitDetailComboBox.Location = new Point(180, 3);
+            cfgVideoUnitDetailComboBox.Name = "cfgVideoUnitDetailComboBox";
+            cfgVideoUnitDetailComboBox.Size = new Size(121, 23);
+            cfgVideoUnitDetailComboBox.TabIndex = 1;
+            // 
+            // cfgVideoUnitDetailLabel
+            // 
+            cfgVideoUnitDetailLabel.Location = new Point(7, 3);
+            cfgVideoUnitDetailLabel.Name = "cfgVideoUnitDetailLabel";
+            cfgVideoUnitDetailLabel.Size = new Size(167, 23);
+            cfgVideoUnitDetailLabel.TabIndex = 0;
+            cfgVideoUnitDetailLabel.Text = "unit_detail";
+            // 
+            // cfgVideoWaterBuffersPerNodePanel
+            // 
+            cfgVideoWaterBuffersPerNodePanel.BackColor = Color.Silver;
+            cfgVideoWaterBuffersPerNodePanel.Controls.Add(cfgVideoWaterBuffersPerNodeComboBox);
+            cfgVideoWaterBuffersPerNodePanel.Controls.Add(cfgVideoWaterBuffersPerNodeLabel);
+            cfgVideoWaterBuffersPerNodePanel.Location = new Point(356, 304);
+            cfgVideoWaterBuffersPerNodePanel.Name = "cfgVideoWaterBuffersPerNodePanel";
+            cfgVideoWaterBuffersPerNodePanel.Size = new Size(317, 30);
+            cfgVideoWaterBuffersPerNodePanel.TabIndex = 18;
+            // 
+            // cfgVideoWaterBuffersPerNodeComboBox
+            // 
+            cfgVideoWaterBuffersPerNodeComboBox.FormattingEnabled = true;
+            cfgVideoWaterBuffersPerNodeComboBox.Location = new Point(180, 3);
+            cfgVideoWaterBuffersPerNodeComboBox.Name = "cfgVideoWaterBuffersPerNodeComboBox";
+            cfgVideoWaterBuffersPerNodeComboBox.Size = new Size(121, 23);
+            cfgVideoWaterBuffersPerNodeComboBox.TabIndex = 1;
+            // 
+            // cfgVideoWaterBuffersPerNodeLabel
+            // 
+            cfgVideoWaterBuffersPerNodeLabel.Location = new Point(7, 3);
+            cfgVideoWaterBuffersPerNodeLabel.Name = "cfgVideoWaterBuffersPerNodeLabel";
+            cfgVideoWaterBuffersPerNodeLabel.Size = new Size(167, 23);
+            cfgVideoWaterBuffersPerNodeLabel.TabIndex = 0;
+            cfgVideoWaterBuffersPerNodeLabel.Text = "water_buffers_per_node";
+            // 
+            // cfgVideoGammaPanel
+            // 
+            cfgVideoGammaPanel.BackColor = Color.Silver;
+            cfgVideoGammaPanel.Controls.Add(cfgVideoGammaNumericUpDown);
+            cfgVideoGammaPanel.Controls.Add(cfgVideoGammaLabel);
+            cfgVideoGammaPanel.Location = new Point(356, 340);
+            cfgVideoGammaPanel.Name = "cfgVideoGammaPanel";
+            cfgVideoGammaPanel.Size = new Size(317, 30);
+            cfgVideoGammaPanel.TabIndex = 19;
+            // 
+            // cfgVideoGammaLabel
+            // 
+            cfgVideoGammaLabel.Location = new Point(7, 3);
+            cfgVideoGammaLabel.Name = "cfgVideoGammaLabel";
+            cfgVideoGammaLabel.Size = new Size(167, 23);
+            cfgVideoGammaLabel.TabIndex = 0;
+            cfgVideoGammaLabel.Text = "gamma";
+            // 
+            // cfgVideoGammaNumericUpDown
+            // 
+            cfgVideoGammaNumericUpDown.Location = new Point(180, 3);
+            cfgVideoGammaNumericUpDown.Name = "cfgVideoGammaNumericUpDown";
+            cfgVideoGammaNumericUpDown.Size = new Size(121, 23);
+            cfgVideoGammaNumericUpDown.TabIndex = 1;
+            // 
+            // cfgVideoAssassinationMoviesCheckBox
+            // 
+            cfgVideoAssassinationMoviesCheckBox.AutoSize = true;
+            cfgVideoAssassinationMoviesCheckBox.Location = new Point(21, 26);
+            cfgVideoAssassinationMoviesCheckBox.Name = "cfgVideoAssassinationMoviesCheckBox";
+            cfgVideoAssassinationMoviesCheckBox.Size = new Size(138, 19);
+            cfgVideoAssassinationMoviesCheckBox.TabIndex = 0;
+            cfgVideoAssassinationMoviesCheckBox.Text = "assassination_movies";
+            cfgVideoAssassinationMoviesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoAutodetectCheckBox
+            // 
+            cfgVideoAutodetectCheckBox.AutoSize = true;
+            cfgVideoAutodetectCheckBox.Location = new Point(21, 51);
+            cfgVideoAutodetectCheckBox.Name = "cfgVideoAutodetectCheckBox";
+            cfgVideoAutodetectCheckBox.Size = new Size(83, 19);
+            cfgVideoAutodetectCheckBox.TabIndex = 1;
+            cfgVideoAutodetectCheckBox.Text = "autodetect";
+            cfgVideoAutodetectCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoBloomCheckBox
+            // 
+            cfgVideoBloomCheckBox.AutoSize = true;
+            cfgVideoBloomCheckBox.Location = new Point(21, 76);
+            cfgVideoBloomCheckBox.Name = "cfgVideoBloomCheckBox";
+            cfgVideoBloomCheckBox.Size = new Size(61, 19);
+            cfgVideoBloomCheckBox.TabIndex = 2;
+            cfgVideoBloomCheckBox.Text = "bloom";
+            cfgVideoBloomCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoEventMoviesCheckBox
+            // 
+            cfgVideoEventMoviesCheckBox.AutoSize = true;
+            cfgVideoEventMoviesCheckBox.Location = new Point(21, 101);
+            cfgVideoEventMoviesCheckBox.Name = "cfgVideoEventMoviesCheckBox";
+            cfgVideoEventMoviesCheckBox.Size = new Size(98, 19);
+            cfgVideoEventMoviesCheckBox.TabIndex = 3;
+            cfgVideoEventMoviesCheckBox.Text = "event_movies";
+            cfgVideoEventMoviesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoInfiltrationMoviesCheckBox
+            // 
+            cfgVideoInfiltrationMoviesCheckBox.AutoSize = true;
+            cfgVideoInfiltrationMoviesCheckBox.Location = new Point(21, 126);
+            cfgVideoInfiltrationMoviesCheckBox.Name = "cfgVideoInfiltrationMoviesCheckBox";
+            cfgVideoInfiltrationMoviesCheckBox.Size = new Size(124, 19);
+            cfgVideoInfiltrationMoviesCheckBox.TabIndex = 4;
+            cfgVideoInfiltrationMoviesCheckBox.Text = "infiltration_movies";
+            cfgVideoInfiltrationMoviesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoMoviesCheckBox
+            // 
+            cfgVideoMoviesCheckBox.AutoSize = true;
+            cfgVideoMoviesCheckBox.Location = new Point(21, 151);
+            cfgVideoMoviesCheckBox.Name = "cfgVideoMoviesCheckBox";
+            cfgVideoMoviesCheckBox.Size = new Size(64, 19);
+            cfgVideoMoviesCheckBox.TabIndex = 5;
+            cfgVideoMoviesCheckBox.Text = "movies";
+            cfgVideoMoviesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoNoBackgroundFmvCheckBox
+            // 
+            cfgVideoNoBackgroundFmvCheckBox.AutoSize = true;
+            cfgVideoNoBackgroundFmvCheckBox.Location = new Point(21, 176);
+            cfgVideoNoBackgroundFmvCheckBox.Name = "cfgVideoNoBackgroundFmvCheckBox";
+            cfgVideoNoBackgroundFmvCheckBox.Size = new Size(135, 19);
+            cfgVideoNoBackgroundFmvCheckBox.TabIndex = 6;
+            cfgVideoNoBackgroundFmvCheckBox.Text = "no_background_fmv";
+            cfgVideoNoBackgroundFmvCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoReflectionCheckBox
+            // 
+            cfgVideoReflectionCheckBox.AutoSize = true;
+            cfgVideoReflectionCheckBox.Location = new Point(21, 201);
+            cfgVideoReflectionCheckBox.Name = "cfgVideoReflectionCheckBox";
+            cfgVideoReflectionCheckBox.Size = new Size(76, 19);
+            cfgVideoReflectionCheckBox.TabIndex = 7;
+            cfgVideoReflectionCheckBox.Text = "reflection";
+            cfgVideoReflectionCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoSabotageMoviesCheckBox
+            // 
+            cfgVideoSabotageMoviesCheckBox.AutoSize = true;
+            cfgVideoSabotageMoviesCheckBox.Location = new Point(21, 226);
+            cfgVideoSabotageMoviesCheckBox.Name = "cfgVideoSabotageMoviesCheckBox";
+            cfgVideoSabotageMoviesCheckBox.Size = new Size(117, 19);
+            cfgVideoSabotageMoviesCheckBox.TabIndex = 8;
+            cfgVideoSabotageMoviesCheckBox.Text = "sabotage_movies";
+            cfgVideoSabotageMoviesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoShowBannersCheckBox
+            // 
+            cfgVideoShowBannersCheckBox.AutoSize = true;
+            cfgVideoShowBannersCheckBox.Location = new Point(21, 251);
+            cfgVideoShowBannersCheckBox.Name = "cfgVideoShowBannersCheckBox";
+            cfgVideoShowBannersCheckBox.Size = new Size(101, 19);
+            cfgVideoShowBannersCheckBox.TabIndex = 9;
+            cfgVideoShowBannersCheckBox.Text = "show_banners";
+            cfgVideoShowBannersCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoShowPackageLitterCheckBox
+            // 
+            cfgVideoShowPackageLitterCheckBox.AutoSize = true;
+            cfgVideoShowPackageLitterCheckBox.Location = new Point(187, 26);
+            cfgVideoShowPackageLitterCheckBox.Name = "cfgVideoShowPackageLitterCheckBox";
+            cfgVideoShowPackageLitterCheckBox.Size = new Size(132, 19);
+            cfgVideoShowPackageLitterCheckBox.TabIndex = 10;
+            cfgVideoShowPackageLitterCheckBox.Text = "show_package_litter";
+            cfgVideoShowPackageLitterCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoSkipMipLevelsChecBox
+            // 
+            cfgVideoSkipMipLevelsChecBox.AutoSize = true;
+            cfgVideoSkipMipLevelsChecBox.Location = new Point(187, 51);
+            cfgVideoSkipMipLevelsChecBox.Name = "cfgVideoSkipMipLevelsChecBox";
+            cfgVideoSkipMipLevelsChecBox.Size = new Size(107, 19);
+            cfgVideoSkipMipLevelsChecBox.TabIndex = 11;
+            cfgVideoSkipMipLevelsChecBox.Text = "skip_mip_levels";
+            cfgVideoSkipMipLevelsChecBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoSplashesCheckBox
+            // 
+            cfgVideoSplashesCheckBox.AutoSize = true;
+            cfgVideoSplashesCheckBox.Location = new Point(187, 76);
+            cfgVideoSplashesCheckBox.Name = "cfgVideoSplashesCheckBox";
+            cfgVideoSplashesCheckBox.Size = new Size(70, 19);
+            cfgVideoSplashesCheckBox.TabIndex = 12;
+            cfgVideoSplashesCheckBox.Text = "splashes";
+            cfgVideoSplashesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoStencilShadowsCheckBox
+            // 
+            cfgVideoStencilShadowsCheckBox.AutoSize = true;
+            cfgVideoStencilShadowsCheckBox.Location = new Point(187, 101);
+            cfgVideoStencilShadowsCheckBox.Name = "cfgVideoStencilShadowsCheckBox";
+            cfgVideoStencilShadowsCheckBox.Size = new Size(111, 19);
+            cfgVideoStencilShadowsCheckBox.TabIndex = 13;
+            cfgVideoStencilShadowsCheckBox.Text = "stencil_shadows";
+            cfgVideoStencilShadowsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoSubtitlesCheckBox
+            // 
+            cfgVideoSubtitlesCheckBox.AutoSize = true;
+            cfgVideoSubtitlesCheckBox.Location = new Point(187, 126);
+            cfgVideoSubtitlesCheckBox.Name = "cfgVideoSubtitlesCheckBox";
+            cfgVideoSubtitlesCheckBox.Size = new Size(70, 19);
+            cfgVideoSubtitlesCheckBox.TabIndex = 14;
+            cfgVideoSubtitlesCheckBox.Text = "subtitles";
+            cfgVideoSubtitlesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoVegetationCheckBox
+            // 
+            cfgVideoVegetationCheckBox.AutoSize = true;
+            cfgVideoVegetationCheckBox.Location = new Point(187, 151);
+            cfgVideoVegetationCheckBox.Name = "cfgVideoVegetationCheckBox";
+            cfgVideoVegetationCheckBox.Size = new Size(82, 19);
+            cfgVideoVegetationCheckBox.TabIndex = 15;
+            cfgVideoVegetationCheckBox.Text = "vegetation";
+            cfgVideoVegetationCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoVsyncCheckBox
+            // 
+            cfgVideoVsyncCheckBox.AutoSize = true;
+            cfgVideoVsyncCheckBox.Location = new Point(187, 176);
+            cfgVideoVsyncCheckBox.Name = "cfgVideoVsyncCheckBox";
+            cfgVideoVsyncCheckBox.Size = new Size(56, 19);
+            cfgVideoVsyncCheckBox.TabIndex = 16;
+            cfgVideoVsyncCheckBox.Text = "vsync";
+            cfgVideoVsyncCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoWidescreenCheckBox
+            // 
+            cfgVideoWidescreenCheckBox.AutoSize = true;
+            cfgVideoWidescreenCheckBox.Location = new Point(187, 201);
+            cfgVideoWidescreenCheckBox.Name = "cfgVideoWidescreenCheckBox";
+            cfgVideoWidescreenCheckBox.Size = new Size(85, 19);
+            cfgVideoWidescreenCheckBox.TabIndex = 17;
+            cfgVideoWidescreenCheckBox.Text = "widescreen";
+            cfgVideoWidescreenCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoWindowedCheckBox
+            // 
+            cfgVideoWindowedCheckBox.AutoSize = true;
+            cfgVideoWindowedCheckBox.Location = new Point(187, 226);
+            cfgVideoWindowedCheckBox.Name = "cfgVideoWindowedCheckBox";
+            cfgVideoWindowedCheckBox.Size = new Size(81, 19);
+            cfgVideoWindowedCheckBox.TabIndex = 18;
+            cfgVideoWindowedCheckBox.Text = "windowed";
+            cfgVideoWindowedCheckBox.UseVisualStyleBackColor = true;
             // 
             // ModConfigSettingsForm
             // 
@@ -1707,6 +2581,25 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            cfgGameUnitSizePanel.ResumeLayout(false);
+            cfgGameUnitSizePanel.PerformLayout();
+            cfgGameChatMsgDurationPanel.ResumeLayout(false);
+            cfgGameChatMsgDurationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgGameChatMsgDurationNumericUpDown).EndInit();
+            cfgGameCampaignMapSpeedUpPanel.ResumeLayout(false);
+            cfgGameCampaignMapSpeedUpPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapSpeedUpNumericUpDown).EndInit();
+            cfgGameCampaignMapGameSpeedPanel.ResumeLayout(false);
+            cfgGameCampaignMapGameSpeedPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapGameSpeedNumericUpDown).EndInit();
+            cfgGamePrefFactionsPlayedPanel.ResumeLayout(false);
+            cfgGamePrefFactionsPlayedPanel.PerformLayout();
+            cfgGameTutorialPathPanel.ResumeLayout(false);
+            cfgGameTutorialPathPanel.PerformLayout();
+            cfgGameAiFactionsPanel.ResumeLayout(false);
+            cfgGameAiFactionsPanel.PerformLayout();
+            cfgGameCampaignNumTimePlayPanel.ResumeLayout(false);
+            cfgGameCampaignNumTimePlayPanel.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             cfgAudioSpeechVolumePanel.ResumeLayout(false);
@@ -1765,25 +2658,30 @@
             tabPage7.ResumeLayout(false);
             cfgUIGroupBox.ResumeLayout(false);
             cfgUIGroupBox.PerformLayout();
-            cfgGameCampaignNumTimePlayPanel.ResumeLayout(false);
-            cfgGameCampaignNumTimePlayPanel.PerformLayout();
-            cfgGameAiFactionsPanel.ResumeLayout(false);
-            cfgGameAiFactionsPanel.PerformLayout();
-            cfgGameChatMsgDurationPanel.ResumeLayout(false);
-            cfgGameChatMsgDurationPanel.PerformLayout();
-            cfgGameCampaignMapSpeedUpPanel.ResumeLayout(false);
-            cfgGameCampaignMapSpeedUpPanel.PerformLayout();
-            cfgGameCampaignMapGameSpeedPanel.ResumeLayout(false);
-            cfgGameCampaignMapGameSpeedPanel.PerformLayout();
-            cfgGamePrefFactionsPlayedPanel.ResumeLayout(false);
-            cfgGamePrefFactionsPlayedPanel.PerformLayout();
-            cfgGameTutorialPathPanel.ResumeLayout(false);
-            cfgGameTutorialPathPanel.PerformLayout();
-            cfgGameUnitSizePanel.ResumeLayout(false);
-            cfgGameUnitSizePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapGameSpeedNumericUpDown).EndInit();
-            ((System.ComponentModel.ISupportInitialize)cfgGameCampaignMapSpeedUpNumericUpDown).EndInit();
-            ((System.ComponentModel.ISupportInitialize)cfgGameChatMsgDurationNumericUpDown).EndInit();
+            tabPage8.ResumeLayout(false);
+            tabPage9.ResumeLayout(false);
+            tabPage9.PerformLayout();
+            cfgVideoAnisotropicLevelPanel.ResumeLayout(false);
+            cfgVideoAntiAliasModePanel.ResumeLayout(false);
+            cfgVideoAntialiasingPanel.ResumeLayout(false);
+            cfgVideoBattleResolutionPanel.ResumeLayout(false);
+            cfgVideoBuildingDetailPanel.ResumeLayout(false);
+            cfgVideoCampaignResolutionPanel.ResumeLayout(false);
+            cfgVideoDepthShadowsPanel.ResumeLayout(false);
+            cfgVideoDepthShadowsResolutionPanel.ResumeLayout(false);
+            cfgVideoEffectQualityPanel.ResumeLayout(false);
+            cfgVideoGrassDistancePanel.ResumeLayout(false);
+            cfgVideoGroundBuffersPerNodePanel.ResumeLayout(false);
+            cfgVideoGroundCoverBuffersPerNodePanel.ResumeLayout(false);
+            cfgVideoModelBuffersPerNodePanel.ResumeLayout(false);
+            cfgVideoShaderPanel.ResumeLayout(false);
+            cfgVideoSpriteBuffersPerNodePanel.ResumeLayout(false);
+            cfgVideoTerrainQualityPanel.ResumeLayout(false);
+            cfgVideoTextureFilteringPanel.ResumeLayout(false);
+            cfgVideoUnitDetailPanel.ResumeLayout(false);
+            cfgVideoWaterBuffersPerNodePanel.ResumeLayout(false);
+            cfgVideoGammaPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)cfgVideoGammaNumericUpDown).EndInit();
             ResumeLayout(false);
         }
 
@@ -1938,5 +2836,86 @@
         private Label cfgGameTutorialPathLabel;
         private ComboBox cfgGameAiFactionsComboBox;
         private TextBox cfgGameCampaignNumTimePlayTextBox;
+        private TabPage tabPage8;
+        private TabPage tabPage9;
+        private Panel cfgVideoAnisotropicLevelPanel;
+        private ComboBox cfgVideoAnisotropicLevelComboBox;
+        private Label cfgVideoAnisotropicLevelLabel;
+        private Panel cfgVideoGammaPanel;
+        private NumericUpDown cfgVideoGammaNumericUpDown;
+        private Label cfgVideoGammaLabel;
+        private Panel cfgVideoWaterBuffersPerNodePanel;
+        private ComboBox cfgVideoWaterBuffersPerNodeComboBox;
+        private Label cfgVideoWaterBuffersPerNodeLabel;
+        private Panel cfgVideoUnitDetailPanel;
+        private ComboBox cfgVideoUnitDetailComboBox;
+        private Label cfgVideoUnitDetailLabel;
+        private Panel cfgVideoTextureFilteringPanel;
+        private ComboBox cfgVideoTextureFilteringComboBox;
+        private Label cfgVideoTextureFilteringLabel;
+        private Panel cfgVideoTerrainQualityPanel;
+        private ComboBox cfgVideoTerrainQualityComboBox;
+        private Label cfgVideoTerrainQualityLabel;
+        private Panel cfgVideoSpriteBuffersPerNodePanel;
+        private ComboBox cfgVideoSpriteBuffersPerNodeComboBox;
+        private Label cfgVideoSpriteBuffersPerNodeLabel;
+        private Panel cfgVideoShaderPanel;
+        private ComboBox cfgVideoShaderComboBox;
+        private Label cfgVideoShaderLabel;
+        private Panel cfgVideoModelBuffersPerNodePanel;
+        private ComboBox cfgVideoModelBuffersPerNodeComboBox;
+        private Label cfgVideoModelBuffersPerNodeLabel;
+        private Panel cfgVideoGroundCoverBuffersPerNodePanel;
+        private ComboBox cfgVideoGroundCoverBuffersPerNodeComboBox;
+        private Label cfgVideoGroundCoverBuffersPerNodeLabel;
+        private Panel cfgVideoGroundBuffersPerNodePanel;
+        private ComboBox cfgVideoGroundBuffersPerNodeComboBox;
+        private Label cfgVideoGroundBuffersPerNodeLabel;
+        private Panel cfgVideoGrassDistancePanel;
+        private ComboBox cfgVideoGrassDistanceComboBox;
+        private Label cfgVideoGrassDistanceLabel;
+        private Panel cfgVideoEffectQualityPanel;
+        private ComboBox cfgVideoEffectQualityComboBox;
+        private Label cfgVideoEffectQualityLabel;
+        private Panel cfgVideoDepthShadowsResolutionPanel;
+        private ComboBox cfgVideoDepthShadowsResolutionComboBox;
+        private Label cfgVideoDepthShadowsResolutionLabel;
+        private Panel cfgVideoDepthShadowsPanel;
+        private ComboBox cfgVideoDepthShadowsComboBox;
+        private Label cfgVideoDepthShadowsLabel;
+        private Panel cfgVideoCampaignResolutionPanel;
+        private ComboBox cfgVideoCampaignResolutionComboBox;
+        private Label cfgVideoCampaignResolutionLabel;
+        private Panel cfgVideoBuildingDetailPanel;
+        private ComboBox cfgVideoBuildingDetailComboBox;
+        private Label cfgVideoBuildingDetailLabel;
+        private Panel cfgVideoBattleResolutionPanel;
+        private ComboBox cfgVideoBattleResolutionComboBox;
+        private Label cfgVideoBattleResolutionLabel;
+        private Panel cfgVideoAntialiasingPanel;
+        private ComboBox cfgVideoAntialiasingComboBox;
+        private Label cfgVideoAntialiasingLabel;
+        private Panel cfgVideoAntiAliasModePanel;
+        private ComboBox cfgVideoAntiAliasModeComboBox;
+        private Label cfgVideoAntiAliasModeLabel;
+        private CheckBox cfgVideoWindowedCheckBox;
+        private CheckBox cfgVideoWidescreenCheckBox;
+        private CheckBox cfgVideoVsyncCheckBox;
+        private CheckBox cfgVideoVegetationCheckBox;
+        private CheckBox cfgVideoSubtitlesCheckBox;
+        private CheckBox cfgVideoStencilShadowsCheckBox;
+        private CheckBox cfgVideoSplashesCheckBox;
+        private CheckBox cfgVideoSkipMipLevelsChecBox;
+        private CheckBox cfgVideoShowPackageLitterCheckBox;
+        private CheckBox cfgVideoShowBannersCheckBox;
+        private CheckBox cfgVideoSabotageMoviesCheckBox;
+        private CheckBox cfgVideoReflectionCheckBox;
+        private CheckBox cfgVideoNoBackgroundFmvCheckBox;
+        private CheckBox cfgVideoMoviesCheckBox;
+        private CheckBox cfgVideoInfiltrationMoviesCheckBox;
+        private CheckBox cfgVideoEventMoviesCheckBox;
+        private CheckBox cfgVideoBloomCheckBox;
+        private CheckBox cfgVideoAutodetectCheckBox;
+        private CheckBox cfgVideoAssassinationMoviesCheckBox;
     }
 }
