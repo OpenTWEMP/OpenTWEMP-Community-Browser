@@ -9,9 +9,36 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 public partial class GameConfigProfileCreateForm : Form
 {
+    private GameCfgType currentGameCfgType = GameCfgType.M2TW;
+
     public GameConfigProfileCreateForm()
     {
         this.InitializeComponent();
+    }
+
+    private static void LoadGameConfigSettingsForm(GameCfgType gameCfgType)
+    {
+        /* Load a specific form for a selected game config type:
+        * 1) M2TW -> ModConfigSettingsForm
+        * 2) RTW/TWEMP -> a placeholder form */
+
+        switch (gameCfgType)
+        {
+            case GameCfgType.M2TW:
+                var modConfigSettingsForm = new ModConfigSettingsForm();
+                modConfigSettingsForm.ShowDialog();
+                break;
+            case GameCfgType.TWEMP:
+            case GameCfgType.RTW:
+                MessageBox.Show(
+                    text: "NON-IMPLEMENTED CFG TYPE",
+                    caption: "Non-Implemented Game Configurator",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Exclamation);
+                break;
+            default:
+                break;
+        }
     }
 
     private void CfgNewProfileTemplateCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -40,8 +67,7 @@ public partial class GameConfigProfileCreateForm : Form
         }
         else
         {
-            var modConfigSettingsForm = new ModConfigSettingsForm();
-            modConfigSettingsForm.ShowDialog();
+            LoadGameConfigSettingsForm(this.currentGameCfgType);
         }
     }
 
@@ -49,4 +75,25 @@ public partial class GameConfigProfileCreateForm : Form
     {
         this.Close();
     }
+}
+
+/// <summary>
+/// Serves as a temp placeholder for an entity represented a game configuration type.
+/// </summary>
+internal enum GameCfgType
+{
+    /// <summary>
+    /// TWEMP game config type.
+    /// </summary>
+    TWEMP,
+
+    /// <summary>
+    /// M2TW game config type.
+    /// </summary>
+    M2TW,
+
+    /// <summary>
+    /// RTW game config type.
+    /// </summary>
+    RTW,
 }
