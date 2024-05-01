@@ -4,12 +4,37 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("START");
 
-            string homeDirectoryPath = Directory.GetCurrentDirectory();
-            PrepareTestAssets(homeDirectoryPath);
+            for (int argIndex = 0; argIndex < args.Length; argIndex++)
+            {
+                Console.WriteLine($"arg[{argIndex}] = \"{args[argIndex]}\"");
+            }
 
-            //const string cfgFileName = "mod_locale.json";
+            Console.WriteLine();
+
+            foreach (var arg in args)
+            {
+                if (arg.Equals("--test"))
+                {
+                    string homeDirectoryPath = Directory.GetCurrentDirectory();
+                    PrepareTestAssets(homeDirectoryPath);
+                    Console.WriteLine("RESULT: Prepared test assets.");
+                }
+
+                if (arg.Equals("--custom"))
+                {
+                    Console.WriteLine("1) Check the Game Mod Installation");
+                    Console.WriteLine("2) Detect All Config Files");
+                    Console.WriteLine("3) Read Data From Config Files");
+                    Console.WriteLine("4) Select a Custom Submod via User Input");
+                    Console.WriteLine("5) Clean Current Game Assets");
+                    Console.WriteLine("6) Copy Target Game Assets");
+                    Console.WriteLine("7) Display Result Information");
+                }
+            }
+
+            Console.WriteLine("FINISH");
         }
 
         private static void PrepareTestAssets(string homeDirectoryPath)
