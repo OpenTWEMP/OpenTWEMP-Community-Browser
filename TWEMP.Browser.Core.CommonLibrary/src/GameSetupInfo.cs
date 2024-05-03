@@ -8,6 +8,7 @@ namespace TWEMP.Browser.Core.CommonLibrary;
 
 using System.Xml.Linq;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 public class GameSetupInfo
 {
@@ -50,6 +51,22 @@ public class GameSetupInfo
     public static GameSetupInfo Create(string name, string executable, List<string> modcenters)
     {
         GameSetupInfo gameSetup = new (name, executable, modcenters);
+        InitializeGameSetupCache(gameSetup);
+        return gameSetup;
+    }
+
+    /// <summary>
+    /// Creates an instance of the <see cref="GameSetupInfo"/> class.
+    /// </summary>
+    /// <param name="gameSetupView">The view entity of the game setup.</param>
+    /// <returns>An instance of the <see cref="GameSetupInfo"/> class.</returns>
+    public static GameSetupInfo Create(GameSetupView gameSetupView)
+    {
+        GameSetupInfo gameSetup = new (
+            name: gameSetupView.Name,
+            executable: gameSetupView.ExecutableFilePath,
+            modcenters: gameSetupView.ModCenterDirectoryPaths.ToList());
+
         InitializeGameSetupCache(gameSetup);
         return gameSetup;
     }
