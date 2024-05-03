@@ -81,6 +81,9 @@
             gameCampaignLabel.TabIndex = 3;
             gameCampaignLabel.Text = "CAMPAIGN";
             gameCampaignLabel.TextAlign = ContentAlignment.MiddleCenter;
+            gameCampaignLabel.Click += gameCampaignLabel_Click;
+            gameCampaignLabel.MouseEnter += gameCampaignLabel_MouseEnter;
+            gameCampaignLabel.MouseLeave += gameCampaignLabel_MouseLeave;
             // 
             // gameLocalizationLabel
             // 
@@ -116,6 +119,8 @@
             Controls.Add(gameCampaignComboBox);
             Controls.Add(gameLaunchButton);
             MaximizeBox = false;
+            MaximumSize = new Size(547, 489);
+            MinimumSize = new Size(547, 489);
             Name = "MainForm";
             Text = "TWE-Submod-Switcher-WinForms";
             ResumeLayout(false);

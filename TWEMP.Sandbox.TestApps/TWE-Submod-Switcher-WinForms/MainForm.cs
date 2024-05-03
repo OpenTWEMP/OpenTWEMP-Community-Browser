@@ -2,22 +2,28 @@ namespace TWE_Submod_Switcher_WinForms
 {
     public partial class MainForm : Form
     {
+        private const string gameCampaignByDefault = "CAMPAIGN_TYPE_0";
+        private const string gameLocalizationByDefault = "LOCALIZATION_TYPE_0";
+
+        private string currentGameCampaign;
+        private string currentGameLocalization;
+
         public MainForm()
         {
             InitializeComponent();
             InitializeControlsByDefault();
+
+            currentGameCampaign = gameCampaignByDefault;
+            currentGameLocalization = gameLocalizationByDefault;
         }
 
         private void InitializeControlsByDefault()
         {
-            const string campaignByDefault = "CAMPAIGN_TYPE_0";
-            const string localizationByDefault = "LOCALIZATION_TYPE_0";
+            gameCampaignComboBox.SelectedItem = gameCampaignByDefault;
+            gameLocalizationComboBox.SelectedItem = gameLocalizationByDefault;
 
-            gameCampaignComboBox.SelectedItem = campaignByDefault;
-            gameLocalizationComboBox.SelectedItem = localizationByDefault;
-
-            gameCampaignLabel.Text = campaignByDefault;
-            gameCampaignLabel.Text = localizationByDefault;
+            gameCampaignLabel.Text = gameCampaignByDefault;
+            gameLocalizationLabel.Text = gameLocalizationByDefault;
         }
 
         private void gameLaunchButton_Click(object sender, EventArgs e)
@@ -36,12 +42,14 @@ namespace TWE_Submod_Switcher_WinForms
 
         private void gameCampaignComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            gameCampaignLabel.Text = gameCampaignComboBox.SelectedItem.ToString();
+            currentGameCampaign = gameCampaignComboBox.SelectedItem.ToString()!;
+            gameCampaignLabel.Text = currentGameCampaign;
         }
 
         private void gameLocalizationComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            gameLocalizationLabel.Text = gameLocalizationComboBox.SelectedItem.ToString();
+            currentGameLocalization = gameLocalizationComboBox.SelectedItem.ToString()!;
+            gameLocalizationLabel.Text = currentGameLocalization;
         }
 
         private void gameCampaignComboBox_Click(object sender, EventArgs e)
@@ -52,6 +60,24 @@ namespace TWE_Submod_Switcher_WinForms
         private void gameLocalizationComboBox_Click(object sender, EventArgs e)
         {
             gameLocalizationComboBox.DroppedDown = true;
+        }
+
+        private void gameCampaignLabel_Click(object sender, EventArgs e)
+        {
+            var form = new CampaignConfigForm(currentGameCampaign, currentGameLocalization);
+            form.Show();
+        }
+
+        private void gameCampaignLabel_MouseEnter(object sender, EventArgs e)
+        {
+            gameCampaignLabel.Text = $"Click to configure the campaign:\n{currentGameCampaign}";
+            gameCampaignLabel.BackColor = Color.Yellow;
+        }
+
+        private void gameCampaignLabel_MouseLeave(object sender, EventArgs e)
+        {
+            gameCampaignLabel.Text = currentGameCampaign;
+            gameCampaignLabel.BackColor = Color.Honeydew;
         }
     }
 }
