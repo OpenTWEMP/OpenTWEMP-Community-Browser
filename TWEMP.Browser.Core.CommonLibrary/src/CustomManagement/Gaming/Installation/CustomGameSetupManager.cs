@@ -6,6 +6,7 @@
 
 #define LEGACY_XML_SERIALIZATION
 #define MODERN_JSON_SERIALIZATION
+#undef MODERN_JSON_SERIALIZATION
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 

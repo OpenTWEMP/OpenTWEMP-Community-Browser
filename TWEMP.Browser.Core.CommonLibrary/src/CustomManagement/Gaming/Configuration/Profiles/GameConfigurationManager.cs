@@ -2,6 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define GAME_CFG_PROFILES_READING
+#undef GAME_CFG_PROFILES_READING
+
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 
 using System.Collections.Generic;
@@ -40,7 +43,21 @@ public static class GameConfigurationManager
     {
         if (UserProfilesConfigFileInfo.Exists)
         {
+            /* Reading game config profiles should be disabled!
+             * Currently, cannot (de)serialize objects of the GameConfigProfile type safely.
+             * The following steps is recommended to fix the System.TypeInitializationException
+             * exception raised when application debugging:
+             * 1. Create a view entity for the GameConfigProfile type.
+             * 2. Create a view entity for the GameConfigState type.
+             * 3. Implement constructors for GameConfigProfile and GameConfigState types
+             * using its view entities as constructor's parameter.
+             * 4. Implement (de)serialization of view entities and further create
+             * GameConfigProfile and GameConfigState objects via its view entities.
+             * 5. Enable and test reading game config profiles.
+             */
+#if GAME_CFG_PROFILES_READING
             AvailableProfiles = ReadAllGameConfigProfiles();
+#endif
         }
         else
         {

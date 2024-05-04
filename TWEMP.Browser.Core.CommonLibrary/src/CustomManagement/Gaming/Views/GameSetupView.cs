@@ -2,8 +2,6 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using System.Xml.Linq;
-
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 /// <summary>
