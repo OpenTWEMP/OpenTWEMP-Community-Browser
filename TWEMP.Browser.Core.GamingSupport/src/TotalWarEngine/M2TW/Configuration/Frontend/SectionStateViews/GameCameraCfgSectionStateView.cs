@@ -6,7 +6,9 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
-public record GameCameraCfgSectionStateView
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+
+public record GameCameraCfgSectionStateView : ICustomConfigState
 {
     /* Possible values: 'default', 'generals', 'rts'
     * public <M2TW_TYPE> CameraDefaultInBattle { get; set; } // "default_in_battle"
@@ -17,4 +19,9 @@ public record GameCameraCfgSectionStateView
     public bool CameraRestrict { get; set; } // "restrict"
 
     public byte CameraRotate { get; set; } // "rotate"
+
+    public GameCfgSection[] RetrieveCurrentSettings()
+    {
+        return new GameCfgSection[] { };
+    }
 }

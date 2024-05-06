@@ -6,7 +6,9 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
-public record ModDiagnosticSectionStateView
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+
+public record ModDiagnosticSectionStateView : ICustomConfigState
 {
     public string? LogTo { get; set; } // "to";
 
@@ -15,4 +17,9 @@ public record ModDiagnosticSectionStateView
     public bool ValidatorLogLevel2 { get; set; }
 
     public bool ValidatorLogLevel3 { get; set; }
+
+    public GameCfgSection[] RetrieveCurrentSettings()
+    {
+        return new GameCfgSection[] { };
+    }
 }

@@ -6,7 +6,9 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
-public record ModHotseatSectionStateView
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+
+public record ModHotseatSectionStateView : ICustomConfigState
 {
     public bool HotseatAutoresolveBattles { get; set; } // "autoresolve_battles";
 
@@ -45,4 +47,9 @@ public record ModHotseatSectionStateView
     public string? NetworkUseIp { get; set; } // "use_ip" | use the 'xxx.xxx.xxx.xxx' format
 
     public ushort NetworkUsePort { get; set; } // "use_port" | 27750 by default
+
+    public GameCfgSection[] RetrieveCurrentSettings()
+    {
+        return new GameCfgSection[] { };
+    }
 }

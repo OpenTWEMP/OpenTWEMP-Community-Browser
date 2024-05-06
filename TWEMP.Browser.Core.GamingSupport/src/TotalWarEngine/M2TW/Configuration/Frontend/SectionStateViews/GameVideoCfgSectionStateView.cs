@@ -6,7 +6,9 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
-public record GameVideoCfgSectionStateView
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+
+public record GameVideoCfgSectionStateView : ICustomConfigState
 {
     /*
         // Possible values: 'bilinear', 'trilinear', '2', '4', '8', '16'
@@ -120,4 +122,9 @@ public record GameVideoCfgSectionStateView
     public bool VideoWidescreen { get; set; } // "widescreen"
 
     public bool VideoWindowed { get; set; } // "windowed"
+
+    public GameCfgSection[] RetrieveCurrentSettings()
+    {
+        return new GameCfgSection[] { };
+    }
 }

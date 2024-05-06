@@ -43,7 +43,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return string.Empty; // TODO: Implement using existing M2TW config settings!
     }
 
-    public static List<M2TWGameCfgSection> InitializeMinimalModSettings(GameModificationInfo mod, GameConfigStateView cfg)
+    public static List<M2TWGameCfgSection> InitializeMinimalModSettings(GameModificationInfo mod, M2TWGameConfigStateView cfg)
     {
         List<M2TWGameCfgSection> settings = new ();
 
@@ -99,7 +99,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
-    private static M2TWGameCfgSection GetLogSubSet(GameModificationInfo mod, GameConfigStateView cfg)
+    private static M2TWGameCfgSection GetLogSubSet(GameModificationInfo mod, M2TWGameConfigStateView cfg)
     {
         string subsetName = "log";
 
@@ -110,7 +110,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
-    private static string SetLogLevel(GameConfigStateView cfg)
+    private static string SetLogLevel(M2TWGameConfigStateView cfg)
     {
         const string strLogLevelError = "* error";
         const string strLogLevelTrace = "* trace";
@@ -136,7 +136,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return strLogLevel;
     }
 
-    private static M2TWGameCfgSection GetVideoSubSet(GameConfigStateView cfg)
+    private static M2TWGameCfgSection GetVideoSubSet(M2TWGameConfigStateView cfg)
     {
         string subsetName = "video";
         var subsetOptions = new List<M2TWGameCfgOption>();

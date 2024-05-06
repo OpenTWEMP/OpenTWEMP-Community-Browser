@@ -11,10 +11,23 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
-public record GameConfigStateView : ICustomConfigState
+public record M2TWGameConfigStateView : ICustomConfigState
 {
-    public GameConfigStateView()
+    public M2TWGameConfigStateView()
     {
+    }
+
+    public M2TWGameConfigStateView(M2TWGameConfigStateView view)
+    {
+        this.ModCoreSettingsSection = view.ModCoreSettingsSection;
+        this.ModDiagnosticSection = view.ModDiagnosticSection;
+        this.ModGameplaySection = view.ModGameplaySection;
+        this.HotseatSection = view.HotseatSection;
+        this.GameAudioCfgSection = view.GameAudioCfgSection;
+        this.GameCameraCfgSection = view.GameCameraCfgSection;
+        this.GameControlsCfgSection = view.GameControlsCfgSection;
+        this.GameUICfgSection = view.GameUICfgSection;
+        this.GameVideoCfgSection = view.GameVideoCfgSection;
     }
 
     public ModSettingsSectionStateView? ModCoreSettingsSection { get; set; } // [features] + [io]
@@ -69,6 +82,28 @@ public record GameConfigStateView : ICustomConfigState
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return new GameCfgSection[] { };
+        List<GameCfgSection> settings = new ();
+
+        GameCfgSection[] modCoreSettingsSection = this.ModCoreSettingsSection!.RetrieveCurrentSettings();
+        GameCfgSection[] modDiagnosticSection = this.ModDiagnosticSection!.RetrieveCurrentSettings();
+        GameCfgSection[] modGameplaySection = this.ModGameplaySection!.RetrieveCurrentSettings();
+        GameCfgSection[] hotseatSection = this.HotseatSection!.RetrieveCurrentSettings();
+        GameCfgSection[] gameAudioCfgSection = this.GameAudioCfgSection!.RetrieveCurrentSettings();
+        GameCfgSection[] gameCameraCfgSection = this.GameCameraCfgSection!.RetrieveCurrentSettings();
+        GameCfgSection[] gameControlsCfgSection = this.GameControlsCfgSection!.RetrieveCurrentSettings();
+        GameCfgSection[] gameUICfgSection = this.GameUICfgSection!.RetrieveCurrentSettings();
+        GameCfgSection[] gameVideoCfgSection = this.GameVideoCfgSection!.RetrieveCurrentSettings();
+
+        settings.AddRange(modCoreSettingsSection);
+        settings.AddRange(modDiagnosticSection);
+        settings.AddRange(modGameplaySection);
+        settings.AddRange(hotseatSection);
+        settings.AddRange(gameAudioCfgSection);
+        settings.AddRange(gameCameraCfgSection);
+        settings.AddRange(gameControlsCfgSection);
+        settings.AddRange(gameUICfgSection);
+        settings.AddRange(gameVideoCfgSection);
+
+        return settings.ToArray();
     }
 }

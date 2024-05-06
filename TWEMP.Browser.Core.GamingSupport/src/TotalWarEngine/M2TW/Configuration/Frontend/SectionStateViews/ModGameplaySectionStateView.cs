@@ -6,7 +6,9 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
-public record ModGameplaySectionStateView
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+
+public record ModGameplaySectionStateView : ICustomConfigState
 {
     public bool GameAdvancedStatsAlways { get; set; } // "advanced_stats_always"
 
@@ -71,4 +73,8 @@ public record ModGameplaySectionStateView
 
     public bool UnlockCampaign { get; set; } // "unlock_campaign";
 
+    public GameCfgSection[] RetrieveCurrentSettings()
+    {
+        return new GameCfgSection[] { };
+    }
 }

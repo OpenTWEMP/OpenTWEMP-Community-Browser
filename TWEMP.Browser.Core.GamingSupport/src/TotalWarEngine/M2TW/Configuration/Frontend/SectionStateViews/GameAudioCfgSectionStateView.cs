@@ -6,8 +6,14 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
-public record GameAudioCfgSectionStateView
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+
+public record GameAudioCfgSectionStateView : ICustomConfigState
 {
+    public GameAudioCfgSectionStateView()
+    {
+    }
+
     public bool AudioEnable { get; set; } // "enable"
 
     public byte AudioMasterVolume { get; set; } // "master_vol"
@@ -23,4 +29,9 @@ public record GameAudioCfgSectionStateView
     public byte SpeechVolume { get; set; } // "speech_vol"
 
     public bool SubFactionAccents { get; set; } // "sub_faction_accents"
+
+    public GameCfgSection[] RetrieveCurrentSettings()
+    {
+        return new GameCfgSection[] { };
+    }
 }

@@ -6,7 +6,9 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
-public record GameUICfgSectionStateView
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+
+public record GameUICfgSectionStateView : ICustomConfigState
 {
     public bool UiSaCards { get; set; } // "SA_cards" | 'show' or 'hide'
 
@@ -19,4 +21,9 @@ public record GameUICfgSectionStateView
     public bool UiShowTooltips { get; set; } // "show_tooltips"
 
     public bool UiUnitCards { get; set; } // "unit_cards" | 'show' or 'hide'
+
+    public GameCfgSection[] RetrieveCurrentSettings()
+    {
+        return new GameCfgSection[] { };
+    }
 }
