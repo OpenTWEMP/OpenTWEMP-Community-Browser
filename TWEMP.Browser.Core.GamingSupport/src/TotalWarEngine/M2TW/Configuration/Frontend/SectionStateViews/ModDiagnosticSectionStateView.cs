@@ -8,4 +8,11 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 
 public record ModDiagnosticSectionStateView
 {
+    public string? LogTo { get; set; } // "to";
+
+    public bool ValidatorLogLevel1 { get; set; }
+
+    public bool ValidatorLogLevel2 { get; set; }
+
+    public bool ValidatorLogLevel3 { get; set; }
 }

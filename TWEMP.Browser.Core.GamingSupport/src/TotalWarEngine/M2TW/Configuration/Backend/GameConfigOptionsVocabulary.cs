@@ -68,6 +68,7 @@ public static class GameConfigOptionsVocabulary
     public const string GameMuteAdvisor = "mute_advisor";
     public const string GameNoCampaignBattleTimeLimit = "no_campaign_battle_time_limit";
     public const string GamePrefFactionsPlayed = "pref_factions_played";
+    public const string GameTutorialBattlePlayed = "tutorial_battle_played";
     public const string GameTutorialPath = "tutorial_path";
     public const string GameUnitSize = "unit_size";
     public const string GameUnlimitedMenOnBattlefield = "unlimited_men_on_battlefield";
@@ -163,6 +164,7 @@ public static class GameConfigOptionsVocabulary
     public const string VideoTextureFiltering = "texture_filtering";
     public const string VideoUnitDetail = "unit_detail";
     public const string VideoVegetation = "vegetation";
+    public const string VideoVegetationQuality = "vegetation_quality";
     public const string VideoVsync = "vsync";
     public const string VideoWaterBuffersPerNode = "water_buffers_per_node";
     public const string VideoWidescreen = "widescreen";

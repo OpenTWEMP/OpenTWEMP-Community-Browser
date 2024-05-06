@@ -8,4 +8,13 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 
 public record GameCameraCfgSectionStateView
 {
+    /* Possible values: 'default', 'generals', 'rts'
+    * public <M2TW_TYPE> CameraDefaultInBattle { get; set; } // "default_in_battle"
+    */
+
+    public byte CameraMove { get; set; } // "move"
+
+    public bool CameraRestrict { get; set; } // "restrict"
+
+    public byte CameraRotate { get; set; } // "rotate"
 }
