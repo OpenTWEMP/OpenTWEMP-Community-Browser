@@ -1,8 +1,6 @@
-﻿// <copyright file="GameConfigStateView.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="M2TWGameConfigStateView.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-
-#define CFG_STATE_PROPERTIES
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
@@ -47,24 +45,6 @@ public record M2TWGameConfigStateView : ICustomConfigState
     public GameUICfgSectionStateView? GameUICfgSection { get; set; } // [ui]
 
     public GameVideoCfgSectionStateView? GameVideoCfgSection { get; set; } // [video]
-
-#if CFG_STATE_PROPERTIES
-    public bool UseLauncherProvider_M2TWEOP { get; init; }
-
-    public bool UseLauncherProvider_M2TWEOP_NativeSetup { get; init; }
-
-    public bool UseLauncherProvider_M2TWEOP_NativeBatch { get; init; }
-
-    public bool UseLauncherProvider_TWEMP { get; init; }
-
-    public bool IsShouldBeDeleted_MapRWM { get; init; }
-
-    public bool IsShouldBeDeleted_TextBin { get; init; }
-
-    public bool IsShouldBeDeleted_SoundPacks { get; init; }
-
-    public bool EnabledLogsHistorySaving { get; init; }
-#endif
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {
