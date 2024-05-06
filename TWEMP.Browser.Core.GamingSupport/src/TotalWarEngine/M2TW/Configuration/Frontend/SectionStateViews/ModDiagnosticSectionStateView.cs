@@ -22,4 +22,41 @@ public record ModDiagnosticSectionStateView : ICustomConfigState
     {
         return new GameCfgSection[] { };
     }
+
+    private static M2TWGameCfgSection GetLogSubSet(GameModificationInfo mod, M2TWGameConfigStateView cfg)
+    {
+        string subsetName = "log";
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+        subsetOptions.Add(new M2TWGameCfgOption("to", mod.LogFileRelativePath!, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("level", SetLogLevel(cfg), subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+    }
+
+    private static string SetLogLevel(M2TWGameConfigStateView cfg)
+    {
+        const string strLogLevelError = "* error";
+        const string strLogLevelTrace = "* trace";
+        const string strLogLevelScriptTrace = "*script* trace";
+
+        string strLogLevel = string.Empty;
+
+        if (cfg.ModDiagnosticSection!.ValidatorLogLevel1)
+        {
+            strLogLevel = strLogLevelError;
+        }
+
+        if (cfg.ModDiagnosticSection!.ValidatorLogLevel2)
+        {
+            strLogLevel = strLogLevelTrace;
+        }
+
+        if (cfg.ModDiagnosticSection!.ValidatorLogLevel3)
+        {
+            strLogLevel = strLogLevelScriptTrace;
+        }
+
+        return strLogLevel;
+    }
 }

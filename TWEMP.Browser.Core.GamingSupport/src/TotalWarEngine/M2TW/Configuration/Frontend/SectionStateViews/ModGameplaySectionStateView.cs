@@ -77,4 +77,44 @@ public record ModGameplaySectionStateView : ICustomConfigState
     {
         return new GameCfgSection[] { };
     }
+
+    private static M2TWGameCfgSection GetGameSubSet()
+    {
+        string subsetName = "game";
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+        subsetOptions.Add(new M2TWGameCfgOption("unlimited_men_on_battlefield", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("unit_size", "huge", subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("no_campaign_battle_time_limit", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("advisor_verbosity", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("event_cutscenes", false, subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+    }
+
+    private static Dictionary<string, bool> GenerateDefaultGameSettings()
+    {
+        return new Dictionary<string, bool>
+        {
+            { "advanced_stats_always", true },
+            { "allusers", true },
+            { "auto_save", true },
+            { "blind_advisor", false },
+            { "disable_arrow_markers", false },
+            { "disable_events", false },
+            { "english", false },
+            { "event_cutscenes", true },
+            { "fatigue", true },
+            { "first_time_play", false },
+            { "gamespy_save_passwrd", true },
+            { "label_characters", false },
+            { "label_settlements", true },
+            { "micromanage_all_settlements", true },
+            { "morale", true },
+            { "mute_advisor", false },
+            { "no_campaign_battle_time_limit", false },
+            { "tutorial_battle_played", true },
+            { "use_quickchat", false },
+        };
+    }
 }

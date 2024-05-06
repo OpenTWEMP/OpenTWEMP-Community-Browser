@@ -123,8 +123,79 @@ public record GameVideoCfgSectionStateView : ICustomConfigState
 
     public bool VideoWindowed { get; set; } // "windowed"
 
+    public bool IsEnabledFullScreenMode { get; set; }
+
+    public bool IsEnabledWindowedMode { get; set; }
+
+    public bool ValidatorVideo { get; set; }
+
+    public bool ValidatorBorderless { get; set; }
+
     public GameCfgSection[] RetrieveCurrentSettings()
     {
         return new GameCfgSection[] { };
+    }
+
+    private static M2TWGameCfgSection GetVideoSubSet(M2TWGameConfigStateView cfg)
+    {
+        string subsetName = "video";
+        var subsetOptions = new List<M2TWGameCfgOption>();
+        subsetOptions.Add(new M2TWGameCfgOption("windowed", cfg.GameVideoCfgSection!.IsEnabledWindowedMode, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("movies", cfg.GameVideoCfgSection!.ValidatorVideo, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("borderless_window", cfg.GameVideoCfgSection!.ValidatorBorderless, subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+    }
+
+    private static Dictionary<string, object> GenerateDefaultVideoSettings()
+    {
+        Dictionary<string, object> settings;
+
+        settings = new Dictionary<string, object>()
+        {
+            { "assassination_movies", false },
+            { "autodetect", false },
+            { "bloom", true },
+            { "borderless_window", false },
+            { "event_movies", true },
+            { "infiltration_movies", false },
+            { "movies", false },
+            { "no_background_fmv", true },
+            { "reflection", true },
+            { "sabotage_movies", false },
+            { "show_banners", false },
+            { "show_package_litter", true },
+            { "skip_mip_levels", false },
+            { "splashes", true },
+            { "stencil_shadows", true },
+            { "subtitles", false },
+            { "vegetation", false },
+            { "vsync", false },
+            { "widescreen", false },
+            { "windowed", false },
+            { "anti_alias_mode", "off" },
+            { "building_detail", "high" },
+            { "effect_quality", "highest" },
+            { "terrain_quality", "custom" },
+            { "unit_detail", "highest" },
+            { "vegetation_quality", "high" },
+            { "anisotropic_level", 16 },
+            { "antialiasing", 8 },
+            { "depth_shadows", 2 },
+            { "depth_shadows_resolution", 3 },
+            { "gamma", 122 },
+            { "grass_distance", 500 },
+            { "ground_buffers_per_node", 4 },
+            { "ground_cover_buffers_per_node", 4 },
+            { "model_buffers_per_node", 4 },
+            { "shader", 2 },
+            { "sprite_buffers_per_node", 4 },
+            { "texture_filtering", 2 },
+            { "water_buffers_per_node", 4 },
+            { "battle_resolution", new uint[] { 1600, 900 } },
+            { "campaign_resolution", new uint[] { 1600, 900 } },
+        };
+
+        return settings;
     }
 }

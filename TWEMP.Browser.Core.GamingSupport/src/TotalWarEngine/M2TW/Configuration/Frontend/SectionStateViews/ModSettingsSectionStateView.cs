@@ -20,4 +20,26 @@ public record ModSettingsSectionStateView : ICustomConfigState
     {
         return new GameCfgSection[] { };
     }
+
+    private static M2TWGameCfgSection GetFeaturesSubSet(GameModificationInfo mod)
+    {
+        string subsetName = "features";
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+
+        subsetOptions.Add(new M2TWGameCfgOption("editor", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("mod", mod.ModCfgRelativePath!, subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+    }
+
+    private static M2TWGameCfgSection GetIOSubSet()
+    {
+        string subsetName = "io";
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+        subsetOptions.Add(new M2TWGameCfgOption("file_first", true, subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+    }
 }

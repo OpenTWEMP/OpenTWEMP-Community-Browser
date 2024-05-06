@@ -26,4 +26,20 @@ public record GameUICfgSectionStateView : ICustomConfigState
     {
         return new GameCfgSection[] { };
     }
+
+    private static M2TWGameCfgSection GetUISubSet()
+    {
+        string subsetName = "ui";
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+
+        subsetOptions.Add(new M2TWGameCfgOption("full_battle_HUD", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("show_tooltips", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("buttons", "slide", subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("radar", "slide", subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("unit_cards", "slide", subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("SA_cards", "slide", subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+    }
 }
