@@ -4,9 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-#define NON_IMPLEMENTED_SETTINGS
-#undef NON_IMPLEMENTED_SETTINGS
-
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
@@ -46,41 +43,41 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return string.Empty; // TODO: Implement using existing M2TW config settings!
     }
 
-    public static List<GameCfgOptSubSet> InitializeMinimalModSettings(GameModificationInfo mod, GameConfigStateView cfg)
+    public static List<M2TWGameCfgSection> InitializeMinimalModSettings(GameModificationInfo mod, GameConfigStateView cfg)
     {
-        List<GameCfgOptSubSet> settings = new ();
+        List<M2TWGameCfgSection> settings = new ();
 
-        GameCfgOptSubSet features_subset = GetFeaturesSubSet(mod); // [features]
+        M2TWGameCfgSection features_subset = GetFeaturesSubSet(mod); // [features]
         settings.Add(features_subset);
 
-        GameCfgOptSubSet io_subset = GetIOSubSet(); // [io]
+        M2TWGameCfgSection io_subset = GetIOSubSet(); // [io]
         settings.Add(io_subset);
 
-        GameCfgOptSubSet log_subset = GetLogSubSet(mod, cfg); // [log]
+        M2TWGameCfgSection log_subset = GetLogSubSet(mod, cfg); // [log]
         settings.Add(log_subset);
 
-        GameCfgOptSubSet video_subset = GetVideoSubSet(cfg); // [video]
+        M2TWGameCfgSection video_subset = GetVideoSubSet(cfg); // [video]
         settings.Add(video_subset);
 
-        GameCfgOptSubSet hotseat_subset = GetHotseatSubSet(); // [hotseat]
+        M2TWGameCfgSection hotseat_subset = GetHotseatSubSet(); // [hotseat]
         settings.Add(hotseat_subset);
 
-        GameCfgOptSubSet multiplayer_subset = GetMultiplayerSubSet(); // [multiplayer]
+        M2TWGameCfgSection multiplayer_subset = GetMultiplayerSubSet(); // [multiplayer]
         settings.Add(multiplayer_subset);
 
-        GameCfgOptSubSet game_subset = GetGameSubSet(); // [game]
+        M2TWGameCfgSection game_subset = GetGameSubSet(); // [game]
         settings.Add(game_subset);
 
-        GameCfgOptSubSet ui_subset = GetUISubSet(); // [ui]
+        M2TWGameCfgSection ui_subset = GetUISubSet(); // [ui]
         settings.Add(ui_subset);
 
-        GameCfgOptSubSet misc_subset = GetMiscSubSet(); // [misc]
+        M2TWGameCfgSection misc_subset = GetMiscSubSet(); // [misc]
         settings.Add(misc_subset);
 
         return settings;
     }
 
-    private static GameCfgOptSubSet GetFeaturesSubSet(GameModificationInfo mod)
+    private static M2TWGameCfgSection GetFeaturesSubSet(GameModificationInfo mod)
     {
         string subsetName = "features";
 
@@ -89,20 +86,20 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         subsetOptions.Add(new M2TWGameCfgOption("editor", true, subsetName));
         subsetOptions.Add(new M2TWGameCfgOption("mod", mod.ModCfgRelativePath!, subsetName));
 
-        return new GameCfgOptSubSet(subsetName, subsetOptions);
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
-    private static GameCfgOptSubSet GetIOSubSet()
+    private static M2TWGameCfgSection GetIOSubSet()
     {
         string subsetName = "io";
 
         var subsetOptions = new List<M2TWGameCfgOption>();
         subsetOptions.Add(new M2TWGameCfgOption("file_first", true, subsetName));
 
-        return new GameCfgOptSubSet(subsetName, subsetOptions);
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
-    private static GameCfgOptSubSet GetLogSubSet(GameModificationInfo mod, GameConfigStateView cfg)
+    private static M2TWGameCfgSection GetLogSubSet(GameModificationInfo mod, GameConfigStateView cfg)
     {
         string subsetName = "log";
 
@@ -110,7 +107,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         subsetOptions.Add(new M2TWGameCfgOption("to", mod.LogFileRelativePath!, subsetName));
         subsetOptions.Add(new M2TWGameCfgOption("level", SetLogLevel(cfg), subsetName));
 
-        return new GameCfgOptSubSet(subsetName, subsetOptions);
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
     private static string SetLogLevel(GameConfigStateView cfg)
@@ -139,7 +136,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return strLogLevel;
     }
 
-    private static GameCfgOptSubSet GetVideoSubSet(GameConfigStateView cfg)
+    private static M2TWGameCfgSection GetVideoSubSet(GameConfigStateView cfg)
     {
         string subsetName = "video";
         var subsetOptions = new List<M2TWGameCfgOption>();
@@ -147,10 +144,9 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         subsetOptions.Add(new M2TWGameCfgOption("movies", cfg.ValidatorVideo, subsetName));
         subsetOptions.Add(new M2TWGameCfgOption("borderless_window", cfg.ValidatorBorderless, subsetName));
 
-        return new GameCfgOptSubSet(subsetName, subsetOptions);
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
-#if NON_IMPLEMENTED_SETTINGS
     private static Dictionary<string, object> GenerateDefaultVideoSettings()
     {
         Dictionary<string, object> settings;
@@ -202,63 +198,57 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
 
         return settings;
     }
-#endif
 
-    private static GameCfgOptSubSet GetHotseatSubSet()
+    private static M2TWGameCfgSection GetHotseatSubSet()
     {
-        return new GameCfgOptSubSet("hotseat", new List<M2TWGameCfgOption>());
-
-#if NON_IMPLEMENTED_SETTINGS
         string subsetName = "hotseat";
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("scroll", false));
-        subsetOptions.Add(new CfgOption("turns", false));
-        subsetOptions.Add(new CfgOption("disable_console", false));
-        subsetOptions.Add(new CfgOption("admin_password", "qwerty")); // resolve password !!!
-        subsetOptions.Add(new CfgOption("update_ai_camera", true));
-        subsetOptions.Add(new CfgOption("disable_papal_elections", false));
-        subsetOptions.Add(new CfgOption("autoresolve_battles", false));
-        subsetOptions.Add(new CfgOption("validate_diplomacy", false));
-        subsetOptions.Add(new CfgOption("save_prefs", true));
-        subsetOptions.Add(new CfgOption("autosave", true));
-        subsetOptions.Add(new CfgOption("save_config", true));
-        subsetOptions.Add(new CfgOption("close_after_save", true));
-        subsetOptions.Add(new CfgOption("gamename", "hotseat_gamename"));
-        subsetOptions.Add(new CfgOption("validate_data", true));
-        subsetOptions.Add(new CfgOption("allow_validation_failures", false));
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
-#endif
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+
+        subsetOptions.Add(new M2TWGameCfgOption("scroll", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("turns", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("disable_console", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("admin_password", "qwerty", subsetName)); // resolve password !!!
+        subsetOptions.Add(new M2TWGameCfgOption("update_ai_camera", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("disable_papal_elections", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("autoresolve_battles", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("validate_diplomacy", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("save_prefs", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("autosave", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("save_config", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("close_after_save", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("gamename", "hotseat_gamename", subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("validate_data", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("allow_validation_failures", false, subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
-    private static GameCfgOptSubSet GetMultiplayerSubSet()
+    private static M2TWGameCfgSection GetMultiplayerSubSet()
     {
-        return new GameCfgOptSubSet("multiplayer", new List<M2TWGameCfgOption>());
-
-#if NON_IMPLEMENTED_SETTINGS
         string subsetName = "multiplayer";
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("playable", true));
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
-#endif
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+
+        subsetOptions.Add(new M2TWGameCfgOption("playable", true, subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
-    private static GameCfgOptSubSet GetGameSubSet()
+    private static M2TWGameCfgSection GetGameSubSet()
     {
-        return new GameCfgOptSubSet("game", new List<M2TWGameCfgOption>());
-
-#if NON_IMPLEMENTED_SETTINGS
         string subsetName = "game";
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("unlimited_men_on_battlefield", true));
-        subsetOptions.Add(new CfgOption("unit_size", "huge"));
-        subsetOptions.Add(new CfgOption("no_campaign_battle_time_limit", false));
-        subsetOptions.Add(new CfgOption("advisor_verbosity", false));
-        subsetOptions.Add(new CfgOption("event_cutscenes", false));
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
-#endif
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+        subsetOptions.Add(new M2TWGameCfgOption("unlimited_men_on_battlefield", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("unit_size", "huge", subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("no_campaign_battle_time_limit", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("advisor_verbosity", false, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("event_cutscenes", false, subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
-#if NON_IMPLEMENTED_SETTINGS
     private static Dictionary<string, bool> GenerateDefaultGameSettings()
     {
         return new Dictionary<string, bool>
@@ -284,45 +274,45 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
             { "use_quickchat", false },
         };
     }
-#endif
 
-    private static GameCfgOptSubSet GetUISubSet()
+    private static M2TWGameCfgSection GetUISubSet()
     {
-        return new GameCfgOptSubSet("ui", new List<M2TWGameCfgOption>());
-
-#if NON_IMPLEMENTED_SETTINGS
         string subsetName = "ui";
-        Dictionary<string, object> settings = GenerateDefaultUISettings();
-        return GenerateOptsSubSet(subsetName, settings);
-#endif
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+
+        subsetOptions.Add(new M2TWGameCfgOption("full_battle_HUD", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("show_tooltips", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("buttons", "slide", subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("radar", "slide", subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("unit_cards", "slide", subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("SA_cards", "slide", subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 
-#if NON_IMPLEMENTED_SETTINGS
-    private static Dictionary<string, object> GenerateDefaultUISettings()
+    private static M2TWGameCfgSection GetMiscSubSet()
     {
-        return new Dictionary<string, object>
-        {
-            { "full_battle_HUD", true },
-            { "show_tooltips", true },
-            { "buttons", "slide" },
-            { "radar", "slide" },
-            { "unit_cards", "slide" },
-            { "SA_cards", "slide" },
-        };
-    }
-#endif
-
-    private static GameCfgOptSubSet GetMiscSubSet()
-    {
-        return new GameCfgOptSubSet("misc", new List<M2TWGameCfgOption>());
-
-#if NON_IMPLEMENTED_SETTINGS
         string subsetName = "misc";
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("show_hud_date", true));
-        subsetOptions.Add(new CfgOption("bypass_sprite_script", true));
-        subsetOptions.Add(new CfgOption("bypass_to_strategy_save", "game_name.sav"));
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
-#endif
+
+        var subsetOptions = new List<M2TWGameCfgOption>();
+
+        subsetOptions.Add(new M2TWGameCfgOption("show_hud_date", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("bypass_sprite_script", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("bypass_to_strategy_save", "game_name.sav", subsetName));
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+    }
+
+    private static M2TWGameCfgSection GenerateOptsSubSet(string subsetName, Dictionary<string, object> settings)
+    {
+        var subsetOptions = new List<M2TWGameCfgOption>();
+
+        foreach (var setting in settings)
+        {
+            subsetOptions.Add(new M2TWGameCfgOption(setting.Key, setting.Value, subsetName));
+        }
+
+        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }
 }

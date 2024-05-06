@@ -1,4 +1,4 @@
-﻿// <copyright file="GameCfgOption.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="M2TWGameCfgOption.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 

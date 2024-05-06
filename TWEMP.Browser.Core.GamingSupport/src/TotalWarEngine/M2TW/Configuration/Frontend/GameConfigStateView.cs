@@ -67,8 +67,8 @@ public record GameConfigStateView : ICustomConfigState
     public bool EnabledLogsHistorySaving { get; init; }
 #endif
 
-    public ICfgOptSubSet[] RetrieveCurrentSettings()
+    public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return new ICfgOptSubSet[] { };
+        return new GameCfgSection[] { };
     }
 }
