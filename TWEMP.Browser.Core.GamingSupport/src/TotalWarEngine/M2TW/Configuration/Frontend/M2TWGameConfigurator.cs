@@ -1,4 +1,4 @@
-﻿// <copyright file="GameConfigStateBuilder.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="M2TWGameConfigurator.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -11,8 +11,41 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
-public static class GameConfigStateBuilder
+/// <summary>
+/// Implements the game configurator agent for the "Medieval 2 Total War" game engine (M2TW).
+/// </summary>
+public class M2TWGameConfigurator : IGameConfiguratorAgent
 {
+    private readonly GameModificationInfo gameModificationInfo;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="M2TWGameConfigurator"/> class.
+    /// </summary>
+    /// <param name="info">Information about a target game modification.</param>
+    public M2TWGameConfigurator(GameModificationInfo info)
+    {
+        this.gameModificationInfo = info;
+    }
+
+    /// <summary>
+    /// Gets M2TW configuration settings by default.
+    /// </summary>
+    /// <returns>The array of game configuration settings.</returns>
+    public ICfgOptSubSet[] GetDefaultConfigSettings()
+    {
+        return new ICfgOptSubSet[] { }; // TODO: Implement using existing M2TW config settings!
+    }
+
+    /// <summary>
+    /// Gets M2TW configuration settings via a custom configuration state.
+    /// </summary>
+    /// <param name="state">A target custom game configuration state.</param>
+    /// <returns>The array of game configuration settings.</returns>
+    public ICfgOptSubSet[] GetCustomConfigSettings(ICustomConfigState state)
+    {
+        return new ICfgOptSubSet[] { }; // TODO: Implement using existing M2TW config settings!
+    }
+
     public static List<GameCfgOptSubSet> InitializeMinimalModSettings(GameModificationInfo mod, GameConfigStateView cfg)
     {
         List<GameCfgOptSubSet> settings = new ();
