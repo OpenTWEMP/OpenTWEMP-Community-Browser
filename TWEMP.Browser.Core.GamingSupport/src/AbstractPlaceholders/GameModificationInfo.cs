@@ -3,10 +3,10 @@
 // </copyright>
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
-namespace TWEMP.Browser.Core.GamingSupport.Abstractions; // TODO: Replace to imported abstractions from TWEMP.Browser.Core.CommonLibrary
+namespace TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
+// TODO: Replace to the imported type - TWEMP.Browser.Core.CommonLibrary.GameModificationInfo.
 public class GameModificationInfo
 {
     public string? Location { get; set; }

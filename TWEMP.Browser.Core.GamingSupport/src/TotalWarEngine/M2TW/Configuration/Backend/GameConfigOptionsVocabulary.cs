@@ -4,7 +4,7 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
+namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend;
 
 public static class GameConfigOptionsVocabulary
 {

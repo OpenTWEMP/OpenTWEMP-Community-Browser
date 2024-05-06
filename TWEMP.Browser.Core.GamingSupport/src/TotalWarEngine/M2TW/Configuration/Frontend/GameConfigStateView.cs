@@ -1,12 +1,14 @@
-﻿// <copyright file="CustomConfigState.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="GameConfigStateView.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.GamingSupport.Abstractions; // TODO: Replace to imported abstractions from TWEMP.Browser.Core.CommonLibrary
+namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
-public record CustomConfigState
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+
+public record GameConfigStateView : ICustomConfigState
 {
     public bool UseLauncherProvider_M2TWEOP { get; init; }
 
@@ -37,4 +39,9 @@ public record CustomConfigState
     public bool IsShouldBeDeleted_SoundPacks { get; init; }
 
     public bool EnabledLogsHistorySaving { get; init; }
+
+    public ICfgOptSubSet[] RetrieveCurrentSettings()
+    {
+        return new ICfgOptSubSet[] { };
+    }
 }

@@ -1,4 +1,4 @@
-﻿// <copyright file="CfgOptionsSubSet.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="GameCfgOptSubSet.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -7,24 +7,16 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
+namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
-// <copyright file="CfgOptionsSubSet.cs" company="The OpenTWEMP Project">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
-#define GENERATE_OPTIONS_SUBSET
-#undef GENERATE_OPTIONS_SUBSET
-
-#pragma warning disable SA1600 // ElementsMustBeDocumented
-
-namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
-
-public struct CfgOptionsSubSet
+public struct GameCfgOptSubSet : ICfgOptSubSet
 {
     private readonly string name;
-    private readonly List<CfgOption> options;
+    private readonly List<GameCfgOption> options;
 
-    public CfgOptionsSubSet(string subset_name, List<CfgOption> config_options)
+    public GameCfgOptSubSet(string subset_name, List<GameCfgOption> config_options)
     {
         this.name = subset_name;
         this.options = config_options;
@@ -44,7 +36,7 @@ public struct CfgOptionsSubSet
     }
 #endif
 
-    public string FormatToCfg()
+    public string GetOutputConfigFormat()
     {
         string optionsSubSet;
 
@@ -52,7 +44,7 @@ public struct CfgOptionsSubSet
 
         foreach (var option in this.options)
         {
-            optionsSubSet += option.ToConfigFormat() + "\n";
+            optionsSubSet += option.GetOutputConfigFormat() + "\n";
         }
 
         return optionsSubSet;

@@ -6,7 +6,7 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.src.TotalWarEngine.M2TW.Automation;
 
-using TWEMP.Browser.Core.GamingSupport.Abstractions;
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
 public static class GameConfigRoutines
 {

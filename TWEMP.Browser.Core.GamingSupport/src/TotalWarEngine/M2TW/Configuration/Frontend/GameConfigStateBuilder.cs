@@ -1,4 +1,4 @@
-﻿// <copyright file="GameConfigSettings.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="GameConfigStateBuilder.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -7,80 +7,80 @@
 #define NON_IMPLEMENTED_SETTINGS
 #undef NON_IMPLEMENTED_SETTINGS
 
-namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
+namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
-using TWEMP.Browser.Core.GamingSupport.Abstractions;
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
-public static class GameConfigSettings
+public static class GameConfigStateBuilder
 {
-    public static List<CfgOptionsSubSet> InitializeMinimalModSettings(GameModificationInfo mod, CustomConfigState cfg)
+    public static List<GameCfgOptSubSet> InitializeMinimalModSettings(GameModificationInfo mod, GameConfigStateView cfg)
     {
-        List<CfgOptionsSubSet> settings = new ();
+        List<GameCfgOptSubSet> settings = new ();
 
-        CfgOptionsSubSet features_subset = GetFeaturesSubSet(mod); // [features]
+        GameCfgOptSubSet features_subset = GetFeaturesSubSet(mod); // [features]
         settings.Add(features_subset);
 
-        CfgOptionsSubSet io_subset = GetIOSubSet(); // [io]
+        GameCfgOptSubSet io_subset = GetIOSubSet(); // [io]
         settings.Add(io_subset);
 
-        CfgOptionsSubSet log_subset = GetLogSubSet(mod, cfg); // [log]
+        GameCfgOptSubSet log_subset = GetLogSubSet(mod, cfg); // [log]
         settings.Add(log_subset);
 
-        CfgOptionsSubSet video_subset = GetVideoSubSet(cfg); // [video]
+        GameCfgOptSubSet video_subset = GetVideoSubSet(cfg); // [video]
         settings.Add(video_subset);
 
-        CfgOptionsSubSet hotseat_subset = GetHotseatSubSet(); // [hotseat]
+        GameCfgOptSubSet hotseat_subset = GetHotseatSubSet(); // [hotseat]
         settings.Add(hotseat_subset);
 
-        CfgOptionsSubSet multiplayer_subset = GetMultiplayerSubSet(); // [multiplayer]
+        GameCfgOptSubSet multiplayer_subset = GetMultiplayerSubSet(); // [multiplayer]
         settings.Add(multiplayer_subset);
 
-        CfgOptionsSubSet game_subset = GetGameSubSet(); // [game]
+        GameCfgOptSubSet game_subset = GetGameSubSet(); // [game]
         settings.Add(game_subset);
 
-        CfgOptionsSubSet ui_subset = GetUISubSet(); // [ui]
+        GameCfgOptSubSet ui_subset = GetUISubSet(); // [ui]
         settings.Add(ui_subset);
 
-        CfgOptionsSubSet misc_subset = GetMiscSubSet(); // [misc]
+        GameCfgOptSubSet misc_subset = GetMiscSubSet(); // [misc]
         settings.Add(misc_subset);
 
         return settings;
     }
 
-    private static CfgOptionsSubSet GetFeaturesSubSet(GameModificationInfo mod)
+    private static GameCfgOptSubSet GetFeaturesSubSet(GameModificationInfo mod)
     {
         string subsetName = "features";
 
-        var subsetOptions = new List<CfgOption>();
+        var subsetOptions = new List<GameCfgOption>();
 
-        subsetOptions.Add(new CfgOption("editor", true));
-        subsetOptions.Add(new CfgOption("mod", mod.ModCfgRelativePath!));
+        subsetOptions.Add(new GameCfgOption("editor", true));
+        subsetOptions.Add(new GameCfgOption("mod", mod.ModCfgRelativePath!));
 
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
+        return new GameCfgOptSubSet(subsetName, subsetOptions);
     }
 
-    private static CfgOptionsSubSet GetIOSubSet()
+    private static GameCfgOptSubSet GetIOSubSet()
     {
         string subsetName = "io";
 
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("file_first", true));
+        var subsetOptions = new List<GameCfgOption>();
+        subsetOptions.Add(new GameCfgOption("file_first", true));
 
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
+        return new GameCfgOptSubSet(subsetName, subsetOptions);
     }
 
-    private static CfgOptionsSubSet GetLogSubSet(GameModificationInfo mod, CustomConfigState cfg)
+    private static GameCfgOptSubSet GetLogSubSet(GameModificationInfo mod, GameConfigStateView cfg)
     {
         string subsetName = "log";
 
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("to", mod.LogFileRelativePath!));
-        subsetOptions.Add(new CfgOption("level", SetLogLevel(cfg)));
+        var subsetOptions = new List<GameCfgOption>();
+        subsetOptions.Add(new GameCfgOption("to", mod.LogFileRelativePath!));
+        subsetOptions.Add(new GameCfgOption("level", SetLogLevel(cfg)));
 
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
+        return new GameCfgOptSubSet(subsetName, subsetOptions);
     }
 
-    private static string SetLogLevel(CustomConfigState cfg)
+    private static string SetLogLevel(GameConfigStateView cfg)
     {
         const string strLogLevelError = "* error";
         const string strLogLevelTrace = "* trace";
@@ -106,15 +106,15 @@ public static class GameConfigSettings
         return strLogLevel;
     }
 
-    private static CfgOptionsSubSet GetVideoSubSet(CustomConfigState cfg)
+    private static GameCfgOptSubSet GetVideoSubSet(GameConfigStateView cfg)
     {
         string subsetName = "video";
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("windowed", cfg.IsEnabledWindowedMode));
-        subsetOptions.Add(new CfgOption("movies", cfg.ValidatorVideo));
-        subsetOptions.Add(new CfgOption("borderless_window", cfg.ValidatorBorderless));
+        var subsetOptions = new List<GameCfgOption>();
+        subsetOptions.Add(new GameCfgOption("windowed", cfg.IsEnabledWindowedMode));
+        subsetOptions.Add(new GameCfgOption("movies", cfg.ValidatorVideo));
+        subsetOptions.Add(new GameCfgOption("borderless_window", cfg.ValidatorBorderless));
 
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
+        return new GameCfgOptSubSet(subsetName, subsetOptions);
     }
 
 #if NON_IMPLEMENTED_SETTINGS
@@ -171,9 +171,9 @@ public static class GameConfigSettings
     }
 #endif
 
-    private static CfgOptionsSubSet GetHotseatSubSet()
+    private static GameCfgOptSubSet GetHotseatSubSet()
     {
-        return new CfgOptionsSubSet("hotseat", new List<CfgOption>());
+        return new GameCfgOptSubSet("hotseat", new List<GameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "hotseat";
@@ -197,9 +197,9 @@ public static class GameConfigSettings
 #endif
     }
 
-    private static CfgOptionsSubSet GetMultiplayerSubSet()
+    private static GameCfgOptSubSet GetMultiplayerSubSet()
     {
-        return new CfgOptionsSubSet("multiplayer", new List<CfgOption>());
+        return new GameCfgOptSubSet("multiplayer", new List<GameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "multiplayer";
@@ -209,9 +209,9 @@ public static class GameConfigSettings
 #endif
     }
 
-    private static CfgOptionsSubSet GetGameSubSet()
+    private static GameCfgOptSubSet GetGameSubSet()
     {
-        return new CfgOptionsSubSet("game", new List<CfgOption>());
+        return new GameCfgOptSubSet("game", new List<GameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "game";
@@ -253,9 +253,9 @@ public static class GameConfigSettings
     }
 #endif
 
-    private static CfgOptionsSubSet GetUISubSet()
+    private static GameCfgOptSubSet GetUISubSet()
     {
-        return new CfgOptionsSubSet("ui", new List<CfgOption>());
+        return new GameCfgOptSubSet("ui", new List<GameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "ui";
@@ -279,9 +279,9 @@ public static class GameConfigSettings
     }
 #endif
 
-    private static CfgOptionsSubSet GetMiscSubSet()
+    private static GameCfgOptSubSet GetMiscSubSet()
     {
-        return new CfgOptionsSubSet("misc", new List<CfgOption>());
+        return new GameCfgOptSubSet("misc", new List<GameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "misc";
