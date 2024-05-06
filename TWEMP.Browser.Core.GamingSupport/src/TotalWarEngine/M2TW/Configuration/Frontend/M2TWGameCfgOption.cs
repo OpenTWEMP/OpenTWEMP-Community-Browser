@@ -8,19 +8,15 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
-public class GameCfgOption : ICfgOption
+public class M2TWGameCfgOption : GameCfgOption
 {
-    private readonly string name;
-    private readonly object value;
-
-    public GameCfgOption(string option_name, object option_value)
+    public M2TWGameCfgOption(string name, object value, string section)
+        : base(name: name, value: value, section: section)
     {
-        this.name = option_name;
-        this.value = option_value;
     }
 
-    public string GetOutputConfigFormat()
+    public override string GetOutputConfigFormat()
     {
-        return this.name + " = " + this.value.ToString();
+        return this.Name + " = " + this.Value.ToString();
     }
 }

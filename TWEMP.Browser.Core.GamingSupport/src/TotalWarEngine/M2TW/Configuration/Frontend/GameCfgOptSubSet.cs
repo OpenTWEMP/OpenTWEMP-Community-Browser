@@ -14,9 +14,9 @@ using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 public struct GameCfgOptSubSet : ICfgOptSubSet
 {
     private readonly string name;
-    private readonly List<GameCfgOption> options;
+    private readonly List<M2TWGameCfgOption> options;
 
-    public GameCfgOptSubSet(string subset_name, List<GameCfgOption> config_options)
+    public GameCfgOptSubSet(string subset_name, List<M2TWGameCfgOption> config_options)
     {
         this.name = subset_name;
         this.options = config_options;

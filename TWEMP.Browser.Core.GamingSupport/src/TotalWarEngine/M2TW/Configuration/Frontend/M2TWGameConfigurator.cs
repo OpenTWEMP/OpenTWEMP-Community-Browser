@@ -30,20 +30,20 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     /// <summary>
     /// Gets M2TW configuration settings by default.
     /// </summary>
-    /// <returns>The array of game configuration settings.</returns>
-    public ICfgOptSubSet[] GetDefaultConfigSettings()
+    /// <returns>The string with default settings of the game configuration.</returns>
+    public string GetDefaultSettingsString()
     {
-        return new ICfgOptSubSet[] { }; // TODO: Implement using existing M2TW config settings!
+        return string.Empty; // TODO: Implement using existing M2TW config settings!
     }
 
     /// <summary>
     /// Gets M2TW configuration settings via a custom configuration state.
     /// </summary>
     /// <param name="state">A target custom game configuration state.</param>
-    /// <returns>The array of game configuration settings.</returns>
-    public ICfgOptSubSet[] GetCustomConfigSettings(ICustomConfigState state)
+    /// <returns>The string with custom settings of the game configuration.</returns>
+    public string GetCustomSettingsString(ICustomConfigState state)
     {
-        return new ICfgOptSubSet[] { }; // TODO: Implement using existing M2TW config settings!
+        return string.Empty; // TODO: Implement using existing M2TW config settings!
     }
 
     public static List<GameCfgOptSubSet> InitializeMinimalModSettings(GameModificationInfo mod, GameConfigStateView cfg)
@@ -84,10 +84,10 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     {
         string subsetName = "features";
 
-        var subsetOptions = new List<GameCfgOption>();
+        var subsetOptions = new List<M2TWGameCfgOption>();
 
-        subsetOptions.Add(new GameCfgOption("editor", true));
-        subsetOptions.Add(new GameCfgOption("mod", mod.ModCfgRelativePath!));
+        subsetOptions.Add(new M2TWGameCfgOption("editor", true, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("mod", mod.ModCfgRelativePath!, subsetName));
 
         return new GameCfgOptSubSet(subsetName, subsetOptions);
     }
@@ -96,8 +96,8 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     {
         string subsetName = "io";
 
-        var subsetOptions = new List<GameCfgOption>();
-        subsetOptions.Add(new GameCfgOption("file_first", true));
+        var subsetOptions = new List<M2TWGameCfgOption>();
+        subsetOptions.Add(new M2TWGameCfgOption("file_first", true, subsetName));
 
         return new GameCfgOptSubSet(subsetName, subsetOptions);
     }
@@ -106,9 +106,9 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     {
         string subsetName = "log";
 
-        var subsetOptions = new List<GameCfgOption>();
-        subsetOptions.Add(new GameCfgOption("to", mod.LogFileRelativePath!));
-        subsetOptions.Add(new GameCfgOption("level", SetLogLevel(cfg)));
+        var subsetOptions = new List<M2TWGameCfgOption>();
+        subsetOptions.Add(new M2TWGameCfgOption("to", mod.LogFileRelativePath!, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("level", SetLogLevel(cfg), subsetName));
 
         return new GameCfgOptSubSet(subsetName, subsetOptions);
     }
@@ -142,10 +142,10 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     private static GameCfgOptSubSet GetVideoSubSet(GameConfigStateView cfg)
     {
         string subsetName = "video";
-        var subsetOptions = new List<GameCfgOption>();
-        subsetOptions.Add(new GameCfgOption("windowed", cfg.IsEnabledWindowedMode));
-        subsetOptions.Add(new GameCfgOption("movies", cfg.ValidatorVideo));
-        subsetOptions.Add(new GameCfgOption("borderless_window", cfg.ValidatorBorderless));
+        var subsetOptions = new List<M2TWGameCfgOption>();
+        subsetOptions.Add(new M2TWGameCfgOption("windowed", cfg.IsEnabledWindowedMode, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("movies", cfg.ValidatorVideo, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("borderless_window", cfg.ValidatorBorderless, subsetName));
 
         return new GameCfgOptSubSet(subsetName, subsetOptions);
     }
@@ -206,7 +206,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
 
     private static GameCfgOptSubSet GetHotseatSubSet()
     {
-        return new GameCfgOptSubSet("hotseat", new List<GameCfgOption>());
+        return new GameCfgOptSubSet("hotseat", new List<M2TWGameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "hotseat";
@@ -232,7 +232,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
 
     private static GameCfgOptSubSet GetMultiplayerSubSet()
     {
-        return new GameCfgOptSubSet("multiplayer", new List<GameCfgOption>());
+        return new GameCfgOptSubSet("multiplayer", new List<M2TWGameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "multiplayer";
@@ -244,7 +244,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
 
     private static GameCfgOptSubSet GetGameSubSet()
     {
-        return new GameCfgOptSubSet("game", new List<GameCfgOption>());
+        return new GameCfgOptSubSet("game", new List<M2TWGameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "game";
@@ -288,7 +288,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
 
     private static GameCfgOptSubSet GetUISubSet()
     {
-        return new GameCfgOptSubSet("ui", new List<GameCfgOption>());
+        return new GameCfgOptSubSet("ui", new List<M2TWGameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "ui";
@@ -314,7 +314,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
 
     private static GameCfgOptSubSet GetMiscSubSet()
     {
-        return new GameCfgOptSubSet("misc", new List<GameCfgOption>());
+        return new GameCfgOptSubSet("misc", new List<M2TWGameCfgOption>());
 
 #if NON_IMPLEMENTED_SETTINGS
         string subsetName = "misc";
