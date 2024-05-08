@@ -7,10 +7,15 @@
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 
 public record ModDiagnosticSectionStateView : ICustomConfigState
 {
-    public string? LogTo { get; set; } // "to";
+    public ModDiagnosticSectionStateView()
+    {
+    }
+
+    public M2TW_LoggingLevel? LogTo { get; set; } // "to";
 
     public bool ValidatorLogLevel1 { get; set; }
 

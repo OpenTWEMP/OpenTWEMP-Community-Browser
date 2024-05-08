@@ -6,19 +6,23 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
+
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
 public record GameCameraCfgSectionStateView : ICustomConfigState
 {
-    /* Possible values: 'default', 'generals', 'rts'
-    * public <M2TW_TYPE> CameraDefaultInBattle { get; set; } // "default_in_battle"
-    */
+    public GameCameraCfgSectionStateView()
+    {
+    }
 
-    public byte CameraMove { get; set; } // "move"
+    public M2TW_BattleCameraStyle? CameraDefaultInBattle { get; set; } // "default_in_battle"
 
-    public bool CameraRestrict { get; set; } // "restrict"
+    public M2TW_Integer? CameraMove { get; set; } // "move"
 
-    public byte CameraRotate { get; set; } // "rotate"
+    public M2TW_Boolean? CameraRestrict { get; set; } // "restrict"
+
+    public M2TW_Integer? CameraRotate { get; set; } // "rotate"
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {

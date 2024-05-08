@@ -7,65 +7,67 @@
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 
 public record ModGameplaySectionStateView : ICustomConfigState
 {
-    public bool GameAdvancedStatsAlways { get; set; } // "advanced_stats_always"
+    public ModGameplaySectionStateView()
+    {
+    }
 
-    public bool GameAdvisorVerbosity { get; set; } // "advisor_verbosity"
+    public M2TW_Boolean? GameAdvancedStatsAlways { get; set; } // "advanced_stats_always"
 
-    public bool GameAiFactions { get; set; } // "ai_factions" | show or skip ?
+    public M2TW_Boolean? GameAdvisorVerbosity { get; set; } // "advisor_verbosity"
 
-    public bool GameAllSsers { get; set; } // "allusers"
+    public M2TW_Boolean? GameAiFactions { get; set; } // "ai_factions" | show or skip ?
 
-    public bool GameAutoSave { get; set; } // "auto_save"
+    public M2TW_Boolean? GameAllSsers { get; set; } // "allusers"
 
-    public bool GameBlindAdvisor { get; set; } // "blind_advisor"
+    public M2TW_Boolean? GameAutoSave { get; set; } // "auto_save"
 
-    public byte GameCampaignMapGameSpeed { get; set; } // "campaign_map_game_speed"
+    public M2TW_Boolean? GameBlindAdvisor { get; set; } // "blind_advisor"
 
-    public byte GameCampaignMapSpeedUp { get; set; } // "campaign_map_speed_up"
+    public M2TW_Integer? GameCampaignMapGameSpeed { get; set; } // "campaign_map_game_speed"
+
+    public M2TW_Integer? GameCampaignMapSpeedUp { get; set; } // "campaign_map_speed_up"
 
     public int GameCampaignNumTimePlay { get; set; } // "campaign_num_time_play" | ???
 
-    public ushort GameChatMsgDuration { get; set; } // "chat_msg_duration"
+    public M2TW_Integer? GameChatMsgDuration { get; set; } // "chat_msg_duration"
 
-    public bool GameDisableArrowMarkers { get; set; } // "disable_arrow_markers"
+    public M2TW_Boolean? GameDisableArrowMarkers { get; set; } // "disable_arrow_markers"
 
-    public bool GameDisableEvents { get; set; } // "disable_events"
+    public M2TW_Boolean? GameDisableEvents { get; set; } // "disable_events"
 
-    public bool GameEnglish { get; set; } // "english"
+    public M2TW_Boolean? GameEnglish { get; set; } // "english"
 
-    public bool GameEventCutscenes { get; set; } // "event_cutscenes"
+    public M2TW_Boolean? GameEventCutscenes { get; set; } // "event_cutscenes"
 
-    public bool GameFatigue { get; set; } // "fatigue"
+    public M2TW_Boolean? GameFatigue { get; set; } // "fatigue"
 
-    public bool GameFirstTimePlay { get; set; } // "first_time_play"
+    public M2TW_Boolean? GameFirstTimePlay { get; set; } // "first_time_play"
 
-    public bool GameGamespySavePasswrd { get; set; } // "gamespy_save_passwrd"
+    public M2TW_Boolean? GameGamespySavePasswrd { get; set; } // "gamespy_save_passwrd"
 
-    public bool GameLabelCharacters { get; set; } // "label_characters"
+    public M2TW_Boolean? GameLabelCharacters { get; set; } // "label_characters"
 
-    public bool GameLabelSettlements { get; set; } // "label_settlements"
+    public M2TW_Boolean? GameLabelSettlements { get; set; } // "label_settlements"
 
-    public bool GameMicromanageAllSettlements { get; set; } // "micromanage_all_settlements"
+    public M2TW_Boolean? GameMicromanageAllSettlements { get; set; } // "micromanage_all_settlements"
 
-    public bool GameMorale { get; set; } // "morale"
+    public M2TW_Boolean? GameMorale { get; set; } // "morale"
 
-    public bool GameMuteAdvisor { get; set; } // "mute_advisor"
+    public M2TW_Boolean? GameMuteAdvisor { get; set; } // "mute_advisor"
 
-    public bool GameNoCampaignBattleTimeLimit { get; set; } // "no_campaign_battle_time_limit"
+    public M2TW_Boolean? GameNoCampaignBattleTimeLimit { get; set; } // "no_campaign_battle_time_limit"
 
     public int GamePrefFactionsPlayed { get; set; } // "pref_factions_played" | 131071 - by default?
 
-    public bool GameTutorialBattlePlayed { get; set; } // "tutorial_battle_played"
+    public M2TW_Boolean? GameTutorialBattlePlayed { get; set; } // "tutorial_battle_played"
 
     public string? GameTutorialPath { get; set; } // "tutorial_path"
 
-/*
-    // Possible values: 'small', 'norma', 'large', 'huge'
-    public <M2TW_TYPE> GameUnitSize { get; set; } // "unit_size"
-*/
+    public M2TW_UnitSize? GameUnitSize { get; set; } // "unit_size"
 
     public bool GameUnlimitedMenOnBattlefield { get; set; } // "unlimited_men_on_battlefield"
 

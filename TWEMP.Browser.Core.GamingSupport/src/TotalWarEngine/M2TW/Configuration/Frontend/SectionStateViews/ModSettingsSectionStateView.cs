@@ -7,14 +7,19 @@
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 
 public record ModSettingsSectionStateView : ICustomConfigState
 {
+    public ModSettingsSectionStateView()
+    {
+    }
+
     public string? Mod { get; set; } // "mod"
 
-    public bool Editor { get; set; } // "editor"
+    public M2TW_Boolean? Editor { get; set; } // "editor"
 
-    public bool FileFirst { get; set; } // "file_first"
+    public M2TW_Boolean? FileFirst { get; set; } // "file_first"
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {

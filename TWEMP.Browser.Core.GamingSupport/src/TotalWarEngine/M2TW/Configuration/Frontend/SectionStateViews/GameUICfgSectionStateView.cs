@@ -7,20 +7,25 @@
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 
 public record GameUICfgSectionStateView : ICustomConfigState
 {
-    public bool UiSaCards { get; set; } // "SA_cards" | 'show' or 'hide'
+    public GameUICfgSectionStateView()
+    {
+    }
 
-    public bool UiButtons { get; set; } // "buttons" | 'show' or 'hide'
+    public M2TW_Boolean? UiSaCards { get; set; } // "SA_cards" | 'show' or 'hide'
 
-    public bool UiFullBattleHud { get; set; } // "full_battle_HUD"
+    public M2TW_Boolean? UiButtons { get; set; } // "buttons" | 'show' or 'hide'
 
-    public bool UiRadar { get; set; } // "radar" | 'show' or 'hide'
+    public M2TW_Boolean? UiFullBattleHud { get; set; } // "full_battle_HUD"
 
-    public bool UiShowTooltips { get; set; } // "show_tooltips"
+    public M2TW_Boolean? UiRadar { get; set; } // "radar" | 'show' or 'hide'
 
-    public bool UiUnitCards { get; set; } // "unit_cards" | 'show' or 'hide'
+    public M2TW_Boolean? UiShowTooltips { get; set; } // "show_tooltips"
+
+    public M2TW_Boolean? UiUnitCards { get; set; } // "unit_cards" | 'show' or 'hide'
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {

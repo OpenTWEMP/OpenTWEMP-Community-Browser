@@ -7,129 +7,101 @@
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 
 public record GameVideoCfgSectionStateView : ICustomConfigState
 {
-    /*
-        // Possible values: 'bilinear', 'trilinear', '2', '4', '8', '16'
-        public <M2TW_TYPE> VideoAnisotropicLevel { get; set; } // "anisotropic_level"
-    */
+    public GameVideoCfgSectionStateView()
+    {
+    }
 
-    /*
-        // Possible values: 'off', '2', '4'
-        public <M2TW_TYPE> VideoAntiAliasMode { get; set; } // "anti_alias_mode"
-    */
+    public M2TW_QualityLevel? VideoAnisotropicLevel { get; set; } // "anisotropic_level"
 
-    /*
-        // Possible values: '0', '2', '4'
-        // public <M2TW_TYPE> VideoAntialiasing { get; set; } // "antialiasing"
-    */
+    public M2TW_QualityLevel? VideoAntiAliasMode { get; set; } // "anti_alias_mode"
 
-    public bool VideoAssassinationMovies { get; set; } // "assassination_movies"
+    public M2TW_QualityLevel? VideoAntialiasing { get; set; } // "antialiasing"
 
-    public bool VideoAutodetect { get; set; } // "autodetect"
+    public M2TW_Boolean? VideoAssassinationMovies { get; set; } // "assassination_movies"
 
-    /*
-        // For example: 1440 900
-        public <M2TW_TYPE> VideoBattleResolution { get; set; } // "battle_resolution"
-    */
+    public M2TW_Boolean? VideoAutodetect { get; set; } // "autodetect"
 
-    public bool VideoBloom { get; set; } // "bloom"
+    public M2TW_DisplayResolution? VideoBattleResolution { get; set; } // "battle_resolution"
 
-    /*
-        // Possible values: 'low', 'medium', 'high', 'highest'
-        public <M2TW_TYPE> VideoBuildingDetail { get; set; } // "building_detail"
-    */
+    public M2TW_DisplayResolution? VideoCampaignResolution { get; set; } // "campaign_resolution"
 
-    /*
-        // For example: 1440 900
-        public <M2TW_TYPE> VideoCampaignResolution { get; set; } // "campaign_resolution"
-    */
+    public M2TW_Boolean? VideoBloom { get; set; } // "bloom"
 
-    public byte VideoDepthShadows { get; set; } // "depth_shadows" | ???
+    public M2TW_QualityLevel? VideoBuildingDetail { get; set; } // "building_detail"
 
-    public byte VideoDepthShadowsResolution { get; set; } // "depth_shadows_resolution" | ???
+    public M2TW_Integer? VideoDepthShadows { get; set; } // "depth_shadows" | ???
 
-    /*
-        // Possible values: 'low', 'medium', 'high', 'highest'
-        public <M2TW_TYPE> VideoEffectQuality { get; set; } // "effect_quality"
-    */
+    public M2TW_Integer? VideoDepthShadowsResolution { get; set; } // "depth_shadows_resolution" | ???
 
-    public bool VideoEventMovies { get; set; } // "event_movies"
+    public M2TW_QualityLevel? VideoEffectQuality { get; set; } // "effect_quality"
 
-    public byte VideoGamma { get; set; } // "gamma" | ???
+    public M2TW_Boolean? VideoEventMovies { get; set; } // "event_movies"
 
-    /*
-        // Possible values: '0', '25', '50', '75'
-        public <M2TW_TYPE> VideoGrassDistance { get; set; } // "grass_distance"
-    */
+    public M2TW_Integer? VideoGamma { get; set; } // "gamma" | ???
 
-    public byte VideoGroundBuffersPerNode { get; set; } // "ground_buffers_per_node" | ???
+    public M2TW_QualityLevel? VideoGrassDistance { get; set; } // "grass_distance"
 
-    public byte VideoGroundCoverBuffersPerNode { get; set; } // "ground_cover_buffers_per_node" | ???
+    public M2TW_Integer? VideoGroundBuffersPerNode { get; set; } // "ground_buffers_per_node" | ???
 
-    public bool VideoInfiltrationMovies { get; set; } // "infiltration_movies"
+    public M2TW_Integer? VideoGroundCoverBuffersPerNode { get; set; } // "ground_cover_buffers_per_node" | ???
 
-    public bool VideoMovies { get; set; } // "movies"
+    public M2TW_Boolean? VideoInfiltrationMovies { get; set; } // "infiltration_movies"
 
-    public byte VideoModelBuffersPerNode { get; set; } // "model_buffers_per_node" | ???
+    public M2TW_Boolean? VideoMovies { get; set; } // "movies"
 
-    public bool VideoNoBackgroundFmv { get; set; } // "no_background_fmv"
+    public M2TW_Integer? VideoModelBuffersPerNode { get; set; } // "model_buffers_per_node" | ???
 
-    public bool VideoReflection { get; set; } // "reflection"
+    public M2TW_Boolean? VideoNoBackgroundFmv { get; set; } // "no_background_fmv"
 
-    public bool VideoSabotageMovies { get; set; } // "sabotage_movies"
+    public M2TW_Boolean? VideoReflection { get; set; } // "reflection"
 
-    /*
-        // Possible values: '1' or '2'
-        public <M2TW_TYPE> VideoShader { get; set; } // "shader"
-    */
+    public M2TW_Boolean? VideoSabotageMovies { get; set; } // "sabotage_movies"
 
-    public bool VideoShowBanners { get; set; } // "show_banners"
+    public M2TW_QualityLevel? VideoShader { get; set; } // "shader"
 
-    public bool VideoShowPackageLitter { get; set; } // "show_package_litter"
+    public M2TW_Boolean? VideoShowBanners { get; set; } // "show_banners"
 
-    public bool VideoSkipMipLevels { get; set; } // "skip_mip_levels" | ???
+    public M2TW_Boolean? VideoShowPackageLitter { get; set; } // "show_package_litter"
 
-    public bool VideoSplashes { get; set; } // "splashes"
+    public M2TW_Boolean? VideoSkipMipLevels { get; set; } // "skip_mip_levels" | ???
 
-    public byte VideoSpriteBuffersPerNode { get; set; } // "sprite_buffers_per_node" | ???
+    public M2TW_Boolean? VideoSplashes { get; set; } // "splashes"
 
-    public bool VideoStencilShadows { get; set; } // "stencil_shadows"
+    public M2TW_Integer? VideoSpriteBuffersPerNode { get; set; } // "sprite_buffers_per_node" | ???
 
-    public bool VideoSubtitles { get; set; } // "subtitles"
+    public M2TW_Boolean? VideoStencilShadows { get; set; } // "stencil_shadows"
+
+    public M2TW_Boolean? VideoSubtitles { get; set; } // "subtitles"
 
     public string? VideoTerrainQuality { get; set; } // "terrain_quality" | 'custom' ???
 
-    public byte VideoTextureFiltering { get; set; } // "texture_filtering" | ???
+    public M2TW_Integer? VideoTextureFiltering { get; set; } // "texture_filtering" | ???
 
-    /*
-        // Possible values: 'low', 'medium', 'high', 'highest'
-        public <M2TW_TYPE> VideoUnitDetail { get; set; } // "unit_detail"
-    */
+    public M2TW_QualityLevel? VideoUnitDetail { get; set; } // "unit_detail"
 
-    public bool VideoVegetation { get; set; } // "vegetation" | ???
+    public M2TW_Boolean? VideoVegetation { get; set; } // "vegetation" | ???
 
-    /*
-        // Possible values: 'low', 'medium', 'high', 'highest'
-        public <M2TW_TYPE> VideoVegetationQuality { get; set; } // "vegetation_quality"
-    */
+    public M2TW_QualityLevel? VideoVegetationQuality { get; set; } // "vegetation_quality"
 
-    public bool VideoVsync { get; set; } // "vsync"
+    public M2TW_Boolean? VideoVsync { get; set; } // "vsync"
 
-    public byte VideoWaterBuffersPerNode { get; set; } // "water_buffers_per_node" | ???
+    public M2TW_Integer? VideoWaterBuffersPerNode { get; set; } // "water_buffers_per_node" | ???
 
-    public bool VideoWidescreen { get; set; } // "widescreen"
+    public M2TW_Boolean? VideoWidescreen { get; set; } // "widescreen"
 
-    public bool VideoWindowed { get; set; } // "windowed"
+    public M2TW_Boolean? VideoWindowed { get; set; } // "windowed"
 
-    public bool IsEnabledFullScreenMode { get; set; }
+    public M2TW_Boolean? IsEnabledFullScreenMode { get; set; }
 
-    public bool IsEnabledWindowedMode { get; set; }
+    public M2TW_Boolean? IsEnabledWindowedMode { get; set; }
 
-    public bool ValidatorVideo { get; set; }
+    public M2TW_Boolean? ValidatorVideo { get; set; }
 
-    public bool ValidatorBorderless { get; set; }
+    public M2TW_Boolean? ValidatorBorderless { get; set; }
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {
@@ -140,9 +112,9 @@ public record GameVideoCfgSectionStateView : ICustomConfigState
     {
         string subsetName = "video";
         var subsetOptions = new List<M2TWGameCfgOption>();
-        subsetOptions.Add(new M2TWGameCfgOption("windowed", cfg.GameVideoCfgSection!.IsEnabledWindowedMode, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("movies", cfg.GameVideoCfgSection!.ValidatorVideo, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("borderless_window", cfg.GameVideoCfgSection!.ValidatorBorderless, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("windowed", cfg.GameVideoCfgSection!.IsEnabledWindowedMode!, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("movies", cfg.GameVideoCfgSection!.ValidatorVideo!, subsetName));
+        subsetOptions.Add(new M2TWGameCfgOption("borderless_window", cfg.GameVideoCfgSection!.ValidatorBorderless!, subsetName));
 
         return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
     }

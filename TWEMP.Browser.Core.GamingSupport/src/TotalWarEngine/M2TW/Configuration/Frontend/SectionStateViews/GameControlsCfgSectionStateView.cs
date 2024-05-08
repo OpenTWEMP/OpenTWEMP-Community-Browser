@@ -7,16 +7,18 @@
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
 using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 
 public record GameControlsCfgSectionStateView : ICustomConfigState
 {
+    public GameControlsCfgSectionStateView()
+    {
+    }
+
     public byte CampaignScrollMaxZoom { get; set; } // "campaign_scroll_max_zoom"
     public byte CampaignScrollMinZoom { get; set; } // "campaign_scroll_min_zoom"
 
-    /*
-        Possible values: '0', '1', '2', '3'
-        public const string KeySet { get; set; } // "keyset"
-    */
+    public M2TW_QualityLevel? KeySet { get; set; } // "keyset" | Possible values: '0', '1', '2', '3'
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {
