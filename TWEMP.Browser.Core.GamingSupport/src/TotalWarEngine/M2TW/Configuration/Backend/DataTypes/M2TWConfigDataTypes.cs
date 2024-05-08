@@ -16,15 +16,73 @@ public class M2TW_Boolean
     public const string IntegerFalse = "0";
     public const string IntegerTrue = "1";
 
+    public const string M2TW_Deprecated_UI_False = "hide";
+    public const string M2TW_Deprecated_UI_True = "show";
+
+    public const string M2TW_Deprecated_AI_False = "skip";
+    public const string M2TW_Deprecated_AI_True = "follow";
+
     public M2TW_Boolean(bool value)
     {
         this.BooleanValue = value ? BooleanTrue : BooleanFalse;
         this.IntegerValue = value ? IntegerTrue : IntegerFalse;
     }
 
+    public M2TW_Boolean(M2TW_Deprecated_UI_Boolean value)
+    {
+        switch (value)
+        {
+            case M2TW_Deprecated_UI_Boolean.Hide:
+                this.BooleanValue = M2TW_Deprecated_UI_False;
+                this.IntegerValue = IntegerFalse;
+                break;
+            case M2TW_Deprecated_UI_Boolean.Show:
+                this.BooleanValue = M2TW_Deprecated_UI_True;
+                this.IntegerValue = IntegerTrue;
+                break;
+            default:
+                this.BooleanValue = M2TW_Deprecated_UI_False;
+                this.IntegerValue = IntegerFalse;
+                break;
+        }
+    }
+
+    public M2TW_Boolean(M2TW_Deprecated_AI_Boolean value)
+    {
+        switch (value)
+        {
+            case M2TW_Deprecated_AI_Boolean.Skip:
+                this.BooleanValue = M2TW_Deprecated_AI_False;
+                this.IntegerValue = IntegerFalse;
+                break;
+            case M2TW_Deprecated_AI_Boolean.Follow:
+                this.BooleanValue = M2TW_Deprecated_AI_True;
+                this.IntegerValue = IntegerTrue;
+                break;
+            default:
+                this.BooleanValue = M2TW_Deprecated_AI_False;
+                this.IntegerValue = IntegerFalse;
+                break;
+        }
+    }
+
     public string BooleanValue { get; }
 
     public string IntegerValue { get; }
+}
+
+public enum M2TW_Deprecated_UI_Boolean // options from the [ui] section
+{
+    Hide,
+
+    Show,
+}
+
+public enum M2TW_Deprecated_AI_Boolean // the 'ai_factions' option
+{
+    Skip,
+
+    Follow,
 }
 
 public class M2TW_Integer
@@ -33,11 +91,25 @@ public class M2TW_Integer
 
     public const byte MaxValue = 100;
 
+    public const ushort ExtendedMaxValue = 10_000;
+
     public M2TW_Integer(byte value)
     {
         if (value > MaxValue)
         {
             this.Value = MaxValue.ToString();
+        }
+        else
+        {
+            this.Value = value.ToString();
+        }
+    }
+
+    public M2TW_Integer(ushort value)
+    {
+        if (value > ExtendedMaxValue)
+        {
+            this.Value = ExtendedMaxValue.ToString();
         }
         else
         {
@@ -54,6 +126,31 @@ public class M2TW_QualityLevel
     public const string Medium = "medium";
     public const string High = "high";
     public const string Highest = "highest";
+
+    public const string M2TW_GrassDistanceLevel_0 = "0";
+    public const string M2TW_GrassDistanceLevel_1 = "25";
+    public const string M2TW_GrassDistanceLevel_2 = "50";
+    public const string M2TW_GrassDistanceLevel_3 = "75";
+
+    public const string M2TW_AF_Bilinear = "bilinear";
+    public const string M2TW_AF_Trilinear = "trilinear";
+    public const string M2TW_AF_x2 = "2";
+    public const string M2TW_AF_x4 = "4";
+    public const string M2TW_AF_x8 = "8";
+    public const string M2TW_AF_x16 = "16";
+
+    public const string M2TW_AntiAliasing_OffMode = "off";
+    public const string M2TW_AntiAliasing_None = "0";
+    public const string M2TW_AntiAliasing_x2 = "2";
+    public const string M2TW_AntiAliasing_x4 = "4";
+
+    public const string M2TW_ShaderVersion_v1 = "1";
+    public const string M2TW_ShaderVersion_v2 = "2";
+
+    public const string M2TW_KeySet_0 = "0";
+    public const string M2TW_KeySet_1 = "1";
+    public const string M2TW_KeySet_2 = "2";
+    public const string M2TW_KeySet_3 = "3";
 
     public M2TW_QualityLevel(M2TW_Quality value)
     {
@@ -77,6 +174,132 @@ public class M2TW_QualityLevel
         }
     }
 
+    public M2TW_QualityLevel(M2TW_GrassDistance value)
+    {
+        switch (value)
+        {
+            case M2TW_GrassDistance.Level_0:
+                this.Value = M2TW_GrassDistanceLevel_0;
+                break;
+            case M2TW_GrassDistance.Level_1:
+                this.Value = M2TW_GrassDistanceLevel_1;
+                break;
+            case M2TW_GrassDistance.Level_2:
+                this.Value = M2TW_GrassDistanceLevel_2;
+                break;
+            case M2TW_GrassDistance.Level_3:
+                this.Value = M2TW_GrassDistanceLevel_3;
+                break;
+            default:
+                this.Value = M2TW_GrassDistanceLevel_1;
+                break;
+        }
+    }
+
+    public M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel value)
+    {
+        switch (value)
+        {
+            case M2TW_AnisotropicFilteringLevel.Bilinear:
+                this.Value = M2TW_AF_Bilinear;
+                break;
+            case M2TW_AnisotropicFilteringLevel.Trilinear:
+                this.Value = M2TW_AF_Trilinear;
+                break;
+            case M2TW_AnisotropicFilteringLevel.AF_x2:
+                this.Value = M2TW_AF_x2;
+                break;
+            case M2TW_AnisotropicFilteringLevel.AF_x4:
+                this.Value = M2TW_AF_x4;
+                break;
+            case M2TW_AnisotropicFilteringLevel.AF_x8:
+                this.Value = M2TW_AF_x8;
+                break;
+            case M2TW_AnisotropicFilteringLevel.AF_x16:
+                this.Value = M2TW_AF_x16;
+                break;
+            default:
+                this.Value = M2TW_AF_Trilinear;
+                break;
+        }
+    }
+
+    public M2TW_QualityLevel(M2TW_AntiAliasMode value)
+    {
+        switch (value)
+        {
+            case M2TW_AntiAliasMode.AntiAliasMode_Off:
+                this.Value = M2TW_AntiAliasing_OffMode;
+                break;
+            case M2TW_AntiAliasMode.AntiAliasMode_x2:
+                this.Value = M2TW_AntiAliasing_x2;
+                break;
+            case M2TW_AntiAliasMode.AntiAliasMode_x4:
+                this.Value = M2TW_AntiAliasing_x4;
+                break;
+            default:
+                this.Value = M2TW_AntiAliasing_x2;
+                break;
+        }
+    }
+
+    public M2TW_QualityLevel(M2TW_AntiAliasing value)
+    {
+        switch (value)
+        {
+            case M2TW_AntiAliasing.AntiAliasMode_None:
+                this.Value = M2TW_AntiAliasing_None;
+                break;
+            case M2TW_AntiAliasing.AntiAliasMode_x2:
+                this.Value = M2TW_AntiAliasing_x2;
+                break;
+            case M2TW_AntiAliasing.AntiAliasMode_x4:
+                this.Value = M2TW_AntiAliasing_x4;
+                break;
+            default:
+                this.Value = M2TW_AntiAliasing_x2;
+                break;
+        }
+    }
+
+    public M2TW_QualityLevel(M2TW_ShaderLevel value)
+    {
+        switch (value)
+        {
+            case M2TW_ShaderLevel.ShaderVersion_v1:
+                this.Value = M2TW_ShaderVersion_v1;
+                break;
+            case M2TW_ShaderLevel.ShaderVersion_v2:
+                this.Value = M2TW_ShaderVersion_v2;
+                break;
+            default:
+                this.Value = M2TW_ShaderVersion_v1;
+                break;
+        }
+    }
+
+    public M2TW_QualityLevel(M2TW_KeySet value)
+    {
+        switch (value)
+        {
+            case M2TW_KeySet.KeySet_0:
+                this.Value = M2TW_KeySet_0;
+                break;
+            case M2TW_KeySet.KeySet_1:
+                this.Value = M2TW_KeySet_1;
+                break;
+            case M2TW_KeySet.KeySet_2:
+                this.Value = M2TW_KeySet_2;
+                break;
+            case M2TW_KeySet.KeySet_3:
+                this.Value = M2TW_KeySet_3;
+                break;
+            default:
+                this.Value = M2TW_KeySet_0;
+                break;
+        }
+    }
+
     public string Value { get; }
 }
 
@@ -89,6 +312,68 @@ public enum M2TW_Quality
     High,
 
     Highest,
+}
+
+public enum M2TW_GrassDistance
+{
+    Level_0,
+
+    Level_1,
+
+    Level_2,
+
+    Level_3,
+}
+
+public enum M2TW_AnisotropicFilteringLevel
+{
+    Bilinear,
+
+    Trilinear,
+
+    AF_x2,
+
+    AF_x4,
+
+    AF_x8,
+
+    AF_x16,
+}
+
+public enum M2TW_AntiAliasMode
+{
+    AntiAliasMode_Off,
+
+    AntiAliasMode_x2,
+
+    AntiAliasMode_x4,
+}
+
+public enum M2TW_AntiAliasing
+{
+    AntiAliasMode_None,
+
+    AntiAliasMode_x2,
+
+    AntiAliasMode_x4,
+}
+
+public enum M2TW_ShaderLevel
+{
+    ShaderVersion_v1,
+
+    ShaderVersion_v2,
+}
+
+public enum M2TW_KeySet
+{
+    KeySet_0,
+
+    KeySet_1,
+
+    KeySet_2,
+
+    KeySet_3,
 }
 
 public class M2TW_UnitSize
@@ -266,4 +551,41 @@ public enum M2TW_LoggingMode
     Trace,
 
     ScriptTrace,
+}
+
+public class M2TW_BattleCameraStyle
+{
+    public const string Default_Camera = "default";
+    public const string Generals_Camera = "generals";
+    public const string RTS_Camera = "rts";
+
+    public M2TW_BattleCameraStyle(M2TW_BattleCamera value)
+    {
+        switch (value)
+        {
+            case M2TW_BattleCamera.Default:
+                this.Value = Default_Camera;
+                break;
+            case M2TW_BattleCamera.Generals:
+                this.Value = Generals_Camera;
+                break;
+            case M2TW_BattleCamera.RTS:
+                this.Value = RTS_Camera;
+                break;
+            default:
+                this.Value = Default_Camera;
+                break;
+        }
+    }
+
+    public string Value { get; }
+}
+
+public enum M2TW_BattleCamera
+{
+    Default,
+
+    Generals,
+
+    RTS,
 }
