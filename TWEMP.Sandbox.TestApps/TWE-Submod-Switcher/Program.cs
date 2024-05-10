@@ -97,9 +97,30 @@ internal class Program
 
                     Console.WriteLine("7) Display Result Information:");
 
-                    foreach (FileInfo file in files)
+                    foreach (FileInfo fileInfo in files)
                     {
-                        Console.WriteLine($"[FILE] {file.FullName}");
+                        Console.WriteLine($"[SRC_FILE] {fileInfo.FullName}");
+
+                        FileInfo targetFileInfo = configuration.GetDestinationFilePath(fileInfo);
+                        Console.WriteLine($"[DST_FILE] {targetFileInfo.FullName}");
+
+                        if (!targetFileInfo.Directory.Exists)
+                        {
+                            Directory.CreateDirectory(targetFileInfo.Directory.FullName);
+                        }
+
+                        File.Copy(sourceFileName: fileInfo.FullName, destFileName: targetFileInfo.FullName, overwrite: true);
+
+                        if (File.Exists(targetFileInfo.FullName))
+                        {
+                            Console.WriteLine("[RESULT: SUCCESS] Destination File is successfully created!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("[RESULT: FAILED] Error when copying the destination file!");
+                        }
+
+                        Console.WriteLine();
                     }
                 }
                 else
@@ -290,6 +311,11 @@ public record ModSubmodsConfiguration
         }
 
         return null;
+    }
+
+    public FileInfo GetDestinationFilePath(FileInfo fileInfo)
+    {
+        return new FileInfo(fileInfo.FullName.Replace(oldValue: this.SourceDirectoryPath, newValue: this.DestinationDirectoryPath));
     }
 }
 
