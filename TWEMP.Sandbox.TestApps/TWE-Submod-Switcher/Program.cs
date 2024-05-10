@@ -2,6 +2,15 @@
 {
     internal class Program
     {
+        const string LocaleID_RUS = "RUS";
+        const string LocaleID_ENG = "ENG";
+        const string LocaleID_ITA = "ITA";
+        const string LocaleID_SPA = "SPA";
+        const string LocaleID_DEU = "DEU";
+        const string LocaleID_FRA = "FRA";
+        const string LocaleID_POL = "POL";
+        const string LocaleID_CHI = "CHI";
+
         static void Main(string[] args)
         {
             Console.WriteLine("START");
@@ -17,8 +26,11 @@
             {
                 if (arg.Equals("--test"))
                 {
+                    ModSubmodsConfiguration configuration = CreateTestConfiguration();
+
                     string homeDirectoryPath = Directory.GetCurrentDirectory();
-                    PrepareTestAssets(homeDirectoryPath);
+                    PrepareTestAssets(homeDirectoryPath, configuration);
+
                     Console.WriteLine("RESULT: Prepared test assets.");
                 }
 
@@ -37,123 +49,114 @@
             Console.WriteLine("FINISH");
         }
 
-        private static void PrepareTestAssets(string homeDirectoryPath)
+        private static ModSubmodsConfiguration CreateTestConfiguration()
         {
-            // 1. Create Default Locale Files
+            string workingDirectoryPath = Directory.GetCurrentDirectory();
 
-            const string modFolderName = "data";
-            const string modLocaleFolderName = "text";
+            List<ModGameLocale> supportedLocalizations = new ()
+            {
+                new (id: LocaleID_RUS, title: "Russian", srcDirPath: LocaleID_RUS),
+                new (id: LocaleID_ENG, title: "English", srcDirPath: LocaleID_ENG),
+                new (id: LocaleID_ITA, title: "Italian", srcDirPath: LocaleID_ITA),
+                new (id: LocaleID_SPA, title: "Spanish", srcDirPath: LocaleID_SPA),
+                new (id: LocaleID_DEU, title: "German", srcDirPath: LocaleID_DEU),
+                new (id: LocaleID_FRA, title: "French", srcDirPath: LocaleID_FRA),
+                new (id: LocaleID_POL, title: "Polish", srcDirPath: LocaleID_POL),
+                new (id: LocaleID_CHI, title: "Chinese", srcDirPath: LocaleID_CHI),
+            };
 
-            string modLocaleDirectoryPath = Path.Combine(
+            return  new ModSubmodsConfiguration(
+                srcDirPath: "submods", destDirPath: "data",
+                modGameLocales: supportedLocalizations.ToArray());
+        }
+
+        private static void PrepareTestAssets(string homeDirectoryPath, ModSubmodsConfiguration configuration)
+        {
+            string submodsDirectoryPath = Path.Combine(
                 path1: homeDirectoryPath,
-                path2: modFolderName,
-                path3: modLocaleFolderName);
+                path2: configuration.SourceDirectoryPath);
 
-            if (!Directory.Exists(modLocaleDirectoryPath))
+            if (!Directory.Exists(submodsDirectoryPath))
             {
-                Directory.CreateDirectory(modLocaleDirectoryPath);
+                Directory.CreateDirectory(submodsDirectoryPath);
             }
 
-            CreateDefaultLocaleFiles(modLocaleDirectoryPath);
-
-            // 2. Create Submod Locale Files
-
-            const string submodFolderName = "submods";
-
-            string modSubmodDirectoryPath = Path.Combine(
-                path1: homeDirectoryPath,
-                path2: submodFolderName);
-
-            if (!Directory.Exists(modSubmodDirectoryPath))
-            {
-                Directory.CreateDirectory(modSubmodDirectoryPath);
-            }
-
-            CreateSubmodLocaleFiles(modSubmodDirectoryPath);
+            CreateTestGameLocalizations(submodsDirectoryPath, configuration);
         }
 
-        private static void CreateDefaultLocaleFiles(string modLocaleDirectoryPath)
+        private static void CreateTestGameLocalizations(string gameLocalizationsDirectoryPath, ModSubmodsConfiguration configuration)
         {
-            string[] modLocaleDefaultFileNames = GetDefaultLocaleFileNames();
-
-            foreach (var defaultFileName in modLocaleDefaultFileNames)
+            foreach (ModGameLocale localization in configuration.SupportedLocalizations)
             {
-                string testFilePath = Path.Combine(path1: modLocaleDirectoryPath, path2: defaultFileName);
+                string customLocaleDirectoryPath = Path.Combine(
+                    path1: gameLocalizationsDirectoryPath,
+                    path2: localization.SourceDirectoryPath);
 
-                if (!File.Exists(testFilePath))
-                {
-                    File.Create(testFilePath);
-                }
+                CreateTestGameLocale(customLocaleDirectoryPath, localization);
             }
         }
 
-        private static string[] GetDefaultLocaleFileNames()
+        private static void CreateTestGameLocale(string gameLocaleDirectoryPath, ModGameLocale gameLocale)
         {
-            const string testLocaleFileBaseName = "text_default_";
-            const string testLocaleFileExtension = ".txt";
-            const byte testLocaleFilesCount = 10;
-
-            string[] testLocaleFileNames = new string[testLocaleFilesCount];
-
-            for (byte fileIndex = 0; fileIndex < testLocaleFilesCount; fileIndex++)
-            {
-                testLocaleFileNames[fileIndex] = testLocaleFileBaseName + fileIndex.ToString() + testLocaleFileExtension;
-            }
-
-            return testLocaleFileNames;
-        }
-
-        private static void CreateSubmodLocaleFiles(string modSubmodDirectoryPath)
-        {
-            const string testLocaleFolderName_1 = "RU";
-            const string testLocaleFolderName_2 = "EN";
-            const string testLocaleFolderName_3 = "FR";
-            const string testLocaleFolderName_4 = "SP";
-            const string testLocaleFolderName_5 = "DE";
-
             const string testLocaleFileBaseName = "text_";
             const string testLocaleFileExtension = ".txt";
             const byte testLocaleFilesCount = 10;
 
-            string[] testCustomLocaleFolderNames = new string[]
+            if (!Directory.Exists(gameLocaleDirectoryPath))
             {
-                testLocaleFolderName_1,
-                testLocaleFolderName_2,
-                testLocaleFolderName_3,
-                testLocaleFolderName_4,
-                testLocaleFolderName_5
-            };
+                Directory.CreateDirectory(gameLocaleDirectoryPath);
+            }
 
-            foreach (var customLocaleFolderName in testCustomLocaleFolderNames)
+            for (byte fileIndex = 0; fileIndex < testLocaleFilesCount; fileIndex++)
             {
-                string customLocaleDirectoryPath = Path.Combine(
-                    path1: modSubmodDirectoryPath,
-                    path2: customLocaleFolderName);
+                string customLocaleFileName = testLocaleFileBaseName
+                    + gameLocale.ID
+                    + "_" + fileIndex.ToString()
+                    + testLocaleFileExtension;
 
-                if (!Directory.Exists(customLocaleDirectoryPath))
+                string customLocaleFilePath = Path.Combine(
+                    path1: gameLocaleDirectoryPath,
+                    path2: customLocaleFileName);
+
+                if (!File.Exists(customLocaleFilePath))
                 {
-                    Directory.CreateDirectory(customLocaleDirectoryPath);
-                }
-
-                for (byte fileIndex = 0; fileIndex < testLocaleFilesCount; fileIndex++)
-                {
-                    string customLocaleFileName = testLocaleFileBaseName
-                        + customLocaleFolderName
-                        + "_" + fileIndex.ToString()
-                        + testLocaleFileExtension;
-
-                    string customLocaleFilePath = Path.Combine(
-                        path1: customLocaleDirectoryPath,
-                        path2: customLocaleFileName);
-
-                    if (!File.Exists(customLocaleFilePath))
-                    {
-                        File.Create(customLocaleFilePath);
-                    }
+                    File.Create(customLocaleFilePath);
                 }
             }
         }
     }
 
-    //
+    record ModSubmodsConfiguration
+    {
+        public const string ConfigFileName = "LOCALE.json";
+
+        internal ModSubmodsConfiguration(string srcDirPath, string destDirPath, ModGameLocale[] modGameLocales)
+        {
+            SourceDirectoryPath = srcDirPath;
+            DestinationDirectoryPath = destDirPath;
+            SupportedLocalizations = modGameLocales.ToArray();
+        }
+
+        internal string SourceDirectoryPath { get; set; }
+
+        internal string DestinationDirectoryPath { get; set; }
+
+        internal ModGameLocale[] SupportedLocalizations { get; set; }
+    }
+
+    internal record ModGameLocale
+    {
+        internal ModGameLocale(string id, string title, string srcDirPath)
+        {
+            ID = id;
+            Title = title;
+            SourceDirectoryPath = srcDirPath;
+        }
+
+        internal string ID { get; set; }
+
+        internal string Title { get; set; }
+
+        internal string SourceDirectoryPath { get; set; }
+    }
 }
