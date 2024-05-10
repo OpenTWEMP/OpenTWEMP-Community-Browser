@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TWE-Submod-Switcher": {
+      "commandName": "Project",
+      "commandLineArgs": "--custom"
+    }
+  }
+}

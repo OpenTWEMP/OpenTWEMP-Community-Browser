@@ -1,5 +1,10 @@
-﻿namespace TWE_Submod_Switcher;
+﻿#define ARGS
+#undef ARGS
 
+namespace TWE_Submod_Switcher;
+
+using System.IO;
+using System;
 using System.Xml.Serialization;
 
 internal class Program
@@ -17,19 +22,16 @@ internal class Program
     {
         Console.WriteLine("START");
 
-        for (int argIndex = 0; argIndex < args.Length; argIndex++)
-        {
-            Console.WriteLine($"arg[{argIndex}] = \"{args[argIndex]}\"");
-        }
+#if ARGS
+        PrintCommandLineArguments(args);
+#endif
 
-        Console.WriteLine();
+        string homeDirectoryPath = Directory.GetCurrentDirectory();
 
         foreach (var arg in args)
         {
             if (arg.Equals("--test"))
             {
-                string homeDirectoryPath = Directory.GetCurrentDirectory();
-
                 ModSubmodsConfiguration configuration = CreateTestConfiguration(homeDirectoryPath);
                 PrepareTestAssets(homeDirectoryPath, configuration);
 
@@ -39,16 +41,85 @@ internal class Program
             if (arg.Equals("--custom"))
             {
                 Console.WriteLine("1) Check the Game Mod Installation");
+
                 Console.WriteLine("2) Detect All Config Files");
+
+                string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(homeDirectoryPath);
+
+                ModSubmodsConfiguration configuration = new ();
+
+                if (File.Exists(configFilePath))
+                {
+                    using (FileStream xmlCfgFile = File.Open(configFilePath, FileMode.Open))
+                    {
+                        XmlSerializer serializer = new(type: configuration.GetType());
+                        configuration = serializer.Deserialize(xmlCfgFile) as ModSubmodsConfiguration;
+                    }
+                }
+
                 Console.WriteLine("3) Read Data From Config Files");
+
+                foreach (ModGameLocale localization in configuration.SupportedLocalizations)
+                {
+                    Console.WriteLine($"[ID: {localization.ID}] {localization.Title} Locale");
+                }
+
                 Console.WriteLine("4) Select a Custom Submod via User Input");
+
+                string id;
+                string[] availableLocalizationIDs = configuration.GetAvailableLocalizationIDs();
+
+                do
+                {
+                    Console.Write("Print a valid ID to select a game localization to install: ");
+                    id = Console.ReadLine();
+                } while (!ModSubmodsConfiguration.IsValidLocalizationID(id, availableLocalizationIDs));
+
+                ModGameLocale currentLocale = configuration.GetLocalizationByID(id);
+
+                Console.WriteLine($"Your selected game localization is '{currentLocale.Title}'");
+
                 Console.WriteLine("5) Clean Current Game Assets");
                 Console.WriteLine("6) Copy Target Game Assets");
-                Console.WriteLine("7) Display Result Information");
+
+                string currentLocalizationDirectoryPath = Path.Combine(
+                    path1: homeDirectoryPath,
+                    path2: configuration.SourceDirectoryPath,
+                    path3: currentLocale.SourceDirectoryPath);
+
+                if (Directory.Exists(currentLocalizationDirectoryPath))
+                {
+                    Console.WriteLine($"Directory Successfully Detected: '{currentLocalizationDirectoryPath}'");
+
+                    DirectoryInfo currentLocalizationDirectoryInfo = new (currentLocalizationDirectoryPath);
+
+                    FileInfo[] files = GetAllFiles(currentLocalizationDirectoryInfo);
+
+                    Console.WriteLine("7) Display Result Information:");
+
+                    foreach (FileInfo file in files)
+                    {
+                        Console.WriteLine($"[FILE] {file.FullName}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Cannot Detect Directory: '{currentLocalizationDirectoryPath}'");
+                }
             }
         }
 
         Console.WriteLine("FINISH");
+    }
+
+    private static void PrintCommandLineArguments(string[] args)
+    {
+        for (int argIndex = 0; argIndex < args.Length; argIndex++)
+        {
+            Console.WriteLine($"arg[{argIndex}] = \"{args[argIndex]}\"");
+        }
+
+        Console.WriteLine();
     }
 
     private static ModSubmodsConfiguration CreateTestConfiguration(string directoryPath)
@@ -71,7 +142,7 @@ internal class Program
             srcDirPath: "submods", destDirPath: "data",
             modGameLocales: supportedLocalizations.ToArray());
 
-        string configFilePath = configuration.GetConfigurationFilePath(directoryPath);
+        string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(directoryPath);
         XmlSerializer serializer = new (configuration.GetType());
 
         using (FileStream stream = File.Create(configFilePath))
@@ -135,6 +206,23 @@ internal class Program
             }
         }
     }
+
+    private static FileInfo[] GetAllFiles(DirectoryInfo targetDirectoryInfo)
+    {
+        List<FileInfo> targetFiles = new ();
+
+        FileInfo[] files = targetDirectoryInfo.GetFiles();
+        targetFiles.AddRange(files);
+
+        DirectoryInfo[] directories = targetDirectoryInfo.GetDirectories();
+        foreach (DirectoryInfo directory in directories)
+        {
+            FileInfo[] filesIntoDirectory = GetAllFiles(directory);
+            targetFiles.AddRange(filesIntoDirectory);
+        }
+
+        return targetFiles.ToArray();
+    }
 }
 
 public record ModSubmodsConfiguration
@@ -161,9 +249,47 @@ public record ModSubmodsConfiguration
     [XmlElement("Localization")]
     public ModGameLocale[] SupportedLocalizations { get; set; }
 
-    public string GetConfigurationFilePath(string directoryPath)
+    public static string GetConfigurationFilePath(string directoryPath)
     {
         return Path.Combine(directoryPath, ConfigFileName);
+    }
+
+    public static bool IsValidLocalizationID(string targetID, string[] validIDs)
+    {
+        foreach (string validID in validIDs)
+        {
+            if (targetID.Equals(validID))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public string[] GetAvailableLocalizationIDs()
+    {
+        List<string> localeIDs = new List<string>();
+
+        foreach (ModGameLocale localization in this.SupportedLocalizations)
+        {
+            localeIDs.Add(localization.ID);
+        }
+
+        return localeIDs.ToArray();
+    }
+
+    public ModGameLocale GetLocalizationByID(string id)
+    {
+        foreach (ModGameLocale localization in this.SupportedLocalizations)
+        {
+            if (localization.ID.Equals(id))
+            {
+                return localization;
+            }
+        }
+
+        return null;
     }
 }
 
