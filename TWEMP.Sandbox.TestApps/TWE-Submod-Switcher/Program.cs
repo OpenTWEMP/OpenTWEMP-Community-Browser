@@ -101,7 +101,7 @@ internal class Program
                     {
                         Console.WriteLine($"[SRC_FILE] {fileInfo.FullName}");
 
-                        FileInfo targetFileInfo = configuration.GetDestinationFilePath(fileInfo);
+                        FileInfo targetFileInfo = configuration.GetDestinationFilePath(currentLocale, fileInfo);
                         Console.WriteLine($"[DST_FILE] {targetFileInfo.FullName}");
 
                         if (!targetFileInfo.Directory.Exists)
@@ -205,9 +205,11 @@ internal class Program
         const string testLocaleFileExtension = ".txt";
         const byte testLocaleFilesCount = 10;
 
-        if (!Directory.Exists(gameLocaleDirectoryPath))
+        string testLocaleAssetsPath = Path.Combine(gameLocaleDirectoryPath, "data", "text");
+
+        if (!Directory.Exists(testLocaleAssetsPath))
         {
-            Directory.CreateDirectory(gameLocaleDirectoryPath);
+            Directory.CreateDirectory(testLocaleAssetsPath);
         }
 
         for (byte fileIndex = 0; fileIndex < testLocaleFilesCount; fileIndex++)
@@ -218,7 +220,7 @@ internal class Program
                 + testLocaleFileExtension;
 
             string customLocaleFilePath = Path.Combine(
-                path1: gameLocaleDirectoryPath,
+                path1: testLocaleAssetsPath,
                 path2: customLocaleFileName);
 
             if (!File.Exists(customLocaleFilePath))
@@ -313,10 +315,10 @@ public record ModSubmodsConfiguration
         return null;
     }
 
-    public FileInfo GetDestinationFilePath(FileInfo fileInfo)
-    {
-        return new FileInfo(fileInfo.FullName.Replace(oldValue: this.SourceDirectoryPath, newValue: this.DestinationDirectoryPath));
-    }
+    public FileInfo GetDestinationFilePath(ModGameLocale modGameLocale, FileInfo fileInfo) =>
+        new FileInfo(fileInfo.FullName
+            .Replace(oldValue: this.SourceDirectoryPath, newValue: this.DestinationDirectoryPath)
+            .Replace(oldValue: modGameLocale.ID, newValue: string.Empty));
 }
 
 public record ModGameLocale
