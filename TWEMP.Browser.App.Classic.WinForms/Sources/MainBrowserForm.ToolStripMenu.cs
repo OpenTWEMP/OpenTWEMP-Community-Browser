@@ -50,6 +50,30 @@ internal partial class MainBrowserForm
         gameSetupConfigForm.Show();
     }
 
+    private void GameConfigProfilesSwitcherToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var gameConfigProfileSwitchForm = new GameConfigProfileSwitchForm();
+        gameConfigProfileSwitchForm.ShowDialog();
+    }
+
+    private void GameConfigProfilesToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var gameConfigProfilesForm = new GameConfigProfilesForm();
+        gameConfigProfilesForm.ShowDialog();
+    }
+
+    private void ModSupportPresetSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var appSettingsForm = new ModSupportPresetSettingsForm(this);
+        appSettingsForm.ShowDialog();
+    }
+
+    private void GameMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var gameMusicPlayerForm = new GameMusicPlayerForm();
+        gameMusicPlayerForm.ShowDialog();
+    }
+
     private void ConfigSettingsToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var modConfigSettingsForm = new ModConfigSettingsForm();
