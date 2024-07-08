@@ -6,27 +6,52 @@
 
 ### TWEMP.Browser.Core.CommonLibrary + TWEMP.Browser.App.Classic.WinForms
 
-* [ ] 1
-* [ ] 2
-* [ ] 3
-* [ ] 4
-* [ ] 5
+* [ ] MainBrowserForm.GameProfiles.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
+* [ ] MainBrowserForm.GameModsTreeView.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
+* [ ] MainBrowserForm.GameLauncher.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
+* [ ] MainBrowserForm.GameConfigState.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
+* [ ] MainBrowserForm.GameCollections.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
 
 ### TWEMP.Browser.Core.CommonLibrary + TWEMP.Browser.App.Classic.CommonLibrary
 
-* [ ] 1
-* [ ] 2
-* [ ] 3
-* [ ] 4
-* [ ] 5
+* [ ] GameConfigProfileCreateForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
+* [ ] GameConfigProfilesForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
+* [ ] GameMusicPlayerForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
+* [ ] ModSupportPresetSettingsForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
+* [ ] RedistributablePresetSelectionForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
 
 ### TWEMP.Browser.Core.CommonLibrary + TWEMP.Browser.Core.GamingSupport
 
 * [ ] Move all classes from TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins namespace to TWEMP.Browser.Core.GamingSupport class library.
-* [ ] 2
-* [ ] 3
-* [ ] 4
-* [ ] 5
+* [ ] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Move the GameCfgOption class to the TWEMP.Browser.Core.CommonLibrary class library.
+* [ ] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Move the GameCfgSection class to the TWEMP.Browser.Core.CommonLibrary class library.
+* [ ] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace the GameModificationInfo placeholder class to the imported type - TWEMP.Browser.Core.CommonLibrary.GameModificationInfo.
+* [ ] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace the ICustomConfigState placeholder interface to the imported type - TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.ICustomConfigState.
+* [ ] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace the IGameConfiguratorAgent placeholder interface to the imported type - TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.IGameConfiguratorAgent.
+* [ ] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace IBrowserMessageProvider and BrowserMessageType placeholder types to the same imported types from TWEMP.Browser.Core.CommonLibrary.
+* [ ] GameAudioCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [ ] GameCameraCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [ ] GameControlsCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [ ] GameUICfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [ ] GameVideoCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [ ] ModDiagnosticSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [ ] ModGameplaySectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [ ] ModHotseatSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [ ] ModSettingsSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [ ] Use the TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.M2TWGameConfigurator class instead of the same double type from the TWEMP.Browser.Core.CommonLibrary class library.
+* [ ] Change the M2TWGameConfigurator class definition to use the M2TWGameConfigStateView record type to configure M2TW mods.
+
+### TWEMP.Browser.Core.GamingSupport + TWEMP.Browser.App.Classic.WinForms
+
+* [ ] MainBrowserForm.GameConfigState.cs : Use new definitions of M2TW game types.
+* [ ] MainBrowserForm.GameLauncher.cs : Use new definitions of M2TW game types.
+* [ ] MainBrowserForm.GameProfiles.cs : Use new definitions of M2TW game types.
+
+### TWEMP.Browser.Core.GamingSupport + TWEMP.Browser.App.Classic.CommonLibrary
+
+* [ ] Use new definitions of M2TW game types into the AddNewGameSetupForm form class.
+* [ ] Use new definitions of M2TW game types into the ModConfigSettingsForm form class.
+* [ ] Use new definitions of M2TW game types into the ModQuickNavigatorForm form class.
 
 ---
 
@@ -86,10 +111,13 @@
 
 ### TWEMP.Browser.Core.GamingSupport
 
-* [ ] 1
-* [ ] 2
-* [ ] 3
-* [ ] 4
-* [ ] 5
+* [ ] Use only the GameConfigRoutines class from the TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation namespace (remove all doubles from the TWEMP.Browser.Core.CommonLibrary class library).
+* [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteMapFile() static method.
+* [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteStringsBinFiles() static method.
+* [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteSoundPackFiles() static method.
+* [ ] Move string constants from the TotalWarEngineSupportProvider class to the GameFileSystem class.
+* [ ] GameFileSystem.cs : Simplify the GameFileSystem class definition.
+* [ ] TotalWarEngineSupportProvider.cs : Simplify the static IsCompatibleModification() method.
+* [ ] Change semantics of the TotalWarEngineSupportProvider class to relate it with M2TW game engine only.
 
 ---
