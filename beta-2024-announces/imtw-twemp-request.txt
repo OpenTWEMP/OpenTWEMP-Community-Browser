@@ -1,0 +1,29 @@
+Приветствую!
+
+Я собираюсь опубликовать на форуме релиз проекта OpenTWEMP Community Browser, для этого мне понадобится организовать новый раздел форума.
+
+Пожалуйста, окажите мне администраторскую помощь в выполнении нижеперечисленных задач:
+
+1) Создайте новый раздел форума:
+
+- Расположение родительского форума: https://imtw.ru/forum/310-masterskaya-m2tw/
+
+- Название нового раздела : "Open Total War Engine Modding Platform (OpenTWEMP)"
+
+- Описание нового раздела : "глобальный проект открытой платформы для моддинга M2TW"
+
+- Позиция элемента нового раздела в списке: новый раздел следует расположить НАД или ПОД элементом "M2:TW Engine Overhaul Project" (https://imtw.ru/forum/1461-m2tw-engine-overhaul-project/)
+
+2) Перенесите существующие темы в новый раздел форума:
+
+- "Релиз альфа-версии OpenTWEMP Community Browser (Preview 2023.1)" (https://imtw.ru/topic/77965-reliz-alfa-versii-opentwemp-community-browser-preview-20231/)
+
+- "Релиз версии Preview 2023.2 проекта OpenTWEMP Community Browser" (https://imtw.ru/topic/79386-opentwemp-community-browser-reliz-versii-preview-20232/)
+
+3) Установите модераторов для нового раздела форума:
+
+- Модератор № 1: камрад Master_TW_DAR (https://imtw.ru/user/90217-master-tw-dar/)
+
+- Модератор № 2: кто-нибудь из активистов сообщества M2TW на усмотрение администрации
+
+Заранее спасибо!
