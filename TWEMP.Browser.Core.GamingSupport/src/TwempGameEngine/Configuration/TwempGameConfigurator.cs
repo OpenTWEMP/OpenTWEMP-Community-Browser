@@ -2,8 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-// TODO: Move this class definition to the TWEMP.Browser.Core.GamingSupport class library!
-namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Plugins;
+namespace TWEMP.Browser.Core.GamingSupport.TwempGameEngine.Configuration;
+
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
 /// <summary>
 /// Implements the game configurator agent for the "OpenTWEMP Game Engine" game engine (TWEMP).
@@ -25,9 +26,9 @@ public class TwempGameConfigurator : IGameConfiguratorAgent
     /// Gets OpenTWEMP configuration settings by default.
     /// </summary>
     /// <returns>The array of game configuration settings.</returns>
-    public CfgOptionsSubSet[] GetDefaultConfigSettings()
+    public GameCfgSection[] GetDefaultConfigSettings()
     {
-        return new CfgOptionsSubSet[] { }; // TODO: Implement using existing OpenTWEMP config settings!
+        return new GameCfgSection[] { }; // TODO: Implement using existing OpenTWEMP config settings!
     }
 
     /// <summary>
@@ -35,8 +36,8 @@ public class TwempGameConfigurator : IGameConfiguratorAgent
     /// </summary>
     /// <param name="state">A target custom game configuration state.</param>
     /// <returns>The array of game configuration settings.</returns>
-    public CfgOptionsSubSet[] GetCustomConfigSettings(ICustomConfigState state)
+    public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
     {
-        return new CfgOptionsSubSet[] { }; // TODO: Implement using existing OpenTWEMP config settings!
+        return new GameCfgSection[] { }; // TODO: Implement using existing OpenTWEMP config settings!
     }
 }
