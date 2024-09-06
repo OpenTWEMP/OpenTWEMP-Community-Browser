@@ -7,9 +7,16 @@
 namespace TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
 // TODO: Replace to the imported type - TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.IGameConfiguratorAgent.
-public interface IGameConfiguratorAgent
+public interface IGameConfiguratorAgent_TempPlaceholder
 {
     public abstract string GetDefaultSettingsString();
 
     public abstract string GetCustomSettingsString(ICustomConfigState state);
+}
+
+public interface IGameConfiguratorAgent
+{
+    public abstract GameCfgSection[] GetDefaultConfigSettings();
+
+    public abstract GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state);
 }

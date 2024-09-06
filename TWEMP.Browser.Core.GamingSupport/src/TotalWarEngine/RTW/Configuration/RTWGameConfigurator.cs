@@ -2,8 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-// TODO: Move this class definition to the TWEMP.Browser.Core.GamingSupport class library!
-namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Plugins;
+namespace TWEMP.Browser.Core.CommonLibrary.GamingSupport.TotalWarEngine.RTW.Configuration;
+
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
 /// <summary>
 /// Implements the game configurator agent for the "Rome Total War" game engine (RTW).
@@ -25,9 +26,9 @@ public class RTWGameConfigurator : IGameConfiguratorAgent
     /// Gets RTW configuration settings by default.
     /// </summary>
     /// <returns>The array of game configuration settings.</returns>
-    public CfgOptionsSubSet[] GetDefaultConfigSettings()
+    public GameCfgSection[] GetDefaultConfigSettings()
     {
-        return new CfgOptionsSubSet[] { }; // TODO: Implement using existing RTW config settings!
+        return new GameCfgSection[] { }; // TODO: Implement using existing RTW config settings!
     }
 
     /// <summary>
@@ -35,8 +36,8 @@ public class RTWGameConfigurator : IGameConfiguratorAgent
     /// </summary>
     /// <param name="state">A target custom game configuration state.</param>
     /// <returns>The array of game configuration settings.</returns>
-    public CfgOptionsSubSet[] GetCustomConfigSettings(ICustomConfigState state)
+    public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
     {
-        return new CfgOptionsSubSet[] { }; // TODO: Implement using existing RTW config settings!
+        return new GameCfgSection[] { }; // TODO: Implement using existing RTW config settings!
     }
 }

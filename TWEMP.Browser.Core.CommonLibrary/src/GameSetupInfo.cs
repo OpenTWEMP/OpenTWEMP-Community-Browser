@@ -6,7 +6,6 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
-using System.Xml.Linq;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
@@ -138,7 +137,7 @@ public class GameSetupInfo
 
         foreach (string path in Directory.GetDirectories(modcenter.Location))
         {
-            if (GamingSupport.TotalWarEngineSupportProvider.IsCompatibleModification(path))
+            if (TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider.IsCompatibleModification(path))
             {
                 GameModificationInfo mod = new (gamesetup, modcenter, path);
                 modcenter.InstalledModifications.Add(mod);

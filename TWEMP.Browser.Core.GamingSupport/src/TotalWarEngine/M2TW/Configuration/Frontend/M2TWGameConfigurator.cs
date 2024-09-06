@@ -11,7 +11,7 @@ using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 /// <summary>
 /// Implements the game configurator agent for the "Medieval 2 Total War" game engine (M2TW).
 /// </summary>
-public class M2TWGameConfigurator : IGameConfiguratorAgent
+public class M2TWGameConfigurator : IGameConfiguratorAgent_TempPlaceholder
 {
     private readonly GameModificationInfo gameModificationInfo;
 
