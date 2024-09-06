@@ -47,7 +47,7 @@ public class GameSupportProvider
     /// </summary>
     public GameEngineSupportType GameEngine { get; }
 
-#if LAUNCHER_AGENTs
+#if LAUNCHER_AGENT
     /// <summary>
     /// Gets the game launcher agent used by the provider.
     /// </summary>
