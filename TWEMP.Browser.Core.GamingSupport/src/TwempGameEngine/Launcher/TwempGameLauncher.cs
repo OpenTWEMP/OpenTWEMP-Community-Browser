@@ -4,9 +4,9 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins;
+namespace TWEMP.Browser.Core.GamingSupport.TwempGameEngine.Launcher;
 
-using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
+using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
 /// <summary>
 /// Implements the game launcher agent for the "OpenTWEMP Game Engine" game engine (TWEMP).
