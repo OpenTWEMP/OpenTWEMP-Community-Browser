@@ -8,6 +8,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 
 using System.Collections.Generic;
+using TWEMP.Browser.Core.BaseDataTypes;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
