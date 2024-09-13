@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TWEMP.Browser.Core.BaseDataTypes\TWEMP.Browser.Core.BaseDataTypes.csproj" />
-    <ProjectReference Include="..\TWEMP.Browser.Core.GamingSupport\TWEMP.Browser.Core.GamingSupport.csproj" />
   </ItemGroup>
 
 </Project>
