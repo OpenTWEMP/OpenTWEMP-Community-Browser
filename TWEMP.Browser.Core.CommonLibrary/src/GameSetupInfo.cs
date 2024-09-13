@@ -137,7 +137,7 @@ public class GameSetupInfo
 
         foreach (string path in Directory.GetDirectories(modcenter.Location))
         {
-            if (TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider.IsCompatibleModification(path))
+            if (IsCompatibleModification(path))
             {
                 GameModificationInfo mod = new (gamesetup, modcenter, path);
                 modcenter.InstalledModifications.Add(mod);
@@ -145,5 +145,19 @@ public class GameSetupInfo
         }
 
         return modcenter.InstalledModifications;
+    }
+
+    private static bool IsCompatibleModification(string modHomeDirectoryPath)
+    {
+        const string modDataFolderName = "data";
+
+        string modRootPath = Path.Combine(modHomeDirectoryPath, modDataFolderName);
+
+        if (!Directory.Exists(modRootPath))
+        {
+            return false;
+        }
+
+        return true;
     }
 }
