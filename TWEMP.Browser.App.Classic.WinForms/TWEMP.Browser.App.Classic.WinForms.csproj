@@ -34,6 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TWEMP.Browser.App.Classic.CommonLibrary\TWEMP.Browser.App.Classic.CommonLibrary.csproj" />
     <ProjectReference Include="..\TWEMP.Browser.Core.CommonLibrary\TWEMP.Browser.Core.CommonLibrary.csproj" />
+    <ProjectReference Include="..\TWEMP.Browser.Core.GamingSupport\TWEMP.Browser.Core.GamingSupport.csproj" />
   </ItemGroup>
 
   <ItemGroup>

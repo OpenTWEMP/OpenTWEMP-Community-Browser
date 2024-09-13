@@ -5,10 +5,15 @@
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
 #pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
+#define USE_NEW_LAUNCHER_API
+#define USE_OLD_LAUNCHER_API
+#undef USE_OLD_LAUNCHER_API
+
 namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.GamingSupport;
 
 internal partial class MainBrowserForm
 {
@@ -37,9 +42,15 @@ internal partial class MainBrowserForm
         }
 
         CustomConfigState targetConfigState = GetCurrentGameConfigState();
+
+#if USE_NEW_LAUNCHER_API
+        MainGamingSupportHub.LaunchGameEngineAsM2TW(targetModInfo, targetConfigState, currentMessageProvider);
+#endif
+#if USE_OLD_LAUNCHER_API
         var launchConfiguration = new GameLaunchConfigurator(
             targetModInfo, targetConfigState, currentMessageProvider);
         launchConfiguration.Execute();
+#endif
 
         ChangeLauncherGUIWhenGameExiting();
     }

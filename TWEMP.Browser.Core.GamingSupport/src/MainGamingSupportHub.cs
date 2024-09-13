@@ -12,6 +12,9 @@
 
 namespace TWEMP.Browser.Core.GamingSupport;
 
+using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins;
+
 /// <summary>
 /// Defines the centralized API to provide external access to all gaming support features.
 /// </summary>
@@ -24,8 +27,10 @@ public static class MainGamingSupportHub
     }
 #endif
 
-    public static void LaunchGameEngineAsM2TW()
+    public static void LaunchGameEngineAsM2TW(GameModificationInfo info, CustomConfigState state, IBrowserMessageProvider msg)
     {
+        M2TWGameLauncher gameLauncher = new (info, state, msg);
+        gameLauncher.Execute();
     }
 
 #if GAME_ENGINE_SUPPORT_RTW
