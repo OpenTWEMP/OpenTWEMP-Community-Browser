@@ -4,9 +4,9 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.GamingSupport.src.TotalWarEngine.M2TW.Automation;
+namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation;
 
-using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.CommonLibrary;
 
 public static class GameConfigRoutines
 {
