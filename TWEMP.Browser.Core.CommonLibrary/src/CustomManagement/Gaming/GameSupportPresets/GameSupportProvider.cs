@@ -9,8 +9,10 @@
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 using TWEMP.Browser.Core.BaseDataTypes;
+
+#if LAUNCHER_AGENT
 using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
-using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins;
+#endif
 
 /// <summary>
 /// Represents a game support provider type.

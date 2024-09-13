@@ -4,17 +4,15 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-#define USE_TEMP_CONSTANTS
-#define USE_TotalWarEngineSupportProvider
-#undef USE_TotalWarEngineSupportProvider
-
-// TODO: Move this class definition to the TWEMP.Browser.Core.GamingSupport class library!
-namespace TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins;
+namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Launcher;
 
 using System.Diagnostics;
 using System.Text;
+using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Plugins;
+using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
+using TWEMP.Browser.Core.GamingSupport;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
 
 /// <summary>
 /// Implements the game launcher agent for the "Medieval 2 Total War" game engine (M2TW).
@@ -25,7 +23,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
     private readonly CustomConfigState currentCfgState;
     private readonly IBrowserMessageProvider currentMessageProvider;
 
-    private readonly M2TWGameConfigurator gameConfiguratorAgent; // TODO: Replace to the IGameConfiguratorAgent type!
+    private readonly LegacyGameConfigurator gameConfiguratorAgent; // TODO: Replace to the IGameConfiguratorAgent type!
 
     public M2TWGameLauncher(
         GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
@@ -34,7 +32,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
         this.currentCfgState = state;
         this.currentMessageProvider = messageProvider;
 
-        this.gameConfiguratorAgent = new M2TWGameConfigurator(this.currentGameMod);
+        this.gameConfiguratorAgent = new LegacyGameConfigurator(this.currentGameMod);
     }
 
     public void Execute()
@@ -137,28 +135,14 @@ public class M2TWGameLauncher : IGameLauncherAgent
                 modExecutionProcess.StartInfo = this.InitializeGameLaunch(mod_config);
                 string modExecutableBaseName = Path.GetFileNameWithoutExtension(this.currentGameMod.CurrentSetup.ExecutableFileName) !;
 
-#if USE_TEMP_CONSTANTS
-                const string gameExecutableBaseNameClassic = "kingdoms";
-                if (modExecutableBaseName.Equals(gameExecutableBaseNameClassic))
-#endif
-#if USE_TotalWarEngineSupportProvider
-                if (modExecutableBaseName.Equals(
-                    TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_CLASSIC2))
-#endif
+                if (modExecutableBaseName.Equals(TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_CLASSIC2))
                 {
                     modExecutionProcess.Start();
                     modExecutionProcess.WaitForExit();
                     return;
                 }
 
-#if USE_TEMP_CONSTANTS
-                const string gameExecutableBaseNameSteam = "medieval2";
-                if (modExecutableBaseName.Equals(gameExecutableBaseNameSteam))
-#endif
-#if USE_TotalWarEngineSupportProvider
-                if (modExecutableBaseName.Equals(
-                    TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_STEAM))
-#endif
+                if (modExecutableBaseName.Equals(TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_STEAM))
                 {
                     modExecutionProcess.Start();
                     Thread.Sleep(20_000); // 20 seconds

@@ -13,7 +13,7 @@
 namespace TWEMP.Browser.Core.GamingSupport;
 
 using TWEMP.Browser.Core.CommonLibrary;
-using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Launcher;
 
 /// <summary>
 /// Defines the centralized API to provide external access to all gaming support features.

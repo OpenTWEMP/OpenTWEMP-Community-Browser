@@ -17,4 +17,8 @@
     <ProjectReference Include="..\TWEMP.Browser.Core.CommonLibrary\TWEMP.Browser.Core.CommonLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="src\TotalWarEngine\M2TW\Launcher\" />
+  </ItemGroup>
+
 </Project>
