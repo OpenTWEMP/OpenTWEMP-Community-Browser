@@ -104,14 +104,14 @@
 * [ ] Create design where the AppSystemSettingsManager class is a part of the BrowserCore class.
 * [ ] Create design where the MediaDeviceManager class is a part of the BrowserCore class.
 * [ ] Move the TWEMP.Browser.Core.CommonLibrary.LocalizationManager wrapper to the BrowserCore class.
-* [ ] Move the TWEMP.Browser.Core.CommonLibrary.GameLaunchConfigurator wrapper to the BrowserCore class.
+* [x] Move the TWEMP.Browser.Core.CommonLibrary.GameLaunchConfigurator wrapper to the BrowserCore class.
 * [ ] Move the BrowserMessageProvider class the TWEMP.Browser.Core.CommonLibrary.Messaging namespace.
 * [ ] Deprecate the GuiLocale class and use the BrowserCore class instead it in external clients.
 * [ ] Deprecate the FormLocaleSnapshot class and use a new similar abstract class instead it in external clients.
 
 ### TWEMP.Browser.Core.GamingSupport
 
-* [ ] Use only the GameConfigRoutines class from the TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation namespace (remove all doubles from the TWEMP.Browser.Core.CommonLibrary class library).
+* [x] Use only the GameConfigRoutines class from the TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation namespace (remove all doubles from the TWEMP.Browser.Core.CommonLibrary class library).
 * [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteMapFile() static method.
 * [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteStringsBinFiles() static method.
 * [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteSoundPackFiles() static method.
