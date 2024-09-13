@@ -4,6 +4,10 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
+#define USE_TEMP_CONSTANTS
+#define USE_TotalWarEngineSupportProvider
+#undef USE_TotalWarEngineSupportProvider
+
 // TODO: Move this class definition to the TWEMP.Browser.Core.GamingSupport class library!
 namespace TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures.Plugins;
 
@@ -11,7 +15,6 @@ using System.Diagnostics;
 using System.Text;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Plugins;
-using TWEMP.Browser.Core.GamingSupport;
 
 /// <summary>
 /// Implements the game launcher agent for the "Medieval 2 Total War" game engine (M2TW).
@@ -134,14 +137,28 @@ public class M2TWGameLauncher : IGameLauncherAgent
                 modExecutionProcess.StartInfo = this.InitializeGameLaunch(mod_config);
                 string modExecutableBaseName = Path.GetFileNameWithoutExtension(this.currentGameMod.CurrentSetup.ExecutableFileName) !;
 
-                if (modExecutableBaseName.Equals(TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_CLASSIC2))
+#if USE_TEMP_CONSTANTS
+                const string gameExecutableBaseNameClassic = "kingdoms";
+                if (modExecutableBaseName.Equals(gameExecutableBaseNameClassic))
+#endif
+#if USE_TotalWarEngineSupportProvider
+                if (modExecutableBaseName.Equals(
+                    TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_CLASSIC2))
+#endif
                 {
                     modExecutionProcess.Start();
                     modExecutionProcess.WaitForExit();
                     return;
                 }
 
-                if (modExecutableBaseName.Equals(TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_STEAM))
+#if USE_TEMP_CONSTANTS
+                const string gameExecutableBaseNameSteam = "medieval2";
+                if (modExecutableBaseName.Equals(gameExecutableBaseNameSteam))
+#endif
+#if USE_TotalWarEngineSupportProvider
+                if (modExecutableBaseName.Equals(
+                    TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_STEAM))
+#endif
                 {
                     modExecutionProcess.Start();
                     Thread.Sleep(20_000); // 20 seconds
