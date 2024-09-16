@@ -7,12 +7,12 @@
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 using TWEMP.Browser.Core.CommonLibrary;
-using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 /// <summary>
 /// Implements the game configurator agent for the "Medieval 2 Total War" game engine (M2TW).
 /// </summary>
-public class M2TWGameConfigurator : IGameConfiguratorAgent_TempPlaceholder
+public class M2TWGameConfigurator : IGameConfiguratorAgent
 {
     private readonly GameModificationInfo gameModificationInfo;
 
@@ -28,20 +28,20 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent_TempPlaceholder
     /// <summary>
     /// Gets M2TW configuration settings by default.
     /// </summary>
-    /// <returns>The string with default settings of the game configuration.</returns>
-    public string GetDefaultSettingsString()
+    /// <returns>The array of game configuration settings.</returns>
+    public GameCfgSection[] GetDefaultConfigSettings()
     {
-        return string.Empty; // TODO: Implement using existing M2TW config settings!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing M2TW config settings!
     }
 
     /// <summary>
     /// Gets M2TW configuration settings via a custom configuration state.
     /// </summary>
     /// <param name="state">A target custom game configuration state.</param>
-    /// <returns>The string with custom settings of the game configuration.</returns>
-    public string GetCustomSettingsString(ICustomConfigState state)
+    /// <returns>The array of game configuration settings.</returns>
+    public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
     {
-        return string.Empty; // TODO: Implement using existing M2TW config settings!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing M2TW config settings!
     }
 
 #if LEGACY_CONFIG_BUILDER_CODE

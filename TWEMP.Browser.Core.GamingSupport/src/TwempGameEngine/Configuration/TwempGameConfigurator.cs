@@ -6,8 +6,6 @@ namespace TWEMP.Browser.Core.GamingSupport.TwempGameEngine.Configuration;
 
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
-using ICustomConfigState = AbstractPlaceholders.ICustomConfigState;
-using IGameConfiguratorAgent = AbstractPlaceholders.IGameConfiguratorAgent;
 
 /// <summary>
 /// Implements the game configurator agent for the "OpenTWEMP Game Engine" game engine (TWEMP).
@@ -31,7 +29,7 @@ public class TwempGameConfigurator : IGameConfiguratorAgent
     /// <returns>The array of game configuration settings.</returns>
     public GameCfgSection[] GetDefaultConfigSettings()
     {
-        return new GameCfgSection[] { }; // TODO: Implement using existing OpenTWEMP config settings!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing OpenTWEMP config settings!
     }
 
     /// <summary>
@@ -41,6 +39,6 @@ public class TwempGameConfigurator : IGameConfiguratorAgent
     /// <returns>The array of game configuration settings.</returns>
     public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
     {
-        return new GameCfgSection[] { }; // TODO: Implement using existing OpenTWEMP config settings!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing OpenTWEMP config settings!
     }
 }

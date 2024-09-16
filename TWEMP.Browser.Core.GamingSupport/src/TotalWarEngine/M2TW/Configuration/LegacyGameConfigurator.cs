@@ -32,9 +32,9 @@ public class LegacyGameConfigurator : IGameConfiguratorAgent
     /// Gets M2TW configuration settings by default.
     /// </summary>
     /// <returns>The array of game configuration settings.</returns>
-    public CfgOptionsSubSet[] GetDefaultConfigSettings()
+    public GameCfgSection[] GetDefaultConfigSettings()
     {
-        return Array.Empty<CfgOptionsSubSet>(); // TODO: Implement using existing M2TW config settings!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing M2TW config settings!
     }
 
     /// <summary>
@@ -42,9 +42,9 @@ public class LegacyGameConfigurator : IGameConfiguratorAgent
     /// </summary>
     /// <param name="state">A target custom game configuration state.</param>
     /// <returns>The array of game configuration settings.</returns>
-    public CfgOptionsSubSet[] GetCustomConfigSettings(ICustomConfigState state)
+    public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
     {
-        return Array.Empty<CfgOptionsSubSet>(); // TODO: Implement using existing M2TW config settings!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing M2TW config settings!
     }
 
     public List<CfgOptionsSubSet> InitializeMinimalModSettings(CustomConfigState cfg)

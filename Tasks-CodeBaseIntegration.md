@@ -27,7 +27,7 @@
 * [x] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Move the GameCfgSection class to the TWEMP.Browser.Core.CommonLibrary class library.
 * [x] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace the GameModificationInfo placeholder class to the imported type - TWEMP.Browser.Core.CommonLibrary.GameModificationInfo.
 * [ ] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace the ICustomConfigState placeholder interface to the imported type - TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.ICustomConfigState.
-* [ ] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace the IGameConfiguratorAgent placeholder interface to the imported type - TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.IGameConfiguratorAgent.
+* [x] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace the IGameConfiguratorAgent placeholder interface to the imported type - TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.IGameConfiguratorAgent.
 * [x] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace IBrowserMessageProvider and BrowserMessageType placeholder types to the same imported types from TWEMP.Browser.Core.CommonLibrary.
 * [ ] GameAudioCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
 * [ ] GameCameraCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.

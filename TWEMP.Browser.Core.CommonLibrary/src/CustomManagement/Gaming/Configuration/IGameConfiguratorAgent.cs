@@ -13,12 +13,12 @@ public interface IGameConfiguratorAgent
     /// Gets game configuration settings by default.
     /// </summary>
     /// <returns>The array of game configuration settings.</returns>
-    public abstract CfgOptionsSubSet[] GetDefaultConfigSettings();
+    public abstract GameCfgSection[] GetDefaultConfigSettings();
 
     /// <summary>
     /// Gets game configuration settings via a custom configuration state.
     /// </summary>
     /// <param name="state">A target custom game configuration state.</param>
     /// <returns>The array of game configuration settings.</returns>
-    public abstract CfgOptionsSubSet[] GetCustomConfigSettings(ICustomConfigState state);
+    public abstract GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state);
 }

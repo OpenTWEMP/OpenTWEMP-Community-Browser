@@ -6,8 +6,6 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.RTW.Configuration;
 
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
-using ICustomConfigState = AbstractPlaceholders.ICustomConfigState;
-using IGameConfiguratorAgent = AbstractPlaceholders.IGameConfiguratorAgent;
 
 /// <summary>
 /// Implements the game configurator agent for the "Rome Total War" game engine (RTW).
@@ -31,7 +29,7 @@ public class RTWGameConfigurator : IGameConfiguratorAgent
     /// <returns>The array of game configuration settings.</returns>
     public GameCfgSection[] GetDefaultConfigSettings()
     {
-        return new GameCfgSection[] { }; // TODO: Implement using existing RTW config settings!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing RTW config settings!
     }
 
     /// <summary>
@@ -41,6 +39,6 @@ public class RTWGameConfigurator : IGameConfiguratorAgent
     /// <returns>The array of game configuration settings.</returns>
     public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
     {
-        return new GameCfgSection[] { }; // TODO: Implement using existing RTW config settings!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing RTW config settings!
     }
 }
