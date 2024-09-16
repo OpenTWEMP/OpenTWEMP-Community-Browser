@@ -14,5 +14,5 @@ public interface ICustomConfigState
     /// Retrieves current settings from this custom configuration state.
     /// </summary>
     /// <returns>The array of current configuration settings.</returns>
-    public abstract CfgOptionsSubSet[] RetrieveCurrentSettings();
+    public abstract GameCfgSection[] RetrieveCurrentSettings();
 }

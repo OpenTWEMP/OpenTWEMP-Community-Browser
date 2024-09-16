@@ -46,7 +46,7 @@ public class GameConfigState
     /// <summary>
     /// Gets or sets current configuration settings.
     /// </summary>
-    public CfgOptionsSubSet[] CurrentSettings { get; set; }
+    public GameCfgSection[] CurrentSettings { get; set; }
 
     /// <summary>
     /// Creates a game configuration state with default settings.
@@ -86,9 +86,8 @@ public class GameConfigState
         }
     }
 
-    private static CfgOptionsSubSet[] InitializeSettingsByDefault(
-        GameSupportProvider provider, GameModificationInfo info)
+    private static GameCfgSection[] InitializeSettingsByDefault(GameSupportProvider provider, GameModificationInfo info)
     {
-        return new CfgOptionsSubSet[] { }; // TODO: Implement using existing M2TW config settings!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing M2TW config settings!
     }
 }

@@ -8,7 +8,6 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
-using ICustomConfigState = AbstractPlaceholders.ICustomConfigState;
 
 public record GameVideoCfgSectionStateView : ICustomConfigState
 {
@@ -106,7 +105,7 @@ public record GameVideoCfgSectionStateView : ICustomConfigState
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return new GameCfgSection[] { };
+        return Array.Empty<GameCfgSection>();
     }
 
     private static M2TWGameCfgSection GetVideoSubSet(M2TWGameConfigStateView cfg)

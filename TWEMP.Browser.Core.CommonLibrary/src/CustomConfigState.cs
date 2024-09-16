@@ -40,8 +40,8 @@ public record CustomConfigState : ICustomConfigState
 
     public bool EnabledLogsHistorySaving { get; init; }
 
-    public CfgOptionsSubSet[] RetrieveCurrentSettings()
+    public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return new CfgOptionsSubSet[] { }; // TODO: Implement retrieving existing M2TW config settings from properties!
+        return Array.Empty<GameCfgSection>(); // TODO: Implement retrieving existing M2TW config settings from properties!
     }
 }
