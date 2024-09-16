@@ -13,7 +13,7 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
 using TWEMP.Browser.Core.GamingSupport;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation;
-using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 /// <summary>
 /// Implements the game launcher agent for the "Medieval 2 Total War" game engine (M2TW).
@@ -24,7 +24,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
     private readonly CustomConfigState currentCfgState;
     private readonly IBrowserMessageProvider currentMessageProvider;
 
-    private readonly LegacyGameConfigurator gameConfiguratorAgent; // TODO: Replace to the IGameConfiguratorAgent type!
+    private readonly M2TWGameConfigurator gameConfigurator;
 
     public M2TWGameLauncher(
         GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
@@ -33,7 +33,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
         this.currentCfgState = state;
         this.currentMessageProvider = messageProvider;
 
-        this.gameConfiguratorAgent = new LegacyGameConfigurator(this.currentGameMod);
+        this.gameConfigurator = new M2TWGameConfigurator(this.currentGameMod);
     }
 
     public void Execute()
@@ -124,7 +124,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
 
     private void Launch()
     {
-        List<CfgOptionsSubSet> mod_settings = this.gameConfiguratorAgent.InitializeMinimalModSettings(this.currentCfgState);
+        List<CfgOptionsSubSet> mod_settings = this.gameConfigurator.InitializeMinimalModSettings(this.currentCfgState);
 
         string mod_config = this.GenerateModConfigFile(mod_settings);
 

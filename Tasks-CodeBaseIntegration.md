@@ -38,7 +38,7 @@
 * [ ] ModGameplaySectionStateView : Implement the RetrieveCurrentSettings() interface method.
 * [ ] ModHotseatSectionStateView : Implement the RetrieveCurrentSettings() interface method.
 * [ ] ModSettingsSectionStateView : Implement the RetrieveCurrentSettings() interface method.
-* [ ] Use the TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.M2TWGameConfigurator class instead of the same double type from the TWEMP.Browser.Core.CommonLibrary class library.
+* [x] Use the TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.M2TWGameConfigurator class instead of the same double type from the TWEMP.Browser.Core.CommonLibrary class library.
 * [ ] Change the M2TWGameConfigurator class definition to use the M2TWGameConfigStateView record type to configure M2TW mods.
 
 ### TWEMP.Browser.Core.GamingSupport + TWEMP.Browser.App.Classic.WinForms
