@@ -4,7 +4,7 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 // TODO: Use this type definition instead of the TWEMP.Browser.Core.CommonLibrary.CfgOption (after merging beta24* branches).
 public abstract class GameCfgOption

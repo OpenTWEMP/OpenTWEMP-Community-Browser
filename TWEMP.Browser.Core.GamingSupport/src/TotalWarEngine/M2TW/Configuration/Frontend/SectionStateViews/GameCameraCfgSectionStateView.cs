@@ -6,9 +6,9 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
-
-using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using ICustomConfigState = AbstractPlaceholders.ICustomConfigState;
 
 public record GameCameraCfgSectionStateView : ICustomConfigState
 {

@@ -2,9 +2,12 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace TWEMP.Browser.Core.CommonLibrary.GamingSupport.TotalWarEngine.RTW.Configuration;
+namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.RTW.Configuration;
 
-using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+using ICustomConfigState = AbstractPlaceholders.ICustomConfigState;
+using IGameConfiguratorAgent = AbstractPlaceholders.IGameConfiguratorAgent;
 
 /// <summary>
 /// Implements the game configurator agent for the "Rome Total War" game engine (RTW).

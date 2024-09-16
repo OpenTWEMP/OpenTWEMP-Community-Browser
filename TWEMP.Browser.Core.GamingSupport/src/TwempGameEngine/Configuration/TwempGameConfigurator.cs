@@ -4,7 +4,10 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TwempGameEngine.Configuration;
 
-using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+using ICustomConfigState = AbstractPlaceholders.ICustomConfigState;
+using IGameConfiguratorAgent = AbstractPlaceholders.IGameConfiguratorAgent;
 
 /// <summary>
 /// Implements the game configurator agent for the "OpenTWEMP Game Engine" game engine (TWEMP).

@@ -6,7 +6,7 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
-using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 public class M2TWGameCfgOption : GameCfgOption
 {

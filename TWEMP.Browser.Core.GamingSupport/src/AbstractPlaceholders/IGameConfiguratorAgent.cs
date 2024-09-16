@@ -6,6 +6,8 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+
 // TODO: Replace to the imported type - TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.IGameConfiguratorAgent.
 public interface IGameConfiguratorAgent_TempPlaceholder
 {
