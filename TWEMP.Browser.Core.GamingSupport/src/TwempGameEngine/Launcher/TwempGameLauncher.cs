@@ -6,7 +6,7 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TwempGameEngine.Launcher;
 
-using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
+using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
 
 /// <summary>
 /// Implements the game launcher agent for the "OpenTWEMP Game Engine" game engine (TWEMP).
