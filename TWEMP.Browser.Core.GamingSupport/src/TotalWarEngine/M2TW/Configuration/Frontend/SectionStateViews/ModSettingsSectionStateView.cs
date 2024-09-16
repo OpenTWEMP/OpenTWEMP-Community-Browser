@@ -6,8 +6,8 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
+using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
-using TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 using ICustomConfigState = AbstractPlaceholders.ICustomConfigState;
 
