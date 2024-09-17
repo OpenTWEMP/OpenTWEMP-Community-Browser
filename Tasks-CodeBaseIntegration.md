@@ -88,7 +88,7 @@
 ### TWEMP.Browser.Core.CommonLibrary
 
 * [x] Move the ICanChangeMyLocalization interface to the TWEMP.Browser.Core.CommonLibrary.Abstractions namespace.
-* [ ] Move the IGameConfigState interface to the TWEMP.Browser.Core.CommonLibrary.Abstractions namespace.
+* [x] Move the IGameConfigState interface to the TWEMP.Browser.Core.CommonLibrary.Abstractions namespace.
 * [ ] Move the IUpdatableBrowser interface to the TWEMP.Browser.Core.CommonLibrary.Abstractions namespace.
 * [ ] Move the IBrowserMessageProvider interface to the TWEMP.Browser.Core.CommonLibrary.Abstractions namespace.
 * [ ] Move the BrowserMessageType enumeration to the TWEMP.Browser.Core.CommonLibrary.Logging namespace.
