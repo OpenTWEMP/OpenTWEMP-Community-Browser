@@ -9,6 +9,7 @@ namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.Utilities;
 using TWEMP.Browser.Core.GamingSupport;
 
 internal partial class MainBrowserForm

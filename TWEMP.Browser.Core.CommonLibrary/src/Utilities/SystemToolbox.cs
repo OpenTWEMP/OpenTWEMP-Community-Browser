@@ -4,7 +4,7 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.Utilities;
 
 using System.Diagnostics;
 using TWEMP.Browser.Core.CommonLibrary.Messaging;

@@ -92,7 +92,7 @@
 * [ ] Move the IUpdatableBrowser interface to the TWEMP.Browser.Core.CommonLibrary.Abstractions namespace.
 * [x] Move the IBrowserMessageProvider interface to the TWEMP.Browser.Core.CommonLibrary.Abstractions namespace.
 * [x] Move the BrowserMessageType enumeration to the TWEMP.Browser.Core.CommonLibrary.Logging namespace.
-* [ ] Move the ShowFileSystemDirectory class to the TWEMP.Browser.Core.CommonLibrary.Utilities namespace.
+* [x] Move the ShowFileSystemDirectory class to the TWEMP.Browser.Core.CommonLibrary.Utilities namespace.
 * [ ] Create the BrowserCore class to expose a facade API for any clients of the TWEMP.Browser.Core.CommonLibrary class library.
 * [ ] Move the TWEMP.Browser.Core.CommonLibrary.Settings class  definition to the BrowserCore and replace all external references.
 * [ ] Create design where the CustomGameCollectionsManager class is a part of the BrowserCore class.
