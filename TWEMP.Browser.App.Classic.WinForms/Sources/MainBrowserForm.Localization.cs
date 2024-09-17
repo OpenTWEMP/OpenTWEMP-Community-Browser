@@ -9,6 +9,7 @@
 namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 internal partial class MainBrowserForm : IUpdatableBrowser, ICanChangeMyLocalization
 {

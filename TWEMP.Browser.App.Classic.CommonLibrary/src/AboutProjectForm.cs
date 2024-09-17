@@ -9,6 +9,7 @@
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 public partial class AboutProjectForm : Form, ICanChangeMyLocalization
 {
