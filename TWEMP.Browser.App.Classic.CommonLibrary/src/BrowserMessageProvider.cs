@@ -6,7 +6,7 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
-using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.Messaging;
 
 public class BrowserMessageProvider : IBrowserMessageProvider
 {
