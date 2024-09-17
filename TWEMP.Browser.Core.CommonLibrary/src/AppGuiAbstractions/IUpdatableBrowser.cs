@@ -4,7 +4,7 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 
 public interface IUpdatableBrowser
 {

@@ -10,6 +10,7 @@ namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 
 internal partial class MainBrowserForm : IUpdatableBrowser
 {
