@@ -8,7 +8,7 @@
 #define DEEP_M2TW_COMPATIBILITY_ANALYSIS
 #undef DEEP_M2TW_COMPATIBILITY_ANALYSIS
 
-namespace TWEMP.Browser.Core.GamingSupport;
+namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine;
 
 using System.IO;
 

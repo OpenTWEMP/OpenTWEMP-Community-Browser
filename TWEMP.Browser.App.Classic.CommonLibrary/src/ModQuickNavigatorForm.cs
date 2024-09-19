@@ -11,7 +11,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 using TWEMP.Browser.Core.CommonLibrary.Utilities;
-using M2TW = TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider;
+using M2TW = TWEMP.Browser.Core.GamingSupport.TotalWarEngine.TotalWarEngineSupportProvider;
 
 public partial class ModQuickNavigatorForm : Form, ICanChangeMyLocalization
 {
