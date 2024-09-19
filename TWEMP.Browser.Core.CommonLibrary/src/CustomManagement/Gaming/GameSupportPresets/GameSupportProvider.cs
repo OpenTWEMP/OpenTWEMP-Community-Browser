@@ -8,8 +8,6 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
-using TWEMP.Browser.Core.BaseDataTypes;
-
 #if LAUNCHER_AGENT
 using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
 #endif

@@ -7,16 +7,18 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
+
 public partial class GameConfigProfileCreateForm : Form
 {
-    private GameCfgType currentGameCfgType = GameCfgType.M2TW;
+    private GameEngineSupportType currentGameCfgType = GameEngineSupportType.M2TW;
 
     public GameConfigProfileCreateForm()
     {
         this.InitializeComponent();
     }
 
-    private static void LoadGameConfigSettingsForm(GameCfgType gameCfgType)
+    private static void LoadGameConfigSettingsForm(GameEngineSupportType gameCfgType)
     {
         /* Load a specific form for a selected game config type:
         * 1) M2TW -> ModConfigSettingsForm
@@ -24,12 +26,12 @@ public partial class GameConfigProfileCreateForm : Form
 
         switch (gameCfgType)
         {
-            case GameCfgType.M2TW:
+            case GameEngineSupportType.M2TW:
                 var modConfigSettingsForm = new ModConfigSettingsForm();
                 modConfigSettingsForm.ShowDialog();
                 break;
-            case GameCfgType.TWEMP:
-            case GameCfgType.RTW:
+            case GameEngineSupportType.TWEMP:
+            case GameEngineSupportType.RTW:
                 MessageBox.Show(
                     text: "NON-IMPLEMENTED CFG TYPE",
                     caption: "Non-Implemented Game Configurator",
@@ -75,25 +77,4 @@ public partial class GameConfigProfileCreateForm : Form
     {
         this.Close();
     }
-}
-
-/// <summary>
-/// Serves as a temp placeholder for an entity represented a game configuration type.
-/// </summary>
-internal enum GameCfgType
-{
-    /// <summary>
-    /// TWEMP game config type.
-    /// </summary>
-    TWEMP,
-
-    /// <summary>
-    /// M2TW game config type.
-    /// </summary>
-    M2TW,
-
-    /// <summary>
-    /// RTW game config type.
-    /// </summary>
-    RTW,
 }

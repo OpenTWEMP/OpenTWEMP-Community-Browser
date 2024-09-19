@@ -15,8 +15,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TWEMP.Browser.Core.BaseDataTypes\TWEMP.Browser.Core.BaseDataTypes.csproj" />
-  </ItemGroup>
-
 </Project>

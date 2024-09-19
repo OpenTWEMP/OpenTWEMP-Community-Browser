@@ -82,8 +82,8 @@
 * [ ] ModSupportPresetSettingsForm.cs : Simplify the ApplyButton_Click() procedure.
 * [ ] GameConfigProfileCreateForm.cs : Simplify the LoadGameConfigSettingsForm() method.
 * [ ] GameConfigProfileCreateForm.cs : Simplify the FormOkButton_Click() procedure.
-* [ ] GameConfigProfileCreateForm.cs : Move the GameCfgType enumeration to the TWEMP.Browser.Core.CommonLibrary class library.
-* [ ] Move the IConfigurableGameModificationView interface to the TWEMP.Browser.Core.CommonLibrary class library.
+* [x] GameConfigProfileCreateForm.cs : Move the GameCfgType enumeration to the TWEMP.Browser.Core.CommonLibrary class library.
+* [x] Move the IConfigurableGameModificationView interface to the TWEMP.Browser.Core.CommonLibrary class library.
 
 ### TWEMP.Browser.Core.CommonLibrary
 

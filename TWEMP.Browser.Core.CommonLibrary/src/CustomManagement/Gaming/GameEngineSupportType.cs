@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace TWEMP.Browser.Core.BaseDataTypes;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 
 /// <summary>
 /// Defines available types of game engines supported by the application.
