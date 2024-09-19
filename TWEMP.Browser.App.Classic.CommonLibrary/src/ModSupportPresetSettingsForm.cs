@@ -9,6 +9,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using System.Windows.Forms;
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 public partial class ModSupportPresetSettingsForm : Form
 {

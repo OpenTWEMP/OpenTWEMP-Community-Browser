@@ -4,7 +4,7 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.App.Classic.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 public interface IConfigurableGameModificationView
 {
