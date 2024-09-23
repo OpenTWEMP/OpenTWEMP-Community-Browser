@@ -37,34 +37,42 @@ public readonly struct ColorTheme
 
     public Color CommonControlsForeColor { get; }
 
-    public static ColorTheme SelectColorThemeByStyle(GuiStyle style)
+    public static ColorTheme CreateColorThemeByStyle(GuiStyle style)
     {
-        if (style == GuiStyle.Light)
+        if (style != GuiStyle.Default)
         {
-            return new ColorTheme(
-                formBack: Color.SeaShell,
-                panelsBack: Color.Azure,
-                modUIBack: Color.AliceBlue,
-                commonUIBack: Color.GhostWhite,
-                commonUIFore: Color.Black);
+            if (style == GuiStyle.Dark)
+            {
+                return CreateDarkColorTheme();
+            }
+
+            if (style == GuiStyle.Light)
+            {
+                return CreateLightColorTheme();
+            }
         }
 
-        if (style == GuiStyle.Dark)
-        {
-            return new ColorTheme(
-                formBack: Color.DarkSlateGray,
-                panelsBack: Color.LightSlateGray,
-                modUIBack: Color.SlateGray,
-                commonUIBack: Color.DarkGray,
-                commonUIFore: Color.Snow);
-        }
-
-        // Initialize description for a default color theme style (GuiStyle.Default).
-        return new ColorTheme(
-            formBack: Color.DarkSeaGreen,
-            panelsBack: Color.MediumAquamarine,
-            modUIBack: Color.MediumSeaGreen,
-            commonUIBack: Color.LightGreen,
-            commonUIFore: Color.Black);
+        return CreateDefaultColorTheme();
     }
+
+    private static ColorTheme CreateDefaultColorTheme() => new (
+        formBack: Color.DarkSeaGreen,
+        panelsBack: Color.MediumAquamarine,
+        modUIBack: Color.MediumSeaGreen,
+        commonUIBack: Color.LightGreen,
+        commonUIFore: Color.Black);
+
+    private static ColorTheme CreateDarkColorTheme() => new (
+        formBack: Color.DarkSlateGray,
+        panelsBack: Color.LightSlateGray,
+        modUIBack: Color.SlateGray,
+        commonUIBack: Color.DarkGray,
+        commonUIFore: Color.Snow);
+
+    private static ColorTheme CreateLightColorTheme() => new (
+        formBack: Color.SeaShell,
+        panelsBack: Color.Azure,
+        modUIBack: Color.AliceBlue,
+        commonUIBack: Color.GhostWhite,
+        commonUIFore: Color.Black);
 }

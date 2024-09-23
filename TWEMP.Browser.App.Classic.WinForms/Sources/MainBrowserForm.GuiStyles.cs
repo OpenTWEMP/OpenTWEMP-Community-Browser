@@ -15,7 +15,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 {
     public void UpdateGUIStyle(GuiStyle style)
     {
-        ColorTheme colorTheme = ColorTheme.SelectColorThemeByStyle(style);
+        ColorTheme colorTheme = BrowserKernel.UpdateCurrentColorTheme(style);
 
         // Set back color for main form.
         BackColor = colorTheme.MainFormBackColor;

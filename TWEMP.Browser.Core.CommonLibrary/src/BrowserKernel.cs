@@ -7,6 +7,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 /// <summary>
@@ -14,6 +15,26 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 /// </summary>
 public static class BrowserKernel
 {
+    private static readonly AppGuiStyleManager AppGuiStyleManagerInstance;
+
+    static BrowserKernel()
+    {
+        AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
+    }
+
+    public static GuiStyle CurrentGUIStyle
+    {
+        get
+        {
+            return AppGuiStyleManagerInstance.CurrentStyle;
+        }
+
+        set
+        {
+            AppGuiStyleManagerInstance.CurrentStyle = value;
+        }
+    }
+
     public static bool UseExperimentalFeatures
     {
         get
@@ -25,6 +46,21 @@ public static class BrowserKernel
         {
             AppSystemSettingsManager.UseExperimentalFeatures = value;
         }
+    }
+
+    public static ColorTheme SelectCurrentColorTheme()
+    {
+        return AppGuiStyleManagerInstance.GetCurrentColorTheme();
+    }
+
+    public static ColorTheme UpdateCurrentColorTheme(GuiStyle style)
+    {
+        if (CurrentGUIStyle != style)
+        {
+            CurrentGUIStyle = style;
+        }
+
+        return AppGuiStyleManagerInstance.GetCurrentColorTheme();
     }
 
     public static bool IsEnabledLocalizationOnEnglish()

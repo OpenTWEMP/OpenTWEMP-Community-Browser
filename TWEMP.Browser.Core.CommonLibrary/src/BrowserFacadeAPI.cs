@@ -8,13 +8,10 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 using TWEMP.Browser.Core.CommonLibrary.Logging;
 
 /// <summary>
@@ -22,8 +19,6 @@ using TWEMP.Browser.Core.CommonLibrary.Logging;
 /// </summary>
 public static class Settings
 {
-    private static readonly AppGuiStyleManager AppGuiStyleManagerInstance;
-
     static Settings()
     {
         // Initialize the default logging device.
@@ -31,8 +26,6 @@ public static class Settings
 
         Logger.CurrentInstance?.Open(); // test logging
 
-        // Setup the global object of the GUI style manager by default.
-        AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
         Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
             "AppGuiStyleManager", "AppGuiStyleManager.Create()", DateTime.Now)); // test logging
 
@@ -48,23 +41,6 @@ public static class Settings
 
         Logger.CurrentInstance?.Close(); // test logging
     }
-
-    #region Facade Interface: AppGuiStyleManager
-
-    public static GuiStyle CurrentGUIStyle
-    {
-        get
-        {
-            return AppGuiStyleManagerInstance.CurrentStyle;
-        }
-
-        set
-        {
-            AppGuiStyleManagerInstance.CurrentStyle = value;
-        }
-    }
-
-    #endregion
 
     #region Facade Interface: CustomGameCollectionsManager
 

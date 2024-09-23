@@ -56,4 +56,13 @@ public class AppGuiStyleManager
 
         return new AppGuiStyleManager();
     }
+
+    /// <summary>
+    /// Gets a color theme according the current GUI style.
+    /// </summary>
+    /// <returns>The color theme of the current GUI style.</returns>
+    public ColorTheme GetCurrentColorTheme()
+    {
+        return ColorTheme.CreateColorThemeByStyle(this.CurrentStyle);
+    }
 }

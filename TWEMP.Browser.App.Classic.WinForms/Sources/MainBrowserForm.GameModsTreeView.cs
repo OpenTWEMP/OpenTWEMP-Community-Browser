@@ -113,7 +113,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                     if (selectedModification.CanBeLaunchedViaNativeBatch())
                     {
                         radioButtonLauncherProvider_BatchScript.Enabled = true;
-                        ColorTheme currentColorTheme = ColorTheme.SelectColorThemeByStyle(Settings.CurrentGUIStyle);
+                        ColorTheme currentColorTheme = BrowserKernel.SelectCurrentColorTheme();
                         radioButtonLauncherProvider_BatchScript.ForeColor = currentColorTheme.CommonControlsForeColor;
                     }
                     else
@@ -125,7 +125,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                     if (selectedModification.CanBeLaunchedViaNativeSetup())
                     {
                         radioButtonLauncherProvider_NativeSetup.Enabled = true;
-                        ColorTheme currentColorTheme = ColorTheme.SelectColorThemeByStyle(Settings.CurrentGUIStyle);
+                        ColorTheme currentColorTheme = BrowserKernel.SelectCurrentColorTheme();
                         radioButtonLauncherProvider_NativeSetup.ForeColor = currentColorTheme.CommonControlsForeColor;
                     }
                     else
@@ -137,7 +137,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                     if (selectedModification.CanBeLaunchedViaM2TWEOP())
                     {
                         radioButtonLauncherProvider_M2TWEOP.Enabled = true;
-                        ColorTheme currentColorTheme = ColorTheme.SelectColorThemeByStyle(Settings.CurrentGUIStyle);
+                        ColorTheme currentColorTheme = BrowserKernel.SelectCurrentColorTheme();
                         radioButtonLauncherProvider_M2TWEOP.ForeColor = currentColorTheme.CommonControlsForeColor;
                     }
                     else

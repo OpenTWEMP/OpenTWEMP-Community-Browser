@@ -65,7 +65,7 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 
     private GuiStyle InitializeCurrentGUIStyle()
     {
-        GuiStyle activeStyle = Settings.CurrentGUIStyle;
+        GuiStyle activeStyle = BrowserKernel.CurrentGUIStyle;
 
         switch (activeStyle)
         {
@@ -93,7 +93,6 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 
     private void SaveAppSettingsButton_Click(object sender, EventArgs e)
     {
-        Settings.CurrentGUIStyle = currentGuiStyle;
         currentBrowser.UpdateGUIStyle(currentGuiStyle);
 
         if (enableEngLocaleRadioButton.Checked)
