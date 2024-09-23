@@ -103,11 +103,11 @@
 * [ ] Create design where the AppLocalizationManager class is a part of the BrowserCore class.
 * [ ] Create design where the AppSystemSettingsManager class is a part of the BrowserCore class.
 * [ ] Create design where the MediaDeviceManager class is a part of the BrowserCore class.
-* [ ] Move the TWEMP.Browser.Core.CommonLibrary.LocalizationManager wrapper to the BrowserCore class.
+* [x] Move the TWEMP.Browser.Core.CommonLibrary.LocalizationManager wrapper to the BrowserCore class.
 * [x] Move the TWEMP.Browser.Core.CommonLibrary.GameLaunchConfigurator wrapper to the BrowserCore class.
 * [ ] Move the BrowserMessageProvider class the TWEMP.Browser.Core.CommonLibrary.Messaging namespace.
-* [ ] Deprecate the GuiLocale class and use the BrowserCore class instead it in external clients.
-* [ ] Deprecate the FormLocaleSnapshot class and use a new similar abstract class instead it in external clients.
+* [x] Deprecate the GuiLocale class and use the BrowserCore class instead it in external clients.
+* [x] Deprecate the FormLocaleSnapshot class and use a new similar abstract class instead it in external clients.
 
 ### TWEMP.Browser.Core.GamingSupport
 

@@ -11,6 +11,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
 {
@@ -33,13 +34,11 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-        Text = snapshot.GetLocalizedValueByKey(Name);
-        collectionNameLabel.Text = snapshot.GetLocalizedValueByKey(collectionNameLabel.Name);
-        modsSelectionLabel.Text = snapshot.GetLocalizedValueByKey(modsSelectionLabel.Name);
-        buttonOK.Text = snapshot.GetLocalizedValueByKey(buttonOK.Name);
-        buttonCancel.Text = snapshot.GetLocalizedValueByKey(buttonCancel.Name);
+        Text = GetTextInCurrentLocalization(Name, Name);
+        collectionNameLabel.Text = GetTextInCurrentLocalization(Name, collectionNameLabel.Name);
+        modsSelectionLabel.Text = GetTextInCurrentLocalization(Name, modsSelectionLabel.Name);
+        buttonOK.Text = GetTextInCurrentLocalization(Name, buttonOK.Name);
+        buttonCancel.Text = GetTextInCurrentLocalization(Name, buttonCancel.Name);
     }
 
     private static void ShowMessageAboutEmptyCollectionCreation()

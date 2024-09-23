@@ -11,6 +11,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 {
@@ -25,13 +26,13 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
         currentBrowser = browser;
         currentGuiStyle = InitializeCurrentGUIStyle();
 
-        if (BrowserKernel.IsEnabledLocalizationOnEnglish())
+        if (IsEnabledLocalizationOnEnglish())
         {
             enableEngLocaleRadioButton.Checked = true;
             enableRusLocaleRadioButton.Checked = false;
         }
 
-        if (BrowserKernel.IsEnabledLocalizationOnRussian())
+        if (IsEnabledLocalizationOnRussian())
         {
             enableEngLocaleRadioButton.Checked = false;
             enableRusLocaleRadioButton.Checked = true;
@@ -44,24 +45,22 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
+        Text = GetTextInCurrentLocalization(Name, Name);
 
-        this.Text = snapshot.GetLocalizedValueByKey(this.Name);
+        appColorThemeGroupBox.Text = GetTextInCurrentLocalization(Name, appColorThemeGroupBox.Name);
+        uiStyleByDefaultThemeRadioButton.Text = GetTextInCurrentLocalization(Name, uiStyleByDefaultThemeRadioButton.Name);
+        uiStyleByLightThemeRadioButton.Text = GetTextInCurrentLocalization(Name, uiStyleByLightThemeRadioButton.Name);
+        uiStyleByDarkThemeRadioButton.Text = GetTextInCurrentLocalization(Name, uiStyleByDarkThemeRadioButton.Name);
 
-        appColorThemeGroupBox.Text = snapshot.GetLocalizedValueByKey(appColorThemeGroupBox.Name);
-        uiStyleByDefaultThemeRadioButton.Text = snapshot.GetLocalizedValueByKey(uiStyleByDefaultThemeRadioButton.Name);
-        uiStyleByLightThemeRadioButton.Text = snapshot.GetLocalizedValueByKey(uiStyleByLightThemeRadioButton.Name);
-        uiStyleByDarkThemeRadioButton.Text = snapshot.GetLocalizedValueByKey(uiStyleByDarkThemeRadioButton.Name);
+        appLocalizationGroupBox.Text = GetTextInCurrentLocalization(Name, appLocalizationGroupBox.Name);
+        enableEngLocaleRadioButton.Text = GetTextInCurrentLocalization(Name, enableEngLocaleRadioButton.Name);
+        enableRusLocaleRadioButton.Text = GetTextInCurrentLocalization(Name, enableRusLocaleRadioButton.Name);
 
-        appLocalizationGroupBox.Text = snapshot.GetLocalizedValueByKey(appLocalizationGroupBox.Name);
-        enableEngLocaleRadioButton.Text = snapshot.GetLocalizedValueByKey(enableEngLocaleRadioButton.Name);
-        enableRusLocaleRadioButton.Text = snapshot.GetLocalizedValueByKey(enableRusLocaleRadioButton.Name);
+        appFeaturesGroupBox.Text = GetTextInCurrentLocalization(Name, appFeaturesGroupBox.Name);
+        activatePresetsCheckBox.Text = GetTextInCurrentLocalization(Name, activatePresetsCheckBox.Name);
 
-        appFeaturesGroupBox.Text = snapshot.GetLocalizedValueByKey(appFeaturesGroupBox.Name);
-        activatePresetsCheckBox.Text = snapshot.GetLocalizedValueByKey(activatePresetsCheckBox.Name);
-
-        saveAppSettingsButton.Text = snapshot.GetLocalizedValueByKey(saveAppSettingsButton.Name);
-        exitAppSettingsButton.Text = snapshot.GetLocalizedValueByKey(exitAppSettingsButton.Name);
+        saveAppSettingsButton.Text = GetTextInCurrentLocalization(Name, saveAppSettingsButton.Name);
+        exitAppSettingsButton.Text = GetTextInCurrentLocalization(Name, exitAppSettingsButton.Name);
     }
 
     private GuiStyle InitializeCurrentGUIStyle()

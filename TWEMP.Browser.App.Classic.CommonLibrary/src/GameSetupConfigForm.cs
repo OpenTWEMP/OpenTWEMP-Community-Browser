@@ -11,6 +11,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
 {
@@ -35,13 +36,11 @@ public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-        Text = snapshot.GetLocalizedValueByKey(Name);
-        setupPathAddButton.Text = snapshot.GetLocalizedValueByKey(setupPathAddButton.Name);
-        setupPathDeleteButton.Text = snapshot.GetLocalizedValueByKey(setupPathDeleteButton.Name);
-        allPathsClearButton.Text = snapshot.GetLocalizedValueByKey(allPathsClearButton.Name);
-        formOkButton.Text = snapshot.GetLocalizedValueByKey(formOkButton.Name);
+        Text = GetTextInCurrentLocalization(Name, Name);
+        setupPathAddButton.Text = GetTextInCurrentLocalization(Name, setupPathAddButton.Name);
+        setupPathDeleteButton.Text = GetTextInCurrentLocalization(Name, setupPathDeleteButton.Name);
+        allPathsClearButton.Text = GetTextInCurrentLocalization(Name, allPathsClearButton.Name);
+        formOkButton.Text = GetTextInCurrentLocalization(Name, formOkButton.Name);
     }
 
     private static string InitializeGameSetupObjectItem(GameSetupInfo gameSetupObject)

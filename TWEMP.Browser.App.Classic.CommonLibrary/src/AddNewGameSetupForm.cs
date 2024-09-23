@@ -10,6 +10,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
 {
@@ -26,19 +27,17 @@ public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-        Text = snapshot.GetLocalizedValueByKey(Name);
-        gameSetupGroupBox.Text = snapshot.GetLocalizedValueByKey(gameSetupGroupBox.Name);
-        gameSetupNameLabel.Text = snapshot.GetLocalizedValueByKey(gameSetupNameLabel.Name);
-        setupNameResetButton.Text = snapshot.GetLocalizedValueByKey(setupNameResetButton.Name);
-        gameExecutablePathLabel.Text = snapshot.GetLocalizedValueByKey(gameExecutablePathLabel.Name);
-        gameExecutableSelectPathButton.Text = snapshot.GetLocalizedValueByKey(gameExecutableSelectPathButton.Name);
-        modcentersGroupBox.Text = snapshot.GetLocalizedValueByKey(modcentersGroupBox.Name);
-        modcenterAppendButton.Text = snapshot.GetLocalizedValueByKey(modcenterAppendButton.Name);
-        modcenterRemoveButton.Text = snapshot.GetLocalizedValueByKey(modcenterRemoveButton.Name);
-        saveButton.Text = snapshot.GetLocalizedValueByKey(saveButton.Name);
-        cancelButton.Text = snapshot.GetLocalizedValueByKey(cancelButton.Name);
+        Text = GetTextInCurrentLocalization(Name, Name);
+        gameSetupGroupBox.Text = GetTextInCurrentLocalization(Name, gameSetupGroupBox.Name);
+        gameSetupNameLabel.Text = GetTextInCurrentLocalization(Name, gameSetupNameLabel.Name);
+        setupNameResetButton.Text = GetTextInCurrentLocalization(Name, setupNameResetButton.Name);
+        gameExecutablePathLabel.Text = GetTextInCurrentLocalization(Name, gameExecutablePathLabel.Name);
+        gameExecutableSelectPathButton.Text = GetTextInCurrentLocalization(Name, gameExecutableSelectPathButton.Name);
+        modcentersGroupBox.Text = GetTextInCurrentLocalization(Name, modcentersGroupBox.Name);
+        modcenterAppendButton.Text = GetTextInCurrentLocalization(Name, modcenterAppendButton.Name);
+        modcenterRemoveButton.Text = GetTextInCurrentLocalization(Name, modcenterRemoveButton.Name);
+        saveButton.Text = GetTextInCurrentLocalization(Name, saveButton.Name);
+        cancelButton.Text = GetTextInCurrentLocalization(Name, cancelButton.Name);
     }
 
     private static bool CanSaveNewGameSetup(string setupName, string executable, List<string> modcenters)

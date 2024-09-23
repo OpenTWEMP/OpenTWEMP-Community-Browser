@@ -22,4 +22,10 @@ public static class BrowserKernel
     {
         return AppLocalizationManager.IsCurrentLocalizationName(AppLocalization.LOCALE_NAME_RUS);
     }
+
+    public static string GetTextInCurrentLocalization(string formName, string controlName)
+    {
+        LocaleSnapshot snapshot = AppLocalizationManager.CurrentLocalization.GetFormLocaleSnapshotByKey(formName);
+        return snapshot.GetLocalizedValueByKey(controlName);
+    }
 }

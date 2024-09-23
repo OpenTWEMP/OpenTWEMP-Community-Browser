@@ -11,6 +11,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class CollectionManageForm : Form, ICanChangeMyLocalization
 {
@@ -32,14 +33,12 @@ public partial class CollectionManageForm : Form, ICanChangeMyLocalization
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-        Text = snapshot.GetLocalizedValueByKey(Name);
-        groupBoxCollectionsDelete.Text = snapshot.GetLocalizedValueByKey(groupBoxCollectionsDelete.Name);
-        collectionsSelectionLabel.Text = snapshot.GetLocalizedValueByKey(collectionsSelectionLabel.Name);
-        buttonCollectionsDelete.Text = snapshot.GetLocalizedValueByKey(buttonCollectionsDelete.Name);
-        buttonCollectionsSelectAll.Text = snapshot.GetLocalizedValueByKey(buttonCollectionsSelectAll.Name);
-        buttonCollectionsDeselectAll.Text = snapshot.GetLocalizedValueByKey(buttonCollectionsDeselectAll.Name);
+        Text = GetTextInCurrentLocalization(Name, Name);
+        groupBoxCollectionsDelete.Text = GetTextInCurrentLocalization(Name, groupBoxCollectionsDelete.Name);
+        collectionsSelectionLabel.Text = GetTextInCurrentLocalization(Name, collectionsSelectionLabel.Name);
+        buttonCollectionsDelete.Text = GetTextInCurrentLocalization(Name, buttonCollectionsDelete.Name);
+        buttonCollectionsSelectAll.Text = GetTextInCurrentLocalization(Name, buttonCollectionsSelectAll.Name);
+        buttonCollectionsDeselectAll.Text = GetTextInCurrentLocalization(Name, buttonCollectionsDeselectAll.Name);
     }
 
     private void ButtonOK_Click(object sender, EventArgs e)

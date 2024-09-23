@@ -85,14 +85,6 @@ public static class Settings
 
     #region Facade Interface: LocalizationManager
 
-    public static GuiLocale CurrentLocalization
-    {
-        get
-        {
-            return new GuiLocale(AppLocalizationManager.CurrentLocalization);
-        }
-    }
-
     public static void SetCurrentLocalizationByName(string guiLocaleName)
     {
         AppLocalizationManager.SetCurrentLocalizationByName(guiLocaleName);
@@ -172,43 +164,4 @@ public static class Settings
     }
 
     #endregion
-}
-
-/// <summary>
-/// Serves as a facade interface for application's UI localization.
-/// It is a temp design.
-/// </summary>
-public class GuiLocale
-{
-    private readonly AppLocalization localization;
-
-    public GuiLocale(AppLocalization appLocalization)
-    {
-        this.localization = appLocalization;
-    }
-
-    public FormLocaleSnapshot GetFormLocaleSnapshotByKey(string targetKey)
-    {
-        LocaleSnapshot snapshot = this.localization.GetFormLocaleSnapshotByKey(targetKey);
-        return new FormLocaleSnapshot(snapshot);
-    }
-}
-
-/// <summary>
-/// Serves as a facade interface for a target UI control element's locale snapshot.
-/// It is a temp design.
-/// </summary>
-public class FormLocaleSnapshot
-{
-    private readonly LocaleSnapshot snapshot;
-
-    public FormLocaleSnapshot(LocaleSnapshot formLocaleSnapshot)
-    {
-        this.snapshot = formLocaleSnapshot;
-    }
-
-    public string GetLocalizedValueByKey(string targetKey)
-    {
-        return this.snapshot.GetLocalizedValueByKey(targetKey);
-    }
 }

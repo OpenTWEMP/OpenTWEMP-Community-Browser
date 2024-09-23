@@ -12,6 +12,7 @@ using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 using TWEMP.Browser.Core.CommonLibrary.Utilities;
 using M2TW = TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class ModQuickNavigatorForm : Form, ICanChangeMyLocalization
 {
@@ -82,11 +83,9 @@ public partial class ModQuickNavigatorForm : Form, ICanChangeMyLocalization
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-        Text = snapshot.GetLocalizedValueByKey(Name);
-        labelCommonInfo.Text = snapshot.GetLocalizedValueByKey(labelCommonInfo.Name);
-        formExitButton.Text = snapshot.GetLocalizedValueByKey(formExitButton.Name);
+        Text = GetTextInCurrentLocalization(Name, Name);
+        labelCommonInfo.Text = GetTextInCurrentLocalization(Name, labelCommonInfo.Name);
+        formExitButton.Text = GetTextInCurrentLocalization(Name, formExitButton.Name);
     }
 
     private void NavigateToModDirectory(string directoryPath)

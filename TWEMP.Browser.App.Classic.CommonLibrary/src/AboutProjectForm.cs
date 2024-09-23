@@ -8,24 +8,21 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
-using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class AboutProjectForm : Form, ICanChangeMyLocalization
 {
     public AboutProjectForm()
     {
         InitializeComponent();
-
         SetupCurrentLocalizationForGUIControls();
     }
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-        Text = snapshot.GetLocalizedValueByKey(Name);
-        aboutProjectNameLabel3.Text = snapshot.GetLocalizedValueByKey(aboutProjectNameLabel3.Name);
-        aboutProjectNameLabel4.Text = snapshot.GetLocalizedValueByKey(aboutProjectNameLabel4.Name);
+        Text = GetTextInCurrentLocalization(Name, Name);
+        aboutProjectNameLabel3.Text = GetTextInCurrentLocalization(Name, aboutProjectNameLabel3.Name);
+        aboutProjectNameLabel4.Text = GetTextInCurrentLocalization(Name, aboutProjectNameLabel4.Name);
     }
 }
