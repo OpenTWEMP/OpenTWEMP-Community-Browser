@@ -6,6 +6,7 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
 /// <summary>
@@ -13,6 +14,19 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 /// </summary>
 public static class BrowserKernel
 {
+    public static bool UseExperimentalFeatures
+    {
+        get
+        {
+            return AppSystemSettingsManager.UseExperimentalFeatures;
+        }
+
+        set
+        {
+            AppSystemSettingsManager.UseExperimentalFeatures = value;
+        }
+    }
+
     public static bool IsEnabledLocalizationOnEnglish()
     {
         return AppLocalizationManager.IsCurrentLocalizationName(AppLocalization.LOCALE_NAME_ENG);

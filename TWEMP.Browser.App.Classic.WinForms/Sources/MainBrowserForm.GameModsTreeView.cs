@@ -88,7 +88,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
             {
                 GameModificationInfo selectedModification = FindModBySelectedNodeFromCollection(e.Node!);
 
-                if (Settings.UseExperimentalFeatures)
+                if (BrowserKernel.UseExperimentalFeatures)
                 {
                     modMainTitleLabel.Text = selectedModification.CurrentPreset.ModTitle + " [" + selectedModification.CurrentPreset.ModVersion + "]";
                     modStatusLabel.Text = "Customize Your Mod via Preset Configuration File: " + selectedModification.GetPresetFilePath();

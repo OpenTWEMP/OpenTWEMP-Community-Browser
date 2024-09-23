@@ -49,23 +49,6 @@ public static class Settings
         Logger.CurrentInstance?.Close(); // test logging
     }
 
-    #region Facade Interface: AppSystemSettingsManager
-
-    public static bool UseExperimentalFeatures
-    {
-        get
-        {
-            return AppSystemSettingsManager.UseExperimentalFeatures;
-        }
-
-        set
-        {
-            AppSystemSettingsManager.UseExperimentalFeatures = value;
-        }
-    }
-
-    #endregion
-
     #region Facade Interface: AppGuiStyleManager
 
     public static GuiStyle CurrentGUIStyle

@@ -38,7 +38,7 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
             enableRusLocaleRadioButton.Checked = true;
         }
 
-        activatePresetsCheckBox.Checked = Settings.UseExperimentalFeatures;
+        activatePresetsCheckBox.Checked = UseExperimentalFeatures;
 
         SetupCurrentLocalizationForGUIControls();
     }
@@ -109,7 +109,7 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
         this.SetupCurrentLocalizationForGUIControls();
         currentBrowser.UpdateLocalizationForGUIControls();
 
-        Settings.UseExperimentalFeatures = activatePresetsCheckBox.Checked;
+        UseExperimentalFeatures = activatePresetsCheckBox.Checked;
         currentBrowser.UpdateExperimentalGUIChanges(activatePresetsCheckBox.Checked);
 
         Close();
