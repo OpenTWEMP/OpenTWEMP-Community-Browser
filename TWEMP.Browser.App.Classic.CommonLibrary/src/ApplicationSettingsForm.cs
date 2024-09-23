@@ -98,14 +98,12 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 
         if (enableEngLocaleRadioButton.Checked)
         {
-            string guiLocaleName_ENG = "ENG";
-            Settings.SetCurrentLocalizationByName(guiLocaleName_ENG);
+            SetLocalizationOnEnglishAsCurrent();
         }
 
         if (enableRusLocaleRadioButton.Checked)
         {
-            string guiLocaleName_RUS = "RUS";
-            Settings.SetCurrentLocalizationByName(guiLocaleName_RUS);
+            SetLocalizationOnRussianAsCurrent();
         }
 
         this.SetupCurrentLocalizationForGUIControls();

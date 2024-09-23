@@ -83,15 +83,6 @@ public static class Settings
 
     #endregion
 
-    #region Facade Interface: LocalizationManager
-
-    public static void SetCurrentLocalizationByName(string guiLocaleName)
-    {
-        AppLocalizationManager.SetCurrentLocalizationByName(guiLocaleName);
-    }
-
-    #endregion
-
     #region Facade Interface: CustomGameCollectionsManager
 
     public static CustomModsCollection FavoriteModsCollection
