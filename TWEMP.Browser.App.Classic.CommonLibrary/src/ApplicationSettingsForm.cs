@@ -25,13 +25,13 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
         currentBrowser = browser;
         currentGuiStyle = InitializeCurrentGUIStyle();
 
-        if (LocalizationManager.IsCurrentLocalizationName(GuiLocale.LOCALE_NAME_ENG))
+        if (BrowserKernel.IsEnabledLocalizationOnEnglish())
         {
             enableEngLocaleRadioButton.Checked = true;
             enableRusLocaleRadioButton.Checked = false;
         }
 
-        if (LocalizationManager.IsCurrentLocalizationName(GuiLocale.LOCALE_NAME_RUS))
+        if (BrowserKernel.IsEnabledLocalizationOnRussian())
         {
             enableEngLocaleRadioButton.Checked = false;
             enableRusLocaleRadioButton.Checked = true;

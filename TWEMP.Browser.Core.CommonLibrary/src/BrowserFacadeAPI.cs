@@ -175,18 +175,6 @@ public static class Settings
 }
 
 /// <summary>
-/// Serves as a facade interface for application's localization manager.
-/// It is a temp design.
-/// </summary>
-public static class LocalizationManager
-{
-    public static bool IsCurrentLocalizationName(string guiLocaleName)
-    {
-        return AppLocalizationManager.IsCurrentLocalizationName(guiLocaleName);
-    }
-}
-
-/// <summary>
 /// Serves as a facade interface for application's UI localization.
 /// It is a temp design.
 /// </summary>
@@ -197,22 +185,6 @@ public class GuiLocale
     public GuiLocale(AppLocalization appLocalization)
     {
         this.localization = appLocalization;
-    }
-
-    public static string LOCALE_NAME_ENG
-    {
-        get
-        {
-            return AppLocalization.LOCALE_NAME_ENG;
-        }
-    }
-
-    public static string LOCALE_NAME_RUS
-    {
-        get
-        {
-            return AppLocalization.LOCALE_NAME_RUS;
-        }
     }
 
     public FormLocaleSnapshot GetFormLocaleSnapshotByKey(string targetKey)
