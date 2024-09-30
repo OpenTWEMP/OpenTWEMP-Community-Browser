@@ -82,6 +82,11 @@ public static class BrowserKernel
         }
     }
 
+    public static GameModificationInfo GetActiveModificationInfo(string modShortName)
+    {
+        return CustomGameSetupManager.GetActiveModificationInfo(modShortName);
+    }
+
     public static GameSetupInfo RegistrateGameInstallation(string setupName, string executableFullPath, List<string> modcenterPaths)
     {
         return CustomGameSetupManager.RegistrateGameInstallation(setupName, executableFullPath, modcenterPaths);

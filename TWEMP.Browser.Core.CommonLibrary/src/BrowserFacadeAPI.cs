@@ -43,11 +43,6 @@ public static class Settings
 
     #region Facade Interface: CustomGameSetupManager
 
-    public static GameModificationInfo GetActiveModificationInfo(string modShortName)
-    {
-        return CustomGameSetupManager.GetActiveModificationInfo(modShortName);
-    }
-
     public static List<GameSetupInfo> SynchronizeGameSetupSettings()
     {
         return CustomGameSetupManager.SynchronizeGameSetupSettings();

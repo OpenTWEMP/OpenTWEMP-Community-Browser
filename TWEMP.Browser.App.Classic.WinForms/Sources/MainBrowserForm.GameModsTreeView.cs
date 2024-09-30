@@ -254,7 +254,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 
     private GameModificationInfo FindModBySelectedNodeFromCollection(TreeNode selectedTreeNode)
     {
-        return Settings.GetActiveModificationInfo(selectedTreeNode.Text);
+        return BrowserKernel.GetActiveModificationInfo(selectedTreeNode.Text);
     }
 
     private GameModificationInfo FindModificationBySelectedTreeNode(TreeNode selectedTreeNode)

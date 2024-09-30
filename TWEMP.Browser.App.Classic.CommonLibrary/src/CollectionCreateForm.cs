@@ -101,7 +101,7 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
             for (int i = 0; i < modsSelectionCheckedListBox.CheckedIndices.Count; i++)
             {
                 string selectedModName = modsSelectionCheckedListBox.CheckedItems[i]!.ToString()!;
-                GameModificationInfo selecteModInfo = Settings.GetActiveModificationInfo(selectedModName);
+                GameModificationInfo selecteModInfo = BrowserKernel.GetActiveModificationInfo(selectedModName);
                 selectedModifications.Add(selecteModInfo.Location, selecteModInfo.ShortName);
             }
 
