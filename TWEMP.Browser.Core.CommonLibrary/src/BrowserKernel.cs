@@ -40,6 +40,14 @@ public static class BrowserKernel
         }
     }
 
+    public static List<GameSetupInfo> GameInstallations
+    {
+        get
+        {
+            return CustomGameSetupManager.GameInstallations;
+        }
+    }
+
     public static List<GameModificationInfo> TotalModificationsList
     {
         get

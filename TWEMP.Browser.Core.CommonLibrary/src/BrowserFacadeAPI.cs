@@ -43,14 +43,6 @@ public static class Settings
 
     #region Facade Interface: CustomGameSetupManager
 
-    public static List<GameSetupInfo> GameInstallations
-    {
-        get
-        {
-            return CustomGameSetupManager.GameInstallations;
-        }
-    }
-
     public static GameSetupInfo RegistrateGameInstallation(
         string setupName, string executableFullPath, List<string> modcenterPaths)
     {

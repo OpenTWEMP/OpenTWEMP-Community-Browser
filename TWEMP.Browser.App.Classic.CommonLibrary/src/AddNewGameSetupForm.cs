@@ -48,7 +48,7 @@ public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
             return false;
         }
 
-        foreach (GameSetupInfo existingGameSetup in Settings.GameInstallations)
+        foreach (GameSetupInfo existingGameSetup in BrowserKernel.GameInstallations)
         {
             if (existingGameSetup.Name.Equals(setupName))
             {

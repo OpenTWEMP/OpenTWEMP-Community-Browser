@@ -31,7 +31,7 @@ public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
         gameSetupPathsListBox.Items.Clear();
         setupPathDeleteButton.Enabled = false;
 
-        InitializeGameSetupListBox(Settings.GameInstallations);
+        InitializeGameSetupListBox(BrowserKernel.GameInstallations);
     }
 
     public void SetupCurrentLocalizationForGUIControls()
@@ -53,7 +53,7 @@ public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
     private void GameSetupConfigForm_Load(object sender, EventArgs e)
     {
         Settings.SynchronizeGameSetupSettings();
-        InitializeGameSetupListBox(Settings.GameInstallations);
+        InitializeGameSetupListBox(BrowserKernel.GameInstallations);
     }
 
     private void InitializeGameSetupListBox(List<GameSetupInfo> gameSetupsObjects)

@@ -34,7 +34,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         TreeNode allModsNode = treeViewGameMods.Nodes[2];
         allModsNode.Nodes.Clear();
 
-        List<GameSetupInfo> gameInstallations = Settings.GameInstallations;
+        List<GameSetupInfo> gameInstallations = BrowserKernel.GameInstallations;
         foreach (GameSetupInfo gameInstallation in gameInstallations)
         {
             TreeNode gameInstallationNode = new TreeNode(gameInstallation.Name);
@@ -262,7 +262,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         TreeNode modcenterNode = selectedTreeNode.Parent;
         TreeNode gamesetupNode = modcenterNode.Parent;
 
-        GameSetupInfo currentGameSetup = Settings.GameInstallations.Find(gamesetup => gamesetup.Name.Equals(gamesetupNode.Text)) !;
+        GameSetupInfo currentGameSetup = BrowserKernel.GameInstallations.Find(gamesetup => gamesetup.Name.Equals(gamesetupNode.Text)) !;
         ModCenterInfo currentModCenter = currentGameSetup.AttachedModCenters.Find(modcenter => modcenter.Name.Equals(modcenterNode.Text)) !;
 
         return currentModCenter.InstalledModifications[selectedTreeNode.Index];
