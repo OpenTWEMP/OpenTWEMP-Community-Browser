@@ -88,7 +88,7 @@ public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
     private void AllPathsClearButton_Click(object sender, EventArgs e)
     {
         gameSetupPathsListBox.Items.Clear();
-        Settings.ClearAllSettings();
+        BrowserKernel.ClearAllSettings();
         currentBrowser.UpdateModificationsTreeView();
     }
 

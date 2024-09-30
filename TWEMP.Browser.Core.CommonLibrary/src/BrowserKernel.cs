@@ -97,6 +97,11 @@ public static class BrowserKernel
         CustomGameSetupManager.UpdateTotalModificationsList();
     }
 
+    public static void ClearAllSettings()
+    {
+        CustomGameSetupManager.ClearAllSettings();
+    }
+
     public static ColorTheme SelectCurrentColorTheme()
     {
         return AppGuiStyleManagerInstance.GetCurrentColorTheme();

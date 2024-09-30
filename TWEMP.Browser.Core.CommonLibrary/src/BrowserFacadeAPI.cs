@@ -48,11 +48,6 @@ public static class Settings
         return CustomGameSetupManager.GetActiveModificationInfo(modShortName);
     }
 
-    public static void ClearAllSettings()
-    {
-        CustomGameSetupManager.ClearAllSettings();
-    }
-
     public static List<GameSetupInfo> SynchronizeGameSetupSettings()
     {
         return CustomGameSetupManager.SynchronizeGameSetupSettings();
