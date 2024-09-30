@@ -129,7 +129,7 @@ public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
 
         if (CanSaveNewGameSetup(setupName, executable, modcenters))
         {
-            GameSetupInfo gameSetup = Settings.RegistrateGameInstallation(setupName, executable, modcenters);
+            GameSetupInfo gameSetup = BrowserKernel.RegistrateGameInstallation(setupName, executable, modcenters);
 
             MessageBox.Show($"Added the \'{gameSetup.Name}\' Game Setup.", "Success Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             currentCallingForm.UpdateGameSetupListBox();

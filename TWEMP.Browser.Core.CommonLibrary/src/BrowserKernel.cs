@@ -82,6 +82,11 @@ public static class BrowserKernel
         }
     }
 
+    public static GameSetupInfo RegistrateGameInstallation(string setupName, string executableFullPath, List<string> modcenterPaths)
+    {
+        return CustomGameSetupManager.RegistrateGameInstallation(setupName, executableFullPath, modcenterPaths);
+    }
+
     public static ColorTheme SelectCurrentColorTheme()
     {
         return AppGuiStyleManagerInstance.GetCurrentColorTheme();

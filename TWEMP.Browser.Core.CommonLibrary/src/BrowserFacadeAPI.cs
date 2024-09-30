@@ -43,13 +43,6 @@ public static class Settings
 
     #region Facade Interface: CustomGameSetupManager
 
-    public static GameSetupInfo RegistrateGameInstallation(
-        string setupName, string executableFullPath, List<string> modcenterPaths)
-    {
-        return CustomGameSetupManager.RegistrateGameInstallation(
-            setupName, executableFullPath, modcenterPaths);
-    }
-
     public static void UpdateTotalModificationsList()
     {
         CustomGameSetupManager.UpdateTotalModificationsList();
