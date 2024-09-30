@@ -7,6 +7,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
@@ -20,6 +21,14 @@ public static class BrowserKernel
     static BrowserKernel()
     {
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
+    }
+
+    public static CustomModsCollection FavoriteModsCollection
+    {
+        get
+        {
+            return CustomGameCollectionsManager.FavoriteModsCollection;
+        }
     }
 
     public static GuiStyle CurrentGUIStyle

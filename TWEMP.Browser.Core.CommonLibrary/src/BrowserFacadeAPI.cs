@@ -44,15 +44,6 @@ public static class Settings
 
     #region Facade Interface: CustomGameCollectionsManager
 
-    public static CustomModsCollection FavoriteModsCollection
-#pragma warning restore SA1201 // Elements should appear in the correct order
-    {
-        get
-        {
-            return CustomGameCollectionsManager.FavoriteModsCollection;
-        }
-    }
-
     public static List<CustomModsCollection> UserCollections
     {
         get

@@ -60,7 +60,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
     {
         TreeNode favoriteCollectionNode = treeViewGameMods.Nodes[0];
         favoriteCollectionNode.Nodes.Clear();
-        CreateFavoriteCollectionChildNodes(Settings.FavoriteModsCollection, favoriteCollectionNode);
+        CreateFavoriteCollectionChildNodes(BrowserKernel.FavoriteModsCollection, favoriteCollectionNode);
     }
 
     private void CreateFavoriteCollectionChildNodes(CustomModsCollection favoriteCollection, TreeNode favoriteCollectionRootNode)
