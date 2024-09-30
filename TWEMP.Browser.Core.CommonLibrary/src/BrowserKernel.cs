@@ -8,9 +8,12 @@ namespace TWEMP.Browser.Core.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using TWEMP.Browser.Core.CommonLibrary.Logging;
 
 /// <summary>
 /// Defines the kernel of any OpenTWEMP Community Browser implementation.
@@ -22,6 +25,26 @@ public static class BrowserKernel
     static BrowserKernel()
     {
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
+
+        // Initialize the default logging device.
+        Logger.InitializeByDefault();
+
+        Logger.CurrentInstance?.Open(); // test logging
+
+        Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
+            "AppGuiStyleManager", "AppGuiStyleManager.Create()", DateTime.Now)); // test logging
+
+        // Setup the global device for game support manager by default.
+        GameSupportManager.Initialize();
+        Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
+            "GameSupportManager", "GameSupportManager.Initialize()", DateTime.Now)); // test logging
+
+        // Setup the global device for game configuration profile manager by default.
+        GameConfigurationManager.Initialize();
+        Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
+            "GameConfigurationManager", "GameConfigurationManager.Initialize()", DateTime.Now)); // test logging
+
+        Logger.CurrentInstance?.Close(); // test logging
     }
 
     public static CustomModsCollection FavoriteModsCollection
