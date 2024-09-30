@@ -52,7 +52,7 @@ public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
 
     private void GameSetupConfigForm_Load(object sender, EventArgs e)
     {
-        Settings.SynchronizeGameSetupSettings();
+        BrowserKernel.SynchronizeGameSetupSettings();
         InitializeGameSetupListBox(BrowserKernel.GameInstallations);
     }
 

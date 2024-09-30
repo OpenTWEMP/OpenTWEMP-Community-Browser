@@ -17,7 +17,7 @@ internal static class Program
     internal static void Main()
     {
         // Prepare configuration settings before launching GUI.
-        Settings.SynchronizeGameSetupSettings();
+        BrowserKernel.SynchronizeGameSetupSettings();
 
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.

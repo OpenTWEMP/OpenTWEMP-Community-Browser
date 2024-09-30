@@ -40,13 +40,4 @@ public static class Settings
 
         Logger.CurrentInstance?.Close(); // test logging
     }
-
-    #region Facade Interface: CustomGameSetupManager
-
-    public static List<GameSetupInfo> SynchronizeGameSetupSettings()
-    {
-        return CustomGameSetupManager.SynchronizeGameSetupSettings();
-    }
-
-    #endregion
 }

@@ -82,6 +82,11 @@ public static class BrowserKernel
         }
     }
 
+    public static List<GameSetupInfo> SynchronizeGameSetupSettings()
+    {
+        return CustomGameSetupManager.SynchronizeGameSetupSettings();
+    }
+
     public static GameModificationInfo GetActiveModificationInfo(string modShortName)
     {
         return CustomGameSetupManager.GetActiveModificationInfo(modShortName);
