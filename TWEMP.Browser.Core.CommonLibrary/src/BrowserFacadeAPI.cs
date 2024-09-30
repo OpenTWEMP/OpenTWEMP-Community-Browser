@@ -8,7 +8,6 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
@@ -49,14 +48,6 @@ public static class Settings
         get
         {
             return CustomGameSetupManager.GameInstallations;
-        }
-    }
-
-    public static List<GameModificationInfo> TotalModificationsList
-    {
-        get
-        {
-            return CustomGameSetupManager.TotalModificationsList;
         }
     }
 

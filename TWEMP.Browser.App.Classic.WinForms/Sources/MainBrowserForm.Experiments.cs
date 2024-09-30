@@ -25,7 +25,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser, IConfigurableGameMod
     {
         foreach (KeyValuePair<int, string> presetSetting in presetSettings)
         {
-            GameModificationInfo gameModInfo = Settings.TotalModificationsList.ElementAt(presetSetting.Key);
+            GameModificationInfo gameModInfo = BrowserKernel.TotalModificationsList.ElementAt(presetSetting.Key);
 
             gameModInfo.CurrentPreset.ModTitle = $"{presetSetting.Value}.ModName";
             gameModInfo.CurrentPreset.ModVersion = $"{presetSetting.Value}.ModVersion";

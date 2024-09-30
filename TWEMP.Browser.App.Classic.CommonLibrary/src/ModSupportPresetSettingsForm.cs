@@ -35,7 +35,7 @@ public partial class ModSupportPresetSettingsForm : Form
 
         this.currentGameModificationView = gameModificationView;
 
-        List<GameModificationInfo> gameInstallations = Settings.TotalModificationsList;
+        List<GameModificationInfo> gameInstallations = BrowserKernel.TotalModificationsList;
         this.InitializeModSupportPresetsDataGridView(gameInstallations);
     }
 

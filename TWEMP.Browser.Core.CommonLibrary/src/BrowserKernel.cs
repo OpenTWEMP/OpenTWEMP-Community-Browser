@@ -8,6 +8,7 @@ namespace TWEMP.Browser.Core.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 
@@ -36,6 +37,14 @@ public static class BrowserKernel
         get
         {
             return CustomGameCollectionsManager.UserCollections;
+        }
+    }
+
+    public static List<GameModificationInfo> TotalModificationsList
+    {
+        get
+        {
+            return CustomGameSetupManager.TotalModificationsList;
         }
     }
 

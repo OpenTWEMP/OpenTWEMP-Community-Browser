@@ -26,7 +26,7 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
         currentBrowser = browser;
         collectionNameTextBox.Text = "My New Collection";
 
-        foreach (GameModificationInfo mod in Settings.TotalModificationsList)
+        foreach (GameModificationInfo mod in BrowserKernel.TotalModificationsList)
         {
             modsSelectionCheckedListBox.Items.Add(mod.ShortName);
         }
