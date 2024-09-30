@@ -81,7 +81,7 @@ public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
     {
         int selectedIndex = gameSetupPathsListBox.SelectedIndex;
         gameSetupPathsListBox.Items.RemoveAt(selectedIndex);
-        Settings.DeleteGameSetupByIndex(selectedIndex);
+        BrowserKernel.DeleteGameSetupByIndex(selectedIndex);
         setupPathDeleteButton.Enabled = false;
     }
 

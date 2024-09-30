@@ -87,6 +87,11 @@ public static class BrowserKernel
         return CustomGameSetupManager.RegistrateGameInstallation(setupName, executableFullPath, modcenterPaths);
     }
 
+    public static void DeleteGameSetupByIndex(int gameSetupIndex)
+    {
+        CustomGameSetupManager.DeleteGameSetupByIndex(gameSetupIndex);
+    }
+
     public static void UpdateTotalModificationsList()
     {
         CustomGameSetupManager.UpdateTotalModificationsList();

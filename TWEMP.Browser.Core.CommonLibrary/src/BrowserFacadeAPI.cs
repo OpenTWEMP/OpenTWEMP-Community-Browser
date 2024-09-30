@@ -58,10 +58,5 @@ public static class Settings
         return CustomGameSetupManager.SynchronizeGameSetupSettings();
     }
 
-    public static void DeleteGameSetupByIndex(int gameSetupIndex)
-    {
-        CustomGameSetupManager.DeleteGameSetupByIndex(gameSetupIndex);
-    }
-
     #endregion
 }
