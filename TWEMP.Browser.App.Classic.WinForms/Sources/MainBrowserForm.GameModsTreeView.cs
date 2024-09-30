@@ -18,7 +18,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
     {
         treeViewGameMods.Enabled = false;
 
-        Settings.UpdateTotalModificationsList();
+        BrowserKernel.UpdateTotalModificationsList();
 
         UpdateAllModificationsInTreeView();
         UpdateCustomCollectionsInTreeView();

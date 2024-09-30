@@ -43,11 +43,6 @@ public static class Settings
 
     #region Facade Interface: CustomGameSetupManager
 
-    public static void UpdateTotalModificationsList()
-    {
-        CustomGameSetupManager.UpdateTotalModificationsList();
-    }
-
     public static GameModificationInfo GetActiveModificationInfo(string modShortName)
     {
         return CustomGameSetupManager.GetActiveModificationInfo(modShortName);

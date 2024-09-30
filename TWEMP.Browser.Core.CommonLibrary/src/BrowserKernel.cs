@@ -87,6 +87,11 @@ public static class BrowserKernel
         return CustomGameSetupManager.RegistrateGameInstallation(setupName, executableFullPath, modcenterPaths);
     }
 
+    public static void UpdateTotalModificationsList()
+    {
+        CustomGameSetupManager.UpdateTotalModificationsList();
+    }
+
     public static ColorTheme SelectCurrentColorTheme()
     {
         return AppGuiStyleManagerInstance.GetCurrentColorTheme();
