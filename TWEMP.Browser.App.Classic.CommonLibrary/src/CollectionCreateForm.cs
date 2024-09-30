@@ -73,7 +73,7 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
 
     private bool IsCollectionAlreadyExist()
     {
-        foreach (CustomModsCollection existingCollection in Settings.UserCollections)
+        foreach (CustomModsCollection existingCollection in BrowserKernel.UserCollections)
         {
             if (existingCollection.Name.Equals(collectionNameTextBox.Text))
             {
@@ -106,8 +106,8 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
             }
 
             var collection = new CustomModsCollection(collectionNameTextBox.Text, selectedModifications);
-            Settings.UserCollections.Add(collection);
-            CustomModsCollection.WriteExistingCollections(Settings.UserCollections);
+            BrowserKernel.UserCollections.Add(collection);
+            CustomModsCollection.WriteExistingCollections(BrowserKernel.UserCollections);
 
             currentBrowser.CreateModsCollectionTreeView(collection);
 

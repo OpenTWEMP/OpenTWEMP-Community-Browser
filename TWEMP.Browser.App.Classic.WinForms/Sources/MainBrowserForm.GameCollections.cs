@@ -31,7 +31,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         TreeNode customCollectionsNode = treeViewGameMods.Nodes[1];
         customCollectionsNode.Nodes.Clear();
 
-        foreach (CustomModsCollection collection in Settings.UserCollections)
+        foreach (CustomModsCollection collection in BrowserKernel.UserCollections)
         {
             CreateCollectionNodeWithChilds(collection, customCollectionsNode);
         }

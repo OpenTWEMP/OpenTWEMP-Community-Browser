@@ -25,7 +25,7 @@ public partial class CollectionManageForm : Form, ICanChangeMyLocalization
 
         currentBrowser = browser;
 
-        foreach (CustomModsCollection mod in Settings.UserCollections)
+        foreach (CustomModsCollection mod in BrowserKernel.UserCollections)
         {
             collectionsCheckedListBox.Items.Add(mod.Name);
         }
@@ -69,11 +69,11 @@ public partial class CollectionManageForm : Form, ICanChangeMyLocalization
         for (int i = 0; i < collectionsCheckedListBox.CheckedIndices.Count; i++)
         {
             string selectedCollectionName = collectionsCheckedListBox.CheckedItems[i]!.ToString()!;
-            CustomModsCollection selectedCollection = Settings.UserCollections.Find(collection => collection.Name == selectedCollectionName)!;
-            Settings.UserCollections.Remove(selectedCollection);
+            CustomModsCollection selectedCollection = BrowserKernel.UserCollections.Find(collection => collection.Name == selectedCollectionName)!;
+            BrowserKernel.UserCollections.Remove(selectedCollection);
         }
 
-        CustomModsCollection.WriteExistingCollections(Settings.UserCollections);
+        CustomModsCollection.WriteExistingCollections(BrowserKernel.UserCollections);
         currentBrowser.UpdateCustomCollectionsInTreeView();
         Close();
     }

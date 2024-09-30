@@ -31,6 +31,14 @@ public static class BrowserKernel
         }
     }
 
+    public static List<CustomModsCollection> UserCollections
+    {
+        get
+        {
+            return CustomGameCollectionsManager.UserCollections;
+        }
+    }
+
     public static GuiStyle CurrentGUIStyle
     {
         get

@@ -42,18 +42,6 @@ public static class Settings
         Logger.CurrentInstance?.Close(); // test logging
     }
 
-    #region Facade Interface: CustomGameCollectionsManager
-
-    public static List<CustomModsCollection> UserCollections
-    {
-        get
-        {
-            return CustomGameCollectionsManager.UserCollections;
-        }
-    }
-
-    #endregion
-
     #region Facade Interface: CustomGameSetupManager
 
     public static List<GameSetupInfo> GameInstallations
