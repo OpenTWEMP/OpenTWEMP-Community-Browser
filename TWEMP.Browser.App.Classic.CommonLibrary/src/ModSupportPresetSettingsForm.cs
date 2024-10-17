@@ -232,7 +232,7 @@ public partial class ModSupportPresetSettingsForm : Form
             var idObject = row.Cells[this.idColumnIndex].Value;
             int id = Convert.ToInt32(idObject);
 
-            var presetObject = (DataGridViewCheckBoxCell)row.Cells[this.customizablePresetColumnIndex].Value;
+            var presetObject = row.Cells[this.customizablePresetColumnIndex].Value;
             bool useCustomizablePreset = Convert.ToBoolean(presetObject);
 
             string preset = useCustomizablePreset ? "[CUSTOMIZABLE_PRESET]" : Convert.ToString(row.Cells[this.redistributablePresetColumnIndex].Value) !;
