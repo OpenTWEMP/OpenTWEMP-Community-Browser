@@ -6,7 +6,7 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
-public class ModSupportPreset
+public record ModSupportPreset
 {
     public ModSupportPreset(
         ModHeaderInfo headerInfo,
@@ -57,7 +57,7 @@ public class ModSupportPreset
     }
 }
 
-public class CustomizableModPreset
+public record CustomizableModPreset
 {
     private const string PresetFolderName = ".twemp";
     private const string PresetConfigFileName = "mod_support.json";
@@ -69,11 +69,11 @@ public class CustomizableModPreset
         this.Config = InitializeModPresetConfigFileInfo(modURI);
     }
 
-    public ModSupportPreset Data { get; }
+    public ModSupportPreset Data { get; set; }
 
-    public DirectoryInfo Location { get; }
+    public DirectoryInfo Location { get; set; }
 
-    public FileInfo Config { get; }
+    public FileInfo Config { get; set; }
 
     public static CustomizableModPreset CreateDefaultTemplate(string modURI)
     {
@@ -94,7 +94,7 @@ public class CustomizableModPreset
     }
 }
 
-public class RedistributableModPreset
+public record RedistributableModPreset
 {
     public RedistributableModPreset(ModSupportPreset preset, ModPresetMetaInfo metadata)
     {
@@ -102,9 +102,9 @@ public class RedistributableModPreset
         this.Metadata = metadata;
     }
 
-    public ModSupportPreset Data { get; }
+    public ModSupportPreset Data { get; set; }
 
-    public ModPresetMetaInfo Metadata { get; }
+    public ModPresetMetaInfo Metadata { get; set; }
 
     public static RedistributableModPreset CreateDefaultTemplate()
     {

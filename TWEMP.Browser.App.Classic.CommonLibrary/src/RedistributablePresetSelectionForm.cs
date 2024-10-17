@@ -7,19 +7,32 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
+
 public partial class RedistributablePresetSelectionForm : Form
 {
     private readonly ModSupportPresetSettingsForm presetSettingsForm;
     private readonly int gameModId;
+    private readonly List<RedistributableModPreset> redistributableModPresets;
 
     public RedistributablePresetSelectionForm(ModSupportPresetSettingsForm presetSettingsForm, int gameModId)
     {
         this.InitializeComponent();
 
-        this.InitializeTestPresetPlaceholders();
-
         this.presetSettingsForm = presetSettingsForm;
         this.gameModId = gameModId;
+
+        this.redistributableModPresets = GameSupportManager.AvailableModSupportPresets;
+        this.InitializeListBoxOfRedistributablePresets(this.redistributableModPresets);
+    }
+
+    private void InitializeListBoxOfRedistributablePresets(List<RedistributableModPreset> presets)
+    {
+        foreach (var preset in presets)
+        {
+            string presetItem = $"{preset.Metadata.PresetName} [{preset.Metadata.Version}]";
+            this.presetsListBox.Items.Add(presetItem);
+        }
     }
 
     private void InitializeTestPresetPlaceholders()
@@ -56,27 +69,28 @@ public partial class RedistributablePresetSelectionForm : Form
 
     private void PresetsListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        object presetPlaceholder = this.presetsListBox.SelectedItem !;
-        this.DisplayPresetInformation(presetPlaceholder);
+        int selectedIndex = this.presetsListBox.SelectedIndex;
+        RedistributableModPreset selectedPreset = this.redistributableModPresets[selectedIndex];
+        this.DisplayPresetInformation(selectedPreset);
 
         this.presetSelectionButton.Enabled = true;
     }
 
-    private void DisplayPresetInformation(object presetPlaceholder)
+    private void DisplayPresetInformation(RedistributableModPreset preset)
     {
-        this.modNameLabel.Text = $"Mod Name: {presetPlaceholder}.ModName";
-        this.modVersionLabel.Text = $"Mod Version: {presetPlaceholder}.ModVersion";
+        this.modNameLabel.Text = $"Mod Name: {preset.Data.HeaderInfo.ModTitle}";
+        this.modVersionLabel.Text = $"Mod Version: {preset.Data.HeaderInfo.ModVersion}";
 
-        this.modUrl1LinkLabel.Text = $"{presetPlaceholder}.URL1";
-        this.modUrl2LinkLabel.Text = $"{presetPlaceholder}.URL2";
-        this.modUrl3LinkLabel.Text = $"{presetPlaceholder}.URL3";
+        this.modUrl1LinkLabel.Text = $"{preset.Data.SocialMediaInfo.ModURLs["URL1"]}";
+        this.modUrl2LinkLabel.Text = $"{preset.Data.SocialMediaInfo.ModURLs["URL1"]}";
+        this.modUrl3LinkLabel.Text = $"{preset.Data.SocialMediaInfo.ModURLs["URL1"]}";
 
-        this.presetGuidLabel.Text = $"Preset GUID: {presetPlaceholder}.GUID";
-        this.presetNameLabel.Text = $"Preset Name: {presetPlaceholder}.PresetName";
-        this.presetVersionLabel.Text = $"Preset Version: {presetPlaceholder}.PresetVersion";
-        this.presetCreatorLabel.Text = $"Preset Creator: {presetPlaceholder}.PresetCreator";
-        this.packageLabel.Text = $"Package: {presetPlaceholder}.Package";
+        this.presetGuidLabel.Text = $"Preset GUID: {preset.Metadata.Guid}";
+        this.presetNameLabel.Text = $"Preset Name: {preset.Metadata.PresetName}";
+        this.presetVersionLabel.Text = $"Preset Version: {preset.Metadata.Version}";
+        this.presetCreatorLabel.Text = $"Preset Creator: {preset.Metadata.Creator}";
+        this.packageLabel.Text = $"Package: {preset.Metadata.PackageName}";
 
-        this.modSupportPresetTitlelabel.Text = $"{presetPlaceholder}.ModName ({presetPlaceholder}.ModVersion)";
+        this.modSupportPresetTitlelabel.Text = $"{preset.Data.HeaderInfo.ModTitle} ({preset.Data.HeaderInfo.ModVersion})";
     }
 }

@@ -18,8 +18,6 @@ public static class GameSupportManager
 
     private static readonly FileInfo PresetsConfigFileInfo;
 
-    private static GameSupportConfiguration currentGameSupportConfiguration;
-
     static GameSupportManager()
     {
         string presetsHomeDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), PresetsHomeFolderName);
@@ -28,8 +26,7 @@ public static class GameSupportManager
         PresetsConfigFileInfo = new FileInfo(presetsConfigFilePath);
         PresetsHomeDirectoryInfo = new DirectoryInfo(presetsHomeDirectoryPath);
 
-        currentGameSupportConfiguration = GameSupportConfiguration.CreateTestConfigurationByDefault();
-        AvailableModSupportPresets = currentGameSupportConfiguration.GetAllRedistributablePresets();
+        AvailableModSupportPresets = new List<RedistributableModPreset>();
     }
 
     /// <summary>
@@ -54,12 +51,15 @@ public static class GameSupportManager
 
         if (PresetsConfigFileInfo.Exists)
         {
-            currentGameSupportConfiguration = ReadPresetsConfigFile();
-            AvailableModSupportPresets = currentGameSupportConfiguration.GetAllRedistributablePresets();
+            GameSupportConfiguration gameSupportConfiguration = ReadPresetsConfigFile();
+            InitializeAvailablePresets(gameSupportConfiguration);
         }
         else
         {
-            CreatePresetsConfigFileByDefault(currentGameSupportConfiguration);
+            GameSupportConfiguration gameSupportConfiguration = GameSupportConfiguration.CreateTestConfigurationByDefault();
+            InitializeAvailablePresets(gameSupportConfiguration);
+
+            CreatePresetsConfigFileByDefault(gameSupportConfiguration);
         }
     }
 
@@ -85,7 +85,7 @@ public static class GameSupportManager
             else
             {
                 RedistributableModPreset redistributableModPreset = AvailableModSupportPresets.Find(
-                    preset => preset.Metadata.Guid == setting.RedistributablePresetGuid) !;
+                    preset => preset.Metadata.Guid == setting.RedistributablePresetGuid)!;
 
                 gameModView = UpdatableGameModificationView.CreateGameModificationViewByRedistributablePreset(
                     setting.Id, gameModInfo, redistributableModPreset);
@@ -95,6 +95,16 @@ public static class GameSupportManager
         }
 
         return new FullGameModsCollectionView(gameModificationViews);
+    }
+
+    private static void InitializeAvailablePresets(GameSupportConfiguration configuration)
+    {
+        List<RedistributableModPreset> presets = configuration.GetAllRedistributablePresets();
+
+        foreach (var preset in presets)
+        {
+            AvailableModSupportPresets.Add(preset);
+        }
     }
 
     private static void CreatePresetsConfigFileByDefault(GameSupportConfiguration configuration)

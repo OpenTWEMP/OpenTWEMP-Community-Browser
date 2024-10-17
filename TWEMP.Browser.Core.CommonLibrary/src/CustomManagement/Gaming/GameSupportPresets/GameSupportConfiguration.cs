@@ -14,8 +14,8 @@ public class GameSupportConfiguration
     /// </summary>
     public GameSupportConfiguration()
     {
-        this.TargetGameSupportProvider = new GameSupportProvider();
-        this.RedistributablePackages = ModSupportPresetPackage.CreateTestPackages();
+        this.TargetGameSupportProvider = new GameSupportProvider(GameEngineSupportType.M2TW);
+        this.RedistributablePackages = new List<ModSupportPresetPackage>();
     }
 
     /// <summary>
@@ -46,7 +46,8 @@ public class GameSupportConfiguration
     /// <returns>The default instance of the <see cref="GameSupportConfiguration"/> class.</returns>
     public static GameSupportConfiguration CreateTestConfigurationByDefault()
     {
-        return new GameSupportConfiguration();
+        List<ModSupportPresetPackage> packages = ModSupportPresetPackage.CreateTestPackages();
+        return new GameSupportConfiguration(new GameSupportProvider(), packages);
     }
 
     /// <summary>
@@ -57,7 +58,9 @@ public class GameSupportConfiguration
     {
         List<RedistributableModPreset> presets = new ();
 
-        foreach (ModSupportPresetPackage package in this.RedistributablePackages)
+        var redistributablePackages = this.RedistributablePackages;
+
+        foreach (ModSupportPresetPackage package in redistributablePackages)
         {
             presets.AddRange(package.Presets);
         }
