@@ -62,7 +62,8 @@ public class GameSupportConfiguration
 
         foreach (ModSupportPresetPackage package in redistributablePackages)
         {
-            presets.AddRange(package.Presets);
+            List<RedistributableModPreset> attachedPresets = package.GetAttachedPresets();
+            presets.AddRange(attachedPresets);
         }
 
         return presets;

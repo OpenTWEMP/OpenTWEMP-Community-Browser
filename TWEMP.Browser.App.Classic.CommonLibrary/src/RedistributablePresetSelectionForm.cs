@@ -82,8 +82,8 @@ public partial class RedistributablePresetSelectionForm : Form
         this.modVersionLabel.Text = $"Mod Version: {preset.Data.HeaderInfo.ModVersion}";
 
         this.modUrl1LinkLabel.Text = $"{preset.Data.SocialMediaInfo.ModURLs["URL1"]}";
-        this.modUrl2LinkLabel.Text = $"{preset.Data.SocialMediaInfo.ModURLs["URL1"]}";
-        this.modUrl3LinkLabel.Text = $"{preset.Data.SocialMediaInfo.ModURLs["URL1"]}";
+        this.modUrl2LinkLabel.Text = $"{preset.Data.SocialMediaInfo.ModURLs["URL2"]}";
+        this.modUrl3LinkLabel.Text = $"{preset.Data.SocialMediaInfo.ModURLs["URL3"]}";
 
         this.presetGuidLabel.Text = $"Preset GUID: {preset.Metadata.Guid}";
         this.presetNameLabel.Text = $"Preset Name: {preset.Metadata.PresetName}";

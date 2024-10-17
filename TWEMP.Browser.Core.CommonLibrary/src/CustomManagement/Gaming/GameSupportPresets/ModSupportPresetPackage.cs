@@ -8,21 +8,23 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPr
 
 public class ModSupportPresetPackage
 {
+    private List<RedistributableModPreset> attachedPresets;
+
     public ModSupportPresetPackage()
     {
+        this.attachedPresets = new List<RedistributableModPreset>();
+
         this.Name = string.Empty;
-        this.Presets = new List<RedistributableModPreset>();
     }
 
     public ModSupportPresetPackage(string name, ICollection<RedistributableModPreset> presets)
     {
+        this.attachedPresets = presets.ToList();
+
         this.Name = name;
-        this.Presets = presets.ToList();
     }
 
     public string Name { get; set; }
-
-    public List<RedistributableModPreset> Presets { get; set; }
 
     public static List<ModSupportPresetPackage> CreateTestPackages()
     {
@@ -31,6 +33,16 @@ public class ModSupportPresetPackage
         ModSupportPresetPackage package_3 = CreatePackage("RTW");
 
         return new List<ModSupportPresetPackage> { package_1, package_2, package_3 };
+    }
+
+    public List<RedistributableModPreset> GetAttachedPresets()
+    {
+        return this.attachedPresets;
+    }
+
+    public void AttachPreset(RedistributableModPreset preset)
+    {
+        this.attachedPresets.Add(preset);
     }
 
     private static ModSupportPresetPackage CreatePackage(string packageName)

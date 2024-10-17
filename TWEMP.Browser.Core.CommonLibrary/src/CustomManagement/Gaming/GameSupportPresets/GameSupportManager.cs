@@ -2,6 +2,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define USE_REAL_PRESETS
+#define USE_TEST_PRESETS
+#undef USE_TEST_PRESETS
+
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
@@ -21,10 +25,10 @@ public static class GameSupportManager
     static GameSupportManager()
     {
         string presetsHomeDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), PresetsHomeFolderName);
-        string presetsConfigFilePath = Path.Combine(presetsHomeDirectoryPath, PresetsConfigFileName);
-
-        PresetsConfigFileInfo = new FileInfo(presetsConfigFilePath);
         PresetsHomeDirectoryInfo = new DirectoryInfo(presetsHomeDirectoryPath);
+
+        string presetsConfigFilePath = Path.Combine(presetsHomeDirectoryPath, PresetsConfigFileName);
+        PresetsConfigFileInfo = new FileInfo(presetsConfigFilePath);
 
         AvailableModSupportPresets = new List<RedistributableModPreset>();
     }
@@ -51,15 +55,25 @@ public static class GameSupportManager
 
         if (PresetsConfigFileInfo.Exists)
         {
-            GameSupportConfiguration gameSupportConfiguration = ReadPresetsConfigFile();
-            InitializeAvailablePresets(gameSupportConfiguration);
+            RedistributableModPreset[] presets = ReadPresetsConfigFile();
+            InitializeAvailablePresets(presets);
         }
         else
         {
+#if USE_REAL_PRESETS
+            List<ModSupportPresetPackage> detectedPackages = GetAllPresetPackages();
+            GameSupportConfiguration gameSupportConfiguration = new (
+                provider: new GameSupportProvider(GameEngineSupportType.M2TW),
+                packages: detectedPackages);
+            InitializeAvailablePresets(gameSupportConfiguration);
+            CreatePresetsConfigFileByDefault(gameSupportConfiguration);
+#endif
+
+#if USE_TEST_PRESETS
             GameSupportConfiguration gameSupportConfiguration = GameSupportConfiguration.CreateTestConfigurationByDefault();
             InitializeAvailablePresets(gameSupportConfiguration);
-
             CreatePresetsConfigFileByDefault(gameSupportConfiguration);
+#endif
         }
     }
 
@@ -97,11 +111,62 @@ public static class GameSupportManager
         return new FullGameModsCollectionView(gameModificationViews);
     }
 
+    private static List<ModSupportPresetPackage> GetAllPresetPackages()
+    {
+        const string packageConfigFileName = "twemp-package-config.json";
+        const string presetConfigFileName = "twemp-preset-config.json";
+
+        List<ModSupportPresetPackage> modSupportPresetPackages = new List<ModSupportPresetPackage>();
+
+        DirectoryInfo[] packageDirectories = PresetsHomeDirectoryInfo.GetDirectories();
+
+        foreach (DirectoryInfo packageDirectory in packageDirectories)
+        {
+            FileInfo[] packageFiles = packageDirectory.GetFiles();
+
+            foreach (FileInfo packageFile in packageFiles)
+            {
+                if (packageFile.Name.Equals(packageConfigFileName))
+                {
+                    ModSupportPresetPackage package = AppSerializer.DeserializeFromJson<ModSupportPresetPackage>(packageFile.FullName);
+
+                    DirectoryInfo[] presetDirectories = packageDirectory.GetDirectories();
+
+                    foreach (DirectoryInfo presetDirectory in presetDirectories)
+                    {
+                        FileInfo[] presetFiles = presetDirectory.GetFiles();
+
+                        foreach (FileInfo presetFile in presetFiles)
+                        {
+                            if (presetFile.Name.Equals(presetConfigFileName))
+                            {
+                                RedistributableModPreset preset = AppSerializer.DeserializeFromJson<RedistributableModPreset>(presetFile.FullName);
+                                package.AttachPreset(preset);
+                            }
+                        }
+                    }
+
+                    modSupportPresetPackages.Add(package);
+                }
+            }
+        }
+
+        return modSupportPresetPackages;
+    }
+
     private static void InitializeAvailablePresets(GameSupportConfiguration configuration)
     {
         List<RedistributableModPreset> presets = configuration.GetAllRedistributablePresets();
 
-        foreach (var preset in presets)
+        foreach (RedistributableModPreset preset in presets)
+        {
+            AvailableModSupportPresets.Add(preset);
+        }
+    }
+
+    private static void InitializeAvailablePresets(RedistributableModPreset[] presets)
+    {
+        foreach (RedistributableModPreset preset in presets)
         {
             AvailableModSupportPresets.Add(preset);
         }
@@ -109,11 +174,21 @@ public static class GameSupportManager
 
     private static void CreatePresetsConfigFileByDefault(GameSupportConfiguration configuration)
     {
-        AppSerializer.SerializeToJson(configuration, PresetsConfigFileInfo.FullName);
+        List<RedistributableModPreset> presets = new ();
+
+        List<ModSupportPresetPackage> packages = configuration.RedistributablePackages;
+
+        foreach (ModSupportPresetPackage package in packages)
+        {
+            List<RedistributableModPreset> attachedPresets = package.GetAttachedPresets();
+            presets.AddRange(attachedPresets);
+        }
+
+        AppSerializer.SerializeToJson(presets, PresetsConfigFileInfo.FullName);
     }
 
-    private static GameSupportConfiguration ReadPresetsConfigFile()
+    private static RedistributableModPreset[] ReadPresetsConfigFile()
     {
-        return AppSerializer.DeserializeFromJson<GameSupportConfiguration>(PresetsConfigFileInfo.FullName);
+        return AppSerializer.DeserializeFromJson<RedistributableModPreset[]>(PresetsConfigFileInfo.FullName);
     }
 }
