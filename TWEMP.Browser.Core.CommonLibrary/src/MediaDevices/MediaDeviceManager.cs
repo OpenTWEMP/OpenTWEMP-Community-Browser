@@ -11,19 +11,15 @@ using TWEMP.Browser.Core.CommonLibrary.MediaDevices.Plugins;
 /// </summary>
 public class MediaDeviceManager
 {
-    private static readonly FileInfo DefaultAudioFileInfo;
+    private const string MediaDeviceHomeFolderName = ".app-media";
+    private const string DefaultAudioFileName = "TEST.mp3";
 
     private static MediaDeviceManager? activeManagerInstance;
 
     private readonly IAudioPlaybackDevice audioPlaybackDevice;
 
-    /// <summary>
-    /// Initializes static members of the <see cref="MediaDeviceManager"/> class.
-    /// </summary>
-    static MediaDeviceManager()
-    {
-        DefaultAudioFileInfo = InitializeAudioFileInfoByDefault();
-    }
+    private readonly DirectoryInfo mediaDeviceHomeDirectoryInfo;
+    private readonly FileInfo defaultAudioFileInfo;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MediaDeviceManager"/> class.
@@ -33,7 +29,23 @@ public class MediaDeviceManager
     {
         this.audioPlaybackDevice = audioPlaybackDevice;
 
-        this.MusicPlayerDevice = new GameMusicPlayer(this.audioPlaybackDevice, DefaultAudioFileInfo);
+        string mediaDeviceHomeDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), MediaDeviceHomeFolderName);
+        this.mediaDeviceHomeDirectoryInfo = new DirectoryInfo(mediaDeviceHomeDirectoryPath);
+
+        if (!this.mediaDeviceHomeDirectoryInfo.Exists)
+        {
+            this.mediaDeviceHomeDirectoryInfo.Create();
+        }
+
+        string defaultAudioFilePath = Path.Combine(this.mediaDeviceHomeDirectoryInfo.FullName, DefaultAudioFileName);
+        this.defaultAudioFileInfo = new FileInfo(defaultAudioFilePath);
+
+        this.MusicPlayerDevice = new GameMusicPlayer(this.audioPlaybackDevice, this.defaultAudioFileInfo);
+
+        if (this.defaultAudioFileInfo.Exists)
+        {
+            this.MusicPlayerDevice.Play();
+        }
     }
 
     /// <summary>
@@ -55,10 +67,5 @@ public class MediaDeviceManager
         }
 
         return activeManagerInstance;
-    }
-
-    private static FileInfo InitializeAudioFileInfoByDefault()
-    {
-        return new FileInfo("TEST.mp3"); // TODO: Define the default audio file for the game music player.
     }
 }

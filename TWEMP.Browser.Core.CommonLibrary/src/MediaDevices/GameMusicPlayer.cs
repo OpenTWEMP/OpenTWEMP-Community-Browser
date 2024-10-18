@@ -25,7 +25,9 @@ public class GameMusicPlayer
         this.currentAudioFileInfo = audioFileInfo;
 
         this.State = GameMusicPlaybackState.Cued;
-        this.Volume = default;
+        this.Volume = new MusicPlayerVolume();
+
+        this.LoadAudio(this.currentAudioFileInfo);
     }
 
     /// <summary>
@@ -43,7 +45,7 @@ public class GameMusicPlayer
     /// </summary>
     public void Play()
     {
-        if (this.State == GameMusicPlaybackState.Paused || this.State == GameMusicPlaybackState.Stopped)
+        if (this.State == GameMusicPlaybackState.Paused || this.State == GameMusicPlaybackState.Stopped || this.State == GameMusicPlaybackState.Cued)
         {
             this.StartPlayback();
         }
