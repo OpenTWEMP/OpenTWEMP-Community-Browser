@@ -22,9 +22,31 @@ public static class BrowserKernel
 {
     private static readonly AppGuiStyleManager AppGuiStyleManagerInstance;
 
+    private static readonly AppLocalizationManager AppLocalizationManagerInstance;
+
+
+    // AppSystemSettingsManager
+
+    // MediaDeviceManager
+
+    // CustomGameSetupManager
+
+    // GameSupportManager
+
+    // PresetManager ???
+
+    // CustomGameCollectionsManager
+
+    // GameConfigurationManager
+
+
     static BrowserKernel()
     {
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
+
+        AppLocalizationManagerInstance = AppLocalizationManager.Create();
+
+
 
         // Initialize the default logging device.
         Logger.InitializeByDefault();
@@ -47,6 +69,10 @@ public static class BrowserKernel
         Logger.CurrentInstance?.Close(); // test logging
     }
 
+
+    // BROWSER API: COLLECTIONS
+
+
     public static CustomModsCollection FavoriteModsCollection
     {
         get
@@ -62,6 +88,10 @@ public static class BrowserKernel
             return CustomGameCollectionsManager.UserCollections;
         }
     }
+
+
+    // BROWSER API: GAME SETUP MANAGEMENT
+
 
     public static List<GameSetupInfo> GameInstallations
     {
@@ -79,6 +109,10 @@ public static class BrowserKernel
         }
     }
 
+
+    // BROWSER API: GUI CUSTOMIZATION
+
+
     public static GuiStyle CurrentGUIStyle
     {
         get
@@ -92,6 +126,10 @@ public static class BrowserKernel
         }
     }
 
+
+    // BROWSER API: APPLICATION FEATURES
+
+
     public static bool UseExperimentalFeatures
     {
         get
@@ -104,6 +142,10 @@ public static class BrowserKernel
             AppSystemSettingsManager.UseExperimentalFeatures = value;
         }
     }
+
+
+    // BROWSER API: GAME SETUP MANAGEMENT
+
 
     public static List<GameSetupInfo> SynchronizeGameSetupSettings()
     {
@@ -135,6 +177,10 @@ public static class BrowserKernel
         CustomGameSetupManager.ClearAllSettings();
     }
 
+
+    // BROWSER API: GUI CUSTOMIZATION
+
+
     public static ColorTheme SelectCurrentColorTheme()
     {
         return AppGuiStyleManagerInstance.GetCurrentColorTheme();
@@ -150,29 +196,33 @@ public static class BrowserKernel
         return AppGuiStyleManagerInstance.GetCurrentColorTheme();
     }
 
+
+    // BROWSER API: LOCALIZATION
+
+
     public static bool IsEnabledLocalizationOnEnglish()
     {
-        return AppLocalizationManager.IsCurrentLocalizationName(AppLocalization.LOCALE_NAME_ENG);
+        return AppLocalizationManagerInstance.IsCurrentLocalizationName(AppLocalization.LOCALE_NAME_ENG);
     }
 
     public static bool IsEnabledLocalizationOnRussian()
     {
-        return AppLocalizationManager.IsCurrentLocalizationName(AppLocalization.LOCALE_NAME_RUS);
+        return AppLocalizationManagerInstance.IsCurrentLocalizationName(AppLocalization.LOCALE_NAME_RUS);
     }
 
     public static void SetLocalizationOnEnglishAsCurrent()
     {
-        AppLocalizationManager.SetCurrentLocalizationByName(AppLocalization.LOCALE_NAME_ENG);
+        AppLocalizationManagerInstance.SetCurrentLocalizationByName(AppLocalization.LOCALE_NAME_ENG);
     }
 
     public static void SetLocalizationOnRussianAsCurrent()
     {
-        AppLocalizationManager.SetCurrentLocalizationByName(AppLocalization.LOCALE_NAME_RUS);
+        AppLocalizationManagerInstance.SetCurrentLocalizationByName(AppLocalization.LOCALE_NAME_RUS);
     }
 
     public static string GetTextInCurrentLocalization(string formName, string controlName)
     {
-        LocaleSnapshot snapshot = AppLocalizationManager.CurrentLocalization.GetFormLocaleSnapshotByKey(formName);
+        LocaleSnapshot snapshot = AppLocalizationManagerInstance.CurrentLocalization.GetFormLocaleSnapshotByKey(formName);
         return snapshot.GetLocalizedValueByKey(controlName);
     }
 }
