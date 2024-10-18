@@ -26,6 +26,8 @@ public static class BrowserKernel
 
     private static readonly AppLocalizationManager AppLocalizationManagerInstance;
 
+    private static readonly CustomGameCollectionsManager CustomGameCollectionsManagerInstance;
+
 
     // MediaDeviceManager
 
@@ -34,8 +36,6 @@ public static class BrowserKernel
     // GameSupportManager
 
     // PresetManager ???
-
-    // CustomGameCollectionsManager
 
     // GameConfigurationManager
 
@@ -47,6 +47,8 @@ public static class BrowserKernel
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
 
         AppLocalizationManagerInstance = AppLocalizationManager.Create();
+
+        CustomGameCollectionsManagerInstance = CustomGameCollectionsManager.Create();
 
 
 
@@ -79,7 +81,7 @@ public static class BrowserKernel
     {
         get
         {
-            return CustomGameCollectionsManager.FavoriteModsCollection;
+            return CustomGameCollectionsManagerInstance.FavoriteModsCollection;
         }
     }
 
@@ -87,18 +89,18 @@ public static class BrowserKernel
     {
         get
         {
-            return CustomGameCollectionsManager.UserCollections;
+            return CustomGameCollectionsManagerInstance.UserCollections;
         }
     }
 
     public static void WriteExistingCollections()
     {
-        CustomGameCollectionsManager.WriteExistingCollections(CustomGameCollectionsManager.UserCollections);
+        CustomGameCollectionsManagerInstance.WriteExistingCollections();
     }
 
     public static void WriteFavoriteCollection()
     {
-        CustomGameCollectionsManager.WriteFavoriteCollection();
+        CustomGameCollectionsManagerInstance.WriteFavoriteCollection();
     }
 
 
