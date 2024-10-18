@@ -84,7 +84,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 
                 selectedModInfo.IsFavoriteMod = true;
                 BrowserKernel.FavoriteModsCollection.Modifications.Add(selectedModInfo.Location, selectedModInfo.ShortName);
-                CustomModsCollection.WriteFavoriteCollection();
+                BrowserKernel.WriteFavoriteCollection();
 
                 MessageBox.Show("This mod was successfully ADDED to Favorite Mods!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -103,7 +103,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 
                     selectedModInfo.IsFavoriteMod = false;
                     BrowserKernel.FavoriteModsCollection.Modifications.Remove(selectedModInfo.Location);
-                    CustomModsCollection.WriteFavoriteCollection();
+                    BrowserKernel.WriteFavoriteCollection();
 
                     MessageBox.Show("This mod was successfully REMOVED from Favorite Mods!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;

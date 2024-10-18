@@ -73,7 +73,7 @@ public partial class CollectionManageForm : Form, ICanChangeMyLocalization
             BrowserKernel.UserCollections.Remove(selectedCollection);
         }
 
-        CustomModsCollection.WriteExistingCollections(BrowserKernel.UserCollections);
+        BrowserKernel.WriteExistingCollections();
         currentBrowser.UpdateCustomCollectionsInTreeView();
         Close();
     }

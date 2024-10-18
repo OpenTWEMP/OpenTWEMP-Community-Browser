@@ -107,7 +107,7 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
 
             var collection = new CustomModsCollection(collectionNameTextBox.Text, selectedModifications);
             BrowserKernel.UserCollections.Add(collection);
-            CustomModsCollection.WriteExistingCollections(BrowserKernel.UserCollections);
+            BrowserKernel.WriteExistingCollections();
 
             currentBrowser.CreateModsCollectionTreeView(collection);
 

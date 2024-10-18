@@ -91,6 +91,16 @@ public static class BrowserKernel
         }
     }
 
+    public static void WriteExistingCollections()
+    {
+        CustomGameCollectionsManager.WriteExistingCollections(CustomGameCollectionsManager.UserCollections);
+    }
+
+    public static void WriteFavoriteCollection()
+    {
+        CustomGameCollectionsManager.WriteFavoriteCollection();
+    }
+
 
     // BROWSER API: GAME SETUP MANAGEMENT
 
