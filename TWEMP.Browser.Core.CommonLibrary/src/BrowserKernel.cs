@@ -20,12 +20,12 @@ using TWEMP.Browser.Core.CommonLibrary.Logging;
 /// </summary>
 public static class BrowserKernel
 {
+    private static readonly AppSystemSettingsManager AppSystemSettingsManagerInstance;
+
     private static readonly AppGuiStyleManager AppGuiStyleManagerInstance;
 
     private static readonly AppLocalizationManager AppLocalizationManagerInstance;
 
-
-    // AppSystemSettingsManager
 
     // MediaDeviceManager
 
@@ -42,6 +42,8 @@ public static class BrowserKernel
 
     static BrowserKernel()
     {
+        AppSystemSettingsManagerInstance = AppSystemSettingsManager.Create();
+
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
 
         AppLocalizationManagerInstance = AppLocalizationManager.Create();
@@ -134,12 +136,12 @@ public static class BrowserKernel
     {
         get
         {
-            return AppSystemSettingsManager.UseExperimentalFeatures;
+            return AppSystemSettingsManagerInstance.UseExperimentalFeatures;
         }
 
         set
         {
-            AppSystemSettingsManager.UseExperimentalFeatures = value;
+            AppSystemSettingsManagerInstance.UseExperimentalFeatures = value;
         }
     }
 

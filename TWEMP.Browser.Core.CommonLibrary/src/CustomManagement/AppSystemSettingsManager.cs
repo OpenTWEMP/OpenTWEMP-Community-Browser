@@ -7,15 +7,24 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 /// <summary>
 /// Represents a device to manage application's system settings.
 /// </summary>
-public static class AppSystemSettingsManager
+public class AppSystemSettingsManager
 {
-    static AppSystemSettingsManager()
+    private AppSystemSettingsManager()
     {
-        UseExperimentalFeatures = true;
+        this.UseExperimentalFeatures = true;
     }
 
     /// <summary>
     /// Gets or sets a value indicating whether application uses experimental features.
     /// </summary>
-    public static bool UseExperimentalFeatures { get; set; }
+    public bool UseExperimentalFeatures { get; set; }
+
+    /// <summary>
+    /// Creates a custom instance of the <see cref="AppSystemSettingsManager"/> class.
+    /// </summary>
+    /// <returns>Instance of the <see cref="AppSystemSettingsManager"/> class.</returns>
+    public static AppSystemSettingsManager Create()
+    {
+        return new AppSystemSettingsManager();
+    }
 }
