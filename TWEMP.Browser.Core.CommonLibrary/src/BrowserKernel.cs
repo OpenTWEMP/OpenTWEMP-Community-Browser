@@ -14,6 +14,7 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 using TWEMP.Browser.Core.CommonLibrary.Logging;
+using TWEMP.Browser.Core.CommonLibrary.MediaDevices;
 
 /// <summary>
 /// Defines the kernel of any OpenTWEMP Community Browser implementation.
@@ -26,10 +27,10 @@ public static class BrowserKernel
 
     private static readonly AppLocalizationManager AppLocalizationManagerInstance;
 
+    private static readonly MediaDeviceManager MediaDeviceManagerInstance;
+
     private static readonly CustomGameCollectionsManager CustomGameCollectionsManagerInstance;
 
-
-    // MediaDeviceManager
 
     // CustomGameSetupManager
 
@@ -47,6 +48,8 @@ public static class BrowserKernel
         AppGuiStyleManagerInstance = AppGuiStyleManager.Create();
 
         AppLocalizationManagerInstance = AppLocalizationManager.Create();
+
+        MediaDeviceManagerInstance = MediaDeviceManager.Create();
 
         CustomGameCollectionsManagerInstance = CustomGameCollectionsManager.Create();
 
