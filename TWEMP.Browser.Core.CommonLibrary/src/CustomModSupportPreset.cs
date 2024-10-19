@@ -12,14 +12,12 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using Newtonsoft.Json;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 public class CustomModSupportPreset
 {
     public const string MOD_PRESET_FOLDERNAME = ".twemp";
 
     private const string MOD_PRESET_FILENAME = "mod_support.json";
-    private const string MOD_DEFAULT_LOGO_FILENAME = "DEFAULT.png";
     private const string MOD_TITLE = "My_Title";
     private const string MOD_VERSION = "My_Version";
     private const string LOGOTYPE_IMAGE = "DEFAULT.png";
@@ -80,17 +78,7 @@ public class CustomModSupportPreset
             Directory.CreateDirectory(presetHomeDirectoryPath);
         }
 
-        // 2. Prepare default assets for the default preset.
-        string supportAssetsDirectoryPath = GameSupportManager.PresetsHomeDirectoryInfo.FullName;
-        string srcLogoImageFilePath = Path.Combine(supportAssetsDirectoryPath, MOD_DEFAULT_LOGO_FILENAME);
-        string destLogoImageFilePath = Path.Combine(presetHomeDirectoryPath, MOD_DEFAULT_LOGO_FILENAME);
-
-        if (File.Exists(srcLogoImageFilePath))
-        {
-            File.Copy(srcLogoImageFilePath, destLogoImageFilePath);
-        }
-
-        // 3. Generate 'mod_support.json' preset configuration file.
+        // 2. Generate 'mod_support.json' preset configuration file.
         var presetByDefault = new CustomModSupportPreset();
         string presetJsonText = JsonConvert.SerializeObject(presetByDefault, Formatting.Indented);
         string presetFilePath = Path.Combine(presetHomeDirectoryPath, MOD_PRESET_FILENAME);
