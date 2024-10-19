@@ -8,8 +8,6 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
 /// <summary>
@@ -75,40 +73,6 @@ public static class GameSupportManager
             CreatePresetsConfigFileByDefault(gameSupportConfiguration);
 #endif
         }
-    }
-
-    /// <summary>
-    /// Creates a game mods collection view via a collection of mod preset setting view entities.
-    /// </summary>
-    /// <param name="presetSettings">A collection containing objects of the <see cref="ModPresetSettingView"/> type.</param>
-    /// <returns>An instance of the <see cref="FullGameModsCollectionView"/> class.</returns>
-    public static FullGameModsCollectionView CreateGameModsCollectionViewByPresetSettings(
-        ICollection<ModPresetSettingView> presetSettings)
-    {
-        List<UpdatableGameModificationView> gameModificationViews = new ();
-
-        foreach (ModPresetSettingView setting in presetSettings)
-        {
-            GameModificationInfo gameModInfo = CustomGameSetupManager.TotalModificationsList.ElementAt(setting.Id.NumericId);
-
-            UpdatableGameModificationView gameModView;
-            if (setting.UseCustomizablePreset)
-            {
-                gameModView = UpdatableGameModificationView.CreateGameModificationViewByCustomizablePreset(setting.Id, gameModInfo);
-            }
-            else
-            {
-                RedistributableModPreset redistributableModPreset = AvailableModSupportPresets.Find(
-                    preset => preset.Metadata.Guid == setting.RedistributablePresetGuid)!;
-
-                gameModView = UpdatableGameModificationView.CreateGameModificationViewByRedistributablePreset(
-                    setting.Id, gameModInfo, redistributableModPreset);
-            }
-
-            gameModificationViews.Add(gameModView);
-        }
-
-        return new FullGameModsCollectionView(gameModificationViews);
     }
 
     private static List<ModSupportPresetPackage> GetAllPresetPackages()
