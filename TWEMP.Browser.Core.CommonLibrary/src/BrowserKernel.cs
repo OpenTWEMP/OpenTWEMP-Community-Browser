@@ -31,14 +31,14 @@ public static class BrowserKernel
 
     private static readonly CustomGameCollectionsManager CustomGameCollectionsManagerInstance;
 
+    private static readonly GameConfigurationManager GameConfigurationManagerInstance;
+
 
     // CustomGameSetupManager
 
     // GameSupportManager
 
     // PresetManager ???
-
-    // GameConfigurationManager
 
 
     static BrowserKernel()
@@ -53,6 +53,7 @@ public static class BrowserKernel
 
         CustomGameCollectionsManagerInstance = CustomGameCollectionsManager.Create();
 
+        GameConfigurationManagerInstance = GameConfigurationManager.Create();
 
 
         // Initialize the default logging device.
@@ -68,8 +69,6 @@ public static class BrowserKernel
         Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
             "GameSupportManager", "GameSupportManager.Initialize()", DateTime.Now)); // test logging
 
-        // Setup the global device for game configuration profile manager by default.
-        GameConfigurationManager.Initialize();
         Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
             "GameConfigurationManager", "GameConfigurationManager.Initialize()", DateTime.Now)); // test logging
 
