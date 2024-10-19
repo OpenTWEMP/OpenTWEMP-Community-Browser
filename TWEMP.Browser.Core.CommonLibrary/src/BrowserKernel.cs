@@ -29,17 +29,15 @@ public static class BrowserKernel
 
     private static readonly MediaDeviceManager MediaDeviceManagerInstance;
 
+    private static readonly CustomGameSetupManager CustomGameSetupManagerInstance;
+
     private static readonly CustomGameCollectionsManager CustomGameCollectionsManagerInstance;
 
     private static readonly ModSupportPresetSetupManager ModSupportPresetSetupManagerInstance;
 
     private static readonly GameConfigurationManager GameConfigurationManagerInstance;
 
-
-    // CustomGameSetupManager
-
     // GameSupportManager
-
 
     static BrowserKernel()
     {
@@ -50,6 +48,8 @@ public static class BrowserKernel
         AppLocalizationManagerInstance = AppLocalizationManager.Create();
 
         MediaDeviceManagerInstance = MediaDeviceManager.Create();
+
+        CustomGameSetupManagerInstance = CustomGameSetupManager.Create();
 
         CustomGameCollectionsManagerInstance = CustomGameCollectionsManager.Create();
 
@@ -115,7 +115,7 @@ public static class BrowserKernel
     {
         get
         {
-            return CustomGameSetupManager.GameInstallations;
+            return CustomGameSetupManagerInstance.GameInstallations;
         }
     }
 
@@ -123,7 +123,7 @@ public static class BrowserKernel
     {
         get
         {
-            return CustomGameSetupManager.TotalModificationsList;
+            return CustomGameSetupManagerInstance.TotalModificationsList;
         }
     }
 
@@ -167,32 +167,32 @@ public static class BrowserKernel
 
     public static List<GameSetupInfo> SynchronizeGameSetupSettings()
     {
-        return CustomGameSetupManager.SynchronizeGameSetupSettings();
+        return CustomGameSetupManagerInstance.SynchronizeGameSetupSettings();
     }
 
     public static GameModificationInfo GetActiveModificationInfo(string modShortName)
     {
-        return CustomGameSetupManager.GetActiveModificationInfo(modShortName);
+        return CustomGameSetupManagerInstance.GetActiveModificationInfo(modShortName);
     }
 
     public static GameSetupInfo RegistrateGameInstallation(string setupName, string executableFullPath, List<string> modcenterPaths)
     {
-        return CustomGameSetupManager.RegistrateGameInstallation(setupName, executableFullPath, modcenterPaths);
+        return CustomGameSetupManagerInstance.RegistrateGameInstallation(setupName, executableFullPath, modcenterPaths);
     }
 
     public static void DeleteGameSetupByIndex(int gameSetupIndex)
     {
-        CustomGameSetupManager.DeleteGameSetupByIndex(gameSetupIndex);
+        CustomGameSetupManagerInstance.DeleteGameSetupByIndex(gameSetupIndex);
     }
 
     public static void UpdateTotalModificationsList()
     {
-        CustomGameSetupManager.UpdateTotalModificationsList();
+        CustomGameSetupManagerInstance.UpdateTotalModificationsList();
     }
 
     public static void ClearAllSettings()
     {
-        CustomGameSetupManager.ClearAllSettings();
+        CustomGameSetupManagerInstance.ClearAllSettings();
     }
 
 

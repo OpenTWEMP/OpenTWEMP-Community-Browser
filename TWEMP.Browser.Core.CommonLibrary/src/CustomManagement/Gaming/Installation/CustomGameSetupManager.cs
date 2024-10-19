@@ -16,112 +16,118 @@ using TWEMP.Browser.Core.CommonLibrary.Serialization;
 /// <summary>
 /// Represents a device to manage custom game setup installations into the application.
 /// </summary>
-public static class CustomGameSetupManager
+public class CustomGameSetupManager
 {
     private const string ConfigFileName = "setup.json";
 
-    private static readonly string GameSetupConfigFilePath;
+    private readonly string gameSetupConfigFilePath;
 
-    /// <summary>
-    /// Initializes static members of the <see cref="CustomGameSetupManager"/> class.
-    /// </summary>
-    static CustomGameSetupManager()
+    private CustomGameSetupManager()
     {
 #if LEGACY_XML_SERIALIZATION
-        GameSetupConfigFilePath = GameSetupConfFileBuilder.GetSetupConfFileName();
+        this.gameSetupConfigFilePath = GameSetupConfFileBuilder.GetSetupConfFileName();
 #endif
 
 #if MODERN_JSON_SERIALIZATION
-        GameSetupConfigFilePath = Path.Combine(Directory.GetCurrentDirectory(), ConfigFileName);
+        this.gameSetupConfigFilePath = Path.Combine(Directory.GetCurrentDirectory(), ConfigFileName);
 #endif
 
-        GameInstallations = new List<GameSetupInfo>();
-        TotalModificationsList = new List<GameModificationInfo>();
+        this.GameInstallations = new List<GameSetupInfo>();
+        this.TotalModificationsList = new List<GameModificationInfo>();
     }
 
     /// <summary>
     /// Gets user's game setup installations.
     /// </summary>
-    public static List<GameSetupInfo> GameInstallations { get; private set; }
+    public List<GameSetupInfo> GameInstallations { get; private set; }
 
     /// <summary>
     /// Gets all game modifications from user's game setup installations.
     /// </summary>
-    public static List<GameModificationInfo> TotalModificationsList { get; private set; }
+    public List<GameModificationInfo> TotalModificationsList { get; private set; }
 
-    public static GameSetupInfo RegistrateGameInstallation(string setupName, string executableFullPath, List<string> modcenterPaths)
+    /// <summary>
+    /// Creates a custom instance of the <see cref="CustomGameSetupManager"/> class.
+    /// </summary>
+    /// <returns>Instance of the <see cref="CustomGameSetupManager"/> class.</returns>
+    public static CustomGameSetupManager Create()
+    {
+        return new CustomGameSetupManager();
+    }
+
+    public GameSetupInfo RegistrateGameInstallation(string setupName, string executableFullPath, List<string> modcenterPaths)
     {
 #if LEGACY_XML_SERIALIZATION
-        GameSetupConfFileBuilder.WriteNewSetupToConfFile(GameSetupConfigFilePath, setupName, executableFullPath, modcenterPaths);
+        GameSetupConfFileBuilder.WriteNewSetupToConfFile(this.gameSetupConfigFilePath, setupName, executableFullPath, modcenterPaths);
 #endif
 
         GameSetupInfo gameSetupInfo = GameSetupInfo.Create(setupName, executableFullPath, modcenterPaths);
-        GameInstallations.Add(gameSetupInfo);
+        this.GameInstallations.Add(gameSetupInfo);
 
 #if MODERN_JSON_SERIALIZATION
-        WriteGameSetupObjectsToConfigFile(GameInstallations);
+        this.WriteGameSetupObjectsToConfigFile(this.GameInstallations);
 #endif
 
         return gameSetupInfo;
     }
 
-    public static List<GameSetupInfo> SynchronizeGameSetupSettings()
+    public List<GameSetupInfo> SynchronizeGameSetupSettings()
     {
 #if LEGACY_XML_SERIALIZATION
-        if (GameSetupConfFileBuilder.ShouldGameSetupConfFileBeCreated(GameSetupConfigFilePath))
+        if (GameSetupConfFileBuilder.ShouldGameSetupConfFileBeCreated(this.gameSetupConfigFilePath))
         {
-            GameSetupConfFileBuilder.CreateSetupConfFile(GameSetupConfigFilePath);
+            GameSetupConfFileBuilder.CreateSetupConfFile(this.gameSetupConfigFilePath);
         }
         else
         {
-            if (GameInstallations.Count == 0)
+            if (this.GameInstallations.Count == 0)
             {
-                uint gameSetupObjectsCount = GameSetupConfFileBuilder.ReadTotalGameSetupCount(GameSetupConfigFilePath);
+                uint gameSetupObjectsCount = GameSetupConfFileBuilder.ReadTotalGameSetupCount(this.gameSetupConfigFilePath);
 
                 if (gameSetupObjectsCount > 0)
                 {
-                    List<GameSetupInfo> gameSetupObjects = GameSetupConfFileBuilder.ReadAllSetupConfFile(GameSetupConfigFilePath);
-                    GameInstallations.AddRange(gameSetupObjects);
+                    List<GameSetupInfo> gameSetupObjects = GameSetupConfFileBuilder.ReadAllSetupConfFile(this.gameSetupConfigFilePath);
+                    this.GameInstallations.AddRange(gameSetupObjects);
                 }
             }
         }
 #endif
 
 #if MODERN_JSON_SERIALIZATION
-        GameInstallations = ReadGameSetupObjectsFromConfigFile();
+        this.GameInstallations = this.ReadGameSetupObjectsFromConfigFile();
 #endif
 
-        return GameInstallations;
+        return this.GameInstallations;
     }
 
-    public static void DeleteGameSetupByIndex(int gameSetupIndex)
+    public void DeleteGameSetupByIndex(int gameSetupIndex)
     {
 #if LEGACY_XML_SERIALIZATION
-        GameSetupInfo gameSetupInfo = GameInstallations[gameSetupIndex];
-        GameSetupConfFileBuilder.DeleteGameSetupFromConfFile(gameSetupInfo, GameSetupConfigFilePath);
+        GameSetupInfo gameSetupInfo = this.GameInstallations[gameSetupIndex];
+        GameSetupConfFileBuilder.DeleteGameSetupFromConfFile(gameSetupInfo, this.gameSetupConfigFilePath);
 #endif
 
-        GameInstallations.RemoveAt(gameSetupIndex);
+        this.GameInstallations.RemoveAt(gameSetupIndex);
 
 #if MODERN_JSON_SERIALIZATION
-        WriteGameSetupObjectsToConfigFile(GameInstallations);
+        this.WriteGameSetupObjectsToConfigFile(this.GameInstallations);
 #endif
     }
 
-    public static void UpdateTotalModificationsList()
+    public void UpdateTotalModificationsList()
     {
-        TotalModificationsList.Clear();
+        this.TotalModificationsList.Clear();
 
-        foreach (var installation in GameInstallations)
+        foreach (var installation in this.GameInstallations)
         {
             List<GameModificationInfo> mods = installation.GetInstalledMods();
-            TotalModificationsList.AddRange(mods);
+            this.TotalModificationsList.AddRange(mods);
         }
     }
 
-    public static GameModificationInfo GetActiveModificationInfo(string modShortName)
+    public GameModificationInfo GetActiveModificationInfo(string modShortName)
     {
-        foreach (GameModificationInfo modInfo in TotalModificationsList)
+        foreach (GameModificationInfo modInfo in this.TotalModificationsList)
         {
             if (modInfo.ShortName.Equals(modShortName))
             {
@@ -132,27 +138,27 @@ public static class CustomGameSetupManager
         return null!;
     }
 
-    public static void ClearAllSettings()
+    public void ClearAllSettings()
     {
-        TotalModificationsList.Clear();
-        GameInstallations.Clear();
+        this.TotalModificationsList.Clear();
+        this.GameInstallations.Clear();
 
-        if (File.Exists(GameSetupConfigFilePath))
+        if (File.Exists(this.gameSetupConfigFilePath))
         {
-            File.Delete(GameSetupConfigFilePath);
+            File.Delete(this.gameSetupConfigFilePath);
 
 #if LEGACY_XML_SERIALIZATION
-            GameSetupConfFileBuilder.CreateSetupConfFile(GameSetupConfigFilePath);
+            GameSetupConfFileBuilder.CreateSetupConfFile(this.gameSetupConfigFilePath);
 #endif
         }
     }
 
 #if MODERN_JSON_SERIALIZATION
-    private static List<GameSetupInfo> ReadGameSetupObjectsFromConfigFile()
+    private List<GameSetupInfo> ReadGameSetupObjectsFromConfigFile()
     {
         List<GameSetupInfo> gameSetupObjects = new ();
 
-        GameSetupView[] gameSetupViews = AppSerializer.DeserializeFromJson<GameSetupView[]>(GameSetupConfigFilePath);
+        GameSetupView[] gameSetupViews = AppSerializer.DeserializeFromJson<GameSetupView[]>(this.gameSetupConfigFilePath);
 
         foreach (GameSetupView view in gameSetupViews)
         {
@@ -163,7 +169,7 @@ public static class CustomGameSetupManager
         return gameSetupObjects;
     }
 
-    private static void WriteGameSetupObjectsToConfigFile(ICollection<GameSetupInfo> gameSetupObjects)
+    private void WriteGameSetupObjectsToConfigFile(ICollection<GameSetupInfo> gameSetupObjects)
     {
         List<GameSetupView> gameSetupViews = new ();
 
@@ -172,7 +178,7 @@ public static class CustomGameSetupManager
             gameSetupViews.Add(new GameSetupView(gameSetupInfo));
         }
 
-        AppSerializer.SerializeToJson(gameSetupViews, GameSetupConfigFilePath);
+        AppSerializer.SerializeToJson(gameSetupViews, this.gameSetupConfigFilePath);
     }
 #endif
 }
