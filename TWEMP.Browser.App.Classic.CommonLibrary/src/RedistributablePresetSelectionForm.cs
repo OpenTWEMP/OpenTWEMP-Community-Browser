@@ -7,6 +7,7 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 public partial class RedistributablePresetSelectionForm : Form
@@ -22,7 +23,7 @@ public partial class RedistributablePresetSelectionForm : Form
         this.presetSettingsForm = presetSettingsForm;
         this.gameModId = gameModId;
 
-        this.redistributableModPresets = GameSupportManager.AvailableModSupportPresets;
+        this.redistributableModPresets = BrowserKernel.AvailableModSupportPresets;
         this.InitializeListBoxOfRedistributablePresets(this.redistributableModPresets);
     }
 

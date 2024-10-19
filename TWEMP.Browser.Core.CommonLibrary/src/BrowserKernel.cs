@@ -33,11 +33,11 @@ public static class BrowserKernel
 
     private static readonly CustomGameCollectionsManager CustomGameCollectionsManagerInstance;
 
+    private static readonly GameSupportManager GameSupportManagerInstance;
+
     private static readonly ModSupportPresetSetupManager ModSupportPresetSetupManagerInstance;
 
     private static readonly GameConfigurationManager GameConfigurationManagerInstance;
-
-    // GameSupportManager
 
     static BrowserKernel()
     {
@@ -53,10 +53,11 @@ public static class BrowserKernel
 
         CustomGameCollectionsManagerInstance = CustomGameCollectionsManager.Create();
 
+        GameSupportManagerInstance = GameSupportManager.Create();
+
         ModSupportPresetSetupManagerInstance = ModSupportPresetSetupManager.Create();
 
         GameConfigurationManagerInstance = GameConfigurationManager.Create();
-
 
         // Initialize the default logging device.
         Logger.InitializeByDefault();
@@ -66,8 +67,6 @@ public static class BrowserKernel
         Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
             "AppGuiStyleManager", "AppGuiStyleManager.Create()", DateTime.Now)); // test logging
 
-        // Setup the global device for game support manager by default.
-        GameSupportManager.Initialize();
         Logger.CurrentInstance?.LogEventMessage(new BrowserEventMessage(
             "GameSupportManager", "GameSupportManager.Initialize()", DateTime.Now)); // test logging
 
@@ -158,6 +157,17 @@ public static class BrowserKernel
         set
         {
             AppSystemSettingsManagerInstance.UseExperimentalFeatures = value;
+        }
+    }
+
+
+    // API: PRESETS
+
+    public static List<RedistributableModPreset> AvailableModSupportPresets
+    {
+        get
+        {
+            return GameSupportManagerInstance.AvailableModSupportPresets;
         }
     }
 

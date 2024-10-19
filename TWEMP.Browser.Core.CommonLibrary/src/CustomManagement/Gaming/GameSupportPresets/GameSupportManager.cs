@@ -13,76 +13,75 @@ using TWEMP.Browser.Core.CommonLibrary.Serialization;
 /// <summary>
 /// Represents a device to manage game support presets into the application.
 /// </summary>
-public static class GameSupportManager
+public class GameSupportManager
 {
     private const string PresetsHomeFolderName = "support";
     private const string PresetsConfigFileName = "games_support.json";
 
-    private static readonly FileInfo PresetsConfigFileInfo;
+    private readonly DirectoryInfo presetsHomeDirectoryInfo;
+    private readonly FileInfo presetsConfigFileInfo;
 
-    static GameSupportManager()
+    private GameSupportManager()
     {
         string presetsHomeDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), PresetsHomeFolderName);
-        PresetsHomeDirectoryInfo = new DirectoryInfo(presetsHomeDirectoryPath);
+        this.presetsHomeDirectoryInfo = new DirectoryInfo(presetsHomeDirectoryPath);
 
         string presetsConfigFilePath = Path.Combine(presetsHomeDirectoryPath, PresetsConfigFileName);
-        PresetsConfigFileInfo = new FileInfo(presetsConfigFilePath);
+        this.presetsConfigFileInfo = new FileInfo(presetsConfigFilePath);
 
-        AvailableModSupportPresets = new List<RedistributableModPreset>();
-    }
+        this.AvailableModSupportPresets = new List<RedistributableModPreset>();
 
-    /// <summary>
-    /// Gets information about the home directory of game support presets.
-    /// </summary>
-    public static DirectoryInfo PresetsHomeDirectoryInfo { get; }
-
-    /// <summary>
-    /// Gets the list of available redistributable mod support presets.
-    /// </summary>
-    public static List<RedistributableModPreset> AvailableModSupportPresets { get; private set; }
-
-    /// <summary>
-    /// Initializes the global device for game support management.
-    /// </summary>
-    public static void Initialize()
-    {
-        if (!PresetsHomeDirectoryInfo.Exists)
+        if (!this.presetsHomeDirectoryInfo.Exists)
         {
-            PresetsHomeDirectoryInfo.Create();
+            this.presetsHomeDirectoryInfo.Create();
         }
 
-        if (PresetsConfigFileInfo.Exists)
+        if (this.presetsConfigFileInfo.Exists)
         {
-            RedistributableModPreset[] presets = ReadPresetsConfigFile();
-            InitializeAvailablePresets(presets);
+            RedistributableModPreset[] presets = this.ReadPresetsConfigFile();
+            this.InitializeAvailablePresets(presets);
         }
         else
         {
 #if USE_REAL_PRESETS
-            List<ModSupportPresetPackage> detectedPackages = GetAllPresetPackages();
+            List<ModSupportPresetPackage> detectedPackages = this.GetAllPresetPackages();
             GameSupportConfiguration gameSupportConfiguration = new (
                 provider: new GameSupportProvider(GameEngineSupportType.M2TW),
                 packages: detectedPackages);
-            InitializeAvailablePresets(gameSupportConfiguration);
-            CreatePresetsConfigFileByDefault(gameSupportConfiguration);
+            this.InitializeAvailablePresets(gameSupportConfiguration);
+            this.CreatePresetsConfigFileByDefault(gameSupportConfiguration);
 #endif
 
 #if USE_TEST_PRESETS
             GameSupportConfiguration gameSupportConfiguration = GameSupportConfiguration.CreateTestConfigurationByDefault();
-            InitializeAvailablePresets(gameSupportConfiguration);
-            CreatePresetsConfigFileByDefault(gameSupportConfiguration);
+            this.InitializeAvailablePresets(gameSupportConfiguration);
+            this.CreatePresetsConfigFileByDefault(gameSupportConfiguration);
 #endif
         }
     }
 
-    private static List<ModSupportPresetPackage> GetAllPresetPackages()
+    /// <summary>
+    /// Gets the list of available redistributable mod support presets.
+    /// </summary>
+    public List<RedistributableModPreset> AvailableModSupportPresets { get; private set; }
+
+    /// <summary>
+    /// Creates a custom instance of the <see cref="GameSupportManager"/> class.
+    /// </summary>
+    /// <returns>Instance of the <see cref="GameSupportManager"/> class.</returns>
+    public static GameSupportManager Create()
+    {
+        return new GameSupportManager();
+    }
+
+    private List<ModSupportPresetPackage> GetAllPresetPackages()
     {
         const string packageConfigFileName = "twemp-package-config.json";
         const string presetConfigFileName = "twemp-preset-config.json";
 
         List<ModSupportPresetPackage> modSupportPresetPackages = new List<ModSupportPresetPackage>();
 
-        DirectoryInfo[] packageDirectories = PresetsHomeDirectoryInfo.GetDirectories();
+        DirectoryInfo[] packageDirectories = this.presetsHomeDirectoryInfo.GetDirectories();
 
         foreach (DirectoryInfo packageDirectory in packageDirectories)
         {
@@ -118,25 +117,25 @@ public static class GameSupportManager
         return modSupportPresetPackages;
     }
 
-    private static void InitializeAvailablePresets(GameSupportConfiguration configuration)
+    private void InitializeAvailablePresets(GameSupportConfiguration configuration)
     {
         List<RedistributableModPreset> presets = configuration.GetAllRedistributablePresets();
 
         foreach (RedistributableModPreset preset in presets)
         {
-            AvailableModSupportPresets.Add(preset);
+            this.AvailableModSupportPresets.Add(preset);
         }
     }
 
-    private static void InitializeAvailablePresets(RedistributableModPreset[] presets)
+    private void InitializeAvailablePresets(RedistributableModPreset[] presets)
     {
         foreach (RedistributableModPreset preset in presets)
         {
-            AvailableModSupportPresets.Add(preset);
+            this.AvailableModSupportPresets.Add(preset);
         }
     }
 
-    private static void CreatePresetsConfigFileByDefault(GameSupportConfiguration configuration)
+    private void CreatePresetsConfigFileByDefault(GameSupportConfiguration configuration)
     {
         List<RedistributableModPreset> presets = new ();
 
@@ -148,11 +147,11 @@ public static class GameSupportManager
             presets.AddRange(attachedPresets);
         }
 
-        AppSerializer.SerializeToJson(presets, PresetsConfigFileInfo.FullName);
+        AppSerializer.SerializeToJson(presets, this.presetsConfigFileInfo.FullName);
     }
 
-    private static RedistributableModPreset[] ReadPresetsConfigFile()
+    private RedistributableModPreset[] ReadPresetsConfigFile()
     {
-        return AppSerializer.DeserializeFromJson<RedistributableModPreset[]>(PresetsConfigFileInfo.FullName);
+        return AppSerializer.DeserializeFromJson<RedistributableModPreset[]>(this.presetsConfigFileInfo.FullName);
     }
 }
