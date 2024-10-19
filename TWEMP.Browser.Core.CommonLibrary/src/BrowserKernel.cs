@@ -31,14 +31,14 @@ public static class BrowserKernel
 
     private static readonly CustomGameCollectionsManager CustomGameCollectionsManagerInstance;
 
+    private static readonly ModSupportPresetSetupManager ModSupportPresetSetupManagerInstance;
+
     private static readonly GameConfigurationManager GameConfigurationManagerInstance;
 
 
     // CustomGameSetupManager
 
     // GameSupportManager
-
-    // PresetManager ???
 
 
     static BrowserKernel()
@@ -52,6 +52,8 @@ public static class BrowserKernel
         MediaDeviceManagerInstance = MediaDeviceManager.Create();
 
         CustomGameCollectionsManagerInstance = CustomGameCollectionsManager.Create();
+
+        ModSupportPresetSetupManagerInstance = ModSupportPresetSetupManager.Create();
 
         GameConfigurationManagerInstance = GameConfigurationManager.Create();
 
