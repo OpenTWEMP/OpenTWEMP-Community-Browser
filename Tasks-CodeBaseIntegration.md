@@ -93,19 +93,18 @@
 * [x] Move the IBrowserMessageProvider interface to the TWEMP.Browser.Core.CommonLibrary.Abstractions namespace.
 * [x] Move the BrowserMessageType enumeration to the TWEMP.Browser.Core.CommonLibrary.Logging namespace.
 * [x] Move the ShowFileSystemDirectory class to the TWEMP.Browser.Core.CommonLibrary.Utilities namespace.
-* [ ] Create the BrowserCore class to expose a facade API for any clients of the TWEMP.Browser.Core.CommonLibrary class library.
-* [ ] Move the TWEMP.Browser.Core.CommonLibrary.Settings class  definition to the BrowserCore and replace all external references.
-* [ ] Create design where the CustomGameCollectionsManager class is a part of the BrowserCore class.
-* [ ] Create design where the GameConfigurationManager class is a part of the BrowserCore class.
-* [ ] Create design where the GameSupportManager class is a part of the BrowserCore class.
-* [ ] Create design where the CustomGameSetupManager class is a part of the BrowserCore class.
-* [ ] Create design where the AppGuiStyleManager class is a part of the BrowserCore class.
-* [ ] Create design where the AppLocalizationManager class is a part of the BrowserCore class.
-* [ ] Create design where the AppSystemSettingsManager class is a part of the BrowserCore class.
-* [ ] Create design where the MediaDeviceManager class is a part of the BrowserCore class.
+* [x] Create the BrowserCore class to expose a facade API for any clients of the TWEMP.Browser.Core.CommonLibrary class library.
+* [x] Move the TWEMP.Browser.Core.CommonLibrary.Settings class  definition to the BrowserCore and replace all external references.
+* [x] Create design where the CustomGameCollectionsManager class is a part of the BrowserCore class.
+* [x] Create design where the GameConfigurationManager class is a part of the BrowserCore class.
+* [x] Create design where the GameSupportManager class is a part of the BrowserCore class.
+* [x] Create design where the CustomGameSetupManager class is a part of the BrowserCore class.
+* [x] Create design where the AppGuiStyleManager class is a part of the BrowserCore class.
+* [x] Create design where the AppLocalizationManager class is a part of the BrowserCore class.
+* [x] Create design where the AppSystemSettingsManager class is a part of the BrowserCore class.
+* [x] Create design where the MediaDeviceManager class is a part of the BrowserCore class.
 * [x] Move the TWEMP.Browser.Core.CommonLibrary.LocalizationManager wrapper to the BrowserCore class.
 * [x] Move the TWEMP.Browser.Core.CommonLibrary.GameLaunchConfigurator wrapper to the BrowserCore class.
-* [ ] Move the BrowserMessageProvider class the TWEMP.Browser.Core.CommonLibrary.Messaging namespace.
 * [x] Deprecate the GuiLocale class and use the BrowserCore class instead it in external clients.
 * [x] Deprecate the FormLocaleSnapshot class and use a new similar abstract class instead it in external clients.
 
