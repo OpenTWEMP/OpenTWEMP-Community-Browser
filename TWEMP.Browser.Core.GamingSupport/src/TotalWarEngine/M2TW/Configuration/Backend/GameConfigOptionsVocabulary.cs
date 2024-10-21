@@ -8,18 +8,6 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Bac
 
 public static class GameConfigOptionsVocabulary
 {
-    // [audio]
-    public const string AudioConfigSwitch = "audio";
-
-    public const string AudioEnable = "enable";
-    public const string AudioMasterVolume = "master_vol";
-    public const string AudioMusicVolume = "music_vol";
-    public const string SoundCardProvider = "provider";
-    public const string SoundEffectsVolume = "sfx_vol";
-    public const string SpeechEnable = "speech_enable";
-    public const string SpeechVolume = "speech_vol";
-    public const string SubFactionAccents = "sub_faction_accents";
-
     // [features]
     public const string FeaturesConfigSwitch = "features";
 
