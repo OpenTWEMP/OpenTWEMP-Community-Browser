@@ -8,12 +8,6 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Bac
 
 public static class GameConfigOptionsVocabulary
 {
-    // [features]
-    public const string FeaturesConfigSwitch = "features";
-
-    public const string Mod = "mod";
-    public const string Editor = "editor";
-
     // [game]
     public const string GameConfigSwitch = "game";
 

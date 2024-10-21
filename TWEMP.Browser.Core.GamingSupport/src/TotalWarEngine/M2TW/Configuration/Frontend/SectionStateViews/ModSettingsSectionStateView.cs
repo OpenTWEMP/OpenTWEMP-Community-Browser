@@ -12,6 +12,13 @@ using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend
 
 public record ModSettingsSectionStateView : ICustomConfigState
 {
+    private const string FeaturesConfigSwitch = "features";
+    private const string IOConfigSwitch = "io";
+
+    public const string ModTextId = "mod";
+    public const string EditorTextId = "editor";
+    public const string FileFirstTextId = "file_first";
+
     public ModSettingsSectionStateView()
     {
     }
@@ -22,30 +29,33 @@ public record ModSettingsSectionStateView : ICustomConfigState
 
     public M2TW_Boolean? FileFirst { get; set; } // "file_first"
 
+    public static ModSettingsSectionStateView CreateByDefault(GameModificationInfo mod)
+    {
+        return new ModSettingsSectionStateView
+        {
+            Mod = mod.ModCfgRelativePath,
+            Editor = new M2TW_Boolean(true),
+            FileFirst = new M2TW_Boolean(true),
+        };
+    }
+
     public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return Array.Empty<GameCfgSection>();
-    }
+        M2TWGameCfgOption featuresModOption = new (
+            name: ModTextId, value: this.Mod!, section: FeaturesConfigSwitch);
 
-    private static M2TWGameCfgSection GetFeaturesSubSet(GameModificationInfo mod)
-    {
-        string subsetName = "features";
+        M2TWGameCfgOption featuresEditorOption = new (
+            name: EditorTextId, value: this.Editor!, section: FeaturesConfigSwitch);
 
-        var subsetOptions = new List<M2TWGameCfgOption>();
+        M2TWGameCfgOption ioFileFirstOption = new (
+            name: FileFirstTextId, value: this.FileFirst!, section: IOConfigSwitch);
 
-        subsetOptions.Add(new M2TWGameCfgOption("editor", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("mod", mod.ModCfgRelativePath!, subsetName));
+        M2TWGameCfgOption[] featuresCfgOptions = { featuresModOption, featuresEditorOption };
+        M2TWGameCfgOption[] ioCfgOptions = { ioFileFirstOption };
 
-        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
-    }
+        GameCfgSection featuresCfgSection = new M2TWGameCfgSection(FeaturesConfigSwitch, featuresCfgOptions);
+        GameCfgSection ioCfgSection = new M2TWGameCfgSection(IOConfigSwitch, ioCfgOptions);
 
-    private static M2TWGameCfgSection GetIOSubSet()
-    {
-        string subsetName = "io";
-
-        var subsetOptions = new List<M2TWGameCfgOption>();
-        subsetOptions.Add(new M2TWGameCfgOption("file_first", true, subsetName));
-
-        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+        return new GameCfgSection[] { featuresCfgSection, ioCfgSection };
     }
 }
