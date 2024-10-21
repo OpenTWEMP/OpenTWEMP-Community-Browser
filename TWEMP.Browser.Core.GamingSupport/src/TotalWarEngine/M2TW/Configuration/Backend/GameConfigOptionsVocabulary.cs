@@ -8,38 +8,7 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Bac
 
 public static class GameConfigOptionsVocabulary
 {
-    // [game]
-    public const string GameConfigSwitch = "game";
 
-    public const string GameAdvancedStatsAlways = "advanced_stats_always";
-    public const string GameAdvisorVerbosity = "advisor_verbosity";
-    public const string GameAiFactions = "ai_factions";
-    public const string GameAllSsers = "allusers";
-    public const string GameAutoSave = "auto_save";
-    public const string GameBlindAdvisor = "blind_advisor";
-    public const string GameCampaignMapGameSpeed = "campaign_map_game_speed";
-    public const string GameCampaignMapSpeedUp = "campaign_map_speed_up";
-    public const string GameCampaignNumTimePlay = "campaign_num_time_play";
-    public const string GameChatMsgDuration = "chat_msg_duration";
-    public const string GameDisableArrowMarkers = "disable_arrow_markers";
-    public const string GameDisableEvents = "disable_events";
-    public const string GameEnglish = "english";
-    public const string GameEventCutscenes = "event_cutscenes";
-    public const string GameFatigue = "fatigue";
-    public const string GameFirstTimePlay = "first_time_play";
-    public const string GameGamespySavePasswrd = "gamespy_save_passwrd";
-    public const string GameLabelCharacters = "label_characters";
-    public const string GameLabelSettlements = "label_settlements";
-    public const string GameMicromanageAllSettlements = "micromanage_all_settlements";
-    public const string GameMorale = "morale";
-    public const string GameMuteAdvisor = "mute_advisor";
-    public const string GameNoCampaignBattleTimeLimit = "no_campaign_battle_time_limit";
-    public const string GamePrefFactionsPlayed = "pref_factions_played";
-    public const string GameTutorialBattlePlayed = "tutorial_battle_played";
-    public const string GameTutorialPath = "tutorial_path";
-    public const string GameUnitSize = "unit_size";
-    public const string GameUnlimitedMenOnBattlefield = "unlimited_men_on_battlefield";
-    public const string GameUseQuickchat = "use_quickchat";
 
     // [hotseat]
     public const string HotseatConfigSwitch = "hotseat";
@@ -60,11 +29,6 @@ public static class GameConfigOptionsVocabulary
     public const string HotseatValidateData = "validate_data";
     public const string HotseatAllowValidationFailures = "allow_validation_failures";
     public const string HotseatValidateDiplomacy = "validate_diplomacy";
-
-    // [io]
-    public const string IOConfigSwitch = "io";
-
-    public const string FileFirst = "file_first";
 
     // [log]
     public const string LogConfigSwitch = "log";
