@@ -116,16 +116,6 @@ public static class GameConfigOptionsVocabulary
     public const string NetworkUseIp = "use_ip";
     public const string NetworkUsePort = "use_port";
 
-    // [ui]
-    public const string UIConfigSwitch = "ui";
-
-    public const string UiSaCards = "SA_cards";
-    public const string UiButtons = "buttons";
-    public const string UiFullBattleHud = "full_battle_HUD";
-    public const string UiRadar = "radar";
-    public const string UiShowTooltips = "show_tooltips";
-    public const string UiUnitCards = "unit_cards";
-
     // [video]
     public const string VideoConfigSwitch = "video";
 
