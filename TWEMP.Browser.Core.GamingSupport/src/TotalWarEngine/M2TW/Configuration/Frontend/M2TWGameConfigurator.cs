@@ -34,7 +34,8 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     /// <returns>The array of game configuration settings.</returns>
     public GameCfgSection[] GetDefaultConfigSettings()
     {
-        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing M2TW config settings!
+        M2TWGameConfigStateView view = M2TWGameConfigStateView.CreateByDefault(this.gameModificationInfo);
+        return view.RetrieveCurrentSettings();
     }
 
     /// <summary>
@@ -44,7 +45,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     /// <returns>The array of game configuration settings.</returns>
     public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
     {
-        return Array.Empty<GameCfgSection>(); // TODO: Implement using existing M2TW config settings!
+        return state.RetrieveCurrentSettings();
     }
 
 #if LEGACY_CONFIG_BUILDER_CODE

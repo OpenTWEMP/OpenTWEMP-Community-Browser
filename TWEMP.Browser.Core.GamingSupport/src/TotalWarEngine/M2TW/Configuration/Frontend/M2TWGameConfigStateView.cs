@@ -6,6 +6,7 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
+using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
@@ -45,6 +46,22 @@ public record M2TWGameConfigStateView : ICustomConfigState
     public GameUICfgSectionStateView? GameUICfgSection { get; set; } // [ui]
 
     public GameVideoCfgSectionStateView? GameVideoCfgSection { get; set; } // [video]
+
+    public static M2TWGameConfigStateView CreateByDefault(GameModificationInfo info)
+    {
+        return new ()
+        {
+            ModCoreSettingsSection = ModSettingsSectionStateView.CreateByDefault(info),
+            ModDiagnosticSection = ModDiagnosticSectionStateView.CreateByDefault(info),
+            ModGameplaySection = ModGameplaySectionStateView.CreateByDefault(),
+            HotseatSection = ModHotseatSectionStateView.CreateByDefault(),
+            GameAudioCfgSection = GameAudioCfgSectionStateView.CreateByDefault(),
+            GameCameraCfgSection = GameCameraCfgSectionStateView.CreateByDefault(),
+            GameControlsCfgSection = GameControlsCfgSectionStateView.CreateByDefault(),
+            GameUICfgSection = GameUICfgSectionStateView.CreateByDefault(),
+            GameVideoCfgSection = GameVideoCfgSectionStateView.CreateByDefault(),
+        };
+    }
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {
