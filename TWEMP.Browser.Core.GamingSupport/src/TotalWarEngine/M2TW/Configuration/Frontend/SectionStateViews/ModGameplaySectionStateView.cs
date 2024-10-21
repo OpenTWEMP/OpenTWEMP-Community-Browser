@@ -6,7 +6,6 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
-using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes.Enums;
@@ -148,7 +147,7 @@ public record ModGameplaySectionStateView : ICustomConfigState
             GameUnlimitedMenOnBattlefield = new M2TW_Boolean(true),
             GameUseQuickchat = new M2TW_Boolean(false),
             UnlockCampaign = new M2TW_Boolean(false),
-            BypassToStrategySave = string.Empty,
+            BypassToStrategySave = "game_name.sav",
         };
     }
 

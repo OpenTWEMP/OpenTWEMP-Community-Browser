@@ -11,6 +11,30 @@ using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend
 
 public record ModHotseatSectionStateView : ICustomConfigState
 {
+    private const string HotseatConfigSwitch = "hotseat";
+    private const string MultiplayerConfigSwitch = "multiplayer";
+    private const string NetworkConfigSwitch = "network";
+
+    public const string HotseatAutoresolveBattlesTextId = "autoresolve_battles";
+    public const string HotseatScrollTextId = "scroll";
+    public const string HotseatPasswordsTextId = "passwords";
+    public const string HotseatTurnsTextId = "turns";
+    public const string HotseatDisableConsoleTextId = "disable_console";
+    public const string HotseatAdminPasswordTextId = "admin_password";
+    public const string HotseatDisablePapalElectionsTextId = "disable_papal_elections";
+    public const string HotseatSavePrefsTextId = "save_prefs";
+    public const string HotseatUpdateAiCameraTextId = "update_ai_camera";
+    public const string HotseatAutoSaveTextId = "autosave";
+    public const string HotseatSaveConfigTextId = "save_config";
+    public const string HotseatCloseAfterSaveTextId = "close_after_save";
+    public const string HotseatGameNameTextId = "gamename";
+    public const string HotseatValidateDataTextId = "validate_data";
+    public const string HotseatAllowValidationFailuresTextId = "allow_validation_failures";
+    public const string HotseatValidateDiplomacyTextId = "validate_diplomacy";
+    public const string MultiplayerPlayableTextId = "playable";
+    public const string NetworkUseIpTextId = "use_ip";
+    public const string NetworkUsePortTextId = "use_port";
+
     public ModHotseatSectionStateView()
     {
     }
@@ -39,7 +63,7 @@ public record ModHotseatSectionStateView : ICustomConfigState
 
     public M2TW_Boolean? HotseatCloseAfterSave { get; set; } // "close_after_save"; | use a boolean value ?
 
-    public M2TW_Boolean? HotseatGameName { get; set; } // "gamename"; | use a boolean value ?
+    public string? HotseatGameName { get; set; } // "gamename"
 
     public M2TW_Boolean? HotseatValidateData { get; set; } // "validate_data" | use a boolean value ?
 
@@ -49,61 +73,76 @@ public record ModHotseatSectionStateView : ICustomConfigState
 
     public string? BypassToStrategySave { get; set; } // "bypass_to_strategy_save"
 
+    public M2TW_Boolean? MultiplayerPlayable { get; set; } // "playable"
+
     public M2TW_IpAddress? NetworkUseIp { get; set; } // "use_ip" | use the 'xxx.xxx.xxx.xxx' format
 
-    public ushort NetworkUsePort { get; set; } // "use_port" | 27750 by default
+    public ushort? NetworkUsePort { get; set; } // "use_port" | 27750 by default
+
+    public static ModHotseatSectionStateView CreateByDefault()
+    {
+        return new ModHotseatSectionStateView
+        {
+            HotseatAutoresolveBattles = new M2TW_Boolean(false),
+            HotseatScroll = new M2TW_Boolean(false),
+            HotseatPasswords = new M2TW_Boolean(false),
+            HotseatTurns = new M2TW_Boolean(false),
+            HotseatDisableConsole = new M2TW_Boolean(false),
+            HotseatAdminPassword = string.Empty,
+            HotseatDisablePapalElections = new M2TW_Boolean(true),
+            HotseatSavePrefs = new M2TW_Boolean(true),
+            HotseatUpdateAiCamera = new M2TW_Boolean(true),
+            HotseatAutoSave = new M2TW_Boolean(true),
+            HotseatSaveConfig = new M2TW_Boolean(true),
+            HotseatCloseAfterSave = new M2TW_Boolean(false),
+            HotseatGameName = "hotseat_gamename.sav",
+            HotseatValidateData = new M2TW_Boolean(false),
+            HotseatAllowValidationFailures = new M2TW_Boolean(false),
+            HotseatValidateDiplomacy = new M2TW_Boolean(false),
+            BypassToStrategySave = string.Empty,
+            MultiplayerPlayable = new M2TW_Boolean(true),
+            NetworkUseIp = new M2TW_IpAddress(127, 0, 0, 1),
+            NetworkUsePort = Convert.ToUInt16(M2TW_IpAddress.DefaultPort),
+        };
+    }
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return Array.Empty<GameCfgSection>();
-    }
+        M2TWGameCfgOption[] hotseatCfgOptions =
+        {
+            new (name: HotseatAutoresolveBattlesTextId, value: this.HotseatAutoresolveBattles!, section: HotseatConfigSwitch),
+            new (name: HotseatScrollTextId, value: this.HotseatScroll!, section: HotseatConfigSwitch),
+            new (name: HotseatPasswordsTextId, value: this.HotseatPasswords!, section: HotseatConfigSwitch),
+            new (name: HotseatTurnsTextId, value: this.HotseatTurns!, section: HotseatConfigSwitch),
+            new (name: HotseatDisableConsoleTextId, value: this.HotseatDisableConsole!, section: HotseatConfigSwitch),
+            new (name: HotseatAdminPasswordTextId, value: this.HotseatAdminPassword!, section: HotseatConfigSwitch),
+            new (name: HotseatDisablePapalElectionsTextId, value: this.HotseatDisablePapalElections!, section: HotseatConfigSwitch),
+            new (name: HotseatSavePrefsTextId, value: this.HotseatSavePrefs!, section: HotseatConfigSwitch),
+            new (name: HotseatUpdateAiCameraTextId, value: this.HotseatUpdateAiCamera!, section: HotseatConfigSwitch),
+            new (name: HotseatAutoSaveTextId, value: this.HotseatAutoSave!, section: HotseatConfigSwitch),
+            new (name: HotseatSaveConfigTextId, value: this.HotseatSaveConfig!, section: HotseatConfigSwitch),
+            new (name: HotseatCloseAfterSaveTextId, value: this.HotseatCloseAfterSave!, section: HotseatConfigSwitch),
+            new (name: HotseatGameNameTextId, value: this.HotseatGameName!, section: HotseatConfigSwitch),
+            new (name: HotseatValidateDataTextId, value: this.HotseatValidateData!, section: HotseatConfigSwitch),
+            new (name: HotseatAllowValidationFailuresTextId, value: this.HotseatAllowValidationFailures!, section: HotseatConfigSwitch),
+            new (name: HotseatValidateDiplomacyTextId, value: this.HotseatValidateDiplomacy!, section: HotseatConfigSwitch),
+        };
 
-    private static M2TWGameCfgSection GetHotseatSubSet()
-    {
-        string subsetName = "hotseat";
+        M2TWGameCfgOption[] multiplayerCfgOptions =
+        {
+            new (name: MultiplayerPlayableTextId, value: this.MultiplayerPlayable!, section: MultiplayerConfigSwitch),
+        };
 
-        var subsetOptions = new List<M2TWGameCfgOption>();
+        M2TWGameCfgOption[] networkCfgOptions =
+        {
+            new (name: NetworkUseIpTextId, value: this.NetworkUseIp!, section: NetworkConfigSwitch),
+            new (name: NetworkUsePortTextId, value: this.NetworkUsePort!, section: NetworkConfigSwitch),
+        };
 
-        subsetOptions.Add(new M2TWGameCfgOption("scroll", false, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("turns", false, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("disable_console", false, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("admin_password", "qwerty", subsetName)); // resolve password !!!
-        subsetOptions.Add(new M2TWGameCfgOption("update_ai_camera", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("disable_papal_elections", false, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("autoresolve_battles", false, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("validate_diplomacy", false, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("save_prefs", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("autosave", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("save_config", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("close_after_save", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("gamename", "hotseat_gamename", subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("validate_data", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("allow_validation_failures", false, subsetName));
+        GameCfgSection hotseatCfgSection = new M2TWGameCfgSection(HotseatConfigSwitch, hotseatCfgOptions);
+        GameCfgSection multiplayerCfgSection = new M2TWGameCfgSection(MultiplayerConfigSwitch, multiplayerCfgOptions);
+        GameCfgSection networkCfgSection = new M2TWGameCfgSection(NetworkConfigSwitch, networkCfgOptions);
 
-        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
-    }
-
-    private static M2TWGameCfgSection GetMultiplayerSubSet()
-    {
-        string subsetName = "multiplayer";
-
-        var subsetOptions = new List<M2TWGameCfgOption>();
-
-        subsetOptions.Add(new M2TWGameCfgOption("playable", true, subsetName));
-
-        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
-    }
-
-    private static M2TWGameCfgSection GetMiscSubSet()
-    {
-        string subsetName = "misc";
-
-        var subsetOptions = new List<M2TWGameCfgOption>();
-
-        subsetOptions.Add(new M2TWGameCfgOption("show_hud_date", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("bypass_sprite_script", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("bypass_to_strategy_save", "game_name.sav", subsetName));
-
-        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+        return new GameCfgSection[] { hotseatCfgSection, multiplayerCfgSection, networkCfgSection };
     }
 }

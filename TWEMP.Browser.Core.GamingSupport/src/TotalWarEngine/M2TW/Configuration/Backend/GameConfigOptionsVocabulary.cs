@@ -8,44 +8,10 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Bac
 
 public static class GameConfigOptionsVocabulary
 {
-
-
-    // [hotseat]
-    public const string HotseatConfigSwitch = "hotseat";
-
-    public const string HotseatAutoresolveBattles = "autoresolve_battles";
-    public const string HotseatScroll = "scroll";
-    public const string HotseatPasswords = "passwords";
-    public const string HotseatTurns = "turns";
-    public const string HotseatDisableConsole = "disable_console";
-    public const string HotseatAdminPassword = "admin_password";
-    public const string HotseatDisablePapalElections = "disable_papal_elections";
-    public const string HotseatSavePrefs = "save_prefs";
-    public const string HotseatUpdateAiCamera = "update_ai_camera";
-    public const string HotseatAutoSave = "autosave";
-    public const string HotseatSaveConfig = "save_config";
-    public const string HotseatCloseAfterSave = "close_after_save";
-    public const string HotseatGameName = "gamename";
-    public const string HotseatValidateData = "validate_data";
-    public const string HotseatAllowValidationFailures = "allow_validation_failures";
-    public const string HotseatValidateDiplomacy = "validate_diplomacy";
-
     // [log]
     public const string LogConfigSwitch = "log";
 
     public const string LogTo = "to";
-
-    // [misc]
-    public const string MiscConfigSwitch = "misc";
-
-    public const string BypassToStrategySave = "bypass_to_strategy_save";
-    public const string UnlockCampaign = "unlock_campaign";
-
-    // [network]
-    public const string NetworkConfigSwitch = "network";
-
-    public const string NetworkUseIp = "use_ip";
-    public const string NetworkUsePort = "use_port";
 
     // [video]
     public const string VideoConfigSwitch = "video";
