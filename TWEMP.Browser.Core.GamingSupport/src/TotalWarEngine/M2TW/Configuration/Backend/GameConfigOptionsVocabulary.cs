@@ -28,13 +28,6 @@ public static class GameConfigOptionsVocabulary
     public const string CameraRestrict = "restrict";
     public const string CameraRotate = "rotate";
 
-    // [controls]
-    public const string ControlsConfigSwitch = "controls";
-
-    public const string CampaignScrollMaxZoom = "campaign_scroll_max_zoom";
-    public const string CampaignScrollMinZoom = "campaign_scroll_min_zoom";
-    public const string KeySet = "keyset";
-
     // [features]
     public const string FeaturesConfigSwitch = "features";
 

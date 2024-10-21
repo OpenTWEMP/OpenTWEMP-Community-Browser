@@ -8,9 +8,16 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes.Enums;
 
 public record GameControlsCfgSectionStateView : ICustomConfigState
 {
+    private const string ControlsConfigSwitch = "controls";
+
+    public const string CampaignScrollMaxZoomTextId = "campaign_scroll_max_zoom";
+    public const string CampaignScrollMinZoomTextId = "campaign_scroll_min_zoom";
+    public const string KeySetTextId = "keyset";
+
     public GameControlsCfgSectionStateView()
     {
     }
@@ -20,8 +27,35 @@ public record GameControlsCfgSectionStateView : ICustomConfigState
 
     public M2TW_QualityLevel? KeySet { get; set; } // "keyset" | Possible values: '0', '1', '2', '3'
 
+    public static GameControlsCfgSectionStateView CreateByDefault()
+    {
+        return new GameControlsCfgSectionStateView
+        {
+            CampaignScrollMaxZoom = Convert.ToByte(30),
+            CampaignScrollMinZoom = Convert.ToByte(30),
+            KeySet = new M2TW_QualityLevel(M2TW_KeySet.KeySet_0),
+        };
+    }
+
     public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return Array.Empty<GameCfgSection>();
+        M2TWGameCfgOption campaignScrollMaxZoomOption = new (
+            name: CampaignScrollMaxZoomTextId, value: this.CampaignScrollMaxZoom, section: ControlsConfigSwitch);
+
+        M2TWGameCfgOption campaignScrollMinZoomOption = new (
+            name: CampaignScrollMinZoomTextId, value: this.CampaignScrollMinZoom, section: ControlsConfigSwitch);
+
+        M2TWGameCfgOption keySetOption = new (
+            name: KeySetTextId, value: this.KeySet!, section: ControlsConfigSwitch);
+
+        M2TWGameCfgOption[] controlsCfgOptions =
+        {
+            campaignScrollMaxZoomOption,
+            campaignScrollMinZoomOption,
+            keySetOption,
+        };
+
+        GameCfgSection controlsCfgSection = new M2TWGameCfgSection(ControlsConfigSwitch, controlsCfgOptions);
+        return new GameCfgSection[] { controlsCfgSection };
     }
 }
