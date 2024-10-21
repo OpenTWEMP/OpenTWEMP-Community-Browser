@@ -8,9 +8,17 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes.Enums;
 
 public record GameCameraCfgSectionStateView : ICustomConfigState
 {
+    private const string CameraConfigSwitch = "camera";
+
+    public const string CameraDefaultInBattleTextId = "default_in_battle";
+    public const string CameraMoveTextId = "move";
+    public const string CameraRestrictTextId = "restrict";
+    public const string CameraRotateTextId = "rotate";
+
     public GameCameraCfgSectionStateView()
     {
     }
@@ -23,8 +31,40 @@ public record GameCameraCfgSectionStateView : ICustomConfigState
 
     public M2TW_Integer? CameraRotate { get; set; } // "rotate"
 
+    public static GameCameraCfgSectionStateView CreateByDefault()
+    {
+        return new GameCameraCfgSectionStateView
+        {
+            CameraDefaultInBattle = new M2TW_BattleCameraStyle(M2TW_BattleCamera.RTS),
+            CameraMove = new M2TW_Integer(70),
+            CameraRestrict = new M2TW_Boolean(false),
+            CameraRotate = new M2TW_Integer(30),
+        };
+    }
+
     public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return Array.Empty<GameCfgSection>();
+        M2TWGameCfgOption cameraDefaultInBattleOption = new (
+            name: CameraDefaultInBattleTextId, value: this.CameraDefaultInBattle!, section: CameraConfigSwitch);
+
+        M2TWGameCfgOption cameraMoveOption = new (
+            name: CameraMoveTextId, value: this.CameraMove!, section: CameraConfigSwitch);
+
+        M2TWGameCfgOption cameraRestrictOption = new (
+            name: CameraRestrictTextId, value: this.CameraRestrict!, section: CameraConfigSwitch);
+
+        M2TWGameCfgOption cameraRotateOption = new (
+            name: CameraRotateTextId, value: this.CameraRotate!, section: CameraConfigSwitch);
+
+        M2TWGameCfgOption[] cameraCfgOptions =
+        {
+            cameraDefaultInBattleOption,
+            cameraMoveOption,
+            cameraRestrictOption,
+            cameraRotateOption,
+        };
+
+        GameCfgSection cameraCfgSection = new M2TWGameCfgSection(CameraConfigSwitch, cameraCfgOptions);
+        return new GameCfgSection[] { cameraCfgSection };
     }
 }

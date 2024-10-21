@@ -20,14 +20,6 @@ public static class GameConfigOptionsVocabulary
     public const string SpeechVolume = "speech_vol";
     public const string SubFactionAccents = "sub_faction_accents";
 
-    // [camera]
-    public const string CameraConfigSwitch = "camera";
-
-    public const string CameraDefaultInBattle = "default_in_battle";
-    public const string CameraMove = "move";
-    public const string CameraRestrict = "restrict";
-    public const string CameraRotate = "rotate";
-
     // [features]
     public const string FeaturesConfigSwitch = "features";
 
