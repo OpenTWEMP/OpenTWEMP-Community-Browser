@@ -11,6 +11,15 @@ using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend
 
 public record GameUICfgSectionStateView : ICustomConfigState
 {
+    private const string UIConfigSwitch = "ui";
+
+    public const string UiSaCardsTextId = "SA_cards";
+    public const string UiButtonsTextId = "buttons";
+    public const string UiFullBattleHudTextId = "full_battle_HUD";
+    public const string UiRadarTextId = "radar";
+    public const string UiShowTooltipsTextId = "show_tooltips";
+    public const string UiUnitCardsTextId = "unit_cards";
+
     public GameUICfgSectionStateView()
     {
     }
@@ -27,24 +36,50 @@ public record GameUICfgSectionStateView : ICustomConfigState
 
     public M2TW_Boolean? UiUnitCards { get; set; } // "unit_cards" | 'show' or 'hide'
 
-    public GameCfgSection[] RetrieveCurrentSettings()
+    public static GameUICfgSectionStateView CreateByDefault()
     {
-        return Array.Empty<GameCfgSection>();
+        return new GameUICfgSectionStateView
+        {
+            UiSaCards = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
+            UiButtons = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
+            UiFullBattleHud = new M2TW_Boolean(true),
+            UiRadar = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
+            UiShowTooltips = new M2TW_Boolean(true),
+            UiUnitCards = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
+        };
     }
 
-    private static M2TWGameCfgSection GetUISubSet()
+    public GameCfgSection[] RetrieveCurrentSettings()
     {
-        string subsetName = "ui";
+        M2TWGameCfgOption uiSaCardsOption = new (
+            name: UiSaCardsTextId, value: this.UiSaCards!, section: UIConfigSwitch);
 
-        var subsetOptions = new List<M2TWGameCfgOption>();
+        M2TWGameCfgOption uiButtonsOption = new (
+            name: UiButtonsTextId, value: this.UiButtons!, section: UIConfigSwitch);
 
-        subsetOptions.Add(new M2TWGameCfgOption("full_battle_HUD", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("show_tooltips", true, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("buttons", "slide", subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("radar", "slide", subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("unit_cards", "slide", subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("SA_cards", "slide", subsetName));
+        M2TWGameCfgOption uiFullBattleHudOption = new (
+            name: UiFullBattleHudTextId, value: this.UiFullBattleHud!, section: UIConfigSwitch);
 
-        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
+        M2TWGameCfgOption uiRadarOption = new (
+            name: UiRadarTextId, value: this.UiRadar!, section: UIConfigSwitch);
+
+        M2TWGameCfgOption uiShowTooltipsOption = new (
+            name: UiShowTooltipsTextId, value: this.UiShowTooltips!, section: UIConfigSwitch);
+
+        M2TWGameCfgOption uiUnitCardsOption = new (
+            name: UiUnitCardsTextId, value: this.UiUnitCards!, section: UIConfigSwitch);
+
+        M2TWGameCfgOption[] uiCfgOptions =
+        {
+            uiSaCardsOption,
+            uiButtonsOption,
+            uiFullBattleHudOption,
+            uiRadarOption,
+            uiShowTooltipsOption,
+            uiUnitCardsOption,
+        };
+
+        GameCfgSection uiCfgSection = new M2TWGameCfgSection(UIConfigSwitch, uiCfgOptions);
+        return new GameCfgSection[] { uiCfgSection };
     }
 }

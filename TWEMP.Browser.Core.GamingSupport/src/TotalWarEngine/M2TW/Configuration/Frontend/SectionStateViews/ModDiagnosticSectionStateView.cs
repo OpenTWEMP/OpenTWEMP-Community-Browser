@@ -9,60 +9,41 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes.Enums;
 
 public record ModDiagnosticSectionStateView : ICustomConfigState
 {
+    private const string LogConfigSwitch = "log";
+
+    public const string LogToTextId = "to";
+    public const string LogLevelTextId = "level";
+
     public ModDiagnosticSectionStateView()
     {
     }
 
-    public M2TW_LoggingLevel? LogTo { get; set; } // "to";
+    public string? LogTo { get; set; } // "to";
 
-    public bool ValidatorLogLevel1 { get; set; }
+    public M2TW_LoggingLevel? LogLevel { get; set; } // "level";
 
-    public bool ValidatorLogLevel2 { get; set; }
-
-    public bool ValidatorLogLevel3 { get; set; }
+    public static ModDiagnosticSectionStateView CreateByDefault(GameModificationInfo mod)
+    {
+        return new ModDiagnosticSectionStateView
+        {
+            LogTo = mod.LogFileRelativePath,
+            LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error),
+        };
+    }
 
     public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return Array.Empty<GameCfgSection>();
-    }
-
-    private static M2TWGameCfgSection GetLogSubSet(GameModificationInfo mod, M2TWGameConfigStateView cfg)
-    {
-        string subsetName = "log";
-
-        var subsetOptions = new List<M2TWGameCfgOption>();
-        subsetOptions.Add(new M2TWGameCfgOption("to", mod.LogFileRelativePath!, subsetName));
-        subsetOptions.Add(new M2TWGameCfgOption("level", SetLogLevel(cfg), subsetName));
-
-        return new M2TWGameCfgSection(subsetName, subsetOptions.ToArray());
-    }
-
-    private static string SetLogLevel(M2TWGameConfigStateView cfg)
-    {
-        const string strLogLevelError = "* error";
-        const string strLogLevelTrace = "* trace";
-        const string strLogLevelScriptTrace = "*script* trace";
-
-        string strLogLevel = string.Empty;
-
-        if (cfg.ModDiagnosticSection!.ValidatorLogLevel1)
+        M2TWGameCfgOption[] gameLogCfgOptions =
         {
-            strLogLevel = strLogLevelError;
-        }
+            new (name: LogToTextId, value: this.LogTo!, section: LogConfigSwitch),
+            new (name: LogLevelTextId, value: this.LogLevel!, section: LogConfigSwitch),
+        };
 
-        if (cfg.ModDiagnosticSection!.ValidatorLogLevel2)
-        {
-            strLogLevel = strLogLevelTrace;
-        }
-
-        if (cfg.ModDiagnosticSection!.ValidatorLogLevel3)
-        {
-            strLogLevel = strLogLevelScriptTrace;
-        }
-
-        return strLogLevel;
+        GameCfgSection gameLogCfgSection = new M2TWGameCfgSection(LogConfigSwitch, gameLogCfgOptions);
+        return new GameCfgSection[] { gameLogCfgSection };
     }
 }

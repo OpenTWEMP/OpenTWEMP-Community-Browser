@@ -11,6 +11,17 @@ using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend
 
 public record GameAudioCfgSectionStateView : ICustomConfigState
 {
+    private const string AudioConfigSwitch = "audio";
+
+    public const string AudioEnableTextId = "enable";
+    public const string AudioMasterVolumeTextId = "master_vol";
+    public const string AudioMusicVolumeTextId = "music_vol";
+    public const string SoundEffectsVolumeTextId = "sfx_vol";
+    public const string SpeechEnableTextId = "speech_enable";
+    public const string SpeechVolumeTextId = "speech_vol";
+    public const string SubFactionAccentsTextId = "sub_faction_accents";
+    public const string SoundCardProviderTextId = "provider";
+
     public GameAudioCfgSectionStateView()
     {
     }
@@ -21,8 +32,6 @@ public record GameAudioCfgSectionStateView : ICustomConfigState
 
     public M2TW_Integer? AudioMusicVolume { get; set; } // "music_vol"
 
-    public M2TW_Integer? SoundCardProvider { get; set; } // "provider"
-
     public M2TW_Integer? SoundEffectsVolume { get; set; } // "sfx_vol"
 
     public M2TW_Boolean? SpeechEnable { get; set; } // "speech_enable"
@@ -31,8 +40,62 @@ public record GameAudioCfgSectionStateView : ICustomConfigState
 
     public M2TW_Boolean? SubFactionAccents { get; set; } // "sub_faction_accents"
 
+    public string? SoundCardProvider { get; set; } // "provider"
+
+    public static GameAudioCfgSectionStateView CreateByDefault()
+    {
+        return new GameAudioCfgSectionStateView
+        {
+            AudioEnable = new M2TW_Boolean(true),
+            AudioMasterVolume = new M2TW_Integer(85),
+            AudioMusicVolume = new M2TW_Integer(70),
+            SoundEffectsVolume = new M2TW_Integer(80),
+            SpeechEnable = new M2TW_Boolean(true),
+            SpeechVolume = new M2TW_Integer(85),
+            SubFactionAccents = new M2TW_Boolean(true),
+            SoundCardProvider = "Miles Fast 2D Positional Audio",
+        };
+    }
+
     public GameCfgSection[] RetrieveCurrentSettings()
     {
-        return Array.Empty<GameCfgSection>();
+        M2TWGameCfgOption audioEnableOption = new (
+            name: AudioEnableTextId, value: this.AudioEnable!, section: AudioConfigSwitch);
+
+        M2TWGameCfgOption audioMasterVolumeOption = new (
+            name: AudioMasterVolumeTextId, value: this.AudioMasterVolume!, section: AudioConfigSwitch);
+
+        M2TWGameCfgOption audioMusicVolumeOption = new (
+            name: AudioMusicVolumeTextId, value: this.AudioMusicVolume!, section: AudioConfigSwitch);
+
+        M2TWGameCfgOption soundEffectsVolumeOption = new (
+            name: SoundEffectsVolumeTextId, value: this.SoundEffectsVolume!, section: AudioConfigSwitch);
+
+        M2TWGameCfgOption speechEnableOption = new (
+            name: SpeechEnableTextId, value: this.SpeechEnable!, section: AudioConfigSwitch);
+
+        M2TWGameCfgOption speechVolumeOption = new (
+            name: SpeechVolumeTextId, value: this.SpeechVolume!, section: AudioConfigSwitch);
+
+        M2TWGameCfgOption subFactionAccentsOption = new (
+            name: SubFactionAccentsTextId, value: this.SubFactionAccents!, section: AudioConfigSwitch);
+
+        M2TWGameCfgOption soundCardProviderOption = new (
+            name: SoundCardProviderTextId, value: this.SoundCardProvider!, section: AudioConfigSwitch);
+
+        M2TWGameCfgOption[] audioCfgOptions =
+        {
+            audioEnableOption,
+            audioMasterVolumeOption,
+            audioMusicVolumeOption,
+            soundEffectsVolumeOption,
+            speechEnableOption,
+            speechVolumeOption,
+            subFactionAccentsOption,
+            soundCardProviderOption,
+        };
+
+        GameCfgSection audioCfgSection = new M2TWGameCfgSection(AudioConfigSwitch, audioCfgOptions);
+        return new GameCfgSection[] { audioCfgSection };
     }
 }

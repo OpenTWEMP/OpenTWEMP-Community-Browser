@@ -29,17 +29,17 @@
 * [x] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace the ICustomConfigState placeholder interface to the imported type - TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.ICustomConfigState.
 * [x] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace the IGameConfiguratorAgent placeholder interface to the imported type - TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.IGameConfiguratorAgent.
 * [x] TWEMP.Browser.Core.GamingSupport.AbstractPlaceholders : Replace IBrowserMessageProvider and BrowserMessageType placeholder types to the same imported types from TWEMP.Browser.Core.CommonLibrary.
-* [ ] GameAudioCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
-* [ ] GameCameraCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
-* [ ] GameControlsCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
-* [ ] GameUICfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
-* [ ] GameVideoCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
-* [ ] ModDiagnosticSectionStateView : Implement the RetrieveCurrentSettings() interface method.
-* [ ] ModGameplaySectionStateView : Implement the RetrieveCurrentSettings() interface method.
-* [ ] ModHotseatSectionStateView : Implement the RetrieveCurrentSettings() interface method.
-* [ ] ModSettingsSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [x] GameAudioCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [x] GameCameraCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [x] GameControlsCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [x] GameUICfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [x] GameVideoCfgSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [x] ModDiagnosticSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [x] ModGameplaySectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [x] ModHotseatSectionStateView : Implement the RetrieveCurrentSettings() interface method.
+* [x] ModSettingsSectionStateView : Implement the RetrieveCurrentSettings() interface method.
 * [x] Use the TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.M2TWGameConfigurator class instead of the same double type from the TWEMP.Browser.Core.CommonLibrary class library.
-* [ ] Change the M2TWGameConfigurator class definition to use the M2TWGameConfigStateView record type to configure M2TW mods.
+* [x] Change the M2TWGameConfigurator class definition to use the M2TWGameConfigStateView record type to configure M2TW mods.
 
 ### TWEMP.Browser.Core.GamingSupport + TWEMP.Browser.App.Classic.WinForms
 
@@ -51,7 +51,7 @@
 
 * [ ] Use new definitions of M2TW game types into the AddNewGameSetupForm form class.
 * [ ] Use new definitions of M2TW game types into the ModConfigSettingsForm form class.
-* [ ] Use new definitions of M2TW game types into the ModQuickNavigatorForm form class.
+* [x] Use new definitions of M2TW game types into the ModQuickNavigatorForm form class.
 
 ---
 
@@ -111,12 +111,9 @@
 ### TWEMP.Browser.Core.GamingSupport
 
 * [x] Use only the GameConfigRoutines class from the TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation namespace (remove all doubles from the TWEMP.Browser.Core.CommonLibrary class library).
-* [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteMapFile() static method.
-* [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteStringsBinFiles() static method.
-* [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteSoundPackFiles() static method.
-* [ ] Move string constants from the TotalWarEngineSupportProvider class to the GameFileSystem class.
-* [ ] GameFileSystem.cs : Simplify the GameFileSystem class definition.
-* [ ] TotalWarEngineSupportProvider.cs : Simplify the static IsCompatibleModification() method.
-* [ ] Change semantics of the TotalWarEngineSupportProvider class to relate it with M2TW game engine only.
+* [x] Move string constants from the TotalWarEngineSupportProvider class to the GameFileSystem class.
+* [x] GameFileSystem.cs : Simplify the GameFileSystem class definition.
+* [x] TotalWarEngineSupportProvider.cs : Simplify the static IsCompatibleModification() method.
+* [x] Change semantics of the TotalWarEngineSupportProvider class to relate it with M2TW game engine only.
 
 ---

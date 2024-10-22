@@ -1,4 +1,4 @@
-﻿// <copyright file="GameFileSystem.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="M2TWFileSystemInfo.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -7,7 +7,7 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Modding;
 
-public class GameFileSystem
+public static class M2TWFileSystemInfo
 {
     public const string ModDataFolderName = "data";
 
@@ -38,10 +38,6 @@ public class GameFileSystem
     public const string WorldMapsBaseFolderName = "world\\maps\\base";
 
     public const string WorldMapsCampaignFolderName = "world\\maps\\campaign\\imperial_campaign";
-
-    public const string GAME_EXECUTABLE_BASENAME_CLASSIC1 = "medieval2";
-    public const string GAME_EXECUTABLE_BASENAME_CLASSIC2 = "kingdoms";
-    public const string GAME_EXECUTABLE_BASENAME_STEAM = "medieval2";
 
     public const string MOD_ROOT = "data";
 
