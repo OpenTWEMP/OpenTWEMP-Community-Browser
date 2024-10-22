@@ -1,4 +1,4 @@
-﻿// <copyright file="GameFileSystem.cs" company="The OpenTWEMP Project">
+﻿// <copyright file="M2TWFileSystemInfo.cs" company="The OpenTWEMP Project">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -7,7 +7,7 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Modding;
 
-public class GameFileSystem
+public static class M2TWFileSystemInfo
 {
     public const string ModDataFolderName = "data";
 

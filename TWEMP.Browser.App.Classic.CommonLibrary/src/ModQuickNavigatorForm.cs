@@ -11,7 +11,7 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 using TWEMP.Browser.Core.CommonLibrary.Utilities;
-using M2TW = TWEMP.Browser.Core.GamingSupport.TotalWarEngine.TotalWarEngineSupportProvider;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Modding;
 
 public partial class ModQuickNavigatorForm : Form, ICanChangeMyLocalization
 {
@@ -47,21 +47,21 @@ public partial class ModQuickNavigatorForm : Form, ICanChangeMyLocalization
         Text += $": {modHomeDirectory}";
 
         currentModHomeDirectory = modHomeDirectory;
-        modDataFolderName = M2TW.ModDataFolderName;
-        modSavesFolderName = M2TW.ModSavesFolderName;
-        modLogsFolderName = M2TW.ModLogsFolderName;
-        dataTextFolderName = M2TW.DataTextFolderName;
-        dataLoadingScreenFolderName = M2TW.DataLoadingScreenFolderName;
-        dataUiFolderName = M2TW.DataUiFolderName;
-        dataFmvFolderName = M2TW.DataFmvFolderName;
-        dataSoundsFolderName = M2TW.DataSoundsFolderName;
-        dataUnitModelsFolderName = M2TW.DataUnitModelsFolderName;
-        dataUnitSpritesFolderName = M2TW.DataUnitSpritesFolderName;
-        dataAnimationsFolderName = M2TW.DataAnimationsFolderName;
-        dataBannersFolderName = M2TW.DataBannersFolderName;
-        dataModelsStratFolderName = M2TW.DataModelsStratFolderName;
-        worldMapsBaseFolderName = M2TW.WorldMapsBaseFolderName;
-        worldMapsCampaignFolderName = M2TW.WorldMapsCampaignFolderName;
+        modDataFolderName = M2TWFileSystemInfo.ModDataFolderName;
+        modSavesFolderName = M2TWFileSystemInfo.ModSavesFolderName;
+        modLogsFolderName = M2TWFileSystemInfo.ModLogsFolderName;
+        dataTextFolderName = M2TWFileSystemInfo.DataTextFolderName;
+        dataLoadingScreenFolderName = M2TWFileSystemInfo.DataLoadingScreenFolderName;
+        dataUiFolderName = M2TWFileSystemInfo.DataUiFolderName;
+        dataFmvFolderName = M2TWFileSystemInfo.DataFmvFolderName;
+        dataSoundsFolderName = M2TWFileSystemInfo.DataSoundsFolderName;
+        dataUnitModelsFolderName = M2TWFileSystemInfo.DataUnitModelsFolderName;
+        dataUnitSpritesFolderName = M2TWFileSystemInfo.DataUnitSpritesFolderName;
+        dataAnimationsFolderName = M2TWFileSystemInfo.DataAnimationsFolderName;
+        dataBannersFolderName = M2TWFileSystemInfo.DataBannersFolderName;
+        dataModelsStratFolderName = M2TWFileSystemInfo.DataModelsStratFolderName;
+        worldMapsBaseFolderName = M2TWFileSystemInfo.WorldMapsBaseFolderName;
+        worldMapsCampaignFolderName = M2TWFileSystemInfo.WorldMapsCampaignFolderName;
 
         modDataNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}";
         modSavesNavigateButton.Text = $"{ModLocationPrefix}\\{modSavesFolderName}";
