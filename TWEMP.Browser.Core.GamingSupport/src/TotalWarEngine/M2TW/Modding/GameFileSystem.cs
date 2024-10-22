@@ -39,10 +39,6 @@ public class GameFileSystem
 
     public const string WorldMapsCampaignFolderName = "world\\maps\\campaign\\imperial_campaign";
 
-    public const string GAME_EXECUTABLE_BASENAME_CLASSIC1 = "medieval2";
-    public const string GAME_EXECUTABLE_BASENAME_CLASSIC2 = "kingdoms";
-    public const string GAME_EXECUTABLE_BASENAME_STEAM = "medieval2";
-
     public const string MOD_ROOT = "data";
 
     public const string MOD_NODE1_MENU = "menu";

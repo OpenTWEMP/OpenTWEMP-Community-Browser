@@ -21,6 +21,9 @@ using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fronten
 /// </summary>
 public class M2TWGameLauncher : IGameLauncherAgent
 {
+    public const string GameKingdomsExecutableBaseFileName = "kingdoms";
+    public const string GameMedievalExecutableBaseFileName = "medieval2";
+
     private readonly GameModificationInfo currentGameMod;
     private readonly CustomConfigState currentCfgState;
     private readonly IBrowserMessageProvider currentMessageProvider;
@@ -137,14 +140,14 @@ public class M2TWGameLauncher : IGameLauncherAgent
                 modExecutionProcess.StartInfo = this.InitializeGameLaunch(mod_config);
                 string modExecutableBaseName = Path.GetFileNameWithoutExtension(this.currentGameMod.CurrentSetup.ExecutableFileName) !;
 
-                if (modExecutableBaseName.Equals(TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_CLASSIC2))
+                if (modExecutableBaseName.Equals(GameKingdomsExecutableBaseFileName))
                 {
                     modExecutionProcess.Start();
                     modExecutionProcess.WaitForExit();
                     return;
                 }
 
-                if (modExecutableBaseName.Equals(TotalWarEngineSupportProvider.GAME_EXECUTABLE_BASENAME_STEAM))
+                if (modExecutableBaseName.Equals(GameMedievalExecutableBaseFileName))
                 {
                     modExecutionProcess.Start();
                     Thread.Sleep(20_000); // 20 seconds
