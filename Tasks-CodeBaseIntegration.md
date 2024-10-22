@@ -51,7 +51,7 @@
 
 * [ ] Use new definitions of M2TW game types into the AddNewGameSetupForm form class.
 * [ ] Use new definitions of M2TW game types into the ModConfigSettingsForm form class.
-* [ ] Use new definitions of M2TW game types into the ModQuickNavigatorForm form class.
+* [x] Use new definitions of M2TW game types into the ModQuickNavigatorForm form class.
 
 ---
 
@@ -112,12 +112,9 @@
 ### TWEMP.Browser.Core.GamingSupport
 
 * [x] Use only the GameConfigRoutines class from the TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation namespace (remove all doubles from the TWEMP.Browser.Core.CommonLibrary class library).
-* [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteMapFile() static method.
-* [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteStringsBinFiles() static method.
-* [ ] TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation.GameConfigRoutines : Simplify the DeleteSoundPackFiles() static method.
-* [ ] Move string constants from the TotalWarEngineSupportProvider class to the GameFileSystem class.
-* [ ] GameFileSystem.cs : Simplify the GameFileSystem class definition.
-* [ ] TotalWarEngineSupportProvider.cs : Simplify the static IsCompatibleModification() method.
-* [ ] Change semantics of the TotalWarEngineSupportProvider class to relate it with M2TW game engine only.
+* [x] Move string constants from the TotalWarEngineSupportProvider class to the GameFileSystem class.
+* [x] GameFileSystem.cs : Simplify the GameFileSystem class definition.
+* [x] TotalWarEngineSupportProvider.cs : Simplify the static IsCompatibleModification() method.
+* [x] Change semantics of the TotalWarEngineSupportProvider class to relate it with M2TW game engine only.
 
 ---
