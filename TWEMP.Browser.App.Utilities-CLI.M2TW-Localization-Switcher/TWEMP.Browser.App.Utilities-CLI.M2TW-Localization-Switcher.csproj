@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>TWEMP.Browser.App.Utilities_CLI.M2TW_Localization_Switcher</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework.csproj" />
+  </ItemGroup>
+
+</Project>
