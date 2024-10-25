@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWE-Datetime-Functions", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWE-Submod-Switcher", "TWE-Submod-Switcher\TWE-Submod-Switcher.csproj", "{648571F9-C2BA-4FF8-BC75-2A440429AF31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWE-Submod-Switcher-WinForms", "TWE-Submod-Switcher-WinForms\TWE-Submod-Switcher-WinForms.csproj", "{DF78351B-07BA-490A-A4F5-C55FD5461065}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
