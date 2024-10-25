@@ -4,9 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-#define ARGS
-#undef ARGS
-
 namespace TWEMP.Browser.App.Utilities_CLI.M2TW_Localization_Switcher;
 
 using System;
@@ -20,9 +17,11 @@ internal class Program
     {
         Console.WriteLine("START");
 
-#if ARGS
-        PrintCommandLineArguments(args);
-#endif
+        bool areDisplayedArguments = false;
+        if (areDisplayedArguments)
+        {
+            PrintCommandLineArguments(args);
+        }
 
         string homeDirectoryPath = Directory.GetCurrentDirectory();
 
@@ -30,102 +29,12 @@ internal class Program
         {
             if (arg.Equals("--test"))
             {
-                ModSubmodsConfiguration configuration = TestConfigurationGenerator.CreateTestConfiguration(homeDirectoryPath);
-                TestConfigurationGenerator.PrepareTestAssets(homeDirectoryPath, configuration);
-
-                Console.WriteLine("RESULT: Prepared test assets.");
+                GenerateDefaultConfiguration(homeDirectoryPath);
             }
 
             if (arg.Equals("--custom"))
             {
-                Console.WriteLine("1) Check the Game Mod Installation");
-
-                Console.WriteLine("2) Detect All Config Files");
-
-                string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(homeDirectoryPath);
-
-                ModSubmodsConfiguration configuration = new ();
-
-                if (File.Exists(configFilePath))
-                {
-                    using (FileStream xmlCfgFile = File.Open(configFilePath, FileMode.Open))
-                    {
-                        XmlSerializer serializer = new (type: configuration.GetType());
-                        configuration = serializer.Deserialize(xmlCfgFile) as ModSubmodsConfiguration;
-                    }
-                }
-
-                Console.WriteLine("3) Read Data From Config Files");
-
-                foreach (ModGameLocale localization in configuration.SupportedLocalizations)
-                {
-                    Console.WriteLine($"[ID: {localization.ID}] {localization.Title} Locale");
-                }
-
-                Console.WriteLine("4) Select a Custom Submod via User Input");
-
-                string id;
-                string[] availableLocalizationIDs = configuration.GetAvailableLocalizationIDs();
-
-                do
-                {
-                    Console.Write("Print a valid ID to select a game localization to install: ");
-                    id = Console.ReadLine();
-                }
-                while (!ModSubmodsConfiguration.IsValidLocalizationID(id, availableLocalizationIDs));
-
-                ModGameLocale currentLocale = configuration.GetLocalizationByID(id);
-
-                Console.WriteLine($"Your selected game localization is '{currentLocale.Title}'");
-
-                Console.WriteLine("5) Clean Current Game Assets");
-                Console.WriteLine("6) Copy Target Game Assets");
-
-                string currentLocalizationDirectoryPath = Path.Combine(
-                    path1: homeDirectoryPath,
-                    path2: configuration.SourceDirectoryPath,
-                    path3: currentLocale.SourceDirectoryPath);
-
-                if (Directory.Exists(currentLocalizationDirectoryPath))
-                {
-                    Console.WriteLine($"Directory Successfully Detected: '{currentLocalizationDirectoryPath}'");
-
-                    DirectoryInfo currentLocalizationDirectoryInfo = new (currentLocalizationDirectoryPath);
-
-                    FileInfo[] files = TestConfigurationGenerator.GetAllFiles(currentLocalizationDirectoryInfo);
-
-                    Console.WriteLine("7) Display Result Information:");
-
-                    foreach (FileInfo fileInfo in files)
-                    {
-                        Console.WriteLine($"[SRC_FILE] {fileInfo.FullName}");
-
-                        FileInfo targetFileInfo = configuration.GetDestinationFilePath(currentLocale, fileInfo);
-                        Console.WriteLine($"[DST_FILE] {targetFileInfo.FullName}");
-
-                        if (!targetFileInfo.Directory.Exists)
-                        {
-                            Directory.CreateDirectory(targetFileInfo.Directory.FullName);
-                        }
-
-                        File.Copy(sourceFileName: fileInfo.FullName, destFileName: targetFileInfo.FullName, overwrite: true);
-
-                        if (File.Exists(targetFileInfo.FullName))
-                        {
-                            Console.WriteLine("[RESULT: SUCCESS] Destination File is successfully created!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("[RESULT: FAILED] Error when copying the destination file!");
-                        }
-
-                        Console.WriteLine();
-                    }
-                }
-                else
-                {
-                    Console.WriteLine($"Cannot Detect Directory: '{currentLocalizationDirectoryPath}'");
-                }
+                ExecuteCustomConfiguration(homeDirectoryPath);
             }
         }
 
@@ -137,6 +46,141 @@ internal class Program
         for (int argIndex = 0; argIndex < args.Length; argIndex++)
         {
             Console.WriteLine($"arg[{argIndex}] = \"{args[argIndex]}\"");
+        }
+
+        Console.WriteLine();
+    }
+
+    private static void GenerateDefaultConfiguration(string targetDirectoryPath)
+    {
+        ModSubmodsConfiguration configuration = TestConfigurationGenerator.CreateTestConfiguration(targetDirectoryPath);
+        TestConfigurationGenerator.PrepareTestAssets(targetDirectoryPath, configuration);
+
+        Console.WriteLine("RESULT: Prepared test assets.");
+    }
+
+    private static void ExecuteCustomConfiguration(string targetDirectoryPath)
+    {
+        Console.WriteLine("1) Detect a Custom Configuration ...");
+        string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(targetDirectoryPath);
+        ModSubmodsConfiguration configuration = ReadCustomConfiguration(configFilePath);
+
+        Console.WriteLine("2) Read Localizations from the Custom Configuration ...");
+        PrintAllCustomLocalizations(configuration);
+
+        Console.WriteLine("3) Select a Localization via User Input ...");
+        ModGameLocale currentLocale = SelectCustomLocalizationByUserInput(configuration);
+        Console.WriteLine($"Your selected game localization is '{currentLocale.Title}'");
+
+        Console.WriteLine("4) Copy Game Assets Of the Custom Localization ...");
+        CopyGameAssetsOfCustomLocalizationToTargetDirectory(configuration, currentLocale, targetDirectoryPath);
+    }
+
+    private static ModSubmodsConfiguration ReadCustomConfiguration(string cfgFilePath)
+    {
+        var configuration = new ModSubmodsConfiguration();
+
+        if (File.Exists(cfgFilePath))
+        {
+            using (FileStream xmlCfgFile = File.Open(cfgFilePath, FileMode.Open))
+            {
+                try
+                {
+                    var serializer = new XmlSerializer(type: configuration.GetType());
+                    configuration = serializer.Deserialize(xmlCfgFile) as ModSubmodsConfiguration;
+                }
+                catch (InvalidOperationException exception)
+                {
+                    Console.WriteLine($"[ERROR] {exception.Message}");
+                }
+            }
+        }
+
+        return configuration;
+    }
+
+    private static void PrintAllCustomLocalizations(ModSubmodsConfiguration configuration)
+    {
+        foreach (ModGameLocale localization in configuration.SupportedLocalizations)
+        {
+            Console.WriteLine($"[ID: {localization.ID}] {localization.Title} Locale");
+        }
+    }
+
+    private static ModGameLocale SelectCustomLocalizationByUserInput(ModSubmodsConfiguration configuration)
+    {
+        string[] availableLocalizationIDs = configuration.GetAvailableLocalizationIDs();
+
+        string id;
+        do
+        {
+            Console.Write("Print a valid ID to select a game localization to install: ");
+            id = Console.ReadLine();
+        }
+        while (!ModSubmodsConfiguration.IsValidLocalizationID(id, availableLocalizationIDs));
+
+        return configuration.GetLocalizationByID(id);
+    }
+
+    private static void CopyGameAssetsOfCustomLocalizationToTargetDirectory(
+        ModSubmodsConfiguration configuration, ModGameLocale customLocale, string targetDirectoryPath)
+    {
+        string currentLocalizationDirectoryPath = Path.Combine(
+            targetDirectoryPath, configuration.SourceDirectoryPath, customLocale.SourceDirectoryPath);
+
+        if (Directory.Exists(currentLocalizationDirectoryPath))
+        {
+            Console.WriteLine($"Directory Successfully Detected: '{currentLocalizationDirectoryPath}'");
+
+            FileInfo[] files = TestConfigurationGenerator.GetAllFiles(new DirectoryInfo(currentLocalizationDirectoryPath));
+            ExecuteCopyingAllFilesRoutine(configuration, customLocale, files);
+        }
+        else
+        {
+            Console.WriteLine($"Cannot Detect Directory: '{currentLocalizationDirectoryPath}'");
+        }
+    }
+
+    private static void ExecuteCopyingAllFilesRoutine(ModSubmodsConfiguration configuration, ModGameLocale customLocale, FileInfo[] filesToCopy)
+    {
+        Console.WriteLine("Verbose Information About File Copying:");
+
+        foreach (FileInfo fileInfo in filesToCopy)
+        {
+            FileInfo targetFileInfo = configuration.GetDestinationFilePath(customLocale, fileInfo);
+            ExecuteCopyingFileRoutine(srcFileInfo: fileInfo, destFileInfo: targetFileInfo);
+        }
+    }
+
+    private static void ExecuteCopyingFileRoutine(FileInfo srcFileInfo, FileInfo destFileInfo)
+    {
+        PrintDetailsAboutFilesCopying(srcFileInfo, destFileInfo);
+
+        if (!destFileInfo.Directory.Exists)
+        {
+            Directory.CreateDirectory(destFileInfo.Directory.FullName);
+        }
+
+        File.Copy(sourceFileName: srcFileInfo.FullName, destFileName: destFileInfo.FullName, overwrite: true);
+
+        PrintFileValidationResult(destFileInfo);
+    }
+
+    private static void PrintDetailsAboutFilesCopying(FileInfo srcFileInfo, FileInfo destFileInfo)
+    {
+        Console.WriteLine($"[SRC_FILE] {srcFileInfo.FullName}");
+        Console.WriteLine($"[DST_FILE] {destFileInfo.FullName}");
+    }
+
+    private static void PrintFileValidationResult(FileInfo targetFileInfo)
+    {
+        if (File.Exists(targetFileInfo.FullName))
+        {
+            Console.WriteLine("[RESULT: SUCCESS] Destination File is successfully created!");
+        }
+        else
+        {
+            Console.WriteLine("[RESULT: FAILED] Error when copying the destination file!");
         }
 
         Console.WriteLine();
