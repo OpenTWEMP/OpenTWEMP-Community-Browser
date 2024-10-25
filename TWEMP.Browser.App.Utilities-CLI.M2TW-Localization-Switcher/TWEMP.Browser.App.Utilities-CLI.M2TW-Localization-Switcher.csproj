@@ -5,11 +5,19 @@
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>TWEMP.Browser.App.Utilities_CLI.M2TW_Localization_Switcher</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
+    <StartupObject>TWEMP.Browser.App.Utilities_CLI.M2TW_Localization_Switcher.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

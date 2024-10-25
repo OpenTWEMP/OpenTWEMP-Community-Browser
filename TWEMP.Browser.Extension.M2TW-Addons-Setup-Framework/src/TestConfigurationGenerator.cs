@@ -8,7 +8,7 @@ namespace TWEMP.Browser.Extension.AddonsSetupFramework;
 
 using System.Xml.Serialization;
 
-public class TestConfigurationGenerator
+public static class TestConfigurationGenerator
 {
     public static ModSubmodsConfiguration CreateTestConfiguration(string directoryPath)
     {
