@@ -10,6 +10,18 @@ using System.Xml.Serialization;
 
 public static class TestConfigurationGenerator
 {
+    public static void GenerateAddonsSetupConfiguration(string appHomeDirectoryPath)
+    {
+        string targetConfigurationFilePath = Path.Combine(appHomeDirectoryPath, AddonsSetupConfiguration.MainConfigFileName);
+        AddonsSetupConfiguration targetConfiguration = AddonsSetupConfiguration.CreateByDefault();
+        XmlSerializer serializer = new (targetConfiguration.GetType());
+
+        using (FileStream stream = File.Create(targetConfigurationFilePath))
+        {
+            serializer.Serialize(stream, targetConfiguration);
+        }
+    }
+
     public static ModSubmodsConfiguration CreateTestConfiguration(string directoryPath)
     {
         const string LocaleID_RUS = "RUS";

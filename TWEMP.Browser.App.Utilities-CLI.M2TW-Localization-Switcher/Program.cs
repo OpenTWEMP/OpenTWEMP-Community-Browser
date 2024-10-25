@@ -8,7 +8,6 @@ namespace TWEMP.Browser.App.Utilities_CLI.M2TW_Localization_Switcher;
 
 using System;
 using System.IO;
-using System.Xml.Serialization;
 using TWEMP.Browser.Extension.AddonsSetupFramework;
 
 internal class Program
@@ -53,17 +52,23 @@ internal class Program
 
     private static void GenerateDefaultConfiguration(string targetDirectoryPath)
     {
-        ModSubmodsConfiguration configuration = TestConfigurationGenerator.CreateTestConfiguration(targetDirectoryPath);
-        TestConfigurationGenerator.PrepareTestAssets(targetDirectoryPath, configuration);
+        TestConfigurationGenerator.GenerateAddonsSetupConfiguration(targetDirectoryPath);
+
+        ModSubmodsConfiguration customConfiguration = TestConfigurationGenerator.CreateTestConfiguration(targetDirectoryPath);
+        TestConfigurationGenerator.PrepareTestAssets(targetDirectoryPath, customConfiguration);
 
         Console.WriteLine("RESULT: Prepared test assets.");
     }
 
     private static void ExecuteCustomConfiguration(string targetDirectoryPath)
     {
+        Console.WriteLine("0) Detect the App Configuration ...");
+        AddonsSetupConfiguration appConfiguration = AddonsSetupConfigurationReader.ReadAddonsSetupConfiguration(targetDirectoryPath);
+        Console.WriteLine($"Application Configuration: {appConfiguration.CustomConfigurationFilePath}");
+
         Console.WriteLine("1) Detect a Custom Configuration ...");
         string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(targetDirectoryPath);
-        ModSubmodsConfiguration configuration = ReadCustomConfiguration(configFilePath);
+        ModSubmodsConfiguration configuration = ModSubmodsConfigurationReader.ReadCustomConfiguration(configFilePath);
 
         Console.WriteLine("2) Read Localizations from the Custom Configuration ...");
         PrintAllCustomLocalizations(configuration);
@@ -74,29 +79,6 @@ internal class Program
 
         Console.WriteLine("4) Copy Game Assets Of the Custom Localization ...");
         CopyGameAssetsOfCustomLocalizationToTargetDirectory(configuration, currentLocale, targetDirectoryPath);
-    }
-
-    private static ModSubmodsConfiguration ReadCustomConfiguration(string cfgFilePath)
-    {
-        var configuration = new ModSubmodsConfiguration();
-
-        if (File.Exists(cfgFilePath))
-        {
-            using (FileStream xmlCfgFile = File.Open(cfgFilePath, FileMode.Open))
-            {
-                try
-                {
-                    var serializer = new XmlSerializer(type: configuration.GetType());
-                    configuration = serializer.Deserialize(xmlCfgFile) as ModSubmodsConfiguration;
-                }
-                catch (InvalidOperationException exception)
-                {
-                    Console.WriteLine($"[ERROR] {exception.Message}");
-                }
-            }
-        }
-
-        return configuration;
     }
 
     private static void PrintAllCustomLocalizations(ModSubmodsConfiguration configuration)
