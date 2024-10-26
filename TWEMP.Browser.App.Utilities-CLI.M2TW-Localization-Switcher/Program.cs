@@ -108,19 +108,19 @@ internal class Program
     private static void CopyGameAssetsOfCustomLocalizationToTargetDirectory(
         ModSubmodsConfiguration configuration, ModGameLocale customLocale, string targetDirectoryPath)
     {
-        string currentLocalizationDirectoryPath = Path.Combine(
-            targetDirectoryPath, configuration.SourceDirectoryPath, customLocale.SourceDirectoryPath);
+        DirectoryInfo customLocalizationDirectoryInfo =
+            configuration.GetSelectedLocalizationDirectoryInfo(customLocale, targetDirectoryPath);
 
-        if (Directory.Exists(currentLocalizationDirectoryPath))
+        if (customLocalizationDirectoryInfo.Exists)
         {
-            Console.WriteLine($"Directory Successfully Detected: '{currentLocalizationDirectoryPath}'");
+            Console.WriteLine($"Directory Successfully Detected: '{customLocalizationDirectoryInfo.FullName}'");
 
-            FileInfo[] files = TestConfigurationGenerator.GetAllFiles(new DirectoryInfo(currentLocalizationDirectoryPath));
+            FileInfo[] files = TestConfigurationGenerator.GetAllFiles(customLocalizationDirectoryInfo);
             ExecuteCopyingAllFilesRoutine(configuration, customLocale, files);
         }
         else
         {
-            Console.WriteLine($"Cannot Detect Directory: '{currentLocalizationDirectoryPath}'");
+            Console.WriteLine($"Cannot Detect Directory: '{customLocalizationDirectoryInfo.FullName}'");
         }
     }
 

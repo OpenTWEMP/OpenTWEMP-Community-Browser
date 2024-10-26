@@ -6,10 +6,14 @@
 
 namespace TWEMP.Browser.Extension.AddonsSetupFramework;
 
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 public record ModSubmodsConfiguration
 {
+    private const string RelativePathToParentDirectoryInWinStyle = $"..\\";
+    private const string RelativePathToParentDirectoryInUnixStyle = $"../";
+
     public const string ConfigFileName = "configuration.xml";
 
     public ModSubmodsConfiguration()
@@ -101,15 +105,70 @@ public record ModSubmodsConfiguration
 
     public FileInfo GetDestinationFilePath(ModGameLocale modGameLocale, FileInfo fileInfo)
     {
-        string sourceDirectoryPath = fileInfo.DirectoryName;
         string sourceRelativePathToReplacement = Path.Combine(this.SourceDirectoryPath, modGameLocale.SourceDirectoryPath);
+        while (IsRelativePathToParentDirectory(sourceRelativePathToReplacement))
+        {
+            sourceRelativePathToReplacement = GetRelativePathWithoutStartParentDirectoryLabel(sourceRelativePathToReplacement);
+        }
 
-        string targetDirectoryPath = sourceDirectoryPath.Replace(
-            oldValue: sourceRelativePathToReplacement, newValue: this.DestinationDirectoryPath);
+        string targetRelativePathToReplacement = this.DestinationDirectoryPath;
+        while (IsRelativePathToParentDirectory(targetRelativePathToReplacement))
+        {
+            targetRelativePathToReplacement = GetRelativePathWithoutStartParentDirectoryLabel(targetRelativePathToReplacement);
+        }
+
+        string targetDirectoryPath = fileInfo.DirectoryName.Replace(
+            oldValue: sourceRelativePathToReplacement, newValue: targetRelativePathToReplacement);
         string targetFileName = fileInfo.Name;
 
         string destinationFilePath = Path.Combine(targetDirectoryPath, targetFileName);
-
         return new FileInfo(destinationFilePath);
+    }
+
+    public DirectoryInfo GetSelectedLocalizationDirectoryInfo(ModGameLocale customLocale, string appHomeDirectoryPath)
+    {
+        string submodsSourceDirectoryPath = this.GetSubmodsSourceDirectoryPath(appHomeDirectoryPath);
+        string customLocaleSourceDirectoryPath = Path.Combine(submodsSourceDirectoryPath, customLocale.SourceDirectoryPath);
+
+        return new DirectoryInfo(customLocaleSourceDirectoryPath);
+    }
+
+    private static bool IsRelativePathToParentDirectory(string path)
+    {
+        bool isWinPathToParentDirectory = path.StartsWith(RelativePathToParentDirectoryInWinStyle);
+        bool isUnixPathToParentDirectory = path.StartsWith(RelativePathToParentDirectoryInUnixStyle);
+
+        return isWinPathToParentDirectory || isUnixPathToParentDirectory;
+    }
+
+    private static string GetRelativePathWithoutStartParentDirectoryLabel(string path)
+    {
+        string startSubstringToDelete = string.Empty;
+
+        if (path.StartsWith(RelativePathToParentDirectoryInWinStyle))
+        {
+            startSubstringToDelete = RelativePathToParentDirectoryInWinStyle;
+        }
+
+        if (path.StartsWith(RelativePathToParentDirectoryInUnixStyle))
+        {
+            startSubstringToDelete = RelativePathToParentDirectoryInUnixStyle;
+        }
+
+        return path.Remove(startIndex: 0, count: startSubstringToDelete.Length);
+    }
+
+    private string GetSubmodsSourceDirectoryPath(string appHomeDirectoryPath)
+    {
+        string submodsHomeDirectoryPath = appHomeDirectoryPath;
+        string submodsFolderRelativePath = this.SourceDirectoryPath;
+
+        while (IsRelativePathToParentDirectory(submodsFolderRelativePath))
+        {
+            submodsHomeDirectoryPath = new DirectoryInfo(submodsHomeDirectoryPath).Parent.FullName;
+            submodsFolderRelativePath = GetRelativePathWithoutStartParentDirectoryLabel(submodsFolderRelativePath);
+        }
+
+        return Path.Combine(submodsHomeDirectoryPath, submodsFolderRelativePath);
     }
 }
