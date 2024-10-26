@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TWEMP.Browser.App.Utilities-CLI.M2TW-Localization-Switcher": {
+      "commandName": "Project",
+      "commandLineArgs": "--custom"
+    }
+  }
+}

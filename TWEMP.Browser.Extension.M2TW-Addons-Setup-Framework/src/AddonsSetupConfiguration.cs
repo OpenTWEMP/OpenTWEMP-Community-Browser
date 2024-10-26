@@ -23,9 +23,9 @@ public class AddonsSetupConfiguration
     {
     }
 
-    private AddonsSetupConfiguration(string cfgFileRelativePath, string modName, string modVersion)
+    private AddonsSetupConfiguration(string cfgFileName, string modName, string modVersion)
     {
-        this.CustomConfigurationFilePath = cfgFileRelativePath;
+        this.CustomConfigFileName = cfgFileName;
         this.CustomGameModificationName = modName;
         this.CustomGameModificationVersion = modVersion;
     }
@@ -33,19 +33,19 @@ public class AddonsSetupConfiguration
     /// <summary>
     /// Gets or sets a custom configuration file path.
     /// </summary>
-    [XmlAttribute("ConfigFilePath")]
-    public string CustomConfigurationFilePath { get; set; }
+    [XmlElement("CustomConfigFileName")]
+    public string CustomConfigFileName { get; set; }
 
     /// <summary>
     /// Gets or sets a name of the custom game modification.
     /// </summary>
-    [XmlAttribute("ModName")]
+    [XmlElement("ModName")]
     public string CustomGameModificationName { get; set; }
 
     /// <summary>
     /// Gets or sets a version of the custom game modification.
     /// </summary>
-    [XmlAttribute("ModVersion")]
+    [XmlElement("ModVersion")]
     public string CustomGameModificationVersion { get; set; }
 
     /// <summary>
@@ -54,10 +54,10 @@ public class AddonsSetupConfiguration
     /// <returns>Returns a new instance of the <see cref="AddonsSetupConfiguration"/> class with default values of properties.</returns>
     public static AddonsSetupConfiguration CreateByDefault()
     {
-        const string customConfigurationFilePath = "configuration.xml";
+        const string customConfigFileName = ModSubmodsConfiguration.ConfigFileName;
         const string customGameModificationName = "M2TW_MODIFICATION_CUSTOM_NAME";
         const string customGameModificationVersion = "M2TW_MODIFICATION_CUSTOM_VERSION";
 
-        return new AddonsSetupConfiguration(customConfigurationFilePath, customGameModificationName, customGameModificationVersion);
+        return new AddonsSetupConfiguration(customConfigFileName, customGameModificationName, customGameModificationVersion);
     }
 }

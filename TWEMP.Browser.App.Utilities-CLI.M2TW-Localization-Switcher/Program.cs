@@ -54,7 +54,7 @@ internal class Program
     {
         TestConfigurationGenerator.GenerateAddonsSetupConfiguration(targetDirectoryPath);
 
-        ModSubmodsConfiguration customConfiguration = TestConfigurationGenerator.CreateTestConfiguration(targetDirectoryPath);
+        ModSubmodsConfiguration customConfiguration = TestConfigurationGenerator.CreateTestConfiguration(targetDirectoryPath, ModSubmodsConfiguration.ConfigFileName);
         TestConfigurationGenerator.PrepareTestAssets(targetDirectoryPath, customConfiguration);
 
         Console.WriteLine("RESULT: Prepared test assets.");
@@ -64,10 +64,10 @@ internal class Program
     {
         Console.WriteLine("0) Detect the App Configuration ...");
         AddonsSetupConfiguration appConfiguration = AddonsSetupConfigurationReader.ReadAddonsSetupConfiguration(targetDirectoryPath);
-        Console.WriteLine($"Application Configuration: {appConfiguration.CustomConfigurationFilePath}");
+        Console.WriteLine($"Application Configuration: {appConfiguration.CustomConfigFileName}");
 
         Console.WriteLine("1) Detect a Custom Configuration ...");
-        string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(targetDirectoryPath);
+        string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(targetDirectoryPath, appConfiguration.CustomConfigFileName);
         ModSubmodsConfiguration configuration = ModSubmodsConfigurationReader.ReadCustomConfiguration(configFilePath);
 
         Console.WriteLine("2) Read Localizations from the Custom Configuration ...");

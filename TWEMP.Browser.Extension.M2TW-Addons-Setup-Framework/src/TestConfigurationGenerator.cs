@@ -22,7 +22,7 @@ public static class TestConfigurationGenerator
         }
     }
 
-    public static ModSubmodsConfiguration CreateTestConfiguration(string directoryPath)
+    public static ModSubmodsConfiguration CreateTestConfiguration(string homeDirectoryPath, string configFileName)
     {
         const string LocaleID_RUS = "RUS";
         const string LocaleID_ENG = "ENG";
@@ -49,7 +49,7 @@ public static class TestConfigurationGenerator
             srcDirPath: "submods", destDirPath: "data",
             modGameLocales: supportedLocalizations.ToArray());
 
-        string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(directoryPath);
+        string configFilePath = Path.Combine(homeDirectoryPath, configFileName);
         XmlSerializer serializer = new (configuration.GetType());
 
         using (FileStream stream = File.Create(configFilePath))

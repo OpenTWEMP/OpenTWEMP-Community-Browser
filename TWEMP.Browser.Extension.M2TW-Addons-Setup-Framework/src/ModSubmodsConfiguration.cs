@@ -32,9 +32,34 @@ public record ModSubmodsConfiguration
     [XmlElement("Localization")]
     public ModGameLocale[] SupportedLocalizations { get; set; }
 
-    public static string GetConfigurationFilePath(string directoryPath)
+    public static string GetConfigurationFilePath(string appHomeDirectoryPath, string configFileName)
     {
-        return Path.Combine(directoryPath, ConfigFileName);
+        // Priority # 1: Custom Configuration File
+        string appHomeParentDirectoryPath = new DirectoryInfo(appHomeDirectoryPath).Parent.FullName;
+        string customConfigFilePath = Path.Combine(appHomeParentDirectoryPath, configFileName);
+
+        if (File.Exists(customConfigFilePath))
+        {
+            return customConfigFilePath;
+        }
+
+        // Priority # 2: System Configuration File
+        string systemConfigFilePath = Path.Combine(appHomeDirectoryPath, configFileName);
+
+        if (File.Exists(systemConfigFilePath))
+        {
+            return systemConfigFilePath;
+        }
+
+        // Priority # 3: Default Configuration File
+        string defaultConfigFilePath = Path.Combine(appHomeDirectoryPath, ConfigFileName);
+
+        if (!File.Exists(defaultConfigFilePath))
+        {
+            TestConfigurationGenerator.CreateTestConfiguration(appHomeDirectoryPath, ConfigFileName);
+        }
+
+        return defaultConfigFilePath;
     }
 
     public static bool IsValidLocalizationID(string targetID, string[] validIDs)
