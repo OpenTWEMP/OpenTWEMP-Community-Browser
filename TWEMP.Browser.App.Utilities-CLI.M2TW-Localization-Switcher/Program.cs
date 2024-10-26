@@ -14,7 +14,7 @@ internal class Program
 {
     internal static void Main(string[] args)
     {
-        Console.WriteLine("START");
+        PrintBegMessage();
 
         bool areDisplayedArguments = false;
         if (areDisplayedArguments)
@@ -37,7 +37,21 @@ internal class Program
             }
         }
 
-        Console.WriteLine("FINISH");
+        PrintEndMessage();
+    }
+
+    private static void PrintBegMessage()
+    {
+        Console.WriteLine();
+        Console.WriteLine("[BEG] Welcome to the Addons-Setup-Framework for M2TW !");
+        Console.WriteLine();
+    }
+
+    private static void PrintEndMessage()
+    {
+        Console.WriteLine();
+        Console.WriteLine("\n[END] This program successfully finished its work!");
+        Console.WriteLine();
     }
 
     private static void PrintCommandLineArguments(string[] args)
@@ -62,32 +76,34 @@ internal class Program
 
     private static void ExecuteCustomConfiguration(string targetDirectoryPath)
     {
-        Console.WriteLine("0) Detect the App Configuration ...");
+        Console.WriteLine("[READING] Detecting Configuration Files ...");
         AddonsSetupConfiguration appConfiguration = AddonsSetupConfigurationReader.ReadAddonsSetupConfiguration(targetDirectoryPath);
-        Console.WriteLine($"Application Configuration: {appConfiguration.CustomConfigFileName}");
-
-        Console.WriteLine("1) Detect a Custom Configuration ...");
         string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(targetDirectoryPath, appConfiguration.CustomConfigFileName);
-        Console.WriteLine($"Custom Configuration: {configFilePath}");
         ModSubmodsConfiguration configuration = ModSubmodsConfigurationReader.ReadCustomConfiguration(configFilePath);
+        Console.WriteLine($"[INFO] Custom Configuration: {appConfiguration.CustomConfigFileName}");
 
-        Console.WriteLine("2) Read Localizations from the Custom Configuration ...");
+        Console.WriteLine($"\n***** {appConfiguration.CustomGameModificationName} [{appConfiguration.CustomGameModificationVersion}] *****\n");
+
         PrintAllCustomLocalizations(configuration);
 
-        Console.WriteLine("3) Select a Localization via User Input ...");
+        Console.WriteLine("\n[INPUT] Select a Localization via User Input ...\n");
         ModGameLocale currentLocale = SelectCustomLocalizationByUserInput(configuration);
-        Console.WriteLine($"Your selected game localization is '{currentLocale.Title}'");
+        Console.WriteLine($"\n[RESULT] Your selected game localization is '{currentLocale.Title}'\n");
 
-        Console.WriteLine("4) Copy Game Assets Of the Custom Localization ...");
+        Console.WriteLine("\n[PROCESSING] Copy Game Assets Of the Custom Localization ...\n");
         CopyGameAssetsOfCustomLocalizationToTargetDirectory(configuration, currentLocale, targetDirectoryPath);
     }
 
     private static void PrintAllCustomLocalizations(ModSubmodsConfiguration configuration)
     {
+        Console.WriteLine("\n[READING] Read Localizations from the Custom Configuration ...\n");
+
         foreach (ModGameLocale localization in configuration.SupportedLocalizations)
         {
-            Console.WriteLine($"[ID: {localization.ID}] {localization.Title} Locale");
+            Console.WriteLine($"   [ID: {localization.ID}] {localization.Title}");
         }
+
+        Console.WriteLine();
     }
 
     private static ModGameLocale SelectCustomLocalizationByUserInput(ModSubmodsConfiguration configuration)
@@ -97,7 +113,8 @@ internal class Program
         string id;
         do
         {
-            Console.Write("Print a valid ID to select a game localization to install: ");
+            Console.Write("Print a valid ID to select a game localization to install:\n" +
+                "  (Input ID and press 'Enter') >>> ");
             id = Console.ReadLine();
         }
         while (!ModSubmodsConfiguration.IsValidLocalizationID(id, availableLocalizationIDs));
@@ -113,20 +130,20 @@ internal class Program
 
         if (customLocalizationDirectoryInfo.Exists)
         {
-            Console.WriteLine($"Directory Successfully Detected: '{customLocalizationDirectoryInfo.FullName}'");
+            Console.WriteLine($"\n[INFO] Directory Successfully Detected: '{customLocalizationDirectoryInfo.FullName}'\n");
 
             FileInfo[] files = TestConfigurationGenerator.GetAllFiles(customLocalizationDirectoryInfo);
             ExecuteCopyingAllFilesRoutine(configuration, customLocale, files);
         }
         else
         {
-            Console.WriteLine($"Cannot Detect Directory: '{customLocalizationDirectoryInfo.FullName}'");
+            Console.WriteLine($"\n[ERROR] Cannot Detect Directory: '{customLocalizationDirectoryInfo.FullName}'\n");
         }
     }
 
     private static void ExecuteCopyingAllFilesRoutine(ModSubmodsConfiguration configuration, ModGameLocale customLocale, FileInfo[] filesToCopy)
     {
-        Console.WriteLine("Verbose Information About File Copying:");
+        Console.WriteLine("\n[INFO] Verbose Information About File Copying:\n");
 
         foreach (FileInfo fileInfo in filesToCopy)
         {
