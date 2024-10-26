@@ -29,7 +29,6 @@ public record ModSubmodsConfiguration
     [XmlAttribute("DestinationDirectoryRelativePath")]
     public string DestinationDirectoryPath { get; set; }
 
-    [XmlElement("Localization")]
     public ModGameLocale[] SupportedLocalizations { get; set; }
 
     public static string GetConfigurationFilePath(string appHomeDirectoryPath, string configFileName)

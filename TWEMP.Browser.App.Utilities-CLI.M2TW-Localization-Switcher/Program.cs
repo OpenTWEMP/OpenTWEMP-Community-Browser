@@ -68,6 +68,7 @@ internal class Program
 
         Console.WriteLine("1) Detect a Custom Configuration ...");
         string configFilePath = ModSubmodsConfiguration.GetConfigurationFilePath(targetDirectoryPath, appConfiguration.CustomConfigFileName);
+        Console.WriteLine($"Custom Configuration: {configFilePath}");
         ModSubmodsConfiguration configuration = ModSubmodsConfigurationReader.ReadCustomConfiguration(configFilePath);
 
         Console.WriteLine("2) Read Localizations from the Custom Configuration ...");
