@@ -80,7 +80,7 @@ public static class TestConfigurationGenerator
     public static void PrepareTestAssets(string directoryPath, ModSubmodsConfiguration configuration)
     {
         string submodsDirectoryPath = Path.Combine(
-            path1: directoryPath, path2: configuration.SourceDirectoryPath);
+            path1: directoryPath, path2: configuration.SourceDirectoryRelativePath);
 
         if (!Directory.Exists(submodsDirectoryPath))
         {

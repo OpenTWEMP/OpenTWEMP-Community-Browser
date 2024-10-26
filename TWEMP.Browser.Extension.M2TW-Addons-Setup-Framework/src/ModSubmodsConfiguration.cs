@@ -6,7 +6,6 @@
 
 namespace TWEMP.Browser.Extension.AddonsSetupFramework;
 
-using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 public record ModSubmodsConfiguration
@@ -22,16 +21,16 @@ public record ModSubmodsConfiguration
 
     public ModSubmodsConfiguration(string srcDirPath, string destDirPath, ModGameLocale[] modGameLocales)
     {
-        this.SourceDirectoryPath = srcDirPath;
-        this.DestinationDirectoryPath = destDirPath;
+        this.SourceDirectoryRelativePath = srcDirPath;
+        this.DestinationDirectoryRelativePath = destDirPath;
         this.SupportedLocalizations = modGameLocales;
     }
 
-    [XmlAttribute("SourceDirectoryRelativePath")]
-    public string SourceDirectoryPath { get; set; }
+    [XmlElement("SourceDirectoryRelativePath")]
+    public string SourceDirectoryRelativePath { get; set; }
 
-    [XmlAttribute("DestinationDirectoryRelativePath")]
-    public string DestinationDirectoryPath { get; set; }
+    [XmlElement("DestinationDirectoryRelativePath")]
+    public string DestinationDirectoryRelativePath { get; set; }
 
     public ModGameLocale[] SupportedLocalizations { get; set; }
 
@@ -105,13 +104,13 @@ public record ModSubmodsConfiguration
 
     public FileInfo GetDestinationFilePath(ModGameLocale modGameLocale, FileInfo fileInfo)
     {
-        string sourceRelativePathToReplacement = Path.Combine(this.SourceDirectoryPath, modGameLocale.SourceDirectoryPath);
+        string sourceRelativePathToReplacement = Path.Combine(this.SourceDirectoryRelativePath, modGameLocale.SourceDirectoryPath);
         while (IsRelativePathToParentDirectory(sourceRelativePathToReplacement))
         {
             sourceRelativePathToReplacement = GetRelativePathWithoutStartParentDirectoryLabel(sourceRelativePathToReplacement);
         }
 
-        string targetRelativePathToReplacement = this.DestinationDirectoryPath;
+        string targetRelativePathToReplacement = this.DestinationDirectoryRelativePath;
         while (IsRelativePathToParentDirectory(targetRelativePathToReplacement))
         {
             targetRelativePathToReplacement = GetRelativePathWithoutStartParentDirectoryLabel(targetRelativePathToReplacement);
@@ -161,7 +160,7 @@ public record ModSubmodsConfiguration
     private string GetSubmodsSourceDirectoryPath(string appHomeDirectoryPath)
     {
         string submodsHomeDirectoryPath = appHomeDirectoryPath;
-        string submodsFolderRelativePath = this.SourceDirectoryPath;
+        string submodsFolderRelativePath = this.SourceDirectoryRelativePath;
 
         while (IsRelativePathToParentDirectory(submodsFolderRelativePath))
         {
