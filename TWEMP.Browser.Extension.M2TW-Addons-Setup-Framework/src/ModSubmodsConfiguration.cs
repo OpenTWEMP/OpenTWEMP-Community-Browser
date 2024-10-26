@@ -100,8 +100,17 @@ public record ModSubmodsConfiguration
         return null;
     }
 
-    public FileInfo GetDestinationFilePath(ModGameLocale modGameLocale, FileInfo fileInfo) =>
-        new FileInfo(fileInfo.FullName
-            .Replace(oldValue: this.SourceDirectoryPath, newValue: this.DestinationDirectoryPath)
-            .Replace(oldValue: modGameLocale.ID, newValue: string.Empty));
+    public FileInfo GetDestinationFilePath(ModGameLocale modGameLocale, FileInfo fileInfo)
+    {
+        string sourceDirectoryPath = fileInfo.DirectoryName;
+        string sourceRelativePathToReplacement = Path.Combine(this.SourceDirectoryPath, modGameLocale.SourceDirectoryPath);
+
+        string targetDirectoryPath = sourceDirectoryPath.Replace(
+            oldValue: sourceRelativePathToReplacement, newValue: this.DestinationDirectoryPath);
+        string targetFileName = fileInfo.Name;
+
+        string destinationFilePath = Path.Combine(targetDirectoryPath, targetFileName);
+
+        return new FileInfo(destinationFilePath);
+    }
 }
