@@ -104,7 +104,7 @@ public record ModSubmodsConfiguration
 
     public FileInfo GetDestinationFilePath(ModGameLocale modGameLocale, FileInfo fileInfo)
     {
-        string sourceRelativePathToReplacement = Path.Combine(this.SourceDirectoryRelativePath, modGameLocale.SourceDirectoryPath);
+        string sourceRelativePathToReplacement = Path.Combine(this.SourceDirectoryRelativePath, modGameLocale.ContentFolderName);
         while (IsRelativePathToParentDirectory(sourceRelativePathToReplacement))
         {
             sourceRelativePathToReplacement = GetRelativePathWithoutStartParentDirectoryLabel(sourceRelativePathToReplacement);
@@ -127,7 +127,7 @@ public record ModSubmodsConfiguration
     public DirectoryInfo GetSelectedLocalizationDirectoryInfo(ModGameLocale customLocale, string appHomeDirectoryPath)
     {
         string submodsSourceDirectoryPath = this.GetSubmodsSourceDirectoryPath(appHomeDirectoryPath);
-        string customLocaleSourceDirectoryPath = Path.Combine(submodsSourceDirectoryPath, customLocale.SourceDirectoryPath);
+        string customLocaleSourceDirectoryPath = Path.Combine(submodsSourceDirectoryPath, customLocale.ContentFolderName);
 
         return new DirectoryInfo(customLocaleSourceDirectoryPath);
     }

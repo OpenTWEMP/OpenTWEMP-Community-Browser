@@ -35,14 +35,14 @@ public static class TestConfigurationGenerator
 
         List<ModGameLocale> supportedLocalizations = new ()
         {
-            new (id: LocaleID_RUS, title: "Russian", srcDirPath: LocaleID_RUS),
-            new (id: LocaleID_ENG, title: "English", srcDirPath: LocaleID_ENG),
-            new (id: LocaleID_ITA, title: "Italian", srcDirPath: LocaleID_ITA),
-            new (id: LocaleID_SPA, title: "Spanish", srcDirPath: LocaleID_SPA),
-            new (id: LocaleID_DEU, title: "German", srcDirPath: LocaleID_DEU),
-            new (id: LocaleID_FRA, title: "French", srcDirPath: LocaleID_FRA),
-            new (id: LocaleID_POL, title: "Polish", srcDirPath: LocaleID_POL),
-            new (id: LocaleID_CHI, title: "Chinese", srcDirPath: LocaleID_CHI),
+            new (id: LocaleID_RUS, title: "Russian", folderName: LocaleID_RUS),
+            new (id: LocaleID_ENG, title: "English", folderName: LocaleID_ENG),
+            new (id: LocaleID_ITA, title: "Italian", folderName: LocaleID_ITA),
+            new (id: LocaleID_SPA, title: "Spanish", folderName: LocaleID_SPA),
+            new (id: LocaleID_DEU, title: "German", folderName: LocaleID_DEU),
+            new (id: LocaleID_FRA, title: "French", folderName: LocaleID_FRA),
+            new (id: LocaleID_POL, title: "Polish", folderName: LocaleID_POL),
+            new (id: LocaleID_CHI, title: "Chinese", folderName: LocaleID_CHI),
         };
 
         ModSubmodsConfiguration configuration = new (
@@ -96,7 +96,7 @@ public static class TestConfigurationGenerator
         {
             string customLocaleDirectoryPath = Path.Combine(
                 path1: gameLocalizationsDirectoryPath,
-                path2: localization.SourceDirectoryPath);
+                path2: localization.ContentFolderName);
 
             CreateTestGameLocale(customLocaleDirectoryPath, localization);
         }

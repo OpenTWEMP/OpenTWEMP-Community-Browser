@@ -14,11 +14,11 @@ public record ModGameLocale
     {
     }
 
-    public ModGameLocale(string id, string title, string srcDirPath)
+    public ModGameLocale(string id, string title, string folderName)
     {
         this.ID = id;
         this.Title = title;
-        this.SourceDirectoryPath = srcDirPath;
+        this.ContentFolderName = folderName;
     }
 
     [XmlAttribute("ID")]
@@ -27,6 +27,6 @@ public record ModGameLocale
     [XmlAttribute("Title")]
     public string Title { get; set; }
 
-    [XmlAttribute("SourceDirectoryPath")]
-    public string SourceDirectoryPath { get; set; }
+    [XmlAttribute("ContentFolderName")]
+    public string ContentFolderName { get; set; }
 }
