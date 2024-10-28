@@ -5,6 +5,9 @@
 #pragma warning disable SA1600 // Elements should be documented
 #pragma warning disable SA1601 // Partial elements should be documented
 
+#define DISABLE_LEGACY_INIT_CODE
+#undef DISABLE_LEGACY_INIT_CODE
+
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using System.Windows.Forms;
@@ -35,8 +38,13 @@ public partial class ModSupportPresetSettingsForm : Form
 
         this.currentGameModificationView = gameModificationView;
 
+        FullGameModsCollectionView fullGameModsCollectionView = BrowserKernel.CurrentGameModsCollectionView;
+        this.InitializeModSupportPresetsDataGridView(fullGameModsCollectionView);
+
+#if DISABLE_LEGACY_INIT_CODE
         List<GameModificationInfo> gameInstallations = BrowserKernel.TotalModificationsList;
         this.InitializeModSupportPresetsDataGridView(gameInstallations);
+#endif
     }
 
     public void AttachRedistributablePresetToGameModification(string presetPlaceholder, int gameModId)
@@ -46,6 +54,75 @@ public partial class ModSupportPresetSettingsForm : Form
         redistributablePresetCell.Value = $"Attached Preset: {presetPlaceholder}";
     }
 
+    private void InitializeModSupportPresetsDataGridView(FullGameModsCollectionView fullGameModsCollectionView)
+    {
+        for (int index = 0; index < fullGameModsCollectionView.GameModificationViews.Length; index++)
+        {
+            this.modSupportPresetsDataGridView.Rows.Add(new DataGridViewRow());
+
+            DataGridViewRow dataGridViewRow = this.modSupportPresetsDataGridView.Rows[index];
+            UpdatableGameModificationView gameModView = fullGameModsCollectionView.GameModificationViews[index];
+
+            this.InitializeModSupportPresetDataGridViewRow(dataGridViewRow, gameModView);
+        }
+    }
+
+    private void InitializeModSupportPresetDataGridViewRow(DataGridViewRow dataGridViewRow, UpdatableGameModificationView gameModView)
+    {
+        DataGridViewCell idCell = dataGridViewRow.Cells[this.idColumnIndex];
+        idCell.Value = gameModView.IdView.NumericId;
+
+        DataGridViewCell modNameCell = dataGridViewRow.Cells[this.modNameColumnIndex];
+        modNameCell.Value = gameModView.CurrentInfo.ShortName;
+
+        DataGridViewCell gameSetupCell = dataGridViewRow.Cells[this.gameSetupColumnIndex];
+        gameSetupCell.Value = gameModView.CurrentInfo.CurrentSetup.HomeDirectory;
+
+        DataGridViewCell modCenterCell = dataGridViewRow.Cells[this.modCenterColumnIndex];
+        modCenterCell.Value = gameModView.CurrentInfo.Location;
+
+        DataGridViewCell redistributablePresetCell = dataGridViewRow.Cells[this.redistributablePresetColumnIndex];
+        redistributablePresetCell.Value = $"{gameModView.ActivePreset.HeaderInfo.ModTitle} [{gameModView.ActivePreset.HeaderInfo.ModVersion}]";
+
+        DataGridViewCheckBoxCell customizablePresetCell = (DataGridViewCheckBoxCell)dataGridViewRow.Cells[this.customizablePresetColumnIndex];
+        customizablePresetCell.Value = gameModView.UseCustomizablePreset;
+
+        this.MarkModSupportPresetDataGridViewRowByPresetSettings(dataGridViewRow);
+    }
+
+    private void MarkModSupportPresetDataGridViewRowByPresetSettings(DataGridViewRow dataGridViewRow)
+    {
+        if (this.IsConfiguredByCustomizableModPreset(dataGridViewRow))
+        {
+            this.MarkModSupportPresetDataGridViewRowAsCustomizablePreset(dataGridViewRow);
+        }
+        else
+        {
+            this.MarkModSupportPresetDataGridViewRowAsRedistributablePreset(dataGridViewRow);
+        }
+    }
+
+    private bool IsConfiguredByCustomizableModPreset(DataGridViewRow dataGridViewRow)
+    {
+        const string presetDefaultPlaceholder = "My_Title [My_Version]";
+
+        object? sourceCellValue = dataGridViewRow.Cells[this.redistributablePresetColumnIndex].Value;
+        string? convertedCellValue = Convert.ToString(sourceCellValue);
+
+        return convertedCellValue!.Equals(presetDefaultPlaceholder);
+    }
+
+    private void MarkModSupportPresetDataGridViewRowAsRedistributablePreset(DataGridViewRow dataGridViewRow)
+    {
+        this.ChangeDataGridViewRowBackgroundColor(dataGridViewRow, Color.LightGreen);
+    }
+
+    private void MarkModSupportPresetDataGridViewRowAsCustomizablePreset(DataGridViewRow dataGridViewRow)
+    {
+        this.ChangeDataGridViewRowBackgroundColor(dataGridViewRow, Color.LightGray);
+    }
+
+#if DISABLE_LEGACY_INIT_CODE
     private void InitializeModSupportPresetsDataGridView(ICollection<GameModificationInfo> gameMods)
     {
         Dictionary<DataGridViewRow, GameModificationInfo> gameModInfoRows = new ();
@@ -93,18 +170,6 @@ public partial class ModSupportPresetSettingsForm : Form
         redistributablePresetCell.Value = $"{gameModInfo.CurrentPreset.ModTitle} [{gameModInfo.CurrentPreset.ModVersion}]";
     }
 
-    private void MarkModSupportPresetDataGridViewRowByPresetSettings(DataGridViewRow row)
-    {
-        if (this.IsConfiguredByCustomizableModPreset(row))
-        {
-            this.MarkModSupportPresetDataGridViewRowAsCustomizablePreset(row);
-        }
-        else
-        {
-            this.MarkModSupportPresetDataGridViewRowAsRedistributablePreset(row);
-        }
-    }
-
     private bool IsConfiguredByCustomizableModPreset(DataGridViewRow row)
     {
         const string presetDefaultPlaceholder = "My_Title [My_Version]";
@@ -134,6 +199,7 @@ public partial class ModSupportPresetSettingsForm : Form
 
         // cell.ValueType = typeof(bool);
     }
+#endif
 
     private void ModSupportPresetsDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
     {
