@@ -154,6 +154,16 @@ public class UpdatableGameModificationView
     }
 
     /// <summary>
+    /// Gets the full name of the attached redistributable preset.
+    /// </summary>
+    /// <returns>The full name of the current redistributable preset.</returns>
+    public string GetRedistributablePresetFullName()
+    {
+        ModHeaderInfo headerInfo = this.redistributableModPreset.Data.HeaderInfo;
+        return $"{headerInfo.ModTitle} [{headerInfo.ModVersion}]";
+    }
+
+    /// <summary>
     /// Selects the current preset of the <see cref="RedistributableModPreset"/> type
     /// as the active mod support preset for this game modification.
     /// </summary>

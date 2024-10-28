@@ -10,8 +10,6 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
-using NAudio.SoundFont;
-using System.Linq;
 using System.Windows.Forms;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
@@ -91,7 +89,7 @@ public partial class ModSupportPresetSettingsForm : Form
         modCenterCell.Value = gameModView.CurrentInfo.Location;
 
         DataGridViewCell redistributablePresetCell = dataGridViewRow.Cells[this.redistributablePresetColumnIndex];
-        redistributablePresetCell.Value = $"{gameModView.ActivePreset.HeaderInfo.ModTitle} [{gameModView.ActivePreset.HeaderInfo.ModVersion}]";
+        redistributablePresetCell.Value = gameModView.GetRedistributablePresetFullName();
 
         DataGridViewCheckBoxCell customizablePresetCell = (DataGridViewCheckBoxCell)dataGridViewRow.Cells[this.customizablePresetColumnIndex];
         customizablePresetCell.Value = gameModView.UseCustomizablePreset;
