@@ -54,7 +54,7 @@ public class ModSupportPresetSetupManager
             this.updatableGameModificationViews = GetGameModificationViewsByDefault(gameMods);
             this.presetSettingViews = GetPresetSettingsByDefault(this.updatableGameModificationViews);
 
-            CreatePresetSetupConfigFileByDefault(this.presetSettingViews, this.presetSetupConfigFileInfo);
+            WritePresetSetupConfigFile(this.presetSettingViews, this.presetSetupConfigFileInfo);
         }
 
         this.CurrentGameModsCollectionView = new FullGameModsCollectionView(this.updatableGameModificationViews);
@@ -78,41 +78,62 @@ public class ModSupportPresetSetupManager
     }
 
     /// <summary>
-    /// Creates a game mods collection view via a collection of mod preset setting view entities.
+    /// Updates the current mod preset settings for all game modifications.
     /// </summary>
-    /// <param name="gameModifications">A collection containing objects of the <see cref="GameModificationInfo"/> type.</param>
-    /// <param name="presetSettings">A collection containing objects of the <see cref="ModPresetSettingView"/> type.</param>
-    /// <param name="redistributablePresets">A collection containing objects of the <see cref="RedistributableModPreset"/> type.</param>
-    /// <returns>An instance of the <see cref="FullGameModsCollectionView"/> class.</returns>
-    public FullGameModsCollectionView CreateGameModsCollectionViewByPresetSettings(
-        List<GameModificationInfo> gameModifications,
-        List<ModPresetSettingView> presetSettings,
-        List<RedistributableModPreset> redistributablePresets)
+    /// <param name="presetSettingViews">A collection containing objects of the <see cref="ModPresetSettingView"/> type.</param>
+    public void UpdatePresetSettings(ICollection<ModPresetSettingView> presetSettingViews)
     {
-        List<UpdatableGameModificationView> gameModificationViews = new ();
-
-        foreach (ModPresetSettingView setting in presetSettings)
+        if (this.SynchronizePresetSettingsViews(presetSettingViews))
         {
-            GameModificationInfo gameModInfo = gameModifications.ElementAt(setting.Id.NumericId);
-
-            UpdatableGameModificationView gameModView;
-            if (setting.UseCustomizablePreset)
+            if (this.SynchronizeGameModificationViews(this.presetSettingViews))
             {
-                gameModView = UpdatableGameModificationView.CreateGameModificationViewByCustomizablePreset(setting.Id, gameModInfo);
+                this.CurrentGameModsCollectionView = new FullGameModsCollectionView(this.updatableGameModificationViews);
             }
-            else
-            {
-                RedistributableModPreset redistributableModPreset = redistributablePresets.Find(
-                    preset => preset.Metadata.Guid == setting.RedistributablePresetGuid) !;
+        }
+    }
 
-                gameModView = UpdatableGameModificationView.CreateGameModificationViewByRedistributablePreset(
-                    setting.Id, gameModInfo, redistributableModPreset);
-            }
+    private bool SynchronizePresetSettingsViews(ICollection<ModPresetSettingView> presetSettingViews)
+    {
+        this.presetSettingViews.Clear();
 
-            gameModificationViews.Add(gameModView);
+        foreach (ModPresetSettingView view in presetSettingViews)
+        {
+            this.presetSettingViews.Add(view);
         }
 
-        return new FullGameModsCollectionView(gameModificationViews);
+        WritePresetSetupConfigFile(this.presetSettingViews, this.presetSetupConfigFileInfo);
+
+        return this.presetSetupConfigFileInfo.Exists;
+    }
+
+    private bool SynchronizeGameModificationViews(ICollection<ModPresetSettingView> presetSettingViews)
+    {
+        int previousItemsCount = this.updatableGameModificationViews.Count;
+        this.updatableGameModificationViews.Clear();
+
+        List<GameModificationInfo> gameMods = this.gameSetupManager.TotalModificationsList;
+        List<RedistributableModPreset> modPresets = this.gameSupportManager.AvailableModSupportPresets;
+
+        foreach (ModPresetSettingView presetSettingView in presetSettingViews)
+        {
+            GameModificationInfo gameModInfo = gameMods.ElementAt(presetSettingView.Id!.NumericId);
+
+            RedistributableModPreset redistributableModPreset = modPresets.Find(
+                preset => preset.Metadata.Guid == presetSettingView.RedistributablePresetGuid) !;
+
+            UpdatableGameModificationView gameModView =
+                UpdatableGameModificationView.CreateGameModificationViewByRedistributablePreset(
+                    idView: presetSettingView.Id, info: gameModInfo, preset: redistributableModPreset);
+
+            if (presetSettingView.UseCustomizablePreset)
+            {
+                gameModView.SelectCustomizableModPreset();
+            }
+
+            this.updatableGameModificationViews.Add(gameModView);
+        }
+
+        return this.updatableGameModificationViews.Count == previousItemsCount;
     }
 
     private static List<UpdatableGameModificationView> GetGameModificationViews(
@@ -180,8 +201,7 @@ public class ModSupportPresetSetupManager
         return presetSettings;
     }
 
-    private static void CreatePresetSetupConfigFileByDefault(
-        ICollection<ModPresetSettingView> presetSettingViews, FileInfo presetSetupConfigFileInfo)
+    private static void WritePresetSetupConfigFile(ICollection<ModPresetSettingView> presetSettingViews, FileInfo presetSetupConfigFileInfo)
     {
         AppSerializer.SerializeToJson(presetSettingViews, presetSetupConfigFileInfo.FullName);
     }

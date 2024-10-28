@@ -18,4 +18,9 @@ public static partial class BrowserKernel
             return ModSupportPresetSetupManagerInstance.CurrentGameModsCollectionView;
         }
     }
+
+    public static void UpdatePresetSettings(ICollection<ModPresetSettingView> presetSettingViews)
+    {
+        ModSupportPresetSetupManagerInstance.UpdatePresetSettings(presetSettingViews);
+    }
 }

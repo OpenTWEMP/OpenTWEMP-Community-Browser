@@ -27,8 +27,7 @@ public partial class ModSupportPresetSettingsForm : Form
     private readonly int customizablePresetColumnIndex;
 
     private readonly IConfigurableGameModificationView currentGameModificationView;
-
-    private List<ModPresetSettingView> currentPresetSettingViews;
+    private readonly List<ModPresetSettingView> currentPresetSettingViews;
 
     public ModSupportPresetSettingsForm(IConfigurableGameModificationView gameModificationView)
     {
@@ -319,6 +318,8 @@ public partial class ModSupportPresetSettingsForm : Form
             KeyValuePair<int, string> presetSetting = new (id, preset);
             currentPresetSettings.Add(presetSetting.Key, presetSetting.Value);
         }
+
+        BrowserKernel.UpdatePresetSettings(this.currentPresetSettingViews);
 
         this.currentGameModificationView.UpdateGameModificationViewAfterChangingPresetSettings(currentPresetSettings);
 
