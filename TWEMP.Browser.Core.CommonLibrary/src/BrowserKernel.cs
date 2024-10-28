@@ -50,6 +50,7 @@ public static partial class BrowserKernel
         MediaDeviceManagerInstance = MediaDeviceManager.Create();
 
         CustomGameSetupManagerInstance = CustomGameSetupManager.Create();
+        CustomGameSetupManagerInstance.SynchronizeGameSetupSettings();
 
         CustomGameCollectionsManagerInstance = CustomGameCollectionsManager.Create();
 
@@ -74,5 +75,9 @@ public static partial class BrowserKernel
             "GameConfigurationManager", "GameConfigurationManager.Initialize()", DateTime.Now)); // test logging
 
         Logger.CurrentInstance?.Close(); // test logging
+    }
+
+    public static void Initialize()
+    {
     }
 }
