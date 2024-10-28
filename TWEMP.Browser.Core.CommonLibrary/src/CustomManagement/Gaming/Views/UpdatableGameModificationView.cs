@@ -11,24 +11,53 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPreset
 /// </summary>
 public class UpdatableGameModificationView
 {
+    private static readonly RedistributableModPreset RedistributablePresetByDefault;
+
     private CustomizableModPreset customizableModPreset;
     private RedistributableModPreset redistributableModPreset;
+
+    /// <summary>
+    /// Initializes static members of the <see cref="UpdatableGameModificationView"/> class.
+    /// </summary>
+    static UpdatableGameModificationView()
+    {
+        RedistributablePresetByDefault = RedistributableModPreset.CreateDefaultTemplate();
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="UpdatableGameModificationView"/> class.
     /// </summary>
     /// <param name="idView">The game modification identifier entity for this view.</param>
-    /// <param name="info">The game modification info entity for this view.</param>
-    private UpdatableGameModificationView(GameModificationIdView idView, GameModificationInfo info)
+    /// <param name="modInfo">The game modification info entity for this view.</param>
+    private UpdatableGameModificationView(GameModificationIdView idView, GameModificationInfo modInfo)
     {
         this.IdView = idView;
-        this.CurrentInfo = info;
+        this.CurrentInfo = modInfo;
 
-        this.customizableModPreset = CustomizableModPreset.CreateDefaultTemplate(info.Location);
-        this.redistributableModPreset = RedistributableModPreset.CreateDefaultTemplate();
-
-        this.ActivePreset = ModSupportPreset.CreateDefaultTemplate();
+        this.redistributableModPreset = RedistributablePresetByDefault;
+        this.customizableModPreset = GetCustomizableModPreset(this.CurrentInfo);
         this.UseCustomizablePreset = false;
+
+        this.ActivePreset = this.redistributableModPreset.Data;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UpdatableGameModificationView"/> class.
+    /// </summary>
+    /// <param name="idView">The game modification identifier entity for this view.</param>
+    /// <param name="modInfo">The game modification info entity for this view.</param>
+    /// <param name="modPreset">The attached redistributable mod preset for this game modification view.</param>
+    private UpdatableGameModificationView(
+        GameModificationIdView idView, GameModificationInfo modInfo, RedistributableModPreset modPreset)
+    {
+        this.IdView = idView;
+        this.CurrentInfo = modInfo;
+
+        this.redistributableModPreset = modPreset;
+        this.customizableModPreset = GetCustomizableModPreset(this.CurrentInfo);
+        this.UseCustomizablePreset = false;
+
+        this.ActivePreset = this.redistributableModPreset.Data;
     }
 
     /// <summary>
@@ -65,8 +94,17 @@ public class UpdatableGameModificationView
         GameModificationInfo info,
         RedistributableModPreset preset)
     {
-        UpdatableGameModificationView gameModificationView = new (idView, info);
-        gameModificationView.SelectRedistributableModPreset(preset);
+        UpdatableGameModificationView gameModificationView;
+
+        if (preset != null)
+        {
+            gameModificationView = new UpdatableGameModificationView(idView, info, preset);
+        }
+        else
+        {
+            gameModificationView = new UpdatableGameModificationView(idView, info);
+        }
+
         return gameModificationView;
     }
 
@@ -78,12 +116,32 @@ public class UpdatableGameModificationView
     /// <param name="info">The game modification info entity for this view.</param>
     /// <returns>A new configured instance of the <see cref="UpdatableGameModificationView"/> record.</returns>
     public static UpdatableGameModificationView CreateGameModificationViewByCustomizablePreset(
-        GameModificationIdView idView,
-        GameModificationInfo info)
+        GameModificationIdView idView, GameModificationInfo info)
     {
         UpdatableGameModificationView gameModificationView = new (idView, info);
         gameModificationView.SelectCustomizableModPreset();
         return gameModificationView;
+    }
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="UpdatableGameModificationView"/> record by default preset settings.
+    /// </summary>
+    /// <param name="idView">The game modification identifier entity for this view.</param>
+    /// <param name="info">The game modification info entity for this view.</param>
+    /// <returns>A new configured instance of the <see cref="UpdatableGameModificationView"/> record.</returns>
+    public static UpdatableGameModificationView CreateGameModificationViewByDefaultPreset(
+        GameModificationIdView idView, GameModificationInfo info)
+    {
+        return new UpdatableGameModificationView(idView, info);
+    }
+
+    /// <summary>
+    /// Gets the <see cref="Guid"/> value for currently attached redistributable preset.
+    /// </summary>
+    /// <returns>The value of the <see cref="Guid"/> type.</returns>
+    public Guid GetRedistributablePresetId()
+    {
+        return this.redistributableModPreset.Metadata.Guid;
     }
 
     /// <summary>
@@ -125,6 +183,18 @@ public class UpdatableGameModificationView
     public void ResetAllModPresetsToDefaultSettings()
     {
         this.customizableModPreset = CustomizableModPreset.CreateDefaultTemplate(this.CurrentInfo.Location);
-        this.redistributableModPreset = RedistributableModPreset.CreateDefaultTemplate();
+        this.redistributableModPreset = RedistributablePresetByDefault;
+    }
+
+    private static CustomizableModPreset GetCustomizableModPreset(GameModificationInfo info)
+    {
+        if (CustomizableModPreset.Exists(info.Location))
+        {
+            return CustomizableModPreset.ReadCurrentPreset(info.Location);
+        }
+        else
+        {
+            return CustomizableModPreset.CreateDefaultTemplate(info.Location);
+        }
     }
 }

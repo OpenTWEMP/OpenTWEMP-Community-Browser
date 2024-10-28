@@ -4,6 +4,9 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
+#define DISABLE_LEGACY_CUSTOM_PRESET_FEATURE
+#undef DISABLE_LEGACY_CUSTOM_PRESET_FEATURE
+
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 public class GameModificationInfo
@@ -27,7 +30,11 @@ public class GameModificationInfo
         this.LogFileName = InitializeLogFileName();
         this.LogFileRelativePath = InitializeLogFileRelativePath(this.ModCfgRelativePath, this.LogFileName);
 
+#if DISABLE_LEGACY_CUSTOM_PRESET_FEATURE
         this.CurrentPreset = InitializeModificationPreset(path);
+#endif
+
+        this.CurrentPreset = new CustomModSupportPreset();
 
         this.IsFavoriteMod = false;
     }
@@ -102,6 +109,7 @@ public class GameModificationInfo
         return fileBaseName + fileExtension;
     }
 
+#if DISABLE_LEGACY_CUSTOM_PRESET_FEATURE
     private static CustomModSupportPreset InitializeModificationPreset(string modificationURI)
     {
         if (CustomModSupportPreset.Exists(modificationURI))
@@ -113,4 +121,5 @@ public class GameModificationInfo
             return CustomModSupportPreset.CreatePresetByDefault(modificationURI);
         }
     }
+#endif
 }

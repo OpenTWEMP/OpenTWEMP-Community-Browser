@@ -60,13 +60,17 @@ public record ModSupportPreset
 public record CustomizableModPreset
 {
     private const string PresetFolderName = ".twemp";
-    private const string PresetConfigFileName = "mod_support.json";
+    private const string PresetConfigFileName = "twemp_preset_config.json";
 
     public CustomizableModPreset(ModSupportPreset preset, string modURI)
     {
         this.Data = preset;
-        this.Location = InitializeModPresetHomeDirectoryInfo(modURI);
-        this.Config = InitializeModPresetConfigFileInfo(modURI);
+
+        string directoryPath = Path.Combine(modURI, PresetFolderName);
+        this.Location = new DirectoryInfo(directoryPath);
+
+        string filePath = Path.Combine(this.Location.FullName, PresetConfigFileName);
+        this.Config = new FileInfo(filePath);
     }
 
     public ModSupportPreset Data { get; set; }
@@ -81,16 +85,27 @@ public record CustomizableModPreset
         return new CustomizableModPreset(preset, modURI);
     }
 
-    private static DirectoryInfo InitializeModPresetHomeDirectoryInfo(string modURI)
+    public static bool Exists(string modURI)
     {
-        string directoryPath = Path.Combine(modURI, PresetFolderName);
-        return new DirectoryInfo(directoryPath);
+        string presetConfigFilePath = Path.Combine(modURI, PresetFolderName, PresetConfigFileName);
+        return File.Exists(presetConfigFilePath);
     }
 
-    private static FileInfo InitializeModPresetConfigFileInfo(string modURI)
+    public static CustomizableModPreset ReadCurrentPreset(string modURI)
     {
-        string filePath = Path.Combine(modURI, PresetFolderName, PresetConfigFileName);
-        return new FileInfo(filePath);
+        string presetConfigFilePath = Path.Combine(modURI, PresetFolderName, PresetConfigFileName);
+
+        CustomizableModPreset preset;
+        try
+        {
+            preset = Serialization.AppSerializer.DeserializeFromJson<CustomizableModPreset>(presetConfigFilePath);
+        }
+        catch (InvalidOperationException)
+        {
+            preset = CreateDefaultTemplate(modURI);
+        }
+
+        return preset;
     }
 }
 
