@@ -82,6 +82,15 @@ public class UpdatableGameModificationView
     public bool UseCustomizablePreset { get; private set; }
 
     /// <summary>
+    /// Gets the redistributable mod preset by default.
+    /// </summary>
+    /// <returns>The default instance of the <see cref="RedistributableModPreset"/> class.</returns>
+    public static RedistributableModPreset GetRedistributablePresetByDefault()
+    {
+        return RedistributablePresetByDefault;
+    }
+
+    /// <summary>
     /// Creates a new instance of the <see cref="UpdatableGameModificationView"/> record
     /// using an object of <see cref="RedistributableModPreset"/> class.
     /// </summary>
