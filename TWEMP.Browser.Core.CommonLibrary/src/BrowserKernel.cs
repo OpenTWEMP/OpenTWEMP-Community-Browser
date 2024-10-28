@@ -51,6 +51,7 @@ public static partial class BrowserKernel
 
         CustomGameSetupManagerInstance = CustomGameSetupManager.Create();
         CustomGameSetupManagerInstance.SynchronizeGameSetupSettings();
+        CustomGameSetupManagerInstance.UpdateTotalModificationsList();
 
         CustomGameCollectionsManagerInstance = CustomGameCollectionsManager.Create();
 
