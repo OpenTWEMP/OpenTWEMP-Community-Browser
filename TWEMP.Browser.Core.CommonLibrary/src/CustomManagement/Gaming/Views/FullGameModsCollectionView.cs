@@ -126,4 +126,25 @@ public class FullGameModsCollectionView
             gameModificationView.ResetAllModPresetsToDefaultSettings();
         }
     }
+
+    /// <summary>
+    /// Gets the current game collection data as the array of <see cref="ModPresetSettingView"/> objects.
+    /// </summary>
+    /// <returns>The array of <see cref="ModPresetSettingView"/> objects.</returns>
+    public ModPresetSettingView[] GetModPresetSettings()
+    {
+        ModPresetSettingView[] presetSettings = new ModPresetSettingView[this.GameModificationViews.Length];
+
+        for (int index = 0; index < presetSettings.Length; index++)
+        {
+            UpdatableGameModificationView gameModView = this.GameModificationViews[index];
+
+            presetSettings[index] = new (
+                idView: gameModView.IdView,
+                redistributablePresetGuid: gameModView.GetRedistributablePresetId(),
+                useCustomizablePreset: gameModView.UseCustomizablePreset);
+        }
+
+        return presetSettings;
+    }
 }

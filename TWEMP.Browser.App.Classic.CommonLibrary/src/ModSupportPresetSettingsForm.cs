@@ -10,8 +10,11 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using NAudio.SoundFont;
+using System.Linq;
 using System.Windows.Forms;
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 public partial class ModSupportPresetSettingsForm : Form
@@ -24,6 +27,8 @@ public partial class ModSupportPresetSettingsForm : Form
     private readonly int customizablePresetColumnIndex;
 
     private readonly IConfigurableGameModificationView currentGameModificationView;
+
+    private List<ModPresetSettingView> currentPresetSettingViews;
 
     public ModSupportPresetSettingsForm(IConfigurableGameModificationView gameModificationView)
     {
@@ -39,6 +44,8 @@ public partial class ModSupportPresetSettingsForm : Form
         this.currentGameModificationView = gameModificationView;
 
         FullGameModsCollectionView fullGameModsCollectionView = BrowserKernel.CurrentGameModsCollectionView;
+        this.currentPresetSettingViews = fullGameModsCollectionView.GetModPresetSettings().ToList();
+
         this.InitializeModSupportPresetsDataGridView(fullGameModsCollectionView);
 
 #if DISABLE_LEGACY_INIT_CODE
@@ -47,11 +54,14 @@ public partial class ModSupportPresetSettingsForm : Form
 #endif
     }
 
-    public void AttachRedistributablePresetToGameModification(string presetPlaceholder, int gameModId)
+    public void AttachRedistributablePresetToGameModification(int gameModId, RedistributableModPreset preset)
     {
         int redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
         DataGridViewCell redistributablePresetCell = this.modSupportPresetsDataGridView.Rows[gameModId].Cells[redistributablePresetColumnIndex];
-        redistributablePresetCell.Value = $"Attached Preset: {presetPlaceholder}";
+        redistributablePresetCell.Value = $"Attached Preset: {preset.Data.HeaderInfo.ModTitle} [{preset.Data.HeaderInfo.ModVersion}]";
+
+        ModPresetSettingView presetSettingView = this.currentPresetSettingViews.ElementAt(gameModId);
+        presetSettingView.RedistributablePresetGuid = preset.Metadata.Guid;
     }
 
     private void InitializeModSupportPresetsDataGridView(FullGameModsCollectionView fullGameModsCollectionView)
@@ -245,6 +255,9 @@ public partial class ModSupportPresetSettingsForm : Form
             {
                 this.ChangeDataGridViewRowBackgroundColor(row, Color.Red);
             }
+
+            ModPresetSettingView presetSettingView = this.currentPresetSettingViews.ElementAt(row.Index);
+            presetSettingView.UseCustomizablePreset = value;
         }
     }
 

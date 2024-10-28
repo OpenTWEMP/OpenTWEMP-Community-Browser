@@ -56,8 +56,10 @@ public partial class RedistributablePresetSelectionForm : Form
     {
         if (this.presetsListBox.SelectedItem != null)
         {
-            string presetPlaceholder = this.presetsListBox.SelectedItem.ToString() !;
-            this.presetSettingsForm.AttachRedistributablePresetToGameModification(presetPlaceholder, this.gameModId);
+            int presetIndex = this.presetsListBox.SelectedIndex;
+            RedistributableModPreset selectedPreset = this.redistributableModPresets.ElementAt(presetIndex);
+
+            this.presetSettingsForm.AttachRedistributablePresetToGameModification(this.gameModId, selectedPreset);
         }
 
         this.Close();
