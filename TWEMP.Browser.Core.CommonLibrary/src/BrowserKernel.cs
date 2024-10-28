@@ -55,7 +55,7 @@ public static partial class BrowserKernel
 
         GameSupportManagerInstance = GameSupportManager.Create();
 
-        ModSupportPresetSetupManagerInstance = ModSupportPresetSetupManager.Create();
+        ModSupportPresetSetupManagerInstance = ModSupportPresetSetupManager.Create(CustomGameSetupManagerInstance, GameSupportManagerInstance);
 
         GameConfigurationManagerInstance = GameConfigurationManager.Create();
 

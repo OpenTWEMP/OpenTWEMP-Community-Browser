@@ -12,6 +12,13 @@ public record ModPresetSettingView
     /// <summary>
     /// Initializes a new instance of the <see cref="ModPresetSettingView"/> class.
     /// </summary>
+    public ModPresetSettingView()
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ModPresetSettingView"/> class.
+    /// </summary>
     /// <param name="idView">The mod preset setting identifier entity for this view.</param>
     /// <param name="redistributablePresetGuid">The GUID of a redistributable preset
     /// attached to the current mod preset setting.</param>
@@ -25,17 +32,17 @@ public record ModPresetSettingView
     }
 
     /// <summary>
-    /// Gets the mod preset setting identifier.
+    /// Gets or sets the mod preset setting identifier.
     /// </summary>
-    public GameModificationIdView Id { get; }
+    public GameModificationIdView? Id { get; set; }
 
     /// <summary>
-    /// Gets the GUID of a redistributable preset attached to the current mod preset setting.
+    /// Gets or sets the GUID of a redistributable preset attached to the current mod preset setting.
     /// </summary>
-    public Guid RedistributablePresetGuid { get; }
+    public Guid RedistributablePresetGuid { get; set; }
 
     /// <summary>
-    /// Gets a value indicating whether the current mod preset setting uses a customizable preset.
+    /// Gets or sets a value indicating whether the current mod preset setting uses a customizable preset.
     /// </summary>
-    public bool UseCustomizablePreset { get; }
+    public bool UseCustomizablePreset { get; set; }
 }
