@@ -8,16 +8,22 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 public partial class ModConfigSettingsForm : Form
 {
-    public ModConfigSettingsForm()
-    {
-        InitializeComponent();
+    private readonly UpdatableGameModificationView currentGameModificationView;
+    private readonly M2TWGameConfigStateView gameConfigStateView;
 
+    public ModConfigSettingsForm(UpdatableGameModificationView gameModificationView)
+    {
+        this.currentGameModificationView = gameModificationView;
+        this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationView.CurrentInfo);
+
+        InitializeComponent();
         InitializeConfigControls();
     }
 
@@ -54,6 +60,8 @@ public partial class ModConfigSettingsForm : Form
 
     private void InitializeConfigControls()
     {
+        this.Text = $"M2TW Config Settings [ {this.currentGameModificationView.CurrentInfo.Location} ]";
+
         // saveConfigSettingsButton = new Button();
         // tabControl1 = new TabControl();
         // tabPage1 = new TabPage();
@@ -2596,26 +2604,5 @@ public partial class ModConfigSettingsForm : Form
         //cfgLogLocationTextBox.Size = new Size(160, 23);
         //cfgLogLocationTextBox.TabIndex = 5;
         //cfgLogLocationTextBox.Text = "logs/system.log.txt";
-        //// 
-        //// ModConfigSettingsForm
-        //// 
-        //AutoScaleDimensions = new SizeF(7F, 15F);
-        //AutoScaleMode = AutoScaleMode.Font;
-        //ClientSize = new Size(784, 561);
-        //Controls.Add(exitConfigSettingsButton);
-        //Controls.Add(settingDescriptionLabel);
-        //Controls.Add(exportConfigSettingsButton);
-        //Controls.Add(importConfigSettingsButton);
-        //Controls.Add(resetConfigSettingsButton);
-        //Controls.Add(tabControl1);
-        //Controls.Add(saveConfigSettingsButton);
-        //MaximizeBox = false;
-        //MaximumSize = new Size(800, 600);
-        //MinimizeBox = false;
-        //MinimumSize = new Size(800, 600);
-        //Name = "ModConfigSettingsForm";
-        //ShowIcon = false;
-        //StartPosition = FormStartPosition.CenterScreen;
-        //Text = "Mod Configuration Settings";
     }
 }

@@ -10,6 +10,7 @@ namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.App.Classic.WinForms.Properties;
+using TWEMP.Browser.Core.CommonLibrary;
 
 internal partial class MainBrowserForm : Form
 {
@@ -72,6 +73,11 @@ internal partial class MainBrowserForm : Form
             modLogoPictureBox.Image.Dispose();
             modLogoPictureBox.Image = Resources.OPENTWEMP_LOGO;
         }
+
+        if (BrowserKernel.CurrentGameModView == null)
+        {
+            modSupportPresetSettingsToolStripMenuItem.Enabled = false;
+        }
     }
 
     private void EnableModUIControls()
@@ -102,5 +108,10 @@ internal partial class MainBrowserForm : Form
 
         buttonMarkFavoriteMod.Enabled = true;
         buttonMarkFavoriteMod.Visible = true;
+
+        if (BrowserKernel.CurrentGameModView != null)
+        {
+            modSupportPresetSettingsToolStripMenuItem.Enabled = true;
+        }
     }
 }

@@ -8,6 +8,8 @@
 namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Utilities;
 
 internal partial class MainBrowserForm
@@ -76,8 +78,21 @@ internal partial class MainBrowserForm
 
     private void ConfigSettingsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var modConfigSettingsForm = new ModConfigSettingsForm();
-        modConfigSettingsForm.ShowDialog();
+        UpdatableGameModificationView gameModificationView = BrowserKernel.CurrentGameModView!;
+
+        if (gameModificationView == null)
+        {
+            MessageBox.Show(
+                text: "Cannot create M2TW configuration!\nPlease, select a game mod and try again.",
+                caption: "ERROR",
+                buttons: MessageBoxButtons.OK,
+                icon: MessageBoxIcon.Error);
+        }
+        else
+        {
+            ModConfigSettingsForm modConfigSettingsForm = new (gameModificationView);
+            modConfigSettingsForm.ShowDialog();
+        }
     }
 
     private void AboutProgramToolStripMenuItem_Click(object sender, EventArgs e)

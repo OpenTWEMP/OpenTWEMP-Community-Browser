@@ -7,6 +7,20 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+
 public static partial class BrowserKernel
 {
+    public static UpdatableGameModificationView? CurrentGameModView
+    {
+        get
+        {
+            return GameConfigurationManagerInstance.CurrentGameModView;
+        }
+
+        set
+        {
+            GameConfigurationManagerInstance.CurrentGameModView = value;
+        }
+    }
 }

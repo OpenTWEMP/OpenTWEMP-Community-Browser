@@ -5,6 +5,9 @@
 #pragma warning disable SA1600 // Elements should be documented
 #pragma warning disable SA1601 // Partial elements should be documented
 
+#define DISABLE_M2TW_CFG_FORM_CREATE
+#undef DISABLE_M2TW_CFG_FORM_CREATE
+
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
@@ -27,8 +30,15 @@ public partial class GameConfigProfileCreateForm : Form
         switch (gameCfgType)
         {
             case GameEngineSupportType.M2TW:
+                MessageBox.Show(
+                    text: "M2TW CFG TYPE",
+                    caption: "M2TW CFG",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Information);
+#if DISABLE_M2TW_CFG_FORM_CREATE
                 var modConfigSettingsForm = new ModConfigSettingsForm();
                 modConfigSettingsForm.ShowDialog();
+#endif
                 break;
             case GameEngineSupportType.TWEMP:
             case GameEngineSupportType.RTW:

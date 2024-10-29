@@ -90,6 +90,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
             if (IsNodeOfGameModView(e.Node!))
             {
                 UpdatableGameModificationView gameModView = this.SelectGameModViewByTreeNode(e.Node!);
+                BrowserKernel.CurrentGameModView = gameModView;
 
                 this.modMainTitleLabel.Text = gameModView.GetActivePresetFullName();
                 this.modStatusLabel.Text = gameModView.GetCustomizablePresetDescription();

@@ -9,6 +9,7 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration
 
 using System.Collections.Generic;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
 /// <summary>
@@ -49,12 +50,19 @@ public class GameConfigurationManager
         {
             this.AvailableProfiles = CreateDefaultGameConfigProfiles();
         }
+
+        this.CurrentGameModView = null;
     }
 
     /// <summary>
     /// Gets available game configuration profiles.
     /// </summary>
     public List<GameConfigProfile> AvailableProfiles { get; private set; }
+
+    /// <summary>
+    /// Gets or sets the current game modification view for creation a game configuration.
+    /// </summary>
+    public UpdatableGameModificationView? CurrentGameModView { get; set; }
 
     /// <summary>
     /// Creates a custom instance of the <see cref="GameConfigurationManager"/> class.
