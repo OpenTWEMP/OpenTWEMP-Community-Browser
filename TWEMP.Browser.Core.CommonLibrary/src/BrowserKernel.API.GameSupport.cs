@@ -31,4 +31,16 @@ public static partial class BrowserKernel
         DirectoryInfo presetHomeDirectoryInfo = GameSupportManagerInstance.GetPresetHomeDirectoryInfo(presetId);
         return gameModView.GetLogoImageFromRedistributablePreset(presetHomeDirectoryInfo);
     }
+
+    public static FileInfo GetActivePresetBackgroundSoundTrackFileInfo(UpdatableGameModificationView gameModView)
+    {
+        if (gameModView.UseCustomizablePreset)
+        {
+            return gameModView.GetBackgroundSoundTrackFromCustomizablePreset();
+        }
+
+        Guid presetId = gameModView.GetRedistributablePresetId();
+        DirectoryInfo presetHomeDirectoryInfo = GameSupportManagerInstance.GetPresetHomeDirectoryInfo(presetId);
+        return gameModView.GetBackgroundSoundTrackFromRedistributablePreset(presetHomeDirectoryInfo);
+    }
 }

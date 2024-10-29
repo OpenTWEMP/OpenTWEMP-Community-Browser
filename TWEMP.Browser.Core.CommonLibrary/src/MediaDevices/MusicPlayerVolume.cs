@@ -21,12 +21,9 @@ public struct MusicPlayerVolume
         MaxValue = MaxVolumeValue / DivisorFloatingPointValue;
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MusicPlayerVolume"/> struct.
-    /// </summary>
-    public MusicPlayerVolume()
+    private MusicPlayerVolume(int volumeValue)
     {
-        this.CurrentValue = DefaultVolumeValue / DivisorFloatingPointValue;
+        this.CurrentValue = volumeValue / DivisorFloatingPointValue;
     }
 
     /// <summary>
@@ -43,6 +40,15 @@ public struct MusicPlayerVolume
     /// Gets the current value for music playback volume.
     /// </summary>
     public float CurrentValue { get; private set; }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MusicPlayerVolume"/> struct by default.
+    /// </summary>
+    /// <returns>The struct of the <see cref="MusicPlayerVolume"/>type.</returns>
+    public static MusicPlayerVolume InitializeByDefault()
+    {
+        return new MusicPlayerVolume(DefaultVolumeValue);
+    }
 
     /// <summary>
     /// Updates the current volume value by a new volume value.

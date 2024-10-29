@@ -94,6 +94,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                 this.modMainTitleLabel.Text = gameModView.GetActivePresetFullName();
                 this.modStatusLabel.Text = gameModView.GetCustomizablePresetDescription();
                 this.UpdateGameModLogoPictureBox(gameModView);
+                this.StartGameModBackgroundMusic(gameModView);
                 this.UpdateConfigurationControls(gameModView);
 
 #if DISABLE_LEGACY_GAMEMOD_VISUALIZATION
@@ -340,6 +341,12 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         {
             this.modLogoPictureBox.Image = Resources.TWEMP_PRESETS_ON;
         }
+    }
+
+    private void StartGameModBackgroundMusic(UpdatableGameModificationView gameModView)
+    {
+        FileInfo backgroundSoundTrack = BrowserKernel.GetActivePresetBackgroundSoundTrackFileInfo(gameModView);
+        BrowserKernel.StartAudioPlayback(backgroundSoundTrack);
     }
 
     private void UpdateConfigurationControls(UpdatableGameModificationView gameModView)

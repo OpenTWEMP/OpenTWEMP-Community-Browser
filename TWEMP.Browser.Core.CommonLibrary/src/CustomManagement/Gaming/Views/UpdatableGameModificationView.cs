@@ -220,6 +220,33 @@ public class UpdatableGameModificationView
     }
 
     /// <summary>
+    /// Gets the background soundtrack file info for the current preset of the <see cref="RedistributableModPreset"/> type.
+    /// </summary>
+    /// <param name="presetHomeDirectoryInfo">The home directory info of this redistributable preset.</param>
+    /// <returns>The <see cref="FileInfo"/> object for a background soundtrack file.</returns>
+    public FileInfo GetBackgroundSoundTrackFromRedistributablePreset(DirectoryInfo presetHomeDirectoryInfo)
+    {
+        string presetBackgroundSoundTrackFilePath = Path.Combine(
+            path1: presetHomeDirectoryInfo.FullName,
+            path2: this.redistributableModPreset.Data.ContentInfo.BackgroundSoundTrack);
+
+        return new FileInfo(presetBackgroundSoundTrackFilePath);
+    }
+
+    /// <summary>
+    /// Gets the background soundtrack file info for the current preset of the <see cref="CustomizableModPreset"/> type.
+    /// </summary>
+    /// <returns>The <see cref="FileInfo"/> object for a background soundtrack file.</returns>
+    public FileInfo GetBackgroundSoundTrackFromCustomizablePreset()
+    {
+        string presetBackgroundSoundTrackFilePath = Path.Combine(
+            path1: this.customizableModPreset.Location.FullName,
+            path2: this.customizableModPreset.Data.ContentInfo.BackgroundSoundTrack);
+
+        return new FileInfo(presetBackgroundSoundTrackFilePath);
+    }
+
+    /// <summary>
     /// Selects the current preset of the <see cref="RedistributableModPreset"/> type
     /// as the active mod support preset for this game modification.
     /// </summary>

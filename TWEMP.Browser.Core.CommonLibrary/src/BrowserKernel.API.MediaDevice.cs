@@ -9,6 +9,11 @@ namespace TWEMP.Browser.Core.CommonLibrary;
 
 public static partial class BrowserKernel
 {
+    public static void StartAudioPlayback(FileInfo audioFileInfo)
+    {
+        MediaDeviceManagerInstance.StartAudioPlayback(audioFileInfo);
+    }
+
     public static void ContinueCurrentAudioPlayback()
     {
         MediaDeviceManagerInstance.MusicPlayerDevice.Play();
@@ -28,6 +33,7 @@ public static partial class BrowserKernel
     {
         MediaDeviceManagerInstance.MusicPlayerDevice.Stop();
     }
+
     public static void ChargeVolumeCurrentAudioPlayback()
     {
         MediaDeviceManagerInstance.MusicPlayerDevice.ChargeVolume();

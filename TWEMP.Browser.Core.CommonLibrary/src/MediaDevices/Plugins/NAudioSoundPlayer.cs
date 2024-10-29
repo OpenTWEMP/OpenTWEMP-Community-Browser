@@ -30,11 +30,14 @@ public class NAudioSoundPlayer : IAudioPlaybackDevice
     /// <param name="audioFilePath">The absolute path to a target audio file.</param>
     public void Cue(string audioFilePath)
     {
-        if (this.audioFile == null)
+        if (this.outputDevice != null)
         {
-            this.audioFile = new AudioFileReader(audioFilePath);
-            this.outputDevice.Init(this.audioFile);
+            this.Uncue();
         }
+
+        this.outputDevice = new WaveOutEvent();
+        this.audioFile = new AudioFileReader(audioFilePath);
+        this.outputDevice.Init(this.audioFile);
     }
 
     /// <summary>
@@ -42,10 +45,7 @@ public class NAudioSoundPlayer : IAudioPlaybackDevice
     /// </summary>
     public void Uncue()
     {
-        if (this.outputDevice == null)
-        {
-            this.outputDevice!.PlaybackStopped += this.OnPlaybackStopped!;
-        }
+        this.outputDevice.Dispose();
     }
 
     /// <summary>
@@ -90,14 +90,5 @@ public class NAudioSoundPlayer : IAudioPlaybackDevice
     public void UpdateVolume(float targetVolumeValue)
     {
         this.outputDevice.Volume = targetVolumeValue;
-    }
-
-    private void OnPlaybackStopped(object sender, StoppedEventArgs args)
-    {
-        this.outputDevice.Dispose();
-        this.outputDevice = null!;
-
-        this.audioFile.Dispose();
-        this.audioFile = null!;
     }
 }

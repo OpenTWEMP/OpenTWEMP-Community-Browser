@@ -21,11 +21,10 @@ public class GameMusicPlayer
     public GameMusicPlayer(IAudioPlaybackDevice audioPlaybackDevice, FileInfo audioFileInfo)
     {
         this.currentAudioPlaybackDevice = audioPlaybackDevice;
-
         this.currentAudioFileInfo = audioFileInfo;
 
-        this.State = GameMusicPlaybackState.Cued;
-        this.Volume = new MusicPlayerVolume();
+        this.State = GameMusicPlaybackState.Uncued;
+        this.Volume = MusicPlayerVolume.InitializeByDefault();
 
         this.LoadAudio(this.currentAudioFileInfo);
     }

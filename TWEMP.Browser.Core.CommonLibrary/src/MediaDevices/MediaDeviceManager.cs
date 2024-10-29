@@ -41,17 +41,12 @@ public class MediaDeviceManager
         this.defaultAudioFileInfo = new FileInfo(defaultAudioFilePath);
 
         this.MusicPlayerDevice = new GameMusicPlayer(this.audioPlaybackDevice, this.defaultAudioFileInfo);
-
-        if (this.defaultAudioFileInfo.Exists)
-        {
-            this.MusicPlayerDevice.Play();
-        }
     }
 
     /// <summary>
     /// Gets the current game music player device.
     /// </summary>
-    public GameMusicPlayer MusicPlayerDevice { get; }
+    public GameMusicPlayer MusicPlayerDevice { get; private set; }
 
     /// <summary>
     /// Creates a new configured instance of the <see cref="MediaDeviceManager"/> class by default.
@@ -67,5 +62,21 @@ public class MediaDeviceManager
         }
 
         return activeManagerInstance;
+    }
+
+    /// <summary>
+    /// Starts audio playback for a specified audio file.
+    /// </summary>
+    /// <param name="audioFileInfo">The audio file info to start playback.</param>
+    public void StartAudioPlayback(FileInfo audioFileInfo)
+    {
+        if (audioFileInfo.Exists)
+        {
+            this.MusicPlayerDevice.Play(audioFileInfo);
+        }
+        else
+        {
+            this.MusicPlayerDevice = new GameMusicPlayer(this.audioPlaybackDevice, this.defaultAudioFileInfo);
+        }
     }
 }
