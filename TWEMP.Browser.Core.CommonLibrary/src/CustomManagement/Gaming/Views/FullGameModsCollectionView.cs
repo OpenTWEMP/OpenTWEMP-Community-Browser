@@ -36,6 +36,25 @@ public class FullGameModsCollectionView
 
     /// <summary>
     /// Selects an instance of the <see cref="UpdatableGameModificationView"/> class
+    /// by a target identifier game modification object.
+    /// </summary>
+    /// <param name="gameModInfo">The selected game modification object.</param>
+    /// <returns>An instance of the <see cref="UpdatableGameModificationView"/> class.</returns>
+    public UpdatableGameModificationView? SelectGameModViewByInfo(GameModificationInfo gameModInfo)
+    {
+        foreach (UpdatableGameModificationView gameModView in this.currentGameModificationViews)
+        {
+            if (gameModView.CurrentInfo.Location == gameModInfo.Location)
+            {
+                return gameModView;
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Selects an instance of the <see cref="UpdatableGameModificationView"/> class
     /// by a target identifier entity.
     /// </summary>
     /// <param name="gameModificationId">The identifier of a game modification.</param>

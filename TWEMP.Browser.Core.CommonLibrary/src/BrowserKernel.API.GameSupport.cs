@@ -8,6 +8,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 public static partial class BrowserKernel
 {
@@ -17,5 +18,17 @@ public static partial class BrowserKernel
         {
             return GameSupportManagerInstance.AvailableModSupportPresets;
         }
+    }
+
+    public static FileInfo GetActivePresetLogoImageFileInfo(UpdatableGameModificationView gameModView)
+    {
+        if (gameModView.UseCustomizablePreset)
+        {
+            return gameModView.GetLogoImageFromCustomizablePreset();
+        }
+
+        Guid presetId = gameModView.GetRedistributablePresetId();
+        DirectoryInfo presetHomeDirectoryInfo = GameSupportManagerInstance.GetPresetHomeDirectoryInfo(presetId);
+        return gameModView.GetLogoImageFromRedistributablePreset(presetHomeDirectoryInfo);
     }
 }

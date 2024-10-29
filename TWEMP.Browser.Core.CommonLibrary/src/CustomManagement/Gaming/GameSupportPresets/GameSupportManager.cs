@@ -8,6 +8,7 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
 /// <summary>
@@ -72,6 +73,43 @@ public class GameSupportManager
     public static GameSupportManager Create()
     {
         return new GameSupportManager();
+    }
+
+    /// <summary>
+    /// Gets the home directory info for a specified redistributable mod support presets by its ID.
+    /// </summary>
+    /// <param name="presetId">The <see cref="Guid"/> value for the target preset.</param>
+    /// <returns>The home directory info for the target preset.</returns>
+    public DirectoryInfo GetPresetHomeDirectoryInfo(Guid presetId)
+    {
+        RedistributableModPreset preset = this.SelectPresetById(presetId) !;
+
+        if (preset != null)
+        {
+            return this.GetPresetHomeDirectoryInfo(preset);
+        }
+
+        return this.presetsHomeDirectoryInfo;
+    }
+
+    /// <summary>
+    /// Gets the home directory info for a specified redistributable mod support preset.
+    /// </summary>
+    /// <param name="preset">The target preset of the <see cref="RedistributableModPreset"/> type.</param>
+    /// <returns>The home directory info for the target preset.</returns>
+    public DirectoryInfo GetPresetHomeDirectoryInfo(RedistributableModPreset preset)
+    {
+        string presetHomeDirectoryPath = Path.Combine(
+            path1: this.presetsHomeDirectoryInfo.FullName,
+            path2: preset.Metadata.PackageName,
+            path3: preset.Metadata.PresetName);
+
+        if (Directory.Exists(presetHomeDirectoryPath))
+        {
+            return new DirectoryInfo(presetHomeDirectoryPath);
+        }
+
+        return this.presetsHomeDirectoryInfo;
     }
 
     private List<ModSupportPresetPackage> GetAllPresetPackages()
@@ -153,5 +191,18 @@ public class GameSupportManager
     private RedistributableModPreset[] ReadPresetsConfigFile()
     {
         return AppSerializer.DeserializeFromJson<RedistributableModPreset[]>(this.presetsConfigFileInfo.FullName);
+    }
+
+    private RedistributableModPreset? SelectPresetById(Guid presetId)
+    {
+        foreach (RedistributableModPreset preset in this.AvailableModSupportPresets)
+        {
+            if (preset.Metadata.Guid == presetId)
+            {
+                return preset;
+            }
+        }
+
+        return null;
     }
 }

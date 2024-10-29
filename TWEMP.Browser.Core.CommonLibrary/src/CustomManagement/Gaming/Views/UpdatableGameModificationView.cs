@@ -173,6 +173,53 @@ public class UpdatableGameModificationView
     }
 
     /// <summary>
+    /// Gets description of the current customizable preset as a text string.
+    /// </summary>
+    /// <returns>The string description of the current customizable preset.</returns>
+    public string GetCustomizablePresetDescription()
+    {
+        const string welcomeTextMessage = "Configure this game mod via your own customizable preset: ";
+        return $"{welcomeTextMessage}{this.customizableModPreset.Config.FullName}";
+    }
+
+    /// <summary>
+    /// Gets the full name of the current active preset.
+    /// </summary>
+    /// <returns>The full name of the current active preset.</returns>
+    public string GetActivePresetFullName()
+    {
+        ModHeaderInfo headerInfo = this.ActivePreset.HeaderInfo;
+        return $"{headerInfo.ModTitle} [{headerInfo.ModVersion}]";
+    }
+
+    /// <summary>
+    /// Gets the logotype image file info for the current preset of the <see cref="RedistributableModPreset"/> type.
+    /// </summary>
+    /// <param name="presetHomeDirectoryInfo">The home directory info of this redistributable preset.</param>
+    /// <returns>The <see cref="FileInfo"/> object for a logotype image file.</returns>
+    public FileInfo GetLogoImageFromRedistributablePreset(DirectoryInfo presetHomeDirectoryInfo)
+    {
+        string presetLogoImageFilePath = Path.Combine(
+            path1: presetHomeDirectoryInfo.FullName,
+            path2: this.redistributableModPreset.Data.ContentInfo.LogotypeImage);
+
+        return new FileInfo(presetLogoImageFilePath);
+    }
+
+    /// <summary>
+    /// Gets the logotype image file info for the current preset of the <see cref="CustomizableModPreset"/> type.
+    /// </summary>
+    /// <returns>The <see cref="FileInfo"/> object for a logotype image file.</returns>
+    public FileInfo GetLogoImageFromCustomizablePreset()
+    {
+        string presetLogoImageFilePath = Path.Combine(
+            path1: this.customizableModPreset.Location.FullName,
+            path2: this.customizableModPreset.Data.ContentInfo.LogotypeImage);
+
+        return new FileInfo(presetLogoImageFilePath);
+    }
+
+    /// <summary>
     /// Selects the current preset of the <see cref="RedistributableModPreset"/> type
     /// as the active mod support preset for this game modification.
     /// </summary>
