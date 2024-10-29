@@ -91,6 +91,15 @@ public class UpdatableGameModificationView
     }
 
     /// <summary>
+    /// Gets the <see cref="Guid"/> value for the default redistributable preset.
+    /// </summary>
+    /// <returns>The value of the <see cref="Guid"/> type.</returns>
+    public static Guid GetDefaultPresetId()
+    {
+        return RedistributablePresetByDefault.Metadata.Guid;
+    }
+
+    /// <summary>
     /// Creates a new instance of the <see cref="UpdatableGameModificationView"/> record
     /// using an object of <see cref="RedistributableModPreset"/> class.
     /// </summary>
@@ -145,7 +154,7 @@ public class UpdatableGameModificationView
     }
 
     /// <summary>
-    /// Gets the <see cref="Guid"/> value for currently attached redistributable preset.
+    /// Gets the <see cref="Guid"/> value for the currently attached redistributable preset.
     /// </summary>
     /// <returns>The value of the <see cref="Guid"/> type.</returns>
     public Guid GetRedistributablePresetId()

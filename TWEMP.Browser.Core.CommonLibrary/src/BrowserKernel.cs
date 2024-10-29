@@ -81,4 +81,19 @@ public static partial class BrowserKernel
     public static void Initialize()
     {
     }
+
+    public static bool SyncUserDataForAllGameMods()
+    {
+        // 1. Update CustomGameSetupManager.TotalModificationsList.
+        CustomGameSetupManagerInstance.UpdateTotalModificationsList();
+
+        // 2. Update ModSupportPresetSetupManager.CurrentGameModsCollectionView.
+        ModSupportPresetSetupManagerInstance.UpdatePresetSettings();
+
+        int currentGameModsCount = CustomGameSetupManagerInstance.TotalModificationsList.Count;
+        int currentModViewsCount = ModSupportPresetSetupManagerInstance
+            .CurrentGameModsCollectionView.GameModificationViews.Length;
+
+        return currentModViewsCount == currentGameModsCount;
+    }
 }

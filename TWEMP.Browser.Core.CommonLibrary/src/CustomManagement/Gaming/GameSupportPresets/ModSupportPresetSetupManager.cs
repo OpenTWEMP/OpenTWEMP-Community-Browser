@@ -77,6 +77,18 @@ public class ModSupportPresetSetupManager
     /// <summary>
     /// Updates the current mod preset settings for all game modifications.
     /// </summary>
+    public void UpdatePresetSettings()
+    {
+        List<ModPresetSettingView> presetSettingViews = GetUpdatedPresetSettings(
+            oldGameModViews: this.updatableGameModificationViews,
+            newGameModInfos: this.gameSetupManager.TotalModificationsList);
+
+        this.UpdatePresetSettings(presetSettingViews);
+    }
+
+    /// <summary>
+    /// Updates the current mod preset settings for all game modifications.
+    /// </summary>
     /// <param name="presetSettingViews">A collection containing objects of the <see cref="ModPresetSettingView"/> type.</param>
     public void UpdatePresetSettings(ICollection<ModPresetSettingView> presetSettingViews)
     {
@@ -87,6 +99,37 @@ public class ModSupportPresetSetupManager
                 this.CurrentGameModsCollectionView = new FullGameModsCollectionView(this.updatableGameModificationViews);
             }
         }
+    }
+
+    private static List<ModPresetSettingView> GetUpdatedPresetSettings(
+        List<UpdatableGameModificationView> oldGameModViews, List<GameModificationInfo> newGameModInfos)
+    {
+        List<ModPresetSettingView> presetSettingViews = new ();
+
+        for (int modIndex = 0; modIndex < newGameModInfos.Count; modIndex++)
+        {
+            GameModificationInfo gameModInfo = newGameModInfos[modIndex];
+
+            GameModificationIdView gameModId = new (modIndex);
+            Guid activePresetId = UpdatableGameModificationView.GetDefaultPresetId();
+            bool useCustomizablePreset = false;
+
+            foreach (UpdatableGameModificationView gameModView in oldGameModViews)
+            {
+                if (gameModView.CurrentInfo.Location.Equals(gameModInfo.Location))
+                {
+                    activePresetId = gameModView.GetRedistributablePresetId();
+                    useCustomizablePreset = gameModView.UseCustomizablePreset;
+
+                    break;
+                }
+            }
+
+            ModPresetSettingView presetSetting = new (gameModId, activePresetId, useCustomizablePreset);
+            presetSettingViews.Add(presetSetting);
+        }
+
+        return presetSettingViews;
     }
 
     private static List<UpdatableGameModificationView> GetGameModificationViewsByDefault(List<GameModificationInfo> gameMods)

@@ -18,13 +18,14 @@ internal partial class MainBrowserForm : IUpdatableBrowser
     {
         treeViewGameMods.Enabled = false;
 
-        BrowserKernel.UpdateTotalModificationsList();
+        if (BrowserKernel.SyncUserDataForAllGameMods())
+        {
+            UpdateAllModificationsInTreeView();
+            UpdateCustomCollectionsInTreeView();
+            UpdateFavoriteCollectionInTreeView();
 
-        UpdateAllModificationsInTreeView();
-        UpdateCustomCollectionsInTreeView();
-        UpdateFavoriteCollectionInTreeView();
-
-        DisableModUIControls();
+            DisableModUIControls();
+        }
 
         treeViewGameMods.Enabled = true;
     }

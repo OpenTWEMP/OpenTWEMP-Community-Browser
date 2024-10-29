@@ -45,11 +45,6 @@ public static partial class BrowserKernel
         CustomGameSetupManagerInstance.DeleteGameSetupByIndex(gameSetupIndex);
     }
 
-    public static void UpdateTotalModificationsList()
-    {
-        CustomGameSetupManagerInstance.UpdateTotalModificationsList();
-    }
-
     public static void ClearAllSettings()
     {
         CustomGameSetupManagerInstance.ClearAllSettings();
