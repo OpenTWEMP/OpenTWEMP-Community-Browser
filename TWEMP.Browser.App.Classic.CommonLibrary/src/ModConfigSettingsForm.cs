@@ -11,7 +11,10 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes.Enums;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
 public partial class ModConfigSettingsForm : Form
 {
@@ -29,6 +32,8 @@ public partial class ModConfigSettingsForm : Form
 
     private void SaveConfigSettingsButton_Click(object sender, EventArgs e)
     {
+        M2TWGameConfigStateView gameConfigStateView = CreateGameConfigStateView();
+
         // Create a new game configuration state object.
         MessageBox.Show(
             text: "Your new game config is READY!",
@@ -50,12 +55,187 @@ public partial class ModConfigSettingsForm : Form
 
     private void ExportConfigSettingsButton_Click(object sender, EventArgs e)
     {
+        M2TWGameConfigStateView gameConfigStateView = CreateGameConfigStateView();
+
         MessageBox.Show("EXPORT CONFIG SETTINGS");
     }
 
     private void ImportConfigSettingsButton_Click(object sender, EventArgs e)
     {
         MessageBox.Show("IMPORT CONFIG SETTINGS");
+    }
+
+    private M2TWGameConfigStateView CreateGameConfigStateView()
+    {
+        // This is temp placeholder.
+        return M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationView.CurrentInfo);
+
+        /*return new ModSettingsSectionStateView // 1
+        {
+            Mod = mod.ModCfgRelativePath,
+            Editor = new M2TW_Boolean(true),
+            FileFirst = new M2TW_Boolean(true),
+        };*/
+
+        /*return new ModDiagnosticSectionStateView // 2
+        {
+            LogTo = mod.LogFileRelativePath,
+            LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error),
+        };*/
+
+        /*return new ModGameplaySectionStateView // 3
+        {
+            GameAdvancedStatsAlways = new M2TW_Boolean(false),
+            GameAdvisorVerbosity = new M2TW_Boolean(false),
+            GameAiFactions = new M2TW_Boolean(M2TW_Deprecated_AI_Boolean.Follow),
+            GameAllUsers = new M2TW_Boolean(true),
+            GameAutoSave = new M2TW_Boolean(true),
+            GameBlindAdvisor = new M2TW_Boolean(false),
+            GameCampaignMapGameSpeed = new M2TW_Integer(10),
+            GameCampaignMapSpeedUp = new M2TW_Integer(1),
+            GameCampaignNumTimePlay = new M2TW_Integer(252),
+            GameChatMsgDuration = new M2TW_Integer(M2TW_Integer.ExtendedMaxValue),
+            GameDisableArrowMarkers = new M2TW_Boolean(false),
+            GameDisableEvents = new M2TW_Boolean(false),
+            GameEnglish = new M2TW_Boolean(false),
+            GameEventCutscenes = new M2TW_Boolean(true),
+            GameFatigue = new M2TW_Boolean(true),
+            GameFirstTimePlay = new M2TW_Boolean(false),
+            GameGamespySavePasswrd = new M2TW_Boolean(true),
+            GameLabelCharacters = new M2TW_Boolean(false),
+            GameLabelSettlements = new M2TW_Boolean(true),
+            GameMicromanageAllSettlements = new M2TW_Boolean(true),
+            GameMorale = new M2TW_Boolean(true),
+            GameMuteAdvisor = new M2TW_Boolean(false),
+            GameNoCampaignBattleTimeLimit = new M2TW_Boolean(true),
+            GamePrefFactionsPlayed = 4177855,
+            GameTutorialBattlePlayed = new M2TW_Boolean(false),
+            GameTutorialPath = "norman_prologue/battle_of_hastings",
+            GameUnitSize = new M2TW_UnitSize(M2TW_Size.Huge),
+            GameUnlimitedMenOnBattlefield = new M2TW_Boolean(true),
+            GameUseQuickchat = new M2TW_Boolean(false),
+            UnlockCampaign = new M2TW_Boolean(false),
+            BypassToStrategySave = "game_name.sav",
+        };*/
+
+        /*return new ModHotseatSectionStateView // 4
+        {
+            HotseatAutoresolveBattles = new M2TW_Boolean(false),
+            HotseatScroll = new M2TW_Boolean(false),
+            HotseatPasswords = new M2TW_Boolean(false),
+            HotseatTurns = new M2TW_Boolean(false),
+            HotseatDisableConsole = new M2TW_Boolean(false),
+            HotseatAdminPassword = string.Empty,
+            HotseatDisablePapalElections = new M2TW_Boolean(true),
+            HotseatSavePrefs = new M2TW_Boolean(true),
+            HotseatUpdateAiCamera = new M2TW_Boolean(true),
+            HotseatAutoSave = new M2TW_Boolean(true),
+            HotseatSaveConfig = new M2TW_Boolean(true),
+            HotseatCloseAfterSave = new M2TW_Boolean(false),
+            HotseatGameName = "hotseat_gamename.sav",
+            HotseatValidateData = new M2TW_Boolean(false),
+            HotseatAllowValidationFailures = new M2TW_Boolean(false),
+            HotseatValidateDiplomacy = new M2TW_Boolean(false),
+            BypassToStrategySave = string.Empty,
+            MultiplayerPlayable = new M2TW_Boolean(true),
+            NetworkUseIp = new M2TW_IpAddress(127, 0, 0, 1),
+            NetworkUsePort = Convert.ToUInt16(M2TW_IpAddress.DefaultPort),
+        };*/
+
+        /*return new GameAudioCfgSectionStateView // 5
+        {
+            AudioEnable = new M2TW_Boolean(true),
+            AudioMasterVolume = new M2TW_Integer(85),
+            AudioMusicVolume = new M2TW_Integer(70),
+            SoundEffectsVolume = new M2TW_Integer(80),
+            SpeechEnable = new M2TW_Boolean(true),
+            SpeechVolume = new M2TW_Integer(85),
+            SubFactionAccents = new M2TW_Boolean(true),
+            SoundCardProvider = "Miles Fast 2D Positional Audio",
+        };*/
+
+        /*return new GameCameraCfgSectionStateView // 6
+        {
+            CameraDefaultInBattle = new M2TW_BattleCameraStyle(M2TW_BattleCamera.RTS),
+            CameraMove = new M2TW_Integer(70),
+            CameraRestrict = new M2TW_Boolean(false),
+            CameraRotate = new M2TW_Integer(30),
+        };*/
+
+        /*return new GameControlsCfgSectionStateView // 7
+        {
+            CampaignScrollMaxZoom = Convert.ToByte(30),
+            CampaignScrollMinZoom = Convert.ToByte(30),
+            KeySet = new M2TW_QualityLevel(M2TW_KeySet.KeySet_0),
+        };*/
+
+        /*return new GameUICfgSectionStateView // 8
+        {
+            UiSaCards = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
+            UiButtons = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
+            UiFullBattleHud = new M2TW_Boolean(true),
+            UiRadar = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
+            UiShowTooltips = new M2TW_Boolean(true),
+            UiUnitCards = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
+        };*/
+
+        /*return new GameVideoCfgSectionStateView // 9
+        {
+            VideoAnisotropicLevel = new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x16),
+            VideoAntiAliasMode = new M2TW_QualityLevel(M2TW_AntiAliasMode.AntiAliasMode_x4),
+            VideoAntialiasing = new M2TW_QualityLevel(M2TW_AntiAliasing.AntiAliasMode_x4),
+            VideoAssassinationMovies = new M2TW_Boolean(false),
+            VideoAutodetect = new M2TW_Boolean(false),
+            VideoBattleResolution = new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768),
+            VideoCampaignResolution = new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768),
+            VideoBloom = new M2TW_Boolean(true),
+            VideoBuildingDetail = new M2TW_QualityLevel(M2TW_Quality.High),
+            VideoDepthShadows = new M2TW_Integer(2),
+            VideoDepthShadowsResolution = new M2TW_Integer(3),
+            VideoEffectQuality = new M2TW_QualityLevel(M2TW_Quality.Highest),
+            VideoEventMovies = new M2TW_Boolean(true),
+            VideoGamma = new M2TW_Integer(120),
+            VideoGrassDistance = new M2TW_QualityLevel(M2TW_GrassDistance.Level_1),
+            VideoGroundBuffersPerNode = new M2TW_Integer(4),
+            VideoGroundCoverBuffersPerNode = new M2TW_Integer(4),
+            VideoInfiltrationMovies = new M2TW_Boolean(false),
+            VideoModelBuffersPerNode = new M2TW_Integer(4),
+            VideoNoBackgroundFmv = new M2TW_Boolean(true),
+            VideoReflection = new M2TW_Boolean(true),
+            VideoSabotageMovies = new M2TW_Boolean(false),
+            VideoShader = new M2TW_QualityLevel(M2TW_ShaderLevel.ShaderVersion_v2),
+            VideoShowBanners = new M2TW_Boolean(false),
+            VideoShowPackageLitter = new M2TW_Boolean(true),
+            VideoSkipMipLevels = new M2TW_Boolean(false),
+            VideoSplashes = new M2TW_Boolean(true),
+            VideoSpriteBuffersPerNode = new M2TW_Integer(4),
+            VideoStencilShadows = new M2TW_Boolean(true),
+            VideoSubtitles = new M2TW_Boolean(false),
+            VideoTerrainQuality = new M2TW_QualityLevel(M2TW_Quality.High),
+            VideoTextureFiltering = new M2TW_Integer(2),
+            VideoUnitDetail = new M2TW_QualityLevel(M2TW_Quality.Highest),
+            VideoVegetation = new M2TW_Boolean(false),
+            VideoVegetationQuality = new M2TW_QualityLevel(M2TW_Quality.High),
+            VideoVsync = new M2TW_Boolean(false),
+            VideoWaterBuffersPerNode = new M2TW_Integer(4),
+            VideoWidescreenMode = new M2TW_Boolean(true),
+            VideoWindowedMode = new M2TW_Boolean(false),
+            VideoMovies = new M2TW_Boolean(true),
+            VideoBorderlessWindow = new M2TW_Boolean(false),
+        };*/
+
+        /*return new M2TWGameConfigStateView()
+        {
+            1) ModCoreSettingsSection = ModSettingsSectionStateView.CreateByDefault(info),
+            2) ModDiagnosticSection = ModDiagnosticSectionStateView.CreateByDefault(info),
+            3) ModGameplaySection = ModGameplaySectionStateView.CreateByDefault(),
+            4) HotseatSection = ModHotseatSectionStateView.CreateByDefault(),
+            5) GameAudioCfgSection = GameAudioCfgSectionStateView.CreateByDefault(),
+            6) GameCameraCfgSection = GameCameraCfgSectionStateView.CreateByDefault(),
+            7) GameControlsCfgSection = GameControlsCfgSectionStateView.CreateByDefault(),
+            8) GameUICfgSection = GameUICfgSectionStateView.CreateByDefault(),
+            9) GameVideoCfgSection = GameVideoCfgSectionStateView.CreateByDefault(),
+        };*/
     }
 
     private void InitializeConfigControls()
