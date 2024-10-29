@@ -2,13 +2,15 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-#define GAME_CFG_PROFILES_READING
-#undef GAME_CFG_PROFILES_READING
-
-namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
+namespace TWEMP.Browser.Core.CommonLibrary.src.CustomManagement.Gaming.Views;
 
 using System.Collections.Generic;
+using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
@@ -19,10 +21,16 @@ public class GameConfigurationManager
 {
     private const string UserProfilesConfigFileName = "configuration_profiles.json";
 
+    private readonly CustomGameSetupManager gameSetupManager;
+
     private readonly FileInfo userProfilesConfigFileInfo;
 
-    private GameConfigurationManager()
+    private List<GameConfigProfileView> gameConfigProfileViews;
+
+    private GameConfigurationManager(CustomGameSetupManager gameSetupManager)
     {
+        this.gameSetupManager = gameSetupManager;
+
         string path = Path.Combine(Directory.GetCurrentDirectory(), UserProfilesConfigFileName);
         this.userProfilesConfigFileInfo = new FileInfo(path);
 
@@ -30,26 +38,15 @@ public class GameConfigurationManager
 
         if (this.userProfilesConfigFileInfo.Exists)
         {
-            /* Reading game config profiles should be disabled!
-             * Currently, cannot (de)serialize objects of the GameConfigProfile type safely.
-             * The following steps is recommended to fix the System.TypeInitializationException
-             * exception raised when application debugging:
-             * 1. Create a view entity for the GameConfigProfile type.
-             * 2. Create a view entity for the GameConfigState type.
-             * 3. Implement constructors for GameConfigProfile and GameConfigState types
-             * using its view entities as constructor's parameter.
-             * 4. Implement (de)serialization of view entities and further create
-             * GameConfigProfile and GameConfigState objects via its view entities.
-             * 5. Enable and test reading game config profiles.
-             */
-#if GAME_CFG_PROFILES_READING
-            this.AvailableProfiles = ReadAllGameConfigProfiles();
-#endif
+            this.gameConfigProfileViews = this.ReadAllGameConfigProfileViews();
         }
         else
         {
-            this.AvailableProfiles = CreateDefaultGameConfigProfiles();
+            this.gameConfigProfileViews = CreateGameConfigProfileViewsByDefault(this.gameSetupManager.TotalModificationsList);
+            this.WriteAllGameConfigProfileViews(this.gameConfigProfileViews);
         }
+
+        this.AvailableProfiles = CreateDefaultGameConfigProfiles();
 
         this.CurrentGameModView = null;
     }
@@ -67,10 +64,11 @@ public class GameConfigurationManager
     /// <summary>
     /// Creates a custom instance of the <see cref="GameConfigurationManager"/> class.
     /// </summary>
+    /// <param name="gameSetupManager">The instance of the <see cref="CustomGameSetupManager"/> class.</param>
     /// <returns>Instance of the <see cref="GameConfigurationManager"/> class.</returns>
-    public static GameConfigurationManager Create()
+    public static GameConfigurationManager Create(CustomGameSetupManager gameSetupManager)
     {
-        return new GameConfigurationManager();
+        return new GameConfigurationManager(gameSetupManager);
     }
 
     /// <summary>
@@ -81,7 +79,7 @@ public class GameConfigurationManager
     /// <param name="state">A target custom game configuration state.</param>
     public void CreateNewProfile(GameSupportProvider provider, GameModificationInfo info, ICustomConfigState state)
     {
-        GameConfigProfile profile = new (provider, info, state);
+        GameConfigProfile profile = new(provider, info, state);
         this.AvailableProfiles.Add(profile);
         this.RefreshAllGameConfigProfiles();
     }
@@ -92,7 +90,7 @@ public class GameConfigurationManager
     /// <param name="templateProfile">A template game configuration profile.</param>
     public void CopyProfile(GameConfigProfile templateProfile)
     {
-        GameConfigProfile profile = new (templateProfile);
+        GameConfigProfile profile = new(templateProfile);
         this.AvailableProfiles.Add(profile);
         this.RefreshAllGameConfigProfiles();
     }
@@ -187,9 +185,34 @@ public class GameConfigurationManager
         }
     }
 
+#if TEMP_DESIGN
+    private static List<GameConfigProfile> GetGameConfigProfilesByViews(
+        List<GameConfigProfileView> gameConfigProfileViews)
+    {
+        return new List<GameConfigProfile>();
+    }
+#endif
+
+    private static List<GameConfigProfileView> CreateGameConfigProfileViewsByDefault(List<GameModificationInfo> gameMods)
+    {
+        List<GameConfigProfileView> gameConfigProfileViews = new ();
+
+        for (int index = 0; index < gameMods.Count; index++)
+        {
+            GameConfigProfileView gameConfigProfileView = new (
+                configId: Guid.NewGuid(),
+                configName: "M2TW Config Profile By Default",
+                gameModLocation: gameMods[index].Location);
+
+            gameConfigProfileViews.Add(gameConfigProfileView);
+        }
+
+        return gameConfigProfileViews;
+    }
+
     private static List<GameConfigProfile> CreateDefaultGameConfigProfiles()
     {
-        List<GameConfigProfile> profiles = new ();
+        List<GameConfigProfile> profiles = new();
 
         GameConfigProfile defaultTwempProfile = new GameConfigProfile(
             provider: new GameSupportProvider(GameEngineSupportType.TWEMP),
@@ -216,8 +239,6 @@ public class GameConfigurationManager
         profiles.Add(defaultM2TWProfile);
         profiles.Add(defaultRTWProfile);
 
-        AppSerializer.SerializeToJson(profiles, UserProfilesConfigFileName);
-
         return profiles;
     }
 
@@ -231,9 +252,14 @@ public class GameConfigurationManager
                 path: "TWEMP_Modification"));
     }
 
-    private List<GameConfigProfile> ReadAllGameConfigProfiles()
+    private List<GameConfigProfileView> ReadAllGameConfigProfileViews()
     {
-        return AppSerializer.DeserializeFromJson<List<GameConfigProfile>>(this.userProfilesConfigFileInfo.FullName);
+        return AppSerializer.DeserializeFromJson<List<GameConfigProfileView>>(this.userProfilesConfigFileInfo.FullName);
+    }
+
+    private void WriteAllGameConfigProfileViews(List<GameConfigProfileView> gameConfigProfileViews)
+    {
+        AppSerializer.SerializeToJson(gameConfigProfileViews, this.userProfilesConfigFileInfo.FullName);
     }
 
     private void RefreshAllGameConfigProfiles()

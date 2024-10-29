@@ -7,11 +7,34 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
+
 public partial class GameConfigProfilesForm : Form
 {
+    private readonly List<GameConfigProfile> gameConfigProfiles;
+
+    private Dictionary<int, Guid> gameConfigProfilesDictionary;
+
     public GameConfigProfilesForm()
     {
+        this.gameConfigProfiles = BrowserKernel.AvailableProfiles;
+        this.gameConfigProfilesDictionary = CreateGameConfigProfilesDictionary(this.gameConfigProfiles.ToArray());
+
         this.InitializeComponent();
+        this.InitializeGameConfigProfilesListBox();
+    }
+
+    private static Dictionary<int, Guid> CreateGameConfigProfilesDictionary(GameConfigProfile[] gameConfigProfiles)
+    {
+        Dictionary<int, Guid> gameConfigProfilesDictionary = new ();
+
+        for (int index = 0; index < gameConfigProfiles.Length; index++)
+        {
+            gameConfigProfilesDictionary.Add(key: index, value: gameConfigProfiles[index].Id);
+        }
+
+        return gameConfigProfilesDictionary;
     }
 
     private void ConfigProfileSelectButtonClick(object sender, EventArgs e)
@@ -58,5 +81,15 @@ public partial class GameConfigProfilesForm : Form
     private void FormCloseButtonClick(object sender, EventArgs e)
     {
         this.Close();
+    }
+
+    private void InitializeGameConfigProfilesListBox()
+    {
+        this.gameConfigProfilesListBox.Items.Clear();
+
+        foreach (GameConfigProfile gameConfigProfile in this.gameConfigProfiles)
+        {
+            this.gameConfigProfilesListBox.Items.Add(gameConfigProfile.Name);
+        }
     }
 }
