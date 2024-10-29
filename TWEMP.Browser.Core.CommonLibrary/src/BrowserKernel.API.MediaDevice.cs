@@ -9,4 +9,37 @@ namespace TWEMP.Browser.Core.CommonLibrary;
 
 public static partial class BrowserKernel
 {
+    public static void ContinueCurrentAudioPlayback()
+    {
+        MediaDeviceManagerInstance.MusicPlayerDevice.Play();
+    }
+
+    public static void PauseCurrentAudioPlayback()
+    {
+        MediaDeviceManagerInstance.MusicPlayerDevice.Pause();
+    }
+
+    public static void RewindCurrentAudioPlayback()
+    {
+        MediaDeviceManagerInstance.MusicPlayerDevice.Rewind();
+    }
+
+    public static void StopCurrentAudioPlayback()
+    {
+        MediaDeviceManagerInstance.MusicPlayerDevice.Stop();
+    }
+    public static void ChargeVolumeCurrentAudioPlayback()
+    {
+        MediaDeviceManagerInstance.MusicPlayerDevice.ChargeVolume();
+    }
+
+    public static void MuteVolumeCurrentAudioPlayback()
+    {
+        MediaDeviceManagerInstance.MusicPlayerDevice.MuteVolume();
+    }
+
+    public static void UpdateVolumeCurrentAudioPlayback(int volumeValue)
+    {
+        MediaDeviceManagerInstance.MusicPlayerDevice.UpdateVolume(volumeValue);
+    }
 }

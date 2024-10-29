@@ -2,9 +2,6 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-#define AUDIO_PLAYBACK
-#undef AUDIO_PLAYBACK
-
 namespace TWEMP.Browser.Core.CommonLibrary.MediaDevices;
 
 using TWEMP.Browser.Core.CommonLibrary.MediaDevices.Plugins;
@@ -45,12 +42,10 @@ public class MediaDeviceManager
 
         this.MusicPlayerDevice = new GameMusicPlayer(this.audioPlaybackDevice, this.defaultAudioFileInfo);
 
-#if AUDIO_PLAYBACK
         if (this.defaultAudioFileInfo.Exists)
         {
             this.MusicPlayerDevice.Play();
         }
-#endif
     }
 
     /// <summary>
