@@ -76,7 +76,7 @@ internal partial class MainBrowserForm : Form
 
         if (BrowserKernel.CurrentGameModView == null)
         {
-            modSupportPresetSettingsToolStripMenuItem.Enabled = false;
+            configSettingsToolStripMenuItem.Enabled = false;
         }
     }
 
@@ -111,7 +111,7 @@ internal partial class MainBrowserForm : Form
 
         if (BrowserKernel.CurrentGameModView != null)
         {
-            modSupportPresetSettingsToolStripMenuItem.Enabled = true;
+            configSettingsToolStripMenuItem.Enabled = true;
         }
     }
 }
