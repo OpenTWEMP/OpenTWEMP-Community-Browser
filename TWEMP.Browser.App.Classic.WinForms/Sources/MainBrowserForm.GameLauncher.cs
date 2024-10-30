@@ -14,34 +14,43 @@ using TWEMP.Browser.Core.GamingSupport;
 
 internal partial class MainBrowserForm
 {
-    // LAUNCHER FEATURE TO RUN THE SELECTED MODIFICATION
     private void ButtonLaunch_Click(object sender, EventArgs e)
     {
-        ChangeLauncherGUIWhenGameStarting();
-
         TreeNode modNode = treeViewGameMods.SelectedNode;
+        GameModificationInfo? targetModInfo = SelectGameModInfoFromBrowserTreeNode(modNode);
 
-        GameModificationInfo targetModInfo;
-
-        if (IsNodeOfFavoriteCollection(modNode) || IsNodeOfModificationFromCustomCollection(modNode))
+        if (targetModInfo == null)
         {
-            targetModInfo = FindModBySelectedNodeFromCollection(modNode);
-        }
-        else if (IsNodeOfModificationFromAllModsCollection(modNode))
-        {
-            targetModInfo = FindModificationBySelectedTreeNode(modNode);
+            MessageBox.Show("ERROR: Cannot execute this MOD !!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         else
         {
-            targetModInfo = null!;
-            MessageBox.Show("ERROR: Cannot execute this MOD !!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
+            CustomConfigState targetConfigState = GetCurrentGameConfigState();
+
+            ChangeLauncherGUIWhenGameStarting();
+            MainGamingSupportHub.LaunchGameEngineAsM2TW(targetModInfo, targetConfigState, currentMessageProvider);
+            ChangeLauncherGUIWhenGameExiting();
+        }
+    }
+
+    private GameModificationInfo? SelectGameModInfoFromBrowserTreeNode(TreeNode treeNode)
+    {
+        GameModificationInfo? targetModInfo;
+
+        if (IsNodeOfFavoriteCollection(treeNode) || IsNodeOfModificationFromCustomCollection(treeNode))
+        {
+            targetModInfo = FindModBySelectedNodeFromCollection(treeNode);
+        }
+        else if (IsNodeOfModificationFromAllModsCollection(treeNode))
+        {
+            targetModInfo = FindModificationBySelectedTreeNode(treeNode);
+        }
+        else
+        {
+            targetModInfo = null;
         }
 
-        CustomConfigState targetConfigState = GetCurrentGameConfigState();
-        MainGamingSupportHub.LaunchGameEngineAsM2TW(targetModInfo, targetConfigState, currentMessageProvider);
-
-        ChangeLauncherGUIWhenGameExiting();
+        return targetModInfo;
     }
 
     private void ChangeLauncherGUIWhenGameStarting()
