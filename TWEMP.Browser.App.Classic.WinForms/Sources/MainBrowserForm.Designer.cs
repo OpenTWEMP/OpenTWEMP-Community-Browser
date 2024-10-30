@@ -75,6 +75,7 @@ namespace TWEMP.Browser.App.Classic
             applicationHomeFolderToolStripMenuItem = new ToolStripMenuItem();
             exitFromApplicationToolStripMenuItem = new ToolStripMenuItem();
             toolStripModItem = new ToolStripMenuItem();
+            gameConfigProfilesSwitcherToolStripMenuItem = new ToolStripMenuItem();
             gameConfigProfilesToolStripMenuItem = new ToolStripMenuItem();
             configSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripHelpItem = new ToolStripMenuItem();
@@ -84,7 +85,6 @@ namespace TWEMP.Browser.App.Classic
             buttonCollectionCreate = new Button();
             buttonCollectionManage = new Button();
             panelCollections = new Panel();
-            gameConfigProfilesSwitcherToolStripMenuItem = new ToolStripMenuItem();
             panelLauncherOptions.SuspendLayout();
             groupBoxConfigProfiles.SuspendLayout();
             groupBoxLauncherProviders.SuspendLayout();
@@ -567,10 +567,17 @@ namespace TWEMP.Browser.App.Classic
             // 
             // toolStripModItem
             // 
-            toolStripModItem.DropDownItems.AddRange(new ToolStripItem[] { gameConfigProfilesSwitcherToolStripMenuItem, gameConfigProfilesToolStripMenuItem, configSettingsToolStripMenuItem });
+            toolStripModItem.DropDownItems.AddRange(new ToolStripItem[] { gameConfigProfilesToolStripMenuItem, gameConfigProfilesSwitcherToolStripMenuItem, configSettingsToolStripMenuItem });
             toolStripModItem.Name = "toolStripModItem";
             toolStripModItem.Size = new Size(101, 20);
             toolStripModItem.Text = "MODIFICATION";
+            // 
+            // gameConfigProfilesSwitcherToolStripMenuItem
+            // 
+            gameConfigProfilesSwitcherToolStripMenuItem.Name = "gameConfigProfilesSwitcherToolStripMenuItem";
+            gameConfigProfilesSwitcherToolStripMenuItem.Size = new Size(234, 22);
+            gameConfigProfilesSwitcherToolStripMenuItem.Text = "Game Config Profiles Switcher";
+            gameConfigProfilesSwitcherToolStripMenuItem.Click += GameConfigProfilesSwitcherToolStripMenuItem_Click;
             // 
             // gameConfigProfilesToolStripMenuItem
             // 
@@ -673,13 +680,6 @@ namespace TWEMP.Browser.App.Classic
             panelCollections.Name = "panelCollections";
             panelCollections.Size = new Size(321, 110);
             panelCollections.TabIndex = 21;
-            // 
-            // gameConfigProfilesSwitcherToolStripMenuItem
-            // 
-            gameConfigProfilesSwitcherToolStripMenuItem.Name = "gameConfigProfilesSwitcherToolStripMenuItem";
-            gameConfigProfilesSwitcherToolStripMenuItem.Size = new Size(234, 22);
-            gameConfigProfilesSwitcherToolStripMenuItem.Text = "Game Config Profiles Switcher";
-            gameConfigProfilesSwitcherToolStripMenuItem.Click += GameConfigProfilesSwitcherToolStripMenuItem_Click;
             // 
             // MainBrowserForm
             // 

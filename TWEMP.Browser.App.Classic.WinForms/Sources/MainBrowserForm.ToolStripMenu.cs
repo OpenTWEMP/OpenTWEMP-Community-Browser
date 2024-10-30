@@ -14,6 +14,15 @@ using TWEMP.Browser.Core.CommonLibrary.Utilities;
 
 internal partial class MainBrowserForm
 {
+    private static void ShowCannotConfigureGameModMessageBox()
+    {
+        MessageBox.Show(
+            text: "Cannot configure a game mod!\nSelect a game mod and try again.",
+            caption: "ERROR",
+            buttons: MessageBoxButtons.OK,
+            icon: MessageBoxIcon.Error);
+    }
+
     private void ExitFromApplicationToolStripMenuItem_Click(object sender, EventArgs e)
     {
         const string MESSAGE_CAPTION = "Exit from the Application";
@@ -54,8 +63,17 @@ internal partial class MainBrowserForm
 
     private void GameConfigProfilesSwitcherToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var gameConfigProfileSwitchForm = new GameConfigProfileSwitchForm();
-        gameConfigProfileSwitchForm.ShowDialog();
+        UpdatableGameModificationView gameModificationView = BrowserKernel.CurrentGameModView!;
+
+        if (gameModificationView == null)
+        {
+            ShowCannotConfigureGameModMessageBox();
+        }
+        else
+        {
+            GameConfigProfileSwitchForm gameConfigProfileSwitchForm = new (gameModificationView);
+            gameConfigProfileSwitchForm.ShowDialog();
+        }
     }
 
     private void GameConfigProfilesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,11 +100,7 @@ internal partial class MainBrowserForm
 
         if (gameModificationView == null)
         {
-            MessageBox.Show(
-                text: "Cannot create M2TW configuration!\nPlease, select a game mod and try again.",
-                caption: "ERROR",
-                buttons: MessageBoxButtons.OK,
-                icon: MessageBoxIcon.Error);
+            ShowCannotConfigureGameModMessageBox();
         }
         else
         {

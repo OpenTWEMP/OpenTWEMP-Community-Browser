@@ -7,10 +7,16 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+
 public partial class GameConfigProfileSwitchForm : Form
 {
-    public GameConfigProfileSwitchForm()
+    private readonly UpdatableGameModificationView currentGameModificationView;
+
+    public GameConfigProfileSwitchForm(UpdatableGameModificationView gameModificationView)
     {
+        this.currentGameModificationView = gameModificationView;
+
         this.InitializeComponent();
     }
 
