@@ -5,6 +5,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 /// <summary>
 /// Represents an abstract entity for a game configuration profile.
@@ -30,16 +31,28 @@ public class GameConfigProfile
     /// <summary>
     /// Initializes a new instance of the <see cref="GameConfigProfile"/> class.
     /// </summary>
+    /// <param name="id">The game configuration profile ID.</param>
+    /// <param name="name">The game configuration profile name.</param>
     /// <param name="provider">A target game support provider type.</param>
     /// <param name="info">Information about a target game modification.</param>
     /// <param name="options">Target game configuration options.</param>
     public GameConfigProfile(
-        GameSupportProvider provider, GameModificationInfo info, GameCfgSection[] options)
+        Guid id, string? name, GameSupportProvider provider, GameModificationInfo info, GameCfgSection[] options)
     {
-        this.Id = Guid.NewGuid();
+        this.Id = id;
+
+        if (name == null)
+        {
+            this.Name = $"M2TW Config Profile for {info.ShortName}";
+        }
+        else
+        {
+            this.Name = name;
+        }
+
         this.ConfigType = provider.GameEngine;
         this.TargetGameModInfo = info;
-        this.Name = $"M2TW Config Profile for {info.ShortName}";
+
         this.ConfigState = GameConfigState.Create(provider, info, options);
     }
 
@@ -62,13 +75,14 @@ public class GameConfigProfile
     /// <summary>
     /// Initializes a new instance of the <see cref="GameConfigProfile"/> class.
     /// </summary>
+    /// <param name="id">The game configuration profile ID.</param>
     /// <param name="profile">A template game configuration profile.</param>
-    public GameConfigProfile(GameConfigProfile profile)
+    public GameConfigProfile(Guid id, GameConfigProfile profile)
     {
-        this.Id = Guid.NewGuid();
+        this.Id = id;
         this.ConfigType = profile.ConfigType;
         this.TargetGameModInfo = profile.TargetGameModInfo;
-        this.Name = $"{profile.Name} Copy";
+        this.Name = $"{profile.Name} - COPY";
         this.ConfigState = profile.ConfigState;
     }
 
@@ -96,4 +110,12 @@ public class GameConfigProfile
     /// Gets or sets the current game configuration state for this profile.
     /// </summary>
     public GameConfigState ConfigState { get; set; }
+
+    /// <summary>
+    /// Creates the default template of the game config profile by a game modification view.
+    /// </summary>
+    /// <param name="gameModificationInfo">The game modification info.</param>
+    /// <returns>A new instanse of the <see cref="GameConfigProfile"/> class.</returns>
+    public static GameConfigProfile CreateDefaultTemplate(GameModificationInfo gameModificationInfo) =>
+        new (provider: new GameSupportProvider(GameEngineSupportType.M2TW), info: gameModificationInfo);
 }

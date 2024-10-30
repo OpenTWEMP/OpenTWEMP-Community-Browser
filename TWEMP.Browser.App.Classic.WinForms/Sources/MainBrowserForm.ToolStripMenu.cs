@@ -104,7 +104,7 @@ internal partial class MainBrowserForm
         }
         else
         {
-            ModConfigSettingsForm modConfigSettingsForm = new (gameModificationView);
+            ModConfigSettingsForm modConfigSettingsForm = new (gameModificationView.CurrentInfo);
             modConfigSettingsForm.ShowDialog();
         }
     }

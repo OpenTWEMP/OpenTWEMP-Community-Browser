@@ -8,6 +8,8 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend;
@@ -18,13 +20,28 @@ using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fronten
 
 public partial class ModConfigSettingsForm : Form
 {
-    private readonly UpdatableGameModificationView currentGameModificationView;
+    private readonly GameModificationInfo currentGameModificationInfo;
+    private readonly GameConfigProfile currentGameConfigProfile;
+
     private readonly M2TWGameConfigStateView gameConfigStateView;
 
-    public ModConfigSettingsForm(UpdatableGameModificationView gameModificationView)
+    public ModConfigSettingsForm(GameModificationInfo gameModificationInfo)
     {
-        this.currentGameModificationView = gameModificationView;
-        this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationView.CurrentInfo);
+        this.currentGameModificationInfo = gameModificationInfo;
+        this.currentGameConfigProfile = GameConfigProfile.CreateDefaultTemplate(this.currentGameModificationInfo);
+
+        this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
+
+        InitializeComponent();
+        InitializeConfigControls();
+    }
+
+    public ModConfigSettingsForm(GameModificationInfo gameModificationInfo, GameConfigProfile gameConfigProfile)
+    {
+        this.currentGameModificationInfo = gameModificationInfo;
+        this.currentGameConfigProfile = gameConfigProfile;
+
+        this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
 
         InitializeComponent();
         InitializeConfigControls();
@@ -68,7 +85,7 @@ public partial class ModConfigSettingsForm : Form
     private M2TWGameConfigStateView CreateGameConfigStateView()
     {
         // This is temp placeholder.
-        return M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationView.CurrentInfo);
+        return M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
 
         /*return new ModSettingsSectionStateView // 1
         {
@@ -240,7 +257,7 @@ public partial class ModConfigSettingsForm : Form
 
     private void InitializeConfigControls()
     {
-        this.Text = $"M2TW Config Settings [ {this.currentGameModificationView.CurrentInfo.Location} ]";
+        this.Text = $"M2TW Config Settings: \"{this.currentGameConfigProfile.Name}\" [ {this.currentGameModificationInfo.Location} ]";
 
         // saveConfigSettingsButton = new Button();
         // tabControl1 = new TabControl();
@@ -480,9 +497,9 @@ public partial class ModConfigSettingsForm : Form
         // cfgLogLocationLabel = new Label();
         // cfgLogLocationTextBox = new TextBox();
 
-        //// 
+        ////
         //// saveConfigSettingsButton
-        //// 
+        ////
         //saveConfigSettingsButton.Location = new Point(16, 498);
         //saveConfigSettingsButton.Name = "saveConfigSettingsButton";
         //saveConfigSettingsButton.Size = new Size(276, 51);
@@ -490,9 +507,9 @@ public partial class ModConfigSettingsForm : Form
         //saveConfigSettingsButton.Text = "SAVE CONFIG SETTINGS";
         //saveConfigSettingsButton.UseVisualStyleBackColor = true;
         //saveConfigSettingsButton.Click += SaveConfigSettingsButton_Click;
-        //// 
+        ////
         //// tabControl1
-        //// 
+        ////
         //tabControl1.Controls.Add(tabPage1);
         //tabControl1.Controls.Add(tabPage2);
         //tabControl1.Controls.Add(tabPage3);
@@ -507,9 +524,9 @@ public partial class ModConfigSettingsForm : Form
         //tabControl1.SelectedIndex = 0;
         //tabControl1.Size = new Size(760, 428);
         //tabControl1.TabIndex = 1;
-        //// 
+        ////
         //// tabPage1
-        //// 
+        ////
         //tabPage1.Controls.Add(cfgGameUseQuickchatCheckBox);
         //tabPage1.Controls.Add(cfgGameUnlimitedMenOnBattlefieldCheckBox);
         //tabPage1.Controls.Add(cfgGameNoCampaignBattleTimeLimitCheckBox);
@@ -546,9 +563,9 @@ public partial class ModConfigSettingsForm : Form
         //tabPage1.TabIndex = 0;
         //tabPage1.Text = "Game Play Settings";
         //tabPage1.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameUseQuickchatCheckBox
-        //// 
+        ////
         //cfgGameUseQuickchatCheckBox.AutoSize = true;
         //cfgGameUseQuickchatCheckBox.Location = new Point(517, 241);
         //cfgGameUseQuickchatCheckBox.Name = "cfgGameUseQuickchatCheckBox";
@@ -556,9 +573,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameUseQuickchatCheckBox.TabIndex = 22;
         //cfgGameUseQuickchatCheckBox.Text = "use_quickchat";
         //cfgGameUseQuickchatCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameUnlimitedMenOnBattlefieldCheckBox
-        //// 
+        ////
         //cfgGameUnlimitedMenOnBattlefieldCheckBox.AutoSize = true;
         //cfgGameUnlimitedMenOnBattlefieldCheckBox.Location = new Point(517, 216);
         //cfgGameUnlimitedMenOnBattlefieldCheckBox.Name = "cfgGameUnlimitedMenOnBattlefieldCheckBox";
@@ -566,9 +583,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameUnlimitedMenOnBattlefieldCheckBox.TabIndex = 21;
         //cfgGameUnlimitedMenOnBattlefieldCheckBox.Text = "unlimited_men_on_battlefield";
         //cfgGameUnlimitedMenOnBattlefieldCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameNoCampaignBattleTimeLimitCheckBox
-        //// 
+        ////
         //cfgGameNoCampaignBattleTimeLimitCheckBox.AutoSize = true;
         //cfgGameNoCampaignBattleTimeLimitCheckBox.Location = new Point(517, 191);
         //cfgGameNoCampaignBattleTimeLimitCheckBox.Name = "cfgGameNoCampaignBattleTimeLimitCheckBox";
@@ -576,9 +593,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameNoCampaignBattleTimeLimitCheckBox.TabIndex = 20;
         //cfgGameNoCampaignBattleTimeLimitCheckBox.Text = "no_campaign_battle_time_limit";
         //cfgGameNoCampaignBattleTimeLimitCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameMuteAdvisorCheckBox
-        //// 
+        ////
         //cfgGameMuteAdvisorCheckBox.AutoSize = true;
         //cfgGameMuteAdvisorCheckBox.Location = new Point(517, 166);
         //cfgGameMuteAdvisorCheckBox.Name = "cfgGameMuteAdvisorCheckBox";
@@ -586,9 +603,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameMuteAdvisorCheckBox.TabIndex = 19;
         //cfgGameMuteAdvisorCheckBox.Text = "mute_advisor";
         //cfgGameMuteAdvisorCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameMoraleCheckBox
-        //// 
+        ////
         //cfgGameMoraleCheckBox.AutoSize = true;
         //cfgGameMoraleCheckBox.Location = new Point(517, 141);
         //cfgGameMoraleCheckBox.Name = "cfgGameMoraleCheckBox";
@@ -596,9 +613,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameMoraleCheckBox.TabIndex = 18;
         //cfgGameMoraleCheckBox.Text = "morale";
         //cfgGameMoraleCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameMicromanageAllSettlementsCheckBox
-        //// 
+        ////
         //cfgGameMicromanageAllSettlementsCheckBox.AutoSize = true;
         //cfgGameMicromanageAllSettlementsCheckBox.Location = new Point(517, 116);
         //cfgGameMicromanageAllSettlementsCheckBox.Name = "cfgGameMicromanageAllSettlementsCheckBox";
@@ -606,9 +623,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameMicromanageAllSettlementsCheckBox.TabIndex = 17;
         //cfgGameMicromanageAllSettlementsCheckBox.Text = "micromanage_all_settlements";
         //cfgGameMicromanageAllSettlementsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameLabelSettlementsCheckBox
-        //// 
+        ////
         //cfgGameLabelSettlementsCheckBox.AutoSize = true;
         //cfgGameLabelSettlementsCheckBox.Location = new Point(517, 91);
         //cfgGameLabelSettlementsCheckBox.Name = "cfgGameLabelSettlementsCheckBox";
@@ -616,9 +633,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameLabelSettlementsCheckBox.TabIndex = 16;
         //cfgGameLabelSettlementsCheckBox.Text = "label_settlements";
         //cfgGameLabelSettlementsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameLabelCharactersCheckBox
-        //// 
+        ////
         //cfgGameLabelCharactersCheckBox.AutoSize = true;
         //cfgGameLabelCharactersCheckBox.Location = new Point(517, 66);
         //cfgGameLabelCharactersCheckBox.Name = "cfgGameLabelCharactersCheckBox";
@@ -626,9 +643,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameLabelCharactersCheckBox.TabIndex = 15;
         //cfgGameLabelCharactersCheckBox.Text = "label_characters";
         //cfgGameLabelCharactersCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameGamespySavePasswrdCheckBox
-        //// 
+        ////
         //cfgGameGamespySavePasswrdCheckBox.AutoSize = true;
         //cfgGameGamespySavePasswrdCheckBox.Location = new Point(517, 41);
         //cfgGameGamespySavePasswrdCheckBox.Name = "cfgGameGamespySavePasswrdCheckBox";
@@ -636,9 +653,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameGamespySavePasswrdCheckBox.TabIndex = 14;
         //cfgGameGamespySavePasswrdCheckBox.Text = "gamespy_save_passwrd";
         //cfgGameGamespySavePasswrdCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameFirstTimePlayCheckBox
-        //// 
+        ////
         //cfgGameFirstTimePlayCheckBox.AutoSize = true;
         //cfgGameFirstTimePlayCheckBox.Location = new Point(517, 18);
         //cfgGameFirstTimePlayCheckBox.Name = "cfgGameFirstTimePlayCheckBox";
@@ -646,9 +663,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameFirstTimePlayCheckBox.TabIndex = 13;
         //cfgGameFirstTimePlayCheckBox.Text = "first_time_play";
         //cfgGameFirstTimePlayCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameFatigueCheckBox
-        //// 
+        ////
         //cfgGameFatigueCheckBox.AutoSize = true;
         //cfgGameFatigueCheckBox.Location = new Point(352, 244);
         //cfgGameFatigueCheckBox.Name = "cfgGameFatigueCheckBox";
@@ -656,9 +673,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameFatigueCheckBox.TabIndex = 12;
         //cfgGameFatigueCheckBox.Text = "fatigue";
         //cfgGameFatigueCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameEventCutscenesCheckBox
-        //// 
+        ////
         //cfgGameEventCutscenesCheckBox.AutoSize = true;
         //cfgGameEventCutscenesCheckBox.Location = new Point(352, 219);
         //cfgGameEventCutscenesCheckBox.Name = "cfgGameEventCutscenesCheckBox";
@@ -666,9 +683,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameEventCutscenesCheckBox.TabIndex = 11;
         //cfgGameEventCutscenesCheckBox.Text = "event_cutscenes";
         //cfgGameEventCutscenesCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameEnglishCheckBox
-        //// 
+        ////
         //cfgGameEnglishCheckBox.AutoSize = true;
         //cfgGameEnglishCheckBox.Location = new Point(352, 194);
         //cfgGameEnglishCheckBox.Name = "cfgGameEnglishCheckBox";
@@ -676,9 +693,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameEnglishCheckBox.TabIndex = 10;
         //cfgGameEnglishCheckBox.Text = "english";
         //cfgGameEnglishCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameDisableEventsCheckBox
-        //// 
+        ////
         //cfgGameDisableEventsCheckBox.AutoSize = true;
         //cfgGameDisableEventsCheckBox.Location = new Point(352, 169);
         //cfgGameDisableEventsCheckBox.Name = "cfgGameDisableEventsCheckBox";
@@ -686,9 +703,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameDisableEventsCheckBox.TabIndex = 9;
         //cfgGameDisableEventsCheckBox.Text = "disable_events";
         //cfgGameDisableEventsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameDisableArrowMarkersCheckBox
-        //// 
+        ////
         //cfgGameDisableArrowMarkersCheckBox.AutoSize = true;
         //cfgGameDisableArrowMarkersCheckBox.Location = new Point(352, 146);
         //cfgGameDisableArrowMarkersCheckBox.Name = "cfgGameDisableArrowMarkersCheckBox";
@@ -696,9 +713,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameDisableArrowMarkersCheckBox.TabIndex = 8;
         //cfgGameDisableArrowMarkersCheckBox.Text = "disable_arrow_markers";
         //cfgGameDisableArrowMarkersCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameBlindAdvisorCheckBox
-        //// 
+        ////
         //cfgGameBlindAdvisorCheckBox.AutoSize = true;
         //cfgGameBlindAdvisorCheckBox.Location = new Point(352, 121);
         //cfgGameBlindAdvisorCheckBox.Name = "cfgGameBlindAdvisorCheckBox";
@@ -706,9 +723,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameBlindAdvisorCheckBox.TabIndex = 7;
         //cfgGameBlindAdvisorCheckBox.Text = "blind_advisor";
         //cfgGameBlindAdvisorCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameAutoSaveCheckBox
-        //// 
+        ////
         //cfgGameAutoSaveCheckBox.AutoSize = true;
         //cfgGameAutoSaveCheckBox.Location = new Point(352, 95);
         //cfgGameAutoSaveCheckBox.Name = "cfgGameAutoSaveCheckBox";
@@ -716,9 +733,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameAutoSaveCheckBox.TabIndex = 6;
         //cfgGameAutoSaveCheckBox.Text = "auto_save";
         //cfgGameAutoSaveCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameAllUsersCheckBox
-        //// 
+        ////
         //cfgGameAllUsersCheckBox.AutoSize = true;
         //cfgGameAllUsersCheckBox.Location = new Point(352, 69);
         //cfgGameAllUsersCheckBox.Name = "cfgGameAllUsersCheckBox";
@@ -726,9 +743,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameAllUsersCheckBox.TabIndex = 5;
         //cfgGameAllUsersCheckBox.Text = "allusers";
         //cfgGameAllUsersCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameAdvisorVerbosityCheckBox
-        //// 
+        ////
         //cfgGameAdvisorVerbosityCheckBox.AutoSize = true;
         //cfgGameAdvisorVerbosityCheckBox.Location = new Point(352, 44);
         //cfgGameAdvisorVerbosityCheckBox.Name = "cfgGameAdvisorVerbosityCheckBox";
@@ -736,9 +753,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameAdvisorVerbosityCheckBox.TabIndex = 4;
         //cfgGameAdvisorVerbosityCheckBox.Text = "advisor_verbosity";
         //cfgGameAdvisorVerbosityCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameAdvancedStatsAlwaysCheckBox
-        //// 
+        ////
         //cfgGameAdvancedStatsAlwaysCheckBox.AutoSize = true;
         //cfgGameAdvancedStatsAlwaysCheckBox.Location = new Point(353, 18);
         //cfgGameAdvancedStatsAlwaysCheckBox.Name = "cfgGameAdvancedStatsAlwaysCheckBox";
@@ -746,9 +763,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameAdvancedStatsAlwaysCheckBox.TabIndex = 3;
         //cfgGameAdvancedStatsAlwaysCheckBox.Text = "advanced_stats_always";
         //cfgGameAdvancedStatsAlwaysCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgGameUnitSizePanel
-        //// 
+        ////
         //cfgGameUnitSizePanel.BackColor = Color.DarkGray;
         //cfgGameUnitSizePanel.Controls.Add(cfgGameUnitSizeComboBox);
         //cfgGameUnitSizePanel.Controls.Add(cfgGameUnitSizeLabel);
@@ -756,26 +773,26 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameUnitSizePanel.Name = "cfgGameUnitSizePanel";
         //cfgGameUnitSizePanel.Size = new Size(312, 38);
         //cfgGameUnitSizePanel.TabIndex = 2;
-        //// 
+        ////
         //// cfgGameUnitSizeComboBox
-        //// 
+        ////
         //cfgGameUnitSizeComboBox.FormattingEnabled = true;
         //cfgGameUnitSizeComboBox.Location = new Point(103, 5);
         //cfgGameUnitSizeComboBox.Name = "cfgGameUnitSizeComboBox";
         //cfgGameUnitSizeComboBox.Size = new Size(121, 23);
         //cfgGameUnitSizeComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgGameUnitSizeLabel
-        //// 
+        ////
         //cfgGameUnitSizeLabel.AutoSize = true;
         //cfgGameUnitSizeLabel.Location = new Point(9, 5);
         //cfgGameUnitSizeLabel.Name = "cfgGameUnitSizeLabel";
         //cfgGameUnitSizeLabel.Size = new Size(52, 15);
         //cfgGameUnitSizeLabel.TabIndex = 0;
         //cfgGameUnitSizeLabel.Text = "unit_size";
-        //// 
+        ////
         //// cfgGameChatMsgDurationPanel
-        //// 
+        ////
         //cfgGameChatMsgDurationPanel.BackColor = Color.DarkGray;
         //cfgGameChatMsgDurationPanel.Controls.Add(cfgGameChatMsgDurationNumericUpDown);
         //cfgGameChatMsgDurationPanel.Controls.Add(cfgGameChatMsgDurationLabel);
@@ -783,25 +800,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameChatMsgDurationPanel.Name = "cfgGameChatMsgDurationPanel";
         //cfgGameChatMsgDurationPanel.Size = new Size(312, 38);
         //cfgGameChatMsgDurationPanel.TabIndex = 2;
-        //// 
+        ////
         //// cfgGameChatMsgDurationNumericUpDown
-        //// 
+        ////
         //cfgGameChatMsgDurationNumericUpDown.Location = new Point(175, 5);
         //cfgGameChatMsgDurationNumericUpDown.Name = "cfgGameChatMsgDurationNumericUpDown";
         //cfgGameChatMsgDurationNumericUpDown.Size = new Size(120, 23);
         //cfgGameChatMsgDurationNumericUpDown.TabIndex = 1;
-        //// 
+        ////
         //// cfgGameChatMsgDurationLabel
-        //// 
+        ////
         //cfgGameChatMsgDurationLabel.AutoSize = true;
         //cfgGameChatMsgDurationLabel.Location = new Point(9, 5);
         //cfgGameChatMsgDurationLabel.Name = "cfgGameChatMsgDurationLabel";
         //cfgGameChatMsgDurationLabel.Size = new Size(108, 15);
         //cfgGameChatMsgDurationLabel.TabIndex = 0;
         //cfgGameChatMsgDurationLabel.Text = "chat_msg_duration";
-        //// 
+        ////
         //// cfgGameCampaignMapSpeedUpPanel
-        //// 
+        ////
         //cfgGameCampaignMapSpeedUpPanel.BackColor = Color.DarkGray;
         //cfgGameCampaignMapSpeedUpPanel.Controls.Add(cfgGameCampaignMapSpeedUpNumericUpDown);
         //cfgGameCampaignMapSpeedUpPanel.Controls.Add(cfgGameCampaignMapSpeedUpLabel);
@@ -809,25 +826,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameCampaignMapSpeedUpPanel.Name = "cfgGameCampaignMapSpeedUpPanel";
         //cfgGameCampaignMapSpeedUpPanel.Size = new Size(312, 38);
         //cfgGameCampaignMapSpeedUpPanel.TabIndex = 2;
-        //// 
+        ////
         //// cfgGameCampaignMapSpeedUpNumericUpDown
-        //// 
+        ////
         //cfgGameCampaignMapSpeedUpNumericUpDown.Location = new Point(175, 3);
         //cfgGameCampaignMapSpeedUpNumericUpDown.Name = "cfgGameCampaignMapSpeedUpNumericUpDown";
         //cfgGameCampaignMapSpeedUpNumericUpDown.Size = new Size(120, 23);
         //cfgGameCampaignMapSpeedUpNumericUpDown.TabIndex = 1;
-        //// 
+        ////
         //// cfgGameCampaignMapSpeedUpLabel
-        //// 
+        ////
         //cfgGameCampaignMapSpeedUpLabel.AutoSize = true;
         //cfgGameCampaignMapSpeedUpLabel.Location = new Point(9, 5);
         //cfgGameCampaignMapSpeedUpLabel.Name = "cfgGameCampaignMapSpeedUpLabel";
         //cfgGameCampaignMapSpeedUpLabel.Size = new Size(144, 15);
         //cfgGameCampaignMapSpeedUpLabel.TabIndex = 0;
         //cfgGameCampaignMapSpeedUpLabel.Text = "campaign_map_speed_up";
-        //// 
+        ////
         //// cfgGameCampaignMapGameSpeedPanel
-        //// 
+        ////
         //cfgGameCampaignMapGameSpeedPanel.BackColor = Color.DarkGray;
         //cfgGameCampaignMapGameSpeedPanel.Controls.Add(cfgGameCampaignMapGameSpeedNumericUpDown);
         //cfgGameCampaignMapGameSpeedPanel.Controls.Add(cfgGameCampaignMapGameSpeedLabel);
@@ -835,25 +852,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameCampaignMapGameSpeedPanel.Name = "cfgGameCampaignMapGameSpeedPanel";
         //cfgGameCampaignMapGameSpeedPanel.Size = new Size(312, 38);
         //cfgGameCampaignMapGameSpeedPanel.TabIndex = 2;
-        //// 
+        ////
         //// cfgGameCampaignMapGameSpeedNumericUpDown
-        //// 
+        ////
         //cfgGameCampaignMapGameSpeedNumericUpDown.Location = new Point(175, 3);
         //cfgGameCampaignMapGameSpeedNumericUpDown.Name = "cfgGameCampaignMapGameSpeedNumericUpDown";
         //cfgGameCampaignMapGameSpeedNumericUpDown.Size = new Size(120, 23);
         //cfgGameCampaignMapGameSpeedNumericUpDown.TabIndex = 1;
-        //// 
+        ////
         //// cfgGameCampaignMapGameSpeedLabel
-        //// 
+        ////
         //cfgGameCampaignMapGameSpeedLabel.AutoSize = true;
         //cfgGameCampaignMapGameSpeedLabel.Location = new Point(9, 5);
         //cfgGameCampaignMapGameSpeedLabel.Name = "cfgGameCampaignMapGameSpeedLabel";
         //cfgGameCampaignMapGameSpeedLabel.Size = new Size(160, 15);
         //cfgGameCampaignMapGameSpeedLabel.TabIndex = 0;
         //cfgGameCampaignMapGameSpeedLabel.Text = "campaign_map_game_speed";
-        //// 
+        ////
         //// cfgGamePrefFactionsPlayedPanel
-        //// 
+        ////
         //cfgGamePrefFactionsPlayedPanel.BackColor = Color.DarkGray;
         //cfgGamePrefFactionsPlayedPanel.Controls.Add(cfgGamePrefFactionsPlayedTextBox);
         //cfgGamePrefFactionsPlayedPanel.Controls.Add(cfgGamePrefFactionsPlayedLabel);
@@ -861,25 +878,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgGamePrefFactionsPlayedPanel.Name = "cfgGamePrefFactionsPlayedPanel";
         //cfgGamePrefFactionsPlayedPanel.Size = new Size(312, 38);
         //cfgGamePrefFactionsPlayedPanel.TabIndex = 2;
-        //// 
+        ////
         //// cfgGamePrefFactionsPlayedTextBox
-        //// 
+        ////
         //cfgGamePrefFactionsPlayedTextBox.Location = new Point(161, 5);
         //cfgGamePrefFactionsPlayedTextBox.Name = "cfgGamePrefFactionsPlayedTextBox";
         //cfgGamePrefFactionsPlayedTextBox.Size = new Size(148, 23);
         //cfgGamePrefFactionsPlayedTextBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgGamePrefFactionsPlayedLabel
-        //// 
+        ////
         //cfgGamePrefFactionsPlayedLabel.AutoSize = true;
         //cfgGamePrefFactionsPlayedLabel.Location = new Point(9, 5);
         //cfgGamePrefFactionsPlayedLabel.Name = "cfgGamePrefFactionsPlayedLabel";
         //cfgGamePrefFactionsPlayedLabel.Size = new Size(115, 15);
         //cfgGamePrefFactionsPlayedLabel.TabIndex = 0;
         //cfgGamePrefFactionsPlayedLabel.Text = "pref_factions_played";
-        //// 
+        ////
         //// cfgGameTutorialPathPanel
-        //// 
+        ////
         //cfgGameTutorialPathPanel.BackColor = Color.DarkGray;
         //cfgGameTutorialPathPanel.Controls.Add(cfgGameTutorialPathTextBox);
         //cfgGameTutorialPathPanel.Controls.Add(cfgGameTutorialPathLabel);
@@ -887,25 +904,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameTutorialPathPanel.Name = "cfgGameTutorialPathPanel";
         //cfgGameTutorialPathPanel.Size = new Size(312, 38);
         //cfgGameTutorialPathPanel.TabIndex = 2;
-        //// 
+        ////
         //// cfgGameTutorialPathTextBox
-        //// 
+        ////
         //cfgGameTutorialPathTextBox.Location = new Point(161, 3);
         //cfgGameTutorialPathTextBox.Name = "cfgGameTutorialPathTextBox";
         //cfgGameTutorialPathTextBox.Size = new Size(148, 23);
         //cfgGameTutorialPathTextBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgGameTutorialPathLabel
-        //// 
+        ////
         //cfgGameTutorialPathLabel.AutoSize = true;
         //cfgGameTutorialPathLabel.Location = new Point(9, 5);
         //cfgGameTutorialPathLabel.Name = "cfgGameTutorialPathLabel";
         //cfgGameTutorialPathLabel.Size = new Size(74, 15);
         //cfgGameTutorialPathLabel.TabIndex = 0;
         //cfgGameTutorialPathLabel.Text = "tutorial_path";
-        //// 
+        ////
         //// cfgGameAiFactionsPanel
-        //// 
+        ////
         //cfgGameAiFactionsPanel.BackColor = Color.DarkGray;
         //cfgGameAiFactionsPanel.Controls.Add(cfgGameAiFactionsComboBox);
         //cfgGameAiFactionsPanel.Controls.Add(cfgGameAiFactionsLabel);
@@ -913,26 +930,26 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameAiFactionsPanel.Name = "cfgGameAiFactionsPanel";
         //cfgGameAiFactionsPanel.Size = new Size(312, 38);
         //cfgGameAiFactionsPanel.TabIndex = 2;
-        //// 
+        ////
         //// cfgGameAiFactionsComboBox
-        //// 
+        ////
         //cfgGameAiFactionsComboBox.FormattingEnabled = true;
         //cfgGameAiFactionsComboBox.Location = new Point(103, 7);
         //cfgGameAiFactionsComboBox.Name = "cfgGameAiFactionsComboBox";
         //cfgGameAiFactionsComboBox.Size = new Size(121, 23);
         //cfgGameAiFactionsComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgGameAiFactionsLabel
-        //// 
+        ////
         //cfgGameAiFactionsLabel.AutoSize = true;
         //cfgGameAiFactionsLabel.Location = new Point(9, 5);
         //cfgGameAiFactionsLabel.Name = "cfgGameAiFactionsLabel";
         //cfgGameAiFactionsLabel.Size = new Size(63, 15);
         //cfgGameAiFactionsLabel.TabIndex = 0;
         //cfgGameAiFactionsLabel.Text = "ai_factions";
-        //// 
+        ////
         //// cfgGameCampaignNumTimePlayPanel
-        //// 
+        ////
         //cfgGameCampaignNumTimePlayPanel.BackColor = Color.DarkGray;
         //cfgGameCampaignNumTimePlayPanel.Controls.Add(cfgGameCampaignNumTimePlayTextBox);
         //cfgGameCampaignNumTimePlayPanel.Controls.Add(cfgGameCampaignNumTimePlayLabel);
@@ -940,34 +957,34 @@ public partial class ModConfigSettingsForm : Form
         //cfgGameCampaignNumTimePlayPanel.Name = "cfgGameCampaignNumTimePlayPanel";
         //cfgGameCampaignNumTimePlayPanel.Size = new Size(312, 38);
         //cfgGameCampaignNumTimePlayPanel.TabIndex = 1;
-        //// 
+        ////
         //// cfgGameCampaignNumTimePlayTextBox
-        //// 
+        ////
         //cfgGameCampaignNumTimePlayTextBox.Location = new Point(161, 7);
         //cfgGameCampaignNumTimePlayTextBox.Name = "cfgGameCampaignNumTimePlayTextBox";
         //cfgGameCampaignNumTimePlayTextBox.Size = new Size(148, 23);
         //cfgGameCampaignNumTimePlayTextBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgGameCampaignNumTimePlayLabel
-        //// 
+        ////
         //cfgGameCampaignNumTimePlayLabel.AutoSize = true;
         //cfgGameCampaignNumTimePlayLabel.Location = new Point(9, 5);
         //cfgGameCampaignNumTimePlayLabel.Name = "cfgGameCampaignNumTimePlayLabel";
         //cfgGameCampaignNumTimePlayLabel.Size = new Size(146, 15);
         //cfgGameCampaignNumTimePlayLabel.TabIndex = 0;
         //cfgGameCampaignNumTimePlayLabel.Text = "campaign_num_time_play";
-        //// 
+        ////
         //// label1
-        //// 
+        ////
         //label1.AutoSize = true;
         //label1.Location = new Point(17, 14);
         //label1.Name = "label1";
         //label1.Size = new Size(123, 15);
         //label1.TabIndex = 0;
         //label1.Text = "GAME PLAY SETTINGS";
-        //// 
+        ////
         //// tabPage2
-        //// 
+        ////
         //tabPage2.Controls.Add(cfgAudioSpeechVolumePanel);
         //tabPage2.Controls.Add(cfgAudioSfxVolumePanel);
         //tabPage2.Controls.Add(cfgAudioSoundCardProviderPanel);
@@ -982,9 +999,9 @@ public partial class ModConfigSettingsForm : Form
         //tabPage2.TabIndex = 1;
         //tabPage2.Text = "Video & Audio";
         //tabPage2.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgAudioSpeechVolumePanel
-        //// 
+        ////
         //cfgAudioSpeechVolumePanel.BackColor = Color.Gray;
         //cfgAudioSpeechVolumePanel.Controls.Add(cfgAudioSpeechNumericUpDown);
         //cfgAudioSpeechVolumePanel.Controls.Add(cfgAudioSpeechVolumeLabel);
@@ -992,24 +1009,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgAudioSpeechVolumePanel.Name = "cfgAudioSpeechVolumePanel";
         //cfgAudioSpeechVolumePanel.Size = new Size(325, 30);
         //cfgAudioSpeechVolumePanel.TabIndex = 23;
-        //// 
+        ////
         //// cfgAudioSpeechNumericUpDown
-        //// 
+        ////
         //cfgAudioSpeechNumericUpDown.Location = new Point(202, 3);
         //cfgAudioSpeechNumericUpDown.Name = "cfgAudioSpeechNumericUpDown";
         //cfgAudioSpeechNumericUpDown.Size = new Size(120, 23);
         //cfgAudioSpeechNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgAudioSpeechVolumeLabel
-        //// 
+        ////
         //cfgAudioSpeechVolumeLabel.Location = new Point(3, 3);
         //cfgAudioSpeechVolumeLabel.Name = "cfgAudioSpeechVolumeLabel";
         //cfgAudioSpeechVolumeLabel.Size = new Size(193, 23);
         //cfgAudioSpeechVolumeLabel.TabIndex = 4;
         //cfgAudioSpeechVolumeLabel.Text = "speech_vol";
-        //// 
+        ////
         //// cfgAudioSfxVolumePanel
-        //// 
+        ////
         //cfgAudioSfxVolumePanel.BackColor = Color.Gray;
         //cfgAudioSfxVolumePanel.Controls.Add(cfgAudioSfxNumericUpDown);
         //cfgAudioSfxVolumePanel.Controls.Add(cfgAudioSfxVolumeLabel);
@@ -1017,24 +1034,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgAudioSfxVolumePanel.Name = "cfgAudioSfxVolumePanel";
         //cfgAudioSfxVolumePanel.Size = new Size(325, 30);
         //cfgAudioSfxVolumePanel.TabIndex = 24;
-        //// 
+        ////
         //// cfgAudioSfxNumericUpDown
-        //// 
+        ////
         //cfgAudioSfxNumericUpDown.Location = new Point(202, 3);
         //cfgAudioSfxNumericUpDown.Name = "cfgAudioSfxNumericUpDown";
         //cfgAudioSfxNumericUpDown.Size = new Size(120, 23);
         //cfgAudioSfxNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgAudioSfxVolumeLabel
-        //// 
+        ////
         //cfgAudioSfxVolumeLabel.Location = new Point(3, 3);
         //cfgAudioSfxVolumeLabel.Name = "cfgAudioSfxVolumeLabel";
         //cfgAudioSfxVolumeLabel.Size = new Size(193, 23);
         //cfgAudioSfxVolumeLabel.TabIndex = 4;
         //cfgAudioSfxVolumeLabel.Text = "sfx_vol";
-        //// 
+        ////
         //// cfgAudioSoundCardProviderPanel
-        //// 
+        ////
         //cfgAudioSoundCardProviderPanel.BackColor = Color.Gray;
         //cfgAudioSoundCardProviderPanel.Controls.Add(cfgAudioSoundCardProviderNumericUpDown);
         //cfgAudioSoundCardProviderPanel.Controls.Add(cfgAudioSoundCardProviderLabel);
@@ -1042,24 +1059,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgAudioSoundCardProviderPanel.Name = "cfgAudioSoundCardProviderPanel";
         //cfgAudioSoundCardProviderPanel.Size = new Size(325, 30);
         //cfgAudioSoundCardProviderPanel.TabIndex = 25;
-        //// 
+        ////
         //// cfgAudioSoundCardProviderNumericUpDown
-        //// 
+        ////
         //cfgAudioSoundCardProviderNumericUpDown.Location = new Point(202, 3);
         //cfgAudioSoundCardProviderNumericUpDown.Name = "cfgAudioSoundCardProviderNumericUpDown";
         //cfgAudioSoundCardProviderNumericUpDown.Size = new Size(120, 23);
         //cfgAudioSoundCardProviderNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgAudioSoundCardProviderLabel
-        //// 
+        ////
         //cfgAudioSoundCardProviderLabel.Location = new Point(3, 3);
         //cfgAudioSoundCardProviderLabel.Name = "cfgAudioSoundCardProviderLabel";
         //cfgAudioSoundCardProviderLabel.Size = new Size(193, 23);
         //cfgAudioSoundCardProviderLabel.TabIndex = 4;
         //cfgAudioSoundCardProviderLabel.Text = "provider";
-        //// 
+        ////
         //// cfgAudioMusicVolumePanel
-        //// 
+        ////
         //cfgAudioMusicVolumePanel.BackColor = Color.Gray;
         //cfgAudioMusicVolumePanel.Controls.Add(cfgAudioMusicVolumeNumericUpDown);
         //cfgAudioMusicVolumePanel.Controls.Add(cfgAudioMusicVolumeLabel);
@@ -1067,24 +1084,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgAudioMusicVolumePanel.Name = "cfgAudioMusicVolumePanel";
         //cfgAudioMusicVolumePanel.Size = new Size(325, 30);
         //cfgAudioMusicVolumePanel.TabIndex = 26;
-        //// 
+        ////
         //// cfgAudioMusicVolumeNumericUpDown
-        //// 
+        ////
         //cfgAudioMusicVolumeNumericUpDown.Location = new Point(202, 3);
         //cfgAudioMusicVolumeNumericUpDown.Name = "cfgAudioMusicVolumeNumericUpDown";
         //cfgAudioMusicVolumeNumericUpDown.Size = new Size(120, 23);
         //cfgAudioMusicVolumeNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgAudioMusicVolumeLabel
-        //// 
+        ////
         //cfgAudioMusicVolumeLabel.Location = new Point(3, 3);
         //cfgAudioMusicVolumeLabel.Name = "cfgAudioMusicVolumeLabel";
         //cfgAudioMusicVolumeLabel.Size = new Size(193, 23);
         //cfgAudioMusicVolumeLabel.TabIndex = 4;
         //cfgAudioMusicVolumeLabel.Text = "music_vol";
-        //// 
+        ////
         //// cfgAudioMasterVolumePanel
-        //// 
+        ////
         //cfgAudioMasterVolumePanel.BackColor = Color.Gray;
         //cfgAudioMasterVolumePanel.Controls.Add(cfgAudioMasterVolumeNumericUpDown);
         //cfgAudioMasterVolumePanel.Controls.Add(cfgAudioMasterVolumeLabel);
@@ -1092,24 +1109,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgAudioMasterVolumePanel.Name = "cfgAudioMasterVolumePanel";
         //cfgAudioMasterVolumePanel.Size = new Size(325, 30);
         //cfgAudioMasterVolumePanel.TabIndex = 22;
-        //// 
+        ////
         //// cfgAudioMasterVolumeNumericUpDown
-        //// 
+        ////
         //cfgAudioMasterVolumeNumericUpDown.Location = new Point(202, 3);
         //cfgAudioMasterVolumeNumericUpDown.Name = "cfgAudioMasterVolumeNumericUpDown";
         //cfgAudioMasterVolumeNumericUpDown.Size = new Size(120, 23);
         //cfgAudioMasterVolumeNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgAudioMasterVolumeLabel
-        //// 
+        ////
         //cfgAudioMasterVolumeLabel.Location = new Point(3, 3);
         //cfgAudioMasterVolumeLabel.Name = "cfgAudioMasterVolumeLabel";
         //cfgAudioMasterVolumeLabel.Size = new Size(193, 23);
         //cfgAudioMasterVolumeLabel.TabIndex = 4;
         //cfgAudioMasterVolumeLabel.Text = "master_vol";
-        //// 
+        ////
         //// cfgAudioOptionsPanel
-        //// 
+        ////
         //cfgAudioOptionsPanel.BackColor = Color.Gray;
         //cfgAudioOptionsPanel.Controls.Add(cfgAudioSpeechEnableCheckBox);
         //cfgAudioOptionsPanel.Controls.Add(cfgAudioEnableCheckBox);
@@ -1118,9 +1135,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgAudioOptionsPanel.Name = "cfgAudioOptionsPanel";
         //cfgAudioOptionsPanel.Size = new Size(224, 122);
         //cfgAudioOptionsPanel.TabIndex = 21;
-        //// 
+        ////
         //// cfgAudioSpeechEnableCheckBox
-        //// 
+        ////
         //cfgAudioSpeechEnableCheckBox.AutoSize = true;
         //cfgAudioSpeechEnableCheckBox.Location = new Point(18, 43);
         //cfgAudioSpeechEnableCheckBox.Name = "cfgAudioSpeechEnableCheckBox";
@@ -1128,9 +1145,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgAudioSpeechEnableCheckBox.TabIndex = 2;
         //cfgAudioSpeechEnableCheckBox.Text = "speech_enable";
         //cfgAudioSpeechEnableCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgAudioEnableCheckBox
-        //// 
+        ////
         //cfgAudioEnableCheckBox.AutoSize = true;
         //cfgAudioEnableCheckBox.Location = new Point(18, 18);
         //cfgAudioEnableCheckBox.Name = "cfgAudioEnableCheckBox";
@@ -1138,9 +1155,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgAudioEnableCheckBox.TabIndex = 1;
         //cfgAudioEnableCheckBox.Text = "enable";
         //cfgAudioEnableCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgAudioSubFactionAccentsEnableCheckBox
-        //// 
+        ////
         //cfgAudioSubFactionAccentsEnableCheckBox.AutoSize = true;
         //cfgAudioSubFactionAccentsEnableCheckBox.Location = new Point(18, 68);
         //cfgAudioSubFactionAccentsEnableCheckBox.Name = "cfgAudioSubFactionAccentsEnableCheckBox";
@@ -1148,18 +1165,18 @@ public partial class ModConfigSettingsForm : Form
         //cfgAudioSubFactionAccentsEnableCheckBox.TabIndex = 3;
         //cfgAudioSubFactionAccentsEnableCheckBox.Text = "sub_faction_accents";
         //cfgAudioSubFactionAccentsEnableCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// label2
-        //// 
+        ////
         //label2.AutoSize = true;
         //label2.Location = new Point(6, 13);
         //label2.Name = "label2";
         //label2.Size = new Size(90, 15);
         //label2.TabIndex = 0;
         //label2.Text = "VIDEO + AUDIO";
-        //// 
+        ////
         //// tabPage3
-        //// 
+        ////
         //tabPage3.Controls.Add(cfgCameraGroupBox);
         //tabPage3.Controls.Add(cfgControlsGroupBox);
         //tabPage3.Controls.Add(label3);
@@ -1170,9 +1187,9 @@ public partial class ModConfigSettingsForm : Form
         //tabPage3.TabIndex = 2;
         //tabPage3.Text = "Camera & Controls";
         //tabPage3.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgCameraGroupBox
-        //// 
+        ////
         //cfgCameraGroupBox.Controls.Add(cfgCameraDefaultInBattlePanel);
         //cfgCameraGroupBox.Controls.Add(cfgCameraRotatePanel);
         //cfgCameraGroupBox.Controls.Add(cfgCameraMovePanel);
@@ -1183,9 +1200,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgCameraGroupBox.TabIndex = 2;
         //cfgCameraGroupBox.TabStop = false;
         //cfgCameraGroupBox.Text = "[camera]";
-        //// 
+        ////
         //// cfgCameraDefaultInBattlePanel
-        //// 
+        ////
         //cfgCameraDefaultInBattlePanel.BackColor = Color.Gray;
         //cfgCameraDefaultInBattlePanel.Controls.Add(cfgControlsDefaultInBattleComboBox);
         //cfgCameraDefaultInBattlePanel.Controls.Add(cfgControlsDefaultInBattleLabel);
@@ -1193,25 +1210,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgCameraDefaultInBattlePanel.Name = "cfgCameraDefaultInBattlePanel";
         //cfgCameraDefaultInBattlePanel.Size = new Size(325, 30);
         //cfgCameraDefaultInBattlePanel.TabIndex = 27;
-        //// 
+        ////
         //// cfgControlsDefaultInBattleComboBox
-        //// 
+        ////
         //cfgControlsDefaultInBattleComboBox.FormattingEnabled = true;
         //cfgControlsDefaultInBattleComboBox.Location = new Point(202, 3);
         //cfgControlsDefaultInBattleComboBox.Name = "cfgControlsDefaultInBattleComboBox";
         //cfgControlsDefaultInBattleComboBox.Size = new Size(120, 23);
         //cfgControlsDefaultInBattleComboBox.TabIndex = 5;
-        //// 
+        ////
         //// cfgControlsDefaultInBattleLabel
-        //// 
+        ////
         //cfgControlsDefaultInBattleLabel.Location = new Point(3, 3);
         //cfgControlsDefaultInBattleLabel.Name = "cfgControlsDefaultInBattleLabel";
         //cfgControlsDefaultInBattleLabel.Size = new Size(193, 23);
         //cfgControlsDefaultInBattleLabel.TabIndex = 4;
         //cfgControlsDefaultInBattleLabel.Text = "default_in_battle";
-        //// 
+        ////
         //// cfgCameraRotatePanel
-        //// 
+        ////
         //cfgCameraRotatePanel.BackColor = Color.Gray;
         //cfgCameraRotatePanel.Controls.Add(cfgCameraRotateNumericUpDown);
         //cfgCameraRotatePanel.Controls.Add(cfgCameraRotateLabel);
@@ -1219,24 +1236,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgCameraRotatePanel.Name = "cfgCameraRotatePanel";
         //cfgCameraRotatePanel.Size = new Size(325, 30);
         //cfgCameraRotatePanel.TabIndex = 26;
-        //// 
+        ////
         //// cfgCameraRotateNumericUpDown
-        //// 
+        ////
         //cfgCameraRotateNumericUpDown.Location = new Point(202, 3);
         //cfgCameraRotateNumericUpDown.Name = "cfgCameraRotateNumericUpDown";
         //cfgCameraRotateNumericUpDown.Size = new Size(120, 23);
         //cfgCameraRotateNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgCameraRotateLabel
-        //// 
+        ////
         //cfgCameraRotateLabel.Location = new Point(3, 3);
         //cfgCameraRotateLabel.Name = "cfgCameraRotateLabel";
         //cfgCameraRotateLabel.Size = new Size(193, 23);
         //cfgCameraRotateLabel.TabIndex = 4;
         //cfgCameraRotateLabel.Text = "rotate";
-        //// 
+        ////
         //// cfgCameraMovePanel
-        //// 
+        ////
         //cfgCameraMovePanel.BackColor = Color.Gray;
         //cfgCameraMovePanel.Controls.Add(cfgCameraMoveNumericUpDown);
         //cfgCameraMovePanel.Controls.Add(cfgCameraMoveLabel);
@@ -1244,24 +1261,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgCameraMovePanel.Name = "cfgCameraMovePanel";
         //cfgCameraMovePanel.Size = new Size(325, 30);
         //cfgCameraMovePanel.TabIndex = 26;
-        //// 
+        ////
         //// cfgCameraMoveNumericUpDown
-        //// 
+        ////
         //cfgCameraMoveNumericUpDown.Location = new Point(202, 3);
         //cfgCameraMoveNumericUpDown.Name = "cfgCameraMoveNumericUpDown";
         //cfgCameraMoveNumericUpDown.Size = new Size(120, 23);
         //cfgCameraMoveNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgCameraMoveLabel
-        //// 
+        ////
         //cfgCameraMoveLabel.Location = new Point(3, 3);
         //cfgCameraMoveLabel.Name = "cfgCameraMoveLabel";
         //cfgCameraMoveLabel.Size = new Size(193, 23);
         //cfgCameraMoveLabel.TabIndex = 4;
         //cfgCameraMoveLabel.Text = "move";
-        //// 
+        ////
         //// cfgCameraRestrictCheckBox
-        //// 
+        ////
         //cfgCameraRestrictCheckBox.AutoSize = true;
         //cfgCameraRestrictCheckBox.Location = new Point(16, 26);
         //cfgCameraRestrictCheckBox.Name = "cfgCameraRestrictCheckBox";
@@ -1269,9 +1286,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgCameraRestrictCheckBox.TabIndex = 0;
         //cfgCameraRestrictCheckBox.Text = "restrict";
         //cfgCameraRestrictCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgControlsGroupBox
-        //// 
+        ////
         //cfgControlsGroupBox.Controls.Add(cfgControlsKeysetPanel);
         //cfgControlsGroupBox.Controls.Add(cfgControlsScrollMinZoomPanel);
         //cfgControlsGroupBox.Controls.Add(cfgControlsScrollMaxZoomPanel);
@@ -1281,9 +1298,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgControlsGroupBox.TabIndex = 1;
         //cfgControlsGroupBox.TabStop = false;
         //cfgControlsGroupBox.Text = "[controls]";
-        //// 
+        ////
         //// cfgControlsKeysetPanel
-        //// 
+        ////
         //cfgControlsKeysetPanel.BackColor = Color.Gray;
         //cfgControlsKeysetPanel.Controls.Add(cfgControlsKeysetNumericUpDown);
         //cfgControlsKeysetPanel.Controls.Add(cfgControlsKeysetLabel);
@@ -1291,24 +1308,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgControlsKeysetPanel.Name = "cfgControlsKeysetPanel";
         //cfgControlsKeysetPanel.Size = new Size(325, 30);
         //cfgControlsKeysetPanel.TabIndex = 25;
-        //// 
+        ////
         //// cfgControlsKeysetNumericUpDown
-        //// 
+        ////
         //cfgControlsKeysetNumericUpDown.Location = new Point(202, 3);
         //cfgControlsKeysetNumericUpDown.Name = "cfgControlsKeysetNumericUpDown";
         //cfgControlsKeysetNumericUpDown.Size = new Size(120, 23);
         //cfgControlsKeysetNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgControlsKeysetLabel
-        //// 
+        ////
         //cfgControlsKeysetLabel.Location = new Point(3, 3);
         //cfgControlsKeysetLabel.Name = "cfgControlsKeysetLabel";
         //cfgControlsKeysetLabel.Size = new Size(193, 23);
         //cfgControlsKeysetLabel.TabIndex = 4;
         //cfgControlsKeysetLabel.Text = "keyset";
-        //// 
+        ////
         //// cfgControlsScrollMinZoomPanel
-        //// 
+        ////
         //cfgControlsScrollMinZoomPanel.BackColor = Color.Gray;
         //cfgControlsScrollMinZoomPanel.Controls.Add(cfgControlsScrollMinZoomNumericUpDown);
         //cfgControlsScrollMinZoomPanel.Controls.Add(cfgControlsScrollMinZoomLabel);
@@ -1316,24 +1333,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgControlsScrollMinZoomPanel.Name = "cfgControlsScrollMinZoomPanel";
         //cfgControlsScrollMinZoomPanel.Size = new Size(325, 30);
         //cfgControlsScrollMinZoomPanel.TabIndex = 24;
-        //// 
+        ////
         //// cfgControlsScrollMinZoomNumericUpDown
-        //// 
+        ////
         //cfgControlsScrollMinZoomNumericUpDown.Location = new Point(202, 3);
         //cfgControlsScrollMinZoomNumericUpDown.Name = "cfgControlsScrollMinZoomNumericUpDown";
         //cfgControlsScrollMinZoomNumericUpDown.Size = new Size(120, 23);
         //cfgControlsScrollMinZoomNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgControlsScrollMinZoomLabel
-        //// 
+        ////
         //cfgControlsScrollMinZoomLabel.Location = new Point(3, 3);
         //cfgControlsScrollMinZoomLabel.Name = "cfgControlsScrollMinZoomLabel";
         //cfgControlsScrollMinZoomLabel.Size = new Size(193, 23);
         //cfgControlsScrollMinZoomLabel.TabIndex = 4;
         //cfgControlsScrollMinZoomLabel.Text = "campaign_scroll_min_zoom";
-        //// 
+        ////
         //// cfgControlsScrollMaxZoomPanel
-        //// 
+        ////
         //cfgControlsScrollMaxZoomPanel.BackColor = Color.Gray;
         //cfgControlsScrollMaxZoomPanel.Controls.Add(cfgControlsScrollMaxZoomNumericUpDown);
         //cfgControlsScrollMaxZoomPanel.Controls.Add(cfgControlsScrollMaxZoomLabel);
@@ -1341,33 +1358,33 @@ public partial class ModConfigSettingsForm : Form
         //cfgControlsScrollMaxZoomPanel.Name = "cfgControlsScrollMaxZoomPanel";
         //cfgControlsScrollMaxZoomPanel.Size = new Size(325, 30);
         //cfgControlsScrollMaxZoomPanel.TabIndex = 23;
-        //// 
+        ////
         //// cfgControlsScrollMaxZoomNumericUpDown
-        //// 
+        ////
         //cfgControlsScrollMaxZoomNumericUpDown.Location = new Point(202, 3);
         //cfgControlsScrollMaxZoomNumericUpDown.Name = "cfgControlsScrollMaxZoomNumericUpDown";
         //cfgControlsScrollMaxZoomNumericUpDown.Size = new Size(120, 23);
         //cfgControlsScrollMaxZoomNumericUpDown.TabIndex = 9;
-        //// 
+        ////
         //// cfgControlsScrollMaxZoomLabel
-        //// 
+        ////
         //cfgControlsScrollMaxZoomLabel.Location = new Point(3, 3);
         //cfgControlsScrollMaxZoomLabel.Name = "cfgControlsScrollMaxZoomLabel";
         //cfgControlsScrollMaxZoomLabel.Size = new Size(193, 23);
         //cfgControlsScrollMaxZoomLabel.TabIndex = 4;
         //cfgControlsScrollMaxZoomLabel.Text = "campaign_scroll_max_zoom";
-        //// 
+        ////
         //// label3
-        //// 
+        ////
         //label3.AutoSize = true;
         //label3.Location = new Point(16, 14);
         //label3.Name = "label3";
         //label3.Size = new Size(129, 15);
         //label3.TabIndex = 0;
         //label3.Text = "CAMERA + CONTROLS";
-        //// 
+        ////
         //// tabPage4
-        //// 
+        ////
         //tabPage4.Controls.Add(cfgHotseatGameNamePanel);
         //tabPage4.Controls.Add(cfgHotseatAdminPasswordPanel);
         //tabPage4.Controls.Add(cfgHotseatPasswordsPanel);
@@ -1392,9 +1409,9 @@ public partial class ModConfigSettingsForm : Form
         //tabPage4.TabIndex = 3;
         //tabPage4.Text = "Multiplayer & Hotseat";
         //tabPage4.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatGameNamePanel
-        //// 
+        ////
         //cfgHotseatGameNamePanel.BackColor = Color.LightGray;
         //cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameTextBox);
         //cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameLabel);
@@ -1402,24 +1419,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatGameNamePanel.Name = "cfgHotseatGameNamePanel";
         //cfgHotseatGameNamePanel.Size = new Size(231, 58);
         //cfgHotseatGameNamePanel.TabIndex = 16;
-        //// 
+        ////
         //// cfgHotseatGameNameTextBox
-        //// 
+        ////
         //cfgHotseatGameNameTextBox.Location = new Point(128, 12);
         //cfgHotseatGameNameTextBox.Name = "cfgHotseatGameNameTextBox";
         //cfgHotseatGameNameTextBox.Size = new Size(100, 23);
         //cfgHotseatGameNameTextBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgHotseatGameNameLabel
-        //// 
+        ////
         //cfgHotseatGameNameLabel.Location = new Point(16, 12);
         //cfgHotseatGameNameLabel.Name = "cfgHotseatGameNameLabel";
         //cfgHotseatGameNameLabel.Size = new Size(106, 32);
         //cfgHotseatGameNameLabel.TabIndex = 0;
         //cfgHotseatGameNameLabel.Text = "gamename";
-        //// 
+        ////
         //// cfgHotseatAdminPasswordPanel
-        //// 
+        ////
         //cfgHotseatAdminPasswordPanel.BackColor = Color.LightGray;
         //cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordTextBox);
         //cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordLabel);
@@ -1427,24 +1444,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatAdminPasswordPanel.Name = "cfgHotseatAdminPasswordPanel";
         //cfgHotseatAdminPasswordPanel.Size = new Size(231, 58);
         //cfgHotseatAdminPasswordPanel.TabIndex = 15;
-        //// 
+        ////
         //// cfgHotseatAdminPasswordTextBox
-        //// 
+        ////
         //cfgHotseatAdminPasswordTextBox.Location = new Point(128, 12);
         //cfgHotseatAdminPasswordTextBox.Name = "cfgHotseatAdminPasswordTextBox";
         //cfgHotseatAdminPasswordTextBox.Size = new Size(100, 23);
         //cfgHotseatAdminPasswordTextBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgHotseatAdminPasswordLabel
-        //// 
+        ////
         //cfgHotseatAdminPasswordLabel.Location = new Point(16, 12);
         //cfgHotseatAdminPasswordLabel.Name = "cfgHotseatAdminPasswordLabel";
         //cfgHotseatAdminPasswordLabel.Size = new Size(106, 32);
         //cfgHotseatAdminPasswordLabel.TabIndex = 0;
         //cfgHotseatAdminPasswordLabel.Text = "admin_password";
-        //// 
+        ////
         //// cfgHotseatPasswordsPanel
-        //// 
+        ////
         //cfgHotseatPasswordsPanel.BackColor = Color.LightGray;
         //cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsTextBox);
         //cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsLabel);
@@ -1452,24 +1469,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatPasswordsPanel.Name = "cfgHotseatPasswordsPanel";
         //cfgHotseatPasswordsPanel.Size = new Size(231, 58);
         //cfgHotseatPasswordsPanel.TabIndex = 14;
-        //// 
+        ////
         //// cfgHotseatPasswordsTextBox
-        //// 
+        ////
         //cfgHotseatPasswordsTextBox.Location = new Point(128, 12);
         //cfgHotseatPasswordsTextBox.Name = "cfgHotseatPasswordsTextBox";
         //cfgHotseatPasswordsTextBox.Size = new Size(100, 23);
         //cfgHotseatPasswordsTextBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgHotseatPasswordsLabel
-        //// 
+        ////
         //cfgHotseatPasswordsLabel.Location = new Point(16, 12);
         //cfgHotseatPasswordsLabel.Name = "cfgHotseatPasswordsLabel";
         //cfgHotseatPasswordsLabel.Size = new Size(106, 31);
         //cfgHotseatPasswordsLabel.TabIndex = 0;
         //cfgHotseatPasswordsLabel.Text = "passwords";
-        //// 
+        ////
         //// cfgHotseatValidateDiplomacyCheckBox
-        //// 
+        ////
         //cfgHotseatValidateDiplomacyCheckBox.AutoSize = true;
         //cfgHotseatValidateDiplomacyCheckBox.Location = new Point(19, 357);
         //cfgHotseatValidateDiplomacyCheckBox.Name = "cfgHotseatValidateDiplomacyCheckBox";
@@ -1477,9 +1494,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatValidateDiplomacyCheckBox.TabIndex = 13;
         //cfgHotseatValidateDiplomacyCheckBox.Text = "validate_diplomacy";
         //cfgHotseatValidateDiplomacyCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatAllowValidationFailuresCheckBox
-        //// 
+        ////
         //cfgHotseatAllowValidationFailuresCheckBox.AutoSize = true;
         //cfgHotseatAllowValidationFailuresCheckBox.Location = new Point(19, 332);
         //cfgHotseatAllowValidationFailuresCheckBox.Name = "cfgHotseatAllowValidationFailuresCheckBox";
@@ -1487,9 +1504,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatAllowValidationFailuresCheckBox.TabIndex = 12;
         //cfgHotseatAllowValidationFailuresCheckBox.Text = "allow_validation_failures";
         //cfgHotseatAllowValidationFailuresCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatValidateDataCheckBox
-        //// 
+        ////
         //cfgHotseatValidateDataCheckBox.AutoSize = true;
         //cfgHotseatValidateDataCheckBox.Location = new Point(19, 307);
         //cfgHotseatValidateDataCheckBox.Name = "cfgHotseatValidateDataCheckBox";
@@ -1497,9 +1514,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatValidateDataCheckBox.TabIndex = 11;
         //cfgHotseatValidateDataCheckBox.Text = "validate_data";
         //cfgHotseatValidateDataCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatCloseAfterSaveCheckBox
-        //// 
+        ////
         //cfgHotseatCloseAfterSaveCheckBox.AutoSize = true;
         //cfgHotseatCloseAfterSaveCheckBox.Location = new Point(19, 282);
         //cfgHotseatCloseAfterSaveCheckBox.Name = "cfgHotseatCloseAfterSaveCheckBox";
@@ -1507,9 +1524,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatCloseAfterSaveCheckBox.TabIndex = 10;
         //cfgHotseatCloseAfterSaveCheckBox.Text = "close_after_save";
         //cfgHotseatCloseAfterSaveCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatSaveConfigCheckBox
-        //// 
+        ////
         //cfgHotseatSaveConfigCheckBox.AutoSize = true;
         //cfgHotseatSaveConfigCheckBox.Location = new Point(19, 257);
         //cfgHotseatSaveConfigCheckBox.Name = "cfgHotseatSaveConfigCheckBox";
@@ -1517,9 +1534,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatSaveConfigCheckBox.TabIndex = 9;
         //cfgHotseatSaveConfigCheckBox.Text = "save_config";
         //cfgHotseatSaveConfigCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatAutosaveCheckBox
-        //// 
+        ////
         //cfgHotseatAutosaveCheckBox.AutoSize = true;
         //cfgHotseatAutosaveCheckBox.Location = new Point(19, 232);
         //cfgHotseatAutosaveCheckBox.Name = "cfgHotseatAutosaveCheckBox";
@@ -1527,9 +1544,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatAutosaveCheckBox.TabIndex = 8;
         //cfgHotseatAutosaveCheckBox.Text = "autosave";
         //cfgHotseatAutosaveCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatUpdateAiCameraCheckBox
-        //// 
+        ////
         //cfgHotseatUpdateAiCameraCheckBox.AutoSize = true;
         //cfgHotseatUpdateAiCameraCheckBox.Location = new Point(19, 207);
         //cfgHotseatUpdateAiCameraCheckBox.Name = "cfgHotseatUpdateAiCameraCheckBox";
@@ -1537,9 +1554,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatUpdateAiCameraCheckBox.TabIndex = 7;
         //cfgHotseatUpdateAiCameraCheckBox.Text = "update_ai_camera";
         //cfgHotseatUpdateAiCameraCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatSavePrefsCheckBox
-        //// 
+        ////
         //cfgHotseatSavePrefsCheckBox.AutoSize = true;
         //cfgHotseatSavePrefsCheckBox.Location = new Point(19, 182);
         //cfgHotseatSavePrefsCheckBox.Name = "cfgHotseatSavePrefsCheckBox";
@@ -1547,9 +1564,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatSavePrefsCheckBox.TabIndex = 6;
         //cfgHotseatSavePrefsCheckBox.Text = "save_prefs";
         //cfgHotseatSavePrefsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatDisablePapalElectionsCheckBox
-        //// 
+        ////
         //cfgHotseatDisablePapalElectionsCheckBox.AutoSize = true;
         //cfgHotseatDisablePapalElectionsCheckBox.Location = new Point(19, 157);
         //cfgHotseatDisablePapalElectionsCheckBox.Name = "cfgHotseatDisablePapalElectionsCheckBox";
@@ -1557,9 +1574,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatDisablePapalElectionsCheckBox.TabIndex = 5;
         //cfgHotseatDisablePapalElectionsCheckBox.Text = "disable_papal_elections";
         //cfgHotseatDisablePapalElectionsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatDisableConsoleCheckBox
-        //// 
+        ////
         //cfgHotseatDisableConsoleCheckBox.AutoSize = true;
         //cfgHotseatDisableConsoleCheckBox.Location = new Point(19, 132);
         //cfgHotseatDisableConsoleCheckBox.Name = "cfgHotseatDisableConsoleCheckBox";
@@ -1567,9 +1584,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatDisableConsoleCheckBox.TabIndex = 4;
         //cfgHotseatDisableConsoleCheckBox.Text = "disable_console";
         //cfgHotseatDisableConsoleCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatTurnsCheckBox
-        //// 
+        ////
         //cfgHotseatTurnsCheckBox.AutoSize = true;
         //cfgHotseatTurnsCheckBox.Location = new Point(19, 107);
         //cfgHotseatTurnsCheckBox.Name = "cfgHotseatTurnsCheckBox";
@@ -1577,9 +1594,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatTurnsCheckBox.TabIndex = 3;
         //cfgHotseatTurnsCheckBox.Text = "turns";
         //cfgHotseatTurnsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatScrollCheckBox
-        //// 
+        ////
         //cfgHotseatScrollCheckBox.AutoSize = true;
         //cfgHotseatScrollCheckBox.Location = new Point(19, 82);
         //cfgHotseatScrollCheckBox.Name = "cfgHotseatScrollCheckBox";
@@ -1587,9 +1604,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatScrollCheckBox.TabIndex = 2;
         //cfgHotseatScrollCheckBox.Text = "scroll";
         //cfgHotseatScrollCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgHotseatAutoresolveBattlesCheckBox
-        //// 
+        ////
         //cfgHotseatAutoresolveBattlesCheckBox.AutoSize = true;
         //cfgHotseatAutoresolveBattlesCheckBox.Location = new Point(19, 57);
         //cfgHotseatAutoresolveBattlesCheckBox.Name = "cfgHotseatAutoresolveBattlesCheckBox";
@@ -1597,18 +1614,18 @@ public partial class ModConfigSettingsForm : Form
         //cfgHotseatAutoresolveBattlesCheckBox.TabIndex = 1;
         //cfgHotseatAutoresolveBattlesCheckBox.Text = "autoresolve_battles";
         //cfgHotseatAutoresolveBattlesCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// label4
-        //// 
+        ////
         //label4.AutoSize = true;
         //label4.Location = new Point(21, 17);
         //label4.Name = "label4";
         //label4.Size = new Size(142, 15);
         //label4.TabIndex = 0;
         //label4.Text = "MULTIPLAYER + HOTSEAT";
-        //// 
+        ////
         //// tabPage5
-        //// 
+        ////
         //tabPage5.Controls.Add(cfgNetworkGroupBox);
         //tabPage5.Controls.Add(cfgMiscGroupBox);
         //tabPage5.Controls.Add(cfgIOGroupBox);
@@ -1621,9 +1638,9 @@ public partial class ModConfigSettingsForm : Form
         //tabPage5.TabIndex = 4;
         //tabPage5.Text = "Game Settings";
         //tabPage5.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgNetworkGroupBox
-        //// 
+        ////
         //cfgNetworkGroupBox.Controls.Add(cfgNetworkUsePortPanel);
         //cfgNetworkGroupBox.Controls.Add(cfgNetworkUseIpPanel);
         //cfgNetworkGroupBox.Location = new Point(294, 25);
@@ -1632,9 +1649,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgNetworkGroupBox.TabIndex = 6;
         //cfgNetworkGroupBox.TabStop = false;
         //cfgNetworkGroupBox.Text = "[network]";
-        //// 
+        ////
         //// cfgNetworkUsePortPanel
-        //// 
+        ////
         //cfgNetworkUsePortPanel.BackColor = Color.Silver;
         //cfgNetworkUsePortPanel.Controls.Add(cfgNetworkUsePortTextBox);
         //cfgNetworkUsePortPanel.Controls.Add(cfgNetworkUsePortLabel);
@@ -1642,26 +1659,26 @@ public partial class ModConfigSettingsForm : Form
         //cfgNetworkUsePortPanel.Name = "cfgNetworkUsePortPanel";
         //cfgNetworkUsePortPanel.Size = new Size(400, 42);
         //cfgNetworkUsePortPanel.TabIndex = 1;
-        //// 
+        ////
         //// cfgNetworkUsePortTextBox
-        //// 
+        ////
         //cfgNetworkUsePortTextBox.Location = new Point(84, 2);
         //cfgNetworkUsePortTextBox.Name = "cfgNetworkUsePortTextBox";
         //cfgNetworkUsePortTextBox.Size = new Size(182, 23);
         //cfgNetworkUsePortTextBox.TabIndex = 1;
         //cfgNetworkUsePortTextBox.Text = "27750";
-        //// 
+        ////
         //// cfgNetworkUsePortLabel
-        //// 
+        ////
         //cfgNetworkUsePortLabel.Location = new Point(3, 0);
         //cfgNetworkUsePortLabel.Name = "cfgNetworkUsePortLabel";
         //cfgNetworkUsePortLabel.Size = new Size(100, 24);
         //cfgNetworkUsePortLabel.TabIndex = 0;
         //cfgNetworkUsePortLabel.Text = "use_port";
         //cfgNetworkUsePortLabel.TextAlign = ContentAlignment.MiddleLeft;
-        //// 
+        ////
         //// cfgNetworkUseIpPanel
-        //// 
+        ////
         //cfgNetworkUseIpPanel.BackColor = Color.Silver;
         //cfgNetworkUseIpPanel.Controls.Add(cfgNetworkUseIpTextBox);
         //cfgNetworkUseIpPanel.Controls.Add(cfgNetworkUseIpLabel);
@@ -1669,25 +1686,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgNetworkUseIpPanel.Name = "cfgNetworkUseIpPanel";
         //cfgNetworkUseIpPanel.Size = new Size(400, 37);
         //cfgNetworkUseIpPanel.TabIndex = 0;
-        //// 
+        ////
         //// cfgNetworkUseIpTextBox
-        //// 
+        ////
         //cfgNetworkUseIpTextBox.Location = new Point(84, 5);
         //cfgNetworkUseIpTextBox.Name = "cfgNetworkUseIpTextBox";
         //cfgNetworkUseIpTextBox.Size = new Size(182, 23);
         //cfgNetworkUseIpTextBox.TabIndex = 1;
         //cfgNetworkUseIpTextBox.Text = "xxx.xxx.xxx.xxx";
-        //// 
+        ////
         //// cfgNetworkUseIpLabel
-        //// 
+        ////
         //cfgNetworkUseIpLabel.Location = new Point(11, 8);
         //cfgNetworkUseIpLabel.Name = "cfgNetworkUseIpLabel";
         //cfgNetworkUseIpLabel.Size = new Size(100, 23);
         //cfgNetworkUseIpLabel.TabIndex = 0;
         //cfgNetworkUseIpLabel.Text = "use_ip";
-        //// 
+        ////
         //// cfgMiscGroupBox
-        //// 
+        ////
         //cfgMiscGroupBox.Controls.Add(cfgMiscBypassToStrategySavePanel);
         //cfgMiscGroupBox.Controls.Add(cfgMiscUnlockCampaignCheckBox);
         //cfgMiscGroupBox.Location = new Point(29, 195);
@@ -1696,9 +1713,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgMiscGroupBox.TabIndex = 5;
         //cfgMiscGroupBox.TabStop = false;
         //cfgMiscGroupBox.Text = "[misc]";
-        //// 
+        ////
         //// cfgMiscBypassToStrategySavePanel
-        //// 
+        ////
         //cfgMiscBypassToStrategySavePanel.BackColor = Color.DarkGray;
         //cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveTextBox);
         //cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveLabel);
@@ -1706,24 +1723,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgMiscBypassToStrategySavePanel.Name = "cfgMiscBypassToStrategySavePanel";
         //cfgMiscBypassToStrategySavePanel.Size = new Size(265, 43);
         //cfgMiscBypassToStrategySavePanel.TabIndex = 1;
-        //// 
+        ////
         //// cfgMiscBypassToStrategySaveTextBox
-        //// 
+        ////
         //cfgMiscBypassToStrategySaveTextBox.Location = new Point(157, 7);
         //cfgMiscBypassToStrategySaveTextBox.Name = "cfgMiscBypassToStrategySaveTextBox";
         //cfgMiscBypassToStrategySaveTextBox.Size = new Size(100, 23);
         //cfgMiscBypassToStrategySaveTextBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgMiscBypassToStrategySaveLabel
-        //// 
+        ////
         //cfgMiscBypassToStrategySaveLabel.Location = new Point(8, 7);
         //cfgMiscBypassToStrategySaveLabel.Name = "cfgMiscBypassToStrategySaveLabel";
         //cfgMiscBypassToStrategySaveLabel.Size = new Size(143, 23);
         //cfgMiscBypassToStrategySaveLabel.TabIndex = 0;
         //cfgMiscBypassToStrategySaveLabel.Text = "bypass_to_strategy_save";
-        //// 
+        ////
         //// cfgMiscUnlockCampaignCheckBox
-        //// 
+        ////
         //cfgMiscUnlockCampaignCheckBox.AutoSize = true;
         //cfgMiscUnlockCampaignCheckBox.Location = new Point(14, 24);
         //cfgMiscUnlockCampaignCheckBox.Name = "cfgMiscUnlockCampaignCheckBox";
@@ -1731,9 +1748,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgMiscUnlockCampaignCheckBox.TabIndex = 0;
         //cfgMiscUnlockCampaignCheckBox.Text = "unlock_campaign";
         //cfgMiscUnlockCampaignCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgIOGroupBox
-        //// 
+        ////
         //cfgIOGroupBox.Controls.Add(cfgIOFileFirstCheckBox);
         //cfgIOGroupBox.Location = new Point(29, 115);
         //cfgIOGroupBox.Name = "cfgIOGroupBox";
@@ -1741,9 +1758,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgIOGroupBox.TabIndex = 4;
         //cfgIOGroupBox.TabStop = false;
         //cfgIOGroupBox.Text = "[io]";
-        //// 
+        ////
         //// cfgIOFileFirstCheckBox
-        //// 
+        ////
         //cfgIOFileFirstCheckBox.AutoSize = true;
         //cfgIOFileFirstCheckBox.Location = new Point(10, 22);
         //cfgIOFileFirstCheckBox.Name = "cfgIOFileFirstCheckBox";
@@ -1751,9 +1768,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgIOFileFirstCheckBox.TabIndex = 0;
         //cfgIOFileFirstCheckBox.Text = "file_first";
         //cfgIOFileFirstCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgFeaturesGroupBox
-        //// 
+        ////
         //cfgFeaturesGroupBox.Controls.Add(cfgFeaturesEditorCheckBox);
         //cfgFeaturesGroupBox.Location = new Point(29, 46);
         //cfgFeaturesGroupBox.Name = "cfgFeaturesGroupBox";
@@ -1761,9 +1778,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgFeaturesGroupBox.TabIndex = 3;
         //cfgFeaturesGroupBox.TabStop = false;
         //cfgFeaturesGroupBox.Text = "[features]";
-        //// 
+        ////
         //// cfgFeaturesEditorCheckBox
-        //// 
+        ////
         //cfgFeaturesEditorCheckBox.AutoSize = true;
         //cfgFeaturesEditorCheckBox.Location = new Point(18, 27);
         //cfgFeaturesEditorCheckBox.Name = "cfgFeaturesEditorCheckBox";
@@ -1771,18 +1788,18 @@ public partial class ModConfigSettingsForm : Form
         //cfgFeaturesEditorCheckBox.TabIndex = 0;
         //cfgFeaturesEditorCheckBox.Text = "editor";
         //cfgFeaturesEditorCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// label5
-        //// 
+        ////
         //label5.AutoSize = true;
         //label5.Location = new Point(13, 16);
         //label5.Name = "label5";
         //label5.Size = new Size(93, 15);
         //label5.TabIndex = 0;
         //label5.Text = "GAME SETTINGS";
-        //// 
+        ////
         //// tabPage6
-        //// 
+        ////
         //tabPage6.Controls.Add(groupBoxConfigLogMode);
         //tabPage6.Controls.Add(label6);
         //tabPage6.Location = new Point(4, 24);
@@ -1791,18 +1808,18 @@ public partial class ModConfigSettingsForm : Form
         //tabPage6.TabIndex = 5;
         //tabPage6.Text = "Diagnostics & Logging";
         //tabPage6.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// label6
-        //// 
+        ////
         //label6.AutoSize = true;
         //label6.Location = new Point(11, 15);
         //label6.Name = "label6";
         //label6.Size = new Size(146, 15);
         //label6.TabIndex = 0;
         //label6.Text = "DIAGNOSTICS + LOGGING";
-        //// 
+        ////
         //// tabPage7
-        //// 
+        ////
         //tabPage7.Controls.Add(cfgUIGroupBox);
         //tabPage7.Location = new Point(4, 24);
         //tabPage7.Name = "tabPage7";
@@ -1811,9 +1828,9 @@ public partial class ModConfigSettingsForm : Form
         //tabPage7.TabIndex = 6;
         //tabPage7.Text = "UI";
         //tabPage7.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgUIGroupBox
-        //// 
+        ////
         //cfgUIGroupBox.BackColor = Color.Gray;
         //cfgUIGroupBox.Controls.Add(cfgUiUnitCardsCheckBox);
         //cfgUIGroupBox.Controls.Add(cfgUiShowTooltipsCheckBox);
@@ -1825,9 +1842,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgUIGroupBox.Name = "cfgUIGroupBox";
         //cfgUIGroupBox.Size = new Size(373, 294);
         //cfgUIGroupBox.TabIndex = 0;
-        //// 
+        ////
         //// cfgUiUnitCardsCheckBox
-        //// 
+        ////
         //cfgUiUnitCardsCheckBox.AutoSize = true;
         //cfgUiUnitCardsCheckBox.Location = new Point(27, 152);
         //cfgUiUnitCardsCheckBox.Name = "cfgUiUnitCardsCheckBox";
@@ -1835,9 +1852,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgUiUnitCardsCheckBox.TabIndex = 5;
         //cfgUiUnitCardsCheckBox.Text = "unit_cards";
         //cfgUiUnitCardsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgUiShowTooltipsCheckBox
-        //// 
+        ////
         //cfgUiShowTooltipsCheckBox.AutoSize = true;
         //cfgUiShowTooltipsCheckBox.Location = new Point(27, 127);
         //cfgUiShowTooltipsCheckBox.Name = "cfgUiShowTooltipsCheckBox";
@@ -1845,9 +1862,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgUiShowTooltipsCheckBox.TabIndex = 4;
         //cfgUiShowTooltipsCheckBox.Text = "show_tooltips";
         //cfgUiShowTooltipsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgUiRadarCheckBox
-        //// 
+        ////
         //cfgUiRadarCheckBox.AutoSize = true;
         //cfgUiRadarCheckBox.Location = new Point(27, 102);
         //cfgUiRadarCheckBox.Name = "cfgUiRadarCheckBox";
@@ -1855,9 +1872,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgUiRadarCheckBox.TabIndex = 3;
         //cfgUiRadarCheckBox.Text = "radar";
         //cfgUiRadarCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgUiFullBattleHudCheckBox
-        //// 
+        ////
         //cfgUiFullBattleHudCheckBox.AutoSize = true;
         //cfgUiFullBattleHudCheckBox.Location = new Point(27, 77);
         //cfgUiFullBattleHudCheckBox.Name = "cfgUiFullBattleHudCheckBox";
@@ -1865,9 +1882,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgUiFullBattleHudCheckBox.TabIndex = 2;
         //cfgUiFullBattleHudCheckBox.Text = "full_battle_HUD";
         //cfgUiFullBattleHudCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgUiButtonsCheckBox
-        //// 
+        ////
         //cfgUiButtonsCheckBox.AutoSize = true;
         //cfgUiButtonsCheckBox.Location = new Point(27, 52);
         //cfgUiButtonsCheckBox.Name = "cfgUiButtonsCheckBox";
@@ -1875,9 +1892,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgUiButtonsCheckBox.TabIndex = 1;
         //cfgUiButtonsCheckBox.Text = "buttons";
         //cfgUiButtonsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgUiSaCardsCheckBox
-        //// 
+        ////
         //cfgUiSaCardsCheckBox.AutoSize = true;
         //cfgUiSaCardsCheckBox.Location = new Point(27, 27);
         //cfgUiSaCardsCheckBox.Name = "cfgUiSaCardsCheckBox";
@@ -1885,9 +1902,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgUiSaCardsCheckBox.TabIndex = 0;
         //cfgUiSaCardsCheckBox.Text = "SA_cards";
         //cfgUiSaCardsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// tabPage8
-        //// 
+        ////
         //tabPage8.Controls.Add(cfgVideoGammaPanel);
         //tabPage8.Controls.Add(cfgVideoWaterBuffersPerNodePanel);
         //tabPage8.Controls.Add(cfgVideoUnitDetailPanel);
@@ -1915,9 +1932,9 @@ public partial class ModConfigSettingsForm : Form
         //tabPage8.TabIndex = 7;
         //tabPage8.Text = "Video_1";
         //tabPage8.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoGammaPanel
-        //// 
+        ////
         //cfgVideoGammaPanel.BackColor = Color.Silver;
         //cfgVideoGammaPanel.Controls.Add(cfgVideoGammaNumericUpDown);
         //cfgVideoGammaPanel.Controls.Add(cfgVideoGammaLabel);
@@ -1925,24 +1942,24 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoGammaPanel.Name = "cfgVideoGammaPanel";
         //cfgVideoGammaPanel.Size = new Size(317, 30);
         //cfgVideoGammaPanel.TabIndex = 19;
-        //// 
+        ////
         //// cfgVideoGammaNumericUpDown
-        //// 
+        ////
         //cfgVideoGammaNumericUpDown.Location = new Point(180, 3);
         //cfgVideoGammaNumericUpDown.Name = "cfgVideoGammaNumericUpDown";
         //cfgVideoGammaNumericUpDown.Size = new Size(121, 23);
         //cfgVideoGammaNumericUpDown.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoGammaLabel
-        //// 
+        ////
         //cfgVideoGammaLabel.Location = new Point(7, 3);
         //cfgVideoGammaLabel.Name = "cfgVideoGammaLabel";
         //cfgVideoGammaLabel.Size = new Size(167, 23);
         //cfgVideoGammaLabel.TabIndex = 0;
         //cfgVideoGammaLabel.Text = "gamma";
-        //// 
+        ////
         //// cfgVideoWaterBuffersPerNodePanel
-        //// 
+        ////
         //cfgVideoWaterBuffersPerNodePanel.BackColor = Color.Silver;
         //cfgVideoWaterBuffersPerNodePanel.Controls.Add(cfgVideoWaterBuffersPerNodeComboBox);
         //cfgVideoWaterBuffersPerNodePanel.Controls.Add(cfgVideoWaterBuffersPerNodeLabel);
@@ -1950,25 +1967,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoWaterBuffersPerNodePanel.Name = "cfgVideoWaterBuffersPerNodePanel";
         //cfgVideoWaterBuffersPerNodePanel.Size = new Size(317, 30);
         //cfgVideoWaterBuffersPerNodePanel.TabIndex = 18;
-        //// 
+        ////
         //// cfgVideoWaterBuffersPerNodeComboBox
-        //// 
+        ////
         //cfgVideoWaterBuffersPerNodeComboBox.FormattingEnabled = true;
         //cfgVideoWaterBuffersPerNodeComboBox.Location = new Point(180, 3);
         //cfgVideoWaterBuffersPerNodeComboBox.Name = "cfgVideoWaterBuffersPerNodeComboBox";
         //cfgVideoWaterBuffersPerNodeComboBox.Size = new Size(121, 23);
         //cfgVideoWaterBuffersPerNodeComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoWaterBuffersPerNodeLabel
-        //// 
+        ////
         //cfgVideoWaterBuffersPerNodeLabel.Location = new Point(7, 3);
         //cfgVideoWaterBuffersPerNodeLabel.Name = "cfgVideoWaterBuffersPerNodeLabel";
         //cfgVideoWaterBuffersPerNodeLabel.Size = new Size(167, 23);
         //cfgVideoWaterBuffersPerNodeLabel.TabIndex = 0;
         //cfgVideoWaterBuffersPerNodeLabel.Text = "water_buffers_per_node";
-        //// 
+        ////
         //// cfgVideoUnitDetailPanel
-        //// 
+        ////
         //cfgVideoUnitDetailPanel.BackColor = Color.Silver;
         //cfgVideoUnitDetailPanel.Controls.Add(cfgVideoUnitDetailComboBox);
         //cfgVideoUnitDetailPanel.Controls.Add(cfgVideoUnitDetailLabel);
@@ -1976,25 +1993,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoUnitDetailPanel.Name = "cfgVideoUnitDetailPanel";
         //cfgVideoUnitDetailPanel.Size = new Size(317, 30);
         //cfgVideoUnitDetailPanel.TabIndex = 17;
-        //// 
+        ////
         //// cfgVideoUnitDetailComboBox
-        //// 
+        ////
         //cfgVideoUnitDetailComboBox.FormattingEnabled = true;
         //cfgVideoUnitDetailComboBox.Location = new Point(180, 3);
         //cfgVideoUnitDetailComboBox.Name = "cfgVideoUnitDetailComboBox";
         //cfgVideoUnitDetailComboBox.Size = new Size(121, 23);
         //cfgVideoUnitDetailComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoUnitDetailLabel
-        //// 
+        ////
         //cfgVideoUnitDetailLabel.Location = new Point(7, 3);
         //cfgVideoUnitDetailLabel.Name = "cfgVideoUnitDetailLabel";
         //cfgVideoUnitDetailLabel.Size = new Size(167, 23);
         //cfgVideoUnitDetailLabel.TabIndex = 0;
         //cfgVideoUnitDetailLabel.Text = "unit_detail";
-        //// 
+        ////
         //// cfgVideoTextureFilteringPanel
-        //// 
+        ////
         //cfgVideoTextureFilteringPanel.BackColor = Color.Silver;
         //cfgVideoTextureFilteringPanel.Controls.Add(cfgVideoTextureFilteringComboBox);
         //cfgVideoTextureFilteringPanel.Controls.Add(cfgVideoTextureFilteringLabel);
@@ -2002,25 +2019,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoTextureFilteringPanel.Name = "cfgVideoTextureFilteringPanel";
         //cfgVideoTextureFilteringPanel.Size = new Size(317, 30);
         //cfgVideoTextureFilteringPanel.TabIndex = 16;
-        //// 
+        ////
         //// cfgVideoTextureFilteringComboBox
-        //// 
+        ////
         //cfgVideoTextureFilteringComboBox.FormattingEnabled = true;
         //cfgVideoTextureFilteringComboBox.Location = new Point(180, 3);
         //cfgVideoTextureFilteringComboBox.Name = "cfgVideoTextureFilteringComboBox";
         //cfgVideoTextureFilteringComboBox.Size = new Size(121, 23);
         //cfgVideoTextureFilteringComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoTextureFilteringLabel
-        //// 
+        ////
         //cfgVideoTextureFilteringLabel.Location = new Point(7, 3);
         //cfgVideoTextureFilteringLabel.Name = "cfgVideoTextureFilteringLabel";
         //cfgVideoTextureFilteringLabel.Size = new Size(167, 23);
         //cfgVideoTextureFilteringLabel.TabIndex = 0;
         //cfgVideoTextureFilteringLabel.Text = "texture_filtering";
-        //// 
+        ////
         //// cfgVideoTerrainQualityPanel
-        //// 
+        ////
         //cfgVideoTerrainQualityPanel.BackColor = Color.Silver;
         //cfgVideoTerrainQualityPanel.Controls.Add(cfgVideoTerrainQualityComboBox);
         //cfgVideoTerrainQualityPanel.Controls.Add(cfgVideoTerrainQualityLabel);
@@ -2028,25 +2045,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoTerrainQualityPanel.Name = "cfgVideoTerrainQualityPanel";
         //cfgVideoTerrainQualityPanel.Size = new Size(317, 30);
         //cfgVideoTerrainQualityPanel.TabIndex = 15;
-        //// 
+        ////
         //// cfgVideoTerrainQualityComboBox
-        //// 
+        ////
         //cfgVideoTerrainQualityComboBox.FormattingEnabled = true;
         //cfgVideoTerrainQualityComboBox.Location = new Point(180, 3);
         //cfgVideoTerrainQualityComboBox.Name = "cfgVideoTerrainQualityComboBox";
         //cfgVideoTerrainQualityComboBox.Size = new Size(121, 23);
         //cfgVideoTerrainQualityComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoTerrainQualityLabel
-        //// 
+        ////
         //cfgVideoTerrainQualityLabel.Location = new Point(7, 3);
         //cfgVideoTerrainQualityLabel.Name = "cfgVideoTerrainQualityLabel";
         //cfgVideoTerrainQualityLabel.Size = new Size(167, 23);
         //cfgVideoTerrainQualityLabel.TabIndex = 0;
         //cfgVideoTerrainQualityLabel.Text = "terrain_quality";
-        //// 
+        ////
         //// cfgVideoSpriteBuffersPerNodePanel
-        //// 
+        ////
         //cfgVideoSpriteBuffersPerNodePanel.BackColor = Color.Silver;
         //cfgVideoSpriteBuffersPerNodePanel.Controls.Add(cfgVideoSpriteBuffersPerNodeComboBox);
         //cfgVideoSpriteBuffersPerNodePanel.Controls.Add(cfgVideoSpriteBuffersPerNodeLabel);
@@ -2054,25 +2071,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoSpriteBuffersPerNodePanel.Name = "cfgVideoSpriteBuffersPerNodePanel";
         //cfgVideoSpriteBuffersPerNodePanel.Size = new Size(317, 30);
         //cfgVideoSpriteBuffersPerNodePanel.TabIndex = 14;
-        //// 
+        ////
         //// cfgVideoSpriteBuffersPerNodeComboBox
-        //// 
+        ////
         //cfgVideoSpriteBuffersPerNodeComboBox.FormattingEnabled = true;
         //cfgVideoSpriteBuffersPerNodeComboBox.Location = new Point(180, 3);
         //cfgVideoSpriteBuffersPerNodeComboBox.Name = "cfgVideoSpriteBuffersPerNodeComboBox";
         //cfgVideoSpriteBuffersPerNodeComboBox.Size = new Size(121, 23);
         //cfgVideoSpriteBuffersPerNodeComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoSpriteBuffersPerNodeLabel
-        //// 
+        ////
         //cfgVideoSpriteBuffersPerNodeLabel.Location = new Point(7, 3);
         //cfgVideoSpriteBuffersPerNodeLabel.Name = "cfgVideoSpriteBuffersPerNodeLabel";
         //cfgVideoSpriteBuffersPerNodeLabel.Size = new Size(167, 23);
         //cfgVideoSpriteBuffersPerNodeLabel.TabIndex = 0;
         //cfgVideoSpriteBuffersPerNodeLabel.Text = "sprite_buffers_per_node";
-        //// 
+        ////
         //// cfgVideoShaderPanel
-        //// 
+        ////
         //cfgVideoShaderPanel.BackColor = Color.Silver;
         //cfgVideoShaderPanel.Controls.Add(cfgVideoShaderComboBox);
         //cfgVideoShaderPanel.Controls.Add(cfgVideoShaderLabel);
@@ -2080,25 +2097,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoShaderPanel.Name = "cfgVideoShaderPanel";
         //cfgVideoShaderPanel.Size = new Size(317, 30);
         //cfgVideoShaderPanel.TabIndex = 13;
-        //// 
+        ////
         //// cfgVideoShaderComboBox
-        //// 
+        ////
         //cfgVideoShaderComboBox.FormattingEnabled = true;
         //cfgVideoShaderComboBox.Location = new Point(180, 3);
         //cfgVideoShaderComboBox.Name = "cfgVideoShaderComboBox";
         //cfgVideoShaderComboBox.Size = new Size(121, 23);
         //cfgVideoShaderComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoShaderLabel
-        //// 
+        ////
         //cfgVideoShaderLabel.Location = new Point(7, 3);
         //cfgVideoShaderLabel.Name = "cfgVideoShaderLabel";
         //cfgVideoShaderLabel.Size = new Size(167, 23);
         //cfgVideoShaderLabel.TabIndex = 0;
         //cfgVideoShaderLabel.Text = "shader";
-        //// 
+        ////
         //// cfgVideoModelBuffersPerNodePanel
-        //// 
+        ////
         //cfgVideoModelBuffersPerNodePanel.BackColor = Color.Silver;
         //cfgVideoModelBuffersPerNodePanel.Controls.Add(cfgVideoModelBuffersPerNodeComboBox);
         //cfgVideoModelBuffersPerNodePanel.Controls.Add(cfgVideoModelBuffersPerNodeLabel);
@@ -2106,25 +2123,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoModelBuffersPerNodePanel.Name = "cfgVideoModelBuffersPerNodePanel";
         //cfgVideoModelBuffersPerNodePanel.Size = new Size(317, 30);
         //cfgVideoModelBuffersPerNodePanel.TabIndex = 12;
-        //// 
+        ////
         //// cfgVideoModelBuffersPerNodeComboBox
-        //// 
+        ////
         //cfgVideoModelBuffersPerNodeComboBox.FormattingEnabled = true;
         //cfgVideoModelBuffersPerNodeComboBox.Location = new Point(180, 3);
         //cfgVideoModelBuffersPerNodeComboBox.Name = "cfgVideoModelBuffersPerNodeComboBox";
         //cfgVideoModelBuffersPerNodeComboBox.Size = new Size(121, 23);
         //cfgVideoModelBuffersPerNodeComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoModelBuffersPerNodeLabel
-        //// 
+        ////
         //cfgVideoModelBuffersPerNodeLabel.Location = new Point(7, 3);
         //cfgVideoModelBuffersPerNodeLabel.Name = "cfgVideoModelBuffersPerNodeLabel";
         //cfgVideoModelBuffersPerNodeLabel.Size = new Size(167, 23);
         //cfgVideoModelBuffersPerNodeLabel.TabIndex = 0;
         //cfgVideoModelBuffersPerNodeLabel.Text = "model_buffers_per_node";
-        //// 
+        ////
         //// cfgVideoGroundCoverBuffersPerNodePanel
-        //// 
+        ////
         //cfgVideoGroundCoverBuffersPerNodePanel.BackColor = Color.Silver;
         //cfgVideoGroundCoverBuffersPerNodePanel.Controls.Add(cfgVideoGroundCoverBuffersPerNodeComboBox);
         //cfgVideoGroundCoverBuffersPerNodePanel.Controls.Add(cfgVideoGroundCoverBuffersPerNodeLabel);
@@ -2132,25 +2149,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoGroundCoverBuffersPerNodePanel.Name = "cfgVideoGroundCoverBuffersPerNodePanel";
         //cfgVideoGroundCoverBuffersPerNodePanel.Size = new Size(317, 30);
         //cfgVideoGroundCoverBuffersPerNodePanel.TabIndex = 11;
-        //// 
+        ////
         //// cfgVideoGroundCoverBuffersPerNodeComboBox
-        //// 
+        ////
         //cfgVideoGroundCoverBuffersPerNodeComboBox.FormattingEnabled = true;
         //cfgVideoGroundCoverBuffersPerNodeComboBox.Location = new Point(193, 3);
         //cfgVideoGroundCoverBuffersPerNodeComboBox.Name = "cfgVideoGroundCoverBuffersPerNodeComboBox";
         //cfgVideoGroundCoverBuffersPerNodeComboBox.Size = new Size(121, 23);
         //cfgVideoGroundCoverBuffersPerNodeComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoGroundCoverBuffersPerNodeLabel
-        //// 
+        ////
         //cfgVideoGroundCoverBuffersPerNodeLabel.Location = new Point(7, 3);
         //cfgVideoGroundCoverBuffersPerNodeLabel.Name = "cfgVideoGroundCoverBuffersPerNodeLabel";
         //cfgVideoGroundCoverBuffersPerNodeLabel.Size = new Size(180, 23);
         //cfgVideoGroundCoverBuffersPerNodeLabel.TabIndex = 0;
         //cfgVideoGroundCoverBuffersPerNodeLabel.Text = "ground_cover_buffers_per_node";
-        //// 
+        ////
         //// cfgVideoGroundBuffersPerNodePanel
-        //// 
+        ////
         //cfgVideoGroundBuffersPerNodePanel.BackColor = Color.Silver;
         //cfgVideoGroundBuffersPerNodePanel.Controls.Add(cfgVideoGroundBuffersPerNodeComboBox);
         //cfgVideoGroundBuffersPerNodePanel.Controls.Add(cfgVideoGroundBuffersPerNodeLabel);
@@ -2158,25 +2175,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoGroundBuffersPerNodePanel.Name = "cfgVideoGroundBuffersPerNodePanel";
         //cfgVideoGroundBuffersPerNodePanel.Size = new Size(317, 30);
         //cfgVideoGroundBuffersPerNodePanel.TabIndex = 10;
-        //// 
+        ////
         //// cfgVideoGroundBuffersPerNodeComboBox
-        //// 
+        ////
         //cfgVideoGroundBuffersPerNodeComboBox.FormattingEnabled = true;
         //cfgVideoGroundBuffersPerNodeComboBox.Location = new Point(180, 3);
         //cfgVideoGroundBuffersPerNodeComboBox.Name = "cfgVideoGroundBuffersPerNodeComboBox";
         //cfgVideoGroundBuffersPerNodeComboBox.Size = new Size(121, 23);
         //cfgVideoGroundBuffersPerNodeComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoGroundBuffersPerNodeLabel
-        //// 
+        ////
         //cfgVideoGroundBuffersPerNodeLabel.Location = new Point(7, 3);
         //cfgVideoGroundBuffersPerNodeLabel.Name = "cfgVideoGroundBuffersPerNodeLabel";
         //cfgVideoGroundBuffersPerNodeLabel.Size = new Size(167, 23);
         //cfgVideoGroundBuffersPerNodeLabel.TabIndex = 0;
         //cfgVideoGroundBuffersPerNodeLabel.Text = "ground_buffers_per_node";
-        //// 
+        ////
         //// cfgVideoGrassDistancePanel
-        //// 
+        ////
         //cfgVideoGrassDistancePanel.BackColor = Color.Silver;
         //cfgVideoGrassDistancePanel.Controls.Add(cfgVideoGrassDistanceComboBox);
         //cfgVideoGrassDistancePanel.Controls.Add(cfgVideoGrassDistanceLabel);
@@ -2184,25 +2201,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoGrassDistancePanel.Name = "cfgVideoGrassDistancePanel";
         //cfgVideoGrassDistancePanel.Size = new Size(317, 30);
         //cfgVideoGrassDistancePanel.TabIndex = 9;
-        //// 
+        ////
         //// cfgVideoGrassDistanceComboBox
-        //// 
+        ////
         //cfgVideoGrassDistanceComboBox.FormattingEnabled = true;
         //cfgVideoGrassDistanceComboBox.Location = new Point(180, 3);
         //cfgVideoGrassDistanceComboBox.Name = "cfgVideoGrassDistanceComboBox";
         //cfgVideoGrassDistanceComboBox.Size = new Size(121, 23);
         //cfgVideoGrassDistanceComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoGrassDistanceLabel
-        //// 
+        ////
         //cfgVideoGrassDistanceLabel.Location = new Point(7, 3);
         //cfgVideoGrassDistanceLabel.Name = "cfgVideoGrassDistanceLabel";
         //cfgVideoGrassDistanceLabel.Size = new Size(167, 23);
         //cfgVideoGrassDistanceLabel.TabIndex = 0;
         //cfgVideoGrassDistanceLabel.Text = "grass_distance";
-        //// 
+        ////
         //// cfgVideoEffectQualityPanel
-        //// 
+        ////
         //cfgVideoEffectQualityPanel.BackColor = Color.Silver;
         //cfgVideoEffectQualityPanel.Controls.Add(cfgVideoEffectQualityComboBox);
         //cfgVideoEffectQualityPanel.Controls.Add(cfgVideoEffectQualityLabel);
@@ -2210,25 +2227,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoEffectQualityPanel.Name = "cfgVideoEffectQualityPanel";
         //cfgVideoEffectQualityPanel.Size = new Size(317, 30);
         //cfgVideoEffectQualityPanel.TabIndex = 8;
-        //// 
+        ////
         //// cfgVideoEffectQualityComboBox
-        //// 
+        ////
         //cfgVideoEffectQualityComboBox.FormattingEnabled = true;
         //cfgVideoEffectQualityComboBox.Location = new Point(180, 3);
         //cfgVideoEffectQualityComboBox.Name = "cfgVideoEffectQualityComboBox";
         //cfgVideoEffectQualityComboBox.Size = new Size(121, 23);
         //cfgVideoEffectQualityComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoEffectQualityLabel
-        //// 
+        ////
         //cfgVideoEffectQualityLabel.Location = new Point(7, 3);
         //cfgVideoEffectQualityLabel.Name = "cfgVideoEffectQualityLabel";
         //cfgVideoEffectQualityLabel.Size = new Size(167, 23);
         //cfgVideoEffectQualityLabel.TabIndex = 0;
         //cfgVideoEffectQualityLabel.Text = "effect_quality";
-        //// 
+        ////
         //// cfgVideoDepthShadowsResolutionPanel
-        //// 
+        ////
         //cfgVideoDepthShadowsResolutionPanel.BackColor = Color.Silver;
         //cfgVideoDepthShadowsResolutionPanel.Controls.Add(cfgVideoDepthShadowsResolutionComboBox);
         //cfgVideoDepthShadowsResolutionPanel.Controls.Add(cfgVideoDepthShadowsResolutionLabel);
@@ -2236,25 +2253,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoDepthShadowsResolutionPanel.Name = "cfgVideoDepthShadowsResolutionPanel";
         //cfgVideoDepthShadowsResolutionPanel.Size = new Size(317, 30);
         //cfgVideoDepthShadowsResolutionPanel.TabIndex = 7;
-        //// 
+        ////
         //// cfgVideoDepthShadowsResolutionComboBox
-        //// 
+        ////
         //cfgVideoDepthShadowsResolutionComboBox.FormattingEnabled = true;
         //cfgVideoDepthShadowsResolutionComboBox.Location = new Point(180, 3);
         //cfgVideoDepthShadowsResolutionComboBox.Name = "cfgVideoDepthShadowsResolutionComboBox";
         //cfgVideoDepthShadowsResolutionComboBox.Size = new Size(121, 23);
         //cfgVideoDepthShadowsResolutionComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoDepthShadowsResolutionLabel
-        //// 
+        ////
         //cfgVideoDepthShadowsResolutionLabel.Location = new Point(7, 3);
         //cfgVideoDepthShadowsResolutionLabel.Name = "cfgVideoDepthShadowsResolutionLabel";
         //cfgVideoDepthShadowsResolutionLabel.Size = new Size(167, 23);
         //cfgVideoDepthShadowsResolutionLabel.TabIndex = 0;
         //cfgVideoDepthShadowsResolutionLabel.Text = "depth_shadows_resolution";
-        //// 
+        ////
         //// cfgVideoDepthShadowsPanel
-        //// 
+        ////
         //cfgVideoDepthShadowsPanel.BackColor = Color.Silver;
         //cfgVideoDepthShadowsPanel.Controls.Add(cfgVideoDepthShadowsComboBox);
         //cfgVideoDepthShadowsPanel.Controls.Add(cfgVideoDepthShadowsLabel);
@@ -2262,25 +2279,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoDepthShadowsPanel.Name = "cfgVideoDepthShadowsPanel";
         //cfgVideoDepthShadowsPanel.Size = new Size(317, 30);
         //cfgVideoDepthShadowsPanel.TabIndex = 6;
-        //// 
+        ////
         //// cfgVideoDepthShadowsComboBox
-        //// 
+        ////
         //cfgVideoDepthShadowsComboBox.FormattingEnabled = true;
         //cfgVideoDepthShadowsComboBox.Location = new Point(180, 3);
         //cfgVideoDepthShadowsComboBox.Name = "cfgVideoDepthShadowsComboBox";
         //cfgVideoDepthShadowsComboBox.Size = new Size(121, 23);
         //cfgVideoDepthShadowsComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoDepthShadowsLabel
-        //// 
+        ////
         //cfgVideoDepthShadowsLabel.Location = new Point(7, 3);
         //cfgVideoDepthShadowsLabel.Name = "cfgVideoDepthShadowsLabel";
         //cfgVideoDepthShadowsLabel.Size = new Size(167, 23);
         //cfgVideoDepthShadowsLabel.TabIndex = 0;
         //cfgVideoDepthShadowsLabel.Text = "depth_shadows";
-        //// 
+        ////
         //// cfgVideoCampaignResolutionPanel
-        //// 
+        ////
         //cfgVideoCampaignResolutionPanel.BackColor = Color.Silver;
         //cfgVideoCampaignResolutionPanel.Controls.Add(cfgVideoCampaignResolutionComboBox);
         //cfgVideoCampaignResolutionPanel.Controls.Add(cfgVideoCampaignResolutionLabel);
@@ -2288,25 +2305,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoCampaignResolutionPanel.Name = "cfgVideoCampaignResolutionPanel";
         //cfgVideoCampaignResolutionPanel.Size = new Size(317, 30);
         //cfgVideoCampaignResolutionPanel.TabIndex = 5;
-        //// 
+        ////
         //// cfgVideoCampaignResolutionComboBox
-        //// 
+        ////
         //cfgVideoCampaignResolutionComboBox.FormattingEnabled = true;
         //cfgVideoCampaignResolutionComboBox.Location = new Point(180, 3);
         //cfgVideoCampaignResolutionComboBox.Name = "cfgVideoCampaignResolutionComboBox";
         //cfgVideoCampaignResolutionComboBox.Size = new Size(121, 23);
         //cfgVideoCampaignResolutionComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoCampaignResolutionLabel
-        //// 
+        ////
         //cfgVideoCampaignResolutionLabel.Location = new Point(7, 3);
         //cfgVideoCampaignResolutionLabel.Name = "cfgVideoCampaignResolutionLabel";
         //cfgVideoCampaignResolutionLabel.Size = new Size(167, 23);
         //cfgVideoCampaignResolutionLabel.TabIndex = 0;
         //cfgVideoCampaignResolutionLabel.Text = "campaign_resolution";
-        //// 
+        ////
         //// cfgVideoBuildingDetailPanel
-        //// 
+        ////
         //cfgVideoBuildingDetailPanel.BackColor = Color.Silver;
         //cfgVideoBuildingDetailPanel.Controls.Add(cfgVideoBuildingDetailComboBox);
         //cfgVideoBuildingDetailPanel.Controls.Add(cfgVideoBuildingDetailLabel);
@@ -2314,25 +2331,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoBuildingDetailPanel.Name = "cfgVideoBuildingDetailPanel";
         //cfgVideoBuildingDetailPanel.Size = new Size(317, 30);
         //cfgVideoBuildingDetailPanel.TabIndex = 4;
-        //// 
+        ////
         //// cfgVideoBuildingDetailComboBox
-        //// 
+        ////
         //cfgVideoBuildingDetailComboBox.FormattingEnabled = true;
         //cfgVideoBuildingDetailComboBox.Location = new Point(180, 3);
         //cfgVideoBuildingDetailComboBox.Name = "cfgVideoBuildingDetailComboBox";
         //cfgVideoBuildingDetailComboBox.Size = new Size(121, 23);
         //cfgVideoBuildingDetailComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoBuildingDetailLabel
-        //// 
+        ////
         //cfgVideoBuildingDetailLabel.Location = new Point(7, 3);
         //cfgVideoBuildingDetailLabel.Name = "cfgVideoBuildingDetailLabel";
         //cfgVideoBuildingDetailLabel.Size = new Size(167, 23);
         //cfgVideoBuildingDetailLabel.TabIndex = 0;
         //cfgVideoBuildingDetailLabel.Text = "building_detail";
-        //// 
+        ////
         //// cfgVideoBattleResolutionPanel
-        //// 
+        ////
         //cfgVideoBattleResolutionPanel.BackColor = Color.Silver;
         //cfgVideoBattleResolutionPanel.Controls.Add(cfgVideoBattleResolutionComboBox);
         //cfgVideoBattleResolutionPanel.Controls.Add(cfgVideoBattleResolutionLabel);
@@ -2340,25 +2357,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoBattleResolutionPanel.Name = "cfgVideoBattleResolutionPanel";
         //cfgVideoBattleResolutionPanel.Size = new Size(317, 30);
         //cfgVideoBattleResolutionPanel.TabIndex = 3;
-        //// 
+        ////
         //// cfgVideoBattleResolutionComboBox
-        //// 
+        ////
         //cfgVideoBattleResolutionComboBox.FormattingEnabled = true;
         //cfgVideoBattleResolutionComboBox.Location = new Point(180, 3);
         //cfgVideoBattleResolutionComboBox.Name = "cfgVideoBattleResolutionComboBox";
         //cfgVideoBattleResolutionComboBox.Size = new Size(121, 23);
         //cfgVideoBattleResolutionComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoBattleResolutionLabel
-        //// 
+        ////
         //cfgVideoBattleResolutionLabel.Location = new Point(7, 3);
         //cfgVideoBattleResolutionLabel.Name = "cfgVideoBattleResolutionLabel";
         //cfgVideoBattleResolutionLabel.Size = new Size(167, 23);
         //cfgVideoBattleResolutionLabel.TabIndex = 0;
         //cfgVideoBattleResolutionLabel.Text = "battle_resolution";
-        //// 
+        ////
         //// cfgVideoAntialiasingPanel
-        //// 
+        ////
         //cfgVideoAntialiasingPanel.BackColor = Color.Silver;
         //cfgVideoAntialiasingPanel.Controls.Add(cfgVideoAntialiasingComboBox);
         //cfgVideoAntialiasingPanel.Controls.Add(cfgVideoAntialiasingLabel);
@@ -2366,25 +2383,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoAntialiasingPanel.Name = "cfgVideoAntialiasingPanel";
         //cfgVideoAntialiasingPanel.Size = new Size(317, 30);
         //cfgVideoAntialiasingPanel.TabIndex = 2;
-        //// 
+        ////
         //// cfgVideoAntialiasingComboBox
-        //// 
+        ////
         //cfgVideoAntialiasingComboBox.FormattingEnabled = true;
         //cfgVideoAntialiasingComboBox.Location = new Point(180, 3);
         //cfgVideoAntialiasingComboBox.Name = "cfgVideoAntialiasingComboBox";
         //cfgVideoAntialiasingComboBox.Size = new Size(121, 23);
         //cfgVideoAntialiasingComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoAntialiasingLabel
-        //// 
+        ////
         //cfgVideoAntialiasingLabel.Location = new Point(7, 3);
         //cfgVideoAntialiasingLabel.Name = "cfgVideoAntialiasingLabel";
         //cfgVideoAntialiasingLabel.Size = new Size(167, 23);
         //cfgVideoAntialiasingLabel.TabIndex = 0;
         //cfgVideoAntialiasingLabel.Text = "antialiasing";
-        //// 
+        ////
         //// cfgVideoAntiAliasModePanel
-        //// 
+        ////
         //cfgVideoAntiAliasModePanel.BackColor = Color.Silver;
         //cfgVideoAntiAliasModePanel.Controls.Add(cfgVideoAntiAliasModeComboBox);
         //cfgVideoAntiAliasModePanel.Controls.Add(cfgVideoAntiAliasModeLabel);
@@ -2392,25 +2409,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoAntiAliasModePanel.Name = "cfgVideoAntiAliasModePanel";
         //cfgVideoAntiAliasModePanel.Size = new Size(317, 30);
         //cfgVideoAntiAliasModePanel.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoAntiAliasModeComboBox
-        //// 
+        ////
         //cfgVideoAntiAliasModeComboBox.FormattingEnabled = true;
         //cfgVideoAntiAliasModeComboBox.Location = new Point(180, 3);
         //cfgVideoAntiAliasModeComboBox.Name = "cfgVideoAntiAliasModeComboBox";
         //cfgVideoAntiAliasModeComboBox.Size = new Size(121, 23);
         //cfgVideoAntiAliasModeComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoAntiAliasModeLabel
-        //// 
+        ////
         //cfgVideoAntiAliasModeLabel.Location = new Point(7, 3);
         //cfgVideoAntiAliasModeLabel.Name = "cfgVideoAntiAliasModeLabel";
         //cfgVideoAntiAliasModeLabel.Size = new Size(167, 23);
         //cfgVideoAntiAliasModeLabel.TabIndex = 0;
         //cfgVideoAntiAliasModeLabel.Text = "anti_alias_mode";
-        //// 
+        ////
         //// cfgVideoAnisotropicLevelPanel
-        //// 
+        ////
         //cfgVideoAnisotropicLevelPanel.BackColor = Color.Silver;
         //cfgVideoAnisotropicLevelPanel.Controls.Add(cfgVideoAnisotropicLevelComboBox);
         //cfgVideoAnisotropicLevelPanel.Controls.Add(cfgVideoAnisotropicLevelLabel);
@@ -2418,25 +2435,25 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoAnisotropicLevelPanel.Name = "cfgVideoAnisotropicLevelPanel";
         //cfgVideoAnisotropicLevelPanel.Size = new Size(317, 30);
         //cfgVideoAnisotropicLevelPanel.TabIndex = 0;
-        //// 
+        ////
         //// cfgVideoAnisotropicLevelComboBox
-        //// 
+        ////
         //cfgVideoAnisotropicLevelComboBox.FormattingEnabled = true;
         //cfgVideoAnisotropicLevelComboBox.Location = new Point(180, 3);
         //cfgVideoAnisotropicLevelComboBox.Name = "cfgVideoAnisotropicLevelComboBox";
         //cfgVideoAnisotropicLevelComboBox.Size = new Size(121, 23);
         //cfgVideoAnisotropicLevelComboBox.TabIndex = 1;
-        //// 
+        ////
         //// cfgVideoAnisotropicLevelLabel
-        //// 
+        ////
         //cfgVideoAnisotropicLevelLabel.Location = new Point(7, 3);
         //cfgVideoAnisotropicLevelLabel.Name = "cfgVideoAnisotropicLevelLabel";
         //cfgVideoAnisotropicLevelLabel.Size = new Size(167, 23);
         //cfgVideoAnisotropicLevelLabel.TabIndex = 0;
         //cfgVideoAnisotropicLevelLabel.Text = "anisotropic_level";
-        //// 
+        ////
         //// tabPage9
-        //// 
+        ////
         //tabPage9.Controls.Add(cfgVideoWindowedCheckBox);
         //tabPage9.Controls.Add(cfgVideoWidescreenCheckBox);
         //tabPage9.Controls.Add(cfgVideoVsyncCheckBox);
@@ -2463,9 +2480,9 @@ public partial class ModConfigSettingsForm : Form
         //tabPage9.TabIndex = 8;
         //tabPage9.Text = "Video_2";
         //tabPage9.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoWindowedCheckBox
-        //// 
+        ////
         //cfgVideoWindowedCheckBox.AutoSize = true;
         //cfgVideoWindowedCheckBox.Location = new Point(187, 226);
         //cfgVideoWindowedCheckBox.Name = "cfgVideoWindowedCheckBox";
@@ -2473,9 +2490,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoWindowedCheckBox.TabIndex = 18;
         //cfgVideoWindowedCheckBox.Text = "windowed";
         //cfgVideoWindowedCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoWidescreenCheckBox
-        //// 
+        ////
         //cfgVideoWidescreenCheckBox.AutoSize = true;
         //cfgVideoWidescreenCheckBox.Location = new Point(187, 201);
         //cfgVideoWidescreenCheckBox.Name = "cfgVideoWidescreenCheckBox";
@@ -2483,9 +2500,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoWidescreenCheckBox.TabIndex = 17;
         //cfgVideoWidescreenCheckBox.Text = "widescreen";
         //cfgVideoWidescreenCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoVsyncCheckBox
-        //// 
+        ////
         //cfgVideoVsyncCheckBox.AutoSize = true;
         //cfgVideoVsyncCheckBox.Location = new Point(187, 176);
         //cfgVideoVsyncCheckBox.Name = "cfgVideoVsyncCheckBox";
@@ -2493,9 +2510,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoVsyncCheckBox.TabIndex = 16;
         //cfgVideoVsyncCheckBox.Text = "vsync";
         //cfgVideoVsyncCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoVegetationCheckBox
-        //// 
+        ////
         //cfgVideoVegetationCheckBox.AutoSize = true;
         //cfgVideoVegetationCheckBox.Location = new Point(187, 151);
         //cfgVideoVegetationCheckBox.Name = "cfgVideoVegetationCheckBox";
@@ -2503,9 +2520,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoVegetationCheckBox.TabIndex = 15;
         //cfgVideoVegetationCheckBox.Text = "vegetation";
         //cfgVideoVegetationCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoSubtitlesCheckBox
-        //// 
+        ////
         //cfgVideoSubtitlesCheckBox.AutoSize = true;
         //cfgVideoSubtitlesCheckBox.Location = new Point(187, 126);
         //cfgVideoSubtitlesCheckBox.Name = "cfgVideoSubtitlesCheckBox";
@@ -2513,9 +2530,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoSubtitlesCheckBox.TabIndex = 14;
         //cfgVideoSubtitlesCheckBox.Text = "subtitles";
         //cfgVideoSubtitlesCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoStencilShadowsCheckBox
-        //// 
+        ////
         //cfgVideoStencilShadowsCheckBox.AutoSize = true;
         //cfgVideoStencilShadowsCheckBox.Location = new Point(187, 101);
         //cfgVideoStencilShadowsCheckBox.Name = "cfgVideoStencilShadowsCheckBox";
@@ -2523,9 +2540,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoStencilShadowsCheckBox.TabIndex = 13;
         //cfgVideoStencilShadowsCheckBox.Text = "stencil_shadows";
         //cfgVideoStencilShadowsCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoSplashesCheckBox
-        //// 
+        ////
         //cfgVideoSplashesCheckBox.AutoSize = true;
         //cfgVideoSplashesCheckBox.Location = new Point(187, 76);
         //cfgVideoSplashesCheckBox.Name = "cfgVideoSplashesCheckBox";
@@ -2533,9 +2550,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoSplashesCheckBox.TabIndex = 12;
         //cfgVideoSplashesCheckBox.Text = "splashes";
         //cfgVideoSplashesCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoSkipMipLevelsChecBox
-        //// 
+        ////
         //cfgVideoSkipMipLevelsChecBox.AutoSize = true;
         //cfgVideoSkipMipLevelsChecBox.Location = new Point(187, 51);
         //cfgVideoSkipMipLevelsChecBox.Name = "cfgVideoSkipMipLevelsChecBox";
@@ -2543,9 +2560,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoSkipMipLevelsChecBox.TabIndex = 11;
         //cfgVideoSkipMipLevelsChecBox.Text = "skip_mip_levels";
         //cfgVideoSkipMipLevelsChecBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoShowPackageLitterCheckBox
-        //// 
+        ////
         //cfgVideoShowPackageLitterCheckBox.AutoSize = true;
         //cfgVideoShowPackageLitterCheckBox.Location = new Point(187, 26);
         //cfgVideoShowPackageLitterCheckBox.Name = "cfgVideoShowPackageLitterCheckBox";
@@ -2553,9 +2570,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoShowPackageLitterCheckBox.TabIndex = 10;
         //cfgVideoShowPackageLitterCheckBox.Text = "show_package_litter";
         //cfgVideoShowPackageLitterCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoShowBannersCheckBox
-        //// 
+        ////
         //cfgVideoShowBannersCheckBox.AutoSize = true;
         //cfgVideoShowBannersCheckBox.Location = new Point(21, 251);
         //cfgVideoShowBannersCheckBox.Name = "cfgVideoShowBannersCheckBox";
@@ -2563,9 +2580,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoShowBannersCheckBox.TabIndex = 9;
         //cfgVideoShowBannersCheckBox.Text = "show_banners";
         //cfgVideoShowBannersCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoSabotageMoviesCheckBox
-        //// 
+        ////
         //cfgVideoSabotageMoviesCheckBox.AutoSize = true;
         //cfgVideoSabotageMoviesCheckBox.Location = new Point(21, 226);
         //cfgVideoSabotageMoviesCheckBox.Name = "cfgVideoSabotageMoviesCheckBox";
@@ -2573,9 +2590,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoSabotageMoviesCheckBox.TabIndex = 8;
         //cfgVideoSabotageMoviesCheckBox.Text = "sabotage_movies";
         //cfgVideoSabotageMoviesCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoReflectionCheckBox
-        //// 
+        ////
         //cfgVideoReflectionCheckBox.AutoSize = true;
         //cfgVideoReflectionCheckBox.Location = new Point(21, 201);
         //cfgVideoReflectionCheckBox.Name = "cfgVideoReflectionCheckBox";
@@ -2583,9 +2600,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoReflectionCheckBox.TabIndex = 7;
         //cfgVideoReflectionCheckBox.Text = "reflection";
         //cfgVideoReflectionCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoNoBackgroundFmvCheckBox
-        //// 
+        ////
         //cfgVideoNoBackgroundFmvCheckBox.AutoSize = true;
         //cfgVideoNoBackgroundFmvCheckBox.Location = new Point(21, 176);
         //cfgVideoNoBackgroundFmvCheckBox.Name = "cfgVideoNoBackgroundFmvCheckBox";
@@ -2593,9 +2610,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoNoBackgroundFmvCheckBox.TabIndex = 6;
         //cfgVideoNoBackgroundFmvCheckBox.Text = "no_background_fmv";
         //cfgVideoNoBackgroundFmvCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoMoviesCheckBox
-        //// 
+        ////
         //cfgVideoMoviesCheckBox.AutoSize = true;
         //cfgVideoMoviesCheckBox.Location = new Point(21, 151);
         //cfgVideoMoviesCheckBox.Name = "cfgVideoMoviesCheckBox";
@@ -2603,9 +2620,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoMoviesCheckBox.TabIndex = 5;
         //cfgVideoMoviesCheckBox.Text = "movies";
         //cfgVideoMoviesCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoInfiltrationMoviesCheckBox
-        //// 
+        ////
         //cfgVideoInfiltrationMoviesCheckBox.AutoSize = true;
         //cfgVideoInfiltrationMoviesCheckBox.Location = new Point(21, 126);
         //cfgVideoInfiltrationMoviesCheckBox.Name = "cfgVideoInfiltrationMoviesCheckBox";
@@ -2613,9 +2630,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoInfiltrationMoviesCheckBox.TabIndex = 4;
         //cfgVideoInfiltrationMoviesCheckBox.Text = "infiltration_movies";
         //cfgVideoInfiltrationMoviesCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoEventMoviesCheckBox
-        //// 
+        ////
         //cfgVideoEventMoviesCheckBox.AutoSize = true;
         //cfgVideoEventMoviesCheckBox.Location = new Point(21, 101);
         //cfgVideoEventMoviesCheckBox.Name = "cfgVideoEventMoviesCheckBox";
@@ -2623,9 +2640,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoEventMoviesCheckBox.TabIndex = 3;
         //cfgVideoEventMoviesCheckBox.Text = "event_movies";
         //cfgVideoEventMoviesCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoBloomCheckBox
-        //// 
+        ////
         //cfgVideoBloomCheckBox.AutoSize = true;
         //cfgVideoBloomCheckBox.Location = new Point(21, 76);
         //cfgVideoBloomCheckBox.Name = "cfgVideoBloomCheckBox";
@@ -2633,9 +2650,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoBloomCheckBox.TabIndex = 2;
         //cfgVideoBloomCheckBox.Text = "bloom";
         //cfgVideoBloomCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoAutodetectCheckBox
-        //// 
+        ////
         //cfgVideoAutodetectCheckBox.AutoSize = true;
         //cfgVideoAutodetectCheckBox.Location = new Point(21, 51);
         //cfgVideoAutodetectCheckBox.Name = "cfgVideoAutodetectCheckBox";
@@ -2643,9 +2660,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoAutodetectCheckBox.TabIndex = 1;
         //cfgVideoAutodetectCheckBox.Text = "autodetect";
         //cfgVideoAutodetectCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgVideoAssassinationMoviesCheckBox
-        //// 
+        ////
         //cfgVideoAssassinationMoviesCheckBox.AutoSize = true;
         //cfgVideoAssassinationMoviesCheckBox.Location = new Point(21, 26);
         //cfgVideoAssassinationMoviesCheckBox.Name = "cfgVideoAssassinationMoviesCheckBox";
@@ -2653,9 +2670,9 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoAssassinationMoviesCheckBox.TabIndex = 0;
         //cfgVideoAssassinationMoviesCheckBox.Text = "assassination_movies";
         //cfgVideoAssassinationMoviesCheckBox.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// resetConfigSettingsButton
-        //// 
+        ////
         //resetConfigSettingsButton.Location = new Point(298, 498);
         //resetConfigSettingsButton.Name = "resetConfigSettingsButton";
         //resetConfigSettingsButton.Size = new Size(216, 23);
@@ -2663,9 +2680,9 @@ public partial class ModConfigSettingsForm : Form
         //resetConfigSettingsButton.Text = "RESET CONFIG SETTINGS";
         //resetConfigSettingsButton.UseVisualStyleBackColor = true;
         //resetConfigSettingsButton.Click += ResetConfigSettingsButton_Click;
-        //// 
+        ////
         //// importConfigSettingsButton
-        //// 
+        ////
         //importConfigSettingsButton.Location = new Point(520, 527);
         //importConfigSettingsButton.Name = "importConfigSettingsButton";
         //importConfigSettingsButton.Size = new Size(248, 23);
@@ -2673,9 +2690,9 @@ public partial class ModConfigSettingsForm : Form
         //importConfigSettingsButton.Text = "IMPORT CONFIG SETTINGS";
         //importConfigSettingsButton.UseVisualStyleBackColor = true;
         //importConfigSettingsButton.Click += ImportConfigSettingsButton_Click;
-        //// 
+        ////
         //// exportConfigSettingsButton
-        //// 
+        ////
         //exportConfigSettingsButton.Location = new Point(520, 498);
         //exportConfigSettingsButton.Name = "exportConfigSettingsButton";
         //exportConfigSettingsButton.Size = new Size(248, 23);
@@ -2683,18 +2700,18 @@ public partial class ModConfigSettingsForm : Form
         //exportConfigSettingsButton.Text = "EXPORT CONFIG SETTINGS";
         //exportConfigSettingsButton.UseVisualStyleBackColor = true;
         //exportConfigSettingsButton.Click += ExportConfigSettingsButton_Click;
-        //// 
+        ////
         //// settingDescriptionLabel
-        //// 
+        ////
         //settingDescriptionLabel.BackColor = SystemColors.ActiveBorder;
         //settingDescriptionLabel.Location = new Point(12, 447);
         //settingDescriptionLabel.Name = "settingDescriptionLabel";
         //settingDescriptionLabel.Size = new Size(756, 37);
         //settingDescriptionLabel.TabIndex = 5;
         //settingDescriptionLabel.Text = "SETTING DESCRIPTION LABEL";
-        //// 
+        ////
         //// exitConfigSettingsButton
-        //// 
+        ////
         //exitConfigSettingsButton.Location = new Point(298, 527);
         //exitConfigSettingsButton.Name = "exitConfigSettingsButton";
         //exitConfigSettingsButton.Size = new Size(216, 23);
@@ -2702,9 +2719,9 @@ public partial class ModConfigSettingsForm : Form
         //exitConfigSettingsButton.Text = "RETURN TO MAIN WINDOW";
         //exitConfigSettingsButton.UseVisualStyleBackColor = true;
         //exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
-        //// 
+        ////
         //// groupBoxConfigLogMode
-        //// 
+        ////
         //groupBoxConfigLogMode.BackColor = Color.Transparent;
         //groupBoxConfigLogMode.Controls.Add(cfgLogLocationTextBox);
         //groupBoxConfigLogMode.Controls.Add(cfgLogLocationLabel);
@@ -2720,9 +2737,9 @@ public partial class ModConfigSettingsForm : Form
         //groupBoxConfigLogMode.TabIndex = 2;
         //groupBoxConfigLogMode.TabStop = false;
         //groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
-        //// 
+        ////
         //// checkBoxLogHistory
-        //// 
+        ////
         //checkBoxLogHistory.AutoSize = true;
         //checkBoxLogHistory.Checked = true;
         //checkBoxLogHistory.CheckState = CheckState.Checked;
@@ -2733,9 +2750,9 @@ public partial class ModConfigSettingsForm : Form
         //checkBoxLogHistory.TabIndex = 3;
         //checkBoxLogHistory.Text = "Save game system.log files";
         //checkBoxLogHistory.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// radioButtonLogErrorAndTrace
-        //// 
+        ////
         //radioButtonLogErrorAndTrace.AutoSize = true;
         //radioButtonLogErrorAndTrace.Checked = true;
         //radioButtonLogErrorAndTrace.Location = new Point(11, 72);
@@ -2746,9 +2763,9 @@ public partial class ModConfigSettingsForm : Form
         //radioButtonLogErrorAndTrace.TabStop = true;
         //radioButtonLogErrorAndTrace.Text = "Errors + Trace";
         //radioButtonLogErrorAndTrace.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// radioButtonLogOnlyTrace
-        //// 
+        ////
         //radioButtonLogOnlyTrace.AutoSize = true;
         //radioButtonLogOnlyTrace.Location = new Point(11, 47);
         //radioButtonLogOnlyTrace.Margin = new Padding(4, 3, 4, 3);
@@ -2757,9 +2774,9 @@ public partial class ModConfigSettingsForm : Form
         //radioButtonLogOnlyTrace.TabIndex = 1;
         //radioButtonLogOnlyTrace.Text = "Only Trace";
         //radioButtonLogOnlyTrace.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// radioButtonLogOnlyError
-        //// 
+        ////
         //radioButtonLogOnlyError.AutoSize = true;
         //radioButtonLogOnlyError.Location = new Point(11, 22);
         //radioButtonLogOnlyError.Margin = new Padding(4, 3, 4, 3);
@@ -2768,17 +2785,17 @@ public partial class ModConfigSettingsForm : Form
         //radioButtonLogOnlyError.TabIndex = 0;
         //radioButtonLogOnlyError.Text = "Only Errors";
         //radioButtonLogOnlyError.UseVisualStyleBackColor = true;
-        //// 
+        ////
         //// cfgLogLocationLabel
-        //// 
+        ////
         //cfgLogLocationLabel.Location = new Point(12, 119);
         //cfgLogLocationLabel.Name = "cfgLogLocationLabel";
         //cfgLogLocationLabel.Size = new Size(61, 23);
         //cfgLogLocationLabel.TabIndex = 4;
         //cfgLogLocationLabel.Text = "to";
-        //// 
+        ////
         //// cfgLogLocationTextBox
-        //// 
+        ////
         //cfgLogLocationTextBox.Location = new Point(79, 119);
         //cfgLogLocationTextBox.Name = "cfgLogLocationTextBox";
         //cfgLogLocationTextBox.Size = new Size(160, 23);

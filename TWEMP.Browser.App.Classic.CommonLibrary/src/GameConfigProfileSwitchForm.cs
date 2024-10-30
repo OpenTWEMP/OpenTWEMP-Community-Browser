@@ -26,7 +26,13 @@ public partial class GameConfigProfileSwitchForm : Form
         this.gameConfigProfilesDictionary = BrowserKernel.GetConfigProfilesToDisplay(this.gameConfigProfiles);
 
         this.InitializeComponent();
+        this.InitializeCaptionText();
         this.InitializeCurrentProfilesComboBox();
+    }
+
+    private void InitializeCaptionText()
+    {
+        this.Text = $"Current Game Mod: \"{this.currentGameModificationView.CurrentInfo.ShortName}\"";
     }
 
     private void FormCloseButton_Click(object sender, EventArgs e)

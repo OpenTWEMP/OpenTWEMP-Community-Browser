@@ -52,6 +52,7 @@ public class GameConfigurationManager
             provider: this.gameSupportProviderByDefault);
 
         this.CurrentGameModView = null;
+        this.CurrentConfigProfile = null;
     }
 
     /// <summary>
@@ -63,6 +64,11 @@ public class GameConfigurationManager
     /// Gets or sets the current game modification view for creation a game configuration.
     /// </summary>
     public UpdatableGameModificationView? CurrentGameModView { get; set; }
+
+    /// <summary>
+    /// Gets or sets the current game configuration profile for the selected game modification.
+    /// </summary>
+    public GameConfigProfile? CurrentConfigProfile { get; set; }
 
     /// <summary>
     /// Creates a custom instance of the <see cref="GameConfigurationManager"/> class.
@@ -93,6 +99,26 @@ public class GameConfigurationManager
         }
 
         return gameConfigProfilesDictionary;
+    }
+
+    /// <summary>
+    /// Gets game config profile items for UI controls by game config profile views.
+    /// </summary>
+    /// <param name="viewOfGameConfigProfiles">A dictionary of game config profile views.</param>
+    /// <returns>The array of game config profile items.</returns>
+    public object[] GetNewConfigProfileItems(Dictionary<int, Guid> viewOfGameConfigProfiles)
+    {
+        object[] gameConfigProfileItems = new object[viewOfGameConfigProfiles.Count];
+
+        for (int itemIndex = 0; itemIndex < gameConfigProfileItems.Length; itemIndex++)
+        {
+            Guid gameConfigProfileId = viewOfGameConfigProfiles[itemIndex];
+            GameConfigProfile gameConfigProfile = this.SelectProfileById(gameConfigProfileId);
+
+            gameConfigProfileItems[itemIndex] = gameConfigProfile.Name;
+        }
+
+        return gameConfigProfileItems;
     }
 
     /// <summary>
@@ -129,18 +155,21 @@ public class GameConfigurationManager
     {
         GameConfigProfile profile = new (provider, info, state);
         this.AvailableProfiles.Add(profile);
-        this.RefreshAllGameConfigProfiles();
+
+        this.SynchronizeGameConfigProfileViews();
     }
 
     /// <summary>
     /// Creates a new game configuration profile via copying an existing game configuration profile.
     /// </summary>
-    /// <param name="templateProfile">A template game configuration profile.</param>
-    public void CopyProfile(GameConfigProfile templateProfile)
+    /// <param name="profileTemplate">A template game configuration profile.</param>
+    public void CopyProfile(GameConfigProfile profileTemplate)
     {
-        GameConfigProfile profile = new (templateProfile);
+        Guid profileId = this.CreateNewIdForGameConfigProfile(profileTemplate);
+        GameConfigProfile profile = new (profileId, profileTemplate);
         this.AvailableProfiles.Add(profile);
-        this.RefreshAllGameConfigProfiles();
+
+        this.SynchronizeGameConfigProfileViews();
     }
 
     /// <summary>
@@ -161,8 +190,6 @@ public class GameConfigurationManager
         return CreateEmptyProfile();
     }
 
-    // change a profile
-
     /// <summary>
     /// Updates an existing game configuration profile.
     /// </summary>
@@ -176,7 +203,7 @@ public class GameConfigurationManager
         profile.Name = name;
         profile.ConfigState = state;
 
-        this.RefreshAllGameConfigProfiles();
+        this.SynchronizeGameConfigProfileViews();
     }
 
     /// <summary>
@@ -187,7 +214,8 @@ public class GameConfigurationManager
     {
         GameConfigProfile profile = this.SelectProfileById(id);
         this.AvailableProfiles.Remove(profile);
-        this.RefreshAllGameConfigProfiles();
+
+        this.SynchronizeGameConfigProfileViews();
     }
 
     /// <summary>
@@ -196,41 +224,71 @@ public class GameConfigurationManager
     public void DeleteAllProfiles()
     {
         this.AvailableProfiles.Clear();
-        this.RefreshAllGameConfigProfiles();
+        this.SynchronizeGameConfigProfileViews();
     }
 
     /// <summary>
     /// Exports all available game configuration profiles to a target directory.
     /// </summary>
-    /// <param name="exportDirectoryInfo">Information about a target directory to export.</param>
-    public void ExportAllProfiles(DirectoryInfo exportDirectoryInfo)
+    /// <param name="exportFilePath">The export file path.</param>
+    public void ExportAllProfilesToFile(string exportFilePath)
     {
-        const string exportFileName = "export_profiles.json";
-        string exportFilePath = Path.Combine(exportDirectoryInfo.FullName, exportFileName);
-
-        AppSerializer.SerializeToJson(this.AvailableProfiles, exportFilePath);
+        ExportGameConfigProfileViewsToFile(this.gameConfigProfileViews, exportFilePath);
     }
 
     /// <summary>
     ///  Imports game configuration profiles from a target file.
     /// </summary>
-    /// <param name="importFileInfo">Information about a target file to import.</param>
-    public void ImportAllProfiles(FileInfo importFileInfo)
+    /// <param name="importFilePath">The import file path.</param>
+    public void ImportAllProfilesFromFile(string importFilePath)
     {
         try
         {
-            List<GameConfigProfile> profiles =
-                AppSerializer.DeserializeFromJson<List<GameConfigProfile>>(importFileInfo.FullName);
+            GameConfigProfileView[] importedGameConfigProfileViews =
+                AppSerializer.DeserializeFromJson<GameConfigProfileView[]>(importFilePath);
 
-            if (profiles.Count > 0)
+            foreach (GameConfigProfileView view in importedGameConfigProfileViews)
             {
-                this.AvailableProfiles = profiles;
+                view.ConfigName = $" [IMPORT] {view.ConfigName}";
+                view.ConfigId = this.CreateNewIdForGameConfigProfile(view);
             }
+
+            List<GameConfigProfile> importedGameConfigProfiles = GetGameConfigProfilesByViews(
+                gameConfigProfileViews: importedGameConfigProfileViews.ToList(),
+                gameMods: this.gameSetupManager.TotalModificationsList,
+                provider: this.gameSupportProviderByDefault);
+
+            this.AvailableProfiles.AddRange(importedGameConfigProfiles);
+
+            this.SynchronizeGameConfigProfileViews();
         }
-        catch (Exception)
+        catch (InvalidOperationException)
         {
-            throw;
+            return;
         }
+    }
+
+    private static List<GameConfigProfileView> GetViewsOfGameConfigProfiles(List<GameConfigProfile> gameConfigProfiles)
+    {
+        List<GameConfigProfileView> gameConfigProfileViews = new ();
+
+        foreach (GameConfigProfile gameConfigProfile in gameConfigProfiles)
+        {
+            GameConfigOptionView[] gameConfigOptions = GetConfigOptionsBySections(gameConfigProfile.ConfigState.CurrentSettings);
+
+            GameConfigProfileView gameConfigProfileView = new ()
+            {
+                ConfigId = gameConfigProfile.Id,
+                ConfigName = gameConfigProfile.Name,
+                ConfigType = gameConfigProfile.ConfigType,
+                GameModLocation = gameConfigProfile.TargetGameModInfo.Location,
+                ConfigOptions = gameConfigOptions,
+            };
+
+            gameConfigProfileViews.Add(gameConfigProfileView);
+        }
+
+        return gameConfigProfileViews;
     }
 
     private static List<GameConfigProfile> GetGameConfigProfilesByViews(
@@ -250,7 +308,10 @@ public class GameConfigurationManager
             GameConfigOptionView[] gameConfigOptions = gameConfigProfileView.ConfigOptions!;
             GameCfgSection[] gameConfigSettings = GetSectionsOfConfigOptions(gameConfigOptions);
 
-            GameConfigProfile gameConfigProfile = new (provider, gameModInfo, gameConfigSettings);
+            GameConfigProfile gameConfigProfile = new (
+                id: gameConfigProfileView.ConfigId, name: gameConfigProfileView.ConfigName,
+                provider: provider, info: gameModInfo, options: gameConfigSettings);
+
             gameConfigProfiles.Add(gameConfigProfile);
         }
 
@@ -269,6 +330,30 @@ public class GameConfigurationManager
         }
 
         return null;
+    }
+
+    private static GameConfigOptionView[] GetConfigOptionsBySections(ICollection<GameCfgSection> gameConfigSections)
+    {
+        List<GameConfigOptionView> gameConfigOptionViews = new ();
+
+        foreach (GameCfgSection gameConfigSection in gameConfigSections)
+        {
+            GameCfgOption[] sectionOptions = gameConfigSection.Options;
+
+            foreach (GameCfgOption option in sectionOptions)
+            {
+                GameConfigOptionView view = new ()
+                {
+                    ConfigSection = gameConfigSection.Name,
+                    CfgOptionName = option.Name,
+                    CfgOptionValue = option.Value,
+                };
+
+                gameConfigOptionViews.Add(view);
+            }
+        }
+
+        return gameConfigOptionViews.ToArray();
     }
 
     private static GameCfgSection[] GetSectionsOfConfigOptions(ICollection<GameConfigOptionView> gameConfigOptionViews)
@@ -343,7 +428,7 @@ public class GameConfigurationManager
         {
             GameConfigProfileView gameConfigProfileView = new (
                 configId: Guid.NewGuid(),
-                configName: "M2TW Config Profile By Default",
+                configName: $"M2TW Config Profile [{gameMods[index].ShortName}]",
                 gameModLocation: gameMods[index].Location);
 
             gameConfigProfileViews.Add(gameConfigProfileView);
@@ -394,6 +479,65 @@ public class GameConfigurationManager
                 path: "TWEMP_Modification"));
     }
 
+    private static void ExportGameConfigProfileViewsToFile(
+        List<GameConfigProfileView> gameConfigProfileViews, string exportFilePath)
+    {
+        AppSerializer.SerializeToJson(gameConfigProfileViews, exportFilePath);
+    }
+
+    private Guid CreateNewIdForGameConfigProfile(GameConfigProfile gameConfigProfile)
+    {
+        return this.CreateNewIdForGameConfigProfile(gameConfigProfile.Id);
+    }
+
+    private Guid CreateNewIdForGameConfigProfile(GameConfigProfileView gameConfigProfileView)
+    {
+        return this.CreateNewIdForGameConfigProfile(gameConfigProfileView.ConfigId);
+    }
+
+    private Guid CreateNewIdForGameConfigProfile(Guid profileId)
+    {
+        Guid gameConfigProfileId = profileId;
+
+        if (this.IsExistingProfileId(gameConfigProfileId))
+        {
+            gameConfigProfileId = this.CreateNewProfileId();
+        }
+
+        return gameConfigProfileId;
+    }
+
+    private bool IsExistingProfileId(Guid profileId)
+    {
+        foreach (GameConfigProfileView view in this.gameConfigProfileViews)
+        {
+            if (view.ConfigId.Equals(profileId))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private Guid CreateNewProfileId()
+    {
+        Guid profileId = Guid.NewGuid();
+
+        if (this.IsExistingProfileId(profileId))
+        {
+            profileId = this.CreateNewProfileId();
+        }
+
+        return profileId;
+    }
+
+    private void SynchronizeGameConfigProfileViews()
+    {
+        this.gameConfigProfileViews = GetViewsOfGameConfigProfiles(this.AvailableProfiles);
+        this.WriteAllGameConfigProfileViews(this.gameConfigProfileViews);
+    }
+
     private List<GameConfigProfileView> ReadAllGameConfigProfileViews()
     {
         return AppSerializer.DeserializeFromJson<List<GameConfigProfileView>>(this.userProfilesConfigFileInfo.FullName);
@@ -402,10 +546,5 @@ public class GameConfigurationManager
     private void WriteAllGameConfigProfileViews(List<GameConfigProfileView> gameConfigProfileViews)
     {
         AppSerializer.SerializeToJson(gameConfigProfileViews, this.userProfilesConfigFileInfo.FullName);
-    }
-
-    private void RefreshAllGameConfigProfiles()
-    {
-        AppSerializer.SerializeToJson(this.AvailableProfiles, UserProfilesConfigFileName);
     }
 }

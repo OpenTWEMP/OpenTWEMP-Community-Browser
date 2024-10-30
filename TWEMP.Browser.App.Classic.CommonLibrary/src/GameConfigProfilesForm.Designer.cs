@@ -49,6 +49,7 @@
             gameConfigProfilesListBox.Name = "gameConfigProfilesListBox";
             gameConfigProfilesListBox.Size = new Size(257, 199);
             gameConfigProfilesListBox.TabIndex = 0;
+            gameConfigProfilesListBox.SelectedIndexChanged += GameConfigProfilesListBoxSelectedIndexChanged;
             // 
             // cfgProfileCreateButton
             // 
@@ -147,7 +148,7 @@
             cfgProfileCurrentLabel.Name = "cfgProfileCurrentLabel";
             cfgProfileCurrentLabel.Size = new Size(257, 60);
             cfgProfileCurrentLabel.TabIndex = 10;
-            cfgProfileCurrentLabel.Text = "SELECTED CFG PROFILE NAME";
+            cfgProfileCurrentLabel.Text = "Select a Game Config Profile";
             cfgProfileCurrentLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GameConfigProfilesForm

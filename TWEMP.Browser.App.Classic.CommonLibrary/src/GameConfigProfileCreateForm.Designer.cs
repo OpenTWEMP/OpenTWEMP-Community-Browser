@@ -64,6 +64,7 @@
             // 
             // cfgNewProfileTypeComboBox
             // 
+            cfgNewProfileTypeComboBox.Enabled = false;
             cfgNewProfileTypeComboBox.FormattingEnabled = true;
             cfgNewProfileTypeComboBox.Items.AddRange(new object[] { "TWEMP", "M2TW", "RTW" });
             cfgNewProfileTypeComboBox.Location = new Point(240, 47);
