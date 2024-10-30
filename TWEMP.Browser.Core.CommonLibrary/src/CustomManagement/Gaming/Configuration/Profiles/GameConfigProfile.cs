@@ -32,6 +32,22 @@ public class GameConfigProfile
     /// </summary>
     /// <param name="provider">A target game support provider type.</param>
     /// <param name="info">Information about a target game modification.</param>
+    /// <param name="options">Target game configuration options.</param>
+    public GameConfigProfile(
+        GameSupportProvider provider, GameModificationInfo info, GameCfgSection[] options)
+    {
+        this.Id = Guid.NewGuid();
+        this.ConfigType = provider.GameEngine;
+
+        this.Name = $"M2TW Config Profile for {info.ShortName}";
+        this.ConfigState = GameConfigState.Create(provider, info, options);
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GameConfigProfile"/> class.
+    /// </summary>
+    /// <param name="provider">A target game support provider type.</param>
+    /// <param name="info">Information about a target game modification.</param>
     /// <param name="state">A target custom game configuration state.</param>
     public GameConfigProfile(
         GameSupportProvider provider, GameModificationInfo info, ICustomConfigState state)

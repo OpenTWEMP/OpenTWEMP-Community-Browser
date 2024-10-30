@@ -6,8 +6,7 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
-// TODO: Use this type definition instead of the TWEMP.Browser.Core.CommonLibrary.CfgOption (after merging beta24* branches).
-public abstract class GameCfgOption
+public class GameCfgOption
 {
     public GameCfgOption(string name, object value, string section)
     {
@@ -25,5 +24,8 @@ public abstract class GameCfgOption
 
     public string Description { get; set; }
 
-    public abstract string GetOutputConfigFormat();
+    public virtual string GetOutputConfigFormat()
+    {
+        return $"{this.Name} = {this.Value}";
+    }
 }

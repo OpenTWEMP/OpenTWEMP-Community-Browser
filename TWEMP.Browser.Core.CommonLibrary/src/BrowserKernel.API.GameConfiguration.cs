@@ -32,4 +32,20 @@ public static partial class BrowserKernel
             GameConfigurationManagerInstance.CurrentGameModView = value;
         }
     }
+
+    // CreateNewProfile
+
+    // CopyProfile
+
+    // SelectProfileById
+
+    // UpdateProfile
+
+    // DeleteProfile
+
+    // DeleteAllProfiles
+
+    // ExportAllProfiles
+
+    // ImportAllProfiles
 }

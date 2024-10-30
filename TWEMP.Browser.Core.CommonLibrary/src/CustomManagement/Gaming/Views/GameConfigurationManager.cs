@@ -2,16 +2,14 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace TWEMP.Browser.Core.CommonLibrary.src.CustomManagement.Gaming.Views;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
-using System.Collections.Generic;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
 /// <summary>
@@ -23,6 +21,8 @@ public class GameConfigurationManager
 
     private readonly CustomGameSetupManager gameSetupManager;
 
+    private readonly GameSupportProvider gameSupportProviderByDefault;
+
     private readonly FileInfo userProfilesConfigFileInfo;
 
     private List<GameConfigProfileView> gameConfigProfileViews;
@@ -31,10 +31,10 @@ public class GameConfigurationManager
     {
         this.gameSetupManager = gameSetupManager;
 
+        this.gameSupportProviderByDefault = new GameSupportProvider(GameEngineSupportType.M2TW);
+
         string path = Path.Combine(Directory.GetCurrentDirectory(), UserProfilesConfigFileName);
         this.userProfilesConfigFileInfo = new FileInfo(path);
-
-        this.AvailableProfiles = new List<GameConfigProfile>() { };
 
         if (this.userProfilesConfigFileInfo.Exists)
         {
@@ -46,7 +46,10 @@ public class GameConfigurationManager
             this.WriteAllGameConfigProfileViews(this.gameConfigProfileViews);
         }
 
-        this.AvailableProfiles = CreateDefaultGameConfigProfiles();
+        this.AvailableProfiles = GetGameConfigProfilesByViews(
+            gameConfigProfileViews: this.gameConfigProfileViews,
+            gameMods: this.gameSetupManager.TotalModificationsList,
+            provider: this.gameSupportProviderByDefault);
 
         this.CurrentGameModView = null;
     }
@@ -79,7 +82,7 @@ public class GameConfigurationManager
     /// <param name="state">A target custom game configuration state.</param>
     public void CreateNewProfile(GameSupportProvider provider, GameModificationInfo info, ICustomConfigState state)
     {
-        GameConfigProfile profile = new(provider, info, state);
+        GameConfigProfile profile = new (provider, info, state);
         this.AvailableProfiles.Add(profile);
         this.RefreshAllGameConfigProfiles();
     }
@@ -90,7 +93,7 @@ public class GameConfigurationManager
     /// <param name="templateProfile">A template game configuration profile.</param>
     public void CopyProfile(GameConfigProfile templateProfile)
     {
-        GameConfigProfile profile = new(templateProfile);
+        GameConfigProfile profile = new (templateProfile);
         this.AvailableProfiles.Add(profile);
         this.RefreshAllGameConfigProfiles();
     }
@@ -185,13 +188,107 @@ public class GameConfigurationManager
         }
     }
 
-#if TEMP_DESIGN
     private static List<GameConfigProfile> GetGameConfigProfilesByViews(
-        List<GameConfigProfileView> gameConfigProfileViews)
+        List<GameConfigProfileView> gameConfigProfileViews, List<GameModificationInfo> gameMods, GameSupportProvider provider)
     {
-        return new List<GameConfigProfile>();
+        List<GameConfigProfile> gameConfigProfiles = new ();
+
+        foreach (GameConfigProfileView gameConfigProfileView in gameConfigProfileViews)
+        {
+            GameModificationInfo? gameModInfo = GetGameModForConfigProfile(gameMods, gameConfigProfileView);
+
+            if (gameModInfo == null)
+            {
+                continue;
+            }
+
+            GameConfigOptionView[] gameConfigOptions = gameConfigProfileView.ConfigOptions!;
+            GameCfgSection[] gameConfigSettings = GetSectionsOfConfigOptions(gameConfigOptions);
+
+            GameConfigProfile gameConfigProfile = new (provider, gameModInfo, gameConfigSettings);
+            gameConfigProfiles.Add(gameConfigProfile);
+        }
+
+        return gameConfigProfiles;
     }
-#endif
+
+    private static GameModificationInfo? GetGameModForConfigProfile(
+        List<GameModificationInfo> gameMods, GameConfigProfileView gameConfigProfileView)
+    {
+        foreach (GameModificationInfo gameMod in gameMods)
+        {
+            if (gameMod.Location.Equals(gameConfigProfileView.GameModLocation))
+            {
+                return gameMod;
+            }
+        }
+
+        return null;
+    }
+
+    private static GameCfgSection[] GetSectionsOfConfigOptions(ICollection<GameConfigOptionView> gameConfigOptionViews)
+    {
+        List<GameCfgSection> gameConfigSections = new ();
+
+        string[] configSectionNames = GetConfigSectionNames(gameConfigOptionViews);
+        GameCfgOption[] gameConfigOptions = GetConfigOptions(gameConfigOptionViews);
+
+        foreach (string sectionName in configSectionNames)
+        {
+            GameCfgOption[] sectionOptions = GetConfigOptionsBySectionName(gameConfigOptions, sectionName);
+            GameCfgSection gameConfigSection = new (sectionName, gameConfigOptions);
+            gameConfigSections.Add(gameConfigSection);
+        }
+
+        return gameConfigSections.ToArray();
+    }
+
+    private static string[] GetConfigSectionNames(ICollection<GameConfigOptionView> gameConfigOptionViews)
+    {
+        List<string> configSectionNames = new ();
+
+        foreach (GameConfigOptionView optionView in gameConfigOptionViews)
+        {
+            if (configSectionNames.Contains(optionView.ConfigSection))
+            {
+                continue;
+            }
+            else
+            {
+                configSectionNames.Add(optionView.ConfigSection);
+            }
+        }
+
+        return configSectionNames.ToArray();
+    }
+
+    private static GameCfgOption[] GetConfigOptions(ICollection<GameConfigOptionView> gameConfigOptionViews)
+    {
+        List<GameCfgOption> gameConfigOptions = new ();
+
+        foreach (GameConfigOptionView optionView in gameConfigOptionViews)
+        {
+            GameCfgOption gameConfigOption = new (optionView.CfgOptionName, optionView.CfgOptionValue, optionView.ConfigSection);
+            gameConfigOptions.Add(gameConfigOption);
+        }
+
+        return gameConfigOptions.ToArray();
+    }
+
+    private static GameCfgOption[] GetConfigOptionsBySectionName(GameCfgOption[] gameConfigOptions, string sectionName)
+    {
+        List<GameCfgOption> sectionOptions = new ();
+
+        foreach (GameCfgOption option in gameConfigOptions)
+        {
+            if (option.ConfigSectionName.Equals(sectionName))
+            {
+                sectionOptions.Add(option);
+            }
+        }
+
+        return sectionOptions.ToArray();
+    }
 
     private static List<GameConfigProfileView> CreateGameConfigProfileViewsByDefault(List<GameModificationInfo> gameMods)
     {
@@ -212,7 +309,7 @@ public class GameConfigurationManager
 
     private static List<GameConfigProfile> CreateDefaultGameConfigProfiles()
     {
-        List<GameConfigProfile> profiles = new();
+        List<GameConfigProfile> profiles = new ();
 
         GameConfigProfile defaultTwempProfile = new GameConfigProfile(
             provider: new GameSupportProvider(GameEngineSupportType.TWEMP),
