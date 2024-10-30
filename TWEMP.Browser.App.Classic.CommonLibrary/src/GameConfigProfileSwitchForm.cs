@@ -7,17 +7,26 @@
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 public partial class GameConfigProfileSwitchForm : Form
 {
     private readonly UpdatableGameModificationView currentGameModificationView;
 
+    private readonly GameConfigProfile[] gameConfigProfiles;
+    private readonly Dictionary<int, Guid> gameConfigProfilesDictionary;
+
     public GameConfigProfileSwitchForm(UpdatableGameModificationView gameModificationView)
     {
         this.currentGameModificationView = gameModificationView;
 
+        this.gameConfigProfiles = BrowserKernel.GetAllConfigProfilesForSelectedGameMod(this.currentGameModificationView);
+        this.gameConfigProfilesDictionary = BrowserKernel.GetConfigProfilesToDisplay(this.gameConfigProfiles);
+
         this.InitializeComponent();
+        this.InitializeCurrentProfilesComboBox();
     }
 
     private void FormCloseButton_Click(object sender, EventArgs e)
@@ -28,5 +37,15 @@ public partial class GameConfigProfileSwitchForm : Form
     private void CurrentProfileComboBox_SelectedValueChanged(object sender, EventArgs e)
     {
         this.currentProfileNameLabel.Text = this.currentProfileComboBox.SelectedItem?.ToString();
+    }
+
+    private void InitializeCurrentProfilesComboBox()
+    {
+        this.currentProfileComboBox.Items.Clear();
+
+        foreach (GameConfigProfile gameConfigProfile in this.gameConfigProfiles)
+        {
+            this.currentProfileComboBox.Items.Add(gameConfigProfile.Name);
+        }
     }
 }

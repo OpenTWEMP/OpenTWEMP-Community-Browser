@@ -10,11 +10,11 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 using TWEMP.Browser.Core.CommonLibrary.Logging;
 using TWEMP.Browser.Core.CommonLibrary.MediaDevices;
-using TWEMP.Browser.Core.CommonLibrary.src.CustomManagement.Gaming.Views;
 
 /// <summary>
 /// Defines the kernel of any OpenTWEMP Community Browser implementation.

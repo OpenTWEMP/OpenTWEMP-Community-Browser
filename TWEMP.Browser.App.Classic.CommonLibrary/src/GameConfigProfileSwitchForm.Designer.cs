@@ -50,7 +50,6 @@
             // currentProfileComboBox
             // 
             currentProfileComboBox.FormattingEnabled = true;
-            currentProfileComboBox.Items.AddRange(new object[] { "CONFIG_PROFILE_0", "CONFIG_PROFILE_1", "CONFIG_PROFILE_2", "CONFIG_PROFILE_3", "CONFIG_PROFILE_4", "CONFIG_PROFILE_5", "CONFIG_PROFILE_6", "CONFIG_PROFILE_7", "CONFIG_PROFILE_8", "CONFIG_PROFILE_9" });
             currentProfileComboBox.Location = new Point(6, 57);
             currentProfileComboBox.Name = "currentProfileComboBox";
             currentProfileComboBox.Size = new Size(271, 23);

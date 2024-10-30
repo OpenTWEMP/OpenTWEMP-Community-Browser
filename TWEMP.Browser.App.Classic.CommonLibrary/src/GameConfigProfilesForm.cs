@@ -19,22 +19,10 @@ public partial class GameConfigProfilesForm : Form
     public GameConfigProfilesForm()
     {
         this.gameConfigProfiles = BrowserKernel.AvailableProfiles;
-        this.gameConfigProfilesDictionary = CreateGameConfigProfilesDictionary(this.gameConfigProfiles.ToArray());
+        this.gameConfigProfilesDictionary = BrowserKernel.GetConfigProfilesToDisplay(this.gameConfigProfiles.ToArray());
 
         this.InitializeComponent();
         this.InitializeGameConfigProfilesListBox();
-    }
-
-    private static Dictionary<int, Guid> CreateGameConfigProfilesDictionary(GameConfigProfile[] gameConfigProfiles)
-    {
-        Dictionary<int, Guid> gameConfigProfilesDictionary = new ();
-
-        for (int index = 0; index < gameConfigProfiles.Length; index++)
-        {
-            gameConfigProfilesDictionary.Add(key: index, value: gameConfigProfiles[index].Id);
-        }
-
-        return gameConfigProfilesDictionary;
     }
 
     private void ConfigProfileSelectButtonClick(object sender, EventArgs e)

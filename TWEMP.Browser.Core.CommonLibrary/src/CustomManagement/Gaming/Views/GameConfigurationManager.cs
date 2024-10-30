@@ -75,6 +75,51 @@ public class GameConfigurationManager
     }
 
     /// <summary>
+    /// Gets a light-weight entity view for a game configuration profiles array for UI controls.
+    /// </summary>
+    /// <param name="gameConfigProfiles">The array of game configuration profiles.</param>
+    /// <returns>
+    /// A dictionary object where
+    /// the key represents the UI control's item index, and
+    /// the value is game configuration profile's ID.
+    /// </returns>
+    public static Dictionary<int, Guid> GetConfigProfilesToDisplay(GameConfigProfile[] gameConfigProfiles)
+    {
+        Dictionary<int, Guid> gameConfigProfilesDictionary = new ();
+
+        for (int index = 0; index < gameConfigProfiles.Length; index++)
+        {
+            gameConfigProfilesDictionary.Add(key: index, value: gameConfigProfiles[index].Id);
+        }
+
+        return gameConfigProfilesDictionary;
+    }
+
+    /// <summary>
+    /// Gets all available game configuration profiles for a target game modification.
+    /// </summary>
+    /// <param name="gameModView">The view entity for a target game modification.</param>
+    /// <returns>The array of game configuration profiles.</returns>
+    public GameConfigProfile[] GetAllConfigProfilesForSelectedGameMod(UpdatableGameModificationView gameModView)
+    {
+        List<GameConfigProfile> gameConfigProfiles = new List<GameConfigProfile>();
+
+        string targetGameModLocation = gameModView.CurrentInfo.Location;
+
+        foreach (GameConfigProfile gameConfigProfile in this.AvailableProfiles)
+        {
+            string currentGameModLocation = gameConfigProfile.TargetGameModInfo.Location;
+
+            if (currentGameModLocation.Equals(targetGameModLocation))
+            {
+                gameConfigProfiles.Add(gameConfigProfile);
+            }
+        }
+
+        return gameConfigProfiles.ToArray();
+    }
+
+    /// <summary>
     /// Creates a new game configuration profile.
     /// </summary>
     /// <param name="provider">A target game support provider type.</param>

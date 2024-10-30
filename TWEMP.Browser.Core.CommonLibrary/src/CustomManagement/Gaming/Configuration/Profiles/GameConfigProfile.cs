@@ -22,7 +22,7 @@ public class GameConfigProfile
     {
         this.Id = Guid.NewGuid();
         this.ConfigType = provider.GameEngine;
-
+        this.TargetGameModInfo = info;
         this.Name = DefaultName;
         this.ConfigState = GameConfigState.CreateByDefault(provider, info);
     }
@@ -38,7 +38,7 @@ public class GameConfigProfile
     {
         this.Id = Guid.NewGuid();
         this.ConfigType = provider.GameEngine;
-
+        this.TargetGameModInfo = info;
         this.Name = $"M2TW Config Profile for {info.ShortName}";
         this.ConfigState = GameConfigState.Create(provider, info, options);
     }
@@ -54,7 +54,7 @@ public class GameConfigProfile
     {
         this.Id = Guid.NewGuid();
         this.ConfigType = provider.GameEngine;
-
+        this.TargetGameModInfo = info;
         this.Name = DefaultName;
         this.ConfigState = GameConfigState.Create(provider, info, state);
     }
@@ -67,7 +67,7 @@ public class GameConfigProfile
     {
         this.Id = Guid.NewGuid();
         this.ConfigType = profile.ConfigType;
-
+        this.TargetGameModInfo = profile.TargetGameModInfo;
         this.Name = $"{profile.Name} Copy";
         this.ConfigState = profile.ConfigState;
     }
@@ -81,6 +81,11 @@ public class GameConfigProfile
     /// Gets the current game configuration type.
     /// </summary>
     public GameEngineSupportType ConfigType { get; }
+
+    /// <summary>
+    /// Gets the target game modification info.
+    /// </summary>
+    public GameModificationInfo TargetGameModInfo { get; }
 
     /// <summary>
     /// Gets or sets the name of this game configuration profile.

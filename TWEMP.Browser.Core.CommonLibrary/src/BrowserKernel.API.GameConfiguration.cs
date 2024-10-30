@@ -33,19 +33,13 @@ public static partial class BrowserKernel
         }
     }
 
-    // CreateNewProfile
+    public static Dictionary<int, Guid> GetConfigProfilesToDisplay(GameConfigProfile[] gameConfigProfiles)
+    {
+        return GameConfigurationManager.GetConfigProfilesToDisplay(gameConfigProfiles);
+    }
 
-    // CopyProfile
-
-    // SelectProfileById
-
-    // UpdateProfile
-
-    // DeleteProfile
-
-    // DeleteAllProfiles
-
-    // ExportAllProfiles
-
-    // ImportAllProfiles
+    public static GameConfigProfile[] GetAllConfigProfilesForSelectedGameMod(UpdatableGameModificationView gameModView)
+    {
+        return GameConfigurationManagerInstance.GetAllConfigProfilesForSelectedGameMod(gameModView);
+    }
 }
