@@ -68,4 +68,14 @@ public class M2TW_Boolean
     public string BooleanValue { get; }
 
     public string IntegerValue { get; }
+
+    public bool GetValue()
+    {
+        if (this.BooleanValue.Equals(BooleanTrue) && this.IntegerValue.Equals(IntegerTrue))
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
