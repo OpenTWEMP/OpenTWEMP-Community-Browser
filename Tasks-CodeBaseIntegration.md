@@ -6,19 +6,19 @@
 
 ### TWEMP.Browser.Core.CommonLibrary + TWEMP.Browser.App.Classic.WinForms
 
-* [ ] MainBrowserForm.GameProfiles.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
-* [ ] MainBrowserForm.GameModsTreeView.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
-* [ ] MainBrowserForm.GameLauncher.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
-* [ ] MainBrowserForm.GameConfigState.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
+* [x] MainBrowserForm.GameProfiles.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
+* [x] MainBrowserForm.GameModsTreeView.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
+* [x] MainBrowserForm.GameLauncher.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
+* [x] MainBrowserForm.GameConfigState.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
 * [ ] MainBrowserForm.GameCollections.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library.
 
 ### TWEMP.Browser.Core.CommonLibrary + TWEMP.Browser.App.Classic.CommonLibrary
 
-* [ ] GameConfigProfileCreateForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
-* [ ] GameConfigProfilesForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
-* [ ] GameMusicPlayerForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
-* [ ] ModSupportPresetSettingsForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
-* [ ] RedistributablePresetSelectionForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
+* [x] GameConfigProfileCreateForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
+* [x] GameConfigProfilesForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
+* [x] GameMusicPlayerForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
+* [x] ModSupportPresetSettingsForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
+* [x] RedistributablePresetSelectionForm.cs : Integrate new features from TWEMP.Browser.Core.CommonLibrary class library instead of test placeholders.
 
 ### TWEMP.Browser.Core.CommonLibrary + TWEMP.Browser.Core.GamingSupport
 
@@ -43,14 +43,14 @@
 
 ### TWEMP.Browser.Core.GamingSupport + TWEMP.Browser.App.Classic.WinForms
 
-* [ ] MainBrowserForm.GameConfigState.cs : Use new definitions of M2TW game types.
-* [ ] MainBrowserForm.GameLauncher.cs : Use new definitions of M2TW game types.
-* [ ] MainBrowserForm.GameProfiles.cs : Use new definitions of M2TW game types.
+* [x] MainBrowserForm.GameConfigState.cs : Use new definitions of M2TW game types.
+* [x] MainBrowserForm.GameLauncher.cs : Use new definitions of M2TW game types.
+* [x] MainBrowserForm.GameProfiles.cs : Use new definitions of M2TW game types.
 
 ### TWEMP.Browser.Core.GamingSupport + TWEMP.Browser.App.Classic.CommonLibrary
 
 * [ ] Use new definitions of M2TW game types into the AddNewGameSetupForm form class.
-* [ ] Use new definitions of M2TW game types into the ModConfigSettingsForm form class.
+* [x] Use new definitions of M2TW game types into the ModConfigSettingsForm form class.
 * [x] Use new definitions of M2TW game types into the ModQuickNavigatorForm form class.
 
 ---
