@@ -60,25 +60,25 @@ public record GameAudioCfgSectionStateView : ICustomConfigState
     public GameCfgSection[] RetrieveCurrentSettings()
     {
         M2TWGameCfgOption audioEnableOption = new (
-            name: AudioEnableTextId, value: this.AudioEnable!, section: AudioConfigSwitch);
+            name: AudioEnableTextId, value: this.AudioEnable!.BooleanValue, section: AudioConfigSwitch);
 
         M2TWGameCfgOption audioMasterVolumeOption = new (
-            name: AudioMasterVolumeTextId, value: this.AudioMasterVolume!, section: AudioConfigSwitch);
+            name: AudioMasterVolumeTextId, value: this.AudioMasterVolume!.Value, section: AudioConfigSwitch);
 
         M2TWGameCfgOption audioMusicVolumeOption = new (
-            name: AudioMusicVolumeTextId, value: this.AudioMusicVolume!, section: AudioConfigSwitch);
+            name: AudioMusicVolumeTextId, value: this.AudioMusicVolume!.Value, section: AudioConfigSwitch);
 
         M2TWGameCfgOption soundEffectsVolumeOption = new (
-            name: SoundEffectsVolumeTextId, value: this.SoundEffectsVolume!, section: AudioConfigSwitch);
+            name: SoundEffectsVolumeTextId, value: this.SoundEffectsVolume!.Value, section: AudioConfigSwitch);
 
         M2TWGameCfgOption speechEnableOption = new (
-            name: SpeechEnableTextId, value: this.SpeechEnable!, section: AudioConfigSwitch);
+            name: SpeechEnableTextId, value: this.SpeechEnable!.BooleanValue, section: AudioConfigSwitch);
 
         M2TWGameCfgOption speechVolumeOption = new (
-            name: SpeechVolumeTextId, value: this.SpeechVolume!, section: AudioConfigSwitch);
+            name: SpeechVolumeTextId, value: this.SpeechVolume!.Value, section: AudioConfigSwitch);
 
         M2TWGameCfgOption subFactionAccentsOption = new (
-            name: SubFactionAccentsTextId, value: this.SubFactionAccents!, section: AudioConfigSwitch);
+            name: SubFactionAccentsTextId, value: this.SubFactionAccents!.BooleanValue, section: AudioConfigSwitch);
 
         M2TWGameCfgOption soundCardProviderOption = new (
             name: SoundCardProviderTextId, value: this.SoundCardProvider!, section: AudioConfigSwitch);

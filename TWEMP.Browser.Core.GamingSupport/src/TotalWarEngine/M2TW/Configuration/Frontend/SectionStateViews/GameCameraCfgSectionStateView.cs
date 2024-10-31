@@ -45,16 +45,16 @@ public record GameCameraCfgSectionStateView : ICustomConfigState
     public GameCfgSection[] RetrieveCurrentSettings()
     {
         M2TWGameCfgOption cameraDefaultInBattleOption = new (
-            name: CameraDefaultInBattleTextId, value: this.CameraDefaultInBattle!, section: CameraConfigSwitch);
+            name: CameraDefaultInBattleTextId, value: this.CameraDefaultInBattle!.Value, section: CameraConfigSwitch);
 
         M2TWGameCfgOption cameraMoveOption = new (
-            name: CameraMoveTextId, value: this.CameraMove!, section: CameraConfigSwitch);
+            name: CameraMoveTextId, value: this.CameraMove!.Value, section: CameraConfigSwitch);
 
         M2TWGameCfgOption cameraRestrictOption = new (
-            name: CameraRestrictTextId, value: this.CameraRestrict!, section: CameraConfigSwitch);
+            name: CameraRestrictTextId, value: this.CameraRestrict!.BooleanValue, section: CameraConfigSwitch);
 
         M2TWGameCfgOption cameraRotateOption = new (
-            name: CameraRotateTextId, value: this.CameraRotate!, section: CameraConfigSwitch);
+            name: CameraRotateTextId, value: this.CameraRotate!.Value, section: CameraConfigSwitch);
 
         M2TWGameCfgOption[] cameraCfgOptions =
         {

@@ -110,32 +110,32 @@ public record ModHotseatSectionStateView : ICustomConfigState
     {
         M2TWGameCfgOption[] hotseatCfgOptions =
         {
-            new (name: HotseatAutoresolveBattlesTextId, value: this.HotseatAutoresolveBattles!, section: HotseatConfigSwitch),
-            new (name: HotseatScrollTextId, value: this.HotseatScroll!, section: HotseatConfigSwitch),
-            new (name: HotseatPasswordsTextId, value: this.HotseatPasswords!, section: HotseatConfigSwitch),
-            new (name: HotseatTurnsTextId, value: this.HotseatTurns!, section: HotseatConfigSwitch),
-            new (name: HotseatDisableConsoleTextId, value: this.HotseatDisableConsole!, section: HotseatConfigSwitch),
+            new (name: HotseatAutoresolveBattlesTextId, value: this.HotseatAutoresolveBattles!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatScrollTextId, value: this.HotseatScroll!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatPasswordsTextId, value: this.HotseatPasswords!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatTurnsTextId, value: this.HotseatTurns!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatDisableConsoleTextId, value: this.HotseatDisableConsole!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatAdminPasswordTextId, value: this.HotseatAdminPassword!, section: HotseatConfigSwitch),
-            new (name: HotseatDisablePapalElectionsTextId, value: this.HotseatDisablePapalElections!, section: HotseatConfigSwitch),
-            new (name: HotseatSavePrefsTextId, value: this.HotseatSavePrefs!, section: HotseatConfigSwitch),
-            new (name: HotseatUpdateAiCameraTextId, value: this.HotseatUpdateAiCamera!, section: HotseatConfigSwitch),
-            new (name: HotseatAutoSaveTextId, value: this.HotseatAutoSave!, section: HotseatConfigSwitch),
-            new (name: HotseatSaveConfigTextId, value: this.HotseatSaveConfig!, section: HotseatConfigSwitch),
-            new (name: HotseatCloseAfterSaveTextId, value: this.HotseatCloseAfterSave!, section: HotseatConfigSwitch),
+            new (name: HotseatDisablePapalElectionsTextId, value: this.HotseatDisablePapalElections!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatSavePrefsTextId, value: this.HotseatSavePrefs!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatUpdateAiCameraTextId, value: this.HotseatUpdateAiCamera!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatAutoSaveTextId, value: this.HotseatAutoSave!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatSaveConfigTextId, value: this.HotseatSaveConfig!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatCloseAfterSaveTextId, value: this.HotseatCloseAfterSave!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatGameNameTextId, value: this.HotseatGameName!, section: HotseatConfigSwitch),
-            new (name: HotseatValidateDataTextId, value: this.HotseatValidateData!, section: HotseatConfigSwitch),
-            new (name: HotseatAllowValidationFailuresTextId, value: this.HotseatAllowValidationFailures!, section: HotseatConfigSwitch),
-            new (name: HotseatValidateDiplomacyTextId, value: this.HotseatValidateDiplomacy!, section: HotseatConfigSwitch),
+            new (name: HotseatValidateDataTextId, value: this.HotseatValidateData!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatAllowValidationFailuresTextId, value: this.HotseatAllowValidationFailures!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatValidateDiplomacyTextId, value: this.HotseatValidateDiplomacy!.BooleanValue, section: HotseatConfigSwitch),
         };
 
         M2TWGameCfgOption[] multiplayerCfgOptions =
         {
-            new (name: MultiplayerPlayableTextId, value: this.MultiplayerPlayable!, section: MultiplayerConfigSwitch),
+            new (name: MultiplayerPlayableTextId, value: this.MultiplayerPlayable!.BooleanValue, section: MultiplayerConfigSwitch),
         };
 
         M2TWGameCfgOption[] networkCfgOptions =
         {
-            new (name: NetworkUseIpTextId, value: this.NetworkUseIp!, section: NetworkConfigSwitch),
+            new (name: NetworkUseIpTextId, value: this.NetworkUseIp!.Value, section: NetworkConfigSwitch),
             new (name: NetworkUsePortTextId, value: this.NetworkUsePort!, section: NetworkConfigSwitch),
         };
 

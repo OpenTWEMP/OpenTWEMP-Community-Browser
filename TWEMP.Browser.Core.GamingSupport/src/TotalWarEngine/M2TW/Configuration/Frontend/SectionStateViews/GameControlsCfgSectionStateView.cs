@@ -46,7 +46,7 @@ public record GameControlsCfgSectionStateView : ICustomConfigState
             name: CampaignScrollMinZoomTextId, value: this.CampaignScrollMinZoom, section: ControlsConfigSwitch);
 
         M2TWGameCfgOption keySetOption = new (
-            name: KeySetTextId, value: this.KeySet!, section: ControlsConfigSwitch);
+            name: KeySetTextId, value: this.KeySet!.Value, section: ControlsConfigSwitch);
 
         M2TWGameCfgOption[] controlsCfgOptions =
         {

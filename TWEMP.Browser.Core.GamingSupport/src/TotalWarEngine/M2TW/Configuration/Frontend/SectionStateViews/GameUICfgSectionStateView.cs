@@ -52,22 +52,22 @@ public record GameUICfgSectionStateView : ICustomConfigState
     public GameCfgSection[] RetrieveCurrentSettings()
     {
         M2TWGameCfgOption uiSaCardsOption = new (
-            name: UiSaCardsTextId, value: this.UiSaCards!, section: UIConfigSwitch);
+            name: UiSaCardsTextId, value: this.UiSaCards!.BooleanValue, section: UIConfigSwitch);
 
         M2TWGameCfgOption uiButtonsOption = new (
-            name: UiButtonsTextId, value: this.UiButtons!, section: UIConfigSwitch);
+            name: UiButtonsTextId, value: this.UiButtons!.BooleanValue, section: UIConfigSwitch);
 
         M2TWGameCfgOption uiFullBattleHudOption = new (
-            name: UiFullBattleHudTextId, value: this.UiFullBattleHud!, section: UIConfigSwitch);
+            name: UiFullBattleHudTextId, value: this.UiFullBattleHud!.BooleanValue, section: UIConfigSwitch);
 
         M2TWGameCfgOption uiRadarOption = new (
-            name: UiRadarTextId, value: this.UiRadar!, section: UIConfigSwitch);
+            name: UiRadarTextId, value: this.UiRadar!.BooleanValue, section: UIConfigSwitch);
 
         M2TWGameCfgOption uiShowTooltipsOption = new (
-            name: UiShowTooltipsTextId, value: this.UiShowTooltips!, section: UIConfigSwitch);
+            name: UiShowTooltipsTextId, value: this.UiShowTooltips!.BooleanValue, section: UIConfigSwitch);
 
         M2TWGameCfgOption uiUnitCardsOption = new (
-            name: UiUnitCardsTextId, value: this.UiUnitCards!, section: UIConfigSwitch);
+            name: UiUnitCardsTextId, value: this.UiUnitCards!.BooleanValue, section: UIConfigSwitch);
 
         M2TWGameCfgOption[] uiCfgOptions =
         {

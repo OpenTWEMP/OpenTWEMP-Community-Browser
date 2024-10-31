@@ -40,7 +40,7 @@ public record ModDiagnosticSectionStateView : ICustomConfigState
         M2TWGameCfgOption[] gameLogCfgOptions =
         {
             new (name: LogToTextId, value: this.LogTo!, section: LogConfigSwitch),
-            new (name: LogLevelTextId, value: this.LogLevel!, section: LogConfigSwitch),
+            new (name: LogLevelTextId, value: this.LogLevel!.Value, section: LogConfigSwitch),
         };
 
         GameCfgSection gameLogCfgSection = new M2TWGameCfgSection(LogConfigSwitch, gameLogCfgOptions);

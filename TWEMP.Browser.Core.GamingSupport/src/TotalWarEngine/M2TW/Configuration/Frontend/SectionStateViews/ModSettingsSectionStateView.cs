@@ -45,10 +45,10 @@ public record ModSettingsSectionStateView : ICustomConfigState
             name: ModTextId, value: this.Mod!, section: FeaturesConfigSwitch);
 
         M2TWGameCfgOption featuresEditorOption = new (
-            name: EditorTextId, value: this.Editor!, section: FeaturesConfigSwitch);
+            name: EditorTextId, value: this.Editor!.BooleanValue, section: FeaturesConfigSwitch);
 
         M2TWGameCfgOption ioFileFirstOption = new (
-            name: FileFirstTextId, value: this.FileFirst!, section: IOConfigSwitch);
+            name: FileFirstTextId, value: this.FileFirst!.BooleanValue, section: IOConfigSwitch);
 
         M2TWGameCfgOption[] featuresCfgOptions = { featuresModOption, featuresEditorOption };
         M2TWGameCfgOption[] ioCfgOptions = { ioFileFirstOption };
