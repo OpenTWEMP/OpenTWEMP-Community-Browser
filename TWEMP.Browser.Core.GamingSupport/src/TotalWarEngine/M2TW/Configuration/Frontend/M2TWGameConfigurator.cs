@@ -6,6 +6,8 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fro
 
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes.Enums;
 
 /// <summary>
 /// Implements the game configurator agent for the "Medieval 2 Total War" game engine (M2TW).
@@ -97,13 +99,12 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     }
 
     /// <summary>
-    /// Gets M2TW configuration settings via a custom configuration state.
+    /// Gets current M2TW configuration settings.
     /// </summary>
-    /// <param name="state">A target custom game configuration state.</param>
     /// <returns>The array of game configuration settings.</returns>
-    public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
+    public GameCfgSection[] GetCurrentConfigSettings()
     {
-        return state.RetrieveCurrentSettings();
+        return this.currentGameConfigStateView.RetrieveCurrentSettings();
     }
 
     /// <summary>
@@ -114,6 +115,8 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     {
         Dictionary<string, bool> viewsOfProperties = state.GetStateViewOfProperties();
         this.currentQuickCustomConfigStateView.SetPropertiesByStateView(viewsOfProperties);
+
+        this.ApplyAllOverridedConfigSettings();
     }
 
     public List<CfgOptionsSubSet> InitializeMinimalModSettings()
@@ -203,5 +206,48 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         subsetOptions.Add(new CfgOption("borderless_window", cfg.ValidatorBorderless));
 
         return new CfgOptionsSubSet(subsetName, subsetOptions);
+    }
+
+    private void ApplyAllOverridedConfigSettings()
+    {
+        this.ApplyOverridedLogLevelSettings();
+        this.ApplyOverridedVideoSettings();
+    }
+
+    private void ApplyOverridedLogLevelSettings()
+    {
+        if (this.currentQuickCustomConfigStateView.ValidatorLogLevel1)
+        {
+            this.currentGameConfigStateView.ModDiagnosticSection!.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error) !;
+        }
+
+        if (this.currentQuickCustomConfigStateView.ValidatorLogLevel2)
+        {
+            this.currentGameConfigStateView.ModDiagnosticSection!.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Trace) !;
+        }
+
+        if (this.currentQuickCustomConfigStateView.ValidatorLogLevel3)
+        {
+            this.currentGameConfigStateView.ModDiagnosticSection!.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.ScriptTrace) !;
+        }
+    }
+
+    private void ApplyOverridedVideoSettings()
+    {
+        if (this.currentQuickCustomConfigStateView.IsEnabledWindowedMode)
+        {
+            this.currentGameConfigStateView.GameVideoCfgSection!.VideoWindowedMode = new M2TW_Boolean(true);
+        }
+
+        if (this.currentQuickCustomConfigStateView.IsEnabledFullScreenMode)
+        {
+            this.currentGameConfigStateView.GameVideoCfgSection!.VideoWindowedMode = new M2TW_Boolean(false);
+        }
+
+        this.currentGameConfigStateView.GameVideoCfgSection!.VideoMovies =
+            new M2TW_Boolean(this.currentQuickCustomConfigStateView.ValidatorVideo);
+
+        this.currentGameConfigStateView.GameVideoCfgSection!.VideoBorderlessWindow =
+            new M2TW_Boolean(this.currentQuickCustomConfigStateView.ValidatorBorderless);
     }
 }

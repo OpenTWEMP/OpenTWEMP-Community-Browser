@@ -16,11 +16,10 @@ public interface IGameConfiguratorAgent
     public abstract GameCfgSection[] GetDefaultConfigSettings();
 
     /// <summary>
-    /// Gets game configuration settings via a custom configuration state.
+    /// Gets current game configuration settings.
     /// </summary>
-    /// <param name="state">A target custom game configuration state.</param>
     /// <returns>The array of game configuration settings.</returns>
-    public abstract GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state);
+    public abstract GameCfgSection[] GetCurrentConfigSettings();
 
     /// <summary>
     /// Overrides current game configuration settings by a specified custom quick config state.

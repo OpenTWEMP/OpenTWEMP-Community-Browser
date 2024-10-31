@@ -33,11 +33,10 @@ public class RTWGameConfigurator : IGameConfiguratorAgent
     }
 
     /// <summary>
-    /// Gets RTW configuration settings via a custom configuration state.
+    /// Gets current RTW configuration settings.
     /// </summary>
-    /// <param name="state">A target custom game configuration state.</param>
     /// <returns>The array of game configuration settings.</returns>
-    public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
+    public GameCfgSection[] GetCurrentConfigSettings()
     {
         return Array.Empty<GameCfgSection>(); // TODO: Implement using existing RTW config settings!
     }

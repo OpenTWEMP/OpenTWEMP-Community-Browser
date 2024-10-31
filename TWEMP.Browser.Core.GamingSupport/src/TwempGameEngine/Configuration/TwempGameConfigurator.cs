@@ -24,7 +24,7 @@ public class TwempGameConfigurator : IGameConfiguratorAgent
     }
 
     /// <summary>
-    /// Gets OpenTWEMP configuration settings by default.
+    /// Gets TWEMP configuration settings by default.
     /// </summary>
     /// <returns>The array of game configuration settings.</returns>
     public GameCfgSection[] GetDefaultConfigSettings()
@@ -33,11 +33,10 @@ public class TwempGameConfigurator : IGameConfiguratorAgent
     }
 
     /// <summary>
-    /// Gets OpenTWEMP configuration settings via a custom configuration state.
+    /// Gets current TWEMP configuration settings.
     /// </summary>
-    /// <param name="state">A target custom game configuration state.</param>
     /// <returns>The array of game configuration settings.</returns>
-    public GameCfgSection[] GetCustomConfigSettings(ICustomConfigState state)
+    public GameCfgSection[] GetCurrentConfigSettings()
     {
         return Array.Empty<GameCfgSection>(); // TODO: Implement using existing OpenTWEMP config settings!
     }

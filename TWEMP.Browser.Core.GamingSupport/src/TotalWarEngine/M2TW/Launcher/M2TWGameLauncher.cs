@@ -4,6 +4,15 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
+#define USE_NEW_IMPLEMENTATION
+//#undef USE_NEW_IMPLEMENTATION
+
+#if USE_NEW_IMPLEMENTATION
+#define NEW_CONFIG_IMPLEMENTATION
+#else
+#define OLD_CONFIG_IMPLEMENTATION
+#endif
+
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Launcher;
 
 using System.Diagnostics;
@@ -119,16 +128,24 @@ public class M2TWGameLauncher : IGameLauncherAgent
 
     private void Launch()
     {
-        List<CfgOptionsSubSet> mod_settings = this.currentGameConfigurator.InitializeMinimalModSettings();
+        string configurationFilePath;
 
-        string mod_config = this.GenerateModConfigFile(mod_settings);
+#if NEW_CONFIG_IMPLEMENTATION
+        GameCfgSection[] configSettings = this.currentGameConfigurator.GetCurrentConfigSettings();
+        configurationFilePath = this.GenerateModConfigFile(configSettings);
+#endif
+
+#if OLD_CONFIG_IMPLEMENTATION
+        List<CfgOptionsSubSet> configSettings = this.currentGameConfigurator.InitializeMinimalModSettings();
+        configurationFilePath = this.GenerateModConfigFile(configSettings);
+#endif
 
         if (this.IsModificationReadyToExecution())
         {
-            if (File.Exists(mod_config))
+            if (File.Exists(configurationFilePath))
             {
                 var modExecutionProcess = new Process();
-                modExecutionProcess.StartInfo = this.InitializeGameLaunch(mod_config);
+                modExecutionProcess.StartInfo = this.InitializeGameLaunch(configurationFilePath);
                 string modExecutableBaseName = Path.GetFileNameWithoutExtension(this.currentGameConfigurator.CurrentInfo.CurrentSetup.ExecutableFileName) !;
 
                 if (modExecutableBaseName.Equals(GameKingdomsExecutableBaseFileName))
@@ -176,9 +193,29 @@ public class M2TWGameLauncher : IGameLauncherAgent
         return modProcessInfo;
     }
 
+    private string GenerateModConfigFile(GameCfgSection[] gameConfigSections)
+    {
+        string cfgFileName = "TWE_MOD_CFG_MODERN.cfg";
+        string cfgFilePath = Path.Combine(this.currentGameConfigurator.CurrentInfo.Location, cfgFileName);
+
+        var stream = new FileStream(cfgFilePath, FileMode.Create, FileAccess.ReadWrite);
+        var writer = new StreamWriter(stream, Encoding.ASCII);
+
+        foreach (GameCfgSection section in gameConfigSections)
+        {
+            string sectionConfigOptions = section.GetOutputConfigFormat();
+            writer.WriteLine(sectionConfigOptions);
+        }
+
+        writer.Close();
+        stream.Close();
+
+        return cfgFilePath;
+    }
+
     private string GenerateModConfigFile(List<CfgOptionsSubSet> option_subsets)
     {
-        string cfgFileName = "TWE_MOD_CFG.cfg";
+        string cfgFileName = "TWE_MOD_CFG_LEGACY.cfg";
         string cfgFilePath = Path.Combine(this.currentGameConfigurator.CurrentInfo.Location, cfgFileName);
 
         var stream = new FileStream(cfgFilePath, FileMode.Create, FileAccess.ReadWrite);
