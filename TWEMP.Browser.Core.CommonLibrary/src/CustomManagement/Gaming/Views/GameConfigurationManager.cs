@@ -108,6 +108,39 @@ public class GameConfigurationManager
     }
 
     /// <summary>
+    /// Exports configuration settings to a target file.
+    /// </summary>
+    /// <param name="cfgSettingSections">The array of config settings.</param>
+    /// <param name="exportFilePath">The export file path.</param>
+    public static void ExportConfigSettingsToFile(GameCfgSection[] cfgSettingSections, string exportFilePath)
+    {
+        GameConfigOptionView[] gameConfigOptionViews = GetConfigOptionsBySections(cfgSettingSections);
+        AppSerializer.SerializeToJson(gameConfigOptionViews, exportFilePath);
+    }
+
+    /// <summary>
+    ///  Imports configuration settings from a target file.
+    /// </summary>
+    /// <param name="importFilePath">The import file path.</param>
+    /// <returns>The array of config settings.</returns>
+    public static GameCfgSection[] ImportConfigSettingsFromFile(string importFilePath)
+    {
+        GameCfgSection[] gameConfigSections;
+
+        try
+        {
+            var gameConfigOptionViews = AppSerializer.DeserializeFromJson<GameConfigOptionView[]>(importFilePath);
+            gameConfigSections = GetSectionsOfConfigOptions(gameConfigOptionViews);
+        }
+        catch (InvalidOperationException)
+        {
+            gameConfigSections = Array.Empty<GameCfgSection>();
+        }
+
+        return gameConfigSections;
+    }
+
+    /// <summary>
     /// Gets game config profile items for UI controls by game config profile views.
     /// </summary>
     /// <param name="viewOfGameConfigProfiles">A dictionary of game config profile views.</param>
@@ -234,7 +267,7 @@ public class GameConfigurationManager
     }
 
     /// <summary>
-    /// Exports all available game configuration profiles to a target directory.
+    /// Exports all available game configuration profiles to a target file.
     /// </summary>
     /// <param name="exportFilePath">The export file path.</param>
     public void ExportAllProfilesToFile(string exportFilePath)

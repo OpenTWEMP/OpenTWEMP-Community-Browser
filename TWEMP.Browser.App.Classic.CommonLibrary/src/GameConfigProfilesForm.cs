@@ -173,14 +173,14 @@ public partial class GameConfigProfilesForm : Form
 
     private void ConfigProfilesImportButtonClick(object sender, EventArgs e)
     {
-        OpenFileDialog importFileDialog = new();
+        OpenFileDialog importFileDialog = new ();
         importFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
         DialogResult result = importFileDialog.ShowDialog();
 
         if (result == DialogResult.OK)
         {
             string importFileFullName = importFileDialog.FileName;
-            BrowserKernel.ImportAllProfilesFrom(importFileFullName);
+            BrowserKernel.ImportAllProfilesFromFile(importFileFullName);
 
             ShowConfigOperationResultMessageBox(
                 messageBoxCaption: "<IMPORT CFGs>",

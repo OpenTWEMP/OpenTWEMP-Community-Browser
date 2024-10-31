@@ -112,8 +112,19 @@ public static partial class BrowserKernel
         GameConfigurationManagerInstance.ExportAllProfilesToFile(exportFilePath);
     }
 
-    public static void ImportAllProfilesFrom(string importFilePath)
+    public static void ExportConfigSettingsToFile(GameCfgSection[] cfgSettingSections, string exportFileName)
+    {
+        string exportFilePath = Path.Combine(Directory.GetCurrentDirectory(), exportFileName);
+        GameConfigurationManager.ExportConfigSettingsToFile(cfgSettingSections, exportFilePath);
+    }
+
+    public static void ImportAllProfilesFromFile(string importFilePath)
     {
         GameConfigurationManagerInstance.ImportAllProfilesFromFile(importFilePath);
+    }
+
+    public static GameCfgSection[] ImportConfigSettingsFromFile(string importFilePath)
+    {
+        return GameConfigurationManager.ImportConfigSettingsFromFile(importFilePath);
     }
 }

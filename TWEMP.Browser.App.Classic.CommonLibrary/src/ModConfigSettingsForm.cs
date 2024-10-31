@@ -6,9 +6,13 @@
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
 #pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
+#define TESTING_IMPORT_FEATURE
+#undef TESTING_IMPORT_FEATURE
+
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
@@ -74,14 +78,42 @@ public partial class ModConfigSettingsForm : Form
 
     private void ExportConfigSettingsButton_Click(object sender, EventArgs e)
     {
-        M2TWGameConfigStateView gameConfigStateView = CreateGameConfigStateView();
+        const string exportFileName = "config.json";
 
-        MessageBox.Show("EXPORT CONFIG SETTINGS");
+        M2TWGameConfigStateView gameConfigStateView = CreateGameConfigStateView();
+        GameCfgSection[] cfgSettingSections = gameConfigStateView.RetrieveCurrentSettings();
+
+        BrowserKernel.ExportConfigSettingsToFile(cfgSettingSections, exportFileName);
+
+        MessageBox.Show(
+            text: $"Config settings were exported to the file:\n{exportFileName}",
+            caption: "<EXPORT CFG>",
+            buttons: MessageBoxButtons.OK,
+            icon: MessageBoxIcon.Information);
     }
 
     private void ImportConfigSettingsButton_Click(object sender, EventArgs e)
     {
-        MessageBox.Show("IMPORT CONFIG SETTINGS");
+        OpenFileDialog importFileDialog = new ();
+        importFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+        DialogResult result = importFileDialog.ShowDialog();
+
+        if (result == DialogResult.OK)
+        {
+            string importFileFullName = importFileDialog.FileName;
+
+#if TESTING_IMPORT_FEATURE
+            // TODO: Fix an exception when deserialization GameCfgSection objects!
+            GameCfgSection[] gameCfgSections = BrowserKernel.ImportConfigSettingsFromFile(importFileFullName);
+            this.InitializeConfigControls(gameCfgSections); // TODO: Implement this method in future.
+#endif
+
+            MessageBox.Show(
+                text: $"Config settings were imported from the file:\n{importFileFullName}",
+                caption: "<IMPORT CFG [TESTING]>",
+                buttons: MessageBoxButtons.OK,
+                icon: MessageBoxIcon.Information);
+        }
     }
 
     private M2TWGameConfigStateView CreateGameConfigStateView()
@@ -256,6 +288,13 @@ public partial class ModConfigSettingsForm : Form
             9) GameVideoCfgSection = GameVideoCfgSectionStateView.CreateByDefault(),
         };*/
     }
+
+#if TESTING_IMPORT_FEATURE
+    private void InitializeConfigControls(GameCfgSection[] gameCfgSections)
+    {
+        // TODO: Implement initialization of UI controls via the 'gameCfgSections' array.
+    }
+#endif
 
     private void InitializeConfigControls()
     {
