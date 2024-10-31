@@ -41,4 +41,13 @@ public class TwempGameConfigurator : IGameConfiguratorAgent
     {
         return Array.Empty<GameCfgSection>(); // TODO: Implement using existing OpenTWEMP config settings!
     }
+
+    /// <summary>
+    /// Overrides current TWEMP configuration settings by a specified custom quick config state.
+    /// </summary>
+    /// <param name="state">A custom qucik config state.</param>
+    public void OverrideConfigSettingsByCustomQuickState(ICustomQuickConfigState state)
+    {
+        // TODO: Implement using existing OpenTWEMP config settings!
+    }
 }

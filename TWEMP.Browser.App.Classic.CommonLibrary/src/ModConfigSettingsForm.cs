@@ -50,13 +50,15 @@ public partial class ModConfigSettingsForm : Form
     private void SaveConfigSettingsButton_Click(object sender, EventArgs e)
     {
         M2TWGameConfigStateView gameConfigStateView = CreateGameConfigStateView();
+        M2TWGameConfigurator gameConfigurator = new (this.currentGameModificationInfo, gameConfigStateView);
+        BrowserKernel.CurrentConfigurator = gameConfigurator;
 
-        // Create a new game configuration state object.
         MessageBox.Show(
             text: "Your new game config is READY!",
             caption: "SUCCESS",
             buttons: MessageBoxButtons.OK,
             icon: MessageBoxIcon.Information);
+
         this.Close();
     }
 

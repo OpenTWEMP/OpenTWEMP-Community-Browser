@@ -15,6 +15,7 @@ using TWEMP.Browser.App.Classic.WinForms.Properties;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 internal partial class MainBrowserForm : IUpdatableBrowser
 {
@@ -90,6 +91,8 @@ internal partial class MainBrowserForm : IUpdatableBrowser
             if (IsNodeOfGameModView(e.Node!))
             {
                 UpdatableGameModificationView gameModView = this.SelectGameModViewByTreeNode(e.Node!);
+
+                BrowserKernel.CurrentConfigurator = M2TWGameConfigurator.CreateByDefault(gameModView.CurrentInfo);
                 BrowserKernel.CurrentGameModView = gameModView;
 
                 this.modMainTitleLabel.Text = gameModView.GetActivePresetFullName();

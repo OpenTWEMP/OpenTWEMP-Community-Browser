@@ -2,8 +2,6 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-#pragma warning disable SA1600 // ElementsMustBeDocumented
-
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 using TWEMP.Browser.Core.CommonLibrary;
@@ -14,15 +12,78 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 /// </summary>
 public class M2TWGameConfigurator : IGameConfiguratorAgent
 {
-    private readonly GameModificationInfo gameModificationInfo;
+    private readonly GameModificationInfo currentGameModificationInfo;
+    private readonly M2TWGameConfigStateView currentGameConfigStateView;
+    private readonly M2TWCustomQuickConfigStateView currentQuickCustomConfigStateView;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="M2TWGameConfigurator"/> class.
     /// </summary>
-    /// <param name="info">Information about a target game modification.</param>
-    public M2TWGameConfigurator(GameModificationInfo info)
+    /// <param name="gameModificationInfo">Information about a target game modification.</param>
+    /// <param name="gameConfigStateView">Information about a target game configuration.</param>
+    /// <param name="quickCustomConfigStateView">Information about a quick custom configuration.</param>
+    public M2TWGameConfigurator(
+        GameModificationInfo gameModificationInfo,
+        M2TWGameConfigStateView gameConfigStateView,
+        M2TWCustomQuickConfigStateView quickCustomConfigStateView)
     {
-        this.gameModificationInfo = info;
+        this.currentGameModificationInfo = gameModificationInfo;
+        this.currentGameConfigStateView = gameConfigStateView;
+        this.currentQuickCustomConfigStateView = quickCustomConfigStateView;
+
+        this.CurrentInfo = this.currentGameModificationInfo;
+        this.CurrentState = this.currentQuickCustomConfigStateView;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="M2TWGameConfigurator"/> class.
+    /// </summary>
+    /// <param name="gameModificationInfo">Information about a target game modification.</param>
+    /// <param name="gameConfigStateView">Information about a target game configuration.</param>
+    public M2TWGameConfigurator(
+        GameModificationInfo gameModificationInfo,
+        M2TWGameConfigStateView gameConfigStateView)
+    {
+        this.currentGameModificationInfo = gameModificationInfo;
+        this.currentGameConfigStateView = gameConfigStateView;
+        this.currentQuickCustomConfigStateView = new M2TWCustomQuickConfigStateView();
+
+        this.CurrentInfo = this.currentGameModificationInfo;
+        this.CurrentState = this.currentQuickCustomConfigStateView;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="M2TWGameConfigurator"/> class.
+    /// </summary>
+    /// <param name="gameModificationInfo">Information about a target game modification.</param>
+    private M2TWGameConfigurator(GameModificationInfo gameModificationInfo)
+    {
+        this.currentGameModificationInfo = gameModificationInfo;
+        this.currentGameConfigStateView = M2TWGameConfigStateView.CreateByDefault(gameModificationInfo);
+        this.currentQuickCustomConfigStateView = new M2TWCustomQuickConfigStateView();
+
+        this.CurrentInfo = this.currentGameModificationInfo;
+        this.CurrentState = this.currentQuickCustomConfigStateView;
+    }
+
+    /// <summary>
+    /// Gets the current game modification info.
+    /// </summary>
+    public GameModificationInfo CurrentInfo { get; }
+
+    /// <summary>
+    /// Gets the current quick custom config state.
+    /// </summary>
+    public M2TWCustomQuickConfigStateView CurrentState { get; }
+
+    /// <summary>
+    /// Creates the game configurator agent by default.
+    /// </summary>
+    /// <param name="gameModificationInfo">Information about a target game modification.</param>
+    /// <returns>A new instance of the <see cref="M2TWGameConfigurator"/> class.</returns>
+    public static M2TWGameConfigurator CreateByDefault(GameModificationInfo gameModificationInfo)
+    {
+        return new M2TWGameConfigurator(gameModificationInfo);
     }
 
     /// <summary>
@@ -31,7 +92,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     /// <returns>The array of game configuration settings.</returns>
     public GameCfgSection[] GetDefaultConfigSettings()
     {
-        M2TWGameConfigStateView view = M2TWGameConfigStateView.CreateByDefault(this.gameModificationInfo);
+        M2TWGameConfigStateView view = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
         return view.RetrieveCurrentSettings();
     }
 
@@ -45,20 +106,30 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return state.RetrieveCurrentSettings();
     }
 
-    public List<CfgOptionsSubSet> InitializeMinimalModSettings(CustomConfigState cfg)
+    /// <summary>
+    /// Overrides current game configuration settings by a specified custom quick config state.
+    /// </summary>
+    /// <param name="state">A custom qucik config state.</param>
+    public void OverrideConfigSettingsByCustomQuickState(ICustomQuickConfigState state)
+    {
+        Dictionary<string, bool> viewsOfProperties = state.GetStateViewOfProperties();
+        this.currentQuickCustomConfigStateView.SetPropertiesByStateView(viewsOfProperties);
+    }
+
+    public List<CfgOptionsSubSet> InitializeMinimalModSettings()
     {
         List<CfgOptionsSubSet> settings = new ();
 
-        CfgOptionsSubSet features_subset = GetFeaturesSubSet(this.gameModificationInfo); // [features]
+        CfgOptionsSubSet features_subset = GetFeaturesSubSet(this.currentGameModificationInfo); // [features]
         settings.Add(features_subset);
 
         CfgOptionsSubSet io_subset = GetIOSubSet(); // [io]
         settings.Add(io_subset);
 
-        CfgOptionsSubSet log_subset = GetLogSubSet(this.gameModificationInfo, cfg); // [log]
+        CfgOptionsSubSet log_subset = GetLogSubSet(this.currentGameModificationInfo, this.currentQuickCustomConfigStateView); // [log]
         settings.Add(log_subset);
 
-        CfgOptionsSubSet video_subset = GetVideoSubSet(cfg); // [video]
+        CfgOptionsSubSet video_subset = GetVideoSubSet(this.currentQuickCustomConfigStateView); // [video]
         settings.Add(video_subset);
 
         return settings;
@@ -86,7 +157,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return new CfgOptionsSubSet(subsetName, subsetOptions);
     }
 
-    private static CfgOptionsSubSet GetLogSubSet(GameModificationInfo mod, CustomConfigState cfg)
+    private static CfgOptionsSubSet GetLogSubSet(GameModificationInfo mod, M2TWCustomQuickConfigStateView cfg)
     {
         string subsetName = "log";
 
@@ -97,7 +168,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return new CfgOptionsSubSet(subsetName, subsetOptions);
     }
 
-    private static string SetLogLevel(CustomConfigState cfg)
+    private static string SetLogLevel(M2TWCustomQuickConfigStateView cfg)
     {
         const string strLogLevelError = "* error";
         const string strLogLevelTrace = "* trace";
@@ -123,7 +194,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         return strLogLevel;
     }
 
-    private static CfgOptionsSubSet GetVideoSubSet(CustomConfigState cfg)
+    private static CfgOptionsSubSet GetVideoSubSet(M2TWCustomQuickConfigStateView cfg)
     {
         string subsetName = "video";
         var subsetOptions = new List<CfgOption>();

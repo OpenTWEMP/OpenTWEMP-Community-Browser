@@ -8,11 +8,9 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Launcher;
 
 using System.Diagnostics;
 using System.Text;
-using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.GameLauncherFeatures;
 using TWEMP.Browser.Core.CommonLibrary.Messaging;
-using TWEMP.Browser.Core.GamingSupport;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
@@ -24,40 +22,33 @@ public class M2TWGameLauncher : IGameLauncherAgent
     public const string GameKingdomsExecutableBaseFileName = "kingdoms";
     public const string GameMedievalExecutableBaseFileName = "medieval2";
 
-    private readonly GameModificationInfo currentGameMod;
-    private readonly CustomConfigState currentCfgState;
+    private readonly M2TWGameConfigurator currentGameConfigurator;
     private readonly IBrowserMessageProvider currentMessageProvider;
 
-    private readonly M2TWGameConfigurator gameConfigurator;
-
-    public M2TWGameLauncher(
-        GameModificationInfo mod_info, CustomConfigState state, IBrowserMessageProvider messageProvider)
+    public M2TWGameLauncher(M2TWGameConfigurator gameConfigurator, IBrowserMessageProvider messageProvider)
     {
-        this.currentGameMod = mod_info;
-        this.currentCfgState = state;
+        this.currentGameConfigurator = gameConfigurator;
         this.currentMessageProvider = messageProvider;
-
-        this.gameConfigurator = new M2TWGameConfigurator(this.currentGameMod);
     }
 
     public void Execute()
     {
-        if (this.currentCfgState.UseLauncherProvider_M2TWEOP)
+        if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_M2TWEOP)
         {
-            this.Launch(this.currentGameMod.CurrentPreset.LauncherProvider_M2TWEOP);
+            this.Launch(this.currentGameConfigurator.CurrentInfo.CurrentPreset.LauncherProvider_M2TWEOP);
         }
 
-        if (this.currentCfgState.UseLauncherProvider_M2TWEOP_NativeSetup)
+        if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_M2TWEOP_NativeSetup)
         {
-            this.Launch(this.currentGameMod.CurrentPreset.LauncherProvider_NativeSetup);
+            this.Launch(this.currentGameConfigurator.CurrentInfo.CurrentPreset.LauncherProvider_NativeSetup);
         }
 
-        if (this.currentCfgState.UseLauncherProvider_M2TWEOP_NativeBatch)
+        if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_M2TWEOP_NativeBatch)
         {
-            this.Launch(this.currentGameMod.CurrentPreset.LauncherProvider_NativeBatch);
+            this.Launch(this.currentGameConfigurator.CurrentInfo.CurrentPreset.LauncherProvider_NativeBatch);
         }
 
-        if (this.currentCfgState.UseLauncherProvider_TWEMP)
+        if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_TWEMP)
         {
             this.Launch();
         }
@@ -104,13 +95,13 @@ public class M2TWGameLauncher : IGameLauncherAgent
 
     private void Launch(string filename)
     {
-        string executableFilePath = Path.Combine(this.currentGameMod.Location, filename);
+        string executableFilePath = Path.Combine(this.currentGameConfigurator.CurrentInfo.Location, filename);
 
         if (File.Exists(executableFilePath))
         {
             var modProcessInfo = new ProcessStartInfo();
             modProcessInfo.FileName = executableFilePath;
-            modProcessInfo.WorkingDirectory = this.currentGameMod.Location;
+            modProcessInfo.WorkingDirectory = this.currentGameConfigurator.CurrentInfo.Location;
 
             var process = new Process();
             process.StartInfo = modProcessInfo;
@@ -128,7 +119,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
 
     private void Launch()
     {
-        List<CfgOptionsSubSet> mod_settings = this.gameConfigurator.InitializeMinimalModSettings(this.currentCfgState);
+        List<CfgOptionsSubSet> mod_settings = this.currentGameConfigurator.InitializeMinimalModSettings();
 
         string mod_config = this.GenerateModConfigFile(mod_settings);
 
@@ -138,7 +129,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
             {
                 var modExecutionProcess = new Process();
                 modExecutionProcess.StartInfo = this.InitializeGameLaunch(mod_config);
-                string modExecutableBaseName = Path.GetFileNameWithoutExtension(this.currentGameMod.CurrentSetup.ExecutableFileName) !;
+                string modExecutableBaseName = Path.GetFileNameWithoutExtension(this.currentGameConfigurator.CurrentInfo.CurrentSetup.ExecutableFileName) !;
 
                 if (modExecutableBaseName.Equals(GameKingdomsExecutableBaseFileName))
                 {
@@ -177,9 +168,10 @@ public class M2TWGameLauncher : IGameLauncherAgent
     {
         ProcessStartInfo modProcessInfo = new ProcessStartInfo();
 
-        modProcessInfo.WorkingDirectory = this.currentGameMod.CurrentSetup.HomeDirectory;
-        modProcessInfo.FileName = Path.Combine(this.currentGameMod.CurrentSetup.HomeDirectory!, this.currentGameMod.CurrentSetup.ExecutableFileName!);
-        modProcessInfo.Arguments = this.currentGameMod.ModArgRelativePath + Path.GetFileName(mod_config_file);
+        modProcessInfo.WorkingDirectory = this.currentGameConfigurator.CurrentInfo.CurrentSetup.HomeDirectory;
+        modProcessInfo.FileName = Path.Combine(
+            this.currentGameConfigurator.CurrentInfo.CurrentSetup.HomeDirectory!, this.currentGameConfigurator.CurrentInfo.CurrentSetup.ExecutableFileName!);
+        modProcessInfo.Arguments = this.currentGameConfigurator.CurrentInfo.ModArgRelativePath + Path.GetFileName(mod_config_file);
 
         return modProcessInfo;
     }
@@ -187,7 +179,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
     private string GenerateModConfigFile(List<CfgOptionsSubSet> option_subsets)
     {
         string cfgFileName = "TWE_MOD_CFG.cfg";
-        string cfgFilePath = Path.Combine(this.currentGameMod.Location, cfgFileName);
+        string cfgFilePath = Path.Combine(this.currentGameConfigurator.CurrentInfo.Location, cfgFileName);
 
         var stream = new FileStream(cfgFilePath, FileMode.Create, FileAccess.ReadWrite);
         var writer = new StreamWriter(stream, Encoding.ASCII);
@@ -228,16 +220,16 @@ public class M2TWGameLauncher : IGameLauncherAgent
         const bool skippedOperationStatus = true;
 
         bool isMapFileSuccessfullyProcessed =
-            this.currentCfgState.IsShouldBeDeleted_MapRWM ?
-                GameConfigRoutines.DeleteMapFile(this.currentGameMod, this.currentMessageProvider) : skippedOperationStatus;
+            this.currentGameConfigurator.CurrentState.IsShouldBeDeleted_MapRWM ?
+                GameConfigRoutines.DeleteMapFile(this.currentGameConfigurator.CurrentInfo, this.currentMessageProvider) : skippedOperationStatus;
 
         bool areStringsBinFilesSuccessfullyPreprocessed =
-            this.currentCfgState.IsShouldBeDeleted_TextBin ?
-                GameConfigRoutines.DeleteStringsBinFiles(this.currentGameMod, this.currentMessageProvider) : skippedOperationStatus;
+            this.currentGameConfigurator.CurrentState.IsShouldBeDeleted_TextBin ?
+                GameConfigRoutines.DeleteStringsBinFiles(this.currentGameConfigurator.CurrentInfo, this.currentMessageProvider) : skippedOperationStatus;
 
         bool areSoundPackFilesSuccessfullyPreprocessed =
-            this.currentCfgState.IsShouldBeDeleted_SoundPacks ?
-                GameConfigRoutines.DeleteSoundPackFiles(this.currentGameMod, this.currentMessageProvider) : skippedOperationStatus;
+            this.currentGameConfigurator.CurrentState.IsShouldBeDeleted_SoundPacks ?
+                GameConfigRoutines.DeleteSoundPackFiles(this.currentGameConfigurator.CurrentInfo, this.currentMessageProvider) : skippedOperationStatus;
 
         preProcessingFlags[0] = isMapFileSuccessfullyProcessed;
         preProcessingFlags[1] = areStringsBinFilesSuccessfullyPreprocessed;
@@ -250,7 +242,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
     {
         if (IsModExecutionProcessFinished(modExecutionProcessID))
         {
-            if (this.currentCfgState.EnabledLogsHistorySaving)
+            if (this.currentGameConfigurator.CurrentState.EnabledLogsHistorySaving)
             {
                 this.SaveModLogFile();
             }
@@ -259,7 +251,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
 
     private void SaveModLogFile()
     {
-        string modLogFilePath = Path.Combine(this.currentGameMod.Location, this.currentGameMod.LogFileName);
+        string modLogFilePath = Path.Combine(this.currentGameConfigurator.CurrentInfo.Location, this.currentGameConfigurator.CurrentInfo.LogFileName);
 
         if (File.Exists(modLogFilePath))
         {
@@ -277,6 +269,6 @@ public class M2TWGameLauncher : IGameLauncherAgent
 
     private string GetModLogsDirectory()
     {
-        return Path.Combine(this.currentGameMod.Location, "twe-mod-logs");
+        return Path.Combine(this.currentGameConfigurator.CurrentInfo.Location, "twe-mod-logs");
     }
 }

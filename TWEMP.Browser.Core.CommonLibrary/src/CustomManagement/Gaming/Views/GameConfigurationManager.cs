@@ -53,6 +53,7 @@ public class GameConfigurationManager
 
         this.CurrentGameModView = null;
         this.CurrentConfigProfile = null;
+        this.CurrentConfigurator = null;
     }
 
     /// <summary>
@@ -69,6 +70,11 @@ public class GameConfigurationManager
     /// Gets or sets the current game configuration profile for the selected game modification.
     /// </summary>
     public GameConfigProfile? CurrentConfigProfile { get; set; }
+
+    /// <summary>
+    /// Gets or sets the current game configurator agent.
+    /// </summary>
+    public IGameConfiguratorAgent? CurrentConfigurator { get; set; }
 
     /// <summary>
     /// Creates a custom instance of the <see cref="GameConfigurationManager"/> class.

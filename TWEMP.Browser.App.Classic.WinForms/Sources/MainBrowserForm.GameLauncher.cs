@@ -9,26 +9,46 @@ namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.Utilities;
 using TWEMP.Browser.Core.GamingSupport;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 internal partial class MainBrowserForm
 {
+    private static void ShowGameModLaunchErrorMessageBox(string messageText)
+    {
+        MessageBox.Show(
+            text: messageText,
+            caption: "ERROR",
+            buttons: MessageBoxButtons.OK,
+            icon: MessageBoxIcon.Error);
+    }
+
     private void ButtonLaunch_Click(object sender, EventArgs e)
     {
         TreeNode modNode = treeViewGameMods.SelectedNode;
-        GameModificationInfo? targetModInfo = SelectGameModInfoFromBrowserTreeNode(modNode);
+        GameModificationInfo? currentGameModInfo = SelectGameModInfoFromBrowserTreeNode(modNode);
 
-        if (targetModInfo == null)
+        if (currentGameModInfo == null)
         {
-            MessageBox.Show("ERROR: Cannot execute this MOD !!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ShowGameModLaunchErrorMessageBox("Cannot execute this game mod!");
         }
         else
         {
-            CustomConfigState targetConfigState = GetCurrentGameConfigState();
+            var currentGameConfigurator = (M2TWGameConfigurator?)BrowserKernel.CurrentConfigurator;
+
+            if (currentGameConfigurator == null)
+            {
+                ShowGameModLaunchErrorMessageBox("Cannot configure this game mod!");
+                return;
+            }
+
+            M2TWCustomQuickConfigStateView currentQuickCustomConfigState = CreateQuickCustomConfigState();
+            currentGameConfigurator.OverrideConfigSettingsByCustomQuickState(currentQuickCustomConfigState);
 
             ChangeLauncherGUIWhenGameStarting();
-            MainGamingSupportHub.LaunchGameEngineAsM2TW(targetModInfo, targetConfigState, currentMessageProvider);
+            MainGamingSupportHub.LaunchGameEngineAsM2TW(currentGameConfigurator, currentMessageProvider);
             ChangeLauncherGUIWhenGameExiting();
         }
     }

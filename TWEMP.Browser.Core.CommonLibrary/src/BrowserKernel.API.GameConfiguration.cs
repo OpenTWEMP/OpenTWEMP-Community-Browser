@@ -35,6 +35,32 @@ public static partial class BrowserKernel
         }
     }
 
+    public static GameConfigProfile? CurrentConfigProfile
+    {
+        get
+        {
+            return GameConfigurationManagerInstance.CurrentConfigProfile;
+        }
+
+        set
+        {
+            GameConfigurationManagerInstance.CurrentConfigProfile = value;
+        }
+    }
+
+    public static IGameConfiguratorAgent? CurrentConfigurator
+    {
+        get
+        {
+            return GameConfigurationManagerInstance.CurrentConfigurator;
+        }
+
+        set
+        {
+            GameConfigurationManagerInstance.CurrentConfigurator = value;
+        }
+    }
+
     public static Dictionary<int, Guid> GetConfigProfilesToDisplay(GameConfigProfile[] gameConfigProfiles)
     {
         return GameConfigurationManager.GetConfigProfilesToDisplay(gameConfigProfiles);

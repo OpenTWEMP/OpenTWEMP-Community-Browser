@@ -14,6 +14,7 @@ namespace TWEMP.Browser.Core.GamingSupport;
 
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.Messaging;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Launcher;
 
 /// <summary>
@@ -28,9 +29,9 @@ public static class MainGamingSupportHub
     }
 #endif
 
-    public static void LaunchGameEngineAsM2TW(GameModificationInfo info, CustomConfigState state, IBrowserMessageProvider msg)
+    public static void LaunchGameEngineAsM2TW(M2TWGameConfigurator gameConfigurator, IBrowserMessageProvider messageProvider)
     {
-        M2TWGameLauncher gameLauncher = new (info, state, msg);
+        M2TWGameLauncher gameLauncher = new (gameConfigurator, messageProvider);
         gameLauncher.Execute();
     }
 
