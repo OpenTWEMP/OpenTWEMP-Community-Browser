@@ -23,6 +23,28 @@ public partial class GameConfigProfilesForm : Form
         this.InitializeGameConfigProfilesListBox();
     }
 
+    public void ReturnToConfigProfilesFormAfterSuccessProfileCreation(GameConfigProfile createdProfile)
+    {
+        BrowserKernel.AddNewProfile(createdProfile);
+
+        ShowConfigOperationResultMessageBox(
+            messageBoxCaption: "<ADD NEW CFG>",
+            messageBoxText: $"ADDED NEW CONFIG PROFILE:\n{createdProfile.Name}");
+
+        this.InitializeGameConfigProfilesListBox();
+    }
+
+    public void ReturnToConfigProfilesFormAfterSuccessProfileUpdate(GameConfigProfile updatedProfile)
+    {
+        BrowserKernel.UpdateProfile(updatedProfile);
+
+        ShowConfigOperationResultMessageBox(
+            messageBoxCaption: "<UPDATE CFG>",
+            messageBoxText: $"UPDATED CONFIG PROFILE:\n{updatedProfile.Name}");
+
+        this.InitializeGameConfigProfilesListBox();
+    }
+
     private static void ShowConfigOperationResultMessageBox(string messageBoxCaption, string messageBoxText)
     {
         MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -84,7 +106,7 @@ public partial class GameConfigProfilesForm : Form
             return;
         }
 
-        GameConfigProfileCreateForm gameConfigProfileCreateForm = new (gameModificationView.CurrentInfo);
+        GameConfigProfileCreateForm gameConfigProfileCreateForm = new (this, gameModificationView.CurrentInfo);
         gameConfigProfileCreateForm.ShowDialog();
     }
 
@@ -125,7 +147,8 @@ public partial class GameConfigProfilesForm : Form
         Guid gameConfigProfileId = this.viewOfGameConfigProfiles[selectedItemIndex];
         GameConfigProfile gameConfigProfile = BrowserKernel.SelectProfileById(gameConfigProfileId);
 
-        GameConfigProfileCreateForm gameConfigProfileCreateForm = new (gameConfigProfile.TargetGameModInfo, gameConfigProfile);
+        GameConfigProfileCreateForm gameConfigProfileCreateForm = new (
+            this, gameConfigProfile.TargetGameModInfo, gameConfigProfile);
         gameConfigProfileCreateForm.ShowDialog();
     }
 

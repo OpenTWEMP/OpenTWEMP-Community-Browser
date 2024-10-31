@@ -185,15 +185,12 @@ public class GameConfigurationManager
     }
 
     /// <summary>
-    /// Creates a new game configuration profile.
+    /// Added a new profile into the storage of game configuration profiles.
     /// </summary>
-    /// <param name="provider">A target game support provider type.</param>
-    /// <param name="info">Information about a target game modification.</param>
-    /// <param name="state">A target custom game configuration state.</param>
-    public void CreateNewProfile(GameSupportProvider provider, GameModificationInfo info, ICustomConfigState state)
+    /// <param name="gameConfigProfile">A new game configuration profile.</param>
+    public void AddNewProfile(GameConfigProfile gameConfigProfile)
     {
-        GameConfigProfile profile = new (provider, info, state);
-        this.AvailableProfiles.Add(profile);
+        this.AvailableProfiles.Add(gameConfigProfile);
 
         this.SynchronizeGameConfigProfileViews();
     }

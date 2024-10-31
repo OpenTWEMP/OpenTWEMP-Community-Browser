@@ -14,18 +14,27 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Pro
 public partial class GameConfigProfileCreateForm : Form
 {
     private readonly GameEngineSupportType currentGameCfgType;
+    private readonly bool isConfigProfileUpdateOperation;
+
+    private readonly GameConfigProfilesForm currentCallingForm;
     private readonly GameModificationInfo currentGameModificationInfo;
+    private GameConfigProfile currentGameConfigProfile;
 
     private Dictionary<int, Guid> viewOfGameConfigProfiles;
-    private GameConfigProfile templateGameConfigProfile;
 
-    public GameConfigProfileCreateForm(GameModificationInfo gameModificationInfo)
+    public GameConfigProfileCreateForm(
+        GameConfigProfilesForm callingForm,
+        GameModificationInfo gameModificationInfo)
     {
         this.currentGameCfgType = GameEngineSupportType.M2TW;
+        this.isConfigProfileUpdateOperation = false;
+
+        this.currentCallingForm = callingForm;
         this.currentGameModificationInfo = gameModificationInfo;
+        this.currentGameConfigProfile = GameConfigProfile.CreateDefaultTemplate(gameModificationInfo);
 
         this.viewOfGameConfigProfiles = new Dictionary<int, Guid>();
-        this.templateGameConfigProfile = GameConfigProfile.CreateDefaultTemplate(gameModificationInfo);
+
 
         this.InitializeComponent();
 
@@ -33,13 +42,19 @@ public partial class GameConfigProfileCreateForm : Form
         this.InitializeGameConfigProfileTemplatesComboBox();
     }
 
-    public GameConfigProfileCreateForm(GameModificationInfo gameModificationInfo, GameConfigProfile gameConfigProfile)
+    public GameConfigProfileCreateForm(
+        GameConfigProfilesForm callingForm,
+        GameModificationInfo gameModificationInfo,
+        GameConfigProfile gameConfigProfile)
     {
         this.currentGameCfgType = GameEngineSupportType.M2TW;
+        this.isConfigProfileUpdateOperation = true;
+
+        this.currentCallingForm = callingForm;
         this.currentGameModificationInfo = gameModificationInfo;
+        this.currentGameConfigProfile = gameConfigProfile;
 
         this.viewOfGameConfigProfiles = new Dictionary<int, Guid>();
-        this.templateGameConfigProfile = gameConfigProfile;
 
         this.InitializeComponent();
 
@@ -47,6 +62,22 @@ public partial class GameConfigProfileCreateForm : Form
         this.cfgNewProfileNameTextBox.Text = gameConfigProfile.Name;
         this.cfgNewProfileTemplateCheckBox.Visible = false;
         this.cfgNewProfileTemplateComboBox.Visible = false;
+    }
+
+    public void ReturnToConfigProfilesForm()
+    {
+        this.Close();
+
+        if (this.isConfigProfileUpdateOperation)
+        {
+            this.currentCallingForm.ReturnToConfigProfilesFormAfterSuccessProfileUpdate(
+                this.currentGameConfigProfile);
+        }
+        else
+        {
+            this.currentCallingForm.ReturnToConfigProfilesFormAfterSuccessProfileCreation(
+                this.currentGameConfigProfile);
+        }
     }
 
     private static string InitializeCaptionText(GameModificationInfo gameModificationInfo)
@@ -105,7 +136,9 @@ public partial class GameConfigProfileCreateForm : Form
 
     private void OpenModConfigSettingsForm()
     {
-        ModConfigSettingsForm modConfigSettingsForm = new (this.currentGameModificationInfo, this.templateGameConfigProfile);
+        ModConfigSettingsForm modConfigSettingsForm = new (
+            this.currentGameModificationInfo, this.currentGameConfigProfile, this);
+
         modConfigSettingsForm.ShowDialog();
     }
 
@@ -137,10 +170,10 @@ public partial class GameConfigProfileCreateForm : Form
             Guid gameConfigProfileId = this.viewOfGameConfigProfiles[selectedItemIndex];
             GameConfigProfile gameConfigProfile = BrowserKernel.SelectProfileById(gameConfigProfileId);
 
-            this.templateGameConfigProfile = gameConfigProfile;
+            this.currentGameConfigProfile = gameConfigProfile;
         }
 
-        this.templateGameConfigProfile.Name = this.cfgNewProfileNameTextBox.Text;
+        this.currentGameConfigProfile.Name = this.cfgNewProfileNameTextBox.Text;
 
         this.LoadGameConfigSettingsForm(this.currentGameCfgType);
     }

@@ -2,6 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define DEPRECATED_CONSTRUCTOR
+#undef DEPRECATED_CONSTRUCTOR
+
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 /// <summary>
@@ -14,10 +17,19 @@ public record GameConfigOptionView
     /// </summary>
     public GameConfigOptionView()
     {
+    }
+
+#if DEPRECATED_CONSTRUCTOR
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GameConfigOptionView"/> class.
+    /// </summary>
+    /*public GameConfigOptionView()
+    {
         this.ConfigSection = string.Empty;
         this.CfgOptionName = string.Empty;
         this.CfgOptionValue = string.Empty;
     }
+#endif
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GameConfigOptionView"/> class.
@@ -35,15 +47,15 @@ public record GameConfigOptionView
     /// <summary>
     /// Gets or sets the section name for this game config option.
     /// </summary>
-    public string ConfigSection { get; set; }
+    public string? ConfigSection { get; set; }
 
     /// <summary>
     /// Gets or sets the name of this game config option.
     /// </summary>
-    public string CfgOptionName { get; set; }
+    public string? CfgOptionName { get; set; }
 
     /// <summary>
     /// Gets or sets the section value of this game config option.
     /// </summary>
-    public object CfgOptionValue { get; set; }
+    public object? CfgOptionValue { get; set; }
 }

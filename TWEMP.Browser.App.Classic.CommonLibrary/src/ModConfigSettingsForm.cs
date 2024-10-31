@@ -26,6 +26,7 @@ public partial class ModConfigSettingsForm : Form
 {
     private readonly GameModificationInfo currentGameModificationInfo;
     private readonly GameConfigProfile currentGameConfigProfile;
+    private readonly GameConfigProfileCreateForm? currentCallingForm;
 
     private readonly M2TWGameConfigStateView gameConfigStateView;
 
@@ -33,6 +34,7 @@ public partial class ModConfigSettingsForm : Form
     {
         this.currentGameModificationInfo = gameModificationInfo;
         this.currentGameConfigProfile = GameConfigProfile.CreateDefaultTemplate(this.currentGameModificationInfo);
+        this.currentCallingForm = null;
 
         this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
 
@@ -40,10 +42,14 @@ public partial class ModConfigSettingsForm : Form
         InitializeConfigControls();
     }
 
-    public ModConfigSettingsForm(GameModificationInfo gameModificationInfo, GameConfigProfile gameConfigProfile)
+    public ModConfigSettingsForm(
+        GameModificationInfo gameModificationInfo,
+        GameConfigProfile gameConfigProfile,
+        GameConfigProfileCreateForm callingForm)
     {
         this.currentGameModificationInfo = gameModificationInfo;
         this.currentGameConfigProfile = gameConfigProfile;
+        this.currentCallingForm = callingForm;
 
         this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
 
@@ -57,6 +63,9 @@ public partial class ModConfigSettingsForm : Form
         M2TWGameConfigurator gameConfigurator = new (this.currentGameModificationInfo, gameConfigStateView);
         BrowserKernel.CurrentConfigurator = gameConfigurator;
 
+        GameCfgSection[] settings = gameConfigStateView.RetrieveCurrentSettings();
+        this.currentGameConfigProfile.ConfigState.CurrentSettings = settings;
+
         MessageBox.Show(
             text: "Your new game config is READY!",
             caption: "SUCCESS",
@@ -64,6 +73,11 @@ public partial class ModConfigSettingsForm : Form
             icon: MessageBoxIcon.Information);
 
         this.Close();
+
+        if (this.currentCallingForm != null)
+        {
+            this.currentCallingForm.ReturnToConfigProfilesForm();
+        }
     }
 
     private void ResetConfigSettingsButton_Click(object sender, EventArgs e)

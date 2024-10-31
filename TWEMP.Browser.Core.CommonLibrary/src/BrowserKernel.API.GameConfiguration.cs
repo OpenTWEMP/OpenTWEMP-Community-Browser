@@ -76,9 +76,9 @@ public static partial class BrowserKernel
         return GameConfigurationManagerInstance.GetAllConfigProfilesForSelectedGameMod(gameModView);
     }
 
-    public static void CreateNewProfile(GameSupportProvider provider, GameModificationInfo info, ICustomConfigState state)
+    public static void AddNewProfile(GameConfigProfile gameConfigProfile)
     {
-        GameConfigurationManagerInstance.CreateNewProfile(provider, info, state);
+        GameConfigurationManagerInstance.AddNewProfile(gameConfigProfile);
     }
 
     public static void CopyProfile(GameConfigProfile templateProfile)
@@ -91,9 +91,10 @@ public static partial class BrowserKernel
         return GameConfigurationManagerInstance.SelectProfileById(profileId);
     }
 
-    public static void UpdateProfile(Guid profileId, string newProfileName, GameConfigState newState)
+    public static void UpdateProfile(GameConfigProfile gameConfigProfile)
     {
-        GameConfigurationManagerInstance.UpdateProfile(profileId, newProfileName, newState);
+        GameConfigurationManagerInstance.UpdateProfile(
+            gameConfigProfile.Id, gameConfigProfile.Name, gameConfigProfile.ConfigState);
     }
 
     public static void DeleteProfile(Guid profileId)
