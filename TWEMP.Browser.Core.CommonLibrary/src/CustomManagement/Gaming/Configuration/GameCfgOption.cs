@@ -24,8 +24,6 @@ public class GameCfgOption
 
     public string Description { get; set; }
 
-    public virtual string GetOutputConfigFormat()
-    {
-        return $"{this.Name} = {this.Value}";
-    }
+    public virtual string GetOutputConfigFormat() =>
+        $"{this.Name} = {this.Value}";
 }

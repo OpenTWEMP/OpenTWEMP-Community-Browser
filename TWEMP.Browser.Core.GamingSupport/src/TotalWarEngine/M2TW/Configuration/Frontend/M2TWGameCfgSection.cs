@@ -15,22 +15,6 @@ public class M2TWGameCfgSection : GameCfgSection
     {
     }
 
-    public override string GetOutputConfigFormat()
-    {
-        string optionsSubSet;
-
-        optionsSubSet = this.FormatNameToCfg() + "\n";
-
-        foreach (var option in this.Options)
-        {
-            optionsSubSet += option.GetOutputConfigFormat() + "\n";
-        }
-
-        return optionsSubSet;
-    }
-
-    private string FormatNameToCfg()
-    {
-        return "[" + this.Name + "]";
-    }
+    public override string GetOutputConfigFormat() =>
+        base.GetOutputConfigFormat();
 }

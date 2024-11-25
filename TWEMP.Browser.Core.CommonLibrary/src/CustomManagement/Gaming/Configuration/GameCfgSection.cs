@@ -8,6 +8,8 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration
 
 public class GameCfgSection
 {
+    private static readonly string NewLine = System.Environment.NewLine;
+
     public GameCfgSection(string name, GameCfgOption[] options)
     {
         this.Name = name;
@@ -20,11 +22,12 @@ public class GameCfgSection
 
     public virtual string GetOutputConfigFormat()
     {
-        string optionsSubSet = $"[{this.Name}]\n";
+        string optionsSubSet = $"[{this.Name}]{NewLine}";
 
         foreach (GameCfgOption option in this.Options)
         {
-            optionsSubSet += $"{option.GetOutputConfigFormat()}\n";
+            string optionOutStr = $"{option.GetOutputConfigFormat()}{NewLine}";
+            optionsSubSet += optionOutStr;
         }
 
         return optionsSubSet;

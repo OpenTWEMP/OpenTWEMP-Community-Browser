@@ -15,8 +15,6 @@ public class M2TWGameCfgOption : GameCfgOption
     {
     }
 
-    public override string GetOutputConfigFormat()
-    {
-        return this.Name + " = " + this.Value.ToString();
-    }
+    public override string GetOutputConfigFormat() =>
+        base.GetOutputConfigFormat();
 }
