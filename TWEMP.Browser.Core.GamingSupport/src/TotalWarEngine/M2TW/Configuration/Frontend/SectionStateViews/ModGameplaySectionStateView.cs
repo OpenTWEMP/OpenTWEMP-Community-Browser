@@ -156,7 +156,7 @@ public record ModGameplaySectionStateView : ICustomConfigState
         M2TWGameCfgOption[] gameCfgOptions =
         {
             new (name: GameAdvancedStatsAlwaysTextId, value: this.GameAdvancedStatsAlways!.BooleanValue, section: GameConfigSwitch),
-            new (name: GameAdvisorVerbosityTextId, value: this.GameAdvisorVerbosity!.BooleanValue, section: GameConfigSwitch),
+            new (name: GameAdvisorVerbosityTextId, value: this.GameAdvisorVerbosity!.IntegerValue, section: GameConfigSwitch),
             new (name: GameAiFactionsTextId, value: this.GameAiFactions!.BooleanValue, section: GameConfigSwitch),
             new (name: GameAllUsersTextId, value: this.GameAllUsers!.BooleanValue, section: GameConfigSwitch),
             new (name: GameAutoSaveTextId, value: this.GameAutoSave!.BooleanValue, section: GameConfigSwitch),
