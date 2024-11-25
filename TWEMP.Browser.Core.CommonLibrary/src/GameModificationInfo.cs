@@ -98,7 +98,8 @@ public class GameModificationInfo
 
     private static string InitializeLogFileRelativePath(string modRelativePath, string modLogFileName)
     {
-        return Path.Combine(modRelativePath, modLogFileName); // example: "to = mods/MEDD/system.log.txt"
+        const string separatorSlash = "/";
+        return modRelativePath + separatorSlash + modLogFileName; // example: "to = mods/MEDD/system.log.txt"
     }
 
     private static string InitializeLogFileName()
