@@ -232,43 +232,43 @@ public partial class ModConfigSettingsForm : Form
         this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 3, item: 3);
         this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 4, item: 4);
 
+        // cfgVideoBattleResolutionComboBox
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 0, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_640x480).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 1, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_800x600).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 2, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 3, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x720).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 4, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x1024).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 5, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1366x768).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 6, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x900).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 7, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x1200).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 8, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1920x1080).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 9, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2048x1536).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 10, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2560x1440).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 11, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3072x1728).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 12, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3200x1800).Value);
+        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 13, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3840x2160).Value);
+
         // cfgVideoCampaignResolutionComboBox
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 0, item: DisplayResolution.Display_640x480);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 1, item: DisplayResolution.Display_800x600);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 2, item: DisplayResolution.Display_1024x768);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 3, item: DisplayResolution.Display_1280x720);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 4, item: DisplayResolution.Display_1280x1024);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 5, item: DisplayResolution.Display_1366x768);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 6, item: DisplayResolution.Display_1600x900);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 7, item: DisplayResolution.Display_1600x1200);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 8, item: DisplayResolution.Display_1920x1080);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 9, item: DisplayResolution.Display_2048x1536);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 10, item: DisplayResolution.Display_2560x1440);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 11, item: DisplayResolution.Display_3072x1728);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 12, item: DisplayResolution.Display_3200x1800);
-        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 13, item: DisplayResolution.Display_3840x2160);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 0, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_640x480).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 1, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_800x600).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 2, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 3, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x720).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 4, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x1024).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 5, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1366x768).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 6, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x900).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 7, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x1200).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 8, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1920x1080).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 9, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2048x1536).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 10, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2560x1440).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 11, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3072x1728).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 12, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3200x1800).Value);
+        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 13, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3840x2160).Value);
 
         // cfgVideoBuildingDetailComboBox
         this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 0, item: M2TW_Quality.Low);
         this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 1, item: M2TW_Quality.Medium);
         this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 2, item: M2TW_Quality.High);
         this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 3, item: M2TW_Quality.Highest);
-
-        // cfgVideoBattleResolutionComboBox
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 0, item: DisplayResolution.Display_640x480);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 1, item: DisplayResolution.Display_800x600);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 2, item: DisplayResolution.Display_1024x768);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 3, item: DisplayResolution.Display_1280x720);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 4, item: DisplayResolution.Display_1280x1024);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 5, item: DisplayResolution.Display_1366x768);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 6, item: DisplayResolution.Display_1600x900);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 7, item: DisplayResolution.Display_1600x1200);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 8, item: DisplayResolution.Display_1920x1080);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 9, item: DisplayResolution.Display_2048x1536);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 10, item: DisplayResolution.Display_2560x1440);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 11, item: DisplayResolution.Display_3072x1728);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 12, item: DisplayResolution.Display_3200x1800);
-        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 13, item: DisplayResolution.Display_3840x2160);
 
         // cfgVideoAntialiasingComboBox
         this.cfgVideoAntialiasingComboBox.Items.Insert(index: 0, item: M2TW_AntiAliasing.AntiAliasMode_None);
