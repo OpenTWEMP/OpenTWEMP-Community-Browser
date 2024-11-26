@@ -163,6 +163,13 @@
             cfgFeaturesEditorCheckBox = new CheckBox();
             label5 = new Label();
             tabPage6 = new TabPage();
+            groupBoxConfigLogMode = new GroupBox();
+            cfgLogLocationTextBox = new TextBox();
+            cfgLogLocationLabel = new Label();
+            checkBoxLogHistory = new CheckBox();
+            radioButtonLogErrorAndTrace = new RadioButton();
+            radioButtonLogOnlyTrace = new RadioButton();
+            radioButtonLogOnlyError = new RadioButton();
             label6 = new Label();
             tabPage7 = new TabPage();
             cfgUIGroupBox = new Panel();
@@ -258,13 +265,6 @@
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
-            groupBoxConfigLogMode = new GroupBox();
-            checkBoxLogHistory = new CheckBox();
-            radioButtonLogErrorAndTrace = new RadioButton();
-            radioButtonLogOnlyTrace = new RadioButton();
-            radioButtonLogOnlyError = new RadioButton();
-            cfgLogLocationLabel = new Label();
-            cfgLogLocationTextBox = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             cfgGameUnitSizePanel.SuspendLayout();
@@ -317,6 +317,7 @@
             cfgIOGroupBox.SuspendLayout();
             cfgFeaturesGroupBox.SuspendLayout();
             tabPage6.SuspendLayout();
+            groupBoxConfigLogMode.SuspendLayout();
             tabPage7.SuspendLayout();
             cfgUIGroupBox.SuspendLayout();
             tabPage8.SuspendLayout();
@@ -342,7 +343,6 @@
             cfgVideoAntiAliasModePanel.SuspendLayout();
             cfgVideoAnisotropicLevelPanel.SuspendLayout();
             tabPage9.SuspendLayout();
-            groupBoxConfigLogMode.SuspendLayout();
             SuspendLayout();
             // 
             // saveConfigSettingsButton
@@ -651,6 +651,7 @@
             // cfgGameChatMsgDurationNumericUpDown
             // 
             cfgGameChatMsgDurationNumericUpDown.Location = new Point(175, 5);
+            cfgGameChatMsgDurationNumericUpDown.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             cfgGameChatMsgDurationNumericUpDown.Name = "cfgGameChatMsgDurationNumericUpDown";
             cfgGameChatMsgDurationNumericUpDown.Size = new Size(120, 23);
             cfgGameChatMsgDurationNumericUpDown.TabIndex = 1;
@@ -1656,6 +1657,88 @@
             tabPage6.Text = "Diagnostics & Logging";
             tabPage6.UseVisualStyleBackColor = true;
             // 
+            // groupBoxConfigLogMode
+            // 
+            groupBoxConfigLogMode.BackColor = Color.Transparent;
+            groupBoxConfigLogMode.Controls.Add(cfgLogLocationTextBox);
+            groupBoxConfigLogMode.Controls.Add(cfgLogLocationLabel);
+            groupBoxConfigLogMode.Controls.Add(checkBoxLogHistory);
+            groupBoxConfigLogMode.Controls.Add(radioButtonLogErrorAndTrace);
+            groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyTrace);
+            groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyError);
+            groupBoxConfigLogMode.Location = new Point(11, 48);
+            groupBoxConfigLogMode.Margin = new Padding(4, 3, 4, 3);
+            groupBoxConfigLogMode.Name = "groupBoxConfigLogMode";
+            groupBoxConfigLogMode.Padding = new Padding(4, 3, 4, 3);
+            groupBoxConfigLogMode.Size = new Size(266, 158);
+            groupBoxConfigLogMode.TabIndex = 2;
+            groupBoxConfigLogMode.TabStop = false;
+            groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
+            // 
+            // cfgLogLocationTextBox
+            // 
+            cfgLogLocationTextBox.Location = new Point(79, 119);
+            cfgLogLocationTextBox.Name = "cfgLogLocationTextBox";
+            cfgLogLocationTextBox.Size = new Size(160, 23);
+            cfgLogLocationTextBox.TabIndex = 5;
+            cfgLogLocationTextBox.Text = "logs/system.log.txt";
+            // 
+            // cfgLogLocationLabel
+            // 
+            cfgLogLocationLabel.Location = new Point(12, 119);
+            cfgLogLocationLabel.Name = "cfgLogLocationLabel";
+            cfgLogLocationLabel.Size = new Size(61, 23);
+            cfgLogLocationLabel.TabIndex = 4;
+            cfgLogLocationLabel.Text = "to";
+            // 
+            // checkBoxLogHistory
+            // 
+            checkBoxLogHistory.AutoSize = true;
+            checkBoxLogHistory.Checked = true;
+            checkBoxLogHistory.CheckState = CheckState.Checked;
+            checkBoxLogHistory.Location = new Point(12, 97);
+            checkBoxLogHistory.Margin = new Padding(4, 3, 4, 3);
+            checkBoxLogHistory.Name = "checkBoxLogHistory";
+            checkBoxLogHistory.Size = new Size(167, 19);
+            checkBoxLogHistory.TabIndex = 3;
+            checkBoxLogHistory.Text = "Save game system.log files";
+            checkBoxLogHistory.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLogErrorAndTrace
+            // 
+            radioButtonLogErrorAndTrace.AutoSize = true;
+            radioButtonLogErrorAndTrace.Checked = true;
+            radioButtonLogErrorAndTrace.Location = new Point(11, 72);
+            radioButtonLogErrorAndTrace.Margin = new Padding(4, 3, 4, 3);
+            radioButtonLogErrorAndTrace.Name = "radioButtonLogErrorAndTrace";
+            radioButtonLogErrorAndTrace.Size = new Size(96, 19);
+            radioButtonLogErrorAndTrace.TabIndex = 2;
+            radioButtonLogErrorAndTrace.TabStop = true;
+            radioButtonLogErrorAndTrace.Text = "Errors + Trace";
+            radioButtonLogErrorAndTrace.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLogOnlyTrace
+            // 
+            radioButtonLogOnlyTrace.AutoSize = true;
+            radioButtonLogOnlyTrace.Location = new Point(11, 47);
+            radioButtonLogOnlyTrace.Margin = new Padding(4, 3, 4, 3);
+            radioButtonLogOnlyTrace.Name = "radioButtonLogOnlyTrace";
+            radioButtonLogOnlyTrace.Size = new Size(80, 19);
+            radioButtonLogOnlyTrace.TabIndex = 1;
+            radioButtonLogOnlyTrace.Text = "Only Trace";
+            radioButtonLogOnlyTrace.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLogOnlyError
+            // 
+            radioButtonLogOnlyError.AutoSize = true;
+            radioButtonLogOnlyError.Location = new Point(11, 22);
+            radioButtonLogOnlyError.Margin = new Padding(4, 3, 4, 3);
+            radioButtonLogOnlyError.Name = "radioButtonLogOnlyError";
+            radioButtonLogOnlyError.Size = new Size(83, 19);
+            radioButtonLogOnlyError.TabIndex = 0;
+            radioButtonLogOnlyError.Text = "Only Errors";
+            radioButtonLogOnlyError.UseVisualStyleBackColor = true;
+            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -2567,88 +2650,6 @@
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
             // 
-            // groupBoxConfigLogMode
-            // 
-            groupBoxConfigLogMode.BackColor = Color.Transparent;
-            groupBoxConfigLogMode.Controls.Add(cfgLogLocationTextBox);
-            groupBoxConfigLogMode.Controls.Add(cfgLogLocationLabel);
-            groupBoxConfigLogMode.Controls.Add(checkBoxLogHistory);
-            groupBoxConfigLogMode.Controls.Add(radioButtonLogErrorAndTrace);
-            groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyTrace);
-            groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyError);
-            groupBoxConfigLogMode.Location = new Point(11, 48);
-            groupBoxConfigLogMode.Margin = new Padding(4, 3, 4, 3);
-            groupBoxConfigLogMode.Name = "groupBoxConfigLogMode";
-            groupBoxConfigLogMode.Padding = new Padding(4, 3, 4, 3);
-            groupBoxConfigLogMode.Size = new Size(266, 158);
-            groupBoxConfigLogMode.TabIndex = 2;
-            groupBoxConfigLogMode.TabStop = false;
-            groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
-            // 
-            // checkBoxLogHistory
-            // 
-            checkBoxLogHistory.AutoSize = true;
-            checkBoxLogHistory.Checked = true;
-            checkBoxLogHistory.CheckState = CheckState.Checked;
-            checkBoxLogHistory.Location = new Point(12, 97);
-            checkBoxLogHistory.Margin = new Padding(4, 3, 4, 3);
-            checkBoxLogHistory.Name = "checkBoxLogHistory";
-            checkBoxLogHistory.Size = new Size(167, 19);
-            checkBoxLogHistory.TabIndex = 3;
-            checkBoxLogHistory.Text = "Save game system.log files";
-            checkBoxLogHistory.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonLogErrorAndTrace
-            // 
-            radioButtonLogErrorAndTrace.AutoSize = true;
-            radioButtonLogErrorAndTrace.Checked = true;
-            radioButtonLogErrorAndTrace.Location = new Point(11, 72);
-            radioButtonLogErrorAndTrace.Margin = new Padding(4, 3, 4, 3);
-            radioButtonLogErrorAndTrace.Name = "radioButtonLogErrorAndTrace";
-            radioButtonLogErrorAndTrace.Size = new Size(96, 19);
-            radioButtonLogErrorAndTrace.TabIndex = 2;
-            radioButtonLogErrorAndTrace.TabStop = true;
-            radioButtonLogErrorAndTrace.Text = "Errors + Trace";
-            radioButtonLogErrorAndTrace.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonLogOnlyTrace
-            // 
-            radioButtonLogOnlyTrace.AutoSize = true;
-            radioButtonLogOnlyTrace.Location = new Point(11, 47);
-            radioButtonLogOnlyTrace.Margin = new Padding(4, 3, 4, 3);
-            radioButtonLogOnlyTrace.Name = "radioButtonLogOnlyTrace";
-            radioButtonLogOnlyTrace.Size = new Size(80, 19);
-            radioButtonLogOnlyTrace.TabIndex = 1;
-            radioButtonLogOnlyTrace.Text = "Only Trace";
-            radioButtonLogOnlyTrace.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonLogOnlyError
-            // 
-            radioButtonLogOnlyError.AutoSize = true;
-            radioButtonLogOnlyError.Location = new Point(11, 22);
-            radioButtonLogOnlyError.Margin = new Padding(4, 3, 4, 3);
-            radioButtonLogOnlyError.Name = "radioButtonLogOnlyError";
-            radioButtonLogOnlyError.Size = new Size(83, 19);
-            radioButtonLogOnlyError.TabIndex = 0;
-            radioButtonLogOnlyError.Text = "Only Errors";
-            radioButtonLogOnlyError.UseVisualStyleBackColor = true;
-            // 
-            // cfgLogLocationLabel
-            // 
-            cfgLogLocationLabel.Location = new Point(12, 119);
-            cfgLogLocationLabel.Name = "cfgLogLocationLabel";
-            cfgLogLocationLabel.Size = new Size(61, 23);
-            cfgLogLocationLabel.TabIndex = 4;
-            cfgLogLocationLabel.Text = "to";
-            // 
-            // cfgLogLocationTextBox
-            // 
-            cfgLogLocationTextBox.Location = new Point(79, 119);
-            cfgLogLocationTextBox.Name = "cfgLogLocationTextBox";
-            cfgLogLocationTextBox.Size = new Size(160, 23);
-            cfgLogLocationTextBox.TabIndex = 5;
-            cfgLogLocationTextBox.Text = "logs/system.log.txt";
-            // 
             // ModConfigSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -2746,6 +2747,8 @@
             cfgFeaturesGroupBox.PerformLayout();
             tabPage6.ResumeLayout(false);
             tabPage6.PerformLayout();
+            groupBoxConfigLogMode.ResumeLayout(false);
+            groupBoxConfigLogMode.PerformLayout();
             tabPage7.ResumeLayout(false);
             cfgUIGroupBox.ResumeLayout(false);
             cfgUIGroupBox.PerformLayout();
@@ -2773,8 +2776,6 @@
             cfgVideoAnisotropicLevelPanel.ResumeLayout(false);
             tabPage9.ResumeLayout(false);
             tabPage9.PerformLayout();
-            groupBoxConfigLogMode.ResumeLayout(false);
-            groupBoxConfigLogMode.PerformLayout();
             ResumeLayout(false);
         }
 

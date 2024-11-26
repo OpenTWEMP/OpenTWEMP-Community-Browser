@@ -57,6 +57,9 @@ public partial class ModConfigSettingsForm : Form
         this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
 
         InitializeComponent();
+
+        InitializeBoundValuesForNumericUpDownControls();
+
         InitializeConfigControls();
     }
 
@@ -131,6 +134,51 @@ public partial class ModConfigSettingsForm : Form
                 buttons: MessageBoxButtons.OK,
                 icon: MessageBoxIcon.Information);
         }
+    }
+
+    private void InitializeBoundValuesForNumericUpDownControls()
+    {
+        this.cfgGameChatMsgDurationNumericUpDown.Maximum = M2TW_Integer.ExtendedMaxValue;
+        this.cfgGameChatMsgDurationNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgGameCampaignMapSpeedUpNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgGameCampaignMapSpeedUpNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgGameCampaignMapGameSpeedNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgGameCampaignMapGameSpeedNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgAudioSpeechNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioSpeechNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgAudioSfxNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioSfxNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgAudioSoundCardProviderNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioSoundCardProviderNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgAudioMusicVolumeNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioMusicVolumeNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgAudioMasterVolumeNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioMasterVolumeNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgCameraRotateNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgCameraRotateNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgCameraMoveNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgCameraMoveNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgControlsKeysetNumericUpDown.Maximum = (decimal)M2TW_KeySet.KeySet_0;
+        this.cfgControlsKeysetNumericUpDown.Minimum = (decimal)M2TW_KeySet.KeySet_3;
+
+        this.cfgControlsScrollMinZoomNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgControlsScrollMinZoomNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgControlsScrollMaxZoomNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgControlsScrollMaxZoomNumericUpDown.Minimum = M2TW_Integer.MinValue;
+
+        this.cfgVideoGammaNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgVideoGammaNumericUpDown.Minimum = M2TW_Integer.MinValue;
     }
 
     private M2TWGameConfigStateView CreateGameConfigStateView()
@@ -667,69 +715,7 @@ public partial class ModConfigSettingsForm : Form
         //cfgVideoAnisotropicLevelComboBox.Name = "cfgVideoAnisotropicLevelComboBox";
     }
 
-    private void InitializeBoundValuesForNumericUpDownControls() // TODO: Implement this method later...
-    {
-        // INITIALIZE BOUND VALUES FOR NUMERIC-UP-DOWN CONTROLS
 
-        /*
-        //
-        // cfgGameChatMsgDurationNumericUpDown
-        //
-        cfgGameChatMsgDurationNumericUpDown.Name = "cfgGameChatMsgDurationNumericUpDown";
-        //
-        // cfgGameCampaignMapSpeedUpNumericUpDown
-        //
-        cfgGameCampaignMapSpeedUpNumericUpDown.Name = "cfgGameCampaignMapSpeedUpNumericUpDown";
-        //
-        // cfgGameCampaignMapGameSpeedNumericUpDown
-        //
-        cfgGameCampaignMapGameSpeedNumericUpDown.Name = "cfgGameCampaignMapGameSpeedNumericUpDown";
-        //
-        // cfgAudioSpeechNumericUpDown
-        //
-        cfgAudioSpeechNumericUpDown.Name = "cfgAudioSpeechNumericUpDown";
-        //
-        // cfgAudioSfxNumericUpDown
-        //
-        cfgAudioSfxNumericUpDown.Name = "cfgAudioSfxNumericUpDown";
-        //
-        // cfgAudioSoundCardProviderNumericUpDown
-        //
-        cfgAudioSoundCardProviderNumericUpDown.Name = "cfgAudioSoundCardProviderNumericUpDown";
-        //
-        // cfgAudioMusicVolumeNumericUpDown
-        //
-        cfgAudioMusicVolumeNumericUpDown.Name = "cfgAudioMusicVolumeNumericUpDown";
-        //
-        // cfgAudioMasterVolumeNumericUpDown
-        //
-        cfgAudioMasterVolumeNumericUpDown.Name = "cfgAudioMasterVolumeNumericUpDown";
-        //
-        // cfgCameraRotateNumericUpDown
-        //
-        cfgCameraRotateNumericUpDown.Name = "cfgCameraRotateNumericUpDown";
-        //
-        // cfgCameraMoveNumericUpDown
-        //
-        cfgCameraMoveNumericUpDown.Name = "cfgCameraMoveNumericUpDown";
-        //
-        // cfgControlsKeysetNumericUpDown
-        //
-        cfgControlsKeysetNumericUpDown.Size = new Size(120, 23);
-        //
-        // cfgControlsScrollMinZoomNumericUpDown
-        //
-        cfgControlsScrollMinZoomNumericUpDown.Name = "cfgControlsScrollMinZoomNumericUpDown";
-        //
-        // cfgControlsScrollMaxZoomNumericUpDown
-        //
-        cfgControlsScrollMaxZoomNumericUpDown.Name = "cfgControlsScrollMaxZoomNumericUpDown";
-        //
-        // cfgVideoGammaNumericUpDown
-        //
-        cfgVideoGammaNumericUpDown.Name = "cfgVideoGammaNumericUpDown";
-        */
-    }
 
     private void InitializeAdditionalUIControls() // TODO: Implement this method later...
     {
