@@ -57,9 +57,6 @@ public partial class ModConfigSettingsForm : Form
         this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
 
         InitializeComponent();
-
-        InitializeBoundValuesForNumericUpDownControls();
-
         InitializeConfigControls();
     }
 
@@ -134,6 +131,162 @@ public partial class ModConfigSettingsForm : Form
                 buttons: MessageBoxButtons.OK,
                 icon: MessageBoxIcon.Information);
         }
+    }
+
+    private void InitializeItemsForComboBoxControls()
+    {
+        // cfgGameUnitSizeComboBox
+        this.cfgGameUnitSizeComboBox.Items.Insert(index: 0, item: M2TW_Size.Small);
+        this.cfgGameUnitSizeComboBox.Items.Insert(index: 1, item: M2TW_Size.Normal);
+        this.cfgGameUnitSizeComboBox.Items.Insert(index: 2, item: M2TW_Size.Large);
+        this.cfgGameUnitSizeComboBox.Items.Insert(index: 3, item: M2TW_Size.Huge);
+
+        // cfgGameAiFactionsComboBox
+        this.cfgGameAiFactionsComboBox.Items.Insert(index: 0, item: M2TW_Deprecated_AI_Boolean.Skip);
+        this.cfgGameAiFactionsComboBox.Items.Insert(index: 1, item: M2TW_Deprecated_AI_Boolean.Follow);
+
+        // cfgControlsDefaultInBattleComboBox
+        this.cfgControlsDefaultInBattleComboBox.Items.Insert(index: 0, item: M2TW_BattleCamera.Default);
+        this.cfgControlsDefaultInBattleComboBox.Items.Insert(index: 1, item: M2TW_BattleCamera.Generals);
+        this.cfgControlsDefaultInBattleComboBox.Items.Insert(index: 2, item: M2TW_BattleCamera.RTS);
+
+        // cfgVideoWaterBuffersPerNodeComboBox
+        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
+        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
+        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
+        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
+        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
+
+        // cfgVideoUnitDetailComboBox
+        this.cfgVideoUnitDetailComboBox.Items.Insert(index: 0, item: M2TW_Quality.Low);
+        this.cfgVideoUnitDetailComboBox.Items.Insert(index: 1, item: M2TW_Quality.Medium);
+        this.cfgVideoUnitDetailComboBox.Items.Insert(index: 2, item: M2TW_Quality.High);
+        this.cfgVideoUnitDetailComboBox.Items.Insert(index: 3, item: M2TW_Quality.Highest);
+
+        // cfgVideoTextureFilteringComboBox
+        this.cfgVideoTextureFilteringComboBox.Items.Insert(index: 0, item: 0);
+        this.cfgVideoTextureFilteringComboBox.Items.Insert(index: 1, item: 1);
+        this.cfgVideoTextureFilteringComboBox.Items.Insert(index: 2, item: 2);
+
+        // cfgVideoTerrainQualityComboBox
+        this.cfgVideoTerrainQualityComboBox.Items.Insert(index: 0, item: M2TW_Quality.Low);
+        this.cfgVideoTerrainQualityComboBox.Items.Insert(index: 1, item: M2TW_Quality.Medium);
+        this.cfgVideoTerrainQualityComboBox.Items.Insert(index: 2, item: M2TW_Quality.High);
+        this.cfgVideoTerrainQualityComboBox.Items.Insert(index: 3, item: M2TW_Quality.Highest);
+
+        // cfgVideoSpriteBuffersPerNodeComboBox
+        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
+        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
+        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
+        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
+        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
+
+        // cfgVideoShaderComboBox
+        this.cfgVideoShaderComboBox.Items.Insert(index: 0, item: M2TW_ShaderLevel.ShaderVersion_v1);
+        this.cfgVideoShaderComboBox.Items.Insert(index: 1, item: M2TW_ShaderLevel.ShaderVersion_v2);
+
+        // cfgVideoModelBuffersPerNodeComboBox
+        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
+        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
+        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
+        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
+        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
+
+        // cfgVideoGroundCoverBuffersPerNodeComboBox
+        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
+        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
+        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
+        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
+        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
+
+        // cfgVideoGroundBuffersPerNodeComboBox
+        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
+        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
+        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
+        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
+        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
+
+        // cfgVideoGrassDistanceComboBox
+        this.cfgVideoGrassDistanceComboBox.Items.Insert(index: 0, item: M2TW_GrassDistance.Level_0);
+        this.cfgVideoGrassDistanceComboBox.Items.Insert(index: 1, item: M2TW_GrassDistance.Level_1);
+        this.cfgVideoGrassDistanceComboBox.Items.Insert(index: 2, item: M2TW_GrassDistance.Level_2);
+        this.cfgVideoGrassDistanceComboBox.Items.Insert(index: 3, item: M2TW_GrassDistance.Level_3);
+
+        // cfgVideoEffectQualityComboBox
+        this.cfgVideoEffectQualityComboBox.Items.Insert(index: 0, item: M2TW_Quality.Low);
+        this.cfgVideoEffectQualityComboBox.Items.Insert(index: 1, item: M2TW_Quality.Medium);
+        this.cfgVideoEffectQualityComboBox.Items.Insert(index: 2, item: M2TW_Quality.High);
+        this.cfgVideoEffectQualityComboBox.Items.Insert(index: 3, item: M2TW_Quality.Highest);
+
+        // cfgVideoDepthShadowsResolutionComboBox
+        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 0, item: 0);
+        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 1, item: 1);
+        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 2, item: 2);
+        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 3, item: 3);
+        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 4, item: 4);
+
+        // cfgVideoDepthShadowsComboBox
+        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 0, item: 0);
+        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 1, item: 1);
+        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 2, item: 2);
+        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 3, item: 3);
+        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 4, item: 4);
+
+        // cfgVideoCampaignResolutionComboBox
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 0, item: DisplayResolution.Display_640x480);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 1, item: DisplayResolution.Display_800x600);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 2, item: DisplayResolution.Display_1024x768);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 3, item: DisplayResolution.Display_1280x720);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 4, item: DisplayResolution.Display_1280x1024);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 5, item: DisplayResolution.Display_1366x768);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 6, item: DisplayResolution.Display_1600x900);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 7, item: DisplayResolution.Display_1600x1200);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 8, item: DisplayResolution.Display_1920x1080);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 9, item: DisplayResolution.Display_2048x1536);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 10, item: DisplayResolution.Display_2560x1440);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 11, item: DisplayResolution.Display_3072x1728);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 12, item: DisplayResolution.Display_3200x1800);
+        //this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 13, item: DisplayResolution.Display_3840x2160);
+
+        // cfgVideoBuildingDetailComboBox
+        this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 0, item: M2TW_Quality.Low);
+        this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 1, item: M2TW_Quality.Medium);
+        this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 2, item: M2TW_Quality.High);
+        this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 3, item: M2TW_Quality.Highest);
+
+        // cfgVideoBattleResolutionComboBox
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 0, item: DisplayResolution.Display_640x480);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 1, item: DisplayResolution.Display_800x600);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 2, item: DisplayResolution.Display_1024x768);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 3, item: DisplayResolution.Display_1280x720);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 4, item: DisplayResolution.Display_1280x1024);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 5, item: DisplayResolution.Display_1366x768);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 6, item: DisplayResolution.Display_1600x900);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 7, item: DisplayResolution.Display_1600x1200);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 8, item: DisplayResolution.Display_1920x1080);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 9, item: DisplayResolution.Display_2048x1536);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 10, item: DisplayResolution.Display_2560x1440);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 11, item: DisplayResolution.Display_3072x1728);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 12, item: DisplayResolution.Display_3200x1800);
+        //this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 13, item: DisplayResolution.Display_3840x2160);
+
+        // cfgVideoAntialiasingComboBox
+        this.cfgVideoAntialiasingComboBox.Items.Insert(index: 0, item: M2TW_AntiAliasing.AntiAliasMode_None);
+        this.cfgVideoAntialiasingComboBox.Items.Insert(index: 1, item: M2TW_AntiAliasing.AntiAliasMode_x2);
+        this.cfgVideoAntialiasingComboBox.Items.Insert(index: 2, item: M2TW_AntiAliasing.AntiAliasMode_x4);
+
+        // cfgVideoAntiAliasModeComboBox
+        this.cfgVideoAntiAliasModeComboBox.Items.Insert(index: 0, item: M2TW_AntiAliasMode.AntiAliasMode_Off);
+        this.cfgVideoAntiAliasModeComboBox.Items.Insert(index: 1, item: M2TW_AntiAliasMode.AntiAliasMode_x2);
+        this.cfgVideoAntiAliasModeComboBox.Items.Insert(index: 2, item: M2TW_AntiAliasMode.AntiAliasMode_x4);
+
+        // cfgVideoAnisotropicLevelComboBox
+        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 0, item: M2TW_AnisotropicFilteringLevel.Bilinear);
+        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 1, item: M2TW_AnisotropicFilteringLevel.Trilinear);
+        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 2, item: M2TW_AnisotropicFilteringLevel.AF_x2);
+        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 3, item: M2TW_AnisotropicFilteringLevel.AF_x4);
+        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 4, item: M2TW_AnisotropicFilteringLevel.AF_x8);
+        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 5, item: M2TW_AnisotropicFilteringLevel.AF_x16);
     }
 
     private void InitializeBoundValuesForNumericUpDownControls()
@@ -330,6 +483,9 @@ public partial class ModConfigSettingsForm : Form
 
     private void InitializeConfigControls()
     {
+        this.InitializeItemsForComboBoxControls();
+        this.InitializeBoundValuesForNumericUpDownControls();
+
         this.Text = $"M2TW Config Settings: \"{this.currentGameConfigProfile.Name}\" [ {this.currentGameModificationInfo.Location} ]";
 
         // [GAME] ModGameplaySection
@@ -620,101 +776,6 @@ public partial class ModConfigSettingsForm : Form
 #endif
 
 #if SKIPPED_IMPLEMENTATION
-    private void InitializeItemsForComboBoxControls() // TODO: Implement this method later...
-    {
-        // INITIALIZE ITEMS FOR COMBO BOX CONTROLS
-
-        ////
-        //// cfgGameUnitSizeComboBox
-        ////
-        //cfgGameUnitSizeComboBox.Name = "cfgGameUnitSizeComboBox";
-        ////
-        //// cfgGameAiFactionsComboBox
-        ////
-        //cfgGameAiFactionsComboBox.Name = "cfgGameAiFactionsComboBox";
-        ////
-        //// cfgControlsDefaultInBattleComboBox
-        ////
-
-        //cfgControlsDefaultInBattleComboBox.Name = "cfgControlsDefaultInBattleComboBox";
-        ////
-        //// cfgVideoWaterBuffersPerNodeComboBox
-        ////
-        //cfgVideoWaterBuffersPerNodeComboBox.Name = "cfgVideoWaterBuffersPerNodeComboBox";
-        ////
-        //// cfgVideoUnitDetailComboBox
-        ////
-        //cfgVideoUnitDetailComboBox.Name = "cfgVideoUnitDetailComboBox";
-        ////
-        //// cfgVideoTextureFilteringComboBox
-        ////
-        //cfgVideoTextureFilteringComboBox.Name = "cfgVideoTextureFilteringComboBox";
-        ////
-        //// cfgVideoTerrainQualityComboBox
-        ////
-        //cfgVideoTerrainQualityComboBox.Name = "cfgVideoTerrainQualityComboBox";
-        ////
-        //// cfgVideoSpriteBuffersPerNodeComboBox
-        ////
-        //cfgVideoSpriteBuffersPerNodeComboBox.Name = "cfgVideoSpriteBuffersPerNodeComboBox";
-        ////
-        //// cfgVideoShaderComboBox
-        ////
-        //cfgVideoShaderComboBox.Name = "cfgVideoShaderComboBox";
-        ////
-        //// cfgVideoModelBuffersPerNodeComboBox
-        ////
-        //cfgVideoModelBuffersPerNodeComboBox.Name = "cfgVideoModelBuffersPerNodeComboBox";
-        ////
-        //// cfgVideoGroundCoverBuffersPerNodeComboBox
-        ////
-        //cfgVideoGroundCoverBuffersPerNodeComboBox.Name = "cfgVideoGroundCoverBuffersPerNodeComboBox";
-        ////
-        //// cfgVideoGroundBuffersPerNodeComboBox
-        ////
-        //cfgVideoGroundBuffersPerNodeComboBox.Name = "cfgVideoGroundBuffersPerNodeComboBox";
-        ////
-        //// cfgVideoGrassDistanceComboBox
-        ////
-        //cfgVideoGrassDistanceComboBox.Name = "cfgVideoGrassDistanceComboBox";
-        ////
-        //// cfgVideoEffectQualityComboBox
-        ////
-        //cfgVideoEffectQualityComboBox.Name = "cfgVideoEffectQualityComboBox";
-        ////
-        //// cfgVideoDepthShadowsResolutionComboBox
-        ////
-        //cfgVideoDepthShadowsResolutionComboBox.Name = "cfgVideoDepthShadowsResolutionComboBox";
-        ////
-        //// cfgVideoDepthShadowsComboBox
-        ////
-        //cfgVideoDepthShadowsComboBox.Name = "cfgVideoDepthShadowsComboBox";
-        ////
-        //// cfgVideoCampaignResolutionComboBox
-        ////
-        //cfgVideoCampaignResolutionComboBox.Name = "cfgVideoCampaignResolutionComboBox";
-        ////
-        //// cfgVideoBuildingDetailComboBox
-        ////
-        //cfgVideoBuildingDetailComboBox.Name = "cfgVideoBuildingDetailComboBox";
-        ////
-        //// cfgVideoBattleResolutionComboBox
-        ////
-        //cfgVideoBattleResolutionComboBox.Name = "cfgVideoBattleResolutionComboBox";
-        ////
-        //// cfgVideoAntialiasingComboBox
-        ////
-        //cfgVideoAntialiasingComboBox.Name = "cfgVideoAntialiasingComboBox";
-        ////
-        //// cfgVideoAntiAliasModeComboBox
-        ////
-        //cfgVideoAntiAliasModeComboBox.Name = "cfgVideoAntiAliasModeComboBox";
-        ////
-        //// cfgVideoAnisotropicLevelComboBox
-        ////
-        //cfgVideoAnisotropicLevelComboBox.Name = "cfgVideoAnisotropicLevelComboBox";
-    }
-
 
 
     private void InitializeAdditionalUIControls() // TODO: Implement this method later...
