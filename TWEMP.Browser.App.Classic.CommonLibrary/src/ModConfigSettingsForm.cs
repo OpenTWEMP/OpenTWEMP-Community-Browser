@@ -542,7 +542,7 @@ public partial class ModConfigSettingsForm : Form
         // [HOTSEAT] ModHotseatSectionStateView
         this.cfgHotseatGameNameTextBox.Text = this.gameConfigStateView.HotseatSection!.HotseatGameName;
         this.cfgHotseatAdminPasswordTextBox.Text = this.gameConfigStateView.HotseatSection.HotseatAdminPassword;
-        this.cfgHotseatPasswordsTextBox.Text = this.gameConfigStateView.HotseatSection.HotseatPasswords!.BooleanValue;
+        this.cfgHotseatPasswordsTextBox.Text = this.gameConfigStateView.HotseatSection.HotseatPasswords!;
         this.cfgHotseatValidateDiplomacyCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatValidateDiplomacy!.GetValue();
         this.cfgHotseatAllowValidationFailuresCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatAllowValidationFailures!.GetValue();
         this.cfgHotseatValidateDataCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatValidateData!.GetValue();

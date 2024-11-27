@@ -43,7 +43,7 @@ public record ModHotseatSectionStateView : ICustomConfigState
 
     public M2TW_Boolean? HotseatScroll { get; set; } // "scroll"; | use a boolean value ?
 
-    public M2TW_Boolean? HotseatPasswords { get; set; } // "passwords"; | use a boolean value ?
+    public string? HotseatPasswords { get; set; } // "passwords";
 
     public M2TW_Boolean? HotseatTurns { get; set; } // "turns"; | use a boolean value ?
 
@@ -85,10 +85,10 @@ public record ModHotseatSectionStateView : ICustomConfigState
         {
             HotseatAutoresolveBattles = new M2TW_Boolean(false),
             HotseatScroll = new M2TW_Boolean(false),
-            HotseatPasswords = new M2TW_Boolean(false),
+            HotseatPasswords = "hotseat_user",
             HotseatTurns = new M2TW_Boolean(false),
             HotseatDisableConsole = new M2TW_Boolean(false),
-            HotseatAdminPassword = string.Empty,
+            HotseatAdminPassword = "hotseat_admin",
             HotseatDisablePapalElections = new M2TW_Boolean(true),
             HotseatSavePrefs = new M2TW_Boolean(true),
             HotseatUpdateAiCamera = new M2TW_Boolean(true),
@@ -112,7 +112,7 @@ public record ModHotseatSectionStateView : ICustomConfigState
         {
             new (name: HotseatAutoresolveBattlesTextId, value: this.HotseatAutoresolveBattles!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatScrollTextId, value: this.HotseatScroll!.BooleanValue, section: HotseatConfigSwitch),
-            new (name: HotseatPasswordsTextId, value: this.HotseatPasswords!.BooleanValue, section: HotseatConfigSwitch),
+            new (name: HotseatPasswordsTextId, value: this.HotseatPasswords!, section: HotseatConfigSwitch),
             new (name: HotseatTurnsTextId, value: this.HotseatTurns!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatDisableConsoleTextId, value: this.HotseatDisableConsole!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatAdminPasswordTextId, value: this.HotseatAdminPassword!, section: HotseatConfigSwitch),
