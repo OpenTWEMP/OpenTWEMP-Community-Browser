@@ -450,9 +450,9 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.GameVideoCfgSection.VideoEffectQuality = new M2TW_QualityLevel(M2TW_Quality.Highest); // REPLACE: this.cfgVideoEffectQualityComboBox.Text;
         gameConfigStateView.GameVideoCfgSection.VideoDepthShadowsResolution = new M2TW_Integer(Convert.ToByte(this.cfgVideoDepthShadowsResolutionComboBox.Text));
         gameConfigStateView.GameVideoCfgSection.VideoDepthShadows = new M2TW_Integer(Convert.ToByte(this.cfgVideoDepthShadowsComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoCampaignResolution = new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768); // REPLACE: this.cfgVideoCampaignResolutionComboBox.Text
+        gameConfigStateView.GameVideoCfgSection.VideoCampaignResolution = new M2TW_DisplayResolution(this.cfgVideoCampaignResolutionComboBox.Text);
         gameConfigStateView.GameVideoCfgSection.VideoBuildingDetail = new M2TW_QualityLevel(M2TW_Quality.High); // REPLACE: this.cfgVideoBuildingDetailComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoBattleResolution = new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768); // REPLACE: this.cfgVideoBattleResolutionComboBox.Text;
+        gameConfigStateView.GameVideoCfgSection.VideoBattleResolution = new M2TW_DisplayResolution(this.cfgVideoBattleResolutionComboBox.Text);
         gameConfigStateView.GameVideoCfgSection.VideoAntialiasing = new M2TW_QualityLevel(M2TW_AntiAliasing.AntiAliasMode_x4); // REPLACE: this.cfgVideoAntialiasingComboBox.Text;
         gameConfigStateView.GameVideoCfgSection.VideoAntiAliasMode = new M2TW_QualityLevel(M2TW_AntiAliasMode.AntiAliasMode_x4); // REPLACE: this.cfgVideoAntiAliasModeComboBox.Text;
         gameConfigStateView.GameVideoCfgSection.VideoAnisotropicLevel = new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x16); // REPLACE: this.cfgVideoAnisotropicLevelComboBox.Text;

@@ -76,6 +76,21 @@ public class M2TW_DisplayResolution
         }
     }
 
+    public M2TW_DisplayResolution(string resolution)
+        : this()
+    {
+        foreach (DisplayResolution element in SupportedDisplayResolutions)
+        {
+            string value = $"{element.Width} {element.Height}";
+
+            if (value.Equals(resolution))
+            {
+                this.Value = value;
+                break;
+            }
+        }
+    }
+
     public string Value { get; }
 }
 
