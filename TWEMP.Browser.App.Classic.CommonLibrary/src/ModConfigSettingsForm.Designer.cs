@@ -265,6 +265,8 @@
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
+            cfgHotseatAdminPasswordCheckBox = new CheckBox();
+            cfgHotseatPasswordsCheckBox = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             cfgGameUnitSizePanel.SuspendLayout();
@@ -1233,6 +1235,8 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(cfgHotseatPasswordsCheckBox);
+            tabPage4.Controls.Add(cfgHotseatAdminPasswordCheckBox);
             tabPage4.Controls.Add(cfgHotseatGameNamePanel);
             tabPage4.Controls.Add(cfgHotseatAdminPasswordPanel);
             tabPage4.Controls.Add(cfgHotseatPasswordsPanel);
@@ -1263,21 +1267,21 @@
             cfgHotseatGameNamePanel.BackColor = Color.LightGray;
             cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameTextBox);
             cfgHotseatGameNamePanel.Controls.Add(cfgHotseatGameNameLabel);
-            cfgHotseatGameNamePanel.Location = new Point(248, 207);
+            cfgHotseatGameNamePanel.Location = new Point(213, 57);
             cfgHotseatGameNamePanel.Name = "cfgHotseatGameNamePanel";
-            cfgHotseatGameNamePanel.Size = new Size(231, 58);
+            cfgHotseatGameNamePanel.Size = new Size(236, 58);
             cfgHotseatGameNamePanel.TabIndex = 16;
             // 
             // cfgHotseatGameNameTextBox
             // 
-            cfgHotseatGameNameTextBox.Location = new Point(128, 12);
+            cfgHotseatGameNameTextBox.Location = new Point(86, 12);
             cfgHotseatGameNameTextBox.Name = "cfgHotseatGameNameTextBox";
-            cfgHotseatGameNameTextBox.Size = new Size(100, 23);
+            cfgHotseatGameNameTextBox.Size = new Size(142, 23);
             cfgHotseatGameNameTextBox.TabIndex = 1;
             // 
             // cfgHotseatGameNameLabel
             // 
-            cfgHotseatGameNameLabel.Location = new Point(16, 12);
+            cfgHotseatGameNameLabel.Location = new Point(10, 15);
             cfgHotseatGameNameLabel.Name = "cfgHotseatGameNameLabel";
             cfgHotseatGameNameLabel.Size = new Size(106, 32);
             cfgHotseatGameNameLabel.TabIndex = 0;
@@ -1288,10 +1292,12 @@
             cfgHotseatAdminPasswordPanel.BackColor = Color.LightGray;
             cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordTextBox);
             cfgHotseatAdminPasswordPanel.Controls.Add(cfgHotseatAdminPasswordLabel);
-            cfgHotseatAdminPasswordPanel.Location = new Point(248, 132);
+            cfgHotseatAdminPasswordPanel.Enabled = false;
+            cfgHotseatAdminPasswordPanel.Location = new Point(515, 268);
             cfgHotseatAdminPasswordPanel.Name = "cfgHotseatAdminPasswordPanel";
             cfgHotseatAdminPasswordPanel.Size = new Size(231, 58);
             cfgHotseatAdminPasswordPanel.TabIndex = 15;
+            cfgHotseatAdminPasswordPanel.Visible = false;
             // 
             // cfgHotseatAdminPasswordTextBox
             // 
@@ -1313,10 +1319,12 @@
             cfgHotseatPasswordsPanel.BackColor = Color.LightGray;
             cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsTextBox);
             cfgHotseatPasswordsPanel.Controls.Add(cfgHotseatPasswordsLabel);
-            cfgHotseatPasswordsPanel.Location = new Point(248, 58);
+            cfgHotseatPasswordsPanel.Enabled = false;
+            cfgHotseatPasswordsPanel.Location = new Point(515, 332);
             cfgHotseatPasswordsPanel.Name = "cfgHotseatPasswordsPanel";
             cfgHotseatPasswordsPanel.Size = new Size(231, 58);
             cfgHotseatPasswordsPanel.TabIndex = 14;
+            cfgHotseatPasswordsPanel.Visible = false;
             // 
             // cfgHotseatPasswordsTextBox
             // 
@@ -2650,6 +2658,26 @@
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
             // 
+            // cfgHotseatAdminPasswordCheckBox
+            // 
+            cfgHotseatAdminPasswordCheckBox.AutoSize = true;
+            cfgHotseatAdminPasswordCheckBox.Location = new Point(213, 132);
+            cfgHotseatAdminPasswordCheckBox.Name = "cfgHotseatAdminPasswordCheckBox";
+            cfgHotseatAdminPasswordCheckBox.Size = new Size(115, 19);
+            cfgHotseatAdminPasswordCheckBox.TabIndex = 17;
+            cfgHotseatAdminPasswordCheckBox.Text = "admin_password";
+            cfgHotseatAdminPasswordCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatPasswordsCheckBox
+            // 
+            cfgHotseatPasswordsCheckBox.AutoSize = true;
+            cfgHotseatPasswordsCheckBox.Location = new Point(334, 132);
+            cfgHotseatPasswordsCheckBox.Name = "cfgHotseatPasswordsCheckBox";
+            cfgHotseatPasswordsCheckBox.Size = new Size(81, 19);
+            cfgHotseatPasswordsCheckBox.TabIndex = 18;
+            cfgHotseatPasswordsCheckBox.Text = "passwords";
+            cfgHotseatPasswordsCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ModConfigSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -3018,5 +3046,7 @@
         private RadioButton radioButtonLogOnlyError;
         private TextBox cfgLogLocationTextBox;
         private Label cfgLogLocationLabel;
+        private CheckBox cfgHotseatPasswordsCheckBox;
+        private CheckBox cfgHotseatAdminPasswordCheckBox;
     }
 }

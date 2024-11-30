@@ -391,8 +391,8 @@ public partial class ModConfigSettingsForm : Form
 
         // [HOTSEAT] ModHotseatSectionStateView
         gameConfigStateView.HotseatSection!.HotseatGameName = this.cfgHotseatGameNameTextBox.Text;
-        gameConfigStateView.HotseatSection.HotseatAdminPassword = this.cfgHotseatAdminPasswordTextBox.Text;
-        gameConfigStateView.HotseatSection.HotseatPasswords = default; // new M2TW_Boolean(this.cfgHotseatPasswordsTextBox.Checked); // FIXME!!!
+        gameConfigStateView.HotseatSection.HotseatAdminPassword = new M2TW_Boolean(this.cfgHotseatAdminPasswordCheckBox.Checked);
+        gameConfigStateView.HotseatSection.HotseatPasswords = new M2TW_Boolean(this.cfgHotseatPasswordsCheckBox.Checked);
         gameConfigStateView.HotseatSection.HotseatValidateDiplomacy = new M2TW_Boolean(this.cfgHotseatValidateDiplomacyCheckBox.Checked);
         gameConfigStateView.HotseatSection.HotseatAllowValidationFailures = new M2TW_Boolean(this.cfgHotseatAllowValidationFailuresCheckBox.Checked);
         gameConfigStateView.HotseatSection.HotseatValidateData = new M2TW_Boolean(this.cfgHotseatValidateDataCheckBox.Checked);
@@ -541,8 +541,8 @@ public partial class ModConfigSettingsForm : Form
 
         // [HOTSEAT] ModHotseatSectionStateView
         this.cfgHotseatGameNameTextBox.Text = this.gameConfigStateView.HotseatSection!.HotseatGameName;
-        this.cfgHotseatAdminPasswordTextBox.Text = this.gameConfigStateView.HotseatSection.HotseatAdminPassword;
-        this.cfgHotseatPasswordsTextBox.Text = this.gameConfigStateView.HotseatSection.HotseatPasswords!;
+        this.cfgHotseatAdminPasswordCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatAdminPassword!.GetValue();
+        this.cfgHotseatPasswordsCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatPasswords!.GetValue();
         this.cfgHotseatValidateDiplomacyCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatValidateDiplomacy!.GetValue();
         this.cfgHotseatAllowValidationFailuresCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatAllowValidationFailures!.GetValue();
         this.cfgHotseatValidateDataCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatValidateData!.GetValue();

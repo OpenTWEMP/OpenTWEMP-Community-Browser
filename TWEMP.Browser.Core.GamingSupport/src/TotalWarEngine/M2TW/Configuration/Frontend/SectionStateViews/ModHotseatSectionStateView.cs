@@ -43,13 +43,13 @@ public record ModHotseatSectionStateView : ICustomConfigState
 
     public M2TW_Boolean? HotseatScroll { get; set; } // "scroll"; | use a boolean value ?
 
-    public string? HotseatPasswords { get; set; } // "passwords";
+    public M2TW_Boolean? HotseatPasswords { get; set; } // "passwords";
 
     public M2TW_Boolean? HotseatTurns { get; set; } // "turns"; | use a boolean value ?
 
     public M2TW_Boolean? HotseatDisableConsole { get; set; } // "disable_console";
 
-    public string? HotseatAdminPassword { get; set; } // "admin_password";
+    public M2TW_Boolean? HotseatAdminPassword { get; set; } // "admin_password";
 
     public M2TW_Boolean? HotseatDisablePapalElections { get; set; } // "disable_papal_elections";
 
@@ -85,10 +85,10 @@ public record ModHotseatSectionStateView : ICustomConfigState
         {
             HotseatAutoresolveBattles = new M2TW_Boolean(false),
             HotseatScroll = new M2TW_Boolean(false),
-            HotseatPasswords = "hotseat_user",
+            HotseatPasswords = new M2TW_Boolean(false),
             HotseatTurns = new M2TW_Boolean(false),
             HotseatDisableConsole = new M2TW_Boolean(false),
-            HotseatAdminPassword = "hotseat_admin",
+            HotseatAdminPassword = new M2TW_Boolean(false),
             HotseatDisablePapalElections = new M2TW_Boolean(true),
             HotseatSavePrefs = new M2TW_Boolean(true),
             HotseatUpdateAiCamera = new M2TW_Boolean(true),
@@ -112,10 +112,10 @@ public record ModHotseatSectionStateView : ICustomConfigState
         {
             new (name: HotseatAutoresolveBattlesTextId, value: this.HotseatAutoresolveBattles!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatScrollTextId, value: this.HotseatScroll!.BooleanValue, section: HotseatConfigSwitch),
-            new (name: HotseatPasswordsTextId, value: this.HotseatPasswords!, section: HotseatConfigSwitch),
+            new (name: HotseatPasswordsTextId, value: this.HotseatPasswords!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatTurnsTextId, value: this.HotseatTurns!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatDisableConsoleTextId, value: this.HotseatDisableConsole!.BooleanValue, section: HotseatConfigSwitch),
-            new (name: HotseatAdminPasswordTextId, value: this.HotseatAdminPassword!, section: HotseatConfigSwitch),
+            new (name: HotseatAdminPasswordTextId, value: this.HotseatAdminPassword!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatDisablePapalElectionsTextId, value: this.HotseatDisablePapalElections!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatSavePrefsTextId, value: this.HotseatSavePrefs!.BooleanValue, section: HotseatConfigSwitch),
             new (name: HotseatUpdateAiCameraTextId, value: this.HotseatUpdateAiCamera!.BooleanValue, section: HotseatConfigSwitch),
