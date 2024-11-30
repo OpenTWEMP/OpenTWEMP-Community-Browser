@@ -6,6 +6,9 @@
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
 #pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
+#define DISABLED_CFG_OPTIONS
+#undef DISABLED_CFG_OPTIONS
+
 #define TESTING_IMPORT_FEATURE
 #undef TESTING_IMPORT_FEATURE
 
@@ -412,7 +415,9 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.HotseatSection.NetworkUseIp = new M2TW_IpAddress(127, 0, 0, 1); // REPLACE: this.cfgNetworkUseIpTextBox.Text;
 
         // [MISC]
-        gameConfigStateView.HotseatSection.BypassToStrategySave = this.cfgMiscBypassToStrategySaveTextBox.Text; // "game_name.sav",
+#if DISABLED_CFG_OPTIONS
+        gameConfigStateView.HotseatSection.BypassToStrategySave = this.cfgMiscBypassToStrategySaveTextBox.Text;
+#endif
         gameConfigStateView.ModGameplaySection.UnlockCampaign = new M2TW_Boolean(this.cfgMiscUnlockCampaignCheckBox.Checked);
 
         // [IO] ModSettingsSectionStateView
@@ -562,7 +567,9 @@ public partial class ModConfigSettingsForm : Form
         this.cfgNetworkUseIpTextBox.Text = this.gameConfigStateView.HotseatSection.NetworkUseIp!.Value;
 
         // [MISC]
+#if DISABLED_CFG_OPTIONS
         this.cfgMiscBypassToStrategySaveTextBox.Text = this.gameConfigStateView.HotseatSection.BypassToStrategySave;
+#endif
         this.cfgMiscUnlockCampaignCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.UnlockCampaign!.GetValue();
 
         // [IO] ModSettingsSectionStateView

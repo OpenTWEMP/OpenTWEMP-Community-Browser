@@ -4,6 +4,9 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
+#define DISABLED_CFG_OPTIONS
+#undef DISABLED_CFG_OPTIONS
+
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
@@ -111,7 +114,9 @@ public record ModGameplaySectionStateView : ICustomConfigState
 
     public M2TW_Boolean? UnlockCampaign { get; set; } // "unlock_campaign";
 
+#if DISABLED_CFG_OPTIONS
     public string? BypassToStrategySave { get; set; } // "bypass_to_strategy_save";
+#endif
 
     public static ModGameplaySectionStateView CreateByDefault()
     {
@@ -147,7 +152,10 @@ public record ModGameplaySectionStateView : ICustomConfigState
             GameUnlimitedMenOnBattlefield = new M2TW_Boolean(true),
             GameUseQuickchat = new M2TW_Boolean(false),
             UnlockCampaign = new M2TW_Boolean(false),
+
+#if DISABLED_CFG_OPTIONS
             BypassToStrategySave = "game_name.sav",
+#endif
         };
     }
 
@@ -188,8 +196,11 @@ public record ModGameplaySectionStateView : ICustomConfigState
 
         M2TWGameCfgOption[] miscCfgOptions =
         {
-            new (name: BypassToStrategySaveTextId, value: this.BypassToStrategySave!, section: MiscConfigSwitch),
             new (name: UnlockCampaignTextId, value: this.UnlockCampaign!.BooleanValue, section: MiscConfigSwitch),
+
+#if DISABLED_CFG_OPTIONS
+            new (name: BypassToStrategySaveTextId, value: this.BypassToStrategySave!, section: MiscConfigSwitch),
+#endif
         };
 
         GameCfgSection gameCfgSection = new M2TWGameCfgSection(GameConfigSwitch, gameCfgOptions);

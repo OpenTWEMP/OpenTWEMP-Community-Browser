@@ -121,6 +121,8 @@
             cfgControlsScrollMaxZoomLabel = new Label();
             label3 = new Label();
             tabPage4 = new TabPage();
+            cfgHotseatPasswordsCheckBox = new CheckBox();
+            cfgHotseatAdminPasswordCheckBox = new CheckBox();
             cfgHotseatGameNamePanel = new Panel();
             cfgHotseatGameNameTextBox = new TextBox();
             cfgHotseatGameNameLabel = new Label();
@@ -265,8 +267,6 @@
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
-            cfgHotseatAdminPasswordCheckBox = new CheckBox();
-            cfgHotseatPasswordsCheckBox = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             cfgGameUnitSizePanel.SuspendLayout();
@@ -1262,6 +1262,26 @@
             tabPage4.Text = "Multiplayer & Hotseat";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // cfgHotseatPasswordsCheckBox
+            // 
+            cfgHotseatPasswordsCheckBox.AutoSize = true;
+            cfgHotseatPasswordsCheckBox.Location = new Point(334, 132);
+            cfgHotseatPasswordsCheckBox.Name = "cfgHotseatPasswordsCheckBox";
+            cfgHotseatPasswordsCheckBox.Size = new Size(81, 19);
+            cfgHotseatPasswordsCheckBox.TabIndex = 18;
+            cfgHotseatPasswordsCheckBox.Text = "passwords";
+            cfgHotseatPasswordsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cfgHotseatAdminPasswordCheckBox
+            // 
+            cfgHotseatAdminPasswordCheckBox.AutoSize = true;
+            cfgHotseatAdminPasswordCheckBox.Location = new Point(213, 132);
+            cfgHotseatAdminPasswordCheckBox.Name = "cfgHotseatAdminPasswordCheckBox";
+            cfgHotseatAdminPasswordCheckBox.Size = new Size(115, 19);
+            cfgHotseatAdminPasswordCheckBox.TabIndex = 17;
+            cfgHotseatAdminPasswordCheckBox.Text = "admin_password";
+            cfgHotseatAdminPasswordCheckBox.UseVisualStyleBackColor = true;
+            // 
             // cfgHotseatGameNamePanel
             // 
             cfgHotseatGameNamePanel.BackColor = Color.LightGray;
@@ -1482,6 +1502,7 @@
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(cfgMiscBypassToStrategySavePanel);
             tabPage5.Controls.Add(cfgNetworkGroupBox);
             tabPage5.Controls.Add(cfgMiscGroupBox);
             tabPage5.Controls.Add(cfgIOGroupBox);
@@ -1561,11 +1582,10 @@
             // 
             // cfgMiscGroupBox
             // 
-            cfgMiscGroupBox.Controls.Add(cfgMiscBypassToStrategySavePanel);
             cfgMiscGroupBox.Controls.Add(cfgMiscUnlockCampaignCheckBox);
             cfgMiscGroupBox.Location = new Point(29, 195);
             cfgMiscGroupBox.Name = "cfgMiscGroupBox";
-            cfgMiscGroupBox.Size = new Size(286, 100);
+            cfgMiscGroupBox.Size = new Size(183, 61);
             cfgMiscGroupBox.TabIndex = 5;
             cfgMiscGroupBox.TabStop = false;
             cfgMiscGroupBox.Text = "[misc]";
@@ -1575,10 +1595,12 @@
             cfgMiscBypassToStrategySavePanel.BackColor = Color.DarkGray;
             cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveTextBox);
             cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveLabel);
-            cfgMiscBypassToStrategySavePanel.Location = new Point(15, 51);
+            cfgMiscBypassToStrategySavePanel.Enabled = false;
+            cfgMiscBypassToStrategySavePanel.Location = new Point(481, 351);
             cfgMiscBypassToStrategySavePanel.Name = "cfgMiscBypassToStrategySavePanel";
             cfgMiscBypassToStrategySavePanel.Size = new Size(265, 43);
             cfgMiscBypassToStrategySavePanel.TabIndex = 1;
+            cfgMiscBypassToStrategySavePanel.Visible = false;
             // 
             // cfgMiscBypassToStrategySaveTextBox
             // 
@@ -2657,26 +2679,6 @@
             exitConfigSettingsButton.Text = "RETURN TO MAIN WINDOW";
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
-            // 
-            // cfgHotseatAdminPasswordCheckBox
-            // 
-            cfgHotseatAdminPasswordCheckBox.AutoSize = true;
-            cfgHotseatAdminPasswordCheckBox.Location = new Point(213, 132);
-            cfgHotseatAdminPasswordCheckBox.Name = "cfgHotseatAdminPasswordCheckBox";
-            cfgHotseatAdminPasswordCheckBox.Size = new Size(115, 19);
-            cfgHotseatAdminPasswordCheckBox.TabIndex = 17;
-            cfgHotseatAdminPasswordCheckBox.Text = "admin_password";
-            cfgHotseatAdminPasswordCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // cfgHotseatPasswordsCheckBox
-            // 
-            cfgHotseatPasswordsCheckBox.AutoSize = true;
-            cfgHotseatPasswordsCheckBox.Location = new Point(334, 132);
-            cfgHotseatPasswordsCheckBox.Name = "cfgHotseatPasswordsCheckBox";
-            cfgHotseatPasswordsCheckBox.Size = new Size(81, 19);
-            cfgHotseatPasswordsCheckBox.TabIndex = 18;
-            cfgHotseatPasswordsCheckBox.Text = "passwords";
-            cfgHotseatPasswordsCheckBox.UseVisualStyleBackColor = true;
             // 
             // ModConfigSettingsForm
             // 
