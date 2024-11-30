@@ -11,8 +11,6 @@ public class GameMusicPlayer
 {
     private readonly IAudioPlaybackDevice currentAudioPlaybackDevice;
 
-    private FileInfo currentAudioFileInfo;
-
     /// <summary>
     /// Initializes a new instance of the <see cref="GameMusicPlayer"/> class.
     /// </summary>
@@ -21,13 +19,18 @@ public class GameMusicPlayer
     public GameMusicPlayer(IAudioPlaybackDevice audioPlaybackDevice, FileInfo audioFileInfo)
     {
         this.currentAudioPlaybackDevice = audioPlaybackDevice;
-        this.currentAudioFileInfo = audioFileInfo;
 
+        this.AudioFile = audioFileInfo;
         this.State = GameMusicPlaybackState.Uncued;
         this.Volume = MusicPlayerVolume.InitializeByDefault();
 
-        this.LoadAudio(this.currentAudioFileInfo);
+        this.LoadAudio(this.AudioFile);
     }
+
+    /// <summary>
+    /// Gets the current audio file for this game music player.
+    /// </summary>
+    public FileInfo AudioFile { get; private set; }
 
     /// <summary>
     /// Gets the current playback state for this game music player.
@@ -144,8 +147,8 @@ public class GameMusicPlayer
 
     private void LoadAudio(FileInfo audioFileInfo)
     {
-        this.currentAudioFileInfo = audioFileInfo;
-        this.currentAudioPlaybackDevice.Cue(this.currentAudioFileInfo.FullName);
+        this.AudioFile = audioFileInfo;
+        this.currentAudioPlaybackDevice.Cue(this.AudioFile.FullName);
         this.State = GameMusicPlaybackState.Cued;
     }
 

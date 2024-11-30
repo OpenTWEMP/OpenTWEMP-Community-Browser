@@ -21,6 +21,8 @@ public class MediaDeviceManager
     private readonly DirectoryInfo mediaDeviceHomeDirectoryInfo;
     private readonly FileInfo defaultAudioFileInfo;
 
+    private bool isInPlaybackInterruptModeAfterGameLaunch;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="MediaDeviceManager"/> class.
     /// </summary>
@@ -39,6 +41,8 @@ public class MediaDeviceManager
 
         string defaultAudioFilePath = Path.Combine(this.mediaDeviceHomeDirectoryInfo.FullName, DefaultAudioFileName);
         this.defaultAudioFileInfo = new FileInfo(defaultAudioFilePath);
+
+        this.isInPlaybackInterruptModeAfterGameLaunch = false;
 
         this.MusicPlayerDevice = new GameMusicPlayer(this.audioPlaybackDevice, this.defaultAudioFileInfo);
     }
@@ -70,6 +74,13 @@ public class MediaDeviceManager
     /// <param name="audioFileInfo">The audio file info to start playback.</param>
     public void StartAudioPlayback(FileInfo audioFileInfo)
     {
+        if (this.IsAudioFileInPlaybackInterruptMode(audioFileInfo))
+        {
+            return;
+        }
+
+        this.isInPlaybackInterruptModeAfterGameLaunch = false;
+
         if (audioFileInfo.Exists)
         {
             this.MusicPlayerDevice.Play(audioFileInfo);
@@ -79,4 +90,28 @@ public class MediaDeviceManager
             this.MusicPlayerDevice = new GameMusicPlayer(this.audioPlaybackDevice, this.defaultAudioFileInfo);
         }
     }
+
+    /// <summary>
+    /// Interrupts current audio playback.
+    /// </summary>
+    public void InterruptAudioPlayback()
+    {
+        if (!this.isInPlaybackInterruptModeAfterGameLaunch)
+        {
+            this.MusicPlayerDevice.Stop();
+        }
+
+        if (this.MusicPlayerDevice.State == GameMusicPlaybackState.Stopped)
+        {
+            this.MusicPlayerDevice = new GameMusicPlayer(this.audioPlaybackDevice, this.defaultAudioFileInfo);
+        }
+
+        this.isInPlaybackInterruptModeAfterGameLaunch = true;
+    }
+
+    private bool IsAudioFileInPlaybackInterruptMode(FileInfo audioFileInfo) =>
+        this.IsCurrentAudioFile(audioFileInfo) && this.isInPlaybackInterruptModeAfterGameLaunch;
+
+    private bool IsCurrentAudioFile(FileInfo audioFileInfo) =>
+        this.MusicPlayerDevice.AudioFile.FullName.Equals(audioFileInfo.FullName);
 }

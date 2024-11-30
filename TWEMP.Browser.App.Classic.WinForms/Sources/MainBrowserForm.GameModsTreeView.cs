@@ -98,8 +98,12 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                 this.modMainTitleLabel.Text = gameModView.GetActivePresetFullName();
                 this.modStatusLabel.Text = gameModView.GetCustomizablePresetDescription();
                 this.UpdateGameModLogoPictureBox(gameModView);
-                this.StartGameModBackgroundMusic(gameModView);
                 this.UpdateConfigurationControls(gameModView);
+
+                if (this.WindowState != FormWindowState.Minimized)
+                {
+                    this.StartGameModBackgroundMusic(gameModView);
+                }
 
 #if DISABLE_LEGACY_GAMEMOD_VISUALIZATION
                 GameModificationInfo selectedModification = FindModBySelectedNodeFromCollection(e.Node!);
@@ -347,12 +351,6 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         }
     }
 
-    private void StartGameModBackgroundMusic(UpdatableGameModificationView gameModView)
-    {
-        FileInfo backgroundSoundTrack = BrowserKernel.GetActivePresetBackgroundSoundTrackFileInfo(gameModView);
-        BrowserKernel.StartAudioPlayback(backgroundSoundTrack);
-    }
-
     private void UpdateConfigurationControls(UpdatableGameModificationView gameModView)
     {
         if (gameModView.CurrentInfo.CanBeLaunchedViaNativeBatch())
@@ -389,6 +387,21 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         {
             radioButtonLauncherProvider_M2TWEOP.Enabled = false;
             radioButtonLauncherProvider_M2TWEOP.ForeColor = Color.DarkRed;
+        }
+    }
+
+    private TreeNode GetCurrentGameModNode()
+    {
+        return this.treeViewGameMods.SelectedNode;
+    }
+
+    private void SetCurrentGameModNode(TreeNode node)
+    {
+        this.treeViewGameMods.SelectedNode = node;
+
+        if (node.IsSelected)
+        {
+            this.treeViewGameMods.Focus();
         }
     }
 }

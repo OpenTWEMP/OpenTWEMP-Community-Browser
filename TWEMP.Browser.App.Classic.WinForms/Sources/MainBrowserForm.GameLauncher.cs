@@ -27,8 +27,10 @@ internal partial class MainBrowserForm
 
     private void ButtonLaunch_Click(object sender, EventArgs e)
     {
-        TreeNode modNode = treeViewGameMods.SelectedNode;
-        GameModificationInfo? currentGameModInfo = SelectGameModInfoFromBrowserTreeNode(modNode);
+        TreeNode currentGameModNode = this.GetCurrentGameModNode();
+        GameModificationInfo? currentGameModInfo = SelectGameModInfoFromBrowserTreeNode(currentGameModNode);
+
+        this.InterruptGameModBackgroundMusic();
 
         if (currentGameModInfo == null)
         {
@@ -50,6 +52,8 @@ internal partial class MainBrowserForm
             ChangeLauncherGUIWhenGameStarting();
             MainGamingSupportHub.LaunchGameEngineAsM2TW(currentGameConfigurator, currentMessageProvider);
             ChangeLauncherGUIWhenGameExiting();
+
+            this.SetCurrentGameModNode(currentGameModNode);
         }
     }
 

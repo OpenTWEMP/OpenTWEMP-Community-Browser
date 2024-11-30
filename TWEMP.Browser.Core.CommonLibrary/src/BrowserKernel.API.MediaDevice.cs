@@ -14,6 +14,11 @@ public static partial class BrowserKernel
         MediaDeviceManagerInstance.StartAudioPlayback(audioFileInfo);
     }
 
+    public static void InterruptAudioPlayback()
+    {
+        MediaDeviceManagerInstance.InterruptAudioPlayback();
+    }
+
     public static void ContinueCurrentAudioPlayback()
     {
         MediaDeviceManagerInstance.MusicPlayerDevice.Play();
