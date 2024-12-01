@@ -9,6 +9,21 @@ namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Bac
 
 public class M2TW_DisplayResolution
 {
+    public const string W640_H480 = "640 x 480";
+    public const string W800_H600 = "800 x 600";
+    public const string W1024_H768 = "1024 x 768";
+    public const string W1280_H720 = "1280 x 720";
+    public const string W1280_H1024 = "1280 x 1024";
+    public const string W1366_H768 = "1366 x 768";
+    public const string W1600_H900 = "1600 x 900";
+    public const string W1600_H1200 = "1600 x 1200";
+    public const string W1920_H1080 = "1920 x 1080";
+    public const string W2048_H1536 = "2048 x 1536";
+    public const string W2560_H1440 = "2560 x 1440";
+    public const string W3072_H1728 = "3072 x 1728";
+    public const string W3200_H1800 = "3200 x 1800";
+    public const string W3840_H2160 = "3840 x 2160";
+
     public static readonly DisplayResolution Display_640x480;
     public static readonly DisplayResolution Display_800x600;
     public static readonly DisplayResolution Display_1024x768;

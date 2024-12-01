@@ -30,11 +30,233 @@ using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Fronten
 
 public partial class ModConfigSettingsForm : Form
 {
+    private static readonly (string Text, byte Obj)[] CfgVideoWaterBuffersPerNodeItems;
+    private static readonly (string Text, byte Obj)[] CfgVideoTextureFilteringItems;
+    private static readonly (string Text, byte Obj)[] CfgVideoSpriteBuffersPerNodeItems;
+    private static readonly (string Text, byte Obj)[] CfgVideoModelBuffersPerNodeItems;
+    private static readonly (string Text, byte Obj)[] CfgVideoGroundCoverBuffersPerNodeItems;
+    private static readonly (string Text, byte Obj)[] CfgVideoGroundBuffersPerNodeItems;
+    private static readonly (string Text, byte Obj)[] CfgVideoDepthShadowsResolutionItems;
+    private static readonly (string Text, byte Obj)[] CfgVideoDepthShadowsItems;
+
+    private static readonly (string Text, M2TW_UnitSize Obj)[] CfgGameUnitSizeItems;
+    private static readonly (string Text, M2TW_Boolean Obj)[] CfgGameAiFactionsItems;
+    private static readonly (string Text, M2TW_Boolean Obj)[] CfgGameUiFactionsItems;
+    private static readonly (string Text, M2TW_BattleCameraStyle Obj)[] CfgControlsDefaultInBattleItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVControlsKeysetItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoUnitDetailItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoTerrainQualityItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoShaderItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoGrassDistanceItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoEffectQualityItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoBuildingDetailItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoAntialiasingItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoAntiAliasModeItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoAnisotropicLevelItems;
+
+    private static readonly (string Text, M2TW_DisplayResolution Obj)[] CfgVideoDisplayResolutionItems;
+
     private readonly GameModificationInfo currentGameModificationInfo;
     private readonly GameConfigProfile currentGameConfigProfile;
     private readonly GameConfigProfileCreateForm? currentCallingForm;
 
     private readonly M2TWGameConfigStateView gameConfigStateView;
+
+    static ModConfigSettingsForm()
+    {
+        CfgVideoWaterBuffersPerNodeItems =
+        [
+            (Text: "0", Obj: 0),
+            (Text: "1", Obj: 1),
+            (Text: "2", Obj: 2),
+            (Text: "3", Obj: 3),
+            (Text: "4", Obj: 4),
+        ];
+
+        CfgVideoTextureFilteringItems =
+        [
+            (Text: "0", Obj: 0),
+            (Text: "1", Obj: 1),
+            (Text: "2", Obj: 2),
+        ];
+
+        CfgVideoSpriteBuffersPerNodeItems =
+        [
+            (Text: "0", Obj: 0),
+            (Text: "1", Obj: 1),
+            (Text: "2", Obj: 2),
+            (Text: "3", Obj: 3),
+            (Text: "4", Obj: 4),
+        ];
+
+        CfgVideoModelBuffersPerNodeItems =
+        [
+            (Text: "0", Obj: 0),
+            (Text: "1", Obj: 1),
+            (Text: "2", Obj: 2),
+            (Text: "3", Obj: 3),
+            (Text: "4", Obj: 4),
+        ];
+
+        CfgVideoGroundCoverBuffersPerNodeItems =
+        [
+            (Text: "0", Obj: 0),
+            (Text: "1", Obj: 1),
+            (Text: "2", Obj: 2),
+            (Text: "3", Obj: 3),
+            (Text: "4", Obj: 4),
+        ];
+
+        CfgVideoGroundBuffersPerNodeItems =
+        [
+            (Text: "0", Obj: 0),
+            (Text: "1", Obj: 1),
+            (Text: "2", Obj: 2),
+            (Text: "3", Obj: 3),
+            (Text: "4", Obj: 4),
+        ];
+
+        CfgVideoDepthShadowsResolutionItems =
+        [
+            (Text: "0", Obj: 0),
+            (Text: "1", Obj: 1),
+            (Text: "2", Obj: 2),
+            (Text: "3", Obj: 3),
+            (Text: "4", Obj: 4),
+        ];
+
+        CfgVideoDepthShadowsItems =
+        [
+            (Text: "0", Obj: 0),
+            (Text: "1", Obj: 1),
+            (Text: "2", Obj: 2),
+            (Text: "3", Obj: 3),
+            (Text: "4", Obj: 4),
+        ];
+
+        CfgGameUnitSizeItems =
+        [
+            (M2TW_UnitSize.Small, new M2TW_UnitSize(M2TW_Size.Small)),
+            (M2TW_UnitSize.Normal, new M2TW_UnitSize(M2TW_Size.Normal)),
+            (M2TW_UnitSize.Large, new M2TW_UnitSize(M2TW_Size.Large)),
+            (M2TW_UnitSize.Huge, new M2TW_UnitSize(M2TW_Size.Huge)),
+        ];
+
+        CfgGameAiFactionsItems =
+        [
+            (M2TW_Boolean.M2TW_Deprecated_AI_False, new M2TW_Boolean(M2TW_Deprecated_AI_Boolean.Skip)),
+            (M2TW_Boolean.M2TW_Deprecated_AI_True, new M2TW_Boolean(M2TW_Deprecated_AI_Boolean.Follow)),
+        ];
+
+        CfgGameUiFactionsItems =
+        [
+            (M2TW_Boolean.M2TW_Deprecated_UI_False, new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Hide)),
+            (M2TW_Boolean.M2TW_Deprecated_UI_True, new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show)),
+        ];
+
+        CfgControlsDefaultInBattleItems =
+        [
+            (M2TW_BattleCameraStyle.Default_Camera, new M2TW_BattleCameraStyle(M2TW_BattleCamera.Default)),
+            (M2TW_BattleCameraStyle.Generals_Camera, new M2TW_BattleCameraStyle(M2TW_BattleCamera.Generals)),
+            (M2TW_BattleCameraStyle.RTS_Camera, new M2TW_BattleCameraStyle(M2TW_BattleCamera.RTS)),
+        ];
+
+        CfgVControlsKeysetItems =
+        [
+            (M2TW_QualityLevel.M2TW_KeySet_0, new M2TW_QualityLevel(M2TW_KeySet.KeySet_0)),
+            (M2TW_QualityLevel.M2TW_KeySet_1, new M2TW_QualityLevel(M2TW_KeySet.KeySet_1)),
+            (M2TW_QualityLevel.M2TW_KeySet_2, new M2TW_QualityLevel(M2TW_KeySet.KeySet_2)),
+            (M2TW_QualityLevel.M2TW_KeySet_3, new M2TW_QualityLevel(M2TW_KeySet.KeySet_3)),
+        ];
+
+        CfgVideoUnitDetailItems =
+        [
+            (M2TW_QualityLevel.Low, new M2TW_QualityLevel(M2TW_Quality.Low)),
+            (M2TW_QualityLevel.Medium, new M2TW_QualityLevel(M2TW_Quality.Medium)),
+            (M2TW_QualityLevel.High, new M2TW_QualityLevel(M2TW_Quality.High)),
+            (M2TW_QualityLevel.Highest, new M2TW_QualityLevel(M2TW_Quality.Highest)),
+        ];
+
+        CfgVideoTerrainQualityItems =
+        [
+            (M2TW_QualityLevel.Low, new M2TW_QualityLevel(M2TW_Quality.Low)),
+            (M2TW_QualityLevel.Medium, new M2TW_QualityLevel(M2TW_Quality.Medium)),
+            (M2TW_QualityLevel.High, new M2TW_QualityLevel(M2TW_Quality.High)),
+            (M2TW_QualityLevel.Highest, new M2TW_QualityLevel(M2TW_Quality.Highest)),
+        ];
+
+        CfgVideoShaderItems =
+        [
+            (M2TW_QualityLevel.M2TW_ShaderVersion_v1, new M2TW_QualityLevel(M2TW_ShaderLevel.ShaderVersion_v1)),
+            (M2TW_QualityLevel.M2TW_ShaderVersion_v2, new M2TW_QualityLevel(M2TW_ShaderLevel.ShaderVersion_v2)),
+        ];
+
+        CfgVideoGrassDistanceItems =
+        [
+            (M2TW_QualityLevel.M2TW_GrassDistanceLevel_0, new M2TW_QualityLevel(M2TW_GrassDistance.Level_0)),
+            (M2TW_QualityLevel.M2TW_GrassDistanceLevel_1, new M2TW_QualityLevel(M2TW_GrassDistance.Level_1)),
+            (M2TW_QualityLevel.M2TW_GrassDistanceLevel_2, new M2TW_QualityLevel(M2TW_GrassDistance.Level_2)),
+            (M2TW_QualityLevel.M2TW_GrassDistanceLevel_3, new M2TW_QualityLevel(M2TW_GrassDistance.Level_3)),
+        ];
+
+        CfgVideoEffectQualityItems =
+        [
+            (M2TW_QualityLevel.Low, new M2TW_QualityLevel(M2TW_Quality.Low)),
+            (M2TW_QualityLevel.Medium, new M2TW_QualityLevel(M2TW_Quality.Medium)),
+            (M2TW_QualityLevel.High, new M2TW_QualityLevel(M2TW_Quality.High)),
+            (M2TW_QualityLevel.Highest, new M2TW_QualityLevel(M2TW_Quality.Highest)),
+        ];
+
+        CfgVideoBuildingDetailItems =
+        [
+            (M2TW_QualityLevel.Low, new M2TW_QualityLevel(M2TW_Quality.Low)),
+            (M2TW_QualityLevel.Medium, new M2TW_QualityLevel(M2TW_Quality.Medium)),
+            (M2TW_QualityLevel.High, new M2TW_QualityLevel(M2TW_Quality.High)),
+            (M2TW_QualityLevel.Highest, new M2TW_QualityLevel(M2TW_Quality.Highest)),
+        ];
+
+        CfgVideoAntialiasingItems =
+        [
+            (M2TW_QualityLevel.M2TW_AntiAliasing_None, new M2TW_QualityLevel(M2TW_AntiAliasing.AntiAliasMode_None)),
+            (M2TW_QualityLevel.M2TW_AntiAliasing_x2, new M2TW_QualityLevel(M2TW_AntiAliasing.AntiAliasMode_x2)),
+            (M2TW_QualityLevel.M2TW_AntiAliasing_x4, new M2TW_QualityLevel(M2TW_AntiAliasing.AntiAliasMode_x4)),
+        ];
+
+        CfgVideoAntiAliasModeItems =
+        [
+            (M2TW_QualityLevel.M2TW_AntiAliasing_OffMode, new M2TW_QualityLevel(M2TW_AntiAliasMode.AntiAliasMode_Off)),
+            (M2TW_QualityLevel.M2TW_AntiAliasing_x2, new M2TW_QualityLevel(M2TW_AntiAliasMode.AntiAliasMode_x2)),
+            (M2TW_QualityLevel.M2TW_AntiAliasing_x4, new M2TW_QualityLevel(M2TW_AntiAliasMode.AntiAliasMode_x4)),
+        ];
+
+        CfgVideoAnisotropicLevelItems =
+        [
+            (M2TW_QualityLevel.M2TW_AF_Bilinear, new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.Bilinear)),
+            (M2TW_QualityLevel.M2TW_AF_Trilinear, new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.Trilinear)),
+            (M2TW_QualityLevel.M2TW_AF_x2, new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x2)),
+            (M2TW_QualityLevel.M2TW_AF_x4, new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x4)),
+            (M2TW_QualityLevel.M2TW_AF_x8, new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x8)),
+            (M2TW_QualityLevel.M2TW_AF_x16, new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x16)),
+        ];
+
+        CfgVideoDisplayResolutionItems =
+        [
+            (M2TW_DisplayResolution.W640_H480, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_640x480)),
+            (M2TW_DisplayResolution.W800_H600, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_800x600)),
+            (M2TW_DisplayResolution.W1024_H768, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768)),
+            (M2TW_DisplayResolution.W1280_H720, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x720)),
+            (M2TW_DisplayResolution.W1280_H1024, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x1024)),
+            (M2TW_DisplayResolution.W1366_H768, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1366x768)),
+            (M2TW_DisplayResolution.W1600_H900, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x900)),
+            (M2TW_DisplayResolution.W1600_H1200, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x1200)),
+            (M2TW_DisplayResolution.W1920_H1080, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1920x1080)),
+            (M2TW_DisplayResolution.W2048_H1536, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2048x1536)),
+            (M2TW_DisplayResolution.W2560_H1440, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2560x1440)),
+            (M2TW_DisplayResolution.W3072_H1728, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3072x1728)),
+            (M2TW_DisplayResolution.W3200_H1800, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3200x1800)),
+            (M2TW_DisplayResolution.W3840_H2160, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3840x2160)),
+        ];
+    }
 
     public ModConfigSettingsForm(GameModificationInfo gameModificationInfo)
     {
@@ -61,6 +283,16 @@ public partial class ModConfigSettingsForm : Form
 
         InitializeComponent();
         InitializeConfigControls();
+    }
+
+    private static void InitializeComboBoxControlByPredefinedItems<T>(ComboBox control, (string Text, T Obj)[] items)
+    {
+        control.Items.Clear();
+
+        foreach ((string Text, T Obj) item in items)
+        {
+            control.Items.Add(item.Text);
+        }
     }
 
     private void SaveConfigSettingsButton_Click(object sender, EventArgs e)
@@ -138,158 +370,28 @@ public partial class ModConfigSettingsForm : Form
 
     private void InitializeItemsForComboBoxControls()
     {
-        // cfgGameUnitSizeComboBox
-        this.cfgGameUnitSizeComboBox.Items.Insert(index: 0, item: M2TW_Size.Small);
-        this.cfgGameUnitSizeComboBox.Items.Insert(index: 1, item: M2TW_Size.Normal);
-        this.cfgGameUnitSizeComboBox.Items.Insert(index: 2, item: M2TW_Size.Large);
-        this.cfgGameUnitSizeComboBox.Items.Insert(index: 3, item: M2TW_Size.Huge);
-
-        // cfgGameAiFactionsComboBox
-        this.cfgGameAiFactionsComboBox.Items.Insert(index: 0, item: M2TW_Deprecated_AI_Boolean.Skip);
-        this.cfgGameAiFactionsComboBox.Items.Insert(index: 1, item: M2TW_Deprecated_AI_Boolean.Follow);
-
-        // cfgControlsDefaultInBattleComboBox
-        this.cfgControlsDefaultInBattleComboBox.Items.Insert(index: 0, item: M2TW_BattleCamera.Default);
-        this.cfgControlsDefaultInBattleComboBox.Items.Insert(index: 1, item: M2TW_BattleCamera.Generals);
-        this.cfgControlsDefaultInBattleComboBox.Items.Insert(index: 2, item: M2TW_BattleCamera.RTS);
-
-        // cfgVideoWaterBuffersPerNodeComboBox
-        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
-        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
-        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
-        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
-        this.cfgVideoWaterBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
-
-        // cfgVideoUnitDetailComboBox
-        this.cfgVideoUnitDetailComboBox.Items.Insert(index: 0, item: M2TW_Quality.Low);
-        this.cfgVideoUnitDetailComboBox.Items.Insert(index: 1, item: M2TW_Quality.Medium);
-        this.cfgVideoUnitDetailComboBox.Items.Insert(index: 2, item: M2TW_Quality.High);
-        this.cfgVideoUnitDetailComboBox.Items.Insert(index: 3, item: M2TW_Quality.Highest);
-
-        // cfgVideoTextureFilteringComboBox
-        this.cfgVideoTextureFilteringComboBox.Items.Insert(index: 0, item: 0);
-        this.cfgVideoTextureFilteringComboBox.Items.Insert(index: 1, item: 1);
-        this.cfgVideoTextureFilteringComboBox.Items.Insert(index: 2, item: 2);
-
-        // cfgVideoTerrainQualityComboBox
-        this.cfgVideoTerrainQualityComboBox.Items.Insert(index: 0, item: M2TW_Quality.Low);
-        this.cfgVideoTerrainQualityComboBox.Items.Insert(index: 1, item: M2TW_Quality.Medium);
-        this.cfgVideoTerrainQualityComboBox.Items.Insert(index: 2, item: M2TW_Quality.High);
-        this.cfgVideoTerrainQualityComboBox.Items.Insert(index: 3, item: M2TW_Quality.Highest);
-
-        // cfgVideoSpriteBuffersPerNodeComboBox
-        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
-        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
-        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
-        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
-        this.cfgVideoSpriteBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
-
-        // cfgVideoShaderComboBox
-        this.cfgVideoShaderComboBox.Items.Insert(index: 0, item: M2TW_ShaderLevel.ShaderVersion_v1);
-        this.cfgVideoShaderComboBox.Items.Insert(index: 1, item: M2TW_ShaderLevel.ShaderVersion_v2);
-
-        // cfgVideoModelBuffersPerNodeComboBox
-        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
-        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
-        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
-        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
-        this.cfgVideoModelBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
-
-        // cfgVideoGroundCoverBuffersPerNodeComboBox
-        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
-        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
-        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
-        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
-        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
-
-        // cfgVideoGroundBuffersPerNodeComboBox
-        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 0, item: 0);
-        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 1, item: 1);
-        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 2, item: 2);
-        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 3, item: 3);
-        this.cfgVideoGroundBuffersPerNodeComboBox.Items.Insert(index: 4, item: 4);
-
-        // cfgVideoGrassDistanceComboBox
-        this.cfgVideoGrassDistanceComboBox.Items.Insert(index: 0, item: M2TW_GrassDistance.Level_0);
-        this.cfgVideoGrassDistanceComboBox.Items.Insert(index: 1, item: M2TW_GrassDistance.Level_1);
-        this.cfgVideoGrassDistanceComboBox.Items.Insert(index: 2, item: M2TW_GrassDistance.Level_2);
-        this.cfgVideoGrassDistanceComboBox.Items.Insert(index: 3, item: M2TW_GrassDistance.Level_3);
-
-        // cfgVideoEffectQualityComboBox
-        this.cfgVideoEffectQualityComboBox.Items.Insert(index: 0, item: M2TW_Quality.Low);
-        this.cfgVideoEffectQualityComboBox.Items.Insert(index: 1, item: M2TW_Quality.Medium);
-        this.cfgVideoEffectQualityComboBox.Items.Insert(index: 2, item: M2TW_Quality.High);
-        this.cfgVideoEffectQualityComboBox.Items.Insert(index: 3, item: M2TW_Quality.Highest);
-
-        // cfgVideoDepthShadowsResolutionComboBox
-        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 0, item: 0);
-        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 1, item: 1);
-        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 2, item: 2);
-        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 3, item: 3);
-        this.cfgVideoDepthShadowsResolutionComboBox.Items.Insert(index: 4, item: 4);
-
-        // cfgVideoDepthShadowsComboBox
-        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 0, item: 0);
-        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 1, item: 1);
-        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 2, item: 2);
-        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 3, item: 3);
-        this.cfgVideoDepthShadowsComboBox.Items.Insert(index: 4, item: 4);
-
-        // cfgVideoBattleResolutionComboBox
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 0, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_640x480).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 1, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_800x600).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 2, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 3, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x720).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 4, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x1024).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 5, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1366x768).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 6, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x900).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 7, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x1200).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 8, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1920x1080).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 9, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2048x1536).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 10, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2560x1440).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 11, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3072x1728).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 12, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3200x1800).Value);
-        this.cfgVideoBattleResolutionComboBox.Items.Insert(index: 13, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3840x2160).Value);
-
-        // cfgVideoCampaignResolutionComboBox
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 0, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_640x480).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 1, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_800x600).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 2, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 3, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x720).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 4, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1280x1024).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 5, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1366x768).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 6, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x900).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 7, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1600x1200).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 8, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1920x1080).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 9, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2048x1536).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 10, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_2560x1440).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 11, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3072x1728).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 12, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3200x1800).Value);
-        this.cfgVideoCampaignResolutionComboBox.Items.Insert(index: 13, item: new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3840x2160).Value);
-
-        // cfgVideoBuildingDetailComboBox
-        this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 0, item: M2TW_Quality.Low);
-        this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 1, item: M2TW_Quality.Medium);
-        this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 2, item: M2TW_Quality.High);
-        this.cfgVideoBuildingDetailComboBox.Items.Insert(index: 3, item: M2TW_Quality.Highest);
-
-        // cfgVideoAntialiasingComboBox
-        this.cfgVideoAntialiasingComboBox.Items.Insert(index: 0, item: M2TW_AntiAliasing.AntiAliasMode_None);
-        this.cfgVideoAntialiasingComboBox.Items.Insert(index: 1, item: M2TW_AntiAliasing.AntiAliasMode_x2);
-        this.cfgVideoAntialiasingComboBox.Items.Insert(index: 2, item: M2TW_AntiAliasing.AntiAliasMode_x4);
-
-        // cfgVideoAntiAliasModeComboBox
-        this.cfgVideoAntiAliasModeComboBox.Items.Insert(index: 0, item: M2TW_AntiAliasMode.AntiAliasMode_Off);
-        this.cfgVideoAntiAliasModeComboBox.Items.Insert(index: 1, item: M2TW_AntiAliasMode.AntiAliasMode_x2);
-        this.cfgVideoAntiAliasModeComboBox.Items.Insert(index: 2, item: M2TW_AntiAliasMode.AntiAliasMode_x4);
-
-        // cfgVideoAnisotropicLevelComboBox
-        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 0, item: M2TW_AnisotropicFilteringLevel.Bilinear);
-        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 1, item: M2TW_AnisotropicFilteringLevel.Trilinear);
-        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 2, item: M2TW_AnisotropicFilteringLevel.AF_x2);
-        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 3, item: M2TW_AnisotropicFilteringLevel.AF_x4);
-        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 4, item: M2TW_AnisotropicFilteringLevel.AF_x8);
-        this.cfgVideoAnisotropicLevelComboBox.Items.Insert(index: 5, item: M2TW_AnisotropicFilteringLevel.AF_x16);
+        InitializeComboBoxControlByPredefinedItems(this.cfgGameUnitSizeComboBox, CfgGameUnitSizeItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgGameAiFactionsComboBox, CfgGameAiFactionsItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgControlsDefaultInBattleComboBox, CfgControlsDefaultInBattleItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoWaterBuffersPerNodeComboBox, CfgVideoWaterBuffersPerNodeItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoUnitDetailComboBox, CfgVideoUnitDetailItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoTextureFilteringComboBox, CfgVideoTextureFilteringItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoTerrainQualityComboBox, CfgVideoTerrainQualityItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoSpriteBuffersPerNodeComboBox, CfgVideoSpriteBuffersPerNodeItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoShaderComboBox, CfgVideoShaderItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoModelBuffersPerNodeComboBox, CfgVideoModelBuffersPerNodeItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoGroundCoverBuffersPerNodeComboBox, CfgVideoGroundCoverBuffersPerNodeItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoGroundBuffersPerNodeComboBox, CfgVideoGroundBuffersPerNodeItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoGrassDistanceComboBox, CfgVideoGrassDistanceItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoEffectQualityComboBox, CfgVideoEffectQualityItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoDepthShadowsResolutionComboBox, CfgVideoDepthShadowsResolutionItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoDepthShadowsComboBox, CfgVideoDepthShadowsItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoBattleResolutionComboBox, CfgVideoDisplayResolutionItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoCampaignResolutionComboBox, CfgVideoDisplayResolutionItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoBuildingDetailComboBox, CfgVideoBuildingDetailItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoAntialiasingComboBox, CfgVideoAntialiasingItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoAntiAliasModeComboBox, CfgVideoAntiAliasModeItems);
+        InitializeComboBoxControlByPredefinedItems(this.cfgVideoAnisotropicLevelComboBox, CfgVideoAnisotropicLevelItems);
     }
 
     private void InitializeBoundValuesForNumericUpDownControls()
@@ -323,9 +425,6 @@ public partial class ModConfigSettingsForm : Form
 
         this.cfgCameraMoveNumericUpDown.Maximum = M2TW_Integer.MaxValue;
         this.cfgCameraMoveNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgControlsKeysetNumericUpDown.Maximum = (decimal)M2TW_KeySet.KeySet_0;
-        this.cfgControlsKeysetNumericUpDown.Minimum = (decimal)M2TW_KeySet.KeySet_3;
 
         this.cfgControlsScrollMinZoomNumericUpDown.Maximum = M2TW_Integer.MaxValue;
         this.cfgControlsScrollMinZoomNumericUpDown.Minimum = M2TW_Integer.MinValue;
@@ -362,14 +461,15 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.ModGameplaySection.GameAllUsers = new M2TW_Boolean(this.cfgGameAllUsersCheckBox.Checked);
         gameConfigStateView.ModGameplaySection.GameAdvisorVerbosity = new M2TW_Boolean(this.cfgGameAdvisorVerbosityCheckBox.Checked);
         gameConfigStateView.ModGameplaySection.GameAdvancedStatsAlways = new M2TW_Boolean(this.cfgGameAdvancedStatsAlwaysCheckBox.Checked);
-        gameConfigStateView.ModGameplaySection.GameUnitSize = new M2TW_UnitSize(M2TW_Size.Huge); // REPLACE: this.cfgGameUnitSizeComboBox.Text;
-        gameConfigStateView.ModGameplaySection.GameChatMsgDuration = new M2TW_Integer(M2TW_Integer.ExtendedMaxValue); // REPLACE: this.cfgGameChatMsgDurationNumericUpDown.Text;
         gameConfigStateView.ModGameplaySection.GameCampaignMapSpeedUp = new M2TW_Integer(Convert.ToByte(this.cfgGameCampaignMapSpeedUpNumericUpDown.Text));
         gameConfigStateView.ModGameplaySection.GameCampaignMapGameSpeed = new M2TW_Integer(Convert.ToByte(this.cfgGameCampaignMapGameSpeedNumericUpDown.Text));
         gameConfigStateView.ModGameplaySection.GamePrefFactionsPlayed = Convert.ToInt32(this.cfgGamePrefFactionsPlayedTextBox.Text);
         gameConfigStateView.ModGameplaySection.GameTutorialPath = this.cfgGameTutorialPathTextBox.Text; // "norman_prologue/battle_of_hastings",
-        gameConfigStateView.ModGameplaySection.GameAiFactions = new M2TW_Boolean(M2TW_Deprecated_AI_Boolean.Follow); // REPLACE: this.cfgGameAiFactionsComboBox.Text;
         gameConfigStateView.ModGameplaySection.GameCampaignNumTimePlay = new M2TW_Integer(Convert.ToByte(this.cfgGameCampaignNumTimePlayTextBox.Text));
+
+        gameConfigStateView.ModGameplaySection.GameUnitSize = new M2TW_UnitSize(M2TW_Size.Huge); // REPLACE: this.cfgGameUnitSizeComboBox.Text;
+        gameConfigStateView.ModGameplaySection.GameChatMsgDuration = new M2TW_Integer(M2TW_Integer.ExtendedMaxValue); // REPLACE: this.cfgGameChatMsgDurationNumericUpDown.Text;
+        gameConfigStateView.ModGameplaySection.GameAiFactions = new M2TW_Boolean(M2TW_Deprecated_AI_Boolean.Follow); // REPLACE: this.cfgGameAiFactionsComboBox.Text;
 
         // [AUDIO] GameAudioCfgSectionStateView
         gameConfigStateView.GameAudioCfgSection!.SpeechVolume = new M2TW_Integer(Convert.ToByte(this.cfgAudioSpeechNumericUpDown.Text));
@@ -438,24 +538,13 @@ public partial class ModConfigSettingsForm : Form
         // [VIDEO] GameVideoCfgSectionStateView
         gameConfigStateView.GameVideoCfgSection!.VideoGamma = new M2TW_Integer(Convert.ToByte(this.cfgVideoGammaNumericUpDown.Text));
         gameConfigStateView.GameVideoCfgSection.VideoWaterBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoWaterBuffersPerNodeComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoUnitDetail = new M2TW_QualityLevel(M2TW_Quality.Highest); // REPLACE: this.cfgVideoUnitDetailComboBox.Text
         gameConfigStateView.GameVideoCfgSection.VideoTextureFiltering = new M2TW_Integer(Convert.ToByte(this.cfgVideoTextureFilteringComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoTerrainQuality = new M2TW_QualityLevel(M2TW_Quality.High); // REPLACE: this.cfgVideoTerrainQualityComboBox.Text;
         gameConfigStateView.GameVideoCfgSection.VideoSpriteBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoSpriteBuffersPerNodeComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoShader = new M2TW_QualityLevel(M2TW_ShaderLevel.ShaderVersion_v2); // REPLACE: this.cfgVideoShaderComboBox.Text;
         gameConfigStateView.GameVideoCfgSection.VideoModelBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoModelBuffersPerNodeComboBox.Text));
         gameConfigStateView.GameVideoCfgSection.VideoGroundCoverBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoGroundCoverBuffersPerNodeComboBox.Text));
         gameConfigStateView.GameVideoCfgSection.VideoGroundBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoGroundBuffersPerNodeComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoGrassDistance = new M2TW_QualityLevel(M2TW_GrassDistance.Level_1); // REPLACE: this.cfgVideoGrassDistanceComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoEffectQuality = new M2TW_QualityLevel(M2TW_Quality.Highest); // REPLACE: this.cfgVideoEffectQualityComboBox.Text;
         gameConfigStateView.GameVideoCfgSection.VideoDepthShadowsResolution = new M2TW_Integer(Convert.ToByte(this.cfgVideoDepthShadowsResolutionComboBox.Text));
         gameConfigStateView.GameVideoCfgSection.VideoDepthShadows = new M2TW_Integer(Convert.ToByte(this.cfgVideoDepthShadowsComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoCampaignResolution = new M2TW_DisplayResolution(this.cfgVideoCampaignResolutionComboBox.Text);
-        gameConfigStateView.GameVideoCfgSection.VideoBuildingDetail = new M2TW_QualityLevel(M2TW_Quality.High); // REPLACE: this.cfgVideoBuildingDetailComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoBattleResolution = new M2TW_DisplayResolution(this.cfgVideoBattleResolutionComboBox.Text);
-        gameConfigStateView.GameVideoCfgSection.VideoAntialiasing = new M2TW_QualityLevel(M2TW_AntiAliasing.AntiAliasMode_x4); // REPLACE: this.cfgVideoAntialiasingComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoAntiAliasMode = new M2TW_QualityLevel(M2TW_AntiAliasMode.AntiAliasMode_x4); // REPLACE: this.cfgVideoAntiAliasModeComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoAnisotropicLevel = new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x16); // REPLACE: this.cfgVideoAnisotropicLevelComboBox.Text;
         gameConfigStateView.GameVideoCfgSection.VideoWindowedMode = new M2TW_Boolean(this.cfgVideoWindowedCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoWidescreenMode = new M2TW_Boolean(this.cfgVideoWidescreenCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoVsync = new M2TW_Boolean(this.cfgVideoVsyncCheckBox.Checked);
@@ -475,6 +564,18 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.GameVideoCfgSection.VideoBloom = new M2TW_Boolean(this.cfgVideoBloomCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoAutodetect = new M2TW_Boolean(this.cfgVideoAutodetectCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoAssassinationMovies = new M2TW_Boolean(this.cfgVideoAssassinationMoviesCheckBox.Checked);
+
+        gameConfigStateView.GameVideoCfgSection.VideoCampaignResolution = new M2TW_DisplayResolution(this.cfgVideoCampaignResolutionComboBox.Text);
+        gameConfigStateView.GameVideoCfgSection.VideoBattleResolution = new M2TW_DisplayResolution(this.cfgVideoBattleResolutionComboBox.Text);
+        gameConfigStateView.GameVideoCfgSection.VideoUnitDetail = new M2TW_QualityLevel(M2TW_Quality.Highest); // REPLACE: this.cfgVideoUnitDetailComboBox.Text
+        gameConfigStateView.GameVideoCfgSection.VideoTerrainQuality = new M2TW_QualityLevel(M2TW_Quality.High); // REPLACE: this.cfgVideoTerrainQualityComboBox.Text;
+        gameConfigStateView.GameVideoCfgSection.VideoShader = new M2TW_QualityLevel(M2TW_ShaderLevel.ShaderVersion_v2); // REPLACE: this.cfgVideoShaderComboBox.Text;
+        gameConfigStateView.GameVideoCfgSection.VideoGrassDistance = new M2TW_QualityLevel(M2TW_GrassDistance.Level_1); // REPLACE: this.cfgVideoGrassDistanceComboBox.Text;
+        gameConfigStateView.GameVideoCfgSection.VideoEffectQuality = new M2TW_QualityLevel(M2TW_Quality.Highest); // REPLACE: this.cfgVideoEffectQualityComboBox.Text;
+        gameConfigStateView.GameVideoCfgSection.VideoBuildingDetail = new M2TW_QualityLevel(M2TW_Quality.High); // REPLACE: this.cfgVideoBuildingDetailComboBox.Text;
+        gameConfigStateView.GameVideoCfgSection.VideoAntialiasing = new M2TW_QualityLevel(M2TW_AntiAliasing.AntiAliasMode_x4); // REPLACE: this.cfgVideoAntialiasingComboBox.Text;
+        gameConfigStateView.GameVideoCfgSection.VideoAntiAliasMode = new M2TW_QualityLevel(M2TW_AntiAliasMode.AntiAliasMode_x4); // REPLACE: this.cfgVideoAntiAliasModeComboBox.Text;
+        gameConfigStateView.GameVideoCfgSection.VideoAnisotropicLevel = new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x16); // REPLACE: this.cfgVideoAnisotropicLevelComboBox.Text;
 
         return gameConfigStateView;
     }
@@ -540,7 +641,7 @@ public partial class ModConfigSettingsForm : Form
         this.cfgCameraRestrictCheckBox.Checked = this.gameConfigStateView.GameCameraCfgSection.CameraRestrict!.GetValue();
 
         // [CONTROLS] GameControlsCfgSectionStateView
-        this.cfgControlsKeysetNumericUpDown.Text = this.gameConfigStateView.GameControlsCfgSection!.KeySet!.Value;
+        this.cfgControlsKeysetComboBox.Text = this.gameConfigStateView.GameControlsCfgSection!.KeySet!.Value;
         this.cfgControlsScrollMinZoomNumericUpDown.Text = this.gameConfigStateView.GameControlsCfgSection.CampaignScrollMinZoom.ToString();
         this.cfgControlsScrollMaxZoomNumericUpDown.Text = this.gameConfigStateView.GameControlsCfgSection.CampaignScrollMaxZoom.ToString();
 

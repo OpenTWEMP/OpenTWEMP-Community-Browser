@@ -111,7 +111,6 @@
             cfgCameraRestrictCheckBox = new CheckBox();
             cfgControlsGroupBox = new GroupBox();
             cfgControlsKeysetPanel = new Panel();
-            cfgControlsKeysetNumericUpDown = new NumericUpDown();
             cfgControlsKeysetLabel = new Label();
             cfgControlsScrollMinZoomPanel = new Panel();
             cfgControlsScrollMinZoomNumericUpDown = new NumericUpDown();
@@ -147,6 +146,9 @@
             cfgHotseatAutoresolveBattlesCheckBox = new CheckBox();
             label4 = new Label();
             tabPage5 = new TabPage();
+            cfgMiscBypassToStrategySavePanel = new Panel();
+            cfgMiscBypassToStrategySaveTextBox = new TextBox();
+            cfgMiscBypassToStrategySaveLabel = new Label();
             cfgNetworkGroupBox = new GroupBox();
             cfgNetworkUsePortPanel = new Panel();
             cfgNetworkUsePortTextBox = new TextBox();
@@ -155,9 +157,6 @@
             cfgNetworkUseIpTextBox = new TextBox();
             cfgNetworkUseIpLabel = new Label();
             cfgMiscGroupBox = new GroupBox();
-            cfgMiscBypassToStrategySavePanel = new Panel();
-            cfgMiscBypassToStrategySaveTextBox = new TextBox();
-            cfgMiscBypassToStrategySaveLabel = new Label();
             cfgMiscUnlockCampaignCheckBox = new CheckBox();
             cfgIOGroupBox = new GroupBox();
             cfgIOFileFirstCheckBox = new CheckBox();
@@ -267,6 +266,7 @@
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
+            cfgControlsKeysetComboBox = new ComboBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             cfgGameUnitSizePanel.SuspendLayout();
@@ -301,7 +301,6 @@
             ((System.ComponentModel.ISupportInitialize)cfgCameraMoveNumericUpDown).BeginInit();
             cfgControlsGroupBox.SuspendLayout();
             cfgControlsKeysetPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)cfgControlsKeysetNumericUpDown).BeginInit();
             cfgControlsScrollMinZoomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMinZoomNumericUpDown).BeginInit();
             cfgControlsScrollMaxZoomPanel.SuspendLayout();
@@ -311,11 +310,11 @@
             cfgHotseatAdminPasswordPanel.SuspendLayout();
             cfgHotseatPasswordsPanel.SuspendLayout();
             tabPage5.SuspendLayout();
+            cfgMiscBypassToStrategySavePanel.SuspendLayout();
             cfgNetworkGroupBox.SuspendLayout();
             cfgNetworkUsePortPanel.SuspendLayout();
             cfgNetworkUseIpPanel.SuspendLayout();
             cfgMiscGroupBox.SuspendLayout();
-            cfgMiscBypassToStrategySavePanel.SuspendLayout();
             cfgIOGroupBox.SuspendLayout();
             cfgFeaturesGroupBox.SuspendLayout();
             tabPage6.SuspendLayout();
@@ -1152,19 +1151,12 @@
             // cfgControlsKeysetPanel
             // 
             cfgControlsKeysetPanel.BackColor = Color.Gray;
-            cfgControlsKeysetPanel.Controls.Add(cfgControlsKeysetNumericUpDown);
+            cfgControlsKeysetPanel.Controls.Add(cfgControlsKeysetComboBox);
             cfgControlsKeysetPanel.Controls.Add(cfgControlsKeysetLabel);
             cfgControlsKeysetPanel.Location = new Point(6, 94);
             cfgControlsKeysetPanel.Name = "cfgControlsKeysetPanel";
             cfgControlsKeysetPanel.Size = new Size(325, 30);
             cfgControlsKeysetPanel.TabIndex = 25;
-            // 
-            // cfgControlsKeysetNumericUpDown
-            // 
-            cfgControlsKeysetNumericUpDown.Location = new Point(202, 3);
-            cfgControlsKeysetNumericUpDown.Name = "cfgControlsKeysetNumericUpDown";
-            cfgControlsKeysetNumericUpDown.Size = new Size(120, 23);
-            cfgControlsKeysetNumericUpDown.TabIndex = 9;
             // 
             // cfgControlsKeysetLabel
             // 
@@ -1516,6 +1508,33 @@
             tabPage5.Text = "Game Settings";
             tabPage5.UseVisualStyleBackColor = true;
             // 
+            // cfgMiscBypassToStrategySavePanel
+            // 
+            cfgMiscBypassToStrategySavePanel.BackColor = Color.DarkGray;
+            cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveTextBox);
+            cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveLabel);
+            cfgMiscBypassToStrategySavePanel.Enabled = false;
+            cfgMiscBypassToStrategySavePanel.Location = new Point(481, 351);
+            cfgMiscBypassToStrategySavePanel.Name = "cfgMiscBypassToStrategySavePanel";
+            cfgMiscBypassToStrategySavePanel.Size = new Size(265, 43);
+            cfgMiscBypassToStrategySavePanel.TabIndex = 1;
+            cfgMiscBypassToStrategySavePanel.Visible = false;
+            // 
+            // cfgMiscBypassToStrategySaveTextBox
+            // 
+            cfgMiscBypassToStrategySaveTextBox.Location = new Point(157, 7);
+            cfgMiscBypassToStrategySaveTextBox.Name = "cfgMiscBypassToStrategySaveTextBox";
+            cfgMiscBypassToStrategySaveTextBox.Size = new Size(100, 23);
+            cfgMiscBypassToStrategySaveTextBox.TabIndex = 1;
+            // 
+            // cfgMiscBypassToStrategySaveLabel
+            // 
+            cfgMiscBypassToStrategySaveLabel.Location = new Point(8, 7);
+            cfgMiscBypassToStrategySaveLabel.Name = "cfgMiscBypassToStrategySaveLabel";
+            cfgMiscBypassToStrategySaveLabel.Size = new Size(143, 23);
+            cfgMiscBypassToStrategySaveLabel.TabIndex = 0;
+            cfgMiscBypassToStrategySaveLabel.Text = "bypass_to_strategy_save";
+            // 
             // cfgNetworkGroupBox
             // 
             cfgNetworkGroupBox.Controls.Add(cfgNetworkUsePortPanel);
@@ -1589,33 +1608,6 @@
             cfgMiscGroupBox.TabIndex = 5;
             cfgMiscGroupBox.TabStop = false;
             cfgMiscGroupBox.Text = "[misc]";
-            // 
-            // cfgMiscBypassToStrategySavePanel
-            // 
-            cfgMiscBypassToStrategySavePanel.BackColor = Color.DarkGray;
-            cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveTextBox);
-            cfgMiscBypassToStrategySavePanel.Controls.Add(cfgMiscBypassToStrategySaveLabel);
-            cfgMiscBypassToStrategySavePanel.Enabled = false;
-            cfgMiscBypassToStrategySavePanel.Location = new Point(481, 351);
-            cfgMiscBypassToStrategySavePanel.Name = "cfgMiscBypassToStrategySavePanel";
-            cfgMiscBypassToStrategySavePanel.Size = new Size(265, 43);
-            cfgMiscBypassToStrategySavePanel.TabIndex = 1;
-            cfgMiscBypassToStrategySavePanel.Visible = false;
-            // 
-            // cfgMiscBypassToStrategySaveTextBox
-            // 
-            cfgMiscBypassToStrategySaveTextBox.Location = new Point(157, 7);
-            cfgMiscBypassToStrategySaveTextBox.Name = "cfgMiscBypassToStrategySaveTextBox";
-            cfgMiscBypassToStrategySaveTextBox.Size = new Size(100, 23);
-            cfgMiscBypassToStrategySaveTextBox.TabIndex = 1;
-            // 
-            // cfgMiscBypassToStrategySaveLabel
-            // 
-            cfgMiscBypassToStrategySaveLabel.Location = new Point(8, 7);
-            cfgMiscBypassToStrategySaveLabel.Name = "cfgMiscBypassToStrategySaveLabel";
-            cfgMiscBypassToStrategySaveLabel.Size = new Size(143, 23);
-            cfgMiscBypassToStrategySaveLabel.TabIndex = 0;
-            cfgMiscBypassToStrategySaveLabel.Text = "bypass_to_strategy_save";
             // 
             // cfgMiscUnlockCampaignCheckBox
             // 
@@ -2680,6 +2672,14 @@
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
             // 
+            // cfgControlsKeysetComboBox
+            // 
+            cfgControlsKeysetComboBox.FormattingEnabled = true;
+            cfgControlsKeysetComboBox.Location = new Point(202, 3);
+            cfgControlsKeysetComboBox.Name = "cfgControlsKeysetComboBox";
+            cfgControlsKeysetComboBox.Size = new Size(120, 23);
+            cfgControlsKeysetComboBox.TabIndex = 5;
+            // 
             // ModConfigSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -2747,7 +2747,6 @@
             ((System.ComponentModel.ISupportInitialize)cfgCameraMoveNumericUpDown).EndInit();
             cfgControlsGroupBox.ResumeLayout(false);
             cfgControlsKeysetPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)cfgControlsKeysetNumericUpDown).EndInit();
             cfgControlsScrollMinZoomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)cfgControlsScrollMinZoomNumericUpDown).EndInit();
             cfgControlsScrollMaxZoomPanel.ResumeLayout(false);
@@ -2762,6 +2761,8 @@
             cfgHotseatPasswordsPanel.PerformLayout();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
+            cfgMiscBypassToStrategySavePanel.ResumeLayout(false);
+            cfgMiscBypassToStrategySavePanel.PerformLayout();
             cfgNetworkGroupBox.ResumeLayout(false);
             cfgNetworkUsePortPanel.ResumeLayout(false);
             cfgNetworkUsePortPanel.PerformLayout();
@@ -2769,8 +2770,6 @@
             cfgNetworkUseIpPanel.PerformLayout();
             cfgMiscGroupBox.ResumeLayout(false);
             cfgMiscGroupBox.PerformLayout();
-            cfgMiscBypassToStrategySavePanel.ResumeLayout(false);
-            cfgMiscBypassToStrategySavePanel.PerformLayout();
             cfgIOGroupBox.ResumeLayout(false);
             cfgIOGroupBox.PerformLayout();
             cfgFeaturesGroupBox.ResumeLayout(false);
@@ -2855,7 +2854,6 @@
         private CheckBox cfgFeaturesEditorCheckBox;
         private GroupBox cfgControlsGroupBox;
         private Panel cfgControlsKeysetPanel;
-        private NumericUpDown cfgControlsKeysetNumericUpDown;
         private Label cfgControlsKeysetLabel;
         private Panel cfgControlsScrollMinZoomPanel;
         private NumericUpDown cfgControlsScrollMinZoomNumericUpDown;
@@ -3050,5 +3048,6 @@
         private Label cfgLogLocationLabel;
         private CheckBox cfgHotseatPasswordsCheckBox;
         private CheckBox cfgHotseatAdminPasswordCheckBox;
+        private ComboBox cfgControlsKeysetComboBox;
     }
 }
