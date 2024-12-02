@@ -31,6 +31,7 @@
             saveConfigSettingsButton = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            cfgGameTutorialBattlePlayedCheckBox = new CheckBox();
             cfgGameUseQuickchatCheckBox = new CheckBox();
             cfgGameUnlimitedMenOnBattlefieldCheckBox = new CheckBox();
             cfgGameNoCampaignBattleTimeLimitCheckBox = new CheckBox();
@@ -121,6 +122,7 @@
             cfgControlsScrollMaxZoomLabel = new Label();
             label3 = new Label();
             tabPage4 = new TabPage();
+            cfgMultiplayerPlayableCheckBox = new CheckBox();
             cfgHotseatPasswordsCheckBox = new CheckBox();
             cfgHotseatAdminPasswordCheckBox = new CheckBox();
             cfgHotseatGameNamePanel = new Panel();
@@ -166,12 +168,11 @@
             label5 = new Label();
             tabPage6 = new TabPage();
             groupBoxConfigLogMode = new GroupBox();
+            cfgLogLevelComboBox = new ComboBox();
+            cfgLogLevelLabel = new Label();
+            checkBoxLogHistory = new CheckBox();
             cfgLogLocationTextBox = new TextBox();
             cfgLogLocationLabel = new Label();
-            checkBoxLogHistory = new CheckBox();
-            radioButtonLogErrorAndTrace = new RadioButton();
-            radioButtonLogOnlyTrace = new RadioButton();
-            radioButtonLogOnlyError = new RadioButton();
             label6 = new Label();
             tabPage7 = new TabPage();
             cfgUIGroupBox = new Panel();
@@ -182,9 +183,9 @@
             cfgUiButtonsCheckBox = new CheckBox();
             cfgUiSaCardsCheckBox = new CheckBox();
             tabPage8 = new TabPage();
-            cfgVideoGammaPanel = new Panel();
-            cfgVideoGammaNumericUpDown = new NumericUpDown();
-            cfgVideoGammaLabel = new Label();
+            cfgVideoVegetationQualityPanel = new Panel();
+            cfgVideoVegetationQualityComboBox = new ComboBox();
+            cfgVideoVegetationQualityLabel = new Label();
             cfgVideoWaterBuffersPerNodePanel = new Panel();
             cfgVideoWaterBuffersPerNodeComboBox = new ComboBox();
             cfgVideoWaterBuffersPerNodeLabel = new Label();
@@ -243,6 +244,10 @@
             cfgVideoAnisotropicLevelComboBox = new ComboBox();
             cfgVideoAnisotropicLevelLabel = new Label();
             tabPage9 = new TabPage();
+            cfgVideoGammaPanel = new Panel();
+            cfgVideoGammaNumericUpDown = new NumericUpDown();
+            cfgVideoGammaLabel = new Label();
+            cfgVideoBorderlessWindowCheckBox = new CheckBox();
             cfgVideoWindowedCheckBox = new CheckBox();
             cfgVideoWidescreenCheckBox = new CheckBox();
             cfgVideoVsyncCheckBox = new CheckBox();
@@ -322,8 +327,7 @@
             tabPage7.SuspendLayout();
             cfgUIGroupBox.SuspendLayout();
             tabPage8.SuspendLayout();
-            cfgVideoGammaPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)cfgVideoGammaNumericUpDown).BeginInit();
+            cfgVideoVegetationQualityPanel.SuspendLayout();
             cfgVideoWaterBuffersPerNodePanel.SuspendLayout();
             cfgVideoUnitDetailPanel.SuspendLayout();
             cfgVideoTextureFilteringPanel.SuspendLayout();
@@ -344,6 +348,8 @@
             cfgVideoAntiAliasModePanel.SuspendLayout();
             cfgVideoAnisotropicLevelPanel.SuspendLayout();
             tabPage9.SuspendLayout();
+            cfgVideoGammaPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cfgVideoGammaNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // saveConfigSettingsButton
@@ -375,6 +381,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(cfgGameTutorialBattlePlayedCheckBox);
             tabPage1.Controls.Add(cfgGameUseQuickchatCheckBox);
             tabPage1.Controls.Add(cfgGameUnlimitedMenOnBattlefieldCheckBox);
             tabPage1.Controls.Add(cfgGameNoCampaignBattleTimeLimitCheckBox);
@@ -411,6 +418,16 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Game Play Settings";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cfgGameTutorialBattlePlayedCheckBox
+            // 
+            cfgGameTutorialBattlePlayedCheckBox.AutoSize = true;
+            cfgGameTutorialBattlePlayedCheckBox.Location = new Point(352, 269);
+            cfgGameTutorialBattlePlayedCheckBox.Name = "cfgGameTutorialBattlePlayedCheckBox";
+            cfgGameTutorialBattlePlayedCheckBox.Size = new Size(139, 19);
+            cfgGameTutorialBattlePlayedCheckBox.TabIndex = 23;
+            cfgGameTutorialBattlePlayedCheckBox.Text = "tutorial_battle_played";
+            cfgGameTutorialBattlePlayedCheckBox.UseVisualStyleBackColor = true;
             // 
             // cfgGameUseQuickchatCheckBox
             // 
@@ -1239,6 +1256,7 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(cfgMultiplayerPlayableCheckBox);
             tabPage4.Controls.Add(cfgHotseatPasswordsCheckBox);
             tabPage4.Controls.Add(cfgHotseatAdminPasswordCheckBox);
             tabPage4.Controls.Add(cfgHotseatGameNamePanel);
@@ -1265,6 +1283,16 @@
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Multiplayer & Hotseat";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // cfgMultiplayerPlayableCheckBox
+            // 
+            cfgMultiplayerPlayableCheckBox.AutoSize = true;
+            cfgMultiplayerPlayableCheckBox.Location = new Point(213, 157);
+            cfgMultiplayerPlayableCheckBox.Name = "cfgMultiplayerPlayableCheckBox";
+            cfgMultiplayerPlayableCheckBox.Size = new Size(70, 19);
+            cfgMultiplayerPlayableCheckBox.TabIndex = 19;
+            cfgMultiplayerPlayableCheckBox.Text = "playable";
+            cfgMultiplayerPlayableCheckBox.UseVisualStyleBackColor = true;
             // 
             // cfgHotseatPasswordsCheckBox
             // 
@@ -1694,84 +1722,65 @@
             // groupBoxConfigLogMode
             // 
             groupBoxConfigLogMode.BackColor = Color.Transparent;
+            groupBoxConfigLogMode.Controls.Add(cfgLogLevelComboBox);
+            groupBoxConfigLogMode.Controls.Add(cfgLogLevelLabel);
+            groupBoxConfigLogMode.Controls.Add(checkBoxLogHistory);
             groupBoxConfigLogMode.Controls.Add(cfgLogLocationTextBox);
             groupBoxConfigLogMode.Controls.Add(cfgLogLocationLabel);
-            groupBoxConfigLogMode.Controls.Add(checkBoxLogHistory);
-            groupBoxConfigLogMode.Controls.Add(radioButtonLogErrorAndTrace);
-            groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyTrace);
-            groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyError);
             groupBoxConfigLogMode.Location = new Point(11, 48);
             groupBoxConfigLogMode.Margin = new Padding(4, 3, 4, 3);
             groupBoxConfigLogMode.Name = "groupBoxConfigLogMode";
             groupBoxConfigLogMode.Padding = new Padding(4, 3, 4, 3);
-            groupBoxConfigLogMode.Size = new Size(266, 158);
+            groupBoxConfigLogMode.Size = new Size(286, 133);
             groupBoxConfigLogMode.TabIndex = 2;
             groupBoxConfigLogMode.TabStop = false;
             groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
             // 
-            // cfgLogLocationTextBox
+            // cfgLogLevelComboBox
             // 
-            cfgLogLocationTextBox.Location = new Point(79, 119);
-            cfgLogLocationTextBox.Name = "cfgLogLocationTextBox";
-            cfgLogLocationTextBox.Size = new Size(160, 23);
-            cfgLogLocationTextBox.TabIndex = 5;
-            cfgLogLocationTextBox.Text = "logs/system.log.txt";
+            cfgLogLevelComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            cfgLogLevelComboBox.FormattingEnabled = true;
+            cfgLogLevelComboBox.Location = new Point(92, 64);
+            cfgLogLevelComboBox.Name = "cfgLogLevelComboBox";
+            cfgLogLevelComboBox.Size = new Size(173, 23);
+            cfgLogLevelComboBox.TabIndex = 7;
             // 
-            // cfgLogLocationLabel
+            // cfgLogLevelLabel
             // 
-            cfgLogLocationLabel.Location = new Point(12, 119);
-            cfgLogLocationLabel.Name = "cfgLogLocationLabel";
-            cfgLogLocationLabel.Size = new Size(61, 23);
-            cfgLogLocationLabel.TabIndex = 4;
-            cfgLogLocationLabel.Text = "to";
+            cfgLogLevelLabel.Location = new Point(7, 67);
+            cfgLogLevelLabel.Name = "cfgLogLevelLabel";
+            cfgLogLevelLabel.Size = new Size(79, 27);
+            cfgLogLevelLabel.TabIndex = 6;
+            cfgLogLevelLabel.Text = "LOG LEVEL";
             // 
             // checkBoxLogHistory
             // 
             checkBoxLogHistory.AutoSize = true;
-            checkBoxLogHistory.Checked = true;
-            checkBoxLogHistory.CheckState = CheckState.Checked;
-            checkBoxLogHistory.Location = new Point(12, 97);
+            checkBoxLogHistory.Enabled = false;
+            checkBoxLogHistory.Location = new Point(7, 97);
             checkBoxLogHistory.Margin = new Padding(4, 3, 4, 3);
             checkBoxLogHistory.Name = "checkBoxLogHistory";
             checkBoxLogHistory.Size = new Size(167, 19);
             checkBoxLogHistory.TabIndex = 3;
             checkBoxLogHistory.Text = "Save game system.log files";
             checkBoxLogHistory.UseVisualStyleBackColor = true;
+            checkBoxLogHistory.Visible = false;
             // 
-            // radioButtonLogErrorAndTrace
+            // cfgLogLocationTextBox
             // 
-            radioButtonLogErrorAndTrace.AutoSize = true;
-            radioButtonLogErrorAndTrace.Checked = true;
-            radioButtonLogErrorAndTrace.Location = new Point(11, 72);
-            radioButtonLogErrorAndTrace.Margin = new Padding(4, 3, 4, 3);
-            radioButtonLogErrorAndTrace.Name = "radioButtonLogErrorAndTrace";
-            radioButtonLogErrorAndTrace.Size = new Size(96, 19);
-            radioButtonLogErrorAndTrace.TabIndex = 2;
-            radioButtonLogErrorAndTrace.TabStop = true;
-            radioButtonLogErrorAndTrace.Text = "Errors + Trace";
-            radioButtonLogErrorAndTrace.UseVisualStyleBackColor = true;
+            cfgLogLocationTextBox.Location = new Point(92, 25);
+            cfgLogLocationTextBox.Name = "cfgLogLocationTextBox";
+            cfgLogLocationTextBox.Size = new Size(173, 23);
+            cfgLogLocationTextBox.TabIndex = 5;
+            cfgLogLocationTextBox.Text = "logs/system.log.txt";
             // 
-            // radioButtonLogOnlyTrace
+            // cfgLogLocationLabel
             // 
-            radioButtonLogOnlyTrace.AutoSize = true;
-            radioButtonLogOnlyTrace.Location = new Point(11, 47);
-            radioButtonLogOnlyTrace.Margin = new Padding(4, 3, 4, 3);
-            radioButtonLogOnlyTrace.Name = "radioButtonLogOnlyTrace";
-            radioButtonLogOnlyTrace.Size = new Size(80, 19);
-            radioButtonLogOnlyTrace.TabIndex = 1;
-            radioButtonLogOnlyTrace.Text = "Only Trace";
-            radioButtonLogOnlyTrace.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonLogOnlyError
-            // 
-            radioButtonLogOnlyError.AutoSize = true;
-            radioButtonLogOnlyError.Location = new Point(11, 22);
-            radioButtonLogOnlyError.Margin = new Padding(4, 3, 4, 3);
-            radioButtonLogOnlyError.Name = "radioButtonLogOnlyError";
-            radioButtonLogOnlyError.Size = new Size(83, 19);
-            radioButtonLogOnlyError.TabIndex = 0;
-            radioButtonLogOnlyError.Text = "Only Errors";
-            radioButtonLogOnlyError.UseVisualStyleBackColor = true;
+            cfgLogLocationLabel.Location = new Point(7, 28);
+            cfgLogLocationLabel.Name = "cfgLogLocationLabel";
+            cfgLogLocationLabel.Size = new Size(79, 23);
+            cfgLogLocationLabel.TabIndex = 4;
+            cfgLogLocationLabel.Text = "LOG TO";
             // 
             // label6
             // 
@@ -1869,7 +1878,7 @@
             // 
             // tabPage8
             // 
-            tabPage8.Controls.Add(cfgVideoGammaPanel);
+            tabPage8.Controls.Add(cfgVideoVegetationQualityPanel);
             tabPage8.Controls.Add(cfgVideoWaterBuffersPerNodePanel);
             tabPage8.Controls.Add(cfgVideoUnitDetailPanel);
             tabPage8.Controls.Add(cfgVideoTextureFilteringPanel);
@@ -1897,30 +1906,32 @@
             tabPage8.Text = "Video_1";
             tabPage8.UseVisualStyleBackColor = true;
             // 
-            // cfgVideoGammaPanel
+            // cfgVideoVegetationQualityPanel
             // 
-            cfgVideoGammaPanel.BackColor = Color.Silver;
-            cfgVideoGammaPanel.Controls.Add(cfgVideoGammaNumericUpDown);
-            cfgVideoGammaPanel.Controls.Add(cfgVideoGammaLabel);
-            cfgVideoGammaPanel.Location = new Point(356, 340);
-            cfgVideoGammaPanel.Name = "cfgVideoGammaPanel";
-            cfgVideoGammaPanel.Size = new Size(317, 30);
-            cfgVideoGammaPanel.TabIndex = 19;
+            cfgVideoVegetationQualityPanel.BackColor = Color.Silver;
+            cfgVideoVegetationQualityPanel.Controls.Add(cfgVideoVegetationQualityComboBox);
+            cfgVideoVegetationQualityPanel.Controls.Add(cfgVideoVegetationQualityLabel);
+            cfgVideoVegetationQualityPanel.Location = new Point(356, 340);
+            cfgVideoVegetationQualityPanel.Name = "cfgVideoVegetationQualityPanel";
+            cfgVideoVegetationQualityPanel.Size = new Size(317, 30);
+            cfgVideoVegetationQualityPanel.TabIndex = 19;
             // 
-            // cfgVideoGammaNumericUpDown
+            // cfgVideoVegetationQualityComboBox
             // 
-            cfgVideoGammaNumericUpDown.Location = new Point(180, 3);
-            cfgVideoGammaNumericUpDown.Name = "cfgVideoGammaNumericUpDown";
-            cfgVideoGammaNumericUpDown.Size = new Size(121, 23);
-            cfgVideoGammaNumericUpDown.TabIndex = 1;
+            cfgVideoVegetationQualityComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            cfgVideoVegetationQualityComboBox.FormattingEnabled = true;
+            cfgVideoVegetationQualityComboBox.Location = new Point(180, 3);
+            cfgVideoVegetationQualityComboBox.Name = "cfgVideoVegetationQualityComboBox";
+            cfgVideoVegetationQualityComboBox.Size = new Size(121, 23);
+            cfgVideoVegetationQualityComboBox.TabIndex = 1;
             // 
-            // cfgVideoGammaLabel
+            // cfgVideoVegetationQualityLabel
             // 
-            cfgVideoGammaLabel.Location = new Point(7, 3);
-            cfgVideoGammaLabel.Name = "cfgVideoGammaLabel";
-            cfgVideoGammaLabel.Size = new Size(167, 23);
-            cfgVideoGammaLabel.TabIndex = 0;
-            cfgVideoGammaLabel.Text = "gamma";
+            cfgVideoVegetationQualityLabel.Location = new Point(7, 3);
+            cfgVideoVegetationQualityLabel.Name = "cfgVideoVegetationQualityLabel";
+            cfgVideoVegetationQualityLabel.Size = new Size(167, 23);
+            cfgVideoVegetationQualityLabel.TabIndex = 0;
+            cfgVideoVegetationQualityLabel.Text = "vegetation_quality";
             // 
             // cfgVideoWaterBuffersPerNodePanel
             // 
@@ -2437,6 +2448,8 @@
             // 
             // tabPage9
             // 
+            tabPage9.Controls.Add(cfgVideoGammaPanel);
+            tabPage9.Controls.Add(cfgVideoBorderlessWindowCheckBox);
             tabPage9.Controls.Add(cfgVideoWindowedCheckBox);
             tabPage9.Controls.Add(cfgVideoWidescreenCheckBox);
             tabPage9.Controls.Add(cfgVideoVsyncCheckBox);
@@ -2463,6 +2476,41 @@
             tabPage9.TabIndex = 8;
             tabPage9.Text = "Video_2";
             tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // cfgVideoGammaPanel
+            // 
+            cfgVideoGammaPanel.BackColor = Color.Silver;
+            cfgVideoGammaPanel.Controls.Add(cfgVideoGammaNumericUpDown);
+            cfgVideoGammaPanel.Controls.Add(cfgVideoGammaLabel);
+            cfgVideoGammaPanel.Location = new Point(21, 285);
+            cfgVideoGammaPanel.Name = "cfgVideoGammaPanel";
+            cfgVideoGammaPanel.Size = new Size(317, 30);
+            cfgVideoGammaPanel.TabIndex = 20;
+            // 
+            // cfgVideoGammaNumericUpDown
+            // 
+            cfgVideoGammaNumericUpDown.Location = new Point(180, 3);
+            cfgVideoGammaNumericUpDown.Name = "cfgVideoGammaNumericUpDown";
+            cfgVideoGammaNumericUpDown.Size = new Size(121, 23);
+            cfgVideoGammaNumericUpDown.TabIndex = 1;
+            // 
+            // cfgVideoGammaLabel
+            // 
+            cfgVideoGammaLabel.Location = new Point(7, 3);
+            cfgVideoGammaLabel.Name = "cfgVideoGammaLabel";
+            cfgVideoGammaLabel.Size = new Size(167, 23);
+            cfgVideoGammaLabel.TabIndex = 0;
+            cfgVideoGammaLabel.Text = "gamma";
+            // 
+            // cfgVideoBorderlessWindowCheckBox
+            // 
+            cfgVideoBorderlessWindowCheckBox.AutoSize = true;
+            cfgVideoBorderlessWindowCheckBox.Location = new Point(185, 251);
+            cfgVideoBorderlessWindowCheckBox.Name = "cfgVideoBorderlessWindowCheckBox";
+            cfgVideoBorderlessWindowCheckBox.Size = new Size(127, 19);
+            cfgVideoBorderlessWindowCheckBox.TabIndex = 19;
+            cfgVideoBorderlessWindowCheckBox.Text = "borderless_window";
+            cfgVideoBorderlessWindowCheckBox.UseVisualStyleBackColor = true;
             // 
             // cfgVideoWindowedCheckBox
             // 
@@ -2805,8 +2853,7 @@
             cfgUIGroupBox.ResumeLayout(false);
             cfgUIGroupBox.PerformLayout();
             tabPage8.ResumeLayout(false);
-            cfgVideoGammaPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)cfgVideoGammaNumericUpDown).EndInit();
+            cfgVideoVegetationQualityPanel.ResumeLayout(false);
             cfgVideoWaterBuffersPerNodePanel.ResumeLayout(false);
             cfgVideoUnitDetailPanel.ResumeLayout(false);
             cfgVideoTextureFilteringPanel.ResumeLayout(false);
@@ -2828,6 +2875,8 @@
             cfgVideoAnisotropicLevelPanel.ResumeLayout(false);
             tabPage9.ResumeLayout(false);
             tabPage9.PerformLayout();
+            cfgVideoGammaPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)cfgVideoGammaNumericUpDown).EndInit();
             ResumeLayout(false);
         }
 
@@ -2986,9 +3035,6 @@
         private Panel cfgVideoAnisotropicLevelPanel;
         private ComboBox cfgVideoAnisotropicLevelComboBox;
         private Label cfgVideoAnisotropicLevelLabel;
-        private Panel cfgVideoGammaPanel;
-        private NumericUpDown cfgVideoGammaNumericUpDown;
-        private Label cfgVideoGammaLabel;
         private Panel cfgVideoWaterBuffersPerNodePanel;
         private ComboBox cfgVideoWaterBuffersPerNodeComboBox;
         private Label cfgVideoWaterBuffersPerNodeLabel;
@@ -3063,14 +3109,22 @@
         private CheckBox cfgVideoAutodetectCheckBox;
         private CheckBox cfgVideoAssassinationMoviesCheckBox;
         private GroupBox groupBoxConfigLogMode;
-        private CheckBox checkBoxLogHistory;
-        public RadioButton radioButtonLogErrorAndTrace;
-        private RadioButton radioButtonLogOnlyTrace;
-        private RadioButton radioButtonLogOnlyError;
         private TextBox cfgLogLocationTextBox;
         private Label cfgLogLocationLabel;
         private CheckBox cfgHotseatPasswordsCheckBox;
         private CheckBox cfgHotseatAdminPasswordCheckBox;
         private ComboBox cfgControlsKeysetComboBox;
+        private CheckBox cfgVideoBorderlessWindowCheckBox;
+        private CheckBox cfgGameTutorialBattlePlayedCheckBox;
+        private CheckBox cfgMultiplayerPlayableCheckBox;
+        private Panel cfgVideoVegetationQualityPanel;
+        private ComboBox cfgVideoVegetationQualityComboBox;
+        private Label cfgVideoVegetationQualityLabel;
+        private Panel cfgVideoGammaPanel;
+        private NumericUpDown cfgVideoGammaNumericUpDown;
+        private Label cfgVideoGammaLabel;
+        private ComboBox cfgLogLevelComboBox;
+        private Label cfgLogLevelLabel;
+        private CheckBox checkBoxLogHistory;
     }
 }

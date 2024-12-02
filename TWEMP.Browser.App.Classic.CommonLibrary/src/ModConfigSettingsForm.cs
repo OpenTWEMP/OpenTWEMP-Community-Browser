@@ -9,9 +9,6 @@
 #define DISABLED_CFG_OPTIONS
 #undef DISABLED_CFG_OPTIONS
 
-#define SKIPPED_IMPLEMENTATION
-#undef SKIPPED_IMPLEMENTATION
-
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
@@ -42,6 +39,7 @@ public partial class ModConfigSettingsForm : Form
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgControlsKeysetItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoUnitDetailItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoTerrainQualityItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoVegetationQualityItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoShaderItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoGrassDistanceItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoEffectQualityItems;
@@ -50,6 +48,7 @@ public partial class ModConfigSettingsForm : Form
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoAntiAliasModeItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoAnisotropicLevelItems;
     private static readonly (string Text, M2TW_DisplayResolution Obj)[] CfgVideoDisplayResolutionItems;
+    private static readonly (string Text, M2TW_LoggingLevel Obj)[] CfgLoggingLevelItems;
 
     private readonly GameModificationInfo currentGameModificationInfo;
     private readonly GameConfigProfile currentGameConfigProfile;
@@ -180,6 +179,14 @@ public partial class ModConfigSettingsForm : Form
             (M2TW_QualityLevel.Highest, new M2TW_QualityLevel(M2TW_Quality.Highest)),
         ];
 
+        CfgVideoVegetationQualityItems =
+        [
+            (M2TW_QualityLevel.Low, new M2TW_QualityLevel(M2TW_Quality.Low)),
+            (M2TW_QualityLevel.Medium, new M2TW_QualityLevel(M2TW_Quality.Medium)),
+            (M2TW_QualityLevel.High, new M2TW_QualityLevel(M2TW_Quality.High)),
+            (M2TW_QualityLevel.Highest, new M2TW_QualityLevel(M2TW_Quality.Highest)),
+        ];
+
         CfgVideoShaderItems =
         [
             (M2TW_QualityLevel.M2TW_ShaderVersion_v1, new M2TW_QualityLevel(M2TW_ShaderLevel.ShaderVersion_v1)),
@@ -250,6 +257,13 @@ public partial class ModConfigSettingsForm : Form
             (M2TW_DisplayResolution.W3072_H1728, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3072x1728)),
             (M2TW_DisplayResolution.W3200_H1800, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3200x1800)),
             (M2TW_DisplayResolution.W3840_H2160, new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_3840x2160)),
+        ];
+
+        CfgLoggingLevelItems =
+        [
+            (M2TW_LoggingLevel.LogLevelError, new M2TW_LoggingLevel(M2TW_LoggingMode.Error)),
+            (M2TW_LoggingLevel.LogLevelTrace, new M2TW_LoggingLevel(M2TW_LoggingMode.Trace)),
+            (M2TW_LoggingLevel.LogLevelScriptTrace, new M2TW_LoggingLevel(M2TW_LoggingMode.ScriptTrace)),
         ];
     }
 
@@ -383,7 +397,7 @@ public partial class ModConfigSettingsForm : Form
     {
         M2TWGameConfigStateView gameConfigStateView = new (this.gameConfigStateView);
 
-        // [GAME] ModGameplaySection
+        // [GAME]
         gameConfigStateView.ModGameplaySection!.GameUseQuickchat = new M2TW_Boolean(this.cfgGameUseQuickchatCheckBox.Checked);
         gameConfigStateView.ModGameplaySection.GameUnlimitedMenOnBattlefield = new M2TW_Boolean(this.cfgGameUnlimitedMenOnBattlefieldCheckBox.Checked);
         gameConfigStateView.ModGameplaySection.GameNoCampaignBattleTimeLimit = new M2TW_Boolean(this.cfgGameNoCampaignBattleTimeLimitCheckBox.Checked);
@@ -407,6 +421,7 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.ModGameplaySection.GameCampaignMapSpeedUp = new M2TW_Integer(Convert.ToByte(this.cfgGameCampaignMapSpeedUpNumericUpDown.Text));
         gameConfigStateView.ModGameplaySection.GameCampaignMapGameSpeed = new M2TW_Integer(Convert.ToByte(this.cfgGameCampaignMapGameSpeedNumericUpDown.Text));
         gameConfigStateView.ModGameplaySection.GamePrefFactionsPlayed = Convert.ToInt32(this.cfgGamePrefFactionsPlayedTextBox.Text);
+        gameConfigStateView.ModGameplaySection.GameTutorialBattlePlayed = new M2TW_Boolean(this.cfgGameTutorialBattlePlayedCheckBox.Checked);
         gameConfigStateView.ModGameplaySection.GameTutorialPath = this.cfgGameTutorialPathTextBox.Text;
         gameConfigStateView.ModGameplaySection.GameCampaignNumTimePlay = new M2TW_Integer(Convert.ToByte(this.cfgGameCampaignNumTimePlayTextBox.Text));
         gameConfigStateView.ModGameplaySection.GameChatMsgDuration = new M2TW_Integer(Convert.ToUInt16(this.cfgGameChatMsgDurationNumericUpDown.Value));
@@ -417,7 +432,7 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.ModGameplaySection.GameAiFactions = GetPredefinedItemByIndex(
             items: CfgGameAiFactionsItems, index: this.cfgGameAiFactionsComboBox.SelectedIndex);
 
-        // [AUDIO] GameAudioCfgSectionStateView
+        // [AUDIO]
         gameConfigStateView.GameAudioCfgSection!.SpeechVolume = new M2TW_Integer(Convert.ToByte(this.cfgAudioSpeechNumericUpDown.Text));
         gameConfigStateView.GameAudioCfgSection.SoundEffectsVolume = new M2TW_Integer(Convert.ToByte(this.cfgAudioSfxNumericUpDown.Text));
         gameConfigStateView.GameAudioCfgSection.SpeechVolume = new M2TW_Integer(Convert.ToByte(this.cfgAudioSoundCardProviderNumericUpDown.Text));
@@ -427,7 +442,7 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.GameAudioCfgSection.AudioEnable = new M2TW_Boolean(this.cfgAudioEnableCheckBox.Checked);
         gameConfigStateView.GameAudioCfgSection.SubFactionAccents = new M2TW_Boolean(this.cfgAudioSubFactionAccentsEnableCheckBox.Checked);
 
-        // [CAMERA] GameCameraCfgSectionStateView
+        // [CAMERA]
         gameConfigStateView.GameCameraCfgSection!.CameraDefaultInBattle = GetPredefinedItemByIndex(
             items: CfgControlsDefaultInBattleItems, index: this.cfgControlsDefaultInBattleComboBox.SelectedIndex);
 
@@ -435,14 +450,14 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.GameCameraCfgSection.CameraMove = new M2TW_Integer(Convert.ToByte(this.cfgCameraMoveNumericUpDown.Text));
         gameConfigStateView.GameCameraCfgSection.CameraRestrict = new M2TW_Boolean(this.cfgCameraRestrictCheckBox.Checked);
 
-        // [CONTROLS] GameControlsCfgSectionStateView
+        // [CONTROLS]
         gameConfigStateView.GameControlsCfgSection!.KeySet = GetPredefinedItemByIndex(
             items: CfgControlsKeysetItems, index: this.cfgControlsKeysetComboBox.SelectedIndex);
 
         gameConfigStateView.GameControlsCfgSection.CampaignScrollMinZoom = Convert.ToByte(this.cfgControlsScrollMinZoomNumericUpDown.Text);
         gameConfigStateView.GameControlsCfgSection.CampaignScrollMaxZoom = Convert.ToByte(this.cfgControlsScrollMaxZoomNumericUpDown.Text);
 
-        // [HOTSEAT] ModHotseatSectionStateView
+        // [HOTSEAT]
         gameConfigStateView.HotseatSection!.HotseatGameName = this.cfgHotseatGameNameTextBox.Text;
         gameConfigStateView.HotseatSection.HotseatAdminPassword = new M2TW_Boolean(this.cfgHotseatAdminPasswordCheckBox.Checked);
         gameConfigStateView.HotseatSection.HotseatPasswords = new M2TW_Boolean(this.cfgHotseatPasswordsCheckBox.Checked);
@@ -460,9 +475,12 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.HotseatSection.HotseatScroll = new M2TW_Boolean(this.cfgHotseatScrollCheckBox.Checked);
         gameConfigStateView.HotseatSection.HotseatAutoresolveBattles = new M2TW_Boolean(this.cfgHotseatAutoresolveBattlesCheckBox.Checked);
 
+        // [MULTIPLAYER]
+        gameConfigStateView.HotseatSection.MultiplayerPlayable = new M2TW_Boolean(this.cfgMultiplayerPlayableCheckBox.Checked);
+
         // [NETWORK]
-        gameConfigStateView.HotseatSection.NetworkUsePort = Convert.ToUInt16(this.cfgNetworkUsePortTextBox.Text);
-        gameConfigStateView.HotseatSection.NetworkUseIp = new M2TW_IpAddress(127, 0, 0, 1); // REPLACE: this.cfgNetworkUseIpTextBox.Text;
+        gameConfigStateView.HotseatSection.NetworkUsePort = Convert.ToUInt16(this.cfgNetworkUsePortTextBox.Text); // TODO: Check the port is valid.
+        gameConfigStateView.HotseatSection.NetworkUseIp = new M2TW_IpAddress(127, 0, 0, 1); // TODO: Check the IP address is valid.
 
         // [MISC]
 #if DISABLED_CFG_OPTIONS
@@ -470,14 +488,17 @@ public partial class ModConfigSettingsForm : Form
 #endif
         gameConfigStateView.ModGameplaySection.UnlockCampaign = new M2TW_Boolean(this.cfgMiscUnlockCampaignCheckBox.Checked);
 
-        // [IO] ModSettingsSectionStateView
+        // [IO]
         gameConfigStateView.ModCoreSettingsSection!.FileFirst = new M2TW_Boolean(this.cfgIOFileFirstCheckBox.Checked);
         gameConfigStateView.ModCoreSettingsSection.Editor = new M2TW_Boolean(this.cfgFeaturesEditorCheckBox.Checked);
 
         // [LOG]
         gameConfigStateView.ModDiagnosticSection!.LogTo = this.cfgLogLocationTextBox.Text;
 
-        // [UI] GameUICfgSectionStateView
+        gameConfigStateView.ModDiagnosticSection!.LogLevel = GetPredefinedItemByIndex(
+            items: CfgLoggingLevelItems, index: this.cfgLogLevelComboBox.SelectedIndex);
+
+        // [UI]
         gameConfigStateView.GameUICfgSection!.UiUnitCards = new M2TW_Boolean(this.cfgUiUnitCardsCheckBox.Checked);
         gameConfigStateView.GameUICfgSection.UiShowTooltips = new M2TW_Boolean(this.cfgUiShowTooltipsCheckBox.Checked);
         gameConfigStateView.GameUICfgSection.UiRadar = new M2TW_Boolean(this.cfgUiRadarCheckBox.Checked);
@@ -485,7 +506,7 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.GameUICfgSection.UiButtons = new M2TW_Boolean(this.cfgUiButtonsCheckBox.Checked);
         gameConfigStateView.GameUICfgSection.UiSaCards = new M2TW_Boolean(this.cfgUiSaCardsCheckBox.Checked);
 
-        // [VIDEO] GameVideoCfgSectionStateView
+        // [VIDEO]
         gameConfigStateView.GameVideoCfgSection!.VideoGamma = new M2TW_Integer(Convert.ToByte(this.cfgVideoGammaNumericUpDown.Text));
 
         gameConfigStateView.GameVideoCfgSection.VideoWaterBuffersPerNode = new M2TW_Integer(GetPredefinedItemByIndex(
@@ -512,6 +533,7 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.GameVideoCfgSection.VideoDepthShadows = new M2TW_Integer(GetPredefinedItemByIndex(
             items: CfgVideoDepthShadowsItems, index: this.cfgVideoDepthShadowsComboBox.SelectedIndex));
 
+        gameConfigStateView.GameVideoCfgSection.VideoBorderlessWindow = new M2TW_Boolean(this.cfgVideoBorderlessWindowCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoWindowedMode = new M2TW_Boolean(this.cfgVideoWindowedCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoWidescreenMode = new M2TW_Boolean(this.cfgVideoWidescreenCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoVsync = new M2TW_Boolean(this.cfgVideoVsyncCheckBox.Checked);
@@ -543,6 +565,9 @@ public partial class ModConfigSettingsForm : Form
 
         gameConfigStateView.GameVideoCfgSection.VideoTerrainQuality = GetPredefinedItemByIndex(
             items: CfgVideoTerrainQualityItems, index: this.cfgVideoTerrainQualityComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoVegetationQuality = GetPredefinedItemByIndex(
+            items: CfgVideoVegetationQualityItems, index: this.cfgVideoVegetationQualityComboBox.SelectedIndex);
 
         gameConfigStateView.GameVideoCfgSection.VideoShader = GetPredefinedItemByIndex(
             items: CfgVideoShaderItems, index: this.cfgVideoShaderComboBox.SelectedIndex);
@@ -601,6 +626,7 @@ public partial class ModConfigSettingsForm : Form
         this.cfgGameAllUsersCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameAllUsers!.GetValue();
         this.cfgGameAdvisorVerbosityCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameAdvisorVerbosity!.GetValue();
         this.cfgGameAdvancedStatsAlwaysCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameAdvancedStatsAlways!.GetValue();
+        this.cfgGameTutorialBattlePlayedCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameTutorialBattlePlayed!.GetValue();
 
         // [AUDIO]
         this.cfgAudioSpeechEnableCheckBox.Checked = this.gameConfigStateView.GameAudioCfgSection!.SpeechEnable!.GetValue();
@@ -627,6 +653,9 @@ public partial class ModConfigSettingsForm : Form
         this.cfgHotseatScrollCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatScroll!.GetValue();
         this.cfgHotseatAutoresolveBattlesCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatAutoresolveBattles!.GetValue();
 
+        // [MULTIPLAYER]
+        this.cfgMultiplayerPlayableCheckBox.Checked = this.gameConfigStateView.HotseatSection!.MultiplayerPlayable!.GetValue();
+
         // [MISC]
         this.cfgMiscUnlockCampaignCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.UnlockCampaign!.GetValue();
 
@@ -645,6 +674,7 @@ public partial class ModConfigSettingsForm : Form
         this.cfgUiSaCardsCheckBox.Checked = this.gameConfigStateView.GameUICfgSection!.UiSaCards!.GetValue();
 
         // [VIDEO]
+        this.cfgVideoBorderlessWindowCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoBorderlessWindow!.GetValue();
         this.cfgVideoWindowedCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoWindowedMode!.GetValue();
         this.cfgVideoWidescreenCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoWidescreenMode!.GetValue();
         this.cfgVideoVsyncCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoVsync!.GetValue();
@@ -694,10 +724,13 @@ public partial class ModConfigSettingsForm : Form
         InitializeComboBoxControl(this.cfgVideoBuildingDetailComboBox, CfgVideoBuildingDetailItems, Convert.ToInt32(M2TW_Quality.Medium));
         InitializeComboBoxControl(this.cfgVideoEffectQualityComboBox, CfgVideoEffectQualityItems, Convert.ToInt32(M2TW_Quality.Medium));
         InitializeComboBoxControl(this.cfgVideoTerrainQualityComboBox, CfgVideoTerrainQualityItems, Convert.ToInt32(M2TW_Quality.Medium));
+        InitializeComboBoxControl(this.cfgVideoVegetationQualityComboBox, CfgVideoVegetationQualityItems, Convert.ToInt32(M2TW_Quality.Medium));
 
         selectedIndexByDefault = 2; // select the '1024 x 768' display resolution by default from CfgVideoDisplayResolutionItems
         InitializeComboBoxControl(this.cfgVideoBattleResolutionComboBox, CfgVideoDisplayResolutionItems, selectedIndexByDefault);
         InitializeComboBoxControl(this.cfgVideoCampaignResolutionComboBox, CfgVideoDisplayResolutionItems, selectedIndexByDefault);
+
+        InitializeComboBoxControl(this.cfgLogLevelComboBox, CfgLoggingLevelItems, Convert.ToInt32(M2TW_LoggingMode.Error));
     }
 
     private void InitializeAllNumericUpDownControls()
@@ -761,8 +794,8 @@ public partial class ModConfigSettingsForm : Form
         this.cfgGameTutorialPathTextBox.Text = this.gameConfigStateView.ModGameplaySection!.GameTutorialPath!;
         this.cfgGameCampaignNumTimePlayTextBox.Text = this.gameConfigStateView.ModGameplaySection!.GameCampaignNumTimePlay!.Value;
         this.cfgHotseatGameNameTextBox.Text = this.gameConfigStateView.HotseatSection!.HotseatGameName!;
-        this.cfgNetworkUsePortTextBox.Text = this.gameConfigStateView.HotseatSection!.NetworkUsePort!.ToString();
-        this.cfgNetworkUseIpTextBox.Text = this.gameConfigStateView.HotseatSection!.NetworkUseIp!.Value;
+        this.cfgNetworkUsePortTextBox.Text = this.gameConfigStateView.HotseatSection!.NetworkUsePort!.ToString(); // TODO: Init the default IP port.
+        this.cfgNetworkUseIpTextBox.Text = this.gameConfigStateView.HotseatSection!.NetworkUseIp!.Value; // TODO: Init the default IP address.
         this.cfgLogLocationTextBox.Text = this.gameConfigStateView.ModDiagnosticSection!.LogTo!;
 #if DISABLED_CFG_OPTIONS
         this.cfgMiscBypassToStrategySaveTextBox.Text = this.gameConfigStateView.HotseatSection!.BypassToStrategySave!;
@@ -918,35 +951,6 @@ public partial class ModConfigSettingsForm : Form
         this.radioButtonLogErrorAndTrace/* RadioButton(); */ // this.gameConfigStateView.ModDiagnosticSection.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error), // OVERRIDE!!!
         this.radioButtonLogOnlyTrace/* RadioButton(); */ // this.gameConfigStateView.ModDiagnosticSection.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error), // OVERRIDE!!!
         this.radioButtonLogOnlyError/* RadioButton(); */ // this.gameConfigStateView.ModDiagnosticSection.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error), // OVERRIDE!!!
-        this.cfgLogLocationTextBox/* TextBox(); */ // this.gameConfigStateView.ModDiagnosticSection.LogTo = mod.LogFileRelativePath,
-    }
-#endif
-
-#if SKIPPED_IMPLEMENTATION
-
-
-    private void InitializeAdditionalUIControls() // TODO: Implement this method later...
-    {
-        // [GAME]
-        // GameTutorialBattlePlayed = new M2TW_Boolean(false),
-
-        // [AUDIO]
-        // SoundCardProvider = "Miles Fast 2D Positional Audio",
-
-        // [HOTSEAT]
-        // MultiplayerPlayable = new M2TW_Boolean(true), ???
-
-        // [VIDEO]
-        // VideoVegetationQuality = new M2TW_QualityLevel(M2TW_Quality.High),
-        // VideoBorderlessWindow = new M2TW_Boolean(false),
-
-        // ADDITIONAL CONFIG SETTINGS
-
-        // [LOG]
-        this.checkBoxLogHistory/* CheckBox(); */ // this.gameConfigStateView.ModDiagnosticSection
-        this.radioButtonLogErrorAndTrace/* RadioButton(); */ // this.gameConfigStateView.ModDiagnosticSection.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error)
-        this.radioButtonLogOnlyTrace/* RadioButton(); */ // this.gameConfigStateView.ModDiagnosticSection.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error)
-        this.radioButtonLogOnlyError/* RadioButton(); */ // this.gameConfigStateView.ModDiagnosticSection.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error)
         this.cfgLogLocationTextBox/* TextBox(); */ // this.gameConfigStateView.ModDiagnosticSection.LogTo = mod.LogFileRelativePath,
     }
 #endif
