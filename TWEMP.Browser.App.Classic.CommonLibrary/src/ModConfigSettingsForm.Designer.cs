@@ -111,6 +111,7 @@
             cfgCameraRestrictCheckBox = new CheckBox();
             cfgControlsGroupBox = new GroupBox();
             cfgControlsKeysetPanel = new Panel();
+            cfgControlsKeysetComboBox = new ComboBox();
             cfgControlsKeysetLabel = new Label();
             cfgControlsScrollMinZoomPanel = new Panel();
             cfgControlsScrollMinZoomNumericUpDown = new NumericUpDown();
@@ -266,7 +267,6 @@
             exportConfigSettingsButton = new Button();
             settingDescriptionLabel = new Label();
             exitConfigSettingsButton = new Button();
-            cfgControlsKeysetComboBox = new ComboBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             cfgGameUnitSizePanel.SuspendLayout();
@@ -624,6 +624,7 @@
             // 
             // cfgGameUnitSizeComboBox
             // 
+            cfgGameUnitSizeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgGameUnitSizeComboBox.FormattingEnabled = true;
             cfgGameUnitSizeComboBox.Location = new Point(103, 5);
             cfgGameUnitSizeComboBox.Name = "cfgGameUnitSizeComboBox";
@@ -782,6 +783,7 @@
             // 
             // cfgGameAiFactionsComboBox
             // 
+            cfgGameAiFactionsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgGameAiFactionsComboBox.FormattingEnabled = true;
             cfgGameAiFactionsComboBox.Location = new Point(103, 7);
             cfgGameAiFactionsComboBox.Name = "cfgGameAiFactionsComboBox";
@@ -1062,6 +1064,7 @@
             // 
             // cfgControlsDefaultInBattleComboBox
             // 
+            cfgControlsDefaultInBattleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgControlsDefaultInBattleComboBox.FormattingEnabled = true;
             cfgControlsDefaultInBattleComboBox.Location = new Point(202, 3);
             cfgControlsDefaultInBattleComboBox.Name = "cfgControlsDefaultInBattleComboBox";
@@ -1157,6 +1160,15 @@
             cfgControlsKeysetPanel.Name = "cfgControlsKeysetPanel";
             cfgControlsKeysetPanel.Size = new Size(325, 30);
             cfgControlsKeysetPanel.TabIndex = 25;
+            // 
+            // cfgControlsKeysetComboBox
+            // 
+            cfgControlsKeysetComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            cfgControlsKeysetComboBox.FormattingEnabled = true;
+            cfgControlsKeysetComboBox.Location = new Point(202, 3);
+            cfgControlsKeysetComboBox.Name = "cfgControlsKeysetComboBox";
+            cfgControlsKeysetComboBox.Size = new Size(120, 23);
+            cfgControlsKeysetComboBox.TabIndex = 5;
             // 
             // cfgControlsKeysetLabel
             // 
@@ -1922,6 +1934,7 @@
             // 
             // cfgVideoWaterBuffersPerNodeComboBox
             // 
+            cfgVideoWaterBuffersPerNodeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoWaterBuffersPerNodeComboBox.FormattingEnabled = true;
             cfgVideoWaterBuffersPerNodeComboBox.Location = new Point(180, 3);
             cfgVideoWaterBuffersPerNodeComboBox.Name = "cfgVideoWaterBuffersPerNodeComboBox";
@@ -1948,6 +1961,7 @@
             // 
             // cfgVideoUnitDetailComboBox
             // 
+            cfgVideoUnitDetailComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoUnitDetailComboBox.FormattingEnabled = true;
             cfgVideoUnitDetailComboBox.Location = new Point(180, 3);
             cfgVideoUnitDetailComboBox.Name = "cfgVideoUnitDetailComboBox";
@@ -1974,6 +1988,7 @@
             // 
             // cfgVideoTextureFilteringComboBox
             // 
+            cfgVideoTextureFilteringComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoTextureFilteringComboBox.FormattingEnabled = true;
             cfgVideoTextureFilteringComboBox.Location = new Point(180, 3);
             cfgVideoTextureFilteringComboBox.Name = "cfgVideoTextureFilteringComboBox";
@@ -2000,6 +2015,7 @@
             // 
             // cfgVideoTerrainQualityComboBox
             // 
+            cfgVideoTerrainQualityComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoTerrainQualityComboBox.FormattingEnabled = true;
             cfgVideoTerrainQualityComboBox.Location = new Point(180, 3);
             cfgVideoTerrainQualityComboBox.Name = "cfgVideoTerrainQualityComboBox";
@@ -2026,6 +2042,7 @@
             // 
             // cfgVideoSpriteBuffersPerNodeComboBox
             // 
+            cfgVideoSpriteBuffersPerNodeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoSpriteBuffersPerNodeComboBox.FormattingEnabled = true;
             cfgVideoSpriteBuffersPerNodeComboBox.Location = new Point(180, 3);
             cfgVideoSpriteBuffersPerNodeComboBox.Name = "cfgVideoSpriteBuffersPerNodeComboBox";
@@ -2052,6 +2069,7 @@
             // 
             // cfgVideoShaderComboBox
             // 
+            cfgVideoShaderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoShaderComboBox.FormattingEnabled = true;
             cfgVideoShaderComboBox.Location = new Point(180, 3);
             cfgVideoShaderComboBox.Name = "cfgVideoShaderComboBox";
@@ -2078,6 +2096,7 @@
             // 
             // cfgVideoModelBuffersPerNodeComboBox
             // 
+            cfgVideoModelBuffersPerNodeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoModelBuffersPerNodeComboBox.FormattingEnabled = true;
             cfgVideoModelBuffersPerNodeComboBox.Location = new Point(180, 3);
             cfgVideoModelBuffersPerNodeComboBox.Name = "cfgVideoModelBuffersPerNodeComboBox";
@@ -2104,6 +2123,7 @@
             // 
             // cfgVideoGroundCoverBuffersPerNodeComboBox
             // 
+            cfgVideoGroundCoverBuffersPerNodeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoGroundCoverBuffersPerNodeComboBox.FormattingEnabled = true;
             cfgVideoGroundCoverBuffersPerNodeComboBox.Location = new Point(193, 3);
             cfgVideoGroundCoverBuffersPerNodeComboBox.Name = "cfgVideoGroundCoverBuffersPerNodeComboBox";
@@ -2130,6 +2150,7 @@
             // 
             // cfgVideoGroundBuffersPerNodeComboBox
             // 
+            cfgVideoGroundBuffersPerNodeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoGroundBuffersPerNodeComboBox.FormattingEnabled = true;
             cfgVideoGroundBuffersPerNodeComboBox.Location = new Point(180, 3);
             cfgVideoGroundBuffersPerNodeComboBox.Name = "cfgVideoGroundBuffersPerNodeComboBox";
@@ -2156,6 +2177,7 @@
             // 
             // cfgVideoGrassDistanceComboBox
             // 
+            cfgVideoGrassDistanceComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoGrassDistanceComboBox.FormattingEnabled = true;
             cfgVideoGrassDistanceComboBox.Location = new Point(180, 3);
             cfgVideoGrassDistanceComboBox.Name = "cfgVideoGrassDistanceComboBox";
@@ -2182,6 +2204,7 @@
             // 
             // cfgVideoEffectQualityComboBox
             // 
+            cfgVideoEffectQualityComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoEffectQualityComboBox.FormattingEnabled = true;
             cfgVideoEffectQualityComboBox.Location = new Point(180, 3);
             cfgVideoEffectQualityComboBox.Name = "cfgVideoEffectQualityComboBox";
@@ -2208,6 +2231,7 @@
             // 
             // cfgVideoDepthShadowsResolutionComboBox
             // 
+            cfgVideoDepthShadowsResolutionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoDepthShadowsResolutionComboBox.FormattingEnabled = true;
             cfgVideoDepthShadowsResolutionComboBox.Location = new Point(180, 3);
             cfgVideoDepthShadowsResolutionComboBox.Name = "cfgVideoDepthShadowsResolutionComboBox";
@@ -2234,6 +2258,7 @@
             // 
             // cfgVideoDepthShadowsComboBox
             // 
+            cfgVideoDepthShadowsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoDepthShadowsComboBox.FormattingEnabled = true;
             cfgVideoDepthShadowsComboBox.Location = new Point(180, 3);
             cfgVideoDepthShadowsComboBox.Name = "cfgVideoDepthShadowsComboBox";
@@ -2260,6 +2285,7 @@
             // 
             // cfgVideoCampaignResolutionComboBox
             // 
+            cfgVideoCampaignResolutionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoCampaignResolutionComboBox.FormattingEnabled = true;
             cfgVideoCampaignResolutionComboBox.Location = new Point(180, 3);
             cfgVideoCampaignResolutionComboBox.Name = "cfgVideoCampaignResolutionComboBox";
@@ -2286,6 +2312,7 @@
             // 
             // cfgVideoBuildingDetailComboBox
             // 
+            cfgVideoBuildingDetailComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoBuildingDetailComboBox.FormattingEnabled = true;
             cfgVideoBuildingDetailComboBox.Location = new Point(180, 3);
             cfgVideoBuildingDetailComboBox.Name = "cfgVideoBuildingDetailComboBox";
@@ -2312,6 +2339,7 @@
             // 
             // cfgVideoBattleResolutionComboBox
             // 
+            cfgVideoBattleResolutionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoBattleResolutionComboBox.FormattingEnabled = true;
             cfgVideoBattleResolutionComboBox.Location = new Point(180, 3);
             cfgVideoBattleResolutionComboBox.Name = "cfgVideoBattleResolutionComboBox";
@@ -2338,6 +2366,7 @@
             // 
             // cfgVideoAntialiasingComboBox
             // 
+            cfgVideoAntialiasingComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoAntialiasingComboBox.FormattingEnabled = true;
             cfgVideoAntialiasingComboBox.Location = new Point(180, 3);
             cfgVideoAntialiasingComboBox.Name = "cfgVideoAntialiasingComboBox";
@@ -2364,6 +2393,7 @@
             // 
             // cfgVideoAntiAliasModeComboBox
             // 
+            cfgVideoAntiAliasModeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoAntiAliasModeComboBox.FormattingEnabled = true;
             cfgVideoAntiAliasModeComboBox.Location = new Point(180, 3);
             cfgVideoAntiAliasModeComboBox.Name = "cfgVideoAntiAliasModeComboBox";
@@ -2390,6 +2420,7 @@
             // 
             // cfgVideoAnisotropicLevelComboBox
             // 
+            cfgVideoAnisotropicLevelComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             cfgVideoAnisotropicLevelComboBox.FormattingEnabled = true;
             cfgVideoAnisotropicLevelComboBox.Location = new Point(180, 3);
             cfgVideoAnisotropicLevelComboBox.Name = "cfgVideoAnisotropicLevelComboBox";
@@ -2671,14 +2702,6 @@
             exitConfigSettingsButton.Text = "RETURN TO MAIN WINDOW";
             exitConfigSettingsButton.UseVisualStyleBackColor = true;
             exitConfigSettingsButton.Click += ExitConfigSettingsButton_Click;
-            // 
-            // cfgControlsKeysetComboBox
-            // 
-            cfgControlsKeysetComboBox.FormattingEnabled = true;
-            cfgControlsKeysetComboBox.Location = new Point(202, 3);
-            cfgControlsKeysetComboBox.Name = "cfgControlsKeysetComboBox";
-            cfgControlsKeysetComboBox.Size = new Size(120, 23);
-            cfgControlsKeysetComboBox.TabIndex = 5;
             // 
             // ModConfigSettingsForm
             // 

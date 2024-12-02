@@ -35,7 +35,6 @@ public partial class ModConfigSettingsForm : Form
     private static readonly (string Text, byte Obj)[] CfgVideoGroundBuffersPerNodeItems;
     private static readonly (string Text, byte Obj)[] CfgVideoDepthShadowsResolutionItems;
     private static readonly (string Text, byte Obj)[] CfgVideoDepthShadowsItems;
-
     private static readonly (string Text, M2TW_UnitSize Obj)[] CfgGameUnitSizeItems;
     private static readonly (string Text, M2TW_Boolean Obj)[] CfgGameAiFactionsItems;
     private static readonly (string Text, M2TW_Boolean Obj)[] CfgGameUiFactionsItems;
@@ -50,7 +49,6 @@ public partial class ModConfigSettingsForm : Form
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoAntialiasingItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoAntiAliasModeItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoAnisotropicLevelItems;
-
     private static readonly (string Text, M2TW_DisplayResolution Obj)[] CfgVideoDisplayResolutionItems;
 
     private readonly GameModificationInfo currentGameModificationInfo;
@@ -282,7 +280,7 @@ public partial class ModConfigSettingsForm : Form
         InitializeConfigControls();
     }
 
-    private static void InitializeComboBoxControlByPredefinedItems<T>(ComboBox control, (string Text, T Obj)[] items)
+    private static void InitializeComboBoxControl<T>(ComboBox control, (string Text, T Obj)[] items, int selectedIndex)
     {
         control.Items.Clear();
 
@@ -290,6 +288,8 @@ public partial class ModConfigSettingsForm : Form
         {
             control.Items.Add(item.Text);
         }
+
+        control.SelectedIndex = (selectedIndex < control.Items.Count) ? selectedIndex : 0;
     }
 
     private static T GetPredefinedItemByIndex<T>((string Text, T Obj)[] items, int index)
@@ -377,74 +377,6 @@ public partial class ModConfigSettingsForm : Form
                 buttons: MessageBoxButtons.OK,
                 icon: MessageBoxIcon.Information);
         }
-    }
-
-    private void InitializeItemsForComboBoxControls()
-    {
-        InitializeComboBoxControlByPredefinedItems(this.cfgGameUnitSizeComboBox, CfgGameUnitSizeItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgGameAiFactionsComboBox, CfgGameAiFactionsItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgControlsDefaultInBattleComboBox, CfgControlsDefaultInBattleItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoWaterBuffersPerNodeComboBox, CfgVideoWaterBuffersPerNodeItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoUnitDetailComboBox, CfgVideoUnitDetailItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoTextureFilteringComboBox, CfgVideoTextureFilteringItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoTerrainQualityComboBox, CfgVideoTerrainQualityItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoSpriteBuffersPerNodeComboBox, CfgVideoSpriteBuffersPerNodeItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoShaderComboBox, CfgVideoShaderItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoModelBuffersPerNodeComboBox, CfgVideoModelBuffersPerNodeItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoGroundCoverBuffersPerNodeComboBox, CfgVideoGroundCoverBuffersPerNodeItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoGroundBuffersPerNodeComboBox, CfgVideoGroundBuffersPerNodeItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoGrassDistanceComboBox, CfgVideoGrassDistanceItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoEffectQualityComboBox, CfgVideoEffectQualityItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoDepthShadowsResolutionComboBox, CfgVideoDepthShadowsResolutionItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoDepthShadowsComboBox, CfgVideoDepthShadowsItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoBattleResolutionComboBox, CfgVideoDisplayResolutionItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoCampaignResolutionComboBox, CfgVideoDisplayResolutionItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoBuildingDetailComboBox, CfgVideoBuildingDetailItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoAntialiasingComboBox, CfgVideoAntialiasingItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoAntiAliasModeComboBox, CfgVideoAntiAliasModeItems);
-        InitializeComboBoxControlByPredefinedItems(this.cfgVideoAnisotropicLevelComboBox, CfgVideoAnisotropicLevelItems);
-    }
-
-    private void InitializeBoundValuesForNumericUpDownControls()
-    {
-        this.cfgGameChatMsgDurationNumericUpDown.Maximum = M2TW_Integer.ExtendedMaxValue;
-        this.cfgGameChatMsgDurationNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgGameCampaignMapSpeedUpNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgGameCampaignMapSpeedUpNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgGameCampaignMapGameSpeedNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgGameCampaignMapGameSpeedNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgAudioSpeechNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgAudioSpeechNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgAudioSfxNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgAudioSfxNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgAudioSoundCardProviderNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgAudioSoundCardProviderNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgAudioMusicVolumeNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgAudioMusicVolumeNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgAudioMasterVolumeNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgAudioMasterVolumeNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgCameraRotateNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgCameraRotateNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgCameraMoveNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgCameraMoveNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgControlsScrollMinZoomNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgControlsScrollMinZoomNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgControlsScrollMaxZoomNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgControlsScrollMaxZoomNumericUpDown.Minimum = M2TW_Integer.MinValue;
-
-        this.cfgVideoGammaNumericUpDown.Maximum = M2TW_Integer.MaxValue;
-        this.cfgVideoGammaNumericUpDown.Minimum = M2TW_Integer.MinValue;
     }
 
     private M2TWGameConfigStateView CreateGameConfigStateView()
@@ -638,145 +570,201 @@ public partial class ModConfigSettingsForm : Form
 
     private void InitializeConfigControls()
     {
-        this.InitializeItemsForComboBoxControls();
-        this.InitializeBoundValuesForNumericUpDownControls();
-
         this.Text = $"M2TW Config Settings: \"{this.currentGameConfigProfile.Name}\" [ {this.currentGameModificationInfo.Location} ]";
 
-        // [GAME] ModGameplaySection
+        this.InitializeAllCheckBoxControls();
+        this.InitializeAllComboBoxControls();
+        this.InitializeAllNumericUpDownControls();
+        this.InitializeAllTextBoxControls();
+    }
+
+    private void InitializeAllCheckBoxControls()
+    {
+        // [GAME]
         this.cfgGameUseQuickchatCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameUseQuickchat!.GetValue();
-        this.cfgGameUnlimitedMenOnBattlefieldCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameUnlimitedMenOnBattlefield!.GetValue();
-        this.cfgGameNoCampaignBattleTimeLimitCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameNoCampaignBattleTimeLimit!.GetValue();
-        this.cfgGameMuteAdvisorCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameMuteAdvisor!.GetValue();
-        this.cfgGameMoraleCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameMorale!.GetValue();
-        this.cfgGameMicromanageAllSettlementsCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameMicromanageAllSettlements!.GetValue();
-        this.cfgGameLabelSettlementsCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameLabelSettlements!.GetValue();
-        this.cfgGameLabelCharactersCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameLabelCharacters!.GetValue();
-        this.cfgGameGamespySavePasswrdCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameGamespySavePasswrd!.GetValue();
-        this.cfgGameFirstTimePlayCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameFirstTimePlay!.GetValue();
-        this.cfgGameFatigueCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameFatigue!.GetValue();
-        this.cfgGameEventCutscenesCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameEventCutscenes!.GetValue();
-        this.cfgGameEnglishCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameEnglish!.GetValue();
-        this.cfgGameDisableEventsCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameDisableEvents!.GetValue();
-        this.cfgGameDisableArrowMarkersCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameDisableArrowMarkers!.GetValue();
-        this.cfgGameBlindAdvisorCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameBlindAdvisor!.GetValue();
-        this.cfgGameAutoSaveCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameAutoSave!.GetValue();
-        this.cfgGameAllUsersCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameAllUsers!.GetValue();
-        this.cfgGameAdvisorVerbosityCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameAdvisorVerbosity!.GetValue();
-        this.cfgGameAdvancedStatsAlwaysCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.GameAdvancedStatsAlways!.GetValue();
-        this.cfgGameUnitSizeComboBox.Text = this.gameConfigStateView.ModGameplaySection.GameUnitSize!.Value;
-        this.cfgGameChatMsgDurationNumericUpDown.Text = this.gameConfigStateView.ModGameplaySection.GameChatMsgDuration!.Value;
-        this.cfgGameCampaignMapSpeedUpNumericUpDown.Text = this.gameConfigStateView.ModGameplaySection.GameCampaignMapSpeedUp!.Value;
-        this.cfgGameCampaignMapGameSpeedNumericUpDown.Text = this.gameConfigStateView.ModGameplaySection.GameCampaignMapGameSpeed!.Value;
-        this.cfgGamePrefFactionsPlayedTextBox.Text = this.gameConfigStateView.ModGameplaySection.GamePrefFactionsPlayed.ToString();
-        this.cfgGameTutorialPathTextBox.Text = this.gameConfigStateView.ModGameplaySection.GameTutorialPath;
-        this.cfgGameAiFactionsComboBox.Text = this.gameConfigStateView.ModGameplaySection.GameAiFactions!.BooleanValue;
-        this.cfgGameCampaignNumTimePlayTextBox.Text = this.gameConfigStateView.ModGameplaySection.GameCampaignNumTimePlay!.Value;
+        this.cfgGameUnlimitedMenOnBattlefieldCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameUnlimitedMenOnBattlefield!.GetValue();
+        this.cfgGameNoCampaignBattleTimeLimitCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameNoCampaignBattleTimeLimit!.GetValue();
+        this.cfgGameMuteAdvisorCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameMuteAdvisor!.GetValue();
+        this.cfgGameMoraleCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameMorale!.GetValue();
+        this.cfgGameMicromanageAllSettlementsCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameMicromanageAllSettlements!.GetValue();
+        this.cfgGameLabelSettlementsCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameLabelSettlements!.GetValue();
+        this.cfgGameLabelCharactersCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameLabelCharacters!.GetValue();
+        this.cfgGameGamespySavePasswrdCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameGamespySavePasswrd!.GetValue();
+        this.cfgGameFirstTimePlayCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameFirstTimePlay!.GetValue();
+        this.cfgGameFatigueCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameFatigue!.GetValue();
+        this.cfgGameEventCutscenesCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameEventCutscenes!.GetValue();
+        this.cfgGameEnglishCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameEnglish!.GetValue();
+        this.cfgGameDisableEventsCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameDisableEvents!.GetValue();
+        this.cfgGameDisableArrowMarkersCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameDisableArrowMarkers!.GetValue();
+        this.cfgGameBlindAdvisorCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameBlindAdvisor!.GetValue();
+        this.cfgGameAutoSaveCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameAutoSave!.GetValue();
+        this.cfgGameAllUsersCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameAllUsers!.GetValue();
+        this.cfgGameAdvisorVerbosityCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameAdvisorVerbosity!.GetValue();
+        this.cfgGameAdvancedStatsAlwaysCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.GameAdvancedStatsAlways!.GetValue();
 
-        // [AUDIO] GameAudioCfgSectionStateView
-        this.cfgAudioSpeechNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection!.SpeechVolume!.Value;
-        this.cfgAudioSfxNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection.SoundEffectsVolume!.Value;
-        this.cfgAudioSoundCardProviderNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection.SpeechVolume.Value;
-        this.cfgAudioMusicVolumeNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection.AudioMusicVolume!.Value;
-        this.cfgAudioMasterVolumeNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection.AudioMasterVolume!.Value;
-        this.cfgAudioSpeechEnableCheckBox.Checked = this.gameConfigStateView.GameAudioCfgSection.SpeechEnable!.GetValue();
-        this.cfgAudioEnableCheckBox.Checked = this.gameConfigStateView.GameAudioCfgSection.AudioEnable!.GetValue();
-        this.cfgAudioSubFactionAccentsEnableCheckBox.Checked = this.gameConfigStateView.GameAudioCfgSection.SubFactionAccents!.GetValue();
+        // [AUDIO]
+        this.cfgAudioSpeechEnableCheckBox.Checked = this.gameConfigStateView.GameAudioCfgSection!.SpeechEnable!.GetValue();
+        this.cfgAudioEnableCheckBox.Checked = this.gameConfigStateView.GameAudioCfgSection!.AudioEnable!.GetValue();
+        this.cfgAudioSubFactionAccentsEnableCheckBox.Checked = this.gameConfigStateView.GameAudioCfgSection!.SubFactionAccents!.GetValue();
 
-        // [CAMERA] GameCameraCfgSectionStateView
-        this.cfgControlsDefaultInBattleComboBox.Text = this.gameConfigStateView.GameCameraCfgSection!.CameraDefaultInBattle!.Value;
-        this.cfgCameraRotateNumericUpDown.Text = this.gameConfigStateView.GameCameraCfgSection.CameraRotate!.Value;
-        this.cfgCameraMoveNumericUpDown.Text = this.gameConfigStateView.GameCameraCfgSection.CameraMove!.Value;
-        this.cfgCameraRestrictCheckBox.Checked = this.gameConfigStateView.GameCameraCfgSection.CameraRestrict!.GetValue();
+        // [CAMERA]
+        this.cfgCameraRestrictCheckBox.Checked = this.gameConfigStateView.GameCameraCfgSection!.CameraRestrict!.GetValue();
 
-        // [CONTROLS] GameControlsCfgSectionStateView
-        this.cfgControlsKeysetComboBox.Text = this.gameConfigStateView.GameControlsCfgSection!.KeySet!.Value;
-        this.cfgControlsScrollMinZoomNumericUpDown.Text = this.gameConfigStateView.GameControlsCfgSection.CampaignScrollMinZoom.ToString();
-        this.cfgControlsScrollMaxZoomNumericUpDown.Text = this.gameConfigStateView.GameControlsCfgSection.CampaignScrollMaxZoom.ToString();
-
-        // [HOTSEAT] ModHotseatSectionStateView
-        this.cfgHotseatGameNameTextBox.Text = this.gameConfigStateView.HotseatSection!.HotseatGameName;
-        this.cfgHotseatAdminPasswordCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatAdminPassword!.GetValue();
-        this.cfgHotseatPasswordsCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatPasswords!.GetValue();
-        this.cfgHotseatValidateDiplomacyCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatValidateDiplomacy!.GetValue();
-        this.cfgHotseatAllowValidationFailuresCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatAllowValidationFailures!.GetValue();
-        this.cfgHotseatValidateDataCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatValidateData!.GetValue();
-        this.cfgHotseatCloseAfterSaveCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatCloseAfterSave!.GetValue();
-        this.cfgHotseatSaveConfigCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatSaveConfig!.GetValue();
-        this.cfgHotseatAutosaveCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatAutoSave!.GetValue();
-        this.cfgHotseatUpdateAiCameraCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatUpdateAiCamera!.GetValue();
-        this.cfgHotseatSavePrefsCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatSavePrefs!.GetValue();
-        this.cfgHotseatDisablePapalElectionsCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatDisablePapalElections!.GetValue();
-        this.cfgHotseatDisableConsoleCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatDisableConsole!.GetValue();
-        this.cfgHotseatTurnsCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatTurns!.GetValue();
-        this.cfgHotseatScrollCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatScroll!.GetValue();
-        this.cfgHotseatAutoresolveBattlesCheckBox.Checked = this.gameConfigStateView.HotseatSection.HotseatAutoresolveBattles!.GetValue();
-
-        // [NETWORK]
-        this.cfgNetworkUsePortTextBox.Text = this.gameConfigStateView.HotseatSection.NetworkUsePort.ToString();
-        this.cfgNetworkUseIpTextBox.Text = this.gameConfigStateView.HotseatSection.NetworkUseIp!.Value;
+        // [HOTSEAT]
+        this.cfgHotseatAdminPasswordCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatAdminPassword!.GetValue();
+        this.cfgHotseatPasswordsCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatPasswords!.GetValue();
+        this.cfgHotseatValidateDiplomacyCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatValidateDiplomacy!.GetValue();
+        this.cfgHotseatAllowValidationFailuresCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatAllowValidationFailures!.GetValue();
+        this.cfgHotseatValidateDataCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatValidateData!.GetValue();
+        this.cfgHotseatCloseAfterSaveCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatCloseAfterSave!.GetValue();
+        this.cfgHotseatSaveConfigCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatSaveConfig!.GetValue();
+        this.cfgHotseatAutosaveCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatAutoSave!.GetValue();
+        this.cfgHotseatUpdateAiCameraCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatUpdateAiCamera!.GetValue();
+        this.cfgHotseatSavePrefsCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatSavePrefs!.GetValue();
+        this.cfgHotseatDisablePapalElectionsCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatDisablePapalElections!.GetValue();
+        this.cfgHotseatDisableConsoleCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatDisableConsole!.GetValue();
+        this.cfgHotseatTurnsCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatTurns!.GetValue();
+        this.cfgHotseatScrollCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatScroll!.GetValue();
+        this.cfgHotseatAutoresolveBattlesCheckBox.Checked = this.gameConfigStateView.HotseatSection!.HotseatAutoresolveBattles!.GetValue();
 
         // [MISC]
-#if DISABLED_CFG_OPTIONS
-        this.cfgMiscBypassToStrategySaveTextBox.Text = this.gameConfigStateView.HotseatSection.BypassToStrategySave;
-#endif
-        this.cfgMiscUnlockCampaignCheckBox.Checked = this.gameConfigStateView.ModGameplaySection.UnlockCampaign!.GetValue();
+        this.cfgMiscUnlockCampaignCheckBox.Checked = this.gameConfigStateView.ModGameplaySection!.UnlockCampaign!.GetValue();
 
-        // [IO] ModSettingsSectionStateView
+        // [IO]
         this.cfgIOFileFirstCheckBox.Checked = this.gameConfigStateView.ModCoreSettingsSection!.FileFirst!.GetValue();
-        this.cfgFeaturesEditorCheckBox.Checked = this.gameConfigStateView.ModCoreSettingsSection.Editor!.GetValue();
 
-        // [LOG]
-        this.cfgLogLocationTextBox.Text = this.gameConfigStateView.ModDiagnosticSection!.LogTo;
+        // [FEATURES]
+        this.cfgFeaturesEditorCheckBox.Checked = this.gameConfigStateView.ModCoreSettingsSection!.Editor!.GetValue();
 
-        // [UI] GameUICfgSectionStateView
+        // [UI]
         this.cfgUiUnitCardsCheckBox.Checked = this.gameConfigStateView.GameUICfgSection!.UiUnitCards!.GetValue();
-        this.cfgUiShowTooltipsCheckBox.Checked = this.gameConfigStateView.GameUICfgSection.UiShowTooltips!.GetValue();
-        this.cfgUiRadarCheckBox.Checked = this.gameConfigStateView.GameUICfgSection.UiRadar!.GetValue();
-        this.cfgUiFullBattleHudCheckBox.Checked = this.gameConfigStateView.GameUICfgSection.UiFullBattleHud!.GetValue();
-        this.cfgUiButtonsCheckBox.Checked = this.gameConfigStateView.GameUICfgSection.UiButtons!.GetValue();
-        this.cfgUiSaCardsCheckBox.Checked = this.gameConfigStateView.GameUICfgSection.UiSaCards!.GetValue();
+        this.cfgUiShowTooltipsCheckBox.Checked = this.gameConfigStateView.GameUICfgSection!.UiShowTooltips!.GetValue();
+        this.cfgUiRadarCheckBox.Checked = this.gameConfigStateView.GameUICfgSection!.UiRadar!.GetValue();
+        this.cfgUiFullBattleHudCheckBox.Checked = this.gameConfigStateView.GameUICfgSection!.UiFullBattleHud!.GetValue();
+        this.cfgUiButtonsCheckBox.Checked = this.gameConfigStateView.GameUICfgSection!.UiButtons!.GetValue();
+        this.cfgUiSaCardsCheckBox.Checked = this.gameConfigStateView.GameUICfgSection!.UiSaCards!.GetValue();
 
-        // [VIDEO] GameVideoCfgSectionStateView
+        // [VIDEO]
+        this.cfgVideoWindowedCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoWindowedMode!.GetValue();
+        this.cfgVideoWidescreenCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoWidescreenMode!.GetValue();
+        this.cfgVideoVsyncCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoVsync!.GetValue();
+        this.cfgVideoVegetationCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoVegetation!.GetValue();
+        this.cfgVideoSubtitlesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoSubtitles!.GetValue();
+        this.cfgVideoStencilShadowsCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoStencilShadows!.GetValue();
+        this.cfgVideoSplashesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoSplashes!.GetValue();
+        this.cfgVideoSkipMipLevelsChecBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoSkipMipLevels!.GetValue();
+        this.cfgVideoShowPackageLitterCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoShowPackageLitter!.GetValue();
+        this.cfgVideoShowBannersCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoShowBanners!.GetValue();
+        this.cfgVideoSabotageMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoSabotageMovies!.GetValue();
+        this.cfgVideoReflectionCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoReflection!.GetValue();
+        this.cfgVideoNoBackgroundFmvCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoNoBackgroundFmv!.GetValue();
+        this.cfgVideoMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoMovies!.GetValue();
+        this.cfgVideoInfiltrationMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoInfiltrationMovies!.GetValue();
+        this.cfgVideoEventMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoEventMovies!.GetValue();
+        this.cfgVideoBloomCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoBloom!.GetValue();
+        this.cfgVideoAutodetectCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoAutodetect!.GetValue();
+        this.cfgVideoAssassinationMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection!.VideoAssassinationMovies!.GetValue();
+    }
+
+    private void InitializeAllComboBoxControls()
+    {
+        int selectedIndexByDefault = 0;
+
+        InitializeComboBoxControl(this.cfgGameUnitSizeComboBox, CfgGameUnitSizeItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgGameAiFactionsComboBox, CfgGameAiFactionsItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgControlsDefaultInBattleComboBox, CfgControlsDefaultInBattleItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgControlsKeysetComboBox, CfgControlsKeysetItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoWaterBuffersPerNodeComboBox, CfgVideoWaterBuffersPerNodeItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoUnitDetailComboBox, CfgVideoUnitDetailItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoTextureFilteringComboBox, CfgVideoTextureFilteringItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoTerrainQualityComboBox, CfgVideoTerrainQualityItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoSpriteBuffersPerNodeComboBox, CfgVideoSpriteBuffersPerNodeItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoShaderComboBox, CfgVideoShaderItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoModelBuffersPerNodeComboBox, CfgVideoModelBuffersPerNodeItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoGroundCoverBuffersPerNodeComboBox, CfgVideoGroundCoverBuffersPerNodeItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoGroundBuffersPerNodeComboBox, CfgVideoGroundBuffersPerNodeItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoGrassDistanceComboBox, CfgVideoGrassDistanceItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoEffectQualityComboBox, CfgVideoEffectQualityItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoDepthShadowsResolutionComboBox, CfgVideoDepthShadowsResolutionItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoDepthShadowsComboBox, CfgVideoDepthShadowsItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoBuildingDetailComboBox, CfgVideoBuildingDetailItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoAntialiasingComboBox, CfgVideoAntialiasingItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoAntiAliasModeComboBox, CfgVideoAntiAliasModeItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoAnisotropicLevelComboBox, CfgVideoAnisotropicLevelItems, selectedIndexByDefault);
+
+        selectedIndexByDefault = 2; // select the '1024 x 768' display resolution by default from CfgVideoDisplayResolutionItems
+
+        InitializeComboBoxControl(this.cfgVideoBattleResolutionComboBox, CfgVideoDisplayResolutionItems, selectedIndexByDefault);
+        InitializeComboBoxControl(this.cfgVideoCampaignResolutionComboBox, CfgVideoDisplayResolutionItems, selectedIndexByDefault);
+    }
+
+    private void InitializeAllNumericUpDownControls()
+    {
+        this.cfgGameChatMsgDurationNumericUpDown.Maximum = M2TW_Integer.ExtendedMaxValue;
+        this.cfgGameChatMsgDurationNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgGameChatMsgDurationNumericUpDown.Text = this.gameConfigStateView.ModGameplaySection!.GameChatMsgDuration!.Value;
+
+        this.cfgGameCampaignMapSpeedUpNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgGameCampaignMapSpeedUpNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgGameCampaignMapSpeedUpNumericUpDown.Text = this.gameConfigStateView.ModGameplaySection!.GameCampaignMapSpeedUp!.Value;
+
+        this.cfgGameCampaignMapGameSpeedNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgGameCampaignMapGameSpeedNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgGameCampaignMapGameSpeedNumericUpDown.Text = this.gameConfigStateView.ModGameplaySection!.GameCampaignMapGameSpeed!.Value;
+
+        this.cfgAudioSpeechNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioSpeechNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgAudioSpeechNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection!.SpeechVolume!.Value;
+
+        this.cfgAudioSfxNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioSfxNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgAudioSfxNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection!.SoundEffectsVolume!.Value;
+
+        this.cfgAudioSoundCardProviderNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioSoundCardProviderNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgAudioSoundCardProviderNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection!.SpeechVolume!.Value;
+
+        this.cfgAudioMusicVolumeNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioMusicVolumeNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgAudioMusicVolumeNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection!.AudioMusicVolume!.Value;
+
+        this.cfgAudioMasterVolumeNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgAudioMasterVolumeNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgAudioMasterVolumeNumericUpDown.Text = this.gameConfigStateView.GameAudioCfgSection!.AudioMasterVolume!.Value;
+
+        this.cfgCameraRotateNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgCameraRotateNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgCameraRotateNumericUpDown.Text = this.gameConfigStateView.GameCameraCfgSection!.CameraRotate!.Value;
+
+        this.cfgCameraMoveNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgCameraMoveNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgCameraMoveNumericUpDown.Text = this.gameConfigStateView.GameCameraCfgSection!.CameraMove!.Value;
+
+        this.cfgControlsScrollMinZoomNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgControlsScrollMinZoomNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgControlsScrollMinZoomNumericUpDown.Text = this.gameConfigStateView.GameControlsCfgSection!.CampaignScrollMinZoom!.ToString();
+
+        this.cfgControlsScrollMaxZoomNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgControlsScrollMaxZoomNumericUpDown.Minimum = M2TW_Integer.MinValue;
+        this.cfgControlsScrollMaxZoomNumericUpDown.Text = this.gameConfigStateView.GameControlsCfgSection!.CampaignScrollMaxZoom!.ToString();
+
+        this.cfgVideoGammaNumericUpDown.Maximum = M2TW_Integer.MaxValue;
+        this.cfgVideoGammaNumericUpDown.Minimum = M2TW_Integer.MinValue;
         this.cfgVideoGammaNumericUpDown.Text = this.gameConfigStateView.GameVideoCfgSection!.VideoGamma!.Value;
-        this.cfgVideoWaterBuffersPerNodeComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoWaterBuffersPerNode!.Value;
-        this.cfgVideoUnitDetailComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoUnitDetail!.Value;
-        this.cfgVideoTextureFilteringComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoTextureFiltering!.Value;
-        this.cfgVideoTerrainQualityComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoTerrainQuality!.Value;
-        this.cfgVideoSpriteBuffersPerNodeComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoSpriteBuffersPerNode!.Value;
-        this.cfgVideoShaderComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoShader!.Value;
-        this.cfgVideoModelBuffersPerNodeComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoModelBuffersPerNode!.Value;
-        this.cfgVideoGroundCoverBuffersPerNodeComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoGroundCoverBuffersPerNode!.Value;
-        this.cfgVideoGroundBuffersPerNodeComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoGroundBuffersPerNode!.Value;
-        this.cfgVideoGrassDistanceComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoGrassDistance!.Value;
-        this.cfgVideoEffectQualityComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoEffectQuality!.Value;
-        this.cfgVideoDepthShadowsResolutionComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoDepthShadowsResolution!.Value;
-        this.cfgVideoDepthShadowsComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoDepthShadows!.Value;
-        this.cfgVideoCampaignResolutionComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoCampaignResolution!.Value;
-        this.cfgVideoBuildingDetailComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoBuildingDetail!.Value;
-        this.cfgVideoBattleResolutionComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoBattleResolution!.Value;
-        this.cfgVideoAntialiasingComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoAntialiasing!.Value;
-        this.cfgVideoAntiAliasModeComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoAntiAliasMode!.Value;
-        this.cfgVideoAnisotropicLevelComboBox.Text = this.gameConfigStateView.GameVideoCfgSection.VideoAnisotropicLevel!.Value;
-        this.cfgVideoWindowedCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoWindowedMode!.GetValue();
-        this.cfgVideoWidescreenCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoWidescreenMode!.GetValue();
-        this.cfgVideoVsyncCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoVsync!.GetValue();
-        this.cfgVideoVegetationCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoVegetation!.GetValue();
-        this.cfgVideoSubtitlesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoSubtitles!.GetValue();
-        this.cfgVideoStencilShadowsCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoStencilShadows!.GetValue();
-        this.cfgVideoSplashesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoSplashes!.GetValue();
-        this.cfgVideoSkipMipLevelsChecBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoSkipMipLevels!.GetValue();
-        this.cfgVideoShowPackageLitterCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoShowPackageLitter!.GetValue();
-        this.cfgVideoShowBannersCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoShowBanners!.GetValue();
-        this.cfgVideoSabotageMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoSabotageMovies!.GetValue();
-        this.cfgVideoReflectionCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoReflection!.GetValue();
-        this.cfgVideoNoBackgroundFmvCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoNoBackgroundFmv!.GetValue();
-        this.cfgVideoMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoMovies!.GetValue();
-        this.cfgVideoInfiltrationMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoInfiltrationMovies!.GetValue();
-        this.cfgVideoEventMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoEventMovies!.GetValue();
-        this.cfgVideoBloomCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoBloom!.GetValue();
-        this.cfgVideoAutodetectCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoAutodetect!.GetValue();
-        this.cfgVideoAssassinationMoviesCheckBox.Checked = this.gameConfigStateView.GameVideoCfgSection.VideoAssassinationMovies!.GetValue();
+    }
+
+    private void InitializeAllTextBoxControls()
+    {
+        this.cfgGamePrefFactionsPlayedTextBox.Text = this.gameConfigStateView.ModGameplaySection!.GamePrefFactionsPlayed!.ToString();
+        this.cfgGameTutorialPathTextBox.Text = this.gameConfigStateView.ModGameplaySection!.GameTutorialPath!;
+        this.cfgGameCampaignNumTimePlayTextBox.Text = this.gameConfigStateView.ModGameplaySection!.GameCampaignNumTimePlay!.Value;
+        this.cfgHotseatGameNameTextBox.Text = this.gameConfigStateView.HotseatSection!.HotseatGameName!;
+        this.cfgNetworkUsePortTextBox.Text = this.gameConfigStateView.HotseatSection!.NetworkUsePort!.ToString();
+        this.cfgNetworkUseIpTextBox.Text = this.gameConfigStateView.HotseatSection!.NetworkUseIp!.Value;
+        this.cfgLogLocationTextBox.Text = this.gameConfigStateView.ModDiagnosticSection!.LogTo!;
+#if DISABLED_CFG_OPTIONS
+        this.cfgMiscBypassToStrategySaveTextBox.Text = this.gameConfigStateView.HotseatSection!.BypassToStrategySave!;
+#endif
     }
 
 #if TESTING
