@@ -2,6 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 using TWEMP.Browser.Core.CommonLibrary;
@@ -18,6 +21,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
     private readonly M2TWGameConfigStateView currentGameConfigStateView;
     private readonly M2TWCustomQuickConfigStateView currentQuickCustomConfigStateView;
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Initializes a new instance of the <see cref="M2TWGameConfigurator"/> class.
     /// </summary>
@@ -36,6 +40,7 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         this.CurrentInfo = this.currentGameModificationInfo;
         this.CurrentState = this.currentQuickCustomConfigStateView;
     }
+#endif
 
     /// <summary>
     /// Initializes a new instance of the <see cref="M2TWGameConfigurator"/> class.
@@ -117,95 +122,6 @@ public class M2TWGameConfigurator : IGameConfiguratorAgent
         this.currentQuickCustomConfigStateView.SetPropertiesByStateView(viewsOfProperties);
 
         this.ApplyAllOverridedConfigSettings();
-    }
-
-    public List<CfgOptionsSubSet> InitializeMinimalModSettings()
-    {
-        List<CfgOptionsSubSet> settings = new ();
-
-        CfgOptionsSubSet features_subset = GetFeaturesSubSet(this.currentGameModificationInfo); // [features]
-        settings.Add(features_subset);
-
-        CfgOptionsSubSet io_subset = GetIOSubSet(); // [io]
-        settings.Add(io_subset);
-
-        CfgOptionsSubSet log_subset = GetLogSubSet(this.currentGameModificationInfo, this.currentQuickCustomConfigStateView); // [log]
-        settings.Add(log_subset);
-
-        CfgOptionsSubSet video_subset = GetVideoSubSet(this.currentQuickCustomConfigStateView); // [video]
-        settings.Add(video_subset);
-
-        return settings;
-    }
-
-    private static CfgOptionsSubSet GetFeaturesSubSet(GameModificationInfo mod)
-    {
-        string subsetName = "features";
-
-        var subsetOptions = new List<CfgOption>();
-
-        subsetOptions.Add(new CfgOption("editor", true));
-        subsetOptions.Add(new CfgOption("mod", mod.ModCfgRelativePath));
-
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
-    }
-
-    private static CfgOptionsSubSet GetIOSubSet()
-    {
-        string subsetName = "io";
-
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("file_first", true));
-
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
-    }
-
-    private static CfgOptionsSubSet GetLogSubSet(GameModificationInfo mod, M2TWCustomQuickConfigStateView cfg)
-    {
-        string subsetName = "log";
-
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("to", mod.LogFileRelativePath));
-        subsetOptions.Add(new CfgOption("level", SetLogLevel(cfg)));
-
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
-    }
-
-    private static string SetLogLevel(M2TWCustomQuickConfigStateView cfg)
-    {
-        const string strLogLevelError = "* error";
-        const string strLogLevelTrace = "* trace";
-        const string strLogLevelScriptTrace = "*script* trace";
-
-        string strLogLevel = string.Empty;
-
-        if (cfg.ValidatorLogLevel1)
-        {
-            strLogLevel = strLogLevelError;
-        }
-
-        if (cfg.ValidatorLogLevel2)
-        {
-            strLogLevel = strLogLevelTrace;
-        }
-
-        if (cfg.ValidatorLogLevel3)
-        {
-            strLogLevel = strLogLevelScriptTrace;
-        }
-
-        return strLogLevel;
-    }
-
-    private static CfgOptionsSubSet GetVideoSubSet(M2TWCustomQuickConfigStateView cfg)
-    {
-        string subsetName = "video";
-        var subsetOptions = new List<CfgOption>();
-        subsetOptions.Add(new CfgOption("windowed", cfg.IsEnabledWindowedMode));
-        subsetOptions.Add(new CfgOption("movies", cfg.ValidatorVideo));
-        subsetOptions.Add(new CfgOption("borderless_window", cfg.ValidatorBorderless));
-
-        return new CfgOptionsSubSet(subsetName, subsetOptions);
     }
 
     private void ApplyAllOverridedConfigSettings()

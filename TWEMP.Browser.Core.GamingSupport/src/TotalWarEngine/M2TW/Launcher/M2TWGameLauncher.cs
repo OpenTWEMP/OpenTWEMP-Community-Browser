@@ -4,15 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-#define USE_NEW_IMPLEMENTATION
-//#undef USE_NEW_IMPLEMENTATION
-
-#if USE_NEW_IMPLEMENTATION
-#define NEW_CONFIG_IMPLEMENTATION
-#else
-#define OLD_CONFIG_IMPLEMENTATION
-#endif
-
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Launcher;
 
 using System.Diagnostics;
@@ -128,17 +119,8 @@ public class M2TWGameLauncher : IGameLauncherAgent
 
     private void Launch()
     {
-        string configurationFilePath;
-
-#if NEW_CONFIG_IMPLEMENTATION
         GameCfgSection[] configSettings = this.currentGameConfigurator.GetCurrentConfigSettings();
-        configurationFilePath = this.GenerateModConfigFile(configSettings);
-#endif
-
-#if OLD_CONFIG_IMPLEMENTATION
-        List<CfgOptionsSubSet> configSettings = this.currentGameConfigurator.InitializeMinimalModSettings();
-        configurationFilePath = this.GenerateModConfigFile(configSettings);
-#endif
+        string configurationFilePath = this.GenerateModConfigFile(configSettings);
 
         if (this.IsModificationReadyToExecution())
         {
@@ -195,7 +177,7 @@ public class M2TWGameLauncher : IGameLauncherAgent
 
     private string GenerateModConfigFile(GameCfgSection[] gameConfigSections)
     {
-        string cfgFileName = "TWE_MOD_CFG_MODERN.cfg";
+        string cfgFileName = "twemp_game_config.cfg";
         string cfgFilePath = Path.Combine(this.currentGameConfigurator.CurrentInfo.Location, cfgFileName);
 
         var stream = new FileStream(cfgFilePath, FileMode.Create, FileAccess.ReadWrite);
@@ -205,25 +187,6 @@ public class M2TWGameLauncher : IGameLauncherAgent
         {
             string sectionConfigOptions = section.GetOutputConfigFormat();
             writer.WriteLine(sectionConfigOptions);
-        }
-
-        writer.Close();
-        stream.Close();
-
-        return cfgFilePath;
-    }
-
-    private string GenerateModConfigFile(List<CfgOptionsSubSet> option_subsets)
-    {
-        string cfgFileName = "TWE_MOD_CFG_LEGACY.cfg";
-        string cfgFilePath = Path.Combine(this.currentGameConfigurator.CurrentInfo.Location, cfgFileName);
-
-        var stream = new FileStream(cfgFilePath, FileMode.Create, FileAccess.ReadWrite);
-        var writer = new StreamWriter(stream, Encoding.ASCII);
-
-        foreach (CfgOptionsSubSet option_subset in option_subsets)
-        {
-            writer.WriteLine(option_subset.FormatToCfg());
         }
 
         writer.Close();
