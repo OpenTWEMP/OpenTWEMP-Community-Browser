@@ -668,32 +668,34 @@ public partial class ModConfigSettingsForm : Form
 
     private void InitializeAllComboBoxControls()
     {
-        int selectedIndexByDefault = 0;
+        InitializeComboBoxControl(this.cfgGameUnitSizeComboBox, CfgGameUnitSizeItems, Convert.ToInt32(M2TW_Size.Huge));
+        InitializeComboBoxControl(this.cfgGameAiFactionsComboBox, CfgGameAiFactionsItems, Convert.ToInt32(M2TW_Deprecated_AI_Boolean.Follow));
+        InitializeComboBoxControl(this.cfgControlsDefaultInBattleComboBox, CfgControlsDefaultInBattleItems, Convert.ToInt32(M2TW_BattleCamera.RTS));
+        InitializeComboBoxControl(this.cfgControlsKeysetComboBox, CfgControlsKeysetItems, Convert.ToInt32(M2TW_KeySet.KeySet_3));
 
-        InitializeComboBoxControl(this.cfgGameUnitSizeComboBox, CfgGameUnitSizeItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgGameAiFactionsComboBox, CfgGameAiFactionsItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgControlsDefaultInBattleComboBox, CfgControlsDefaultInBattleItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgControlsKeysetComboBox, CfgControlsKeysetItems, selectedIndexByDefault);
+        int selectedIndexByDefault = 4; // select maximum values for config options
         InitializeComboBoxControl(this.cfgVideoWaterBuffersPerNodeComboBox, CfgVideoWaterBuffersPerNodeItems, selectedIndexByDefault);
         InitializeComboBoxControl(this.cfgVideoUnitDetailComboBox, CfgVideoUnitDetailItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgVideoTextureFilteringComboBox, CfgVideoTextureFilteringItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgVideoTerrainQualityComboBox, CfgVideoTerrainQualityItems, selectedIndexByDefault);
         InitializeComboBoxControl(this.cfgVideoSpriteBuffersPerNodeComboBox, CfgVideoSpriteBuffersPerNodeItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgVideoShaderComboBox, CfgVideoShaderItems, selectedIndexByDefault);
         InitializeComboBoxControl(this.cfgVideoModelBuffersPerNodeComboBox, CfgVideoModelBuffersPerNodeItems, selectedIndexByDefault);
         InitializeComboBoxControl(this.cfgVideoGroundCoverBuffersPerNodeComboBox, CfgVideoGroundCoverBuffersPerNodeItems, selectedIndexByDefault);
         InitializeComboBoxControl(this.cfgVideoGroundBuffersPerNodeComboBox, CfgVideoGroundBuffersPerNodeItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgVideoGrassDistanceComboBox, CfgVideoGrassDistanceItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgVideoEffectQualityComboBox, CfgVideoEffectQualityItems, selectedIndexByDefault);
         InitializeComboBoxControl(this.cfgVideoDepthShadowsResolutionComboBox, CfgVideoDepthShadowsResolutionItems, selectedIndexByDefault);
         InitializeComboBoxControl(this.cfgVideoDepthShadowsComboBox, CfgVideoDepthShadowsItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgVideoBuildingDetailComboBox, CfgVideoBuildingDetailItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgVideoAntialiasingComboBox, CfgVideoAntialiasingItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgVideoAntiAliasModeComboBox, CfgVideoAntiAliasModeItems, selectedIndexByDefault);
-        InitializeComboBoxControl(this.cfgVideoAnisotropicLevelComboBox, CfgVideoAnisotropicLevelItems, selectedIndexByDefault);
+
+        selectedIndexByDefault = 2; // select maximum values for 'texture_filtering' config option
+        InitializeComboBoxControl(this.cfgVideoTextureFilteringComboBox, CfgVideoTextureFilteringItems, selectedIndexByDefault);
+
+        InitializeComboBoxControl(this.cfgVideoAntialiasingComboBox, CfgVideoAntialiasingItems, Convert.ToInt32(M2TW_AntiAliasing.AntiAliasMode_x4));
+        InitializeComboBoxControl(this.cfgVideoAntiAliasModeComboBox, CfgVideoAntiAliasModeItems, Convert.ToInt32(M2TW_AntiAliasMode.AntiAliasMode_x4));
+        InitializeComboBoxControl(this.cfgVideoAnisotropicLevelComboBox, CfgVideoAnisotropicLevelItems, Convert.ToInt32(M2TW_AnisotropicFilteringLevel.AF_x16));
+        InitializeComboBoxControl(this.cfgVideoGrassDistanceComboBox, CfgVideoGrassDistanceItems, Convert.ToInt32(M2TW_GrassDistance.Level_3));
+        InitializeComboBoxControl(this.cfgVideoShaderComboBox, CfgVideoShaderItems, Convert.ToInt32(M2TW_ShaderLevel.ShaderVersion_v2));
+        InitializeComboBoxControl(this.cfgVideoBuildingDetailComboBox, CfgVideoBuildingDetailItems, Convert.ToInt32(M2TW_Quality.Medium));
+        InitializeComboBoxControl(this.cfgVideoEffectQualityComboBox, CfgVideoEffectQualityItems, Convert.ToInt32(M2TW_Quality.Medium));
+        InitializeComboBoxControl(this.cfgVideoTerrainQualityComboBox, CfgVideoTerrainQualityItems, Convert.ToInt32(M2TW_Quality.Medium));
 
         selectedIndexByDefault = 2; // select the '1024 x 768' display resolution by default from CfgVideoDisplayResolutionItems
-
         InitializeComboBoxControl(this.cfgVideoBattleResolutionComboBox, CfgVideoDisplayResolutionItems, selectedIndexByDefault);
         InitializeComboBoxControl(this.cfgVideoCampaignResolutionComboBox, CfgVideoDisplayResolutionItems, selectedIndexByDefault);
     }
