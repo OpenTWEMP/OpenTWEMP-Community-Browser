@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             customizablePresetCheckBoxColumn = new DataGridViewCheckBoxColumn();
             modsGridPanel = new Panel();
             modSupportPresetsDataGridView = new DataGridView();
@@ -77,9 +77,9 @@
             modSupportPresetsDataGridView.EnableHeadersVisualStyles = false;
             modSupportPresetsDataGridView.Location = new Point(0, 0);
             modSupportPresetsDataGridView.Name = "modSupportPresetsDataGridView";
-            dataGridViewCellStyle6.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
-            modSupportPresetsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Yellow;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            modSupportPresetsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
             modSupportPresetsDataGridView.Size = new Size(776, 352);
             modSupportPresetsDataGridView.TabIndex = 0;
             modSupportPresetsDataGridView.CellContentClick += ModSupportPresetsDataGridView_CellContentClick;
@@ -138,49 +138,58 @@
             // 
             // openRedistributablePresetDirectoryButton
             // 
-            openRedistributablePresetDirectoryButton.Location = new Point(3, 32);
+            openRedistributablePresetDirectoryButton.Enabled = false;
+            openRedistributablePresetDirectoryButton.Location = new Point(314, 32);
             openRedistributablePresetDirectoryButton.Name = "openRedistributablePresetDirectoryButton";
             openRedistributablePresetDirectoryButton.Size = new Size(244, 23);
             openRedistributablePresetDirectoryButton.TabIndex = 5;
             openRedistributablePresetDirectoryButton.Text = "Open Redistributable Preset Directory";
             openRedistributablePresetDirectoryButton.UseVisualStyleBackColor = true;
+            openRedistributablePresetDirectoryButton.Visible = false;
             openRedistributablePresetDirectoryButton.Click += OpenRedistributablePresetDirectoryButton_Click;
             // 
             // openCustomizablePresetDirectoryButton
             // 
-            openCustomizablePresetDirectoryButton.Location = new Point(3, 3);
+            openCustomizablePresetDirectoryButton.Enabled = false;
+            openCustomizablePresetDirectoryButton.Location = new Point(314, 3);
             openCustomizablePresetDirectoryButton.Name = "openCustomizablePresetDirectoryButton";
             openCustomizablePresetDirectoryButton.Size = new Size(244, 23);
             openCustomizablePresetDirectoryButton.TabIndex = 4;
             openCustomizablePresetDirectoryButton.Text = "Open Customizable Preset Directory";
             openCustomizablePresetDirectoryButton.UseVisualStyleBackColor = true;
+            openCustomizablePresetDirectoryButton.Visible = false;
             openCustomizablePresetDirectoryButton.Click += OpenCustomizablePresetDirectoryButton_Click;
             // 
             // allChangesResetButton
             // 
-            allChangesResetButton.Location = new Point(311, 32);
+            allChangesResetButton.Enabled = false;
+            allChangesResetButton.Location = new Point(166, 32);
             allChangesResetButton.Name = "allChangesResetButton";
             allChangesResetButton.Size = new Size(142, 23);
             allChangesResetButton.TabIndex = 3;
             allChangesResetButton.Text = "Reset All Changes";
             allChangesResetButton.UseVisualStyleBackColor = true;
+            allChangesResetButton.Visible = false;
             allChangesResetButton.Click += AllChangesResetButton_Click;
             // 
             // allChangesDiscardButton
             // 
-            allChangesDiscardButton.Location = new Point(311, 3);
+            allChangesDiscardButton.Enabled = false;
+            allChangesDiscardButton.Location = new Point(166, 3);
             allChangesDiscardButton.Name = "allChangesDiscardButton";
             allChangesDiscardButton.Size = new Size(142, 23);
             allChangesDiscardButton.TabIndex = 2;
             allChangesDiscardButton.Text = "Discard All Changes";
             allChangesDiscardButton.UseVisualStyleBackColor = true;
+            allChangesDiscardButton.Visible = false;
             allChangesDiscardButton.Click += AllChangesDiscardButton_Click;
             // 
             // applyButton
             // 
-            applyButton.Location = new Point(616, 3);
+            applyButton.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            applyButton.Location = new Point(3, 3);
             applyButton.Name = "applyButton";
-            applyButton.Size = new Size(157, 23);
+            applyButton.Size = new Size(157, 62);
             applyButton.TabIndex = 1;
             applyButton.Text = "Apply Changes";
             applyButton.UseVisualStyleBackColor = true;
@@ -188,9 +197,10 @@
             // 
             // exitButton
             // 
-            exitButton.Location = new Point(616, 32);
+            exitButton.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            exitButton.Location = new Point(616, 3);
             exitButton.Name = "exitButton";
-            exitButton.Size = new Size(157, 23);
+            exitButton.Size = new Size(157, 62);
             exitButton.TabIndex = 0;
             exitButton.Text = "Exit from the Window";
             exitButton.UseVisualStyleBackColor = true;

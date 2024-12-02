@@ -5,8 +5,8 @@
 #pragma warning disable SA1600 // Elements should be documented
 #pragma warning disable SA1601 // Partial elements should be documented
 
-#define DISABLE_LEGACY_INIT_CODE
-#undef DISABLE_LEGACY_INIT_CODE
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
@@ -40,11 +40,6 @@ public partial class ModSupportPresetSettingsForm : Form
         this.currentPresetSettingViews = fullGameModsCollectionView.GetModPresetSettings().ToList();
 
         this.InitializeModSupportPresetsDataGridView(fullGameModsCollectionView);
-
-#if DISABLE_LEGACY_INIT_CODE
-        List<GameModificationInfo> gameInstallations = BrowserKernel.TotalModificationsList;
-        this.InitializeModSupportPresetsDataGridView(gameInstallations);
-#endif
     }
 
     public void AttachRedistributablePresetToGameModification(int gameModId, RedistributableModPreset preset)
@@ -125,85 +120,6 @@ public partial class ModSupportPresetSettingsForm : Form
         this.ChangeDataGridViewRowBackgroundColor(dataGridViewRow, Color.LightGray);
     }
 
-#if DISABLE_LEGACY_INIT_CODE
-    private void InitializeModSupportPresetsDataGridView(ICollection<GameModificationInfo> gameMods)
-    {
-        Dictionary<DataGridViewRow, GameModificationInfo> gameModInfoRows = new ();
-
-        for (int modIndex = 0; modIndex < gameMods.Count; modIndex++)
-        {
-            DataGridViewRow row = new ();
-            this.modSupportPresetsDataGridView.Rows.Add(row);
-
-            GameModificationInfo gameModInfo = gameMods.ElementAt(modIndex);
-            gameModInfoRows.Add(row, gameModInfo);
-        }
-
-        for (int rowIndex = 0; rowIndex < this.modSupportPresetsDataGridView.Rows.Count; rowIndex++)
-        {
-            this.InitializeModSupportPresetDataGridViewRowId(rowIndex);
-        }
-
-        foreach (KeyValuePair<DataGridViewRow, GameModificationInfo> gameModInfoRow in gameModInfoRows)
-        {
-            this.InitializeModSupportPresetDataGridViewRow(gameModInfoRow.Key, gameModInfoRow.Value);
-            this.MarkModSupportPresetDataGridViewRowByPresetSettings(gameModInfoRow.Key);
-        }
-    }
-
-    private void InitializeModSupportPresetDataGridViewRowId(int rowIndex)
-    {
-        DataGridViewRow row = this.modSupportPresetsDataGridView.Rows[rowIndex];
-        DataGridViewCell idCell = row.Cells[this.idColumnIndex];
-        idCell.Value = rowIndex;
-    }
-
-    private void InitializeModSupportPresetDataGridViewRow(DataGridViewRow row, GameModificationInfo gameModInfo)
-    {
-        DataGridViewCell modNameCell = row.Cells[this.modNameColumnIndex];
-        modNameCell.Value = gameModInfo.ShortName;
-
-        DataGridViewCell gameSetupCell = row.Cells[this.gameSetupColumnIndex];
-        gameSetupCell.Value = gameModInfo.CurrentSetup.HomeDirectory;
-
-        DataGridViewCell modCenterCell = row.Cells[this.modCenterColumnIndex];
-        modCenterCell.Value = gameModInfo.Location;
-
-        DataGridViewCell redistributablePresetCell = row.Cells[this.redistributablePresetColumnIndex];
-        redistributablePresetCell.Value = $"{gameModInfo.CurrentPreset.ModTitle} [{gameModInfo.CurrentPreset.ModVersion}]";
-    }
-
-    private bool IsConfiguredByCustomizableModPreset(DataGridViewRow row)
-    {
-        const string presetDefaultPlaceholder = "My_Title [My_Version]";
-
-        object? sourceCellValue = row.Cells[this.redistributablePresetColumnIndex].Value;
-        string? convertedCellValue = Convert.ToString(sourceCellValue);
-
-        return convertedCellValue!.Equals(presetDefaultPlaceholder);
-    }
-
-    private void MarkModSupportPresetDataGridViewRowAsRedistributablePreset(DataGridViewRow row)
-    {
-        this.ChangeDataGridViewRowBackgroundColor(row, Color.LightGreen);
-        this.SetCustomizablePresetCheckboxState(row, false);
-    }
-
-    private void MarkModSupportPresetDataGridViewRowAsCustomizablePreset(DataGridViewRow row)
-    {
-        this.ChangeDataGridViewRowBackgroundColor(row, Color.LightGray);
-        this.SetCustomizablePresetCheckboxState(row, true);
-    }
-
-    private void SetCustomizablePresetCheckboxState(DataGridViewRow row, bool value)
-    {
-        DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)row.Cells[this.customizablePresetColumnIndex];
-        cell.Value = value;
-
-        // cell.ValueType = typeof(bool);
-    }
-#endif
-
     private void ModSupportPresetsDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
     {
         for (int rowIndex = 0; rowIndex < this.modSupportPresetsDataGridView.Rows[e.RowIndex].Cells.Count; rowIndex++)
@@ -277,25 +193,52 @@ public partial class ModSupportPresetSettingsForm : Form
 
     private void OpenCustomizablePresetDirectoryButton_Click(object sender, EventArgs e)
     {
+#if EXPERIMENTAL_FEATURES
         MessageBox.Show("OpenCustomizablePresetDirectoryButton_Click");
+#endif
     }
 
     private void OpenRedistributablePresetDirectoryButton_Click(object sender, EventArgs e)
     {
+#if EXPERIMENTAL_FEATURES
         MessageBox.Show("OpenRedistributablePresetDirectoryButton_Click");
+#endif
     }
 
     private void AllChangesDiscardButton_Click(object sender, EventArgs e)
     {
+#if EXPERIMENTAL_FEATURES
         MessageBox.Show("AllChangesDiscardButton_Click");
+#endif
     }
 
     private void AllChangesResetButton_Click(object sender, EventArgs e)
     {
+#if EXPERIMENTAL_FEATURES
         MessageBox.Show("AllChangesResetButton_Click");
+#endif
     }
 
     private void ApplyButton_Click(object sender, EventArgs e)
+    {
+        BrowserKernel.UpdatePresetSettings(this.currentPresetSettingViews);
+
+        MessageBox.Show(
+            text: "Your new preset settings were successfully applied!",
+            caption: "Update Preset Settings",
+            buttons: MessageBoxButtons.OK,
+            icon: MessageBoxIcon.Information);
+
+        this.Close();
+    }
+
+    private void ExitButton_Click(object sender, EventArgs e)
+    {
+        this.Close();
+    }
+
+#if EXPERIMENTAL_FEATURES
+    private void RetrieveCurrentPresetSettings()
     {
         Dictionary<int, string> currentPresetSettings = new ();
 
@@ -307,21 +250,11 @@ public partial class ModSupportPresetSettingsForm : Form
             var presetObject = row.Cells[this.customizablePresetColumnIndex].Value;
             bool useCustomizablePreset = Convert.ToBoolean(presetObject);
 
-            string preset = useCustomizablePreset ? "[CUSTOMIZABLE_PRESET]" : Convert.ToString(row.Cells[this.redistributablePresetColumnIndex].Value) !;
+            string preset = useCustomizablePreset ? "[CUSTOMIZABLE_PRESET]" : Convert.ToString(row.Cells[this.redistributablePresetColumnIndex].Value)!;
 
-            KeyValuePair<int, string> presetSetting = new (id, preset);
+            KeyValuePair<int, string> presetSetting = new(id, preset);
             currentPresetSettings.Add(presetSetting.Key, presetSetting.Value);
         }
-
-        BrowserKernel.UpdatePresetSettings(this.currentPresetSettingViews);
-
-        MessageBox.Show("Your new preset settings were successfully applied!", "Update Preset Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        this.Close();
     }
-
-    private void ExitButton_Click(object sender, EventArgs e)
-    {
-        this.Close();
-    }
+#endif
 }
