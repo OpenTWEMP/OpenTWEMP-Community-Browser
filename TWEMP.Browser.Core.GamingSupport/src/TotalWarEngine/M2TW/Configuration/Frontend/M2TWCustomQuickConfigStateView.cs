@@ -28,8 +28,8 @@ public class M2TWCustomQuickConfigStateView : ICustomQuickConfigState
         this.IsShouldBeDeleted_SoundPacks = false;
 
         this.UseLauncherProvider_TWEMP = true;
-        this.UseLauncherProvider_M2TWEOP_NativeSetup = false;
-        this.UseLauncherProvider_M2TWEOP_NativeBatch = false;
+        this.UseLauncherProvider_M2TW_NativeSetup = false;
+        this.UseLauncherProvider_M2TW_NativeBatch = false;
         this.UseLauncherProvider_M2TWEOP = false;
     }
 
@@ -57,9 +57,9 @@ public class M2TWCustomQuickConfigStateView : ICustomQuickConfigState
 
     public bool UseLauncherProvider_TWEMP { get; set; }
 
-    public bool UseLauncherProvider_M2TWEOP_NativeSetup { get; set; }
+    public bool UseLauncherProvider_M2TW_NativeSetup { get; set; }
 
-    public bool UseLauncherProvider_M2TWEOP_NativeBatch { get; set; }
+    public bool UseLauncherProvider_M2TW_NativeBatch { get; set; }
 
     public bool UseLauncherProvider_M2TWEOP { get; set; }
 

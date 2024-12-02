@@ -23,11 +23,9 @@ public partial class ModSupportPresetSettingsForm : Form
     private readonly int modCenterColumnIndex;
     private readonly int redistributablePresetColumnIndex;
     private readonly int customizablePresetColumnIndex;
-
-    private readonly IConfigurableGameModificationView currentGameModificationView;
     private readonly List<ModPresetSettingView> currentPresetSettingViews;
 
-    public ModSupportPresetSettingsForm(IConfigurableGameModificationView gameModificationView)
+    public ModSupportPresetSettingsForm()
     {
         this.InitializeComponent();
 
@@ -37,8 +35,6 @@ public partial class ModSupportPresetSettingsForm : Form
         this.modCenterColumnIndex = this.modSupportPresetsDataGridView.Columns[3].Index;
         this.redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
         this.customizablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[5].Index;
-
-        this.currentGameModificationView = gameModificationView;
 
         FullGameModsCollectionView fullGameModsCollectionView = BrowserKernel.CurrentGameModsCollectionView;
         this.currentPresetSettingViews = fullGameModsCollectionView.GetModPresetSettings().ToList();
@@ -318,8 +314,6 @@ public partial class ModSupportPresetSettingsForm : Form
         }
 
         BrowserKernel.UpdatePresetSettings(this.currentPresetSettingViews);
-
-        this.currentGameModificationView.UpdateGameModificationViewAfterChangingPresetSettings(currentPresetSettings);
 
         MessageBox.Show("Your new preset settings were successfully applied!", "Update Preset Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

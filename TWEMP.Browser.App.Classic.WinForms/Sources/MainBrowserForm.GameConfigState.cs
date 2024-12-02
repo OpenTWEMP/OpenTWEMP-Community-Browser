@@ -30,8 +30,8 @@ internal partial class MainBrowserForm
             IsShouldBeDeleted_SoundPacks = this.checkBoxCleaner_soundPacks.Checked,
 
             UseLauncherProvider_TWEMP = this.radioButtonLauncherProvider_TWEMP.Checked,
-            UseLauncherProvider_M2TWEOP_NativeSetup = this.radioButtonLauncherProvider_NativeSetup.Checked,
-            UseLauncherProvider_M2TWEOP_NativeBatch = this.radioButtonLauncherProvider_BatchScript.Checked,
+            UseLauncherProvider_M2TW_NativeSetup = this.radioButtonLauncherProvider_NativeSetup.Checked,
+            UseLauncherProvider_M2TW_NativeBatch = this.radioButtonLauncherProvider_BatchScript.Checked,
             UseLauncherProvider_M2TWEOP = this.radioButtonLauncherProvider_M2TWEOP.Checked,
         };
     }

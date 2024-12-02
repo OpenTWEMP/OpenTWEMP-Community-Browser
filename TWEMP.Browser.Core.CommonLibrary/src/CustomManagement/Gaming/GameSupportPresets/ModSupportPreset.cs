@@ -40,11 +40,7 @@ public record ModSupportPreset
 
         ModContentInfo content = new (modLogoFileName, modMusicFileName);
 
-        const string launcherNativeBatch = "My_Batch_Script.bat";
-        const string launcherNativeSetup = "My_Setup_Program.exe";
-        const string launcherM2TWEOP = "M2TWEOP GUI.exe";
-
-        ModLauncherInfo launcher = new ModLauncherInfo(launcherNativeBatch, launcherNativeSetup, launcherM2TWEOP);
+        ModLauncherInfo launcher = ModLauncherInfo.CreateByDefault();
 
         ModSocialMediaInfo socialmedia = new (new Dictionary<string, string>()
         {
@@ -107,6 +103,28 @@ public record CustomizableModPreset
 
         return preset;
     }
+
+#if LEGACY_CUSTOM_PRESET_CREATE_IMPL
+    public static CustomModSupportPreset CreatePresetByDefault(string modificationURI)
+    {
+        // 1. Prepare preset's folder into modification's home directory.
+        string presetHomeDirectoryPath = Path.Combine(modificationURI, MOD_PRESET_FOLDERNAME);
+
+        if (!Directory.Exists(presetHomeDirectoryPath))
+        {
+            Directory.CreateDirectory(presetHomeDirectoryPath);
+        }
+
+        // 2. Generate 'mod_support.json' preset configuration file.
+        var presetByDefault = new CustomModSupportPreset();
+        string presetJsonText = JsonConvert.SerializeObject(presetByDefault, Formatting.Indented);
+        string presetFilePath = Path.Combine(presetHomeDirectoryPath, MOD_PRESET_FILENAME);
+
+        File.WriteAllText(presetFilePath, presetJsonText);
+
+        return presetByDefault;
+    }
+#endif
 }
 
 public record RedistributableModPreset
@@ -207,6 +225,18 @@ public record ModLauncherInfo
     public string LauncherProvider_NativeSetup { get; set; }
 
     public string LauncherProvider_M2TWEOP { get; set; }
+
+    public static ModLauncherInfo CreateByDefault()
+    {
+        const string modLauncherNativeBatch = "My_Batch_Script.bat";
+        const string modLauncherNativeSetup = "My_Setup_Program.exe";
+        const string modLauncherM2TWEOP = "M2TWEOP GUI.exe";
+
+        return new ModLauncherInfo(
+            batch: modLauncherNativeBatch,
+            setup: modLauncherNativeSetup,
+            eop: modLauncherM2TWEOP);
+    }
 }
 
 public record ModSocialMediaInfo

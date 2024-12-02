@@ -154,6 +154,14 @@ public class UpdatableGameModificationView
     }
 
     /// <summary>
+    /// Updates launcher settings by the active preset for this game mod.
+    /// </summary>
+    public void UpdateLauncherSettings()
+    {
+        this.CurrentInfo.Launcher = this.ActivePreset.LauncherInfo;
+    }
+
+    /// <summary>
     /// Gets the <see cref="Guid"/> value for the currently attached redistributable preset.
     /// </summary>
     /// <returns>The value of the <see cref="Guid"/> type.</returns>

@@ -35,17 +35,17 @@ public class M2TWGameLauncher : IGameLauncherAgent
     {
         if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_M2TWEOP)
         {
-            this.Launch(this.currentGameConfigurator.CurrentInfo.CurrentPreset.LauncherProvider_M2TWEOP);
+            this.Launch(this.currentGameConfigurator.CurrentInfo.Launcher.LauncherProvider_M2TWEOP);
         }
 
-        if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_M2TWEOP_NativeSetup)
+        if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_M2TW_NativeSetup)
         {
-            this.Launch(this.currentGameConfigurator.CurrentInfo.CurrentPreset.LauncherProvider_NativeSetup);
+            this.Launch(this.currentGameConfigurator.CurrentInfo.Launcher.LauncherProvider_NativeSetup);
         }
 
-        if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_M2TWEOP_NativeBatch)
+        if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_M2TW_NativeBatch)
         {
-            this.Launch(this.currentGameConfigurator.CurrentInfo.CurrentPreset.LauncherProvider_NativeBatch);
+            this.Launch(this.currentGameConfigurator.CurrentInfo.Launcher.LauncherProvider_NativeBatch);
         }
 
         if (this.currentGameConfigurator.CurrentState.UseLauncherProvider_TWEMP)

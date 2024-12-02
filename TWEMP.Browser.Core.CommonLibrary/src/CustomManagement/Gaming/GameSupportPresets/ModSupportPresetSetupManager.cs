@@ -99,6 +99,11 @@ public class ModSupportPresetSetupManager
                 this.CurrentGameModsCollectionView = new FullGameModsCollectionView(this.updatableGameModificationViews);
             }
         }
+
+        foreach (UpdatableGameModificationView view in this.updatableGameModificationViews)
+        {
+            view.UpdateLauncherSettings();
+        }
     }
 
     private static List<ModPresetSettingView> GetUpdatedPresetSettings(

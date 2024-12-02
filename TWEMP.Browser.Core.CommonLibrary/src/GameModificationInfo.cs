@@ -4,10 +4,9 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-#define DISABLE_LEGACY_CUSTOM_PRESET_FEATURE
-#undef DISABLE_LEGACY_CUSTOM_PRESET_FEATURE
-
 namespace TWEMP.Browser.Core.CommonLibrary;
+
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 public class GameModificationInfo
 {
@@ -21,6 +20,8 @@ public class GameModificationInfo
     {
         this.CurrentSetup = gamesetup;
 
+        this.Launcher = ModLauncherInfo.CreateByDefault();
+
         this.ShortName = new DirectoryInfo(path).Name;
         this.Location = path; // for example: "A:\TWEMP\modcenter_M2TW\MEDD"
 
@@ -30,16 +31,12 @@ public class GameModificationInfo
         this.LogFileName = InitializeLogFileName();
         this.LogFileRelativePath = InitializeLogFileRelativePath(this.ModCfgRelativePath, this.LogFileName);
 
-#if DISABLE_LEGACY_CUSTOM_PRESET_FEATURE
-        this.CurrentPreset = InitializeModificationPreset(path);
-#endif
-
-        this.CurrentPreset = new CustomModSupportPreset();
-
         this.IsFavoriteMod = false;
     }
 
     public GameSetupInfo CurrentSetup { get; }
+
+    public ModLauncherInfo Launcher { get; set; }
 
     public string ShortName { get; }
 
@@ -53,34 +50,16 @@ public class GameModificationInfo
 
     public string LogFileRelativePath { get; }
 
-    public CustomModSupportPreset CurrentPreset { get; }
-
     public bool IsFavoriteMod { get; set; }
 
-    public string GetPresetFilePath()
-    {
-        return CustomModSupportPreset.GetPresetFilePath(this.Location);
-    }
+    public bool CanBeLaunchedViaNativeBatch() => File.Exists(
+        Path.Combine(this.Location, this.Launcher.LauncherProvider_NativeBatch));
 
-    public string GetModPresetLogoImageFilePath()
-    {
-        return Path.Combine(this.Location, CustomModSupportPreset.MOD_PRESET_FOLDERNAME, this.CurrentPreset.LogotypeImage);
-    }
+    public bool CanBeLaunchedViaNativeSetup() => File.Exists(
+        Path.Combine(this.Location, this.Launcher.LauncherProvider_NativeSetup));
 
-    public bool CanBeLaunchedViaNativeBatch()
-    {
-        return File.Exists(Path.Combine(this.Location, this.CurrentPreset.LauncherProvider_NativeBatch));
-    }
-
-    public bool CanBeLaunchedViaNativeSetup()
-    {
-        return File.Exists(Path.Combine(this.Location, this.CurrentPreset.LauncherProvider_NativeSetup));
-    }
-
-    public bool CanBeLaunchedViaM2TWEOP()
-    {
-        return File.Exists(Path.Combine(this.Location, this.CurrentPreset.LauncherProvider_M2TWEOP));
-    }
+    public bool CanBeLaunchedViaM2TWEOP() => File.Exists(
+        Path.Combine(this.Location, this.Launcher.LauncherProvider_M2TWEOP));
 
     private static string InitializeModArgRelativePath(string modFolderName, string modcenterFolderName)
     {
@@ -109,18 +88,4 @@ public class GameModificationInfo
 
         return fileBaseName + fileExtension;
     }
-
-#if DISABLE_LEGACY_CUSTOM_PRESET_FEATURE
-    private static CustomModSupportPreset InitializeModificationPreset(string modificationURI)
-    {
-        if (CustomModSupportPreset.Exists(modificationURI))
-        {
-            return CustomModSupportPreset.ReadExistingPreset(modificationURI);
-        }
-        else
-        {
-            return CustomModSupportPreset.CreatePresetByDefault(modificationURI);
-        }
-    }
-#endif
 }
