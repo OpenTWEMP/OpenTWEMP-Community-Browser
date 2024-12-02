@@ -4,6 +4,10 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
+#if EXPERIMENTAL_FEATURES
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 public class M2TWGameStartupView
@@ -24,3 +28,4 @@ public class M2TWGameStartupView
 
     public bool EnabledLogsHistorySaving { get; init; }
 }
+#endif
