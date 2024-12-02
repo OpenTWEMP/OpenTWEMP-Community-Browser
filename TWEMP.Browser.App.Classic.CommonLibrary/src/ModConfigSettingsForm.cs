@@ -4,7 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 #define DISABLED_CFG_OPTIONS
 #undef DISABLED_CFG_OPTIONS
@@ -14,13 +13,9 @@ namespace TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
-using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration;
-using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes.Enums;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
-using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend.SectionStateViews;
 
 public partial class ModConfigSettingsForm : Form
 {
@@ -275,8 +270,8 @@ public partial class ModConfigSettingsForm : Form
 
         this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
 
-        InitializeComponent();
-        InitializeConfigControls();
+        this.InitializeComponent();
+        this.InitializeConfigControls();
     }
 
     public ModConfigSettingsForm(
@@ -290,8 +285,8 @@ public partial class ModConfigSettingsForm : Form
 
         this.gameConfigStateView = M2TWGameConfigStateView.CreateByDefault(this.currentGameModificationInfo);
 
-        InitializeComponent();
-        InitializeConfigControls();
+        this.InitializeComponent();
+        this.InitializeConfigControls();
     }
 
     private static void InitializeComboBoxControl<T>(ComboBox control, (string Text, T Obj)[] items, int selectedIndex)
@@ -322,7 +317,7 @@ public partial class ModConfigSettingsForm : Form
 
     private void SaveConfigSettingsButton_Click(object sender, EventArgs e)
     {
-        M2TWGameConfigStateView gameConfigStateView = CreateGameConfigStateView();
+        M2TWGameConfigStateView gameConfigStateView = this.CreateGameConfigStateView();
         M2TWGameConfigurator gameConfigurator = new (this.currentGameModificationInfo, gameConfigStateView);
         BrowserKernel.CurrentConfigurator = gameConfigurator;
 
@@ -350,14 +345,14 @@ public partial class ModConfigSettingsForm : Form
 
     private void ExitConfigSettingsButton_Click(object sender, EventArgs e)
     {
-        Close();
+        this.Close();
     }
 
     private void ExportConfigSettingsButton_Click(object sender, EventArgs e)
     {
         const string exportFileName = "config.json";
 
-        M2TWGameConfigStateView gameConfigStateView = CreateGameConfigStateView();
+        M2TWGameConfigStateView gameConfigStateView = this.CreateGameConfigStateView();
         GameCfgSection[] cfgSettingSections = gameConfigStateView.RetrieveCurrentSettings();
 
         BrowserKernel.ExportConfigSettingsToFile(cfgSettingSections, exportFileName);
@@ -801,157 +796,4 @@ public partial class ModConfigSettingsForm : Form
         this.cfgMiscBypassToStrategySaveTextBox.Text = this.gameConfigStateView.HotseatSection!.BypassToStrategySave!;
 #endif
     }
-
-#if TESTING
-    private void TestConfigSettings()
-    {
-        // [GAME]
-
-        this.cfgGameUseQuickchatCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameUseQuickchat = new M2TW_Boolean(false),
-        this.cfgGameUnlimitedMenOnBattlefieldCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameUnlimitedMenOnBattlefield = new M2TW_Boolean(true),
-        this.cfgGameNoCampaignBattleTimeLimitCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameNoCampaignBattleTimeLimit = new M2TW_Boolean(true),
-        this.cfgGameMuteAdvisorCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameMuteAdvisor = new M2TW_Boolean(false),
-        this.cfgGameMoraleCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameMorale = new M2TW_Boolean(true),
-        this.cfgGameMicromanageAllSettlementsCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameMicromanageAllSettlements = new M2TW_Boolean(true),
-        this.cfgGameLabelSettlementsCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameLabelSettlements = new M2TW_Boolean(true),
-        this.cfgGameLabelCharactersCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameLabelCharacters = new M2TW_Boolean(false),
-        this.cfgGameGamespySavePasswrdCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameGamespySavePasswrd = new M2TW_Boolean(true),
-        this.cfgGameFirstTimePlayCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameFirstTimePlay = new M2TW_Boolean(false),
-        this.cfgGameFatigueCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameFatigue = new M2TW_Boolean(true),
-        this.cfgGameEventCutscenesCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameEventCutscenes = new M2TW_Boolean(true),
-        this.cfgGameEnglishCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameEnglish = new M2TW_Boolean(false),
-        this.cfgGameDisableEventsCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameDisableEvents = new M2TW_Boolean(false),
-        this.cfgGameDisableArrowMarkersCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameDisableArrowMarkers = new M2TW_Boolean(false),
-        this.cfgGameBlindAdvisorCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameBlindAdvisor = new M2TW_Boolean(false),
-        this.cfgGameAutoSaveCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameAutoSave = new M2TW_Boolean(true),
-        this.cfgGameAllUsersCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameAllUsers = new M2TW_Boolean(true),
-        this.cfgGameAdvisorVerbosityCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameAdvisorVerbosity = new M2TW_Boolean(false),
-        this.cfgGameAdvancedStatsAlwaysCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModGameplaySection.GameAdvancedStatsAlways = new M2TW_Boolean(false),
-        this.cfgGameUnitSizeComboBox/* ComboBox(); */ // this.gameConfigStateView.ModGameplaySection.GameUnitSize = new M2TW_UnitSize(M2TW_Size.Huge),
-        this.cfgGameChatMsgDurationNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.ModGameplaySection.GameChatMsgDuration = new M2TW_Integer(M2TW_Integer.ExtendedMaxValue),
-        this.cfgGameCampaignMapSpeedUpNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.ModGameplaySection.GameCampaignMapSpeedUp = new M2TW_Integer(1),
-        this.cfgGameCampaignMapGameSpeedNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.ModGameplaySection.GameCampaignMapGameSpeed = new M2TW_Integer(10),
-        this.cfgGamePrefFactionsPlayedTextBox/* TextBox(); */ // this.gameConfigStateView.ModGameplaySection.GamePrefFactionsPlayed = 4177855,
-        this.cfgGameTutorialPathTextBox/* TextBox(); */ // this.gameConfigStateView.ModGameplaySection.GameTutorialPath = "norman_prologue/battle_of_hastings",
-        this.cfgGameAiFactionsComboBox/* ComboBox(); */ // this.gameConfigStateView.ModGameplaySection.GameAiFactions = new M2TW_Boolean(M2TW_Deprecated_AI_Boolean.Follow),
-        this.cfgGameCampaignNumTimePlayTextBox/* TextBox(); */ // this.gameConfigStateView.ModGameplaySection.GameCampaignNumTimePlay = new M2TW_Integer(252),
-
-        // [AUDIO] GameAudioCfgSectionStateView
-
-        this.cfgAudioSpeechNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameAudioCfgSection.SpeechVolume = new M2TW_Integer(85),
-        this.cfgAudioSfxNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameAudioCfgSection.SoundEffectsVolume = new M2TW_Integer(80),
-        this.cfgAudioSoundCardProviderNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameAudioCfgSection.SpeechVolume = new M2TW_Integer(85),
-        this.cfgAudioMusicVolumeNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameAudioCfgSection.AudioMusicVolume = new M2TW_Integer(70),
-        this.cfgAudioMasterVolumeNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameAudioCfgSection.AudioMasterVolume = new M2TW_Integer(85),
-        this.cfgAudioSpeechEnableCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameAudioCfgSection.SpeechEnable = new M2TW_Boolean(true),
-        this.cfgAudioEnableCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameAudioCfgSection.AudioEnable = new M2TW_Boolean(true),
-        this.cfgAudioSubFactionAccentsEnableCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameAudioCfgSection.SubFactionAccents = new M2TW_Boolean(true),
-
-        // [CAMERA] GameCameraCfgSectionStateView
-
-        this.cfgControlsDefaultInBattleComboBox/* ComboBox(); */ // this.gameConfigStateView.GameCameraCfgSection.CameraDefaultInBattle = new M2TW_BattleCameraStyle(M2TW_BattleCamera.RTS),
-        this.cfgCameraRotateNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameCameraCfgSection.CameraRotate = new M2TW_Integer(30),
-        this.cfgCameraMoveNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameCameraCfgSection.CameraMove = new M2TW_Integer(70),
-        this.cfgCameraRestrictCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameCameraCfgSection.CameraRestrict = new M2TW_Boolean(false),
-
-        // [CONTROLS] GameControlsCfgSectionStateView
-
-        this.cfgControlsKeysetNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameControlsCfgSection.KeySet = new M2TW_QualityLevel(M2TW_KeySet.KeySet_0),
-        this.cfgControlsScrollMinZoomNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameControlsCfgSection.CampaignScrollMinZoom = Convert.ToByte(30),
-        this.cfgControlsScrollMaxZoomNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameControlsCfgSection.CampaignScrollMaxZoom = Convert.ToByte(30),
-
-        // [HOTSEAT] ModHotseatSectionStateView
-
-        this.cfgHotseatGameNameTextBox/* TextBox(); */ // this.gameConfigStateView.HotseatSection.HotseatGameName = "hotseat_gamename.sav",
-        this.cfgHotseatAdminPasswordTextBox/* TextBox(); */ // this.gameConfigStateView.HotseatSection.HotseatAdminPassword = string.Empty,
-        this.cfgHotseatPasswordsTextBox/* TextBox(); */ // this.gameConfigStateView.HotseatSection.HotseatPasswords = new M2TW_Boolean(false),
-        this.cfgHotseatValidateDiplomacyCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatValidateDiplomacy = new M2TW_Boolean(false),
-        this.cfgHotseatAllowValidationFailuresCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatAllowValidationFailures = new M2TW_Boolean(false),
-        this.cfgHotseatValidateDataCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatValidateData = new M2TW_Boolean(false),
-        this.cfgHotseatCloseAfterSaveCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatCloseAfterSave = new M2TW_Boolean(false),
-        this.cfgHotseatSaveConfigCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatSaveConfig = new M2TW_Boolean(true),
-        this.cfgHotseatAutosaveCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatAutoSave = new M2TW_Boolean(true),
-        this.cfgHotseatUpdateAiCameraCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatUpdateAiCamera = new M2TW_Boolean(true),
-        this.cfgHotseatSavePrefsCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatSavePrefs = new M2TW_Boolean(true),
-        this.cfgHotseatDisablePapalElectionsCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatDisablePapalElections = new M2TW_Boolean(true),
-        this.cfgHotseatDisableConsoleCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatDisableConsole = new M2TW_Boolean(false),
-        this.cfgHotseatTurnsCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatTurns = new M2TW_Boolean(false),
-        this.cfgHotseatScrollCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatScroll = new M2TW_Boolean(false),
-        this.cfgHotseatAutoresolveBattlesCheckBox/* CheckBox(); */ // this.gameConfigStateView.HotseatSection.HotseatAutoresolveBattles = new M2TW_Boolean(false),
-
-        // [NETWORK]
-
-        this.cfgNetworkUsePortTextBox/* TextBox(); */ // this.gameConfigStateView.HotseatSection.NetworkUsePort = Convert.ToUInt16(M2TW_IpAddress.DefaultPort),
-        this.cfgNetworkUseIpTextBox/* TextBox(); */ // this.gameConfigStateView.HotseatSection.NetworkUseIp = new M2TW_IpAddress(127, 0, 0, 1),
-
-        // [MISC]
-
-        this.cfgMiscBypassToStrategySaveTextBox/* TextBox(); */ // this.gameConfigStateView.BypassToStrategySave = "game_name.sav",
-        this.cfgMiscUnlockCampaignCheckBox/* CheckBox(); */ // this.gameConfigStateView.UnlockCampaign = new M2TW_Boolean(false),
-
-        // [IO] ModSettingsSectionStateView
-
-        this.cfgIOFileFirstCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModCoreSettingsSection.FileFirst = new M2TW_Boolean(true),
-        this.cfgFeaturesEditorCheckBox/* CheckBox(); */ // this.gameConfigStateView.ModCoreSettingsSection.Editor = new M2TW_Boolean(true),
-
-        // [UI] GameUICfgSectionStateView
-
-        this.cfgUiUnitCardsCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameUICfgSection.UiUnitCards = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
-        this.cfgUiShowTooltipsCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameUICfgSection.UiShowTooltips = new M2TW_Boolean(true),
-        this.cfgUiRadarCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameUICfgSection.UiRadar = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
-        this.cfgUiFullBattleHudCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameUICfgSection.UiFullBattleHud = new M2TW_Boolean(true),
-        this.cfgUiButtonsCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameUICfgSection.UiButtons = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
-        this.cfgUiSaCardsCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameUICfgSection.UiSaCards = new M2TW_Boolean(M2TW_Deprecated_UI_Boolean.Show),
-
-        // [VIDEO] GameVideoCfgSectionStateView
-
-        this.cfgVideoGammaNumericUpDown/* NumericUpDown(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoGamma = new M2TW_Integer(120),
-        this.cfgVideoWaterBuffersPerNodeComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoWaterBuffersPerNode = new M2TW_Integer(4),
-        this.cfgVideoUnitDetailComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoUnitDetail = new M2TW_QualityLevel(M2TW_Quality.Highest),
-        this.cfgVideoTextureFilteringComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoTextureFiltering = new M2TW_Integer(2),
-        this.cfgVideoTerrainQualityComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoTerrainQuality = new M2TW_QualityLevel(M2TW_Quality.High),
-        this.cfgVideoSpriteBuffersPerNodeComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoSpriteBuffersPerNode = new M2TW_Integer(4),
-        this.cfgVideoShaderComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoShader = new M2TW_QualityLevel(M2TW_ShaderLevel.ShaderVersion_v2),
-        this.cfgVideoModelBuffersPerNodeComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoModelBuffersPerNode = new M2TW_Integer(4),
-        this.cfgVideoGroundCoverBuffersPerNodeComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoGroundCoverBuffersPerNode = new M2TW_Integer(4),
-        this.cfgVideoGroundBuffersPerNodeComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoGroundBuffersPerNode = new M2TW_Integer(4),
-        this.cfgVideoGrassDistanceComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoGrassDistance = new M2TW_QualityLevel(M2TW_GrassDistance.Level_1),
-        this.cfgVideoEffectQualityComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoEffectQuality = new M2TW_QualityLevel(M2TW_Quality.Highest),
-        this.cfgVideoDepthShadowsResolutionComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoDepthShadowsResolution = new M2TW_Integer(3),
-        this.cfgVideoDepthShadowsComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoDepthShadows = new M2TW_Integer(2),
-        this.cfgVideoCampaignResolutionComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoCampaignResolution = new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768),
-        this.cfgVideoBuildingDetailComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoBuildingDetail = new M2TW_QualityLevel(M2TW_Quality.High),
-        this.cfgVideoBattleResolutionComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoBattleResolution = new M2TW_DisplayResolution(M2TW_DisplayResolution.Display_1024x768),
-        this.cfgVideoAntialiasingComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoAntialiasing = new M2TW_QualityLevel(M2TW_AntiAliasing.AntiAliasMode_x4),
-        this.cfgVideoAntiAliasModeComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoAntiAliasMode = new M2TW_QualityLevel(M2TW_AntiAliasMode.AntiAliasMode_x4),
-        this.cfgVideoAnisotropicLevelComboBox/* ComboBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoAnisotropicLevel = new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x16),
-        this.cfgVideoWindowedCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoWindowedMode = new M2TW_Boolean(false),
-        this.cfgVideoWidescreenCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoWidescreenMode = new M2TW_Boolean(true),
-        this.cfgVideoVsyncCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoVsync = new M2TW_Boolean(false),
-        this.cfgVideoVegetationCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoVegetation = new M2TW_Boolean(false),
-        this.cfgVideoSubtitlesCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoSubtitles = new M2TW_Boolean(false),
-        this.cfgVideoStencilShadowsCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoStencilShadows = new M2TW_Boolean(true),
-        this.cfgVideoSplashesCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoSplashes = new M2TW_Boolean(true),
-        this.cfgVideoSkipMipLevelsChecBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoSkipMipLevels = new M2TW_Boolean(false),
-        this.cfgVideoShowPackageLitterCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoShowPackageLitter = new M2TW_Boolean(true),
-        this.cfgVideoShowBannersCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoShowBanners = new M2TW_Boolean(false),
-        this.cfgVideoSabotageMoviesCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoSabotageMovies = new M2TW_Boolean(false),
-        this.cfgVideoReflectionCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoReflection = new M2TW_Boolean(true),
-        this.cfgVideoNoBackgroundFmvCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoNoBackgroundFmv = new M2TW_Boolean(true),
-        this.cfgVideoMoviesCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoMovies = new M2TW_Boolean(true),
-        this.cfgVideoInfiltrationMoviesCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoInfiltrationMovies = new M2TW_Boolean(false),
-        this.cfgVideoEventMoviesCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoEventMovies = new M2TW_Boolean(true),
-        this.cfgVideoBloomCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoBloom = new M2TW_Boolean(true),
-        this.cfgVideoAutodetectCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoAutodetect = new M2TW_Boolean(false),
-        this.cfgVideoAssassinationMoviesCheckBox/* CheckBox(); */ // this.gameConfigStateView.GameVideoCfgSection.VideoAssassinationMovies = new M2TW_Boolean(false),
-
-        // [LOG]
-
-        this.checkBoxLogHistory/* CheckBox(); */ // this.gameConfigStateView.ModDiagnosticSection // OVERRIDE!!!
-        this.radioButtonLogErrorAndTrace/* RadioButton(); */ // this.gameConfigStateView.ModDiagnosticSection.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error), // OVERRIDE!!!
-        this.radioButtonLogOnlyTrace/* RadioButton(); */ // this.gameConfigStateView.ModDiagnosticSection.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error), // OVERRIDE!!!
-        this.radioButtonLogOnlyError/* RadioButton(); */ // this.gameConfigStateView.ModDiagnosticSection.LogLevel = new M2TW_LoggingLevel(M2TW_LoggingMode.Error), // OVERRIDE!!!
-        this.cfgLogLocationTextBox/* TextBox(); */ // this.gameConfigStateView.ModDiagnosticSection.LogTo = mod.LogFileRelativePath,
-    }
-#endif
 }
