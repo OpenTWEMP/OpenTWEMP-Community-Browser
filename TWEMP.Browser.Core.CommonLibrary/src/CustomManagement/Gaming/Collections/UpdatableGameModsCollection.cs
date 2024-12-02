@@ -2,6 +2,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
+#if EXPERIMENTAL_FEATURES
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
@@ -121,3 +125,4 @@ public class UpdatableGameModsCollection
         return false;
     }
 }
+#endif

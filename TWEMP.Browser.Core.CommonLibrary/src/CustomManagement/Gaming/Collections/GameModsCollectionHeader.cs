@@ -2,6 +2,10 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
+#if EXPERIMENTAL_FEATURES
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 
 /// <summary>
@@ -30,3 +34,4 @@ public record GameModsCollectionHeader
     /// </summary>
     public string Name { get; set; }
 }
+#endif
