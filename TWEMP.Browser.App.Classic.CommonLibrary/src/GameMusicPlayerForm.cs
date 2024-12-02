@@ -4,6 +4,9 @@
 
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
@@ -66,16 +69,18 @@ public partial class GameMusicPlayerForm : Form
 
     private void MusicMuteVolumeButton_Click(object sender, EventArgs e)
     {
+#if EXPERIMENTAL_FEATURES
         BrowserKernel.MuteVolumeCurrentAudioPlayback();
-
+#endif
         this.musicVolumeTrackBar.Value = this.musicVolumeTrackBar.Minimum;
         this.musicVolumeLabel.Text = this.musicVolumeTrackBar.Minimum.ToString();
     }
 
     private void MusicChargeVolumeButton_Click(object sender, EventArgs e)
     {
+#if EXPERIMENTAL_FEATURES
         BrowserKernel.ChargeVolumeCurrentAudioPlayback();
-
+#endif
         this.musicVolumeTrackBar.Value = this.musicVolumeTrackBar.Maximum;
         this.musicVolumeLabel.Text = this.musicVolumeTrackBar.Maximum.ToString();
     }
@@ -83,9 +88,9 @@ public partial class GameMusicPlayerForm : Form
     private void MusicVolumeTrackBar_Scroll(object sender, EventArgs e)
     {
         int currentVolumeValue = this.musicVolumeTrackBar.Value;
-
+#if EXPERIMENTAL_FEATURES
         BrowserKernel.UpdateVolumeCurrentAudioPlayback(currentVolumeValue);
-
+#endif
         this.musicVolumeLabel.Text = currentVolumeValue.ToString();
     }
 

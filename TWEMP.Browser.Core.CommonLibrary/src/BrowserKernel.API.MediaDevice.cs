@@ -5,6 +5,9 @@
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // Partial elements should be documented
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 public static partial class BrowserKernel
@@ -39,6 +42,7 @@ public static partial class BrowserKernel
         MediaDeviceManagerInstance.MusicPlayerDevice.Stop();
     }
 
+#if EXPERIMENTAL_FEATURES
     public static void ChargeVolumeCurrentAudioPlayback()
     {
         MediaDeviceManagerInstance.MusicPlayerDevice.ChargeVolume();
@@ -53,4 +57,5 @@ public static partial class BrowserKernel
     {
         MediaDeviceManagerInstance.MusicPlayerDevice.UpdateVolume(volumeValue);
     }
+#endif
 }

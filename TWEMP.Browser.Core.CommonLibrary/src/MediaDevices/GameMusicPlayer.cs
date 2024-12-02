@@ -2,6 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.Core.CommonLibrary.MediaDevices;
 
 /// <summary>
@@ -105,6 +108,7 @@ public class GameMusicPlayer
         }
     }
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Updates the music playback volume value by a target volume value.
     /// </summary>
@@ -144,6 +148,7 @@ public class GameMusicPlayer
     {
         this.UpdateVolume(MusicPlayerVolume.MaxValue);
     }
+#endif
 
     private void LoadAudio(FileInfo audioFileInfo)
     {
