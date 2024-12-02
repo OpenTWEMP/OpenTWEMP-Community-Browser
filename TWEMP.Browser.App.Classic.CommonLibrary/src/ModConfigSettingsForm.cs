@@ -9,9 +9,6 @@
 #define DISABLED_CFG_OPTIONS
 #undef DISABLED_CFG_OPTIONS
 
-#define TESTING_IMPORT_FEATURE
-#undef TESTING_IMPORT_FEATURE
-
 #define SKIPPED_IMPLEMENTATION
 #undef SKIPPED_IMPLEMENTATION
 
@@ -43,7 +40,7 @@ public partial class ModConfigSettingsForm : Form
     private static readonly (string Text, M2TW_Boolean Obj)[] CfgGameAiFactionsItems;
     private static readonly (string Text, M2TW_Boolean Obj)[] CfgGameUiFactionsItems;
     private static readonly (string Text, M2TW_BattleCameraStyle Obj)[] CfgControlsDefaultInBattleItems;
-    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVControlsKeysetItems;
+    private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgControlsKeysetItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoUnitDetailItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoTerrainQualityItems;
     private static readonly (string Text, M2TW_QualityLevel Obj)[] CfgVideoShaderItems;
@@ -161,7 +158,7 @@ public partial class ModConfigSettingsForm : Form
             (M2TW_BattleCameraStyle.RTS_Camera, new M2TW_BattleCameraStyle(M2TW_BattleCamera.RTS)),
         ];
 
-        CfgVControlsKeysetItems =
+        CfgControlsKeysetItems =
         [
             (M2TW_QualityLevel.M2TW_KeySet_0, new M2TW_QualityLevel(M2TW_KeySet.KeySet_0)),
             (M2TW_QualityLevel.M2TW_KeySet_1, new M2TW_QualityLevel(M2TW_KeySet.KeySet_1)),
@@ -293,6 +290,20 @@ public partial class ModConfigSettingsForm : Form
         {
             control.Items.Add(item.Text);
         }
+    }
+
+    private static T GetPredefinedItemByIndex<T>((string Text, T Obj)[] items, int index)
+    {
+        T defaultItem = items[0].Obj;
+
+        if (items.Length < index)
+        {
+            return defaultItem;
+        }
+
+        T targetItem = items[index].Obj;
+
+        return (targetItem != null) ? targetItem : defaultItem;
     }
 
     private void SaveConfigSettingsButton_Click(object sender, EventArgs e)
@@ -464,12 +475,15 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.ModGameplaySection.GameCampaignMapSpeedUp = new M2TW_Integer(Convert.ToByte(this.cfgGameCampaignMapSpeedUpNumericUpDown.Text));
         gameConfigStateView.ModGameplaySection.GameCampaignMapGameSpeed = new M2TW_Integer(Convert.ToByte(this.cfgGameCampaignMapGameSpeedNumericUpDown.Text));
         gameConfigStateView.ModGameplaySection.GamePrefFactionsPlayed = Convert.ToInt32(this.cfgGamePrefFactionsPlayedTextBox.Text);
-        gameConfigStateView.ModGameplaySection.GameTutorialPath = this.cfgGameTutorialPathTextBox.Text; // "norman_prologue/battle_of_hastings",
+        gameConfigStateView.ModGameplaySection.GameTutorialPath = this.cfgGameTutorialPathTextBox.Text;
         gameConfigStateView.ModGameplaySection.GameCampaignNumTimePlay = new M2TW_Integer(Convert.ToByte(this.cfgGameCampaignNumTimePlayTextBox.Text));
+        gameConfigStateView.ModGameplaySection.GameChatMsgDuration = new M2TW_Integer(Convert.ToUInt16(this.cfgGameChatMsgDurationNumericUpDown.Value));
 
-        gameConfigStateView.ModGameplaySection.GameUnitSize = new M2TW_UnitSize(M2TW_Size.Huge); // REPLACE: this.cfgGameUnitSizeComboBox.Text;
-        gameConfigStateView.ModGameplaySection.GameChatMsgDuration = new M2TW_Integer(M2TW_Integer.ExtendedMaxValue); // REPLACE: this.cfgGameChatMsgDurationNumericUpDown.Text;
-        gameConfigStateView.ModGameplaySection.GameAiFactions = new M2TW_Boolean(M2TW_Deprecated_AI_Boolean.Follow); // REPLACE: this.cfgGameAiFactionsComboBox.Text;
+        gameConfigStateView.ModGameplaySection.GameUnitSize = GetPredefinedItemByIndex(
+            items: CfgGameUnitSizeItems, index: this.cfgGameUnitSizeComboBox.SelectedIndex);
+
+        gameConfigStateView.ModGameplaySection.GameAiFactions = GetPredefinedItemByIndex(
+            items: CfgGameAiFactionsItems, index: this.cfgGameAiFactionsComboBox.SelectedIndex);
 
         // [AUDIO] GameAudioCfgSectionStateView
         gameConfigStateView.GameAudioCfgSection!.SpeechVolume = new M2TW_Integer(Convert.ToByte(this.cfgAudioSpeechNumericUpDown.Text));
@@ -482,13 +496,17 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.GameAudioCfgSection.SubFactionAccents = new M2TW_Boolean(this.cfgAudioSubFactionAccentsEnableCheckBox.Checked);
 
         // [CAMERA] GameCameraCfgSectionStateView
-        gameConfigStateView.GameCameraCfgSection!.CameraDefaultInBattle = new M2TW_BattleCameraStyle(M2TW_BattleCamera.RTS); // REPLACE: this.cfgControlsDefaultInBattleComboBox.Text;
+        gameConfigStateView.GameCameraCfgSection!.CameraDefaultInBattle = GetPredefinedItemByIndex(
+            items: CfgControlsDefaultInBattleItems, index: this.cfgControlsDefaultInBattleComboBox.SelectedIndex);
+
         gameConfigStateView.GameCameraCfgSection.CameraRotate = new M2TW_Integer(Convert.ToByte(this.cfgCameraRotateNumericUpDown.Text));
         gameConfigStateView.GameCameraCfgSection.CameraMove = new M2TW_Integer(Convert.ToByte(this.cfgCameraMoveNumericUpDown.Text));
         gameConfigStateView.GameCameraCfgSection.CameraRestrict = new M2TW_Boolean(this.cfgCameraRestrictCheckBox.Checked);
 
         // [CONTROLS] GameControlsCfgSectionStateView
-        gameConfigStateView.GameControlsCfgSection!.KeySet = new M2TW_QualityLevel(M2TW_KeySet.KeySet_0); // REPLACE: this.cfgControlsKeysetNumericUpDown.Text;
+        gameConfigStateView.GameControlsCfgSection!.KeySet = GetPredefinedItemByIndex(
+            items: CfgControlsKeysetItems, index: this.cfgControlsKeysetComboBox.SelectedIndex);
+
         gameConfigStateView.GameControlsCfgSection.CampaignScrollMinZoom = Convert.ToByte(this.cfgControlsScrollMinZoomNumericUpDown.Text);
         gameConfigStateView.GameControlsCfgSection.CampaignScrollMaxZoom = Convert.ToByte(this.cfgControlsScrollMaxZoomNumericUpDown.Text);
 
@@ -525,7 +543,7 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.ModCoreSettingsSection.Editor = new M2TW_Boolean(this.cfgFeaturesEditorCheckBox.Checked);
 
         // [LOG]
-        gameConfigStateView.ModDiagnosticSection!.LogTo = this.cfgLogLocationTextBox.Text; // mod.LogFileRelativePath,
+        gameConfigStateView.ModDiagnosticSection!.LogTo = this.cfgLogLocationTextBox.Text;
 
         // [UI] GameUICfgSectionStateView
         gameConfigStateView.GameUICfgSection!.UiUnitCards = new M2TW_Boolean(this.cfgUiUnitCardsCheckBox.Checked);
@@ -537,14 +555,31 @@ public partial class ModConfigSettingsForm : Form
 
         // [VIDEO] GameVideoCfgSectionStateView
         gameConfigStateView.GameVideoCfgSection!.VideoGamma = new M2TW_Integer(Convert.ToByte(this.cfgVideoGammaNumericUpDown.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoWaterBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoWaterBuffersPerNodeComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoTextureFiltering = new M2TW_Integer(Convert.ToByte(this.cfgVideoTextureFilteringComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoSpriteBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoSpriteBuffersPerNodeComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoModelBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoModelBuffersPerNodeComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoGroundCoverBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoGroundCoverBuffersPerNodeComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoGroundBuffersPerNode = new M2TW_Integer(Convert.ToByte(this.cfgVideoGroundBuffersPerNodeComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoDepthShadowsResolution = new M2TW_Integer(Convert.ToByte(this.cfgVideoDepthShadowsResolutionComboBox.Text));
-        gameConfigStateView.GameVideoCfgSection.VideoDepthShadows = new M2TW_Integer(Convert.ToByte(this.cfgVideoDepthShadowsComboBox.Text));
+
+        gameConfigStateView.GameVideoCfgSection.VideoWaterBuffersPerNode = new M2TW_Integer(GetPredefinedItemByIndex(
+            items: CfgVideoWaterBuffersPerNodeItems, index: this.cfgVideoWaterBuffersPerNodeComboBox.SelectedIndex));
+
+        gameConfigStateView.GameVideoCfgSection.VideoTextureFiltering = new M2TW_Integer(GetPredefinedItemByIndex(
+            items: CfgVideoTextureFilteringItems, index: this.cfgVideoTextureFilteringComboBox.SelectedIndex));
+
+        gameConfigStateView.GameVideoCfgSection.VideoSpriteBuffersPerNode = new M2TW_Integer(GetPredefinedItemByIndex(
+            items: CfgVideoSpriteBuffersPerNodeItems, index: this.cfgVideoSpriteBuffersPerNodeComboBox.SelectedIndex));
+
+        gameConfigStateView.GameVideoCfgSection.VideoModelBuffersPerNode = new M2TW_Integer(GetPredefinedItemByIndex(
+            items: CfgVideoModelBuffersPerNodeItems, index: this.cfgVideoModelBuffersPerNodeComboBox.SelectedIndex));
+
+        gameConfigStateView.GameVideoCfgSection.VideoGroundCoverBuffersPerNode = new M2TW_Integer(GetPredefinedItemByIndex(
+            items: CfgVideoGroundCoverBuffersPerNodeItems, index: this.cfgVideoGroundCoverBuffersPerNodeComboBox.SelectedIndex));
+
+        gameConfigStateView.GameVideoCfgSection.VideoGroundBuffersPerNode = new M2TW_Integer(GetPredefinedItemByIndex(
+            items: CfgVideoGroundBuffersPerNodeItems, index: this.cfgVideoGroundBuffersPerNodeComboBox.SelectedIndex));
+
+        gameConfigStateView.GameVideoCfgSection.VideoDepthShadowsResolution = new M2TW_Integer(GetPredefinedItemByIndex(
+            items: CfgVideoDepthShadowsResolutionItems, index: this.cfgVideoDepthShadowsResolutionComboBox.SelectedIndex));
+
+        gameConfigStateView.GameVideoCfgSection.VideoDepthShadows = new M2TW_Integer(GetPredefinedItemByIndex(
+            items: CfgVideoDepthShadowsItems, index: this.cfgVideoDepthShadowsComboBox.SelectedIndex));
+
         gameConfigStateView.GameVideoCfgSection.VideoWindowedMode = new M2TW_Boolean(this.cfgVideoWindowedCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoWidescreenMode = new M2TW_Boolean(this.cfgVideoWidescreenCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoVsync = new M2TW_Boolean(this.cfgVideoVsyncCheckBox.Checked);
@@ -565,27 +600,41 @@ public partial class ModConfigSettingsForm : Form
         gameConfigStateView.GameVideoCfgSection.VideoAutodetect = new M2TW_Boolean(this.cfgVideoAutodetectCheckBox.Checked);
         gameConfigStateView.GameVideoCfgSection.VideoAssassinationMovies = new M2TW_Boolean(this.cfgVideoAssassinationMoviesCheckBox.Checked);
 
-        gameConfigStateView.GameVideoCfgSection.VideoCampaignResolution = new M2TW_DisplayResolution(this.cfgVideoCampaignResolutionComboBox.Text);
-        gameConfigStateView.GameVideoCfgSection.VideoBattleResolution = new M2TW_DisplayResolution(this.cfgVideoBattleResolutionComboBox.Text);
-        gameConfigStateView.GameVideoCfgSection.VideoUnitDetail = new M2TW_QualityLevel(M2TW_Quality.Highest); // REPLACE: this.cfgVideoUnitDetailComboBox.Text
-        gameConfigStateView.GameVideoCfgSection.VideoTerrainQuality = new M2TW_QualityLevel(M2TW_Quality.High); // REPLACE: this.cfgVideoTerrainQualityComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoShader = new M2TW_QualityLevel(M2TW_ShaderLevel.ShaderVersion_v2); // REPLACE: this.cfgVideoShaderComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoGrassDistance = new M2TW_QualityLevel(M2TW_GrassDistance.Level_1); // REPLACE: this.cfgVideoGrassDistanceComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoEffectQuality = new M2TW_QualityLevel(M2TW_Quality.Highest); // REPLACE: this.cfgVideoEffectQualityComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoBuildingDetail = new M2TW_QualityLevel(M2TW_Quality.High); // REPLACE: this.cfgVideoBuildingDetailComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoAntialiasing = new M2TW_QualityLevel(M2TW_AntiAliasing.AntiAliasMode_x4); // REPLACE: this.cfgVideoAntialiasingComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoAntiAliasMode = new M2TW_QualityLevel(M2TW_AntiAliasMode.AntiAliasMode_x4); // REPLACE: this.cfgVideoAntiAliasModeComboBox.Text;
-        gameConfigStateView.GameVideoCfgSection.VideoAnisotropicLevel = new M2TW_QualityLevel(M2TW_AnisotropicFilteringLevel.AF_x16); // REPLACE: this.cfgVideoAnisotropicLevelComboBox.Text;
+        gameConfigStateView.GameVideoCfgSection.VideoCampaignResolution = GetPredefinedItemByIndex(
+            items: CfgVideoDisplayResolutionItems, index: this.cfgVideoCampaignResolutionComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoBattleResolution = GetPredefinedItemByIndex(
+            items: CfgVideoDisplayResolutionItems, index: this.cfgVideoBattleResolutionComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoUnitDetail = GetPredefinedItemByIndex(
+            items: CfgVideoUnitDetailItems, index: this.cfgVideoUnitDetailComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoTerrainQuality = GetPredefinedItemByIndex(
+            items: CfgVideoTerrainQualityItems, index: this.cfgVideoTerrainQualityComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoShader = GetPredefinedItemByIndex(
+            items: CfgVideoShaderItems, index: this.cfgVideoShaderComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoGrassDistance = GetPredefinedItemByIndex(
+            items: CfgVideoGrassDistanceItems, index: this.cfgVideoGrassDistanceComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoEffectQuality = GetPredefinedItemByIndex(
+            items: CfgVideoEffectQualityItems, index: this.cfgVideoEffectQualityComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoBuildingDetail = GetPredefinedItemByIndex(
+            items: CfgVideoBuildingDetailItems, index: this.cfgVideoBuildingDetailComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoAntialiasing = GetPredefinedItemByIndex(
+            items: CfgVideoAntialiasingItems, index: this.cfgVideoAntialiasingComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoAntiAliasMode = GetPredefinedItemByIndex(
+            items: CfgVideoAntiAliasModeItems, index: this.cfgVideoAntiAliasModeComboBox.SelectedIndex);
+
+        gameConfigStateView.GameVideoCfgSection.VideoAnisotropicLevel = GetPredefinedItemByIndex(
+            items: CfgVideoAnisotropicLevelItems, index: this.cfgVideoAnisotropicLevelComboBox.SelectedIndex);
 
         return gameConfigStateView;
     }
-
-#if TESTING_IMPORT_FEATURE
-    private void InitializeConfigControls(GameCfgSection[] gameCfgSections)
-    {
-        // TODO: Implement initialization of UI controls via the 'gameCfgSections' array.
-    }
-#endif
 
     private void InitializeConfigControls()
     {
