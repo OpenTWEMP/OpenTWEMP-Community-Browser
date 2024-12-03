@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 
 /// <summary>
 /// Represents an object of a custom collection of game modifications.

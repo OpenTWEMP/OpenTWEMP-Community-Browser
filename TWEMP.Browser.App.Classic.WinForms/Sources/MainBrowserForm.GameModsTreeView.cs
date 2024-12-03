@@ -14,6 +14,7 @@ namespace TWEMP.Browser.App.Classic;
 using TWEMP.Browser.App.Classic.WinForms.Properties;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 

@@ -6,6 +6,8 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
+
 public interface IUpdatableBrowser
 {
     public abstract bool Enabled { get; set; }
