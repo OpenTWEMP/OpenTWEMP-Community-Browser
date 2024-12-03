@@ -2,6 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
@@ -126,6 +129,7 @@ public class UpdatableGameModificationView
         return gameModificationView;
     }
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Creates a new instance of the <see cref="UpdatableGameModificationView"/> record
     /// using an object of <see cref="CustomizableModPreset"/> class.
@@ -140,6 +144,7 @@ public class UpdatableGameModificationView
         gameModificationView.SelectCustomizableModPreset();
         return gameModificationView;
     }
+#endif
 
     /// <summary>
     /// Creates a new instance of the <see cref="UpdatableGameModificationView"/> record by default preset settings.
@@ -254,6 +259,7 @@ public class UpdatableGameModificationView
         return new FileInfo(presetBackgroundSoundTrackFilePath);
     }
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Selects the current preset of the <see cref="RedistributableModPreset"/> type
     /// as the active mod support preset for this game modification.
@@ -263,7 +269,9 @@ public class UpdatableGameModificationView
         this.ActivePreset = this.redistributableModPreset.Data;
         this.UseCustomizablePreset = false;
     }
+#endif
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Selects the current preset of the <see cref="RedistributableModPreset"/> type
     /// as the active mod support preset for this game modification.
@@ -275,6 +283,7 @@ public class UpdatableGameModificationView
         this.ActivePreset = preset.Data;
         this.UseCustomizablePreset = false;
     }
+#endif
 
     /// <summary>
     /// Selects the current preset of the <see cref="CustomizableModPreset"/> type
@@ -286,6 +295,7 @@ public class UpdatableGameModificationView
         this.UseCustomizablePreset = true;
     }
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Resets both <see cref="CustomizableModPreset"/> and <see cref="RedistributableModPreset"/> presets
     /// to its default settings for this game modification.
@@ -295,6 +305,7 @@ public class UpdatableGameModificationView
         this.customizableModPreset = CustomizableModPreset.CreateDefaultTemplate(this.CurrentInfo.Location);
         this.redistributableModPreset = RedistributablePresetByDefault;
     }
+#endif
 
     private static CustomizableModPreset GetCustomizableModPreset(GameModificationInfo info)
     {

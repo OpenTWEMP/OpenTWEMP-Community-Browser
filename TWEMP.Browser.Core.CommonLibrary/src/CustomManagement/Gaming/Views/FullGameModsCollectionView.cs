@@ -2,6 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
@@ -53,6 +56,7 @@ public class FullGameModsCollectionView
         return null;
     }
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Selects an instance of the <see cref="UpdatableGameModificationView"/> class
     /// by a target identifier entity.
@@ -71,7 +75,9 @@ public class FullGameModsCollectionView
 
         return null;
     }
+#endif
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Selects an instance of the <see cref="UpdatableGameModificationView"/> class
     /// by a target identifier entity.
@@ -90,7 +96,9 @@ public class FullGameModsCollectionView
 
         return null;
     }
+#endif
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Selects an instance of the <see cref="UpdatableGameModificationView"/> class
     /// by a target identifier entity.
@@ -109,7 +117,9 @@ public class FullGameModsCollectionView
 
         return null;
     }
+#endif
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Sets the current preset of the <see cref="CustomizableModPreset"/> type
     /// as the active mod support preset for all game modifications.
@@ -121,7 +131,9 @@ public class FullGameModsCollectionView
             gameModificationView.SelectCustomizableModPreset();
         }
     }
+#endif
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Sets the current preset of the <see cref="RedistributableModPreset"/> type
     /// as the active mod support preset for all game modifications.
@@ -133,7 +145,9 @@ public class FullGameModsCollectionView
             gameModificationView.SelectRedistributableModPreset();
         }
     }
+#endif
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Resets both <see cref="CustomizableModPreset"/> and <see cref="RedistributableModPreset"/> presets
     /// to its default settings for all game modifications.
@@ -145,6 +159,7 @@ public class FullGameModsCollectionView
             gameModificationView.ResetAllModPresetsToDefaultSettings();
         }
     }
+#endif
 
     /// <summary>
     /// Gets the current game collection data as the array of <see cref="ModPresetSettingView"/> objects.
