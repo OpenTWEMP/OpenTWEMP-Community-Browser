@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>TWEMP.Browser.App.Utilities_GUI.M2TW_Addons_Setup</RootNamespace>
+    <Nullable>disable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework.WinForms\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework.WinForms.csproj" />
+    <ProjectReference Include="..\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
