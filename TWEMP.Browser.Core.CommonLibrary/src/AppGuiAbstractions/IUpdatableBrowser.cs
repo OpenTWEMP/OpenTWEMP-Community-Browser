@@ -7,6 +7,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 
 public interface IUpdatableBrowser
 {

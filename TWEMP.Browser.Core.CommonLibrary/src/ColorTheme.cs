@@ -9,6 +9,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using System.Drawing;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 
 public readonly struct ColorTheme
 {

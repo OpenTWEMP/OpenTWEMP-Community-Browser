@@ -7,6 +7,8 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
+
 public static partial class BrowserKernel
 {
     public static GuiStyle CurrentGUIStyle

@@ -4,7 +4,6 @@
 
 namespace TWEMP.Browser.QA.UnitTesting.CoreFeaturesTests.CustomManagement.GUI;
 
-using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 
 /// <summary>
