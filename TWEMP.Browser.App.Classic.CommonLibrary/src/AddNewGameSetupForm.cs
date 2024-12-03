@@ -9,6 +9,7 @@
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 

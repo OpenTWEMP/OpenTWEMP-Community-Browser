@@ -4,6 +4,8 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
+
 /// <summary>
 /// Defines a view of a game setup which should be used by 
 /// the configuration file of game installation settings.
