@@ -7,6 +7,7 @@
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 
 using System.Text;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 
 internal static class GameSetupConfFileBuilder
 {

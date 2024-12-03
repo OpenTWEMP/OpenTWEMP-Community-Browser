@@ -4,11 +4,16 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
 
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
+
+using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
+#if EXPERIMENTAL_FEATURES
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+#endif
 
 public class GameSetupInfo
 {
@@ -55,6 +60,7 @@ public class GameSetupInfo
         return gameSetup;
     }
 
+#if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Creates an instance of the <see cref="GameSetupInfo"/> class.
     /// </summary>
@@ -70,6 +76,7 @@ public class GameSetupInfo
         InitializeGameSetupCache(gameSetup);
         return gameSetup;
     }
+#endif
 
     public List<GameModificationInfo> GetInstalledMods()
     {
