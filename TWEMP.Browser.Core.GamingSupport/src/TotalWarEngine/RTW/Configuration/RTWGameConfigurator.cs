@@ -4,7 +4,7 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.RTW.Configuration;
 
-using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 /// <summary>

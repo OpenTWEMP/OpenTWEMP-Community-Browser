@@ -6,7 +6,7 @@
 
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Automation;
 
-using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.Messaging;
 
 public static class GameConfigRoutines

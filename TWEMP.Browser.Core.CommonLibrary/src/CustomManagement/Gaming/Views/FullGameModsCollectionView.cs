@@ -7,7 +7,10 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
+#if EXPERIMENTAL_FEATURES
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
+#endif
 
 /// <summary>
 /// Defines a full collection entity as a shared view which is intended to display all game modifications via UI.

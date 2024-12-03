@@ -4,8 +4,8 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 /// <summary>
 /// Represents an abstract entity for a game configuration profile.

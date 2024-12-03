@@ -4,9 +4,8 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
 public class GameModificationInfo
