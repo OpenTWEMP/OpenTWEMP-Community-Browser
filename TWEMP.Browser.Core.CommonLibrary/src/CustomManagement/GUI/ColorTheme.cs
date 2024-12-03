@@ -3,13 +3,11 @@
 // </copyright>
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
-#pragma warning disable SA1602 // EnumerationItemsMustBeDocumented
 #pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
-namespace TWEMP.Browser.Core.CommonLibrary;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 
 using System.Drawing;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 
 public readonly struct ColorTheme
 {
