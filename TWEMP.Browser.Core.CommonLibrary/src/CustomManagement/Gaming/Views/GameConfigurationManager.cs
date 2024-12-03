@@ -414,13 +414,13 @@ public class GameConfigurationManager
 
         foreach (GameConfigOptionView optionView in gameConfigOptionViews)
         {
-            if (configSectionNames.Contains(optionView.ConfigSection))
+            if (configSectionNames.Contains(optionView.ConfigSection!))
             {
                 continue;
             }
             else
             {
-                configSectionNames.Add(optionView.ConfigSection);
+                configSectionNames.Add(optionView.ConfigSection!);
             }
         }
 
@@ -433,7 +433,7 @@ public class GameConfigurationManager
 
         foreach (GameConfigOptionView optionView in gameConfigOptionViews)
         {
-            GameCfgOption gameConfigOption = new (optionView.CfgOptionName, optionView.CfgOptionValue, optionView.ConfigSection);
+            GameCfgOption gameConfigOption = new (optionView.CfgOptionName!, optionView.CfgOptionValue!, optionView.ConfigSection!);
             gameConfigOptions.Add(gameConfigOption);
         }
 

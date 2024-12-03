@@ -4,7 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 #define DISABLE_LEGACY_GAMEMOD_VISUALIZATION
 #undef DISABLE_LEGACY_GAMEMOD_VISUALIZATION
@@ -24,23 +23,23 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 {
     public void UpdateModificationsTreeView()
     {
-        treeViewGameMods.Enabled = false;
+        this.treeViewGameMods.Enabled = false;
 
         if (BrowserKernel.SyncUserDataForAllGameMods())
         {
-            UpdateAllModificationsInTreeView();
-            UpdateCustomCollectionsInTreeView();
-            UpdateFavoriteCollectionInTreeView();
+            this.UpdateAllModificationsInTreeView();
+            this.UpdateCustomCollectionsInTreeView();
+            this.UpdateFavoriteCollectionInTreeView();
 
-            DisableModUIControls();
+            this.DisableModUIControls();
         }
 
-        treeViewGameMods.Enabled = true;
+        this.treeViewGameMods.Enabled = true;
     }
 
     private void UpdateAllModificationsInTreeView()
     {
-        TreeNode allModsNode = treeViewGameMods.Nodes[2];
+        TreeNode allModsNode = this.treeViewGameMods.Nodes[2];
         allModsNode.Nodes.Clear();
 
         List<GameSetupInfo> gameInstallations = BrowserKernel.GameInstallations;
@@ -58,7 +57,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                 List<GameModificationInfo> mods = modcenter.InstalledModifications;
                 foreach (GameModificationInfo mod in mods)
                 {
-                    TreeNode modNode = CreateCollectionChildNode(mod.ShortName);
+                    TreeNode modNode = this.CreateCollectionChildNode(mod.ShortName);
                     modcenterNode.Nodes.Add(modNode);
                 }
             }
@@ -67,31 +66,31 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 
     private void UpdateFavoriteCollectionInTreeView()
     {
-        TreeNode favoriteCollectionNode = treeViewGameMods.Nodes[0];
+        TreeNode favoriteCollectionNode = this.treeViewGameMods.Nodes[0];
         favoriteCollectionNode.Nodes.Clear();
-        CreateFavoriteCollectionChildNodes(BrowserKernel.FavoriteModsCollection, favoriteCollectionNode);
+        this.CreateFavoriteCollectionChildNodes(BrowserKernel.FavoriteModsCollection, favoriteCollectionNode);
     }
 
     private void CreateFavoriteCollectionChildNodes(CustomModsCollection favoriteCollection, TreeNode favoriteCollectionRootNode)
     {
         foreach (KeyValuePair<string, string> modPair in favoriteCollection.Modifications)
         {
-            var modNode = CreateCollectionChildNode(modPair.Value);
+            var modNode = this.CreateCollectionChildNode(modPair.Value);
             favoriteCollectionRootNode.Nodes.Add(modNode);
         }
     }
 
     private void TreeViewGameMods_AfterSelect(object sender, TreeViewEventArgs e)
     {
-        if (IsNotModificationNode(e.Node!))
+        if (this.IsNotModificationNode(e.Node!))
         {
-            ChangeSelectedNodeView(e.Node!);
-            DisableModUIControls();
+            this.ChangeSelectedNodeView(e.Node!);
+            this.DisableModUIControls();
             return;
         }
         else
         {
-            if (IsNodeOfGameModView(e.Node!))
+            if (this.IsNodeOfGameModView(e.Node!))
             {
                 UpdatableGameModificationView gameModView = this.SelectGameModViewByTreeNode(e.Node!);
 
@@ -177,7 +176,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                 }
 #endif
 
-                EnableModUIControls();
+                this.EnableModUIControls();
                 return;
             }
         }
@@ -186,25 +185,25 @@ internal partial class MainBrowserForm : IUpdatableBrowser
     private bool IsNotModificationNode(TreeNode node)
     {
         // Is 'node' is selected on the Collection Level ?
-        if (IsRootNodeOfTreeView(node))
+        if (this.IsRootNodeOfTreeView(node))
         {
             return true;
         }
 
         // Is 'node' is selected on the Custom Collection Folders Level ?
-        if (IsCustomCollectionFolderNode(node))
+        if (this.IsCustomCollectionFolderNode(node))
         {
             return true;
         }
 
         // Is 'node' is selected on the GameSetup Node Level ?
-        if (IsGameSetupNode(node))
+        if (this.IsGameSetupNode(node))
         {
             return true;
         }
 
         // Is 'node' is selected on the ModCentet Node Level ?
-        if (IsModCenterNode(node))
+        if (this.IsModCenterNode(node))
         {
             return true;
         }
@@ -234,17 +233,17 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 
     private bool IsNodeOfGameModView(TreeNode node)
     {
-        if (IsNodeOfFavoriteCollection(node))
+        if (this.IsNodeOfFavoriteCollection(node))
         {
             return true;
         }
 
-        if (IsNodeOfModificationFromCustomCollection(node))
+        if (this.IsNodeOfModificationFromCustomCollection(node))
         {
             return true;
         }
 
-        if (IsNodeOfModificationFromAllModsCollection(node))
+        if (this.IsNodeOfModificationFromAllModsCollection(node))
         {
             return true;
         }
@@ -358,38 +357,38 @@ internal partial class MainBrowserForm : IUpdatableBrowser
     {
         if (gameModView.CurrentInfo.CanBeLaunchedViaNativeBatch())
         {
-            radioButtonLauncherProvider_BatchScript.Enabled = true;
+            this.radioButtonLauncherProvider_BatchScript.Enabled = true;
             ColorTheme currentColorTheme = BrowserKernel.SelectCurrentColorTheme();
-            radioButtonLauncherProvider_BatchScript.ForeColor = currentColorTheme.CommonControlsForeColor;
+            this.radioButtonLauncherProvider_BatchScript.ForeColor = currentColorTheme.CommonControlsForeColor;
         }
         else
         {
-            radioButtonLauncherProvider_BatchScript.Enabled = false;
-            radioButtonLauncherProvider_BatchScript.ForeColor = Color.DarkRed;
+            this.radioButtonLauncherProvider_BatchScript.Enabled = false;
+            this.radioButtonLauncherProvider_BatchScript.ForeColor = Color.DarkRed;
         }
 
         if (gameModView.CurrentInfo.CanBeLaunchedViaNativeSetup())
         {
-            radioButtonLauncherProvider_NativeSetup.Enabled = true;
+            this.radioButtonLauncherProvider_NativeSetup.Enabled = true;
             ColorTheme currentColorTheme = BrowserKernel.SelectCurrentColorTheme();
-            radioButtonLauncherProvider_NativeSetup.ForeColor = currentColorTheme.CommonControlsForeColor;
+            this.radioButtonLauncherProvider_NativeSetup.ForeColor = currentColorTheme.CommonControlsForeColor;
         }
         else
         {
-            radioButtonLauncherProvider_NativeSetup.Enabled = false;
-            radioButtonLauncherProvider_NativeSetup.ForeColor = Color.DarkRed;
+            this.radioButtonLauncherProvider_NativeSetup.Enabled = false;
+            this.radioButtonLauncherProvider_NativeSetup.ForeColor = Color.DarkRed;
         }
 
         if (gameModView.CurrentInfo.CanBeLaunchedViaM2TWEOP())
         {
-            radioButtonLauncherProvider_M2TWEOP.Enabled = true;
+            this.radioButtonLauncherProvider_M2TWEOP.Enabled = true;
             ColorTheme currentColorTheme = BrowserKernel.SelectCurrentColorTheme();
-            radioButtonLauncherProvider_M2TWEOP.ForeColor = currentColorTheme.CommonControlsForeColor;
+            this.radioButtonLauncherProvider_M2TWEOP.ForeColor = currentColorTheme.CommonControlsForeColor;
         }
         else
         {
-            radioButtonLauncherProvider_M2TWEOP.Enabled = false;
-            radioButtonLauncherProvider_M2TWEOP.ForeColor = Color.DarkRed;
+            this.radioButtonLauncherProvider_M2TWEOP.Enabled = false;
+            this.radioButtonLauncherProvider_M2TWEOP.ForeColor = Color.DarkRed;
         }
     }
 

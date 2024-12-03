@@ -4,7 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
@@ -19,26 +18,26 @@ public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
 
     public AddNewGameSetupForm(GameSetupConfigForm callingForm)
     {
-        InitializeComponent();
+        this.InitializeComponent();
 
-        SetupCurrentLocalizationForGUIControls();
+        this.SetupCurrentLocalizationForGUIControls();
 
-        currentCallingForm = callingForm;
+        this.currentCallingForm = callingForm;
     }
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        Text = GetTextInCurrentLocalization(Name, Name);
-        gameSetupGroupBox.Text = GetTextInCurrentLocalization(Name, gameSetupGroupBox.Name);
-        gameSetupNameLabel.Text = GetTextInCurrentLocalization(Name, gameSetupNameLabel.Name);
-        setupNameResetButton.Text = GetTextInCurrentLocalization(Name, setupNameResetButton.Name);
-        gameExecutablePathLabel.Text = GetTextInCurrentLocalization(Name, gameExecutablePathLabel.Name);
-        gameExecutableSelectPathButton.Text = GetTextInCurrentLocalization(Name, gameExecutableSelectPathButton.Name);
-        modcentersGroupBox.Text = GetTextInCurrentLocalization(Name, modcentersGroupBox.Name);
-        modcenterAppendButton.Text = GetTextInCurrentLocalization(Name, modcenterAppendButton.Name);
-        modcenterRemoveButton.Text = GetTextInCurrentLocalization(Name, modcenterRemoveButton.Name);
-        saveButton.Text = GetTextInCurrentLocalization(Name, saveButton.Name);
-        cancelButton.Text = GetTextInCurrentLocalization(Name, cancelButton.Name);
+        this.Text = GetTextInCurrentLocalization(this.Name, this.Name);
+        this.gameSetupGroupBox.Text = GetTextInCurrentLocalization(this.Name, this.gameSetupGroupBox.Name);
+        this.gameSetupNameLabel.Text = GetTextInCurrentLocalization(this.Name, this.gameSetupNameLabel.Name);
+        this.setupNameResetButton.Text = GetTextInCurrentLocalization(this.Name, this.setupNameResetButton.Name);
+        this.gameExecutablePathLabel.Text = GetTextInCurrentLocalization(this.Name, this.gameExecutablePathLabel.Name);
+        this.gameExecutableSelectPathButton.Text = GetTextInCurrentLocalization(this.Name, this.gameExecutableSelectPathButton.Name);
+        this.modcentersGroupBox.Text = GetTextInCurrentLocalization(this.Name, this.modcentersGroupBox.Name);
+        this.modcenterAppendButton.Text = GetTextInCurrentLocalization(this.Name, this.modcenterAppendButton.Name);
+        this.modcenterRemoveButton.Text = GetTextInCurrentLocalization(this.Name, this.modcenterRemoveButton.Name);
+        this.saveButton.Text = GetTextInCurrentLocalization(this.Name, this.saveButton.Name);
+        this.cancelButton.Text = GetTextInCurrentLocalization(this.Name, this.cancelButton.Name);
     }
 
     private static bool CanSaveNewGameSetup(string setupName, string executable, List<string> modcenters)
@@ -89,52 +88,52 @@ public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
 
     private void InitializeViewOnlyMode()
     {
-        Text = "[VIEW ONLY MODE] View Selected Game Setup";
-        gameSetupNameLabel.Text = "Current Game Setup Name";
-        gameExecutablePathLabel.Text = "Current Game Executable";
-        modcentersGroupBox.Text = "Attached ModCenters";
+        this.Text = "[VIEW ONLY MODE] View Selected Game Setup";
+        this.gameSetupNameLabel.Text = "Current Game Setup Name";
+        this.gameExecutablePathLabel.Text = "Current Game Executable";
+        this.modcentersGroupBox.Text = "Attached ModCenters";
 
-        gameSetupNameTextBox.ReadOnly = true;
-        gameExecutablePathTextBox.ReadOnly = true;
-        gameExecutablePathTextBox.Enabled = true;
+        this.gameSetupNameTextBox.ReadOnly = true;
+        this.gameExecutablePathTextBox.ReadOnly = true;
+        this.gameExecutablePathTextBox.Enabled = true;
 
-        setupNameResetButton.Visible = false;
-        gameExecutableSelectPathButton.Visible = false;
-        saveButton.Visible = false;
-        cancelButton.Visible = false;
-        modcenterAppendButton.Visible = false;
-        modcenterRemoveButton.Visible = false;
+        this.setupNameResetButton.Visible = false;
+        this.gameExecutableSelectPathButton.Visible = false;
+        this.saveButton.Visible = false;
+        this.cancelButton.Visible = false;
+        this.modcenterAppendButton.Visible = false;
+        this.modcenterRemoveButton.Visible = false;
     }
 
     private void LoadGameSetupObject(GameSetupInfo gameSetupInfo)
     {
-        gameSetupNameTextBox.Text = gameSetupInfo.Name;
-        gameExecutablePathTextBox.Text = Path.Combine(gameSetupInfo.HomeDirectory!, gameSetupInfo.ExecutableFileName!);
+        this.gameSetupNameTextBox.Text = gameSetupInfo.Name;
+        this.gameExecutablePathTextBox.Text = Path.Combine(gameSetupInfo.HomeDirectory!, gameSetupInfo.ExecutableFileName!);
 
         foreach (ModCenterInfo modCenterInfo in gameSetupInfo.AttachedModCenters)
         {
-            modcentersListBox.Items.Add(modCenterInfo.Location);
+            this.modcentersListBox.Items.Add(modCenterInfo.Location);
         }
     }
 
     private void AddNewGameSetupForm_FormClosed(object sender, FormClosedEventArgs e)
     {
-        UpdateCallingFormState();
+        this.UpdateCallingFormState();
     }
 
     private void SaveButton_Click(object sender, EventArgs e)
     {
-        string setupName = gameSetupNameTextBox.Text;
-        string executable = gameExecutablePathTextBox.Text;
-        List<string> modcenters = GetModCentersList();
+        string setupName = this.gameSetupNameTextBox.Text;
+        string executable = this.gameExecutablePathTextBox.Text;
+        List<string> modcenters = this.GetModCentersList();
 
         if (CanSaveNewGameSetup(setupName, executable, modcenters))
         {
             GameSetupInfo gameSetup = BrowserKernel.RegistrateGameInstallation(setupName, executable, modcenters);
 
             MessageBox.Show($"Added the \'{gameSetup.Name}\' Game Setup.", "Success Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            currentCallingForm.UpdateGameSetupListBox();
-            ExecuteSmartClosing();
+            this.currentCallingForm.UpdateGameSetupListBox();
+            this.ExecuteSmartClosing();
         }
     }
 
@@ -142,7 +141,7 @@ public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
     {
         var modcenters = new List<string>();
 
-        foreach (string modcenterPath in modcentersListBox.Items)
+        foreach (string modcenterPath in this.modcentersListBox.Items)
         {
             if (Directory.Exists(modcenterPath))
             {
@@ -155,23 +154,23 @@ public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
 
     private void CancelButton_Click(object sender, EventArgs e)
     {
-        ExecuteSmartClosing();
+        this.ExecuteSmartClosing();
     }
 
     private void ExecuteSmartClosing()
     {
-        Close();
-        UpdateCallingFormState();
+        this.Close();
+        this.UpdateCallingFormState();
     }
 
     private void UpdateCallingFormState()
     {
-        currentCallingForm.Enabled = true;
+        this.currentCallingForm.Enabled = true;
     }
 
     private void SetupNameResetButton_Click(object sender, EventArgs e)
     {
-        gameSetupNameTextBox.Text = "MyGameSetupName";
+        this.gameSetupNameTextBox.Text = "MyGameSetupName";
     }
 
     private void GameExecutableSelectPathButton_Click(object sender, EventArgs e)
@@ -181,13 +180,13 @@ public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
 
         if (result == DialogResult.OK)
         {
-            gameExecutablePathTextBox.Text = executableFileDialog.FileName;
+            this.gameExecutablePathTextBox.Text = executableFileDialog.FileName;
         }
     }
 
     private void ModcentersListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        modcenterRemoveButton.Enabled = true;
+        this.modcenterRemoveButton.Enabled = true;
     }
 
     private void ModcenterAppendButton_Click(object sender, EventArgs e)
@@ -198,14 +197,14 @@ public partial class AddNewGameSetupForm : Form, ICanChangeMyLocalization
         if (result == DialogResult.OK)
         {
             string modcenterPath = folderBrowserDialog.SelectedPath;
-            modcentersListBox.Items.Add(modcenterPath);
+            this.modcentersListBox.Items.Add(modcenterPath);
         }
     }
 
     private void ModcenterRemoveButton_Click(object sender, EventArgs e)
     {
-        int selectedItemIndex = modcentersListBox.SelectedIndex;
-        modcentersListBox.Items.RemoveAt(selectedItemIndex);
-        modcenterRemoveButton.Enabled = false;
+        int selectedItemIndex = this.modcentersListBox.SelectedIndex;
+        this.modcentersListBox.Items.RemoveAt(selectedItemIndex);
+        this.modcenterRemoveButton.Enabled = false;
     }
 }

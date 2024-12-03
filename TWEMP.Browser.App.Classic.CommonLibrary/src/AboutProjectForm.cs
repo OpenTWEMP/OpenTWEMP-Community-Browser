@@ -4,7 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
@@ -15,14 +14,14 @@ public partial class AboutProjectForm : Form, ICanChangeMyLocalization
 {
     public AboutProjectForm()
     {
-        InitializeComponent();
-        SetupCurrentLocalizationForGUIControls();
+        this.InitializeComponent();
+        this.SetupCurrentLocalizationForGUIControls();
     }
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        Text = GetTextInCurrentLocalization(Name, Name);
-        aboutProjectNameLabel3.Text = GetTextInCurrentLocalization(Name, aboutProjectNameLabel3.Name);
-        aboutProjectNameLabel4.Text = GetTextInCurrentLocalization(Name, aboutProjectNameLabel4.Name);
+        this.Text = GetTextInCurrentLocalization(this.Name, this.Name);
+        this.aboutProjectNameLabel3.Text = GetTextInCurrentLocalization(this.Name, this.aboutProjectNameLabel3.Name);
+        this.aboutProjectNameLabel4.Text = GetTextInCurrentLocalization(this.Name, this.aboutProjectNameLabel4.Name);
     }
 }

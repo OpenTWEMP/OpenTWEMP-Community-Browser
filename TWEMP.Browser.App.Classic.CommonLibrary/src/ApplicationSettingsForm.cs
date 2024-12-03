@@ -4,7 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
@@ -22,46 +21,46 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 
     public AppSettingsForm(IUpdatableBrowser browser)
     {
-        InitializeComponent();
+        this.InitializeComponent();
 
-        currentBrowser = browser;
-        currentGuiStyle = InitializeCurrentGUIStyle();
+        this.currentBrowser = browser;
+        this.currentGuiStyle = this.InitializeCurrentGUIStyle();
 
         if (IsEnabledLocalizationOnEnglish())
         {
-            enableEngLocaleRadioButton.Checked = true;
-            enableRusLocaleRadioButton.Checked = false;
+            this.enableEngLocaleRadioButton.Checked = true;
+            this.enableRusLocaleRadioButton.Checked = false;
         }
 
         if (IsEnabledLocalizationOnRussian())
         {
-            enableEngLocaleRadioButton.Checked = false;
-            enableRusLocaleRadioButton.Checked = true;
+            this.enableEngLocaleRadioButton.Checked = false;
+            this.enableRusLocaleRadioButton.Checked = true;
         }
 
-        activatePresetsCheckBox.Checked = UseExperimentalFeatures;
+        this.activatePresetsCheckBox.Checked = UseExperimentalFeatures;
 
-        SetupCurrentLocalizationForGUIControls();
+        this.SetupCurrentLocalizationForGUIControls();
     }
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        Text = GetTextInCurrentLocalization(Name, Name);
+        this.Text = GetTextInCurrentLocalization(this.Name, this.Name);
 
-        appColorThemeGroupBox.Text = GetTextInCurrentLocalization(Name, appColorThemeGroupBox.Name);
-        uiStyleByDefaultThemeRadioButton.Text = GetTextInCurrentLocalization(Name, uiStyleByDefaultThemeRadioButton.Name);
-        uiStyleByLightThemeRadioButton.Text = GetTextInCurrentLocalization(Name, uiStyleByLightThemeRadioButton.Name);
-        uiStyleByDarkThemeRadioButton.Text = GetTextInCurrentLocalization(Name, uiStyleByDarkThemeRadioButton.Name);
+        this.appColorThemeGroupBox.Text = GetTextInCurrentLocalization(this.Name, this.appColorThemeGroupBox.Name);
+        this.uiStyleByDefaultThemeRadioButton.Text = GetTextInCurrentLocalization(this.Name, this.uiStyleByDefaultThemeRadioButton.Name);
+        this.uiStyleByLightThemeRadioButton.Text = GetTextInCurrentLocalization(this.Name, this.uiStyleByLightThemeRadioButton.Name);
+        this.uiStyleByDarkThemeRadioButton.Text = GetTextInCurrentLocalization(this.Name, this.uiStyleByDarkThemeRadioButton.Name);
 
-        appLocalizationGroupBox.Text = GetTextInCurrentLocalization(Name, appLocalizationGroupBox.Name);
-        enableEngLocaleRadioButton.Text = GetTextInCurrentLocalization(Name, enableEngLocaleRadioButton.Name);
-        enableRusLocaleRadioButton.Text = GetTextInCurrentLocalization(Name, enableRusLocaleRadioButton.Name);
+        this.appLocalizationGroupBox.Text = GetTextInCurrentLocalization(this.Name, this.appLocalizationGroupBox.Name);
+        this.enableEngLocaleRadioButton.Text = GetTextInCurrentLocalization(this.Name, this.enableEngLocaleRadioButton.Name);
+        this.enableRusLocaleRadioButton.Text = GetTextInCurrentLocalization(this.Name, this.enableRusLocaleRadioButton.Name);
 
-        appFeaturesGroupBox.Text = GetTextInCurrentLocalization(Name, appFeaturesGroupBox.Name);
-        activatePresetsCheckBox.Text = GetTextInCurrentLocalization(Name, activatePresetsCheckBox.Name);
+        this.appFeaturesGroupBox.Text = GetTextInCurrentLocalization(this.Name, this.appFeaturesGroupBox.Name);
+        this.activatePresetsCheckBox.Text = GetTextInCurrentLocalization(this.Name, this.activatePresetsCheckBox.Name);
 
-        saveAppSettingsButton.Text = GetTextInCurrentLocalization(Name, saveAppSettingsButton.Name);
-        exitAppSettingsButton.Text = GetTextInCurrentLocalization(Name, exitAppSettingsButton.Name);
+        this.saveAppSettingsButton.Text = GetTextInCurrentLocalization(this.Name, this.saveAppSettingsButton.Name);
+        this.exitAppSettingsButton.Text = GetTextInCurrentLocalization(this.Name, this.exitAppSettingsButton.Name);
     }
 
     private GuiStyle InitializeCurrentGUIStyle()
@@ -71,19 +70,19 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
         switch (activeStyle)
         {
             case GuiStyle.Default:
-                uiStyleByDefaultThemeRadioButton.Checked = true;
-                uiStyleByLightThemeRadioButton.Checked = false;
-                uiStyleByDarkThemeRadioButton.Checked = false;
+                this.uiStyleByDefaultThemeRadioButton.Checked = true;
+                this.uiStyleByLightThemeRadioButton.Checked = false;
+                this.uiStyleByDarkThemeRadioButton.Checked = false;
                 break;
             case GuiStyle.Light:
-                uiStyleByDefaultThemeRadioButton.Checked = false;
-                uiStyleByLightThemeRadioButton.Checked = true;
-                uiStyleByDarkThemeRadioButton.Checked = false;
+                this.uiStyleByDefaultThemeRadioButton.Checked = false;
+                this.uiStyleByLightThemeRadioButton.Checked = true;
+                this.uiStyleByDarkThemeRadioButton.Checked = false;
                 break;
             case GuiStyle.Dark:
-                uiStyleByDefaultThemeRadioButton.Checked = false;
-                uiStyleByLightThemeRadioButton.Checked = false;
-                uiStyleByDarkThemeRadioButton.Checked = true;
+                this.uiStyleByDefaultThemeRadioButton.Checked = false;
+                this.uiStyleByLightThemeRadioButton.Checked = false;
+                this.uiStyleByDarkThemeRadioButton.Checked = true;
                 break;
             default:
                 break;
@@ -94,44 +93,44 @@ public partial class AppSettingsForm : Form, ICanChangeMyLocalization
 
     private void SaveAppSettingsButton_Click(object sender, EventArgs e)
     {
-        currentBrowser.UpdateGUIStyle(currentGuiStyle);
+        this.currentBrowser.UpdateGUIStyle(this.currentGuiStyle);
 
-        if (enableEngLocaleRadioButton.Checked)
+        if (this.enableEngLocaleRadioButton.Checked)
         {
             SetLocalizationOnEnglishAsCurrent();
         }
 
-        if (enableRusLocaleRadioButton.Checked)
+        if (this.enableRusLocaleRadioButton.Checked)
         {
             SetLocalizationOnRussianAsCurrent();
         }
 
         this.SetupCurrentLocalizationForGUIControls();
-        currentBrowser.UpdateLocalizationForGUIControls();
+        this.currentBrowser.UpdateLocalizationForGUIControls();
 
-        UseExperimentalFeatures = activatePresetsCheckBox.Checked;
-        currentBrowser.UpdateExperimentalGUIChanges(activatePresetsCheckBox.Checked);
+        UseExperimentalFeatures = this.activatePresetsCheckBox.Checked;
+        this.currentBrowser.UpdateExperimentalGUIChanges(this.activatePresetsCheckBox.Checked);
 
-        Close();
+        this.Close();
     }
 
     private void ExitAppSettingsButton_Click(object sender, EventArgs e)
     {
-        Close();
+        this.Close();
     }
 
     private void UiStyleByDefaultThemeRadioButton_Click(object sender, EventArgs e)
     {
-        currentGuiStyle = GuiStyle.Default;
+        this.currentGuiStyle = GuiStyle.Default;
     }
 
     private void UiStyleByLightThemeRadioButton_Click(object sender, EventArgs e)
     {
-        currentGuiStyle = GuiStyle.Light;
+        this.currentGuiStyle = GuiStyle.Light;
     }
 
     private void UiStyleByDarkThemeRadioButton_Click(object sender, EventArgs e)
     {
-        currentGuiStyle = GuiStyle.Dark;
+        this.currentGuiStyle = GuiStyle.Dark;
     }
 }

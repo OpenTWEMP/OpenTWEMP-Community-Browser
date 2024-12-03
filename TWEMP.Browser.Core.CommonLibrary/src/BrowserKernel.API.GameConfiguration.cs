@@ -9,7 +9,6 @@ namespace TWEMP.Browser.Core.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 public static partial class BrowserKernel

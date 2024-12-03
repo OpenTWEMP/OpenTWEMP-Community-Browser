@@ -4,6 +4,9 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.Core.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
@@ -13,7 +16,9 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+#if EXPERIMENTAL_FEATURES
 using TWEMP.Browser.Core.CommonLibrary.Logging;
+#endif
 using TWEMP.Browser.Core.CommonLibrary.MediaDevices;
 
 /// <summary>
@@ -61,6 +66,7 @@ public static partial class BrowserKernel
 
         GameConfigurationManagerInstance = GameConfigurationManager.Create(CustomGameSetupManagerInstance);
 
+#if EXPERIMENTAL_FEATURES
         // Initialize the default logging device.
         Logger.InitializeByDefault();
 
@@ -76,6 +82,7 @@ public static partial class BrowserKernel
             "GameConfigurationManager", "GameConfigurationManager.Initialize()", DateTime.Now)); // test logging
 
         Logger.CurrentInstance?.Close(); // test logging
+#endif
     }
 
     public static void Initialize()

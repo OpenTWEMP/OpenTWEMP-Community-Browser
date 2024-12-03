@@ -2,6 +2,8 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#pragma warning disable SA1011 // Closing square brackets should be spaced correctly
+
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 
 /// <summary>

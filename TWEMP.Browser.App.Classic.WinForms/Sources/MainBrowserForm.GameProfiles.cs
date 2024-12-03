@@ -3,7 +3,6 @@
 // </copyright>
 
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic;
 
@@ -12,25 +11,25 @@ internal partial class MainBrowserForm
     // QUICK CONFIGURING VIA PROFILES
     private void RadioButtonConfigProfile_Gaming_CheckedChanged(object sender, EventArgs e)
     {
-        radioButtonLaunchWindowScreen.Checked = false;
-        radioButtonLaunchFullScreen.Checked = true;
-        checkBoxVideo.Checked = true;
-        checkBoxBorderless.Checked = false;
+        this.radioButtonLaunchWindowScreen.Checked = false;
+        this.radioButtonLaunchFullScreen.Checked = true;
+        this.checkBoxVideo.Checked = true;
+        this.checkBoxBorderless.Checked = false;
 
-        radioButtonLogOnlyError.Checked = true;
-        radioButtonLogOnlyTrace.Checked = false;
-        radioButtonLogErrorAndTrace.Checked = false;
+        this.radioButtonLogOnlyError.Checked = true;
+        this.radioButtonLogOnlyTrace.Checked = false;
+        this.radioButtonLogErrorAndTrace.Checked = false;
     }
 
     private void RadioButtonConfigProfile_Modding_CheckedChanged(object sender, EventArgs e)
     {
-        radioButtonLaunchWindowScreen.Checked = true;
-        radioButtonLaunchFullScreen.Checked = false;
-        checkBoxVideo.Checked = false;
-        checkBoxBorderless.Checked = false;
+        this.radioButtonLaunchWindowScreen.Checked = true;
+        this.radioButtonLaunchFullScreen.Checked = false;
+        this.checkBoxVideo.Checked = false;
+        this.checkBoxBorderless.Checked = false;
 
-        radioButtonLogOnlyError.Checked = false;
-        radioButtonLogOnlyTrace.Checked = false;
-        radioButtonLogErrorAndTrace.Checked = true;
+        this.radioButtonLogOnlyError.Checked = false;
+        this.radioButtonLogOnlyTrace.Checked = false;
+        this.radioButtonLogErrorAndTrace.Checked = true;
     }
 }

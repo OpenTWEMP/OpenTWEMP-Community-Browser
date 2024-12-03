@@ -3,7 +3,6 @@
 // </copyright>
 
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic;
 
@@ -28,7 +27,7 @@ internal partial class MainBrowserForm
     private void ButtonLaunch_Click(object sender, EventArgs e)
     {
         TreeNode currentGameModNode = this.GetCurrentGameModNode();
-        GameModificationInfo? currentGameModInfo = SelectGameModInfoFromBrowserTreeNode(currentGameModNode);
+        GameModificationInfo? currentGameModInfo = this.SelectGameModInfoFromBrowserTreeNode(currentGameModNode);
 
         this.InterruptGameModBackgroundMusic();
 
@@ -46,12 +45,12 @@ internal partial class MainBrowserForm
                 return;
             }
 
-            M2TWCustomQuickConfigStateView currentQuickCustomConfigState = CreateQuickCustomConfigState();
+            M2TWCustomQuickConfigStateView currentQuickCustomConfigState = this.CreateQuickCustomConfigState();
             currentGameConfigurator.OverrideConfigSettingsByCustomQuickState(currentQuickCustomConfigState);
 
-            ChangeLauncherGUIWhenGameStarting();
-            MainGamingSupportHub.LaunchGameEngineAsM2TW(currentGameConfigurator, currentMessageProvider);
-            ChangeLauncherGUIWhenGameExiting();
+            this.ChangeLauncherGUIWhenGameStarting();
+            MainGamingSupportHub.LaunchGameEngineAsM2TW(currentGameConfigurator, this.currentMessageProvider);
+            this.ChangeLauncherGUIWhenGameExiting();
 
             this.SetCurrentGameModNode(currentGameModNode);
         }
@@ -61,13 +60,13 @@ internal partial class MainBrowserForm
     {
         GameModificationInfo? targetModInfo;
 
-        if (IsNodeOfFavoriteCollection(treeNode) || IsNodeOfModificationFromCustomCollection(treeNode))
+        if (this.IsNodeOfFavoriteCollection(treeNode) || this.IsNodeOfModificationFromCustomCollection(treeNode))
         {
-            targetModInfo = FindModBySelectedNodeFromCollection(treeNode);
+            targetModInfo = this.FindModBySelectedNodeFromCollection(treeNode);
         }
-        else if (IsNodeOfModificationFromAllModsCollection(treeNode))
+        else if (this.IsNodeOfModificationFromAllModsCollection(treeNode))
         {
-            targetModInfo = FindModificationBySelectedTreeNode(treeNode);
+            targetModInfo = this.FindModificationBySelectedTreeNode(treeNode);
         }
         else
         {
@@ -79,63 +78,63 @@ internal partial class MainBrowserForm
 
     private void ChangeLauncherGUIWhenGameStarting()
     {
-        WindowState = FormWindowState.Minimized;
-        ShowInTaskbar = false;
+        this.WindowState = FormWindowState.Minimized;
+        this.ShowInTaskbar = false;
     }
 
     private void ChangeLauncherGUIWhenGameExiting()
     {
-        ShowInTaskbar = true;
-        WindowState = FormWindowState.Normal;
+        this.ShowInTaskbar = true;
+        this.WindowState = FormWindowState.Normal;
     }
 
     private void ModQuickNavigationButton_Click(object sender, EventArgs e)
     {
-        GameModificationInfo currentMod = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
+        GameModificationInfo currentMod = this.FindModBySelectedNodeFromCollection(this.treeViewGameMods.SelectedNode);
         var form = new ModQuickNavigatorForm(currentMod.Location);
         form.ShowDialog();
     }
 
     private void ButtonExplore_Click(object sender, EventArgs e)
     {
-        GameModificationInfo current_mod_info = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
-        SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location, currentMessageProvider);
+        GameModificationInfo current_mod_info = this.FindModBySelectedNodeFromCollection(this.treeViewGameMods.SelectedNode);
+        SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location, this.currentMessageProvider);
     }
 
     // PROVIDERS TO RUN THE SELECTED MODIFICATION
     private void RadioButtonLauncherProvider_M2TWEOP_CheckedChanged(object sender, EventArgs e)
     {
-        DisableLauncherSettingsControls();
+        this.DisableLauncherSettingsControls();
     }
 
     private void RadioButtonLauncherProvider_NativeSetup_CheckedChanged(object sender, EventArgs e)
     {
-        DisableLauncherSettingsControls();
+        this.DisableLauncherSettingsControls();
     }
 
     private void RadioButtonLauncherProvider_BatchScript_CheckedChanged(object sender, EventArgs e)
     {
-        DisableLauncherSettingsControls();
+        this.DisableLauncherSettingsControls();
     }
 
     private void RadioButtonLauncherProvider_TWEMP_CheckedChanged(object sender, EventArgs e)
     {
-        EnableLauncherSettingsControls();
+        this.EnableLauncherSettingsControls();
     }
 
     private void DisableLauncherSettingsControls()
     {
-        groupBoxConfigProfiles.Enabled = false;
-        groupBoxConfigLaunchMode.Enabled = false;
-        groupBoxConfigLogMode.Enabled = false;
-        groupBoxConfigCleanerMode.Enabled = false;
+        this.groupBoxConfigProfiles.Enabled = false;
+        this.groupBoxConfigLaunchMode.Enabled = false;
+        this.groupBoxConfigLogMode.Enabled = false;
+        this.groupBoxConfigCleanerMode.Enabled = false;
     }
 
     private void EnableLauncherSettingsControls()
     {
-        groupBoxConfigProfiles.Enabled = true;
-        groupBoxConfigLaunchMode.Enabled = true;
-        groupBoxConfigLogMode.Enabled = true;
-        groupBoxConfigCleanerMode.Enabled = true;
+        this.groupBoxConfigProfiles.Enabled = true;
+        this.groupBoxConfigLaunchMode.Enabled = true;
+        this.groupBoxConfigLogMode.Enabled = true;
+        this.groupBoxConfigCleanerMode.Enabled = true;
     }
 }

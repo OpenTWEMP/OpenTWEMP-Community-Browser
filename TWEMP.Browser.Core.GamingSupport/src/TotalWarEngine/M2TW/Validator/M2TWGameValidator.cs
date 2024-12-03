@@ -4,6 +4,10 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
+#if EXPERIMENTAL_FEATURES
 namespace TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Validator;
 
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Modding;
@@ -209,3 +213,4 @@ public static class M2TWGameValidator
         return true;
     }
 }
+#endif

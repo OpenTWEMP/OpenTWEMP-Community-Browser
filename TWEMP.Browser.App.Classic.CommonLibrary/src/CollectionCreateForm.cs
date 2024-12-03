@@ -4,7 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
@@ -21,26 +20,26 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
 
     public CollectionCreateForm(IUpdatableBrowser browser)
     {
-        InitializeComponent();
+        this.InitializeComponent();
 
-        SetupCurrentLocalizationForGUIControls();
+        this.SetupCurrentLocalizationForGUIControls();
 
-        currentBrowser = browser;
-        collectionNameTextBox.Text = "My New Collection";
+        this.currentBrowser = browser;
+        this.collectionNameTextBox.Text = "My New Collection";
 
         foreach (GameModificationInfo mod in BrowserKernel.TotalModificationsList)
         {
-            modsSelectionCheckedListBox.Items.Add(mod.ShortName);
+            this.modsSelectionCheckedListBox.Items.Add(mod.ShortName);
         }
     }
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        Text = GetTextInCurrentLocalization(Name, Name);
-        collectionNameLabel.Text = GetTextInCurrentLocalization(Name, collectionNameLabel.Name);
-        modsSelectionLabel.Text = GetTextInCurrentLocalization(Name, modsSelectionLabel.Name);
-        buttonOK.Text = GetTextInCurrentLocalization(Name, buttonOK.Name);
-        buttonCancel.Text = GetTextInCurrentLocalization(Name, buttonCancel.Name);
+        this.Text = GetTextInCurrentLocalization(this.Name, this.Name);
+        this.collectionNameLabel.Text = GetTextInCurrentLocalization(this.Name, this.collectionNameLabel.Name);
+        this.modsSelectionLabel.Text = GetTextInCurrentLocalization(this.Name, this.modsSelectionLabel.Name);
+        this.buttonOK.Text = GetTextInCurrentLocalization(this.Name, this.buttonOK.Name);
+        this.buttonCancel.Text = GetTextInCurrentLocalization(this.Name, this.buttonCancel.Name);
     }
 
     private static void ShowMessageAboutEmptyCollectionCreation()
@@ -77,7 +76,7 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
     {
         foreach (CustomModsCollection existingCollection in BrowserKernel.UserCollections)
         {
-            if (existingCollection.Name.Equals(collectionNameTextBox.Text))
+            if (existingCollection.Name.Equals(this.collectionNameTextBox.Text))
             {
                 return true;
             }
@@ -88,11 +87,11 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
 
     private void ButtonOK_Click(object sender, EventArgs e)
     {
-        if (modsSelectionCheckedListBox.CheckedIndices.Count == 0)
+        if (this.modsSelectionCheckedListBox.CheckedIndices.Count == 0)
         {
             ShowMessageAboutEmptyCollectionCreation();
         }
-        else if (IsCollectionAlreadyExist())
+        else if (this.IsCollectionAlreadyExist())
         {
             ShowMessageAboutExistingCollectionCreation();
         }
@@ -100,26 +99,26 @@ public partial class CollectionCreateForm : Form, ICanChangeMyLocalization
         {
             var selectedModifications = new Dictionary<string, string>();
 
-            for (int i = 0; i < modsSelectionCheckedListBox.CheckedIndices.Count; i++)
+            for (int i = 0; i < this.modsSelectionCheckedListBox.CheckedIndices.Count; i++)
             {
-                string selectedModName = modsSelectionCheckedListBox.CheckedItems[i]!.ToString()!;
+                string selectedModName = this.modsSelectionCheckedListBox.CheckedItems[i]!.ToString()!;
                 GameModificationInfo selecteModInfo = BrowserKernel.GetActiveModificationInfo(selectedModName);
                 selectedModifications.Add(selecteModInfo.Location, selecteModInfo.ShortName);
             }
 
-            var collection = new CustomModsCollection(collectionNameTextBox.Text, selectedModifications);
+            var collection = new CustomModsCollection(this.collectionNameTextBox.Text, selectedModifications);
             BrowserKernel.UserCollections.Add(collection);
             BrowserKernel.WriteExistingCollections();
 
-            currentBrowser.CreateModsCollectionTreeView(collection);
+            this.currentBrowser.CreateModsCollectionTreeView(collection);
 
-            ShowMessageAboutSuccessfulCollectionCreation(collectionNameTextBox.Text);
-            Close();
+            ShowMessageAboutSuccessfulCollectionCreation(this.collectionNameTextBox.Text);
+            this.Close();
         }
     }
 
     private void ButtonCancel_Click(object sender, EventArgs e)
     {
-        Close();
+        this.Close();
     }
 }

@@ -3,7 +3,6 @@
 // </copyright>
 
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic;
 
@@ -42,7 +41,7 @@ internal partial class MainBrowserForm
     private void ApplicationHomeFolderToolStripMenuItem_Click(object sender, EventArgs e)
     {
         string appWorkDirectory = Directory.GetCurrentDirectory();
-        SystemToolbox.ShowFileSystemDirectory(appWorkDirectory, currentMessageProvider);
+        SystemToolbox.ShowFileSystemDirectory(appWorkDirectory, this.currentMessageProvider);
     }
 
     private void ApplicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,8 +54,8 @@ internal partial class MainBrowserForm
     {
         var gameSetupConfigForm = new GameSetupConfigForm(this);
 
-        Enabled = false;
-        Visible = false;
+        this.Enabled = false;
+        this.Visible = false;
 
         gameSetupConfigForm.Show();
     }

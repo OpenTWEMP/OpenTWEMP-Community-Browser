@@ -4,7 +4,6 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic;
 
@@ -18,34 +17,34 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 {
     public void CreateModsCollectionTreeView(CustomModsCollection collection)
     {
-        TreeNode customCollectionsRootNode = treeViewGameMods.Nodes[1];
+        TreeNode customCollectionsRootNode = this.treeViewGameMods.Nodes[1];
         TreeNode createdCollectionNode = customCollectionsRootNode.Nodes.Add(collection.Name);
 
         foreach (KeyValuePair<string, string> modification in collection.Modifications)
         {
-            TreeNode modChildNode = CreateCollectionChildNode(modification.Value);
+            TreeNode modChildNode = this.CreateCollectionChildNode(modification.Value);
             createdCollectionNode.Nodes.Add(modChildNode);
         }
     }
 
     public void UpdateCustomCollectionsInTreeView()
     {
-        TreeNode customCollectionsNode = treeViewGameMods.Nodes[1];
+        TreeNode customCollectionsNode = this.treeViewGameMods.Nodes[1];
         customCollectionsNode.Nodes.Clear();
 
         foreach (CustomModsCollection collection in BrowserKernel.UserCollections)
         {
-            CreateCollectionNodeWithChilds(collection, customCollectionsNode);
+            this.CreateCollectionNodeWithChilds(collection, customCollectionsNode);
         }
     }
 
     private void CreateCollectionNodeWithChilds(CustomModsCollection collection, TreeNode collectionsParentNode)
     {
-        var collectionNode = CreateCollectionParentNode(collection);
+        var collectionNode = this.CreateCollectionParentNode(collection);
 
         foreach (KeyValuePair<string, string> modPair in collection.Modifications)
         {
-            var modNode = CreateCollectionChildNode(modPair.Value);
+            var modNode = this.CreateCollectionChildNode(modPair.Value);
             collectionNode.Nodes.Add(modNode);
         }
 
@@ -67,10 +66,10 @@ internal partial class MainBrowserForm : IUpdatableBrowser
     // MODS COLLECTIONS MANAGEMENT
     private void ButtonMarkFavoriteMod_Click(object sender, EventArgs e)
     {
-        TreeNode modNode = treeViewGameMods.SelectedNode;
-        GameModificationInfo selectedModInfo = FindModBySelectedNodeFromCollection(modNode);
+        TreeNode modNode = this.treeViewGameMods.SelectedNode;
+        GameModificationInfo selectedModInfo = this.FindModBySelectedNodeFromCollection(modNode);
 
-        if (IsNodeOfModificationFromAllModsCollection(modNode) || IsNodeOfModificationFromCustomCollection(modNode))
+        if (this.IsNodeOfModificationFromAllModsCollection(modNode) || this.IsNodeOfModificationFromCustomCollection(modNode))
         {
             if (selectedModInfo.IsFavoriteMod)
             {
@@ -79,9 +78,9 @@ internal partial class MainBrowserForm : IUpdatableBrowser
             }
             else
             {
-                TreeNode favoriteModNode = CreateCollectionChildNode(selectedModInfo.ShortName);
+                TreeNode favoriteModNode = this.CreateCollectionChildNode(selectedModInfo.ShortName);
 
-                TreeNode allFavoriteModsNode = treeViewGameMods.Nodes[0];
+                TreeNode allFavoriteModsNode = this.treeViewGameMods.Nodes[0];
                 allFavoriteModsNode.Nodes.Add(favoriteModNode);
 
                 selectedModInfo.IsFavoriteMod = true;
@@ -93,9 +92,9 @@ internal partial class MainBrowserForm : IUpdatableBrowser
             }
         }
 
-        if (IsNodeOfFavoriteCollection(modNode))
+        if (this.IsNodeOfFavoriteCollection(modNode))
         {
-            TreeNode favoriteModsNode = treeViewGameMods.Nodes[0];
+            TreeNode favoriteModsNode = this.treeViewGameMods.Nodes[0];
 
             foreach (TreeNode node in favoriteModsNode.Nodes)
             {

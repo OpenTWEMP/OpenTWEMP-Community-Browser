@@ -35,7 +35,6 @@ public partial class GameConfigProfileCreateForm : Form
 
         this.viewOfGameConfigProfiles = new Dictionary<int, Guid>();
 
-
         this.InitializeComponent();
 
         this.Text = InitializeCaptionText(gameModificationInfo);
