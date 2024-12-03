@@ -2704,29 +2704,33 @@
             // 
             // resetConfigSettingsButton
             // 
-            resetConfigSettingsButton.Location = new Point(298, 498);
+            resetConfigSettingsButton.Enabled = false;
+            resetConfigSettingsButton.Location = new Point(520, 498);
             resetConfigSettingsButton.Name = "resetConfigSettingsButton";
-            resetConfigSettingsButton.Size = new Size(216, 23);
+            resetConfigSettingsButton.Size = new Size(248, 23);
             resetConfigSettingsButton.TabIndex = 2;
             resetConfigSettingsButton.Text = "RESET CONFIG SETTINGS";
             resetConfigSettingsButton.UseVisualStyleBackColor = true;
+            resetConfigSettingsButton.Visible = false;
             resetConfigSettingsButton.Click += ResetConfigSettingsButton_Click;
             // 
             // importConfigSettingsButton
             // 
+            importConfigSettingsButton.Enabled = false;
             importConfigSettingsButton.Location = new Point(520, 527);
             importConfigSettingsButton.Name = "importConfigSettingsButton";
             importConfigSettingsButton.Size = new Size(248, 23);
             importConfigSettingsButton.TabIndex = 3;
             importConfigSettingsButton.Text = "IMPORT CONFIG SETTINGS";
             importConfigSettingsButton.UseVisualStyleBackColor = true;
+            importConfigSettingsButton.Visible = false;
             importConfigSettingsButton.Click += ImportConfigSettingsButton_Click;
             // 
             // exportConfigSettingsButton
             // 
-            exportConfigSettingsButton.Location = new Point(520, 498);
+            exportConfigSettingsButton.Location = new Point(298, 498);
             exportConfigSettingsButton.Name = "exportConfigSettingsButton";
-            exportConfigSettingsButton.Size = new Size(248, 23);
+            exportConfigSettingsButton.Size = new Size(216, 23);
             exportConfigSettingsButton.TabIndex = 4;
             exportConfigSettingsButton.Text = "EXPORT CONFIG SETTINGS";
             exportConfigSettingsButton.UseVisualStyleBackColor = true;

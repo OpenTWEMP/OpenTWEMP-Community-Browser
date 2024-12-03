@@ -8,6 +8,9 @@
 #define DISABLED_CFG_OPTIONS
 #undef DISABLED_CFG_OPTIONS
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
@@ -340,7 +343,9 @@ public partial class ModConfigSettingsForm : Form
 
     private void ResetConfigSettingsButton_Click(object sender, EventArgs e)
     {
+#if EXPERIMENTAL_FEATURES
         MessageBox.Show("RESET CONFIG SETTINGS");
+#endif
     }
 
     private void ExitConfigSettingsButton_Click(object sender, EventArgs e)
@@ -366,6 +371,7 @@ public partial class ModConfigSettingsForm : Form
 
     private void ImportConfigSettingsButton_Click(object sender, EventArgs e)
     {
+#if EXPERIMENTAL_FEATURES
         OpenFileDialog importFileDialog = new ();
         importFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
         DialogResult result = importFileDialog.ShowDialog();
@@ -374,11 +380,9 @@ public partial class ModConfigSettingsForm : Form
         {
             string importFileFullName = importFileDialog.FileName;
 
-#if TESTING_IMPORT_FEATURE
             // TODO: Fix an exception when deserialization GameCfgSection objects!
             GameCfgSection[] gameCfgSections = BrowserKernel.ImportConfigSettingsFromFile(importFileFullName);
             this.InitializeConfigControls(gameCfgSections); // TODO: Implement this method in future.
-#endif
 
             MessageBox.Show(
                 text: $"Config settings were imported from the file:\n{importFileFullName}",
@@ -386,6 +390,7 @@ public partial class ModConfigSettingsForm : Form
                 buttons: MessageBoxButtons.OK,
                 icon: MessageBoxIcon.Information);
         }
+#endif
     }
 
     private M2TWGameConfigStateView CreateGameConfigStateView()
@@ -597,6 +602,12 @@ public partial class ModConfigSettingsForm : Form
         this.InitializeAllNumericUpDownControls();
         this.InitializeAllTextBoxControls();
     }
+
+#if EXPERIMENTAL_FEATURES
+    private void InitializeConfigControls(GameCfgSection[] gameCfgSections)
+    {
+    }
+#endif
 
     private void InitializeAllCheckBoxControls()
     {
