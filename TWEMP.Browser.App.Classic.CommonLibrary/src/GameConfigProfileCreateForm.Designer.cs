@@ -40,7 +40,7 @@
             // 
             // cfgNewProfileNameLabel
             // 
-            cfgNewProfileNameLabel.Location = new Point(15, 23);
+            cfgNewProfileNameLabel.Location = new Point(12, 16);
             cfgNewProfileNameLabel.Name = "cfgNewProfileNameLabel";
             cfgNewProfileNameLabel.Size = new Size(219, 27);
             cfgNewProfileNameLabel.TabIndex = 0;
@@ -48,15 +48,15 @@
             // 
             // cfgNewProfileNameTextBox
             // 
-            cfgNewProfileNameTextBox.Location = new Point(240, 20);
+            cfgNewProfileNameTextBox.Location = new Point(237, 16);
             cfgNewProfileNameTextBox.Name = "cfgNewProfileNameTextBox";
-            cfgNewProfileNameTextBox.Size = new Size(181, 23);
+            cfgNewProfileNameTextBox.Size = new Size(372, 23);
             cfgNewProfileNameTextBox.TabIndex = 1;
             cfgNewProfileNameTextBox.Text = "NEW_GAME_CONFIG_PROFILE";
             // 
             // cfgNewProfileTypeLabel
             // 
-            cfgNewProfileTypeLabel.Location = new Point(15, 50);
+            cfgNewProfileTypeLabel.Location = new Point(12, 60);
             cfgNewProfileTypeLabel.Name = "cfgNewProfileTypeLabel";
             cfgNewProfileTypeLabel.Size = new Size(219, 27);
             cfgNewProfileTypeLabel.TabIndex = 2;
@@ -67,16 +67,16 @@
             cfgNewProfileTypeComboBox.Enabled = false;
             cfgNewProfileTypeComboBox.FormattingEnabled = true;
             cfgNewProfileTypeComboBox.Items.AddRange(new object[] { "TWEMP", "M2TW", "RTW" });
-            cfgNewProfileTypeComboBox.Location = new Point(240, 47);
+            cfgNewProfileTypeComboBox.Location = new Point(237, 60);
             cfgNewProfileTypeComboBox.Name = "cfgNewProfileTypeComboBox";
-            cfgNewProfileTypeComboBox.Size = new Size(181, 23);
+            cfgNewProfileTypeComboBox.Size = new Size(372, 23);
             cfgNewProfileTypeComboBox.TabIndex = 3;
             cfgNewProfileTypeComboBox.Text = "M2TW";
             // 
             // cfgNewProfileTemplateCheckBox
             // 
             cfgNewProfileTemplateCheckBox.AutoSize = true;
-            cfgNewProfileTemplateCheckBox.Location = new Point(15, 76);
+            cfgNewProfileTemplateCheckBox.Location = new Point(12, 100);
             cfgNewProfileTemplateCheckBox.Name = "cfgNewProfileTemplateCheckBox";
             cfgNewProfileTemplateCheckBox.Size = new Size(216, 19);
             cfgNewProfileTemplateCheckBox.TabIndex = 4;
@@ -89,16 +89,16 @@
             cfgNewProfileTemplateComboBox.Enabled = false;
             cfgNewProfileTemplateComboBox.FormattingEnabled = true;
             cfgNewProfileTemplateComboBox.Items.AddRange(new object[] { "profile_0", "profile_1", "profile_2", "profile_3", "profile_4", "profile_5", "profile_6", "profile_7", "profile_8", "profile_9" });
-            cfgNewProfileTemplateComboBox.Location = new Point(240, 76);
+            cfgNewProfileTemplateComboBox.Location = new Point(237, 100);
             cfgNewProfileTemplateComboBox.Name = "cfgNewProfileTemplateComboBox";
-            cfgNewProfileTemplateComboBox.Size = new Size(181, 23);
+            cfgNewProfileTemplateComboBox.Size = new Size(372, 23);
             cfgNewProfileTemplateComboBox.TabIndex = 5;
             // 
             // formOkButton
             // 
-            formOkButton.Location = new Point(12, 110);
+            formOkButton.Location = new Point(12, 153);
             formOkButton.Name = "formOkButton";
-            formOkButton.Size = new Size(409, 23);
+            formOkButton.Size = new Size(600, 23);
             formOkButton.TabIndex = 6;
             formOkButton.Text = "OK";
             formOkButton.UseVisualStyleBackColor = true;
@@ -106,9 +106,9 @@
             // 
             // formCancelButton
             // 
-            formCancelButton.Location = new Point(12, 139);
+            formCancelButton.Location = new Point(12, 182);
             formCancelButton.Name = "formCancelButton";
-            formCancelButton.Size = new Size(409, 23);
+            formCancelButton.Size = new Size(600, 23);
             formCancelButton.TabIndex = 7;
             formCancelButton.Text = "CANCEL";
             formCancelButton.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(431, 173);
+            ClientSize = new Size(624, 217);
             Controls.Add(formCancelButton);
             Controls.Add(formOkButton);
             Controls.Add(cfgNewProfileTemplateComboBox);
@@ -127,8 +127,13 @@
             Controls.Add(cfgNewProfileTypeLabel);
             Controls.Add(cfgNewProfileNameTextBox);
             Controls.Add(cfgNewProfileNameLabel);
+            MaximizeBox = false;
+            MaximumSize = new Size(640, 256);
+            MinimizeBox = false;
+            MinimumSize = new Size(640, 256);
             Name = "GameConfigProfileCreateForm";
-            Text = "GameConfigProfileCreateForm";
+            ShowIcon = false;
+            Text = "Create a Game Config Profile";
             ResumeLayout(false);
             PerformLayout();
         }
