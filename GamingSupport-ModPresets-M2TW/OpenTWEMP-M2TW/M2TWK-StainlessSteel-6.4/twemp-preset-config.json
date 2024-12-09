@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "MEDIEVAL II TOTAL WAR - STAINLESS STEEL",
+      "ModVersion": "6.4"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "ss_launcher.exe",
+      "LauncherProvider_NativeSetup": "ss_setup.exe",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?314-Stainless-Steel",
+        "URL2": "https://imtw.org/forum/445-stainless-steel-total-war/",
+        "URL3": "https://www.moddb.com/mods/stainless-steel/downloads/stainless-steel-64"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "b0dbe8cc-a827-49b8-a4f4-b9ee276b1473",
+    "Version": "BETA",
+    "PresetName": "M2TWK-StainlessSteel-6.4",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
