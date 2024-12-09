@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "CALL of WARHAMMER",
+      "ModVersion": "1.6"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "warhammer.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://totalwar.fun/board/index.php/forum/73-warhammer-tw-call-of-warhammer-%D0%BC%D0%BE%D0%B4/",
+        "URL2": "https://imtw.org/forum/1206-call-of-warhammer-total-war/",
+        "URL3": "https://www.twcenter.net/forums/forumdisplay.php?1377-Call-of-Warhammer"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "abed503d-039f-4128-80ef-d4087d723961",
+    "Version": "BETA",
+    "PresetName": "CoW-CallOfWarhammer-1.6",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
