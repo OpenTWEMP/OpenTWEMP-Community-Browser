@@ -60,6 +60,8 @@ namespace TWEMP.Browser.App.Classic
             buttonExplore = new Button();
             modQuickNavigationButton = new Button();
             panelLauncherToolkit = new Panel();
+            modConfigProfilesButton = new Button();
+            modConfigSettingsButton = new Button();
             modMainTitleLabel = new Label();
             modLogoPictureBox = new PictureBox();
             modStatusLabel = new Label();
@@ -109,12 +111,12 @@ namespace TWEMP.Browser.App.Classic
             buttonLaunch.Cursor = Cursors.Hand;
             buttonLaunch.Enabled = false;
             buttonLaunch.FlatStyle = FlatStyle.Flat;
-            buttonLaunch.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold);
+            buttonLaunch.Font = new Font("Microsoft Sans Serif", 22F, FontStyle.Bold);
             buttonLaunch.ForeColor = SystemColors.ControlText;
             buttonLaunch.Location = new Point(4, 3);
             buttonLaunch.Margin = new Padding(4, 3, 4, 3);
             buttonLaunch.Name = "buttonLaunch";
-            buttonLaunch.Size = new Size(362, 88);
+            buttonLaunch.Size = new Size(362, 62);
             buttonLaunch.TabIndex = 0;
             buttonLaunch.Text = "LAUNCH";
             buttonLaunch.UseVisualStyleBackColor = false;
@@ -416,10 +418,10 @@ namespace TWEMP.Browser.App.Classic
             buttonExplore.Cursor = Cursors.Hand;
             buttonExplore.Enabled = false;
             buttonExplore.FlatStyle = FlatStyle.Flat;
-            buttonExplore.Font = new Font("Segoe UI", 12F);
-            buttonExplore.Location = new Point(4, 151);
+            buttonExplore.Font = new Font("Segoe UI", 9F);
+            buttonExplore.Location = new Point(3, 176);
             buttonExplore.Name = "buttonExplore";
-            buttonExplore.Size = new Size(362, 52);
+            buttonExplore.Size = new Size(363, 27);
             buttonExplore.TabIndex = 8;
             buttonExplore.Text = "MOD HOME FOLDER";
             buttonExplore.UseVisualStyleBackColor = false;
@@ -432,11 +434,11 @@ namespace TWEMP.Browser.App.Classic
             modQuickNavigationButton.Cursor = Cursors.Hand;
             modQuickNavigationButton.Enabled = false;
             modQuickNavigationButton.FlatStyle = FlatStyle.Flat;
-            modQuickNavigationButton.Font = new Font("Microsoft Sans Serif", 12F);
-            modQuickNavigationButton.Location = new Point(4, 97);
+            modQuickNavigationButton.Font = new Font("Microsoft Sans Serif", 9F);
+            modQuickNavigationButton.Location = new Point(3, 144);
             modQuickNavigationButton.Margin = new Padding(4, 3, 4, 3);
             modQuickNavigationButton.Name = "modQuickNavigationButton";
-            modQuickNavigationButton.Size = new Size(362, 48);
+            modQuickNavigationButton.Size = new Size(363, 27);
             modQuickNavigationButton.TabIndex = 7;
             modQuickNavigationButton.Text = "MOD QUICK NAVIGATION";
             modQuickNavigationButton.UseVisualStyleBackColor = false;
@@ -447,6 +449,8 @@ namespace TWEMP.Browser.App.Classic
             panelLauncherToolkit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelLauncherToolkit.BackColor = Color.MediumAquamarine;
             panelLauncherToolkit.BorderStyle = BorderStyle.FixedSingle;
+            panelLauncherToolkit.Controls.Add(modConfigProfilesButton);
+            panelLauncherToolkit.Controls.Add(modConfigSettingsButton);
             panelLauncherToolkit.Controls.Add(modQuickNavigationButton);
             panelLauncherToolkit.Controls.Add(buttonExplore);
             panelLauncherToolkit.Controls.Add(buttonLaunch);
@@ -455,6 +459,34 @@ namespace TWEMP.Browser.App.Classic
             panelLauncherToolkit.Name = "panelLauncherToolkit";
             panelLauncherToolkit.Size = new Size(372, 208);
             panelLauncherToolkit.TabIndex = 6;
+            // 
+            // modConfigProfilesButton
+            // 
+            modConfigProfilesButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            modConfigProfilesButton.BackColor = Color.LightGreen;
+            modConfigProfilesButton.FlatStyle = FlatStyle.Flat;
+            modConfigProfilesButton.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            modConfigProfilesButton.Location = new Point(5, 108);
+            modConfigProfilesButton.Name = "modConfigProfilesButton";
+            modConfigProfilesButton.Size = new Size(361, 30);
+            modConfigProfilesButton.TabIndex = 10;
+            modConfigProfilesButton.Text = "CONFIG PROFILES";
+            modConfigProfilesButton.UseVisualStyleBackColor = false;
+            modConfigProfilesButton.Click += ModConfigProfilesButton_Click;
+            // 
+            // modConfigSettingsButton
+            // 
+            modConfigSettingsButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            modConfigSettingsButton.BackColor = Color.LightGreen;
+            modConfigSettingsButton.FlatStyle = FlatStyle.Flat;
+            modConfigSettingsButton.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            modConfigSettingsButton.Location = new Point(5, 71);
+            modConfigSettingsButton.Name = "modConfigSettingsButton";
+            modConfigSettingsButton.Size = new Size(361, 30);
+            modConfigSettingsButton.TabIndex = 9;
+            modConfigSettingsButton.Text = "CONFIG SETTINGS";
+            modConfigSettingsButton.UseVisualStyleBackColor = false;
+            modConfigSettingsButton.Click += ModConfigSettingsButton_Click;
             // 
             // modMainTitleLabel
             // 
@@ -842,5 +874,7 @@ namespace TWEMP.Browser.App.Classic
         private Button buttonMusicRewind;
         private Button buttonMusicPause;
         private Button buttonMusicPlay;
+        private Button modConfigSettingsButton;
+        private Button modConfigProfilesButton;
     }
 }

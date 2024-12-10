@@ -173,6 +173,7 @@
             MinimumSize = new Size(640, 480);
             Name = "GameConfigProfilesForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = " Manage Config Profiles";
             ResumeLayout(false);
         }

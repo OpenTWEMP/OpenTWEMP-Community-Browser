@@ -9,6 +9,7 @@ namespace TWEMP.Browser.App.Classic;
 using TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Utilities;
 using TWEMP.Browser.Core.GamingSupport;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
@@ -136,5 +137,18 @@ internal partial class MainBrowserForm
         this.groupBoxConfigLaunchMode.Enabled = true;
         this.groupBoxConfigLogMode.Enabled = true;
         this.groupBoxConfigCleanerMode.Enabled = true;
+    }
+
+    private void ModConfigSettingsButton_Click(object sender, EventArgs e)
+    {
+        GameModificationInfo gameModificationInfo = BrowserKernel.CurrentGameModView!.CurrentInfo;
+        var modConfigSettingsForm = new ModConfigSettingsForm(gameModificationInfo);
+        modConfigSettingsForm.ShowDialog();
+    }
+
+    private void ModConfigProfilesButton_Click(object sender, EventArgs e)
+    {
+        var gameConfigProfilesForm = new GameConfigProfilesForm();
+        gameConfigProfilesForm.ShowDialog();
     }
 }

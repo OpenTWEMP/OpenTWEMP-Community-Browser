@@ -33,6 +33,8 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 
         // Set back color for common UI controls.
         this.buttonLaunch.BackColor = colorTheme.CommonControlsBackColor;
+        this.modConfigSettingsButton.BackColor = colorTheme.CommonControlsBackColor;
+        this.modConfigProfilesButton.BackColor = colorTheme.CommonControlsBackColor;
         this.modQuickNavigationButton.BackColor = colorTheme.CommonControlsBackColor;
         this.buttonExplore.BackColor = colorTheme.CommonControlsBackColor;
 
@@ -46,6 +48,8 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 
         // Set fore color for common UI controls.
         this.buttonLaunch.ForeColor = colorTheme.CommonControlsForeColor;
+        this.modConfigSettingsButton.ForeColor = colorTheme.CommonControlsForeColor;
+        this.modConfigProfilesButton.ForeColor = colorTheme.CommonControlsForeColor;
         this.modQuickNavigationButton.ForeColor = colorTheme.CommonControlsForeColor;
         this.buttonExplore.ForeColor = colorTheme.CommonControlsForeColor;
 
