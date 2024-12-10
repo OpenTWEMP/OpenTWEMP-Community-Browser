@@ -129,7 +129,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                     }
                     else
                     {
-                        modLogoPictureBox.Image = Resources.TWEMP_PRESETS_ON;
+                        modLogoPictureBox.Image = Resources.OPENTWEMP_LOGO;
                     }
 
                     if (selectedModification.CanBeLaunchedViaNativeBatch())
@@ -172,7 +172,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
                 {
                     modMainTitleLabel.Text = selectedModification.ShortName;
                     modStatusLabel.Text = selectedModification.Location;
-                    modLogoPictureBox.Image = Resources.TWEMP_PRESETS_OFF;
+                    modLogoPictureBox.Image = Resources.OPENTWEMP_LOGO;
                 }
 #endif
 
@@ -349,7 +349,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         }
         else
         {
-            this.modLogoPictureBox.Image = Resources.TWEMP_PRESETS_ON;
+            this.modLogoPictureBox.Image = Resources.OPENTWEMP_LOGO;
         }
     }
 

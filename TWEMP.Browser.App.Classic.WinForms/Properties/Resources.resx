@@ -121,10 +121,4 @@
   <data name="OPENTWEMP_LOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OPENTWEMP_LOGO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TWEMP_PRESETS_OFF" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TWEMP_PRESETS_OFF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TWEMP_PRESETS_ON" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TWEMP_PRESETS_ON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>
