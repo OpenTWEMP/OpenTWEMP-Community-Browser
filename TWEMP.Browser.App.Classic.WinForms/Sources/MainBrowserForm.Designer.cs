@@ -75,8 +75,8 @@ namespace TWEMP.Browser.App.Classic
             applicationHomeFolderToolStripMenuItem = new ToolStripMenuItem();
             exitFromApplicationToolStripMenuItem = new ToolStripMenuItem();
             toolStripModItem = new ToolStripMenuItem();
-            gameConfigProfilesSwitcherToolStripMenuItem = new ToolStripMenuItem();
             gameConfigProfilesToolStripMenuItem = new ToolStripMenuItem();
+            gameConfigProfilesSwitcherToolStripMenuItem = new ToolStripMenuItem();
             configSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripHelpItem = new ToolStripMenuItem();
             aboutProgramToolStripMenuItem = new ToolStripMenuItem();
@@ -85,6 +85,7 @@ namespace TWEMP.Browser.App.Classic
             buttonCollectionCreate = new Button();
             buttonCollectionManage = new Button();
             panelCollections = new Panel();
+            panelMediaDevice = new Panel();
             panelLauncherOptions.SuspendLayout();
             groupBoxConfigProfiles.SuspendLayout();
             groupBoxLauncherProviders.SuspendLayout();
@@ -572,19 +573,19 @@ namespace TWEMP.Browser.App.Classic
             toolStripModItem.Size = new Size(101, 20);
             toolStripModItem.Text = "MODIFICATION";
             // 
-            // gameConfigProfilesSwitcherToolStripMenuItem
-            // 
-            gameConfigProfilesSwitcherToolStripMenuItem.Name = "gameConfigProfilesSwitcherToolStripMenuItem";
-            gameConfigProfilesSwitcherToolStripMenuItem.Size = new Size(234, 22);
-            gameConfigProfilesSwitcherToolStripMenuItem.Text = "Game Config Profiles Switcher";
-            gameConfigProfilesSwitcherToolStripMenuItem.Click += GameConfigProfilesSwitcherToolStripMenuItem_Click;
-            // 
             // gameConfigProfilesToolStripMenuItem
             // 
             gameConfigProfilesToolStripMenuItem.Name = "gameConfigProfilesToolStripMenuItem";
             gameConfigProfilesToolStripMenuItem.Size = new Size(234, 22);
             gameConfigProfilesToolStripMenuItem.Text = "Game Config Profiles";
             gameConfigProfilesToolStripMenuItem.Click += GameConfigProfilesToolStripMenuItem_Click;
+            // 
+            // gameConfigProfilesSwitcherToolStripMenuItem
+            // 
+            gameConfigProfilesSwitcherToolStripMenuItem.Name = "gameConfigProfilesSwitcherToolStripMenuItem";
+            gameConfigProfilesSwitcherToolStripMenuItem.Size = new Size(234, 22);
+            gameConfigProfilesSwitcherToolStripMenuItem.Text = "Game Config Profiles Switcher";
+            gameConfigProfilesSwitcherToolStripMenuItem.Click += GameConfigProfilesSwitcherToolStripMenuItem_Click;
             // 
             // configSettingsToolStripMenuItem
             // 
@@ -625,7 +626,7 @@ namespace TWEMP.Browser.App.Classic
             treeNode3.Name = "Node2";
             treeNode3.Text = "All Modifications";
             treeViewGameMods.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3 });
-            treeViewGameMods.Size = new Size(320, 451);
+            treeViewGameMods.Size = new Size(320, 353);
             treeViewGameMods.TabIndex = 16;
             treeViewGameMods.AfterSelect += TreeViewGameMods_AfterSelect;
             // 
@@ -634,9 +635,10 @@ namespace TWEMP.Browser.App.Classic
             buttonMarkFavoriteMod.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonMarkFavoriteMod.BackColor = Color.LightGreen;
             buttonMarkFavoriteMod.FlatStyle = FlatStyle.Flat;
-            buttonMarkFavoriteMod.Location = new Point(3, 14);
+            buttonMarkFavoriteMod.Font = new Font("Segoe UI", 10F);
+            buttonMarkFavoriteMod.Location = new Point(3, 7);
             buttonMarkFavoriteMod.Name = "buttonMarkFavoriteMod";
-            buttonMarkFavoriteMod.Size = new Size(313, 23);
+            buttonMarkFavoriteMod.Size = new Size(313, 40);
             buttonMarkFavoriteMod.TabIndex = 18;
             buttonMarkFavoriteMod.Text = "MARK or UNMARK THIS MOD as FAVORITE";
             buttonMarkFavoriteMod.UseVisualStyleBackColor = false;
@@ -647,9 +649,10 @@ namespace TWEMP.Browser.App.Classic
             buttonCollectionCreate.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonCollectionCreate.BackColor = Color.LightGreen;
             buttonCollectionCreate.FlatStyle = FlatStyle.Flat;
-            buttonCollectionCreate.Location = new Point(3, 43);
+            buttonCollectionCreate.Font = new Font("Segoe UI", 10F);
+            buttonCollectionCreate.Location = new Point(3, 53);
             buttonCollectionCreate.Name = "buttonCollectionCreate";
-            buttonCollectionCreate.Size = new Size(313, 23);
+            buttonCollectionCreate.Size = new Size(313, 40);
             buttonCollectionCreate.TabIndex = 19;
             buttonCollectionCreate.Text = "CREATE A NEW COLLECTION";
             buttonCollectionCreate.UseVisualStyleBackColor = false;
@@ -660,9 +663,10 @@ namespace TWEMP.Browser.App.Classic
             buttonCollectionManage.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonCollectionManage.BackColor = Color.LightGreen;
             buttonCollectionManage.FlatStyle = FlatStyle.Flat;
-            buttonCollectionManage.Location = new Point(3, 72);
+            buttonCollectionManage.Font = new Font("Segoe UI", 10F);
+            buttonCollectionManage.Location = new Point(3, 97);
             buttonCollectionManage.Name = "buttonCollectionManage";
-            buttonCollectionManage.Size = new Size(313, 23);
+            buttonCollectionManage.Size = new Size(313, 40);
             buttonCollectionManage.TabIndex = 20;
             buttonCollectionManage.Text = "MANAGE YOUR COLLECTIONS";
             buttonCollectionManage.UseVisualStyleBackColor = false;
@@ -676,10 +680,20 @@ namespace TWEMP.Browser.App.Classic
             panelCollections.Controls.Add(buttonCollectionManage);
             panelCollections.Controls.Add(buttonCollectionCreate);
             panelCollections.Controls.Add(buttonMarkFavoriteMod);
-            panelCollections.Location = new Point(12, 541);
+            panelCollections.Location = new Point(12, 443);
             panelCollections.Name = "panelCollections";
-            panelCollections.Size = new Size(321, 110);
+            panelCollections.Size = new Size(321, 146);
             panelCollections.TabIndex = 21;
+            // 
+            // panelMediaDevice
+            // 
+            panelMediaDevice.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            panelMediaDevice.BackColor = Color.MediumAquamarine;
+            panelMediaDevice.BorderStyle = BorderStyle.FixedSingle;
+            panelMediaDevice.Location = new Point(12, 595);
+            panelMediaDevice.Name = "panelMediaDevice";
+            panelMediaDevice.Size = new Size(321, 56);
+            panelMediaDevice.TabIndex = 22;
             // 
             // MainBrowserForm
             // 
@@ -688,6 +702,7 @@ namespace TWEMP.Browser.App.Classic
             BackColor = Color.DarkSeaGreen;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1008, 729);
+            Controls.Add(panelMediaDevice);
             Controls.Add(panelCollections);
             Controls.Add(treeViewGameMods);
             Controls.Add(modMainTitleLabel);
@@ -779,5 +794,6 @@ namespace TWEMP.Browser.App.Classic
         private ToolStripMenuItem gameMusicPlayerToolStripMenuItem;
         private ToolStripMenuItem gameConfigProfilesToolStripMenuItem;
         private ToolStripMenuItem gameConfigProfilesSwitcherToolStripMenuItem;
+        private Panel panelMediaDevice;
     }
 }

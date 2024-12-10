@@ -24,6 +24,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         this.panelCollections.BackColor = colorTheme.PanelsBackColor;
         this.panelLauncherToolkit.BackColor = colorTheme.PanelsBackColor;
         this.panelLauncherOptions.BackColor = colorTheme.PanelsBackColor;
+        this.panelMediaDevice.BackColor = colorTheme.PanelsBackColor;
 
         // Set back color for mod UI controls.
         this.treeViewGameMods.BackColor = colorTheme.ModControlsBackColor;
