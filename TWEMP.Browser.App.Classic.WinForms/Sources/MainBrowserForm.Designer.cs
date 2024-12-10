@@ -533,7 +533,7 @@ namespace TWEMP.Browser.App.Classic
             modStatusLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             modStatusLabel.BackColor = Color.MediumSeaGreen;
             modStatusLabel.BorderStyle = BorderStyle.FixedSingle;
-            modStatusLabel.Font = new Font("Segoe UI", 14F);
+            modStatusLabel.Font = new Font("Segoe UI", 11F);
             modStatusLabel.ForeColor = Color.Black;
             modStatusLabel.Location = new Point(12, 654);
             modStatusLabel.Name = "modStatusLabel";
