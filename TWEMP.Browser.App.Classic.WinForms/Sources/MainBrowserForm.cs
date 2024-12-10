@@ -67,6 +67,9 @@ internal partial class MainBrowserForm : Form
         this.modQuickNavigationButton.Enabled = false;
         this.modQuickNavigationButton.Visible = false;
 
+        this.configProfileSwitchButton.Enabled = false;
+        this.configProfileSwitchButton.Visible = false;
+
         this.buttonMarkFavoriteMod.Enabled = false;
         this.buttonMarkFavoriteMod.Visible = false;
 
@@ -126,6 +129,9 @@ internal partial class MainBrowserForm : Form
 
         this.modQuickNavigationButton.Enabled = true;
         this.modQuickNavigationButton.Visible = true;
+
+        this.configProfileSwitchButton.Enabled = true;
+        this.configProfileSwitchButton.Visible = true;
 
         this.buttonMarkFavoriteMod.Enabled = true;
         this.buttonMarkFavoriteMod.Visible = true;

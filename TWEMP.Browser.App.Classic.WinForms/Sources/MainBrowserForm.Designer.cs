@@ -30,12 +30,13 @@ namespace TWEMP.Browser.App.Classic
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode4 = new TreeNode("My Favorite Mods");
-            TreeNode treeNode5 = new TreeNode("My Mod Collections");
-            TreeNode treeNode6 = new TreeNode("All Modifications");
+            TreeNode treeNode1 = new TreeNode("My Favorite Mods");
+            TreeNode treeNode2 = new TreeNode("My Mod Collections");
+            TreeNode treeNode3 = new TreeNode("All Modifications");
             buttonLaunch = new Button();
             panelLauncherOptions = new Panel();
             groupBoxConfigProfiles = new GroupBox();
+            configProfileSwitchButton = new Button();
             radioButtonConfigProfile_Modding = new RadioButton();
             radioButtonConfigProfile_Gaming = new RadioButton();
             groupBoxLauncherProviders = new GroupBox();
@@ -143,14 +144,28 @@ namespace TWEMP.Browser.App.Classic
             // groupBoxConfigProfiles
             // 
             groupBoxConfigProfiles.BackColor = Color.Transparent;
+            groupBoxConfigProfiles.Controls.Add(configProfileSwitchButton);
             groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Modding);
             groupBoxConfigProfiles.Controls.Add(radioButtonConfigProfile_Gaming);
             groupBoxConfigProfiles.Location = new Point(3, 3);
             groupBoxConfigProfiles.Name = "groupBoxConfigProfiles";
-            groupBoxConfigProfiles.Size = new Size(267, 53);
+            groupBoxConfigProfiles.Size = new Size(267, 74);
             groupBoxConfigProfiles.TabIndex = 7;
             groupBoxConfigProfiles.TabStop = false;
             groupBoxConfigProfiles.Text = "Configuration Profiles";
+            // 
+            // configProfileSwitchButton
+            // 
+            configProfileSwitchButton.BackColor = Color.LightGreen;
+            configProfileSwitchButton.FlatStyle = FlatStyle.Flat;
+            configProfileSwitchButton.Font = new Font("Segoe UI", 9F);
+            configProfileSwitchButton.Location = new Point(6, 45);
+            configProfileSwitchButton.Name = "configProfileSwitchButton";
+            configProfileSwitchButton.Size = new Size(255, 23);
+            configProfileSwitchButton.TabIndex = 2;
+            configProfileSwitchButton.Text = "CONFIG PROFILE SWITCHER";
+            configProfileSwitchButton.UseVisualStyleBackColor = false;
+            configProfileSwitchButton.Click += ConfigProfileSwitchButton_Click;
             // 
             // radioButtonConfigProfile_Modding
             // 
@@ -292,11 +307,11 @@ namespace TWEMP.Browser.App.Classic
             groupBoxConfigLogMode.Controls.Add(radioButtonLogErrorAndTrace);
             groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyTrace);
             groupBoxConfigLogMode.Controls.Add(radioButtonLogOnlyError);
-            groupBoxConfigLogMode.Location = new Point(4, 190);
+            groupBoxConfigLogMode.Location = new Point(4, 205);
             groupBoxConfigLogMode.Margin = new Padding(4, 3, 4, 3);
             groupBoxConfigLogMode.Name = "groupBoxConfigLogMode";
             groupBoxConfigLogMode.Padding = new Padding(4, 3, 4, 3);
-            groupBoxConfigLogMode.Size = new Size(266, 126);
+            groupBoxConfigLogMode.Size = new Size(266, 111);
             groupBoxConfigLogMode.TabIndex = 1;
             groupBoxConfigLogMode.TabStop = false;
             groupBoxConfigLogMode.Text = "Select a mode of creating system.log file";
@@ -306,7 +321,7 @@ namespace TWEMP.Browser.App.Classic
             checkBoxLogHistory.AutoSize = true;
             checkBoxLogHistory.Checked = true;
             checkBoxLogHistory.CheckState = CheckState.Checked;
-            checkBoxLogHistory.Location = new Point(11, 97);
+            checkBoxLogHistory.Location = new Point(8, 92);
             checkBoxLogHistory.Margin = new Padding(4, 3, 4, 3);
             checkBoxLogHistory.Name = "checkBoxLogHistory";
             checkBoxLogHistory.Size = new Size(167, 19);
@@ -318,7 +333,7 @@ namespace TWEMP.Browser.App.Classic
             // 
             radioButtonLogErrorAndTrace.AutoSize = true;
             radioButtonLogErrorAndTrace.Checked = true;
-            radioButtonLogErrorAndTrace.Location = new Point(10, 72);
+            radioButtonLogErrorAndTrace.Location = new Point(7, 69);
             radioButtonLogErrorAndTrace.Margin = new Padding(4, 3, 4, 3);
             radioButtonLogErrorAndTrace.Name = "radioButtonLogErrorAndTrace";
             radioButtonLogErrorAndTrace.Size = new Size(96, 19);
@@ -330,7 +345,7 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonLogOnlyTrace
             // 
             radioButtonLogOnlyTrace.AutoSize = true;
-            radioButtonLogOnlyTrace.Location = new Point(10, 47);
+            radioButtonLogOnlyTrace.Location = new Point(7, 46);
             radioButtonLogOnlyTrace.Margin = new Padding(4, 3, 4, 3);
             radioButtonLogOnlyTrace.Name = "radioButtonLogOnlyTrace";
             radioButtonLogOnlyTrace.Size = new Size(80, 19);
@@ -341,7 +356,7 @@ namespace TWEMP.Browser.App.Classic
             // radioButtonLogOnlyError
             // 
             radioButtonLogOnlyError.AutoSize = true;
-            radioButtonLogOnlyError.Location = new Point(10, 22);
+            radioButtonLogOnlyError.Location = new Point(7, 22);
             radioButtonLogOnlyError.Margin = new Padding(4, 3, 4, 3);
             radioButtonLogOnlyError.Name = "radioButtonLogOnlyError";
             radioButtonLogOnlyError.Size = new Size(83, 19);
@@ -356,7 +371,7 @@ namespace TWEMP.Browser.App.Classic
             groupBoxConfigLaunchMode.Controls.Add(checkBoxVideo);
             groupBoxConfigLaunchMode.Controls.Add(radioButtonLaunchFullScreen);
             groupBoxConfigLaunchMode.Controls.Add(radioButtonLaunchWindowScreen);
-            groupBoxConfigLaunchMode.Location = new Point(3, 62);
+            groupBoxConfigLaunchMode.Location = new Point(4, 83);
             groupBoxConfigLaunchMode.Margin = new Padding(4, 3, 4, 3);
             groupBoxConfigLaunchMode.Name = "groupBoxConfigLaunchMode";
             groupBoxConfigLaunchMode.Padding = new Padding(4, 3, 4, 3);
@@ -655,13 +670,13 @@ namespace TWEMP.Browser.App.Classic
             treeViewGameMods.ItemHeight = 30;
             treeViewGameMods.Location = new Point(13, 84);
             treeViewGameMods.Name = "treeViewGameMods";
-            treeNode4.Name = "Node0";
-            treeNode4.Text = "My Favorite Mods";
-            treeNode5.Name = "Node1";
-            treeNode5.Text = "My Mod Collections";
-            treeNode6.Name = "Node2";
-            treeNode6.Text = "All Modifications";
-            treeViewGameMods.Nodes.AddRange(new TreeNode[] { treeNode4, treeNode5, treeNode6 });
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "My Favorite Mods";
+            treeNode2.Name = "Node1";
+            treeNode2.Text = "My Mod Collections";
+            treeNode3.Name = "Node2";
+            treeNode3.Text = "All Modifications";
+            treeViewGameMods.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3 });
             treeViewGameMods.Size = new Size(320, 353);
             treeViewGameMods.TabIndex = 16;
             treeViewGameMods.AfterSelect += TreeViewGameMods_AfterSelect;
@@ -876,5 +891,6 @@ namespace TWEMP.Browser.App.Classic
         private Button buttonMusicPlay;
         private Button modConfigSettingsButton;
         private Button modConfigProfilesButton;
+        private Button configProfileSwitchButton;
     }
 }

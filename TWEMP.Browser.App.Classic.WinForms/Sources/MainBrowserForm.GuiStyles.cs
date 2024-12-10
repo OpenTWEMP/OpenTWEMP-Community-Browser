@@ -38,6 +38,8 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         this.modQuickNavigationButton.BackColor = colorTheme.CommonControlsBackColor;
         this.buttonExplore.BackColor = colorTheme.CommonControlsBackColor;
 
+        this.configProfileSwitchButton.BackColor = colorTheme.CommonControlsBackColor;
+
         this.buttonMarkFavoriteMod.BackColor = colorTheme.CommonControlsBackColor;
         this.buttonCollectionCreate.BackColor = colorTheme.CommonControlsBackColor;
         this.buttonCollectionManage.BackColor = colorTheme.CommonControlsBackColor;
@@ -64,6 +66,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         this.groupBoxConfigProfiles.ForeColor = colorTheme.CommonControlsForeColor;
         this.radioButtonConfigProfile_Gaming.ForeColor = colorTheme.CommonControlsForeColor;
         this.radioButtonConfigProfile_Modding.ForeColor = colorTheme.CommonControlsForeColor;
+        this.configProfileSwitchButton.ForeColor = colorTheme.CommonControlsForeColor;
 
         this.groupBoxConfigLaunchMode.ForeColor = colorTheme.CommonControlsForeColor;
         this.radioButtonLaunchWindowScreen.ForeColor = colorTheme.CommonControlsForeColor;

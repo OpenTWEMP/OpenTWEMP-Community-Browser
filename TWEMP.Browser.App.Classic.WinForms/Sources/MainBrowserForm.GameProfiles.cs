@@ -6,9 +6,25 @@
 
 namespace TWEMP.Browser.App.Classic;
 
+using TWEMP.Browser.App.Classic.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+
 internal partial class MainBrowserForm
 {
-    // QUICK CONFIGURING VIA PROFILES
+    private void ConfigProfileSwitchButton_Click(object sender, EventArgs e)
+    {
+        UpdatableGameModificationView? gameModificationView = BrowserKernel.CurrentGameModView;
+
+        if (gameModificationView == null)
+        {
+            return;
+        }
+
+        var gameConfigProfileSwitchForm = new GameConfigProfileSwitchForm(gameModificationView);
+        gameConfigProfileSwitchForm.ShowDialog();
+    }
+
     private void RadioButtonConfigProfile_Gaming_CheckedChanged(object sender, EventArgs e)
     {
         this.radioButtonLaunchWindowScreen.Checked = false;

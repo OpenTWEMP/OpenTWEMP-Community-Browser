@@ -82,20 +82,6 @@ public partial class GameConfigProfilesForm : Form
         }
     }
 
-    private void ConfigProfileSelectButtonClick(object sender, EventArgs e)
-    {
-        UpdatableGameModificationView? gameModificationView = BrowserKernel.CurrentGameModView;
-
-        if (gameModificationView == null)
-        {
-            ShowConfigErrorMessageBox("Cannot select a profile!\nSelect a game mod and try again.");
-            return;
-        }
-
-        GameConfigProfileSwitchForm gameConfigProfileSwitchForm = new (gameModificationView);
-        gameConfigProfileSwitchForm.ShowDialog();
-    }
-
     private void ConfigProfileCreateButtonClick(object sender, EventArgs e)
     {
         UpdatableGameModificationView? gameModificationView = BrowserKernel.CurrentGameModView;
