@@ -35,7 +35,6 @@
             cfgProfileUpdateButton = new Button();
             cfgProfilesExportButton = new Button();
             cfgProfilesImportButton = new Button();
-            cfgProfileSelectButton = new Button();
             cfgProfileCopyButton = new Button();
             formCloseButton = new Button();
             cfgProfileCurrentLabel = new Label();
@@ -47,15 +46,15 @@
             gameConfigProfilesListBox.ItemHeight = 15;
             gameConfigProfilesListBox.Location = new Point(12, 72);
             gameConfigProfilesListBox.Name = "gameConfigProfilesListBox";
-            gameConfigProfilesListBox.Size = new Size(600, 199);
+            gameConfigProfilesListBox.Size = new Size(600, 229);
             gameConfigProfilesListBox.TabIndex = 0;
             gameConfigProfilesListBox.SelectedIndexChanged += GameConfigProfilesListBoxSelectedIndexChanged;
             // 
             // cfgProfileCreateButton
             // 
-            cfgProfileCreateButton.Location = new Point(222, 277);
+            cfgProfileCreateButton.Location = new Point(12, 319);
             cfgProfileCreateButton.Name = "cfgProfileCreateButton";
-            cfgProfileCreateButton.Size = new Size(180, 23);
+            cfgProfileCreateButton.Size = new Size(600, 23);
             cfgProfileCreateButton.TabIndex = 1;
             cfgProfileCreateButton.Text = "Create a New Config Profile";
             cfgProfileCreateButton.UseVisualStyleBackColor = true;
@@ -63,7 +62,7 @@
             // 
             // cfgProfileDeleteButton
             // 
-            cfgProfileDeleteButton.Location = new Point(408, 291);
+            cfgProfileDeleteButton.Location = new Point(432, 348);
             cfgProfileDeleteButton.Name = "cfgProfileDeleteButton";
             cfgProfileDeleteButton.Size = new Size(180, 23);
             cfgProfileDeleteButton.TabIndex = 2;
@@ -73,7 +72,7 @@
             // 
             // cfgProfilesDeleteAllButton
             // 
-            cfgProfilesDeleteAllButton.Location = new Point(408, 320);
+            cfgProfilesDeleteAllButton.Location = new Point(432, 377);
             cfgProfilesDeleteAllButton.Name = "cfgProfilesDeleteAllButton";
             cfgProfilesDeleteAllButton.Size = new Size(180, 23);
             cfgProfilesDeleteAllButton.TabIndex = 3;
@@ -83,7 +82,7 @@
             // 
             // cfgProfileUpdateButton
             // 
-            cfgProfileUpdateButton.Location = new Point(222, 335);
+            cfgProfileUpdateButton.Location = new Point(222, 377);
             cfgProfileUpdateButton.Name = "cfgProfileUpdateButton";
             cfgProfileUpdateButton.Size = new Size(180, 23);
             cfgProfileUpdateButton.TabIndex = 4;
@@ -93,7 +92,7 @@
             // 
             // cfgProfilesExportButton
             // 
-            cfgProfilesExportButton.Location = new Point(36, 291);
+            cfgProfilesExportButton.Location = new Point(12, 348);
             cfgProfilesExportButton.Name = "cfgProfilesExportButton";
             cfgProfilesExportButton.Size = new Size(180, 23);
             cfgProfilesExportButton.TabIndex = 5;
@@ -103,7 +102,7 @@
             // 
             // cfgProfilesImportButton
             // 
-            cfgProfilesImportButton.Location = new Point(36, 320);
+            cfgProfilesImportButton.Location = new Point(12, 377);
             cfgProfilesImportButton.Name = "cfgProfilesImportButton";
             cfgProfilesImportButton.Size = new Size(180, 23);
             cfgProfilesImportButton.TabIndex = 6;
@@ -111,19 +110,9 @@
             cfgProfilesImportButton.UseVisualStyleBackColor = true;
             cfgProfilesImportButton.Click += ConfigProfilesImportButtonClick;
             // 
-            // cfgProfileSelectButton
-            // 
-            cfgProfileSelectButton.Location = new Point(12, 377);
-            cfgProfileSelectButton.Name = "cfgProfileSelectButton";
-            cfgProfileSelectButton.Size = new Size(600, 23);
-            cfgProfileSelectButton.TabIndex = 7;
-            cfgProfileSelectButton.Text = "Select a Config Profile";
-            cfgProfileSelectButton.UseVisualStyleBackColor = true;
-            cfgProfileSelectButton.Click += ConfigProfileSelectButtonClick;
-            // 
             // cfgProfileCopyButton
             // 
-            cfgProfileCopyButton.Location = new Point(222, 306);
+            cfgProfileCopyButton.Location = new Point(222, 348);
             cfgProfileCopyButton.Name = "cfgProfileCopyButton";
             cfgProfileCopyButton.Size = new Size(180, 23);
             cfgProfileCopyButton.TabIndex = 8;
@@ -159,7 +148,6 @@
             Controls.Add(cfgProfileCurrentLabel);
             Controls.Add(formCloseButton);
             Controls.Add(cfgProfileCopyButton);
-            Controls.Add(cfgProfileSelectButton);
             Controls.Add(cfgProfilesImportButton);
             Controls.Add(cfgProfilesExportButton);
             Controls.Add(cfgProfileUpdateButton);
@@ -187,7 +175,6 @@
         private Button cfgProfileUpdateButton;
         private Button cfgProfilesExportButton;
         private Button cfgProfilesImportButton;
-        private Button cfgProfileSelectButton;
         private Button cfgProfileCopyButton;
         private Button formCloseButton;
         private Label cfgProfileCurrentLabel;

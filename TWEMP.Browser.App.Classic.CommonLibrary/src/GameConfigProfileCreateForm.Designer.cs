@@ -133,6 +133,7 @@
             MinimumSize = new Size(640, 256);
             Name = "GameConfigProfileCreateForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Create a Game Config Profile";
             ResumeLayout(false);
             PerformLayout();
