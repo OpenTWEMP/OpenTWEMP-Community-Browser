@@ -22,4 +22,31 @@ internal partial class MainBrowserForm
     {
         BrowserKernel.InterruptAudioPlayback();
     }
+
+    private void ButtonMusicPlay_Click(object sender, EventArgs e)
+    {
+        BrowserKernel.ContinueCurrentAudioPlayback();
+
+        this.buttonMusicPlay.Enabled = false;
+        this.buttonMusicPause.Enabled = true;
+        this.buttonMusicRewind.Enabled = true;
+    }
+
+    private void ButtonMusicPause_Click(object sender, EventArgs e)
+    {
+        BrowserKernel.PauseCurrentAudioPlayback();
+
+        this.buttonMusicPlay.Enabled = true;
+        this.buttonMusicPause.Enabled = false;
+        this.buttonMusicRewind.Enabled = true;
+    }
+
+    private void ButtonMusicRewind_Click(object sender, EventArgs e)
+    {
+        BrowserKernel.RewindCurrentAudioPlayback();
+
+        this.buttonMusicPlay.Enabled = false;
+        this.buttonMusicPause.Enabled = true;
+        this.buttonMusicRewind.Enabled = true;
+    }
 }

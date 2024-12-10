@@ -64,6 +64,15 @@ internal partial class MainBrowserForm : Form
         this.buttonMarkFavoriteMod.Enabled = false;
         this.buttonMarkFavoriteMod.Visible = false;
 
+        this.buttonMusicPlay.Enabled = false;
+        this.buttonMusicPlay.Visible = false;
+
+        this.buttonMusicPause.Enabled = false;
+        this.buttonMusicPause.Visible = false;
+
+        this.buttonMusicRewind.Enabled = false;
+        this.buttonMusicRewind.Visible = false;
+
         this.modMainTitleLabel.Text = string.Empty;
         this.modStatusLabel.Text = string.Empty;
 
@@ -108,6 +117,15 @@ internal partial class MainBrowserForm : Form
 
         this.buttonMarkFavoriteMod.Enabled = true;
         this.buttonMarkFavoriteMod.Visible = true;
+
+        this.buttonMusicPlay.Enabled = true;
+        this.buttonMusicPlay.Visible = true;
+
+        this.buttonMusicPause.Enabled = true;
+        this.buttonMusicPause.Visible = true;
+
+        this.buttonMusicRewind.Enabled = true;
+        this.buttonMusicRewind.Visible = true;
 
         if (BrowserKernel.CurrentGameModView != null)
         {

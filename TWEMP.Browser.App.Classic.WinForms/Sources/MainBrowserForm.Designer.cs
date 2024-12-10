@@ -30,9 +30,9 @@ namespace TWEMP.Browser.App.Classic
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode1 = new TreeNode("My Favorite Mods");
-            TreeNode treeNode2 = new TreeNode("My Mod Collections");
-            TreeNode treeNode3 = new TreeNode("All Modifications");
+            TreeNode treeNode4 = new TreeNode("My Favorite Mods");
+            TreeNode treeNode5 = new TreeNode("My Mod Collections");
+            TreeNode treeNode6 = new TreeNode("All Modifications");
             buttonLaunch = new Button();
             panelLauncherOptions = new Panel();
             groupBoxConfigProfiles = new GroupBox();
@@ -86,6 +86,9 @@ namespace TWEMP.Browser.App.Classic
             buttonCollectionManage = new Button();
             panelCollections = new Panel();
             panelMediaDevice = new Panel();
+            buttonMusicRewind = new Button();
+            buttonMusicPause = new Button();
+            buttonMusicPlay = new Button();
             panelLauncherOptions.SuspendLayout();
             groupBoxConfigProfiles.SuspendLayout();
             groupBoxLauncherProviders.SuspendLayout();
@@ -96,6 +99,7 @@ namespace TWEMP.Browser.App.Classic
             ((System.ComponentModel.ISupportInitialize)modLogoPictureBox).BeginInit();
             appMenuStrip.SuspendLayout();
             panelCollections.SuspendLayout();
+            panelMediaDevice.SuspendLayout();
             SuspendLayout();
             // 
             // buttonLaunch
@@ -619,13 +623,13 @@ namespace TWEMP.Browser.App.Classic
             treeViewGameMods.ItemHeight = 30;
             treeViewGameMods.Location = new Point(13, 84);
             treeViewGameMods.Name = "treeViewGameMods";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "My Favorite Mods";
-            treeNode2.Name = "Node1";
-            treeNode2.Text = "My Mod Collections";
-            treeNode3.Name = "Node2";
-            treeNode3.Text = "All Modifications";
-            treeViewGameMods.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3 });
+            treeNode4.Name = "Node0";
+            treeNode4.Text = "My Favorite Mods";
+            treeNode5.Name = "Node1";
+            treeNode5.Text = "My Mod Collections";
+            treeNode6.Name = "Node2";
+            treeNode6.Text = "All Modifications";
+            treeViewGameMods.Nodes.AddRange(new TreeNode[] { treeNode4, treeNode5, treeNode6 });
             treeViewGameMods.Size = new Size(320, 353);
             treeViewGameMods.TabIndex = 16;
             treeViewGameMods.AfterSelect += TreeViewGameMods_AfterSelect;
@@ -690,10 +694,49 @@ namespace TWEMP.Browser.App.Classic
             panelMediaDevice.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             panelMediaDevice.BackColor = Color.MediumAquamarine;
             panelMediaDevice.BorderStyle = BorderStyle.FixedSingle;
+            panelMediaDevice.Controls.Add(buttonMusicRewind);
+            panelMediaDevice.Controls.Add(buttonMusicPause);
+            panelMediaDevice.Controls.Add(buttonMusicPlay);
             panelMediaDevice.Location = new Point(12, 595);
             panelMediaDevice.Name = "panelMediaDevice";
             panelMediaDevice.Size = new Size(321, 56);
             panelMediaDevice.TabIndex = 22;
+            // 
+            // buttonMusicRewind
+            // 
+            buttonMusicRewind.BackColor = Color.LightGreen;
+            buttonMusicRewind.Font = new Font("Segoe UI", 9F);
+            buttonMusicRewind.Location = new Point(216, 11);
+            buttonMusicRewind.Name = "buttonMusicRewind";
+            buttonMusicRewind.Size = new Size(100, 30);
+            buttonMusicRewind.TabIndex = 2;
+            buttonMusicRewind.Text = "REWIND";
+            buttonMusicRewind.UseVisualStyleBackColor = false;
+            buttonMusicRewind.Click += ButtonMusicRewind_Click;
+            // 
+            // buttonMusicPause
+            // 
+            buttonMusicPause.BackColor = Color.LightGreen;
+            buttonMusicPause.Font = new Font("Segoe UI", 9F);
+            buttonMusicPause.Location = new Point(110, 11);
+            buttonMusicPause.Name = "buttonMusicPause";
+            buttonMusicPause.Size = new Size(100, 30);
+            buttonMusicPause.TabIndex = 1;
+            buttonMusicPause.Text = "PAUSE";
+            buttonMusicPause.UseVisualStyleBackColor = false;
+            buttonMusicPause.Click += ButtonMusicPause_Click;
+            // 
+            // buttonMusicPlay
+            // 
+            buttonMusicPlay.BackColor = Color.LightGreen;
+            buttonMusicPlay.Font = new Font("Segoe UI", 9F);
+            buttonMusicPlay.Location = new Point(4, 12);
+            buttonMusicPlay.Name = "buttonMusicPlay";
+            buttonMusicPlay.Size = new Size(100, 30);
+            buttonMusicPlay.TabIndex = 0;
+            buttonMusicPlay.Text = "PLAY";
+            buttonMusicPlay.UseVisualStyleBackColor = false;
+            buttonMusicPlay.Click += ButtonMusicPlay_Click;
             // 
             // MainBrowserForm
             // 
@@ -736,6 +779,7 @@ namespace TWEMP.Browser.App.Classic
             appMenuStrip.ResumeLayout(false);
             appMenuStrip.PerformLayout();
             panelCollections.ResumeLayout(false);
+            panelMediaDevice.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -795,5 +839,8 @@ namespace TWEMP.Browser.App.Classic
         private ToolStripMenuItem gameConfigProfilesToolStripMenuItem;
         private ToolStripMenuItem gameConfigProfilesSwitcherToolStripMenuItem;
         private Panel panelMediaDevice;
+        private Button buttonMusicRewind;
+        private Button buttonMusicPause;
+        private Button buttonMusicPlay;
     }
 }

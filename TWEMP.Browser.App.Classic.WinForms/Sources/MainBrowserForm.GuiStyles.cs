@@ -40,6 +40,10 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         this.buttonCollectionCreate.BackColor = colorTheme.CommonControlsBackColor;
         this.buttonCollectionManage.BackColor = colorTheme.CommonControlsBackColor;
 
+        this.buttonMusicPlay.BackColor = colorTheme.CommonControlsBackColor;
+        this.buttonMusicPause.BackColor = colorTheme.CommonControlsBackColor;
+        this.buttonMusicRewind.BackColor = colorTheme.CommonControlsBackColor;
+
         // Set fore color for common UI controls.
         this.buttonLaunch.ForeColor = colorTheme.CommonControlsForeColor;
         this.modQuickNavigationButton.ForeColor = colorTheme.CommonControlsForeColor;
@@ -48,6 +52,10 @@ internal partial class MainBrowserForm : IUpdatableBrowser
         this.buttonMarkFavoriteMod.ForeColor = colorTheme.CommonControlsForeColor;
         this.buttonCollectionCreate.ForeColor = colorTheme.CommonControlsForeColor;
         this.buttonCollectionManage.ForeColor = colorTheme.CommonControlsForeColor;
+
+        this.buttonMusicPlay.ForeColor = colorTheme.CommonControlsForeColor;
+        this.buttonMusicPause.ForeColor = colorTheme.CommonControlsForeColor;
+        this.buttonMusicRewind.ForeColor = colorTheme.CommonControlsForeColor;
 
         this.groupBoxConfigProfiles.ForeColor = colorTheme.CommonControlsForeColor;
         this.radioButtonConfigProfile_Gaming.ForeColor = colorTheme.CommonControlsForeColor;
