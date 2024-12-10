@@ -4,17 +4,16 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic;
 
-using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 
 internal partial class MainBrowserForm : IUpdatableBrowser
 {
     public void UpdateExperimentalGUIChanges(bool enabled)
     {
-        groupBoxLauncherProviders.Visible = enabled;
-        radioButtonLauncherProvider_TWEMP.Checked = true;
+        this.groupBoxLauncherProviders.Visible = enabled;
+        this.radioButtonLauncherProvider_TWEMP.Checked = true;
     }
 }

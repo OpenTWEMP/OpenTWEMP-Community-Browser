@@ -1,0 +1,16 @@
+Release-Beta-Video-Playlist
+
+00 - Installing and Customizing the Application.
+01 - Configuring Game Setup Installations with Your Mods.
+02 - Creating Custom Collections for Your Mods.
+03 - Attaching Redistributable Presets to Your Mods.
+04 - Creating Customizable Presets for Your Mods.
+05 - Browsing Your Mods via the Application.
+06 - Creating M2TW Game Configuration for Your Mod.
+07 - Managing Configuration Profiles for Your Mods.
+08 - Quick Switching Game Configurations for Your Mod.
+09 - Managing Background Music Playback.
+10 - Launch Your Mod via TWEMP Launcher.
+11 - Launch Your Mod via Native Batch/Setup.
+12 - Launch Your Mod via M2TWEOP Launcher.
+13 - About M2TW Mod Support in the Application.

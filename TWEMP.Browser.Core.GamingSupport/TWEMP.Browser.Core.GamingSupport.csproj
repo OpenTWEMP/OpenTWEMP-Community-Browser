@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TWEMP.Browser.Core.CommonLibrary\TWEMP.Browser.Core.CommonLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

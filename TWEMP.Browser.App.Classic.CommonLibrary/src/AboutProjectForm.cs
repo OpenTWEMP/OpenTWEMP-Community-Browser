@@ -4,27 +4,24 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
-using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class AboutProjectForm : Form, ICanChangeMyLocalization
 {
     public AboutProjectForm()
     {
-        InitializeComponent();
-
-        SetupCurrentLocalizationForGUIControls();
+        this.InitializeComponent();
+        this.SetupCurrentLocalizationForGUIControls();
     }
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-        Text = snapshot.GetLocalizedValueByKey(Name);
-        aboutProjectNameLabel3.Text = snapshot.GetLocalizedValueByKey(aboutProjectNameLabel3.Name);
-        aboutProjectNameLabel4.Text = snapshot.GetLocalizedValueByKey(aboutProjectNameLabel4.Name);
+        this.Text = GetTextInCurrentLocalization(this.Name, this.Name);
+        this.aboutProjectNameLabel3.Text = GetTextInCurrentLocalization(this.Name, this.aboutProjectNameLabel3.Name);
+        this.aboutProjectNameLabel4.Text = GetTextInCurrentLocalization(this.Name, this.aboutProjectNameLabel4.Name);
     }
 }

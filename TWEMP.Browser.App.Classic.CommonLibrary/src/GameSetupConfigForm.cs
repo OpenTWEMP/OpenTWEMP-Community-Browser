@@ -4,11 +4,14 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
 {
@@ -16,30 +19,28 @@ public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
 
     public GameSetupConfigForm(IUpdatableBrowser browser)
     {
-        InitializeComponent();
+        this.InitializeComponent();
 
-        SetupCurrentLocalizationForGUIControls();
+        this.SetupCurrentLocalizationForGUIControls();
 
-        currentBrowser = browser;
+        this.currentBrowser = browser;
     }
 
     public void UpdateGameSetupListBox()
     {
-        gameSetupPathsListBox.Items.Clear();
-        setupPathDeleteButton.Enabled = false;
+        this.gameSetupPathsListBox.Items.Clear();
+        this.setupPathDeleteButton.Enabled = false;
 
-        InitializeGameSetupListBox(Settings.GameInstallations);
+        this.InitializeGameSetupListBox(BrowserKernel.GameInstallations);
     }
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-        Text = snapshot.GetLocalizedValueByKey(Name);
-        setupPathAddButton.Text = snapshot.GetLocalizedValueByKey(setupPathAddButton.Name);
-        setupPathDeleteButton.Text = snapshot.GetLocalizedValueByKey(setupPathDeleteButton.Name);
-        allPathsClearButton.Text = snapshot.GetLocalizedValueByKey(allPathsClearButton.Name);
-        formOkButton.Text = snapshot.GetLocalizedValueByKey(formOkButton.Name);
+        this.Text = GetTextInCurrentLocalization(this.Name, this.Name);
+        this.setupPathAddButton.Text = GetTextInCurrentLocalization(this.Name, this.setupPathAddButton.Name);
+        this.setupPathDeleteButton.Text = GetTextInCurrentLocalization(this.Name, this.setupPathDeleteButton.Name);
+        this.allPathsClearButton.Text = GetTextInCurrentLocalization(this.Name, this.allPathsClearButton.Name);
+        this.formOkButton.Text = GetTextInCurrentLocalization(this.Name, this.formOkButton.Name);
     }
 
     private static string InitializeGameSetupObjectItem(GameSetupInfo gameSetupObject)
@@ -51,8 +52,8 @@ public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
 
     private void GameSetupConfigForm_Load(object sender, EventArgs e)
     {
-        Settings.SynchronizeGameSetupSettings();
-        InitializeGameSetupListBox(Settings.GameInstallations);
+        BrowserKernel.SynchronizeGameSetupSettings();
+        this.InitializeGameSetupListBox(BrowserKernel.GameInstallations);
     }
 
     private void InitializeGameSetupListBox(List<GameSetupInfo> gameSetupsObjects)
@@ -60,60 +61,60 @@ public partial class GameSetupConfigForm : Form, ICanChangeMyLocalization
         foreach (var gameSetup in gameSetupsObjects)
         {
             string gameSetupInfoText = InitializeGameSetupObjectItem(gameSetup);
-            gameSetupPathsListBox.Items.Add(gameSetupInfoText);
+            this.gameSetupPathsListBox.Items.Add(gameSetupInfoText);
         }
     }
 
     private void GameSetupConfigForm_FormClosed(object sender, FormClosedEventArgs e)
     {
-        UpdateCallingFormState();
+        this.UpdateCallingFormState();
     }
 
     private void SetupPathAddButton_Click(object sender, EventArgs e)
     {
         var gameSetupConfigForm = new AddNewGameSetupForm(this);
-        Enabled = false;
+        this.Enabled = false;
         gameSetupConfigForm.Show();
     }
 
     private void SetupPathDeleteButton_Click(object sender, EventArgs e)
     {
-        int selectedIndex = gameSetupPathsListBox.SelectedIndex;
-        gameSetupPathsListBox.Items.RemoveAt(selectedIndex);
-        Settings.DeleteGameSetupByIndex(selectedIndex);
-        setupPathDeleteButton.Enabled = false;
+        int selectedIndex = this.gameSetupPathsListBox.SelectedIndex;
+        this.gameSetupPathsListBox.Items.RemoveAt(selectedIndex);
+        BrowserKernel.DeleteGameSetupByIndex(selectedIndex);
+        this.setupPathDeleteButton.Enabled = false;
     }
 
     private void AllPathsClearButton_Click(object sender, EventArgs e)
     {
-        gameSetupPathsListBox.Items.Clear();
-        Settings.ClearAllSettings();
-        currentBrowser.UpdateModificationsTreeView();
+        this.gameSetupPathsListBox.Items.Clear();
+        BrowserKernel.ClearAllSettings();
+        this.currentBrowser.UpdateModificationsTreeView();
     }
 
     private void FormOkButton_Click(object sender, EventArgs e)
     {
-        UpdateCallingFormState();
-        Close();
+        this.UpdateCallingFormState();
+        this.Close();
     }
 
     private void UpdateCallingFormState()
     {
-        currentBrowser.UpdateModificationsTreeView();
-        currentBrowser.Visible = true;
-        currentBrowser.Enabled = true;
+        this.currentBrowser.UpdateModificationsTreeView();
+        this.currentBrowser.Visible = true;
+        this.currentBrowser.Enabled = true;
     }
 
     private void GameSetupPathsListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        setupPathDeleteButton.Enabled = true;
+        this.setupPathDeleteButton.Enabled = true;
     }
 
     private void GameSetupPathsListBox_Click(object sender, EventArgs e)
     {
-        if (gameSetupPathsListBox.SelectedItems.Count > 0)
+        if (this.gameSetupPathsListBox.SelectedItems.Count > 0)
         {
-            setupPathDeleteButton.Enabled = true;
+            this.setupPathDeleteButton.Enabled = true;
         }
     }
 }

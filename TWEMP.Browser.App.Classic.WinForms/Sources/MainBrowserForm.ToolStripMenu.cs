@@ -3,15 +3,25 @@
 // </copyright>
 
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+using TWEMP.Browser.Core.CommonLibrary.Utilities;
 
 internal partial class MainBrowserForm
 {
+    private static void ShowCannotConfigureGameModMessageBox()
+    {
+        MessageBox.Show(
+            text: "Cannot configure a game mod!\nSelect a game mod and try again.",
+            caption: "ERROR",
+            buttons: MessageBoxButtons.OK,
+            icon: MessageBoxIcon.Error);
+    }
+
     private void ExitFromApplicationToolStripMenuItem_Click(object sender, EventArgs e)
     {
         const string MESSAGE_CAPTION = "Exit from the Application";
@@ -31,7 +41,7 @@ internal partial class MainBrowserForm
     private void ApplicationHomeFolderToolStripMenuItem_Click(object sender, EventArgs e)
     {
         string appWorkDirectory = Directory.GetCurrentDirectory();
-        SystemToolbox.ShowFileSystemDirectory(appWorkDirectory, currentMessageProvider);
+        SystemToolbox.ShowFileSystemDirectory(appWorkDirectory, this.currentMessageProvider);
     }
 
     private void ApplicationSettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,16 +54,58 @@ internal partial class MainBrowserForm
     {
         var gameSetupConfigForm = new GameSetupConfigForm(this);
 
-        Enabled = false;
-        Visible = false;
+        this.Enabled = false;
+        this.Visible = false;
 
         gameSetupConfigForm.Show();
     }
 
+    private void GameConfigProfilesSwitcherToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        UpdatableGameModificationView gameModificationView = BrowserKernel.CurrentGameModView!;
+
+        if (gameModificationView == null)
+        {
+            ShowCannotConfigureGameModMessageBox();
+        }
+        else
+        {
+            GameConfigProfileSwitchForm gameConfigProfileSwitchForm = new (gameModificationView);
+            gameConfigProfileSwitchForm.ShowDialog();
+        }
+    }
+
+    private void GameConfigProfilesToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var gameConfigProfilesForm = new GameConfigProfilesForm();
+        gameConfigProfilesForm.ShowDialog();
+    }
+
+    private void ModSupportPresetSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var appSettingsForm = new ModSupportPresetSettingsForm();
+        appSettingsForm.ShowDialog();
+    }
+
+    private void GameMusicPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var gameMusicPlayerForm = new GameMusicPlayerForm();
+        gameMusicPlayerForm.ShowDialog();
+    }
+
     private void ConfigSettingsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var modConfigSettingsForm = new ModConfigSettingsForm();
-        modConfigSettingsForm.ShowDialog();
+        UpdatableGameModificationView gameModificationView = BrowserKernel.CurrentGameModView!;
+
+        if (gameModificationView == null)
+        {
+            ShowCannotConfigureGameModMessageBox();
+        }
+        else
+        {
+            ModConfigSettingsForm modConfigSettingsForm = new (gameModificationView.CurrentInfo);
+            modConfigSettingsForm.ShowDialog();
+        }
     }
 
     private void AboutProgramToolStripMenuItem_Click(object sender, EventArgs e)

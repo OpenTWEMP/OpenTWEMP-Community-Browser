@@ -69,25 +69,5 @@ namespace TWEMP.Browser.App.Classic.WinForms.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TWEMP_PRESETS_OFF {
-            get {
-                object obj = ResourceManager.GetObject("TWEMP_PRESETS_OFF", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TWEMP_PRESETS_ON {
-            get {
-                object obj = ResourceManager.GetObject("TWEMP_PRESETS_ON", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

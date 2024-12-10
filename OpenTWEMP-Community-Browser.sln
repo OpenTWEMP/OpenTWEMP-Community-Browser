@@ -21,6 +21,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.App.WorkerSer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWEMP.Browser.App.Classic.CommonLibrary", "TWEMP.Browser.App.Classic.CommonLibrary\TWEMP.Browser.App.Classic.CommonLibrary.csproj", "{BDBD6864-F495-4B97-A6BA-FD7637B0079D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework", "TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework.csproj", "{99F1EE71-F776-45C5-A4B2-C4094E4D964D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework.WinForms", "TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework.WinForms\TWEMP.Browser.Extension.M2TW-Addons-Setup-Framework.WinForms.csproj", "{4454823D-5716-47A8-969D-6A9F1B285BCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.Browser.App.Utilities-CLI.M2TW-Localization-Switcher", "TWEMP.Browser.App.Utilities-CLI.M2TW-Localization-Switcher\TWEMP.Browser.App.Utilities-CLI.M2TW-Localization-Switcher.csproj", "{37131E36-9882-48AB-83BA-B2D515BDE2F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.Browser.App.Utilities-GUI.M2TW-Addons-Setup", "TWEMP.Browser.App.Utilities-GUI.M2TW-Addons-Setup\TWEMP.Browser.App.Utilities-GUI.M2TW-Addons-Setup.csproj", "{15DF9D84-4A54-4761-A854-3D159BD3228C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.Browser.App.Utilities-CLI.M2TW-AssetsGenerator-ModPresets", "TWEMP.Browser.App.Utilities-CLI.M2TW-AssetsGenerator-ModPresets\TWEMP.Browser.App.Utilities-CLI.M2TW-AssetsGenerator-ModPresets.csproj", "{ADC1C4CC-FBF3-4FA5-AB22-704A37E34C8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +73,26 @@ Global
 		{BDBD6864-F495-4B97-A6BA-FD7637B0079D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDBD6864-F495-4B97-A6BA-FD7637B0079D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDBD6864-F495-4B97-A6BA-FD7637B0079D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F1EE71-F776-45C5-A4B2-C4094E4D964D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F1EE71-F776-45C5-A4B2-C4094E4D964D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F1EE71-F776-45C5-A4B2-C4094E4D964D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F1EE71-F776-45C5-A4B2-C4094E4D964D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4454823D-5716-47A8-969D-6A9F1B285BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4454823D-5716-47A8-969D-6A9F1B285BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4454823D-5716-47A8-969D-6A9F1B285BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4454823D-5716-47A8-969D-6A9F1B285BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37131E36-9882-48AB-83BA-B2D515BDE2F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37131E36-9882-48AB-83BA-B2D515BDE2F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37131E36-9882-48AB-83BA-B2D515BDE2F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37131E36-9882-48AB-83BA-B2D515BDE2F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DF9D84-4A54-4761-A854-3D159BD3228C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DF9D84-4A54-4761-A854-3D159BD3228C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DF9D84-4A54-4761-A854-3D159BD3228C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DF9D84-4A54-4761-A854-3D159BD3228C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC1C4CC-FBF3-4FA5-AB22-704A37E34C8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC1C4CC-FBF3-4FA5-AB22-704A37E34C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC1C4CC-FBF3-4FA5-AB22-704A37E34C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC1C4CC-FBF3-4FA5-AB22-704A37E34C8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

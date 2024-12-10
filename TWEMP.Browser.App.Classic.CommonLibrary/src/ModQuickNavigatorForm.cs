@@ -4,12 +4,13 @@
 
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic.CommonLibrary;
 
-using TWEMP.Browser.Core.CommonLibrary;
-using M2TW = TWEMP.Browser.Core.GamingSupport.TotalWarEngineSupportProvider;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using TWEMP.Browser.Core.CommonLibrary.Utilities;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Modding;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
 public partial class ModQuickNavigatorForm : Form, ICanChangeMyLocalization
 {
@@ -36,154 +37,152 @@ public partial class ModQuickNavigatorForm : Form, ICanChangeMyLocalization
 
     public ModQuickNavigatorForm(string modHomeDirectory)
     {
-        InitializeComponent();
+        this.InitializeComponent();
 
-        SetupCurrentLocalizationForGUIControls();
+        this.SetupCurrentLocalizationForGUIControls();
 
-        currentMessageProvider = BrowserMessageProvider.CurrentProvider;
+        this.currentMessageProvider = BrowserMessageProvider.CurrentProvider;
 
-        Text += $": {modHomeDirectory}";
+        this.Text += $": {modHomeDirectory}";
 
-        currentModHomeDirectory = modHomeDirectory;
-        modDataFolderName = M2TW.ModDataFolderName;
-        modSavesFolderName = M2TW.ModSavesFolderName;
-        modLogsFolderName = M2TW.ModLogsFolderName;
-        dataTextFolderName = M2TW.DataTextFolderName;
-        dataLoadingScreenFolderName = M2TW.DataLoadingScreenFolderName;
-        dataUiFolderName = M2TW.DataUiFolderName;
-        dataFmvFolderName = M2TW.DataFmvFolderName;
-        dataSoundsFolderName = M2TW.DataSoundsFolderName;
-        dataUnitModelsFolderName = M2TW.DataUnitModelsFolderName;
-        dataUnitSpritesFolderName = M2TW.DataUnitSpritesFolderName;
-        dataAnimationsFolderName = M2TW.DataAnimationsFolderName;
-        dataBannersFolderName = M2TW.DataBannersFolderName;
-        dataModelsStratFolderName = M2TW.DataModelsStratFolderName;
-        worldMapsBaseFolderName = M2TW.WorldMapsBaseFolderName;
-        worldMapsCampaignFolderName = M2TW.WorldMapsCampaignFolderName;
+        this.currentModHomeDirectory = modHomeDirectory;
+        this.modDataFolderName = M2TWFileSystemInfo.ModDataFolderName;
+        this.modSavesFolderName = M2TWFileSystemInfo.ModSavesFolderName;
+        this.modLogsFolderName = M2TWFileSystemInfo.ModLogsFolderName;
+        this.dataTextFolderName = M2TWFileSystemInfo.DataTextFolderName;
+        this.dataLoadingScreenFolderName = M2TWFileSystemInfo.DataLoadingScreenFolderName;
+        this.dataUiFolderName = M2TWFileSystemInfo.DataUiFolderName;
+        this.dataFmvFolderName = M2TWFileSystemInfo.DataFmvFolderName;
+        this.dataSoundsFolderName = M2TWFileSystemInfo.DataSoundsFolderName;
+        this.dataUnitModelsFolderName = M2TWFileSystemInfo.DataUnitModelsFolderName;
+        this.dataUnitSpritesFolderName = M2TWFileSystemInfo.DataUnitSpritesFolderName;
+        this.dataAnimationsFolderName = M2TWFileSystemInfo.DataAnimationsFolderName;
+        this.dataBannersFolderName = M2TWFileSystemInfo.DataBannersFolderName;
+        this.dataModelsStratFolderName = M2TWFileSystemInfo.DataModelsStratFolderName;
+        this.worldMapsBaseFolderName = M2TWFileSystemInfo.WorldMapsBaseFolderName;
+        this.worldMapsCampaignFolderName = M2TWFileSystemInfo.WorldMapsCampaignFolderName;
 
-        modDataNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}";
-        modSavesNavigateButton.Text = $"{ModLocationPrefix}\\{modSavesFolderName}";
-        modLogsNavigateButton.Text = $"{ModLocationPrefix}\\{modLogsFolderName}";
-        dataTextNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataTextFolderName}";
-        dataLoadingScreenNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataLoadingScreenFolderName}";
-        dataUiNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataUiFolderName}";
-        dataFmvNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataFmvFolderName}";
-        dataSoundsNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataSoundsFolderName}";
-        dataUnitModelsNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataUnitModelsFolderName}";
-        dataUnitSpritesNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataUnitSpritesFolderName}";
-        dataAnimationsNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataAnimationsFolderName}";
-        dataBannersNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataBannersFolderName}";
-        dataModelsStratNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{dataModelsStratFolderName}";
-        worldMapsBaseNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{worldMapsBaseFolderName}";
-        worldMapsCampaignNavigateButton.Text = $"{ModLocationPrefix}\\{modDataFolderName}\\{worldMapsCampaignFolderName}";
+        this.modDataNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}";
+        this.modSavesNavigateButton.Text = $"{ModLocationPrefix}\\{this.modSavesFolderName}";
+        this.modLogsNavigateButton.Text = $"{ModLocationPrefix}\\{this.modLogsFolderName}";
+        this.dataTextNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataTextFolderName}";
+        this.dataLoadingScreenNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataLoadingScreenFolderName}";
+        this.dataUiNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataUiFolderName}";
+        this.dataFmvNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataFmvFolderName}";
+        this.dataSoundsNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataSoundsFolderName}";
+        this.dataUnitModelsNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataUnitModelsFolderName}";
+        this.dataUnitSpritesNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataUnitSpritesFolderName}";
+        this.dataAnimationsNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataAnimationsFolderName}";
+        this.dataBannersNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataBannersFolderName}";
+        this.dataModelsStratNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.dataModelsStratFolderName}";
+        this.worldMapsBaseNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.worldMapsBaseFolderName}";
+        this.worldMapsCampaignNavigateButton.Text = $"{ModLocationPrefix}\\{this.modDataFolderName}\\{this.worldMapsCampaignFolderName}";
     }
 
     public void SetupCurrentLocalizationForGUIControls()
     {
-        FormLocaleSnapshot snapshot = Settings.CurrentLocalization.GetFormLocaleSnapshotByKey(Name);
-
-        Text = snapshot.GetLocalizedValueByKey(Name);
-        labelCommonInfo.Text = snapshot.GetLocalizedValueByKey(labelCommonInfo.Name);
-        formExitButton.Text = snapshot.GetLocalizedValueByKey(formExitButton.Name);
+        this.Text = GetTextInCurrentLocalization(this.Name, this.Name);
+        this.labelCommonInfo.Text = GetTextInCurrentLocalization(this.Name, this.labelCommonInfo.Name);
+        this.formExitButton.Text = GetTextInCurrentLocalization(this.Name, this.formExitButton.Name);
     }
 
     private void NavigateToModDirectory(string directoryPath)
     {
-        SystemToolbox.ShowFileSystemDirectory(directoryPath, currentMessageProvider);
+        SystemToolbox.ShowFileSystemDirectory(directoryPath, this.currentMessageProvider);
     }
 
     private void FormExitButton_Click(object sender, EventArgs e)
     {
-        Close();
+        this.Close();
     }
 
     private void ModDataNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void ModSavesNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modSavesFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modSavesFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void ModLogsNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modLogsFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modLogsFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataTextNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataTextFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataTextFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataLoadingScreenNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataLoadingScreenFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataLoadingScreenFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataUiNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataUiFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataUiFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataFmvNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataFmvFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataFmvFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataSoundsNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataSoundsFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataSoundsFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataUnitModelsNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataUnitModelsFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataUnitModelsFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataUnitSpritesNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataUnitSpritesFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataUnitSpritesFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataAnimationsNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataAnimationsFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataAnimationsFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataBannersNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataBannersFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataBannersFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void DataModelsStratNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, dataModelsStratFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.dataModelsStratFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void WorldMapsBaseNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, worldMapsBaseFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.worldMapsBaseFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 
     private void WorldMapsCampaignNavigateButton_Click(object sender, EventArgs e)
     {
-        string targetFolderPath = Path.Combine(currentModHomeDirectory, modDataFolderName, worldMapsCampaignFolderName);
-        NavigateToModDirectory(targetFolderPath);
+        string targetFolderPath = Path.Combine(this.currentModHomeDirectory, this.modDataFolderName, this.worldMapsCampaignFolderName);
+        this.NavigateToModDirectory(targetFolderPath);
     }
 }

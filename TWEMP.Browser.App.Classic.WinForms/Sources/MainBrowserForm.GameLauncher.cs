@@ -3,106 +3,152 @@
 // </copyright>
 
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
-#pragma warning disable SA1101 // PrefixLocalCallsWithThis
 
 namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+using TWEMP.Browser.Core.CommonLibrary.Utilities;
+using TWEMP.Browser.Core.GamingSupport;
+using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
 
 internal partial class MainBrowserForm
 {
-    // LAUNCHER FEATURE TO RUN THE SELECTED MODIFICATION
+    private static void ShowGameModLaunchErrorMessageBox(string messageText)
+    {
+        MessageBox.Show(
+            text: messageText,
+            caption: "ERROR",
+            buttons: MessageBoxButtons.OK,
+            icon: MessageBoxIcon.Error);
+    }
+
     private void ButtonLaunch_Click(object sender, EventArgs e)
     {
-        ChangeLauncherGUIWhenGameStarting();
+        TreeNode currentGameModNode = this.GetCurrentGameModNode();
+        GameModificationInfo? currentGameModInfo = this.SelectGameModInfoFromBrowserTreeNode(currentGameModNode);
 
-        TreeNode modNode = treeViewGameMods.SelectedNode;
+        this.InterruptGameModBackgroundMusic();
 
-        GameModificationInfo targetModInfo;
-
-        if (IsNodeOfFavoriteCollection(modNode) || IsNodeOfModificationFromCustomCollection(modNode))
+        if (currentGameModInfo == null)
         {
-            targetModInfo = FindModBySelectedNodeFromCollection(modNode);
-        }
-        else if (IsNodeOfModificationFromAllModsCollection(modNode))
-        {
-            targetModInfo = FindModificationBySelectedTreeNode(modNode);
+            ShowGameModLaunchErrorMessageBox("Cannot execute this game mod!");
         }
         else
         {
-            targetModInfo = null!;
-            MessageBox.Show("ERROR: Cannot execute this MOD !!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
+            var currentGameConfigurator = (M2TWGameConfigurator?)BrowserKernel.CurrentConfigurator;
+
+            if (currentGameConfigurator == null)
+            {
+                ShowGameModLaunchErrorMessageBox("Cannot configure this game mod!");
+                return;
+            }
+
+            M2TWCustomQuickConfigStateView currentQuickCustomConfigState = this.CreateQuickCustomConfigState();
+            currentGameConfigurator.OverrideConfigSettingsByCustomQuickState(currentQuickCustomConfigState);
+
+            this.ChangeLauncherGUIWhenGameStarting();
+            MainGamingSupportHub.LaunchGameEngineAsM2TW(currentGameConfigurator, this.currentMessageProvider);
+            this.ChangeLauncherGUIWhenGameExiting();
+
+            this.SetCurrentGameModNode(currentGameModNode);
+        }
+    }
+
+    private GameModificationInfo? SelectGameModInfoFromBrowserTreeNode(TreeNode treeNode)
+    {
+        GameModificationInfo? targetModInfo;
+
+        if (this.IsNodeOfFavoriteCollection(treeNode) || this.IsNodeOfModificationFromCustomCollection(treeNode))
+        {
+            targetModInfo = this.FindModBySelectedNodeFromCollection(treeNode);
+        }
+        else if (this.IsNodeOfModificationFromAllModsCollection(treeNode))
+        {
+            targetModInfo = this.FindModificationBySelectedTreeNode(treeNode);
+        }
+        else
+        {
+            targetModInfo = null;
         }
 
-        CustomConfigState targetConfigState = GetCurrentGameConfigState();
-        var launchConfiguration = new GameLaunchConfigurator(
-            targetModInfo, targetConfigState, currentMessageProvider);
-        launchConfiguration.Execute();
-
-        ChangeLauncherGUIWhenGameExiting();
+        return targetModInfo;
     }
 
     private void ChangeLauncherGUIWhenGameStarting()
     {
-        WindowState = FormWindowState.Minimized;
-        ShowInTaskbar = false;
+        this.WindowState = FormWindowState.Minimized;
+        this.ShowInTaskbar = false;
     }
 
     private void ChangeLauncherGUIWhenGameExiting()
     {
-        ShowInTaskbar = true;
-        WindowState = FormWindowState.Normal;
+        this.ShowInTaskbar = true;
+        this.WindowState = FormWindowState.Normal;
     }
 
     private void ModQuickNavigationButton_Click(object sender, EventArgs e)
     {
-        GameModificationInfo currentMod = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
+        GameModificationInfo currentMod = this.FindModBySelectedNodeFromCollection(this.treeViewGameMods.SelectedNode);
         var form = new ModQuickNavigatorForm(currentMod.Location);
         form.ShowDialog();
     }
 
     private void ButtonExplore_Click(object sender, EventArgs e)
     {
-        GameModificationInfo current_mod_info = FindModBySelectedNodeFromCollection(treeViewGameMods.SelectedNode);
-        SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location, currentMessageProvider);
+        GameModificationInfo current_mod_info = this.FindModBySelectedNodeFromCollection(this.treeViewGameMods.SelectedNode);
+        SystemToolbox.ShowFileSystemDirectory(current_mod_info.Location, this.currentMessageProvider);
     }
 
     // PROVIDERS TO RUN THE SELECTED MODIFICATION
     private void RadioButtonLauncherProvider_M2TWEOP_CheckedChanged(object sender, EventArgs e)
     {
-        DisableLauncherSettingsControls();
+        this.DisableLauncherSettingsControls();
     }
 
     private void RadioButtonLauncherProvider_NativeSetup_CheckedChanged(object sender, EventArgs e)
     {
-        DisableLauncherSettingsControls();
+        this.DisableLauncherSettingsControls();
     }
 
     private void RadioButtonLauncherProvider_BatchScript_CheckedChanged(object sender, EventArgs e)
     {
-        DisableLauncherSettingsControls();
+        this.DisableLauncherSettingsControls();
     }
 
     private void RadioButtonLauncherProvider_TWEMP_CheckedChanged(object sender, EventArgs e)
     {
-        EnableLauncherSettingsControls();
+        this.EnableLauncherSettingsControls();
     }
 
     private void DisableLauncherSettingsControls()
     {
-        groupBoxConfigProfiles.Enabled = false;
-        groupBoxConfigLaunchMode.Enabled = false;
-        groupBoxConfigLogMode.Enabled = false;
-        groupBoxConfigCleanerMode.Enabled = false;
+        this.groupBoxConfigProfiles.Enabled = false;
+        this.groupBoxConfigLaunchMode.Enabled = false;
+        this.groupBoxConfigLogMode.Enabled = false;
+        this.groupBoxConfigCleanerMode.Enabled = false;
     }
 
     private void EnableLauncherSettingsControls()
     {
-        groupBoxConfigProfiles.Enabled = true;
-        groupBoxConfigLaunchMode.Enabled = true;
-        groupBoxConfigLogMode.Enabled = true;
-        groupBoxConfigCleanerMode.Enabled = true;
+        this.groupBoxConfigProfiles.Enabled = true;
+        this.groupBoxConfigLaunchMode.Enabled = true;
+        this.groupBoxConfigLogMode.Enabled = true;
+        this.groupBoxConfigCleanerMode.Enabled = true;
+    }
+
+    private void ModConfigSettingsButton_Click(object sender, EventArgs e)
+    {
+        GameModificationInfo gameModificationInfo = BrowserKernel.CurrentGameModView!.CurrentInfo;
+        var modConfigSettingsForm = new ModConfigSettingsForm(gameModificationInfo);
+        modConfigSettingsForm.ShowDialog();
+    }
+
+    private void ModConfigProfilesButton_Click(object sender, EventArgs e)
+    {
+        var gameConfigProfilesForm = new GameConfigProfilesForm();
+        gameConfigProfilesForm.ShowDialog();
     }
 }
