@@ -19,6 +19,7 @@ using TWEMP.Browser.Core.CommonLibrary.Serialization;
 /// </summary>
 public class GameConfigurationManager
 {
+    private const string UserProfilesFolderName = "support";
     private const string UserProfilesConfigFileName = "configuration_profiles.json";
 
     private readonly CustomGameSetupManager gameSetupManager;
@@ -35,7 +36,7 @@ public class GameConfigurationManager
 
         this.gameSupportProviderByDefault = new GameSupportProvider(GameEngineSupportType.M2TW);
 
-        string path = Path.Combine(Directory.GetCurrentDirectory(), UserProfilesConfigFileName);
+        string path = Path.Combine(Directory.GetCurrentDirectory(), UserProfilesFolderName, UserProfilesConfigFileName);
         this.userProfilesConfigFileInfo = new FileInfo(path);
 
         if (this.userProfilesConfigFileInfo.Exists)
