@@ -5,6 +5,9 @@
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 #pragma warning disable SA1601 // PartialElementsMustBeDocumented
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.App.Classic;
 
 using TWEMP.Browser.App.Classic.CommonLibrary;
@@ -67,8 +70,10 @@ internal partial class MainBrowserForm : Form
         this.modQuickNavigationButton.Enabled = false;
         this.modQuickNavigationButton.Visible = false;
 
+#if EXPERIMENTAL_FEATURES
         this.configProfileSwitchButton.Enabled = false;
         this.configProfileSwitchButton.Visible = false;
+#endif
 
         this.buttonMarkFavoriteMod.Enabled = false;
         this.buttonMarkFavoriteMod.Visible = false;
@@ -130,8 +135,10 @@ internal partial class MainBrowserForm : Form
         this.modQuickNavigationButton.Enabled = true;
         this.modQuickNavigationButton.Visible = true;
 
+#if EXPERIMENTAL_FEATURES
         this.configProfileSwitchButton.Enabled = true;
         this.configProfileSwitchButton.Visible = true;
+#endif
 
         this.buttonMarkFavoriteMod.Enabled = true;
         this.buttonMarkFavoriteMod.Visible = true;

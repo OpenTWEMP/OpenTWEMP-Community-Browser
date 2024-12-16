@@ -157,14 +157,16 @@ namespace TWEMP.Browser.App.Classic
             // configProfileSwitchButton
             // 
             configProfileSwitchButton.BackColor = Color.LightGreen;
+            configProfileSwitchButton.Enabled = false;
             configProfileSwitchButton.FlatStyle = FlatStyle.Flat;
-            configProfileSwitchButton.Font = new Font("Segoe UI", 9F);
-            configProfileSwitchButton.Location = new Point(6, 45);
+            configProfileSwitchButton.Font = new Font("Segoe UI", 7F);
+            configProfileSwitchButton.Location = new Point(180, 18);
             configProfileSwitchButton.Name = "configProfileSwitchButton";
-            configProfileSwitchButton.Size = new Size(255, 23);
+            configProfileSwitchButton.Size = new Size(81, 46);
             configProfileSwitchButton.TabIndex = 2;
             configProfileSwitchButton.Text = "CONFIG PROFILE SWITCHER";
             configProfileSwitchButton.UseVisualStyleBackColor = false;
+            configProfileSwitchButton.Visible = false;
             configProfileSwitchButton.Click += ConfigProfileSwitchButton_Click;
             // 
             // radioButtonConfigProfile_Modding
@@ -172,7 +174,7 @@ namespace TWEMP.Browser.App.Classic
             radioButtonConfigProfile_Modding.AutoSize = true;
             radioButtonConfigProfile_Modding.BackColor = Color.Transparent;
             radioButtonConfigProfile_Modding.Checked = true;
-            radioButtonConfigProfile_Modding.Location = new Point(119, 22);
+            radioButtonConfigProfile_Modding.Location = new Point(9, 45);
             radioButtonConfigProfile_Modding.Name = "radioButtonConfigProfile_Modding";
             radioButtonConfigProfile_Modding.Size = new Size(118, 19);
             radioButtonConfigProfile_Modding.TabIndex = 1;
@@ -185,7 +187,7 @@ namespace TWEMP.Browser.App.Classic
             // 
             radioButtonConfigProfile_Gaming.AutoSize = true;
             radioButtonConfigProfile_Gaming.BackColor = Color.Transparent;
-            radioButtonConfigProfile_Gaming.Location = new Point(6, 22);
+            radioButtonConfigProfile_Gaming.Location = new Point(9, 22);
             radioButtonConfigProfile_Gaming.Name = "radioButtonConfigProfile_Gaming";
             radioButtonConfigProfile_Gaming.Size = new Size(109, 19);
             radioButtonConfigProfile_Gaming.TabIndex = 0;
