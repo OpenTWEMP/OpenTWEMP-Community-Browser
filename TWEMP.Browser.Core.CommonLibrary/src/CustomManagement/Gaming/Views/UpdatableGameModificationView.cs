@@ -160,6 +160,13 @@ public class UpdatableGameModificationView
     }
 
     /// <summary>
+    /// Gets the full name of the default mod preset.
+    /// </summary>
+    /// <returns>The full name of the default mod preset.</returns>
+    public static string GetDefaultPresetFullName() =>
+        $"{ModSupportPreset.ModTitle} [{ModSupportPreset.ModVersion}]";
+
+    /// <summary>
     /// Updates launcher settings by the active preset for this game mod.
     /// </summary>
     public void UpdateLauncherSettings()

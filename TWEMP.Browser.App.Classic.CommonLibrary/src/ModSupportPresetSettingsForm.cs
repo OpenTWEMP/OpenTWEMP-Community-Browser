@@ -23,6 +23,11 @@ public partial class ModSupportPresetSettingsForm : Form
     private readonly int modCenterColumnIndex;
     private readonly int redistributablePresetColumnIndex;
     private readonly int customizablePresetColumnIndex;
+
+    private readonly Color rowCellBackColorForDefaultPreset = Color.LightGray;
+    private readonly Color rowCellBackColorForRedistributablePreset = Color.LightGreen;
+    private readonly Color rowCellBackColorForCustomizablePreset = Color.LightBlue;
+
     private readonly List<ModPresetSettingView> currentPresetSettingViews;
 
     public ModSupportPresetSettingsForm()
@@ -80,23 +85,26 @@ public partial class ModSupportPresetSettingsForm : Form
         modCenterCell.Value = gameModView.CurrentInfo.Location;
 
         DataGridViewCell redistributablePresetCell = dataGridViewRow.Cells[this.redistributablePresetColumnIndex];
-        redistributablePresetCell.Value = gameModView.GetRedistributablePresetFullName();
+        string redistributablePresetFullName = gameModView.GetRedistributablePresetFullName();
+        redistributablePresetCell.Value = redistributablePresetFullName;
 
         DataGridViewCheckBoxCell customizablePresetCell = (DataGridViewCheckBoxCell)dataGridViewRow.Cells[this.customizablePresetColumnIndex];
         customizablePresetCell.Value = gameModView.UseCustomizablePreset;
 
-        this.MarkModSupportPresetDataGridViewRowByPresetSettings(dataGridViewRow);
-    }
-
-    private void MarkModSupportPresetDataGridViewRowByPresetSettings(DataGridViewRow dataGridViewRow)
-    {
         if (this.IsConfiguredByCustomizableModPreset(dataGridViewRow))
         {
             this.MarkModSupportPresetDataGridViewRowAsCustomizablePreset(dataGridViewRow);
         }
         else
         {
-            this.MarkModSupportPresetDataGridViewRowAsRedistributablePreset(dataGridViewRow);
+            if (redistributablePresetFullName.Equals(UpdatableGameModificationView.GetDefaultPresetFullName()))
+            {
+                this.MarkModSupportPresetDataGridViewRowAsDefaultPreset(dataGridViewRow);
+            }
+            else
+            {
+                this.MarkModSupportPresetDataGridViewRowAsRedistributablePreset(dataGridViewRow);
+            }
         }
     }
 
@@ -117,14 +125,19 @@ public partial class ModSupportPresetSettingsForm : Form
         return useCustomizablePreset;
     }
 
+    private void MarkModSupportPresetDataGridViewRowAsDefaultPreset(DataGridViewRow dataGridViewRow)
+    {
+        this.ChangeDataGridViewRowBackgroundColor(dataGridViewRow, this.rowCellBackColorForDefaultPreset);
+    }
+
     private void MarkModSupportPresetDataGridViewRowAsRedistributablePreset(DataGridViewRow dataGridViewRow)
     {
-        this.ChangeDataGridViewRowBackgroundColor(dataGridViewRow, Color.LightGreen);
+        this.ChangeDataGridViewRowBackgroundColor(dataGridViewRow, this.rowCellBackColorForRedistributablePreset);
     }
 
     private void MarkModSupportPresetDataGridViewRowAsCustomizablePreset(DataGridViewRow dataGridViewRow)
     {
-        this.ChangeDataGridViewRowBackgroundColor(dataGridViewRow, Color.LightGray);
+        this.ChangeDataGridViewRowBackgroundColor(dataGridViewRow, this.rowCellBackColorForCustomizablePreset);
     }
 
     private void ModSupportPresetsDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -165,11 +178,21 @@ public partial class ModSupportPresetSettingsForm : Form
 
             if (value)
             {
-                this.ChangeDataGridViewRowBackgroundColor(row, Color.Green);
+                this.MarkModSupportPresetDataGridViewRowAsCustomizablePreset(row);
             }
             else
             {
-                this.ChangeDataGridViewRowBackgroundColor(row, Color.Red);
+                DataGridViewCell redistributablePresetCell = row.Cells[this.redistributablePresetColumnIndex];
+                string? redistributablePresetFullName = Convert.ToString(redistributablePresetCell.Value);
+
+                if (redistributablePresetFullName!.Equals(UpdatableGameModificationView.GetDefaultPresetFullName()))
+                {
+                    this.MarkModSupportPresetDataGridViewRowAsDefaultPreset(row);
+                }
+                else
+                {
+                    this.MarkModSupportPresetDataGridViewRowAsRedistributablePreset(row);
+                }
             }
 
             ModPresetSettingView presetSettingView = this.currentPresetSettingViews.ElementAt(row.Index);
