@@ -61,8 +61,10 @@ internal partial class MainBrowserForm : Form
         this.modConfigSettingsButton.Enabled = false;
         this.modConfigSettingsButton.Visible = false;
 
+#if EXPERIMENTAL_FEATURES
         this.modConfigProfilesButton.Enabled = false;
         this.modConfigProfilesButton.Visible = false;
+#endif
 
         this.buttonExplore.Enabled = false;
         this.buttonExplore.Visible = false;
@@ -126,8 +128,10 @@ internal partial class MainBrowserForm : Form
         this.modConfigSettingsButton.Enabled = true;
         this.modConfigSettingsButton.Visible = true;
 
+#if EXPERIMENTAL_FEATURES
         this.modConfigProfilesButton.Enabled = true;
         this.modConfigProfilesButton.Visible = true;
+#endif
 
         this.buttonExplore.Enabled = true;
         this.buttonExplore.Visible = true;
