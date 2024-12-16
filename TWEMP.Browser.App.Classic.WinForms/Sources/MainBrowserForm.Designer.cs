@@ -752,7 +752,7 @@ namespace TWEMP.Browser.App.Classic
             // buttonMusicRewind
             // 
             buttonMusicRewind.BackColor = Color.LightGreen;
-            buttonMusicRewind.Font = new Font("Segoe UI", 9F);
+            buttonMusicRewind.Font = new Font("Segoe UI", 8F);
             buttonMusicRewind.Location = new Point(216, 11);
             buttonMusicRewind.Name = "buttonMusicRewind";
             buttonMusicRewind.Size = new Size(100, 30);
@@ -764,7 +764,7 @@ namespace TWEMP.Browser.App.Classic
             // buttonMusicPause
             // 
             buttonMusicPause.BackColor = Color.LightGreen;
-            buttonMusicPause.Font = new Font("Segoe UI", 9F);
+            buttonMusicPause.Font = new Font("Segoe UI", 8F);
             buttonMusicPause.Location = new Point(110, 11);
             buttonMusicPause.Name = "buttonMusicPause";
             buttonMusicPause.Size = new Size(100, 30);
@@ -776,7 +776,7 @@ namespace TWEMP.Browser.App.Classic
             // buttonMusicPlay
             // 
             buttonMusicPlay.BackColor = Color.LightGreen;
-            buttonMusicPlay.Font = new Font("Segoe UI", 9F);
+            buttonMusicPlay.Font = new Font("Segoe UI", 8F);
             buttonMusicPlay.Location = new Point(4, 12);
             buttonMusicPlay.Name = "buttonMusicPlay";
             buttonMusicPlay.Size = new Size(100, 30);
