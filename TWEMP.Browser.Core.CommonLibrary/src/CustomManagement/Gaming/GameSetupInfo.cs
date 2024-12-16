@@ -55,7 +55,11 @@ public class GameSetupInfo
     public static GameSetupInfo Create(string name, string executable, List<string> modcenters)
     {
         GameSetupInfo gameSetup = new (name, executable, modcenters);
+
+#if EXPERIMENTAL_FEATURES
         InitializeGameSetupCache(gameSetup);
+#endif
+
         return gameSetup;
     }
 
@@ -106,6 +110,7 @@ public class GameSetupInfo
         return detectedModCenters;
     }
 
+#if EXPERIMENTAL_FEATURES
     private static void InitializeGameSetupCache(GameSetupInfo gamesetup)
     {
         string gamesetupCachePath = CreateCacheDirectoryPath(GameSettingsCacheStorage.Location, gamesetup.Name);
@@ -137,6 +142,7 @@ public class GameSetupInfo
 
         return cacheDirectoryPath;
     }
+#endif
 
     private static List<GameModificationInfo> GetValidGameModificationsFrom(GameSetupInfo gamesetup, ModCenterInfo modcenter)
     {
