@@ -11,8 +11,8 @@ using TWEMP.Browser.Core.CommonLibrary.MediaDevices.Plugins;
 /// </summary>
 public class MediaDeviceManager
 {
-    private const string MediaDeviceHomeFolderName = ".app-media";
-    private const string DefaultAudioFileName = "TEST.mp3";
+    private const string MediaDeviceHomeFolderName = "support";
+    private const string DefaultAudioFileName = "DEFAULT.mp3";
 
     private static MediaDeviceManager? activeManagerInstance;
 
