@@ -80,7 +80,6 @@
             modSupportPresetsDataGridView.EnableHeadersVisualStyles = false;
             modSupportPresetsDataGridView.Location = new Point(0, 0);
             modSupportPresetsDataGridView.Name = "modSupportPresetsDataGridView";
-            modSupportPresetsDataGridView.ReadOnly = true;
             dataGridViewCellStyle2.SelectionBackColor = Color.Yellow;
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             modSupportPresetsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
@@ -217,7 +216,6 @@
             redistributablePresetStatusButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             redistributablePresetStatusButtonColumn.HeaderText = "USE REDISTRIBUTABLE PRESET";
             redistributablePresetStatusButtonColumn.Name = "redistributablePresetStatusButtonColumn";
-            redistributablePresetStatusButtonColumn.ReadOnly = true;
             redistributablePresetStatusButtonColumn.Resizable = DataGridViewTriState.False;
             // 
             // customizablePresetCheckBoxColumn
@@ -225,7 +223,6 @@
             customizablePresetCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             customizablePresetCheckBoxColumn.HeaderText = "USE CUSTOMIZABLE PRESET";
             customizablePresetCheckBoxColumn.Name = "customizablePresetCheckBoxColumn";
-            customizablePresetCheckBoxColumn.ReadOnly = true;
             // 
             // ModSupportPresetSettingsForm
             // 
