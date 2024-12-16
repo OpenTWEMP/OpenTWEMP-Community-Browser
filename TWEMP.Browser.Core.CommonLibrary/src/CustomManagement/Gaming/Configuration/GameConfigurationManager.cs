@@ -2,6 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
@@ -472,38 +475,6 @@ public class GameConfigurationManager
         return gameConfigProfileViews;
     }
 
-    private static List<GameConfigProfile> CreateDefaultGameConfigProfiles()
-    {
-        List<GameConfigProfile> profiles = new ();
-
-        GameConfigProfile defaultTwempProfile = new GameConfigProfile(
-            provider: new GameSupportProvider(GameEngineSupportType.TWEMP),
-            info: new GameModificationInfo(
-                gamesetup: GameSetupInfo.Create(),
-                modcenter: new ModCenterInfo("mods"),
-                path: "Default_Twemp_Modification"));
-
-        GameConfigProfile defaultM2TWProfile = new GameConfigProfile(
-            provider: new GameSupportProvider(GameEngineSupportType.M2TW),
-            info: new GameModificationInfo(
-                gamesetup: GameSetupInfo.Create(),
-                modcenter: new ModCenterInfo("mods"),
-                path: "Default_M2TW_Modification"));
-
-        GameConfigProfile defaultRTWProfile = new GameConfigProfile(
-            provider: new GameSupportProvider(GameEngineSupportType.RTW),
-            info: new GameModificationInfo(
-                gamesetup: GameSetupInfo.Create(),
-                modcenter: new ModCenterInfo("mods"),
-                path: "Default_RTW_Modification"));
-
-        profiles.Add(defaultTwempProfile);
-        profiles.Add(defaultM2TWProfile);
-        profiles.Add(defaultRTWProfile);
-
-        return profiles;
-    }
-
     private static GameConfigProfile CreateEmptyProfile()
     {
         return new GameConfigProfile(
@@ -582,4 +553,38 @@ public class GameConfigurationManager
     {
         AppSerializer.SerializeToJson(gameConfigProfileViews, this.userProfilesConfigFileInfo.FullName);
     }
+
+#if EXPERIMENTAL_FEATURES
+    private static List<GameConfigProfile> CreateDefaultGameConfigProfiles()
+    {
+        List<GameConfigProfile> profiles = new ();
+
+        GameConfigProfile defaultTwempProfile = new GameConfigProfile(
+            provider: new GameSupportProvider(GameEngineSupportType.TWEMP),
+            info: new GameModificationInfo(
+                gamesetup: GameSetupInfo.Create(),
+                modcenter: new ModCenterInfo("mods"),
+                path: "Default_Twemp_Modification"));
+
+        GameConfigProfile defaultM2TWProfile = new GameConfigProfile(
+            provider: new GameSupportProvider(GameEngineSupportType.M2TW),
+            info: new GameModificationInfo(
+                gamesetup: GameSetupInfo.Create(),
+                modcenter: new ModCenterInfo("mods"),
+                path: "Default_M2TW_Modification"));
+
+        GameConfigProfile defaultRTWProfile = new GameConfigProfile(
+            provider: new GameSupportProvider(GameEngineSupportType.RTW),
+            info: new GameModificationInfo(
+                gamesetup: GameSetupInfo.Create(),
+                modcenter: new ModCenterInfo("mods"),
+                path: "Default_RTW_Modification"));
+
+        profiles.Add(defaultTwempProfile);
+        profiles.Add(defaultM2TWProfile);
+        profiles.Add(defaultRTWProfile);
+
+        return profiles;
+    }
+#endif
 }
