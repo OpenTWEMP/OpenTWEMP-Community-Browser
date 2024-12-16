@@ -348,7 +348,7 @@
             // 
             // saveConfigSettingsButton
             // 
-            saveConfigSettingsButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            saveConfigSettingsButton.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
             saveConfigSettingsButton.Location = new Point(16, 498);
             saveConfigSettingsButton.Name = "saveConfigSettingsButton";
             saveConfigSettingsButton.Size = new Size(276, 51);
@@ -2642,30 +2642,33 @@
             // resetConfigSettingsButton
             // 
             resetConfigSettingsButton.Enabled = false;
-            resetConfigSettingsButton.Location = new Point(520, 498);
+            resetConfigSettingsButton.Location = new Point(520, 454);
             resetConfigSettingsButton.Name = "resetConfigSettingsButton";
             resetConfigSettingsButton.Size = new Size(248, 23);
             resetConfigSettingsButton.TabIndex = 2;
             resetConfigSettingsButton.Text = "RESET CONFIG SETTINGS [TBD]";
             resetConfigSettingsButton.UseVisualStyleBackColor = true;
+            resetConfigSettingsButton.Visible = false;
             resetConfigSettingsButton.Click += ResetConfigSettingsButton_Click;
             // 
             // importConfigSettingsButton
             // 
             importConfigSettingsButton.Enabled = false;
-            importConfigSettingsButton.Location = new Point(298, 526);
+            importConfigSettingsButton.Location = new Point(16, 454);
             importConfigSettingsButton.Name = "importConfigSettingsButton";
             importConfigSettingsButton.Size = new Size(216, 23);
             importConfigSettingsButton.TabIndex = 3;
             importConfigSettingsButton.Text = "IMPORT CONFIG SETTINGS [TBD]";
             importConfigSettingsButton.UseVisualStyleBackColor = true;
+            importConfigSettingsButton.Visible = false;
             importConfigSettingsButton.Click += ImportConfigSettingsButton_Click;
             // 
             // exportConfigSettingsButton
             // 
+            exportConfigSettingsButton.Font = new Font("Segoe UI", 10F);
             exportConfigSettingsButton.Location = new Point(298, 498);
             exportConfigSettingsButton.Name = "exportConfigSettingsButton";
-            exportConfigSettingsButton.Size = new Size(216, 23);
+            exportConfigSettingsButton.Size = new Size(216, 51);
             exportConfigSettingsButton.TabIndex = 4;
             exportConfigSettingsButton.Text = "EXPORT CONFIG SETTINGS";
             exportConfigSettingsButton.UseVisualStyleBackColor = true;
@@ -2683,10 +2686,10 @@
             // 
             // exitConfigSettingsButton
             // 
-            exitConfigSettingsButton.Font = new Font("Segoe UI", 9F);
-            exitConfigSettingsButton.Location = new Point(520, 526);
+            exitConfigSettingsButton.Font = new Font("Segoe UI", 10F);
+            exitConfigSettingsButton.Location = new Point(520, 498);
             exitConfigSettingsButton.Name = "exitConfigSettingsButton";
-            exitConfigSettingsButton.Size = new Size(248, 23);
+            exitConfigSettingsButton.Size = new Size(248, 51);
             exitConfigSettingsButton.TabIndex = 6;
             exitConfigSettingsButton.Text = "RETURN TO MAIN WINDOW";
             exitConfigSettingsButton.UseVisualStyleBackColor = true;

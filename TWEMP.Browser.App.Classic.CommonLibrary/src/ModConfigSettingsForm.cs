@@ -20,8 +20,10 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Pro
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes.Enums;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Backend.DataTypes;
 using TWEMP.Browser.Core.GamingSupport.TotalWarEngine.M2TW.Configuration.Frontend;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
+using static TWEMP.Browser.Core.CommonLibrary.BrowserKernel;
 
-public partial class ModConfigSettingsForm : Form
+public partial class ModConfigSettingsForm : Form, ICanChangeMyLocalization
 {
     private static readonly (string Text, byte Obj)[] CfgVideoWaterBuffersPerNodeItems;
     private static readonly (string Text, byte Obj)[] CfgVideoTextureFilteringItems;
@@ -276,6 +278,7 @@ public partial class ModConfigSettingsForm : Form
 
         this.InitializeComponent();
         this.InitializeConfigControls();
+        this.SetupCurrentLocalizationForGUIControls();
     }
 
     public ModConfigSettingsForm(
@@ -291,6 +294,15 @@ public partial class ModConfigSettingsForm : Form
 
         this.InitializeComponent();
         this.InitializeConfigControls();
+        this.SetupCurrentLocalizationForGUIControls();
+    }
+
+    public void SetupCurrentLocalizationForGUIControls()
+    {
+        this.settingDescriptionLabel.Text = GetTextInCurrentLocalization(this.Name, this.settingDescriptionLabel.Name);
+        this.saveConfigSettingsButton.Text = GetTextInCurrentLocalization(this.Name, this.saveConfigSettingsButton.Name);
+        this.exportConfigSettingsButton.Text = GetTextInCurrentLocalization(this.Name, this.exportConfigSettingsButton.Name);
+        this.exitConfigSettingsButton.Text = GetTextInCurrentLocalization(this.Name, this.exitConfigSettingsButton.Name);
     }
 
     private static void InitializeComboBoxControl<T>(ComboBox control, (string Text, T Obj)[] items, int selectedIndex)

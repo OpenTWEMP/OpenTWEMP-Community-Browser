@@ -13,6 +13,7 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 public class GuiLocaleDescr_MainBrowser : LocaleDescription
 {
     private const string KEY_buttonLaunch = "buttonLaunch";
+    private const string KEY_modConfigSettingsButton = "modConfigSettingsButton";
     private const string KEY_modQuickNavigationButton = "modQuickNavigationButton";
     private const string KEY_buttonExplore = "buttonExplore";
 
@@ -56,6 +57,10 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
     private const string KEY_buttonCollectionCreate = "buttonCollectionCreate";
     private const string KEY_buttonMarkFavoriteMod = "buttonMarkFavoriteMod";
 
+    private const string KEY_buttonMusicPlay = "buttonMusicPlay";
+    private const string KEY_buttonMusicPause = "buttonMusicPause";
+    private const string KEY_buttonMusicRewind = "buttonMusicRewind";
+
     public GuiLocaleDescr_MainBrowser()
     {
         this.FormName = "MainBrowserForm";
@@ -63,6 +68,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
         this.LocalizedControls = new List<string>()
         {
             KEY_buttonLaunch,
+            KEY_modConfigSettingsButton,
             KEY_modQuickNavigationButton,
             KEY_buttonExplore,
 
@@ -105,6 +111,10 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
             KEY_buttonCollectionManage,
             KEY_buttonCollectionCreate,
             KEY_buttonMarkFavoriteMod,
+
+            KEY_buttonMusicPlay,
+            KEY_buttonMusicPause,
+            KEY_buttonMusicRewind,
         };
     }
 
@@ -117,6 +127,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
         return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
             {
                 { KEY_buttonLaunch, "LAUNCH" },
+                { KEY_modConfigSettingsButton, "MOD CONFIGURATION SETTINGS" },
                 { KEY_modQuickNavigationButton, "MOD QUICK NAVIGATION" },
                 { KEY_buttonExplore, "MOD HOME FOLDER" },
                 { KEY_groupBoxConfigCleanerMode, "Select mod clean routines" },
@@ -151,6 +162,9 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
                 { KEY_buttonCollectionManage, "MANAGE YOUR COLLECTIONS" },
                 { KEY_buttonCollectionCreate, "CREATE A NEW COLLECTION" },
                 { KEY_buttonMarkFavoriteMod, "MARK or UNMARK THIS MOD as FAVORITE" },
+                { KEY_buttonMusicPlay, "Play Audio" },
+                { KEY_buttonMusicPause, "Pause Audio" },
+                { KEY_buttonMusicRewind, "Rewind Audio" },
             });
     }
 
@@ -159,6 +173,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
         return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
             {
                 { KEY_buttonLaunch, "»√–¿“‹" },
+                { KEY_modConfigSettingsButton, "Õ¿—“–Œ… »  ŒÕ‘»√”–¿÷»»" },
                 { KEY_modQuickNavigationButton, "¡€—“–¿ﬂ ÃŒƒ-Õ¿¬»√¿÷»ﬂ" },
                 { KEY_buttonExplore, "–¿«Ã≈Ÿ≈Õ»≈ ÃŒƒ»‘» ¿÷»»" },
                 { KEY_groupBoxConfigCleanerMode, "¬˚·ÂËÚÂ ÓÔÂ‡ˆËË Ó˜ËÒÚÍË ‰Îˇ ÏÓ‰‡" },
@@ -193,6 +208,9 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
                 { KEY_buttonCollectionManage, "”œ–¿¬À≈Õ»≈  ŒÀÀ≈ ÷»ﬂÃ»" },
                 { KEY_buttonCollectionCreate, "—Œ«ƒ¿“‹ ÕŒ¬”ﬁ  ŒÀÀ≈ ÷»ﬁ" },
                 { KEY_buttonMarkFavoriteMod, "»«¡–¿ÕÕŒ≈ (ƒŒ¡¿¬»“‹/”ƒ¿À»“‹ ÃŒƒ)" },
+                { KEY_buttonMusicPlay, "—Ú‡Ú ¿Û‰ËÓ" },
+                { KEY_buttonMusicPause, "—ÚÓÔ ¿Û‰ËÓ" },
+                { KEY_buttonMusicRewind, "œÓ‚ÚÓ ¿Û‰ËÓ" },
             });
     }
 }
