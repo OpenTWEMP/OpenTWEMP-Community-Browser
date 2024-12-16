@@ -30,13 +30,13 @@ public record ModSupportPreset
 
     public static ModSupportPreset CreateDefaultTemplate()
     {
-        const string modTitle = "My_Title";
-        const string modVersion = "My_Version";
+        const string modTitle = "TITLE";
+        const string modVersion = "VERSION";
 
         ModHeaderInfo header = new (modTitle, modVersion);
 
-        const string modLogoFileName = "DEFAULT.png";
-        const string modMusicFileName = "My_Background_SoundTrack.mp3";
+        const string modLogoFileName = "LOGO.png";
+        const string modMusicFileName = "MUSIC.mp3";
 
         ModContentInfo content = new (modLogoFileName, modMusicFileName);
 
