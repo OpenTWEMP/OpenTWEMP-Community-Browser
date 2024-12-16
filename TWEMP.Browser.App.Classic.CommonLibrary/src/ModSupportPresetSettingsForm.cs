@@ -102,12 +102,19 @@ public partial class ModSupportPresetSettingsForm : Form
 
     private bool IsConfiguredByCustomizableModPreset(DataGridViewRow dataGridViewRow)
     {
-        const string presetDefaultPlaceholder = "My_Title [My_Version]";
+        bool useCustomizablePreset;
 
-        object? sourceCellValue = dataGridViewRow.Cells[this.redistributablePresetColumnIndex].Value;
-        string? convertedCellValue = Convert.ToString(sourceCellValue);
+        try
+        {
+            var cell = (DataGridViewCheckBoxCell)dataGridViewRow.Cells[this.customizablePresetColumnIndex];
+            useCustomizablePreset = Convert.ToBoolean(cell.Value);
+        }
+        catch (InvalidCastException)
+        {
+            useCustomizablePreset = false;
+        }
 
-        return convertedCellValue!.Equals(presetDefaultPlaceholder);
+        return useCustomizablePreset;
     }
 
     private void MarkModSupportPresetDataGridViewRowAsRedistributablePreset(DataGridViewRow dataGridViewRow)
