@@ -2,13 +2,16 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+#define EXPERIMENTAL_FEATURES
+#undef EXPERIMENTAL_FEATURES
+
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
 /// <summary>
@@ -16,6 +19,7 @@ using TWEMP.Browser.Core.CommonLibrary.Serialization;
 /// </summary>
 public class GameConfigurationManager
 {
+    private const string UserProfilesFolderName = "support";
     private const string UserProfilesConfigFileName = "configuration_profiles.json";
 
     private readonly CustomGameSetupManager gameSetupManager;
@@ -32,7 +36,7 @@ public class GameConfigurationManager
 
         this.gameSupportProviderByDefault = new GameSupportProvider(GameEngineSupportType.M2TW);
 
-        string path = Path.Combine(Directory.GetCurrentDirectory(), UserProfilesConfigFileName);
+        string path = Path.Combine(Directory.GetCurrentDirectory(), UserProfilesFolderName, UserProfilesConfigFileName);
         this.userProfilesConfigFileInfo = new FileInfo(path);
 
         if (this.userProfilesConfigFileInfo.Exists)
@@ -472,38 +476,6 @@ public class GameConfigurationManager
         return gameConfigProfileViews;
     }
 
-    private static List<GameConfigProfile> CreateDefaultGameConfigProfiles()
-    {
-        List<GameConfigProfile> profiles = new ();
-
-        GameConfigProfile defaultTwempProfile = new GameConfigProfile(
-            provider: new GameSupportProvider(GameEngineSupportType.TWEMP),
-            info: new GameModificationInfo(
-                gamesetup: GameSetupInfo.Create(),
-                modcenter: new ModCenterInfo("mods"),
-                path: "Default_Twemp_Modification"));
-
-        GameConfigProfile defaultM2TWProfile = new GameConfigProfile(
-            provider: new GameSupportProvider(GameEngineSupportType.M2TW),
-            info: new GameModificationInfo(
-                gamesetup: GameSetupInfo.Create(),
-                modcenter: new ModCenterInfo("mods"),
-                path: "Default_M2TW_Modification"));
-
-        GameConfigProfile defaultRTWProfile = new GameConfigProfile(
-            provider: new GameSupportProvider(GameEngineSupportType.RTW),
-            info: new GameModificationInfo(
-                gamesetup: GameSetupInfo.Create(),
-                modcenter: new ModCenterInfo("mods"),
-                path: "Default_RTW_Modification"));
-
-        profiles.Add(defaultTwempProfile);
-        profiles.Add(defaultM2TWProfile);
-        profiles.Add(defaultRTWProfile);
-
-        return profiles;
-    }
-
     private static GameConfigProfile CreateEmptyProfile()
     {
         return new GameConfigProfile(
@@ -582,4 +554,38 @@ public class GameConfigurationManager
     {
         AppSerializer.SerializeToJson(gameConfigProfileViews, this.userProfilesConfigFileInfo.FullName);
     }
+
+#if EXPERIMENTAL_FEATURES
+    private static List<GameConfigProfile> CreateDefaultGameConfigProfiles()
+    {
+        List<GameConfigProfile> profiles = new ();
+
+        GameConfigProfile defaultTwempProfile = new GameConfigProfile(
+            provider: new GameSupportProvider(GameEngineSupportType.TWEMP),
+            info: new GameModificationInfo(
+                gamesetup: GameSetupInfo.Create(),
+                modcenter: new ModCenterInfo("mods"),
+                path: "Default_Twemp_Modification"));
+
+        GameConfigProfile defaultM2TWProfile = new GameConfigProfile(
+            provider: new GameSupportProvider(GameEngineSupportType.M2TW),
+            info: new GameModificationInfo(
+                gamesetup: GameSetupInfo.Create(),
+                modcenter: new ModCenterInfo("mods"),
+                path: "Default_M2TW_Modification"));
+
+        GameConfigProfile defaultRTWProfile = new GameConfigProfile(
+            provider: new GameSupportProvider(GameEngineSupportType.RTW),
+            info: new GameModificationInfo(
+                gamesetup: GameSetupInfo.Create(),
+                modcenter: new ModCenterInfo("mods"),
+                path: "Default_RTW_Modification"));
+
+        profiles.Add(defaultTwempProfile);
+        profiles.Add(defaultM2TWProfile);
+        profiles.Add(defaultRTWProfile);
+
+        return profiles;
+    }
+#endif
 }
