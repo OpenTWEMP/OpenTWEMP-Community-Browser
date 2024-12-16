@@ -2,13 +2,13 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
+namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration.Profiles;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
 
 /// <summary>

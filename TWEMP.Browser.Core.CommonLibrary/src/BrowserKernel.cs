@@ -11,9 +11,9 @@ namespace TWEMP.Browser.Core.CommonLibrary;
 
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Collections;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Configuration;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 #if EXPERIMENTAL_FEATURES
