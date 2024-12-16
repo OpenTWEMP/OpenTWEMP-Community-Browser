@@ -39,7 +39,7 @@ public class UpdatableGameModificationView
         this.CurrentInfo = modInfo;
 
         this.redistributableModPreset = RedistributablePresetByDefault;
-        this.customizableModPreset = GetCustomizableModPreset(this.CurrentInfo);
+        this.customizableModPreset = CustomizableModPreset.Create(this.CurrentInfo);
         this.UseCustomizablePreset = false;
 
         this.ActivePreset = this.redistributableModPreset.Data;
@@ -58,7 +58,7 @@ public class UpdatableGameModificationView
         this.CurrentInfo = modInfo;
 
         this.redistributableModPreset = modPreset;
-        this.customizableModPreset = GetCustomizableModPreset(this.CurrentInfo);
+        this.customizableModPreset = CustomizableModPreset.Create(this.CurrentInfo);
         this.UseCustomizablePreset = false;
 
         this.ActivePreset = this.redistributableModPreset.Data;
@@ -267,6 +267,12 @@ public class UpdatableGameModificationView
         return new FileInfo(presetBackgroundSoundTrackFilePath);
     }
 
+    /// <summary>
+    /// Generates default assets for the current customizable mod preset.
+    /// </summary>
+    public void GenerateCustomizableModPresetByDefault() =>
+        this.customizableModPreset.GenerateConfigTemplateByDefault();
+
 #if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Selects the current preset of the <see cref="RedistributableModPreset"/> type
@@ -314,16 +320,4 @@ public class UpdatableGameModificationView
         this.redistributableModPreset = RedistributablePresetByDefault;
     }
 #endif
-
-    private static CustomizableModPreset GetCustomizableModPreset(GameModificationInfo info)
-    {
-        if (CustomizableModPreset.Exists(info.Location))
-        {
-            return CustomizableModPreset.ReadCurrentPreset(info.Location);
-        }
-        else
-        {
-            return CustomizableModPreset.CreateDefaultTemplate(info.Location);
-        }
-    }
 }

@@ -30,19 +30,27 @@ public record CustomizableModPreset
 
     public FileInfo Config { get; set; }
 
-    public static CustomizableModPreset CreateDefaultTemplate(string modURI)
+    public static CustomizableModPreset Create(GameModificationInfo info)
     {
-        ModSupportPreset preset = ModSupportPreset.CreateDefaultTemplate();
-        return new CustomizableModPreset(preset, modURI);
+        CustomizableModPreset preset;
+        string presetConfigFilePath = GetConfigFilePath(info);
+
+        if (File.Exists(presetConfigFilePath))
+        {
+            preset = ReadCurrentPreset(info.Location);
+        }
+        else
+        {
+            preset = CreateDefaultTemplate(info.Location);
+        }
+
+        return preset;
     }
 
-    public static bool Exists(string modURI)
-    {
-        string presetConfigFilePath = Path.Combine(modURI, PresetFolderName, PresetConfigFileName);
-        return File.Exists(presetConfigFilePath);
-    }
+    private static string GetConfigFilePath(GameModificationInfo info) =>
+        Path.Combine(info.Location, PresetFolderName, PresetConfigFileName);
 
-    public static CustomizableModPreset ReadCurrentPreset(string modURI)
+    private static CustomizableModPreset ReadCurrentPreset(string modURI)
     {
         string presetConfigFilePath = Path.Combine(modURI, PresetFolderName, PresetConfigFileName);
 
@@ -60,25 +68,19 @@ public record CustomizableModPreset
         return customizablePreset;
     }
 
-#if LEGACY_CUSTOM_PRESET_CREATE_IMPL
-    public static CustomModSupportPreset CreatePresetByDefault(string modificationURI)
+    private static CustomizableModPreset CreateDefaultTemplate(string modURI)
     {
-        // 1. Prepare preset's folder into modification's home directory.
-        string presetHomeDirectoryPath = Path.Combine(modificationURI, MOD_PRESET_FOLDERNAME);
+        ModSupportPreset preset = ModSupportPreset.CreateDefaultTemplate();
+        return new CustomizableModPreset(preset, modURI);
+    }
 
-        if (!Directory.Exists(presetHomeDirectoryPath))
+    public void GenerateConfigTemplateByDefault()
+    {
+        if (!this.Location.Exists)
         {
-            Directory.CreateDirectory(presetHomeDirectoryPath);
+            this.Location.Create();
         }
 
-        // 2. Generate 'mod_support.json' preset configuration file.
-        var presetByDefault = new CustomModSupportPreset();
-        string presetJsonText = JsonConvert.SerializeObject(presetByDefault, Formatting.Indented);
-        string presetFilePath = Path.Combine(presetHomeDirectoryPath, MOD_PRESET_FILENAME);
-
-        File.WriteAllText(presetFilePath, presetJsonText);
-
-        return presetByDefault;
+        AppSerializer.SerializeToJson(obj: this.Data, file: this.Config.FullName);
     }
-#endif
 }
