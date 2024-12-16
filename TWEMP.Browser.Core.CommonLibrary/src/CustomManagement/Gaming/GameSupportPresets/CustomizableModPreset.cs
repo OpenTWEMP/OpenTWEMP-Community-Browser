@@ -6,12 +6,14 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
+using TWEMP.Browser.Core.CommonLibrary.Serialization;
+
 public record CustomizableModPreset
 {
     private const string PresetFolderName = ".twemp";
-    private const string PresetConfigFileName = "twemp_preset_config.json";
+    private const string PresetConfigFileName = "twemp-preset-config.json";
 
-    public CustomizableModPreset(ModSupportPreset preset, string modURI)
+    private CustomizableModPreset(ModSupportPreset preset, string modURI)
     {
         this.Data = preset;
 
@@ -44,17 +46,18 @@ public record CustomizableModPreset
     {
         string presetConfigFilePath = Path.Combine(modURI, PresetFolderName, PresetConfigFileName);
 
-        CustomizableModPreset preset;
+        CustomizableModPreset customizablePreset;
         try
         {
-            preset = Serialization.AppSerializer.DeserializeFromJson<CustomizableModPreset>(presetConfigFilePath);
+            var preset = AppSerializer.DeserializeFromJson<ModSupportPreset>(presetConfigFilePath);
+            customizablePreset = new CustomizableModPreset(preset, modURI);
         }
         catch (InvalidOperationException)
         {
-            preset = CreateDefaultTemplate(modURI);
+            customizablePreset = CreateDefaultTemplate(modURI);
         }
 
-        return preset;
+        return customizablePreset;
     }
 
 #if LEGACY_CUSTOM_PRESET_CREATE_IMPL
