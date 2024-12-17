@@ -36,7 +36,7 @@ public class GuiLocaleDescr_AboutProject : LocaleDescription
         return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_AboutProjectForm, "About Program" },
-            { KEY_aboutProjectNameLabel3, "Version BETA 2024" },
+            { KEY_aboutProjectNameLabel3, "Version BETA 2025" },
             { KEY_aboutProjectNameLabel4, "is Master_TW_DAR's initiative for M2TW community" },
         });
     }
@@ -46,7 +46,7 @@ public class GuiLocaleDescr_AboutProject : LocaleDescription
         return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
         {
             { KEY_AboutProjectForm, "О программе" },
-            { KEY_aboutProjectNameLabel3, "Бета-Версия 2024" },
+            { KEY_aboutProjectNameLabel3, "Бета-Версия 2025" },
             { KEY_aboutProjectNameLabel4, "новый проект Master_TW_DAR в сообществе M2TW" },
         });
     }

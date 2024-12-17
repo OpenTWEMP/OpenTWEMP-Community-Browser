@@ -36,6 +36,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
 
     private const string KEY_toolStripAppItem = "toolStripAppItem";
     private const string KEY_gameSetupSettingsToolStripMenuItem = "gameSetupSettingsToolStripMenuItem";
+    private const string KEY_modSupportPresetSettingsToolStripMenuItem = "modSupportPresetSettingsToolStripMenuItem";
     private const string KEY_applicationSettingsToolStripMenuItem = "applicationSettingsToolStripMenuItem";
     private const string KEY_applicationHomeFolderToolStripMenuItem = "applicationHomeFolderToolStripMenuItem";
     private const string KEY_exitFromApplicationToolStripMenuItem = "exitFromApplicationToolStripMenuItem";
@@ -91,6 +92,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
 
             KEY_toolStripAppItem,
             KEY_gameSetupSettingsToolStripMenuItem,
+            KEY_modSupportPresetSettingsToolStripMenuItem,
             KEY_applicationSettingsToolStripMenuItem,
             KEY_applicationHomeFolderToolStripMenuItem,
             KEY_exitFromApplicationToolStripMenuItem,
@@ -146,6 +148,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
                 { KEY_checkBoxBorderless, "Borderless Windowed Mode" },
                 { KEY_toolStripAppItem, "BROWSER" },
                 { KEY_gameSetupSettingsToolStripMenuItem, "Game Setup Settings" },
+                { KEY_modSupportPresetSettingsToolStripMenuItem, "Mod Support Preset Settings" },
                 { KEY_applicationSettingsToolStripMenuItem, "Application Settings" },
                 { KEY_applicationHomeFolderToolStripMenuItem, "Go to Home Directory" },
                 { KEY_exitFromApplicationToolStripMenuItem, "Exit from Program" },
@@ -192,6 +195,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
                 { KEY_checkBoxBorderless, "Оконный режим без границ" },
                 { KEY_toolStripAppItem, "БРАУЗЕР" },
                 { KEY_gameSetupSettingsToolStripMenuItem, "Игровые Установки" },
+                { KEY_modSupportPresetSettingsToolStripMenuItem, "Менеджер Поддержки Модов" },
                 { KEY_applicationSettingsToolStripMenuItem, "Настройки Программы" },
                 { KEY_applicationHomeFolderToolStripMenuItem, "Домашняя Директория" },
                 { KEY_exitFromApplicationToolStripMenuItem, "Выйти из Программы" },

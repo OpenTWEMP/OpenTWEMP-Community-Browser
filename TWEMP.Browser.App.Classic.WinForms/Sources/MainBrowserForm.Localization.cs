@@ -45,6 +45,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser, ICanChangeMyLocaliza
 
         this.toolStripAppItem.Text = GetTextInCurrentLocalization(this.Name, this.toolStripAppItem.Name!);
         this.gameSetupSettingsToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.gameSetupSettingsToolStripMenuItem.Name!);
+        this.modSupportPresetSettingsToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.modSupportPresetSettingsToolStripMenuItem.Name!);
         this.applicationSettingsToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.applicationSettingsToolStripMenuItem.Name!);
         this.applicationHomeFolderToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.applicationHomeFolderToolStripMenuItem.Name!);
         this.exitFromApplicationToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.exitFromApplicationToolStripMenuItem.Name!);
