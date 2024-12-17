@@ -30,12 +30,13 @@ namespace TWEMP.Browser.App.Classic
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode4 = new TreeNode("My Favorite Mods");
-            TreeNode treeNode5 = new TreeNode("My Mod Collections");
-            TreeNode treeNode6 = new TreeNode("All Modifications");
+            TreeNode treeNode1 = new TreeNode("My Favorite Mods");
+            TreeNode treeNode2 = new TreeNode("My Mod Collections");
+            TreeNode treeNode3 = new TreeNode("All Modifications");
             buttonLaunch = new Button();
             panelLauncherOptions = new Panel();
             groupBoxConfigProfiles = new GroupBox();
+            modConfigProfilesButton = new Button();
             configProfileSwitchButton = new Button();
             radioButtonConfigProfile_Modding = new RadioButton();
             radioButtonConfigProfile_Gaming = new RadioButton();
@@ -62,27 +63,29 @@ namespace TWEMP.Browser.App.Classic
             modQuickNavigationButton = new Button();
             panelLauncherToolkit = new Panel();
             modConfigSettingsButton = new Button();
-            modConfigProfilesButton = new Button();
             modMainTitleLabel = new Label();
             modLogoPictureBox = new PictureBox();
             modStatusLabel = new Label();
             appStatusStrip = new StatusStrip();
             appMenuStrip = new MenuStrip();
             toolStripAppItem = new ToolStripMenuItem();
-            gameSetupSettingsToolStripMenuItem = new ToolStripMenuItem();
-            modSupportPresetSettingsToolStripMenuItem = new ToolStripMenuItem();
-            gameMusicPlayerToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
-            applicationSettingsToolStripMenuItem = new ToolStripMenuItem();
+            gameSetupSettingsToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
+            modSupportPresetSettingsToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
+            applicationSettingsToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator4 = new ToolStripSeparator();
             applicationHomeFolderToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator5 = new ToolStripSeparator();
             exitFromApplicationToolStripMenuItem = new ToolStripMenuItem();
+            gameMusicPlayerToolStripMenuItem = new ToolStripMenuItem();
+            toolStripHelpItem = new ToolStripMenuItem();
+            aboutProgramToolStripMenuItem = new ToolStripMenuItem();
             toolStripModItem = new ToolStripMenuItem();
             gameConfigProfilesToolStripMenuItem = new ToolStripMenuItem();
             gameConfigProfilesSwitcherToolStripMenuItem = new ToolStripMenuItem();
             configSettingsToolStripMenuItem = new ToolStripMenuItem();
-            toolStripHelpItem = new ToolStripMenuItem();
-            aboutProgramToolStripMenuItem = new ToolStripMenuItem();
             treeViewGameMods = new TreeView();
             buttonMarkFavoriteMod = new Button();
             buttonCollectionCreate = new Button();
@@ -154,6 +157,22 @@ namespace TWEMP.Browser.App.Classic
             groupBoxConfigProfiles.TabIndex = 7;
             groupBoxConfigProfiles.TabStop = false;
             groupBoxConfigProfiles.Text = "Configuration Profiles";
+            // 
+            // modConfigProfilesButton
+            // 
+            modConfigProfilesButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            modConfigProfilesButton.BackColor = Color.LightGreen;
+            modConfigProfilesButton.Enabled = false;
+            modConfigProfilesButton.FlatStyle = FlatStyle.Flat;
+            modConfigProfilesButton.Font = new Font("Segoe UI", 5F);
+            modConfigProfilesButton.Location = new Point(215, 18);
+            modConfigProfilesButton.Name = "modConfigProfilesButton";
+            modConfigProfilesButton.Size = new Size(46, 46);
+            modConfigProfilesButton.TabIndex = 10;
+            modConfigProfilesButton.Text = "CONFIG PROFILES";
+            modConfigProfilesButton.UseVisualStyleBackColor = false;
+            modConfigProfilesButton.Visible = false;
+            modConfigProfilesButton.Click += ModConfigProfilesButton_Click;
             // 
             // configProfileSwitchButton
             // 
@@ -491,22 +510,6 @@ namespace TWEMP.Browser.App.Classic
             modConfigSettingsButton.UseVisualStyleBackColor = false;
             modConfigSettingsButton.Click += ModConfigSettingsButton_Click;
             // 
-            // modConfigProfilesButton
-            // 
-            modConfigProfilesButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            modConfigProfilesButton.BackColor = Color.LightGreen;
-            modConfigProfilesButton.Enabled = false;
-            modConfigProfilesButton.FlatStyle = FlatStyle.Flat;
-            modConfigProfilesButton.Font = new Font("Segoe UI", 5F);
-            modConfigProfilesButton.Location = new Point(215, 18);
-            modConfigProfilesButton.Name = "modConfigProfilesButton";
-            modConfigProfilesButton.Size = new Size(46, 46);
-            modConfigProfilesButton.TabIndex = 10;
-            modConfigProfilesButton.Text = "CONFIG PROFILES";
-            modConfigProfilesButton.UseVisualStyleBackColor = false;
-            modConfigProfilesButton.Visible = false;
-            modConfigProfilesButton.Click += ModConfigProfilesButton_Click;
-            // 
             // modMainTitleLabel
             // 
             modMainTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -555,7 +558,7 @@ namespace TWEMP.Browser.App.Classic
             // 
             // appMenuStrip
             // 
-            appMenuStrip.Items.AddRange(new ToolStripItem[] { toolStripAppItem, toolStripModItem, toolStripHelpItem });
+            appMenuStrip.Items.AddRange(new ToolStripItem[] { toolStripAppItem, toolStripHelpItem, toolStripModItem });
             appMenuStrip.Location = new Point(0, 0);
             appMenuStrip.Name = "appMenuStrip";
             appMenuStrip.Size = new Size(1008, 24);
@@ -564,10 +567,15 @@ namespace TWEMP.Browser.App.Classic
             // 
             // toolStripAppItem
             // 
-            toolStripAppItem.DropDownItems.AddRange(new ToolStripItem[] { gameSetupSettingsToolStripMenuItem, modSupportPresetSettingsToolStripMenuItem, gameMusicPlayerToolStripMenuItem, toolStripSeparator1, applicationSettingsToolStripMenuItem, toolStripSeparator2, applicationHomeFolderToolStripMenuItem, exitFromApplicationToolStripMenuItem });
+            toolStripAppItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripSeparator1, gameSetupSettingsToolStripMenuItem, toolStripSeparator2, modSupportPresetSettingsToolStripMenuItem, toolStripSeparator3, applicationSettingsToolStripMenuItem, toolStripSeparator4, applicationHomeFolderToolStripMenuItem, toolStripSeparator5, exitFromApplicationToolStripMenuItem, gameMusicPlayerToolStripMenuItem });
             toolStripAppItem.Name = "toolStripAppItem";
             toolStripAppItem.Size = new Size(72, 20);
             toolStripAppItem.Text = "BROWSER";
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(254, 6);
             // 
             // gameSetupSettingsToolStripMenuItem
             // 
@@ -576,6 +584,11 @@ namespace TWEMP.Browser.App.Classic
             gameSetupSettingsToolStripMenuItem.Text = "Game Setup Settings";
             gameSetupSettingsToolStripMenuItem.Click += GameSetupSettingsToolStripMenuItem_Click;
             // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(254, 6);
+            // 
             // modSupportPresetSettingsToolStripMenuItem
             // 
             modSupportPresetSettingsToolStripMenuItem.Name = "modSupportPresetSettingsToolStripMenuItem";
@@ -583,17 +596,10 @@ namespace TWEMP.Browser.App.Classic
             modSupportPresetSettingsToolStripMenuItem.Text = "Mod Support Preset Settings";
             modSupportPresetSettingsToolStripMenuItem.Click += ModSupportPresetSettingsToolStripMenuItem_Click;
             // 
-            // gameMusicPlayerToolStripMenuItem
+            // toolStripSeparator3
             // 
-            gameMusicPlayerToolStripMenuItem.Name = "gameMusicPlayerToolStripMenuItem";
-            gameMusicPlayerToolStripMenuItem.Size = new Size(257, 22);
-            gameMusicPlayerToolStripMenuItem.Text = "Media Device - Game Music Player";
-            gameMusicPlayerToolStripMenuItem.Click += GameMusicPlayerToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(254, 6);
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(254, 6);
             // 
             // applicationSettingsToolStripMenuItem
             // 
@@ -602,10 +608,10 @@ namespace TWEMP.Browser.App.Classic
             applicationSettingsToolStripMenuItem.Text = "Application Settings";
             applicationSettingsToolStripMenuItem.Click += ApplicationSettingsToolStripMenuItem_Click;
             // 
-            // toolStripSeparator2
+            // toolStripSeparator4
             // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(254, 6);
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(254, 6);
             // 
             // applicationHomeFolderToolStripMenuItem
             // 
@@ -614,6 +620,11 @@ namespace TWEMP.Browser.App.Classic
             applicationHomeFolderToolStripMenuItem.Text = "Go to Home Folder";
             applicationHomeFolderToolStripMenuItem.Click += ApplicationHomeFolderToolStripMenuItem_Click;
             // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(254, 6);
+            // 
             // exitFromApplicationToolStripMenuItem
             // 
             exitFromApplicationToolStripMenuItem.Name = "exitFromApplicationToolStripMenuItem";
@@ -621,12 +632,37 @@ namespace TWEMP.Browser.App.Classic
             exitFromApplicationToolStripMenuItem.Text = "Exit from Program";
             exitFromApplicationToolStripMenuItem.Click += ExitFromApplicationToolStripMenuItem_Click;
             // 
+            // gameMusicPlayerToolStripMenuItem
+            // 
+            gameMusicPlayerToolStripMenuItem.Enabled = false;
+            gameMusicPlayerToolStripMenuItem.Name = "gameMusicPlayerToolStripMenuItem";
+            gameMusicPlayerToolStripMenuItem.Size = new Size(257, 22);
+            gameMusicPlayerToolStripMenuItem.Text = "Media Device - Game Music Player";
+            gameMusicPlayerToolStripMenuItem.Visible = false;
+            gameMusicPlayerToolStripMenuItem.Click += GameMusicPlayerToolStripMenuItem_Click;
+            // 
+            // toolStripHelpItem
+            // 
+            toolStripHelpItem.DropDownItems.AddRange(new ToolStripItem[] { aboutProgramToolStripMenuItem });
+            toolStripHelpItem.Name = "toolStripHelpItem";
+            toolStripHelpItem.Size = new Size(47, 20);
+            toolStripHelpItem.Text = "HELP";
+            // 
+            // aboutProgramToolStripMenuItem
+            // 
+            aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
+            aboutProgramToolStripMenuItem.Size = new Size(156, 22);
+            aboutProgramToolStripMenuItem.Text = "About Program";
+            aboutProgramToolStripMenuItem.Click += AboutProgramToolStripMenuItem_Click;
+            // 
             // toolStripModItem
             // 
             toolStripModItem.DropDownItems.AddRange(new ToolStripItem[] { gameConfigProfilesToolStripMenuItem, gameConfigProfilesSwitcherToolStripMenuItem, configSettingsToolStripMenuItem });
+            toolStripModItem.Enabled = false;
             toolStripModItem.Name = "toolStripModItem";
             toolStripModItem.Size = new Size(101, 20);
             toolStripModItem.Text = "MODIFICATION";
+            toolStripModItem.Visible = false;
             // 
             // gameConfigProfilesToolStripMenuItem
             // 
@@ -649,20 +685,6 @@ namespace TWEMP.Browser.App.Classic
             configSettingsToolStripMenuItem.Text = "Configuration Settings";
             configSettingsToolStripMenuItem.Click += ConfigSettingsToolStripMenuItem_Click;
             // 
-            // toolStripHelpItem
-            // 
-            toolStripHelpItem.DropDownItems.AddRange(new ToolStripItem[] { aboutProgramToolStripMenuItem });
-            toolStripHelpItem.Name = "toolStripHelpItem";
-            toolStripHelpItem.Size = new Size(47, 20);
-            toolStripHelpItem.Text = "HELP";
-            // 
-            // aboutProgramToolStripMenuItem
-            // 
-            aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-            aboutProgramToolStripMenuItem.Size = new Size(156, 22);
-            aboutProgramToolStripMenuItem.Text = "About Program";
-            aboutProgramToolStripMenuItem.Click += AboutProgramToolStripMenuItem_Click;
-            // 
             // treeViewGameMods
             // 
             treeViewGameMods.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
@@ -674,13 +696,13 @@ namespace TWEMP.Browser.App.Classic
             treeViewGameMods.ItemHeight = 30;
             treeViewGameMods.Location = new Point(13, 84);
             treeViewGameMods.Name = "treeViewGameMods";
-            treeNode4.Name = "Node0";
-            treeNode4.Text = "My Favorite Mods";
-            treeNode5.Name = "Node1";
-            treeNode5.Text = "My Mod Collections";
-            treeNode6.Name = "Node2";
-            treeNode6.Text = "All Modifications";
-            treeViewGameMods.Nodes.AddRange(new TreeNode[] { treeNode4, treeNode5, treeNode6 });
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "My Favorite Mods";
+            treeNode2.Name = "Node1";
+            treeNode2.Text = "My Mod Collections";
+            treeNode3.Name = "Node2";
+            treeNode3.Text = "All Modifications";
+            treeViewGameMods.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3 });
             treeViewGameMods.Size = new Size(320, 353);
             treeViewGameMods.TabIndex = 16;
             treeViewGameMods.AfterSelect += TreeViewGameMods_AfterSelect;
@@ -896,5 +918,8 @@ namespace TWEMP.Browser.App.Classic
         private Button modConfigSettingsButton;
         private Button modConfigProfilesButton;
         private Button configProfileSwitchButton;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripSeparator toolStripSeparator5;
     }
 }
