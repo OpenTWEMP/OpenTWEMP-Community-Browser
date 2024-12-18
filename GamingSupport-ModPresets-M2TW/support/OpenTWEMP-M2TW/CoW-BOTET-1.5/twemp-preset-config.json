@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "CALL of WARHAMMER - Beginning of The End Times",
+      "ModVersion": "1.5 Public Beta"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "warhammer.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?333-Beginning-of-the-End-Times",
+        "URL2": "https://imtw.org/topic/42977-call-of-warhammer-beginning-of-the-end-times/",
+        "URL3": "https://www.moddb.com/mods/call-of-warhammer-beginning-of-the-end-times"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "093f1543-5fa0-43f5-b4fd-c4d741596a44",
+    "Version": "BETA",
+    "PresetName": "CoW-BOTET-1.5",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
