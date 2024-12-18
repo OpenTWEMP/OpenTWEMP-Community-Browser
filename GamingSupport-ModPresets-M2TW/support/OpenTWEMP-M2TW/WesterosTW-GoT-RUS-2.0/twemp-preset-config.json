@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Westeros Total War - Game of Thrones",
+      "ModVersion": "2.0"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Westeros.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.org/topic/25031-sab-mod-game-of-the-thrones-total-war-212-rus/",
+        "URL2": "https://totalwar.fun/board/index.php/topic/36898-s%D1%96chevaia-sborka-westeros-game-of-thrones/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "efb1da4b-8049-4f9c-841d-76a158c31eec",
+    "Version": "BETA",
+    "PresetName": "WesterosTW-GoT-RUS-2.0",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
