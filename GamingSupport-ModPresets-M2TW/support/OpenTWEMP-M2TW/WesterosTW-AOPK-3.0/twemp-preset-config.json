@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Westeros Total War - Age of Petty Kings: The Kings Beyond the Wall",
+      "ModVersion": "3.0"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "AOPK.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/showthread.php?687783-Submod-AOPK-3-0-The-Kings-Beyond-the-Wall",
+        "URL2": "https://imtw.org/topic/29958-sab-mod-age-of-petty-kings-30-rus/",
+        "URL3": "https://www.moddb.com/mods/westeros-age-of-petty-kings"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "e8910f42-10fa-49fe-a1d2-4764961a6a1c",
+    "Version": "BETA",
+    "PresetName": "WesterosTW-AOPK-3.0",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
