@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "The Third Age Total War - Fate of Middle-Earth",
+      "ModVersion": "1.4"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Third Age.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.org/topic/46739-sab-mod-fate-of-middle-earth-sudba-sredizemya-xfayter-edition/",
+        "URL2": "https://imtw.org/topic/32135-sab-mod-fate-of-middle-earth-14/",
+        "URL3": "https://totalwar.fun/board/index.php/forum/479-fate-of-middle-earth-%D1%81%D1%83%D0%B4%D1%8C%D0%B1%D0%B0-%D1%81%D1%80%D0%B5%D0%B4%D0%B8%D0%B7%D0%B5%D0%BC%D1%8C%D1%8F/"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "e91652a7-e177-417f-af24-23e5448544a4",
+    "Version": "BETA",
+    "PresetName": "TATW-MOS-FoME-1.4",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
