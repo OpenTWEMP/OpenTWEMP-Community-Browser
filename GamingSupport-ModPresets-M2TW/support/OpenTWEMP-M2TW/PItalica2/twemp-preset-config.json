@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Paeninsula Italica II",
+      "ModVersion": "0.97"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Launch_PItalica2.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?620-Paeninsula-Italica-II",
+        "URL2": "https://imtw.org/topic/2353-paeninsula-italica-097-mtw2/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "86402f10-bf5d-42ba-8ea3-790925b608f2",
+    "Version": "BETA",
+    "PresetName": "PItalica2",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
