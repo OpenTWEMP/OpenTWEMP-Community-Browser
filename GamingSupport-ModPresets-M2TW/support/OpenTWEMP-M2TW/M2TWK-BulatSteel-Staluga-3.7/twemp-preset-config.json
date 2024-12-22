@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "MEDIEVAL II TOTAL WAR - BULAT STEEL - STALUGA",
+      "ModVersion": "3.7"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "staluga.exe",
+      "LauncherProvider_NativeSetup": "BS_Setup.exe",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/41400-stalyuga-37/",
+        "URL2": "",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "24e2420d-9659-4ff0-9dbd-f5398dfaf057",
+    "Version": "BETA",
+    "PresetName": "M2TWK-BulatSteel-Staluga-3.7",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
