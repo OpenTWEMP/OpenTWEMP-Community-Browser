@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "MEDIEVAL II TOTAL WAR - NEW TEUTON",
+      "ModVersion": "7.8"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "NEW_TEUTON.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/75259-new-teuton-78-rus/",
+        "URL2": "https://imtw.ru/forum/1413-new-teuton/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "3104afc0-0e1f-4dd8-993e-f67bbf33cb0a",
+    "Version": "BETA",
+    "PresetName": "M2TWK-NewTeuton-7.8",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
