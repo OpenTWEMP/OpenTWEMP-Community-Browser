@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "MEDIEVAL II TOTAL WAR - BULAT STEEL Extended L.Y.N.V.O. Edition",
+      "ModVersion": "2.1.5 Final"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "BS_Launcher.exe",
+      "LauncherProvider_NativeSetup": "BS_Setup.exe",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/forum/1339-bulatnaya-stal-bulat-steel-lynvo-edition/",
+        "URL2": "https://www.moddb.com/mods/bulat-steel",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "2cb5b5e6-eede-4779-945b-0ff5091943e7",
+    "Version": "BETA",
+    "PresetName": "M2TWK-BulatSteel-LYNVO-2.1.5-Final",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
