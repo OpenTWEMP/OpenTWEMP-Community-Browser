@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "The Elder Scrolls Total War",
+      "ModVersion": "2.0"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "The_Elder_Scrolls.bat",
+      "LauncherProvider_NativeSetup": "TESTW Launcher.exe",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?1105-The-Elder-Scrolls-Total-War",
+        "URL2": "https://imtw.ru/forum/668-the-elder-scrolls-total-war/",
+        "URL3": "https://www.moddb.com/mods/the-elder-scrolls-total-war"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "fc11e018-58c5-431f-a695-327388a1e327",
+    "Version": "BETA",
+    "PresetName": "TheElderScrollsTW-2.0",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
