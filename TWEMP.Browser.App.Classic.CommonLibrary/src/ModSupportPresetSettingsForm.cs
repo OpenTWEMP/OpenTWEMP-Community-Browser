@@ -164,9 +164,6 @@ public partial class ModSupportPresetSettingsForm : Form
 
         if (e.ColumnIndex == this.redistributablePresetColumnIndex)
         {
-            DataGridViewButtonCell cell = (DataGridViewButtonCell)row.Cells[e.ColumnIndex];
-            MessageBox.Show($"{cell.Value}");
-
             RedistributablePresetSelectionForm form = new (this, e.RowIndex);
             form.Show();
         }
