@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "MEDIEVAL II TOTAL WAR - BELLUM UNIVERSALUM - Ренессанс",
+      "ModVersion": "BC 6.3"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "BellumUniversalum.Renaissance.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/65811-bellum-universalum-renessans/",
+        "URL2": "https://imtw.ru/forum/1472-bellum-universalum/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "62144831-9529-4421-b744-e40d6b43aa75",
+    "Version": "BETA",
+    "PresetName": "M2TWK-BellumUniversalum-Renaissance",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
