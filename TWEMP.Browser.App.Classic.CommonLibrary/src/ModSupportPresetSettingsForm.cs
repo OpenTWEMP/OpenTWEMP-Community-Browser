@@ -24,6 +24,7 @@ public partial class ModSupportPresetSettingsForm : Form
     private readonly int redistributablePresetColumnIndex;
     private readonly int customizablePresetColumnIndex;
 
+    private readonly Color rowCellBackColorForNewAttachedPreset = Color.Orange;
     private readonly Color rowCellBackColorForDefaultPreset = Color.LightGray;
     private readonly Color rowCellBackColorForRedistributablePreset = Color.LightGreen;
     private readonly Color rowCellBackColorForCustomizablePreset = Color.LightBlue;
@@ -49,9 +50,11 @@ public partial class ModSupportPresetSettingsForm : Form
 
     public void AttachRedistributablePresetToGameModification(int gameModId, RedistributableModPreset preset)
     {
-        int redistributablePresetColumnIndex = this.modSupportPresetsDataGridView.Columns[4].Index;
-        DataGridViewCell redistributablePresetCell = this.modSupportPresetsDataGridView.Rows[gameModId].Cells[redistributablePresetColumnIndex];
-        redistributablePresetCell.Value = $"Attached Preset: {preset.Data.HeaderInfo.ModTitle} [{preset.Data.HeaderInfo.ModVersion}]";
+        DataGridViewCell gameModPresetCell = this.modSupportPresetsDataGridView.Rows[gameModId].Cells[this.redistributablePresetColumnIndex];
+        gameModPresetCell.Value = $"<{preset.Data.HeaderInfo.ModTitle} [{preset.Data.HeaderInfo.ModVersion}]>";
+
+        DataGridViewRow gameModViewRow = this.modSupportPresetsDataGridView.Rows[gameModId];
+        this.MarkModSupportPresetDataGridViewRowAsNewAttachedPreset(gameModViewRow);
 
         ModPresetSettingView presetSettingView = this.currentPresetSettingViews.ElementAt(gameModId);
         presetSettingView.RedistributablePresetGuid = preset.Metadata.Guid;
@@ -123,6 +126,11 @@ public partial class ModSupportPresetSettingsForm : Form
         }
 
         return useCustomizablePreset;
+    }
+
+    private void MarkModSupportPresetDataGridViewRowAsNewAttachedPreset(DataGridViewRow dataGridViewRow)
+    {
+        this.ChangeDataGridViewRowBackgroundColor(dataGridViewRow, this.rowCellBackColorForNewAttachedPreset);
     }
 
     private void MarkModSupportPresetDataGridViewRowAsDefaultPreset(DataGridViewRow dataGridViewRow)
