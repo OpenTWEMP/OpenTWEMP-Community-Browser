@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Europa Barbarorum II",
+      "ModVersion": "2.4"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "launch.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": "m2tweop gui.exe"
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?454-Europa-Barbarorum-II",
+        "URL2": "https://imtw.ru/forum/787-europa-barbarorum-ii/",
+        "URL3": "https://www.moddb.com/mods/europa-barbarorum-2"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "8e1b51f8-9382-4cb0-839d-27879e397eb2",
+    "Version": "BETA",
+    "PresetName": "EuropaBarbarorum-2.4",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
