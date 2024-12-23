@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Medieval II Total War Kingdoms - Britannia Campaign",
+      "ModVersion": "1.05/1.52"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "",
+        "URL2": "",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "3114e2be-b268-4d1e-ba33-47c17fbfb55e",
+    "Version": "BETA",
+    "PresetName": "M2TWK-Classic-Kingdoms-Britannia",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
