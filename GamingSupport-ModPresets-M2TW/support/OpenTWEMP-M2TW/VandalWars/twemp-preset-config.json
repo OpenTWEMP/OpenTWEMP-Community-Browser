@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Vandal Wars",
+      "ModVersion": ""
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Executable.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/64773-mod-vandal-wars/",
+        "URL2": "",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "3d55c07e-56c1-403d-a7e4-7dfec77ef529",
+    "Version": "BETA",
+    "PresetName": "VandalWars",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
