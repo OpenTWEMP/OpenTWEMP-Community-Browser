@@ -270,6 +270,7 @@
             MinimumSize = new Size(800, 600);
             Name = "RedistributablePresetSelectionForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Select a Redistributable Preset for Your Mod";
             presetMetadataGroupBox.ResumeLayout(false);
             presetDataGroupBox.ResumeLayout(false);
