@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Wrath of the Norsemen: The Baltic",
+      "ModVersion": "3.2+"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "WotNbeta.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": "M2TWEOP GUI.exe"
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?306-Wrath-of-the-Norsemen-The-Baltic-Release",
+        "URL2": "https://imtw.ru/topic/5770-mod-wrath-of-the-norsemen-the-baltic/",
+        "URL3": "https://www.moddb.com/mods/wrath-of-the-norsemen"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "87edb6a0-0417-408a-bd4b-09df8cf5c4be",
+    "Version": "BETA",
+    "PresetName": "WotN-TheBaltic",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
