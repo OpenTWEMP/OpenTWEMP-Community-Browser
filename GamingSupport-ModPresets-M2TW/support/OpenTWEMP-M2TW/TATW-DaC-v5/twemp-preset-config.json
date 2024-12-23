@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "The Third Age Total War - Divide and Conquer",
+      "ModVersion": "v5+"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "",
+      "LauncherProvider_NativeSetup": "DaC_Launcher.exe",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.moddb.com/mods/divide-and-conquer",
+        "URL2": "https://imtw.ru/forum/1271-divide-and-conquer/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "3b2d1acd-5f5b-4f6e-8c57-78250797ce35",
+    "Version": "BETA",
+    "PresetName": "TATW-DaC-v5",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
