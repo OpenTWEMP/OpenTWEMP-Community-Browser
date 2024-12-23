@@ -31,7 +31,7 @@ public partial class RedistributablePresetSelectionForm : Form
     {
         foreach (var preset in presets)
         {
-            string presetItem = $"{preset.Metadata.PresetName} [{preset.Metadata.Version}]";
+            string presetItem = preset.Metadata.PresetName;
             this.presetsListBox.Items.Add(presetItem);
         }
     }
