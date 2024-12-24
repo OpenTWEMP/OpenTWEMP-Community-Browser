@@ -33,6 +33,7 @@ namespace TWEMP.Browser.App.Classic
             TreeNode treeNode1 = new TreeNode("My Favorite Mods");
             TreeNode treeNode2 = new TreeNode("My Mod Collections");
             TreeNode treeNode3 = new TreeNode("All Modifications");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBrowserForm));
             buttonLaunch = new Button();
             panelLauncherOptions = new Panel();
             groupBoxConfigProfiles = new GroupBox();
@@ -829,11 +830,11 @@ namespace TWEMP.Browser.App.Classic
             Controls.Add(panelLauncherToolkit);
             Controls.Add(appMenuStrip);
             DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = appMenuStrip;
             Margin = new Padding(4, 3, 4, 3);
             MinimumSize = new Size(1024, 768);
             Name = "MainBrowserForm";
-            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             WindowState = FormWindowState.Maximized;
             panelLauncherOptions.ResumeLayout(false);
