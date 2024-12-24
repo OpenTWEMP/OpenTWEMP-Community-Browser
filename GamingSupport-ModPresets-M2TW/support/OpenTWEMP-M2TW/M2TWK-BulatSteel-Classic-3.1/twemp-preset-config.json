@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "MEDIEVAL II TOTAL WAR - BULAT STEEL",
+      "ModVersion": "3.1"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "BS_Launcher.exe",
+      "LauncherProvider_NativeSetup": "BS_Setup.exe",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://totalwar.fun/board/index.php/forum/403-%D0%B1%D1%83%D0%BB%D0%B0%D1%82%D0%BD%D0%B0%D1%8F-%D1%81%D1%82%D0%B0%D0%BB%D1%8C-tw-bulat-steel-%D0%BC%D0%BE%D0%B4/",
+        "URL2": "https://imtw.ru/forum/877-bulatnaya-ctal-bulat-steel-total-war/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "0babada2-c26f-483d-9319-1222b794382d",
+    "Version": "BETA",
+    "PresetName": "M2TWK-BulatSteel-Classic-3.1",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

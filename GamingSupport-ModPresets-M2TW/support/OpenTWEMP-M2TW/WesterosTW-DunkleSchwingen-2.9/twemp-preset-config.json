@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Westeros Total War - Dunkle Schwingen",
+      "ModVersion": "2.9.5"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Westeros_DS.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://westerostw.de.tl",
+        "URL2": "https://513246.forumromanum.com/member/forum/forum.php?&USER=user_513246&threadid=1424202964",
+        "URL3": "https://imtw.org/forum/1386-westeros-total-war-dunkle-schwingen/"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "03a4ba1e-d82f-4f23-be7a-7662b730f8a4",
+    "Version": "BETA",
+    "PresetName": "WesterosTW-DunkleSchwingen-2.9",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

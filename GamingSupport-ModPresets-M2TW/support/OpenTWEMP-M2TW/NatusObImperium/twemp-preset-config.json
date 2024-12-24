@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Natus ob Imperium",
+      "ModVersion": "Alpha"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Natus ob Imperium.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://totalwar.fun/board/index.php/forum/185-natus-ob-imperium/",
+        "URL2": "https://imtw.org/forum/805-natus-ob-imperium/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "61482ff5-b948-4f71-aed8-295e5d3a5939",
+    "Version": "BETA",
+    "PresetName": "NatusObImperium",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

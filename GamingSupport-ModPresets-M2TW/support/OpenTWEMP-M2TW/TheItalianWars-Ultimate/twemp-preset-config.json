@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "The Italian Wars",
+      "ModVersion": "1.0 - Ultimate"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Executable.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?2015-The-Italian-Wars",
+        "URL2": "https://imtw.org/topic/31388-mod-the-italian-wars/",
+        "URL3": "https://www.moddb.com/mods/the-italian-wars"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "d67f1a23-09bf-4a09-a4b4-d7f72056e18f",
+    "Version": "BETA",
+    "PresetName": "TheItalianWars-Ultimate",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

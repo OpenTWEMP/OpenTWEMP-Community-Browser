@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Invasio Barbarorvm 2 - Conqvestvs Britanniae III",
+      "ModVersion": "III.II"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Executive.exe.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?1453-INVASIO-BARBARORVM-2-CONQVESTVS-BRITANNIAE-RELEASED",
+        "URL2": "https://imtw.ru/topic/9351-mod-invasio-barbarorvm-2-conqvestvs-britanniae-iii/",
+        "URL3": "https://www.moddb.com/mods/invasio-barbarorvm-ii-ibii"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "8236160f-190b-43ee-b59b-b8cd8b43cde8",
+    "Version": "BETA",
+    "PresetName": "InvasioBarbarorvm2-ConqvestvsBritanniaeIII",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

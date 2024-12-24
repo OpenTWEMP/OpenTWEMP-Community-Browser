@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Medieval II Total War Kingdoms - Americas Campaign",
+      "ModVersion": "1.05/1.52"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "",
+        "URL2": "",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "c9f6c4a0-67b3-4c59-bd34-4702a981e1f7",
+    "Version": "BETA",
+    "PresetName": "M2TWK-Classic-Kingdoms-Americas",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

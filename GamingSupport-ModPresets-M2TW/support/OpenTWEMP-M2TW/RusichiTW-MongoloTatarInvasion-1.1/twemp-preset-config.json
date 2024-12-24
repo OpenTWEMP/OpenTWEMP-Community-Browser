@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Rusichi: Total War - Mongolo-Tatar Invasion",
+      "ModVersion": "1.1"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "rusichi.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/6457-mongolo-tatar-invasion-11/",
+        "URL2": "https://imtw.ru/forum/589-rusichi-total-war/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "2f64c08d-d951-44f9-8989-9812b658cc68",
+    "Version": "BETA",
+    "PresetName": "RusichiTW-MongoloTatarInvasion-1.1",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

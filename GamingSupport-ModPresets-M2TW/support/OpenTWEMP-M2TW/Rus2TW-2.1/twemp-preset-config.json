@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Русь 2: Total War",
+      "ModVersion": "2.1"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Rus2.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/25339-rus-2-total-war-21-rus/",
+        "URL2": "https://imtw.ru/forum/9-rus-2-total-war/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "4340dd96-65b3-473a-975b-6159b9e2d0c8",
+    "Version": "BETA",
+    "PresetName": "Rus2TW-2.1",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

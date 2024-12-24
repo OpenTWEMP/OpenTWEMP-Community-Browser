@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "MEDIEVAL II TOTAL WAR - Fleur de Lis: Normans",
+      "ModVersion": "Alpha"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/47346-fleur-de-lis/",
+        "URL2": "https://imtw.ru/forum/1340-fleur-de-lis/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "71077ec5-bdf4-4826-b281-01a0f540ab5f",
+    "Version": "BETA",
+    "PresetName": "M2TWK-FleurDeLis-Normans-Alpha",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "For King or Country: The English Civil War",
+      "ModVersion": "1.5"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "for_king_or_country.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?804-For-King-or-Country-The-English-Civil-War",
+        "URL2": "https://imtw.ru/topic/3005-mod-for-king-or-country-the-english-civil-war/",
+        "URL3": "https://www.moddb.com/mods/for-king-or-country-the-english-civil-war"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "45350ac5-a097-4d97-827d-ae941bd3a9f8",
+    "Version": "BETA",
+    "PresetName": "ForKingOrCountry-1.5",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

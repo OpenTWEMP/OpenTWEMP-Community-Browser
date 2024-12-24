@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "1648 - Thirty Years of War",
+      "ModVersion": "2.0"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "1648.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?1965-1648-Thirty-Years-of-War",
+        "URL2": "https://imtw.org/topic/8663-mod-1648-thirty-years-of-war/",
+        "URL3": "https://www.moddb.com/mods/1648-thirty-years-of-war-v20"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "cd8f0174-4155-406d-8b5b-81d43ffeec82",
+    "Version": "BETA",
+    "PresetName": "1648-ThirtyYearsOfWar-2.0",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

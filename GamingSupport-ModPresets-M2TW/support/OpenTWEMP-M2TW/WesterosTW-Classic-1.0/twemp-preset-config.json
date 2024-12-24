@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Westeros Total War",
+      "ModVersion": "Beta 1.0"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Westeros - Total War.bat",
+      "LauncherProvider_NativeSetup": "Westeros - Total War.exe",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "http://www.twcenter.net/forums/forumdisplay.php?721-Westeros-Total-War",
+        "URL2": "https://imtw.ru/forum/890-westeros-total-war/",
+        "URL3": "https://www.moddb.com/mods/westeros-total-war"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "ba88e53e-a739-4768-ac45-2e7b19d561a8",
+    "Version": "BETA",
+    "PresetName": "WesterosTW-Classic-1.0",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

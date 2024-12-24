@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "The Third Age Total War - Massive Overhaul Submod",
+      "ModVersion": "1.7"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Third Age.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/showthread.php?727367-MOS-the-ultimate-TATW-experience",
+        "URL2": "https://imtw.org/forum/1107-massive-overhaul-submods/",
+        "URL3": "https://www.moddb.com/mods/massive-overhaul-submod"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "df2a9a3f-c748-4439-bccd-420a1ec69e9d",
+    "Version": "BETA",
+    "PresetName": "TATW-MOS-1.7",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
