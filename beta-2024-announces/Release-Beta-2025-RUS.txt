@@ -3,7 +3,7 @@ OpenTWEMP Community Browser BETA 2025: Новая версия + поддерж�
 
 [teon]
 [center][b][size="5"]Релиз OpenTWEMP Community Browser BETA 2025[/size][/b][/center]
-[hr][cimg]https://imtw.ru/grafik/logo/logo_1643.gif[/cimg][hr]
+[hr][cimg]https://imtw.org/upl/loads2/imp1735041007_opentwemp_logo_readme.png[/cimg][hr]
 [/teon]
 
 [ramka_blue]
@@ -44,7 +44,7 @@ OpenTWEMP Community Browser BETA 2025 - масштабный релиз, осн�
 
 [font="Georgia"][size="5"][b]Что нового в OpenTWEMP Community Browser BETA 2025 ?[/b][/size][/font]
 
-[size="4"][url="http://localhost"]OpenTWEMP Community Browser - BETA 2025 Release Demo (YouTube)[/url][/size]
+[size="4"][url="https://www.youtube.com/playlist?list=PLLgpEiC0ZVBF6S19BDK_0Y6pp9xQoHj7D"]OpenTWEMP Community Browser - BETA 2025 Release Demo (YouTube)[/url][/size]
 
 [font="Georgia"][size="4"][b]Фундаментальные нововведения бета-версии[/b][/size][/font]
 
@@ -76,11 +76,11 @@ OpenTWEMP Community Browser BETA 2025 - масштабный релиз, осн�
 
 Следующие ссылки доступны для скачивания бета-версии программы:
 [size="3"]
-[url="http://localhost"]OpenTWEMP-Community-Browser-BETA-2025.zip | Империал[/url]
+[url="http://localhost"]OpenTWEMP-Community-Browser-BETA-2025.zip (~500 MB) | Империал[/url]
 
-[url="http://localhost"]OpenTWEMP-Community-Browser-BETA-2025.zip | Яндекс.Диск[/url]
+[url="https://disk.yandex.ru/d/3a1dd7ETrEFyJg"]OpenTWEMP-Community-Browser-BETA-2025.zip (~500 MB) | Яндекс.Диск[/url]
 
-[url="http://localhost"]OpenTWEMP-Community-Browser-BETA-2025.zip | GitHub[/url]
+[url="https://drive.google.com/file/d/1WoXPb2FvjgoVEiLbap5TXn7ewWhO6XuH/view?usp=sharing"]OpenTWEMP-Community-Browser-BETA-2025.zip (~500 MB) | Google Drive[/url]
 [/size]
 [font="Georgia"][size="4"][b]Исходный код программы[/b][/size][/font]
 
