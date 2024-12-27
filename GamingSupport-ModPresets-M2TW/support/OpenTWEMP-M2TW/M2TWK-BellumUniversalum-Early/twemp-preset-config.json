@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "MEDIEVAL II TOTAL WAR - BELLUM UNIVERSALUM - Высокое Средневековье",
+      "ModVersion": "BC 6.3"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "BellumUniversalum.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/57403-bellum-universalum-vysokoe-srednevekove/",
+        "URL2": "https://imtw.ru/forum/1472-bellum-universalum/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "82556d77-f49c-4b89-bbfe-37115f81eecc",
+    "Version": "BETA",
+    "PresetName": "M2TWK-BellumUniversalum-Early",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

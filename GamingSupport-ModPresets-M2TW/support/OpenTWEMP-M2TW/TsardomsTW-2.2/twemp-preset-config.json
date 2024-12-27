@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Tsardoms Total War",
+      "ModVersion": "2.2"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Tsardoms-2.2.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?539-Tsardoms-Total-War",
+        "URL2": "https://imtw.org/forum/1581-tsardoms-total-war/",
+        "URL3": "https://www.moddb.com/mods/tsardoms-total-war"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "ce7cc06b-790c-4be7-aeb5-a596f668fcb5",
+    "Version": "BETA",
+    "PresetName": "TsardomsTW-2.2",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

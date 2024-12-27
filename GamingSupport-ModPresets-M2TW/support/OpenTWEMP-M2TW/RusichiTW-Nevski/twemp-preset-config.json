@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Rusichi: Total War - Князь Света и Тьмы",
+      "ModVersion": ""
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/15383-knyaz-sveta-i-tmy/",
+        "URL2": "https://imtw.ru/forum/589-rusichi-total-war/",
+        "URL3": "https://totalwar.fun/board/index.php/forum/382-masterskaia-emeli/"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "3a2033d1-e266-4a95-a566-1e69f7f8829e",
+    "Version": "BETA",
+    "PresetName": "RusichiTW-Nevski",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

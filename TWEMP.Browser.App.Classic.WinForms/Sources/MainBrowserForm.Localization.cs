@@ -21,6 +21,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser, ICanChangeMyLocaliza
     public void SetupCurrentLocalizationForGUIControls()
     {
         this.buttonLaunch.Text = GetTextInCurrentLocalization(this.Name, this.buttonLaunch.Name);
+        this.modConfigSettingsButton.Text = GetTextInCurrentLocalization(this.Name, this.modConfigSettingsButton.Name);
         this.modQuickNavigationButton.Text = GetTextInCurrentLocalization(this.Name, this.modQuickNavigationButton.Name);
         this.buttonExplore.Text = GetTextInCurrentLocalization(this.Name, this.buttonExplore.Name);
 
@@ -44,6 +45,7 @@ internal partial class MainBrowserForm : IUpdatableBrowser, ICanChangeMyLocaliza
 
         this.toolStripAppItem.Text = GetTextInCurrentLocalization(this.Name, this.toolStripAppItem.Name!);
         this.gameSetupSettingsToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.gameSetupSettingsToolStripMenuItem.Name!);
+        this.modSupportPresetSettingsToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.modSupportPresetSettingsToolStripMenuItem.Name!);
         this.applicationSettingsToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.applicationSettingsToolStripMenuItem.Name!);
         this.applicationHomeFolderToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.applicationHomeFolderToolStripMenuItem.Name!);
         this.exitFromApplicationToolStripMenuItem.Text = GetTextInCurrentLocalization(this.Name, this.exitFromApplicationToolStripMenuItem.Name!);
@@ -64,5 +66,9 @@ internal partial class MainBrowserForm : IUpdatableBrowser, ICanChangeMyLocaliza
         this.buttonCollectionManage.Text = GetTextInCurrentLocalization(this.Name, this.buttonCollectionManage.Name);
         this.buttonCollectionCreate.Text = GetTextInCurrentLocalization(this.Name, this.buttonCollectionCreate.Name);
         this.buttonMarkFavoriteMod.Text = GetTextInCurrentLocalization(this.Name, this.buttonMarkFavoriteMod.Name);
+
+        this.buttonMusicPlay.Text = GetTextInCurrentLocalization(this.Name, this.buttonMusicPlay.Name);
+        this.buttonMusicPause.Text = GetTextInCurrentLocalization(this.Name, this.buttonMusicPause.Name);
+        this.buttonMusicRewind.Text = GetTextInCurrentLocalization(this.Name, this.buttonMusicRewind.Name);
     }
 }

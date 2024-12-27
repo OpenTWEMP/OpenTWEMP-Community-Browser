@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "The Last Kingdom",
+      "ModVersion": "3.06"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Executive.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?867-The-Last-Kingdom",
+        "URL2": "https://imtw.org/forum/1038-the-last-kingdom-total-war/",
+        "URL3": "https://www.moddb.com/mods/the-last-kingdom-m2tw"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "ff3bdffd-5b51-4857-a692-25f556404433",
+    "Version": "BETA",
+    "PresetName": "TheLastKingdom-3.06",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

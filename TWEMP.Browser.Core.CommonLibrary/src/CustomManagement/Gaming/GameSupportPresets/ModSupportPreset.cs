@@ -8,6 +8,12 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPr
 
 public record ModSupportPreset
 {
+    public const string ModTitle = "TITLE";
+    public const string ModVersion = "VERSION";
+
+    private const string ModLogoFileName = "LOGO.png";
+    private const string ModMusicFileName = "MUSIC.mp3";
+
     public ModSupportPreset(
         ModHeaderInfo headerInfo,
         ModContentInfo contentInfo,
@@ -30,16 +36,8 @@ public record ModSupportPreset
 
     public static ModSupportPreset CreateDefaultTemplate()
     {
-        const string modTitle = "My_Title";
-        const string modVersion = "My_Version";
-
-        ModHeaderInfo header = new (modTitle, modVersion);
-
-        const string modLogoFileName = "DEFAULT.png";
-        const string modMusicFileName = "My_Background_SoundTrack.mp3";
-
-        ModContentInfo content = new (modLogoFileName, modMusicFileName);
-
+        ModHeaderInfo header = new (ModTitle, ModVersion);
+        ModContentInfo content = new (ModLogoFileName, ModMusicFileName);
         ModLauncherInfo launcher = ModLauncherInfo.CreateByDefault();
 
         ModSocialMediaInfo socialmedia = new (new Dictionary<string, string>()

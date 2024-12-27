@@ -104,6 +104,11 @@ public class ModSupportPresetSetupManager
         foreach (UpdatableGameModificationView view in this.updatableGameModificationViews)
         {
             view.UpdateLauncherSettings();
+
+            if (view.UseCustomizablePreset)
+            {
+                view.GenerateCustomizableModPresetByDefault();
+            }
         }
     }
 

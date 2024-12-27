@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "WARHAMMER - The Sundering: Rise of the Witch King",
+      "ModVersion": "Beta 0.69"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Executable.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?1857-The-Sundering-Rise-of-the-Witch-King",
+        "URL2": "https://imtw.org/topic/17474-the-sundering-rise-of-the-witch-king-069/",
+        "URL3": "https://www.moddb.com/mods/the-sundering-rise-of-the-witch-king"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "17a8aeb8-790c-44e2-b4bf-9bb94aee3edb",
+    "Version": "BETA",
+    "PresetName": "CoW-Sundering-0.69",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Hundert Year War",
+      "ModVersion": "v2"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "HundertYearWar.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.org/forum/914-hundert-year-war/",
+        "URL2": "https://totalwar.fun/board/index.php/forum/507-hundert-year-war/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "973fc48c-a794-487d-ac18-ffc4280e27b3",
+    "Version": "BETA",
+    "PresetName": "HundertYearWar",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

@@ -129,6 +129,7 @@ internal partial class MainBrowserForm
         this.groupBoxConfigLaunchMode.Enabled = false;
         this.groupBoxConfigLogMode.Enabled = false;
         this.groupBoxConfigCleanerMode.Enabled = false;
+        this.modConfigSettingsButton.Enabled = false;
     }
 
     private void EnableLauncherSettingsControls()
@@ -137,6 +138,7 @@ internal partial class MainBrowserForm
         this.groupBoxConfigLaunchMode.Enabled = true;
         this.groupBoxConfigLogMode.Enabled = true;
         this.groupBoxConfigCleanerMode.Enabled = true;
+        this.modConfigSettingsButton.Enabled = true;
     }
 
     private void ModConfigSettingsButton_Click(object sender, EventArgs e)

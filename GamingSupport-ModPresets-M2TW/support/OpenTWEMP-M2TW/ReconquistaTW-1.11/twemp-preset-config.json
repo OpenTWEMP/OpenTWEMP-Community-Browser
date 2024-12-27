@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Reconquista Total War",
+      "ModVersion": "1.11"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Reconquista.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/6586-reconquista-total-war-111/",
+        "URL2": "",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "78b92d20-8822-4425-84d2-f8d2f107d46e",
+    "Version": "BETA",
+    "PresetName": "ReconquistaTW-1.11",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

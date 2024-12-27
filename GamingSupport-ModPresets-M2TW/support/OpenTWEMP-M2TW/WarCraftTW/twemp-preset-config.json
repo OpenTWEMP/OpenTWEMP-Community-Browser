@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "WarCraft Total War",
+      "ModVersion": "Beta"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": "M2TWEOP.exe"
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?1533-Warcraft-Total-War",
+        "URL2": "https://imtw.ru/forum/1379-warcraft-total-war/",
+        "URL3": "https://www.moddb.com/mods/warcraft-total-war1"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "cb4963c4-f019-4ddb-bf43-3f54b9490741",
+    "Version": "BETA",
+    "PresetName": "WarCraftTW",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

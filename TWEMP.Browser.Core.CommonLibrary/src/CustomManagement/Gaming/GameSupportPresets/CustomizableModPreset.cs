@@ -6,12 +6,14 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPresets;
 
+using TWEMP.Browser.Core.CommonLibrary.Serialization;
+
 public record CustomizableModPreset
 {
     private const string PresetFolderName = ".twemp";
-    private const string PresetConfigFileName = "twemp_preset_config.json";
+    private const string PresetConfigFileName = "twemp-preset-config.json";
 
-    public CustomizableModPreset(ModSupportPreset preset, string modURI)
+    private CustomizableModPreset(ModSupportPreset preset, string modURI)
     {
         this.Data = preset;
 
@@ -28,54 +30,57 @@ public record CustomizableModPreset
 
     public FileInfo Config { get; set; }
 
-    public static CustomizableModPreset CreateDefaultTemplate(string modURI)
+    public static CustomizableModPreset Create(GameModificationInfo info)
     {
-        ModSupportPreset preset = ModSupportPreset.CreateDefaultTemplate();
-        return new CustomizableModPreset(preset, modURI);
-    }
-
-    public static bool Exists(string modURI)
-    {
-        string presetConfigFilePath = Path.Combine(modURI, PresetFolderName, PresetConfigFileName);
-        return File.Exists(presetConfigFilePath);
-    }
-
-    public static CustomizableModPreset ReadCurrentPreset(string modURI)
-    {
-        string presetConfigFilePath = Path.Combine(modURI, PresetFolderName, PresetConfigFileName);
-
         CustomizableModPreset preset;
-        try
+        string presetConfigFilePath = GetConfigFilePath(info);
+
+        if (File.Exists(presetConfigFilePath))
         {
-            preset = Serialization.AppSerializer.DeserializeFromJson<CustomizableModPreset>(presetConfigFilePath);
+            preset = ReadCurrentPreset(info.Location);
         }
-        catch (InvalidOperationException)
+        else
         {
-            preset = CreateDefaultTemplate(modURI);
+            preset = CreateDefaultTemplate(info.Location);
         }
 
         return preset;
     }
 
-#if LEGACY_CUSTOM_PRESET_CREATE_IMPL
-    public static CustomModSupportPreset CreatePresetByDefault(string modificationURI)
-    {
-        // 1. Prepare preset's folder into modification's home directory.
-        string presetHomeDirectoryPath = Path.Combine(modificationURI, MOD_PRESET_FOLDERNAME);
+    private static string GetConfigFilePath(GameModificationInfo info) =>
+        Path.Combine(info.Location, PresetFolderName, PresetConfigFileName);
 
-        if (!Directory.Exists(presetHomeDirectoryPath))
+    private static CustomizableModPreset ReadCurrentPreset(string modURI)
+    {
+        string presetConfigFilePath = Path.Combine(modURI, PresetFolderName, PresetConfigFileName);
+
+        CustomizableModPreset customizablePreset;
+        try
         {
-            Directory.CreateDirectory(presetHomeDirectoryPath);
+            var preset = AppSerializer.DeserializeFromJson<ModSupportPreset>(presetConfigFilePath);
+            customizablePreset = new CustomizableModPreset(preset, modURI);
+        }
+        catch (InvalidOperationException)
+        {
+            customizablePreset = CreateDefaultTemplate(modURI);
         }
 
-        // 2. Generate 'mod_support.json' preset configuration file.
-        var presetByDefault = new CustomModSupportPreset();
-        string presetJsonText = JsonConvert.SerializeObject(presetByDefault, Formatting.Indented);
-        string presetFilePath = Path.Combine(presetHomeDirectoryPath, MOD_PRESET_FILENAME);
-
-        File.WriteAllText(presetFilePath, presetJsonText);
-
-        return presetByDefault;
+        return customizablePreset;
     }
-#endif
+
+    private static CustomizableModPreset CreateDefaultTemplate(string modURI)
+    {
+        ModSupportPreset preset = ModSupportPreset.CreateDefaultTemplate();
+        return new CustomizableModPreset(preset, modURI);
+    }
+
+    public void GenerateConfigTemplateByDefault()
+    {
+        if (!this.Location.Exists)
+        {
+            this.Location.Create();
+        }
+
+        AppSerializer.SerializeToJson(obj: this.Data, file: this.Config.FullName);
+    }
 }

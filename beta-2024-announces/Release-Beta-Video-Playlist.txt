@@ -1,16 +1,12 @@
 Release-Beta-Video-Playlist
 
-00 - Installing and Customizing the Application.
-01 - Configuring Game Setup Installations with Your Mods.
-02 - Creating Custom Collections for Your Mods.
-03 - Attaching Redistributable Presets to Your Mods.
-04 - Creating Customizable Presets for Your Mods.
-05 - Browsing Your Mods via the Application.
-06 - Creating M2TW Game Configuration for Your Mod.
-07 - Managing Configuration Profiles for Your Mods.
-08 - Quick Switching Game Configurations for Your Mod.
-09 - Managing Background Music Playback.
-10 - Launch Your Mod via TWEMP Launcher.
-11 - Launch Your Mod via Native Batch/Setup.
-12 - Launch Your Mod via M2TWEOP Launcher.
-13 - About M2TW Mod Support in the Application.
+00 - Explore Your M2TW Installations - Изучаем Ваши Инсталляции M2TW
+01 - Install and Launch the Browser - Устанавливаем и Запускаем Браузер
+02 - Configure Your M2TW Installations - Конфигурируем Ваши Инсталляции M2TW
+03 - Create Your Own Collections of Mods - Создаем Ваши Собственные Коллекции Модов
+04 - Select Redistributable Presets for Your Mods - Выбираем Готовые Пресеты для Ваших Модов
+05 - Navigate Your Mods the Browser - Просматриваем Ваши Моды в Браузере
+06 - Customize Mods via Your Own Presets - Персонализируем Моды с помощью Ваших Собственных Пресетов
+07 - Execute Your Mod via TWEMP Game Launcher - Исполняем Ваш Мод с помощью Встроенного Лаунчера
+08 - Execute Mods via Your Own Launcher Providers - Исполняем Моды с помощью Ваших Собственных Средств Запуска
+09 - Apply More Custom Settings into Your Browser - Применяем Больше Персональных Настроек в Вашем Браузере

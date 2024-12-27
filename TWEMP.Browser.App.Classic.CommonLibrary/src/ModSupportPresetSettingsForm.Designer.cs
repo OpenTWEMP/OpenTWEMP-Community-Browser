@@ -32,6 +32,12 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             modsGridPanel = new Panel();
             modSupportPresetsDataGridView = new DataGridView();
+            idColumn = new DataGridViewTextBoxColumn();
+            modNameColumn = new DataGridViewTextBoxColumn();
+            gameSetupColumn = new DataGridViewTextBoxColumn();
+            modcenterColumn = new DataGridViewTextBoxColumn();
+            redistributablePresetStatusButtonColumn = new DataGridViewButtonColumn();
+            customizablePresetCheckBoxColumn = new DataGridViewCheckBoxColumn();
             presetActionsPanel = new Panel();
             openRedistributablePresetDirectoryButton = new Button();
             openCustomizablePresetDirectoryButton = new Button();
@@ -39,12 +45,6 @@
             allChangesDiscardButton = new Button();
             applyButton = new Button();
             exitButton = new Button();
-            idColumn = new DataGridViewTextBoxColumn();
-            modNameColumn = new DataGridViewTextBoxColumn();
-            gameSetupColumn = new DataGridViewTextBoxColumn();
-            modcenterColumn = new DataGridViewTextBoxColumn();
-            redistributablePresetStatusButtonColumn = new DataGridViewButtonColumn();
-            customizablePresetCheckBoxColumn = new DataGridViewCheckBoxColumn();
             modsGridPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)modSupportPresetsDataGridView).BeginInit();
             presetActionsPanel.SuspendLayout();
@@ -80,7 +80,6 @@
             modSupportPresetsDataGridView.EnableHeadersVisualStyles = false;
             modSupportPresetsDataGridView.Location = new Point(0, 0);
             modSupportPresetsDataGridView.Name = "modSupportPresetsDataGridView";
-            modSupportPresetsDataGridView.ReadOnly = true;
             dataGridViewCellStyle2.SelectionBackColor = Color.Yellow;
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             modSupportPresetsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
@@ -89,6 +88,57 @@
             modSupportPresetsDataGridView.CellContentClick += ModSupportPresetsDataGridView_CellContentClick;
             modSupportPresetsDataGridView.RowEnter += ModSupportPresetsDataGridView_RowEnter;
             modSupportPresetsDataGridView.RowLeave += ModSupportPresetsDataGridView_RowLeave;
+            // 
+            // idColumn
+            // 
+            idColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            idColumn.Frozen = true;
+            idColumn.HeaderText = "ID";
+            idColumn.Name = "idColumn";
+            idColumn.ReadOnly = true;
+            idColumn.Resizable = DataGridViewTriState.False;
+            idColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            idColumn.Width = 26;
+            // 
+            // modNameColumn
+            // 
+            modNameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            modNameColumn.HeaderText = "MOD NAME";
+            modNameColumn.MinimumWidth = 50;
+            modNameColumn.Name = "modNameColumn";
+            modNameColumn.ReadOnly = true;
+            modNameColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // gameSetupColumn
+            // 
+            gameSetupColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            gameSetupColumn.HeaderText = "GAME SETUP";
+            gameSetupColumn.MinimumWidth = 50;
+            gameSetupColumn.Name = "gameSetupColumn";
+            gameSetupColumn.ReadOnly = true;
+            gameSetupColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // modcenterColumn
+            // 
+            modcenterColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            modcenterColumn.HeaderText = "MODCENTER";
+            modcenterColumn.MinimumWidth = 50;
+            modcenterColumn.Name = "modcenterColumn";
+            modcenterColumn.ReadOnly = true;
+            modcenterColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // redistributablePresetStatusButtonColumn
+            // 
+            redistributablePresetStatusButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            redistributablePresetStatusButtonColumn.HeaderText = "USE REDISTRIBUTABLE PRESET";
+            redistributablePresetStatusButtonColumn.Name = "redistributablePresetStatusButtonColumn";
+            redistributablePresetStatusButtonColumn.Resizable = DataGridViewTriState.False;
+            // 
+            // customizablePresetCheckBoxColumn
+            // 
+            customizablePresetCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            customizablePresetCheckBoxColumn.HeaderText = "USE CUSTOMIZABLE PRESET";
+            customizablePresetCheckBoxColumn.Name = "customizablePresetCheckBoxColumn";
             // 
             // presetActionsPanel
             // 
@@ -174,59 +224,6 @@
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += ExitButton_Click;
             // 
-            // idColumn
-            // 
-            idColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            idColumn.Frozen = true;
-            idColumn.HeaderText = "ID";
-            idColumn.Name = "idColumn";
-            idColumn.ReadOnly = true;
-            idColumn.Resizable = DataGridViewTriState.False;
-            idColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
-            idColumn.Width = 26;
-            // 
-            // modNameColumn
-            // 
-            modNameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            modNameColumn.HeaderText = "MOD NAME";
-            modNameColumn.MinimumWidth = 50;
-            modNameColumn.Name = "modNameColumn";
-            modNameColumn.ReadOnly = true;
-            modNameColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // gameSetupColumn
-            // 
-            gameSetupColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            gameSetupColumn.HeaderText = "GAME SETUP";
-            gameSetupColumn.MinimumWidth = 50;
-            gameSetupColumn.Name = "gameSetupColumn";
-            gameSetupColumn.ReadOnly = true;
-            gameSetupColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // modcenterColumn
-            // 
-            modcenterColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            modcenterColumn.HeaderText = "MODCENTER";
-            modcenterColumn.MinimumWidth = 50;
-            modcenterColumn.Name = "modcenterColumn";
-            modcenterColumn.ReadOnly = true;
-            modcenterColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // redistributablePresetStatusButtonColumn
-            // 
-            redistributablePresetStatusButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            redistributablePresetStatusButtonColumn.HeaderText = "USE REDISTRIBUTABLE PRESET";
-            redistributablePresetStatusButtonColumn.Name = "redistributablePresetStatusButtonColumn";
-            redistributablePresetStatusButtonColumn.ReadOnly = true;
-            redistributablePresetStatusButtonColumn.Resizable = DataGridViewTriState.False;
-            // 
-            // customizablePresetCheckBoxColumn
-            // 
-            customizablePresetCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            customizablePresetCheckBoxColumn.HeaderText = "USE CUSTOMIZABLE PRESET";
-            customizablePresetCheckBoxColumn.Name = "customizablePresetCheckBoxColumn";
-            customizablePresetCheckBoxColumn.ReadOnly = true;
-            // 
             // ModSupportPresetSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -237,7 +234,9 @@
             MinimumSize = new Size(800, 600);
             Name = "ModSupportPresetSettingsForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "M2TW Mods Support - Preset Settings";
+            WindowState = FormWindowState.Maximized;
             modsGridPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)modSupportPresetsDataGridView).EndInit();
             presetActionsPanel.ResumeLayout(false);

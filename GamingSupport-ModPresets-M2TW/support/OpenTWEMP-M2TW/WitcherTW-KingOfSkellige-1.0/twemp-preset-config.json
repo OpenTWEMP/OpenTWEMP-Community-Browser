@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Witcher Total War - King of Skellige",
+      "ModVersion": "1.0"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "WTW_KingOfSkellige.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.ru/topic/59823-witcher-total-war-king-of-skellige/",
+        "URL2": "https://imtw.ru/forum/1449-witcher-total-war/",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "a81c0e69-5298-47ee-b571-56416ab4c0a5",
+    "Version": "BETA",
+    "PresetName": "WitcherTW-KingOfSkellige-1.0",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

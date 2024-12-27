@@ -8,6 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>OpenTWEMP-Community-Browser</AssemblyName>
     <StartupObject>TWEMP.Browser.App.Classic.WinForms.Program</StartupObject>
+    <ApplicationIcon>twemp_icon_big.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +23,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="twemp_icon_big.ico" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "De Bello Mundi",
+      "ModVersion": "1.2"
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Play DBM - Gioca DBM.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://www.twcenter.net/forums/forumdisplay.php?1975-De-Bello-Mundi-(DBM)",
+        "URL2": "https://imtw.ru/forum/936-de-bello-mundi/",
+        "URL3": "https://www.moddb.com/mods/de-bello-mundi"
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "294ca7a8-0945-4514-9ae7-07bacb5df662",
+    "Version": "BETA",
+    "PresetName": "DeBelloMundi-1.2",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}

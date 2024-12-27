@@ -39,7 +39,7 @@ public class UpdatableGameModificationView
         this.CurrentInfo = modInfo;
 
         this.redistributableModPreset = RedistributablePresetByDefault;
-        this.customizableModPreset = GetCustomizableModPreset(this.CurrentInfo);
+        this.customizableModPreset = CustomizableModPreset.Create(this.CurrentInfo);
         this.UseCustomizablePreset = false;
 
         this.ActivePreset = this.redistributableModPreset.Data;
@@ -58,7 +58,7 @@ public class UpdatableGameModificationView
         this.CurrentInfo = modInfo;
 
         this.redistributableModPreset = modPreset;
-        this.customizableModPreset = GetCustomizableModPreset(this.CurrentInfo);
+        this.customizableModPreset = CustomizableModPreset.Create(this.CurrentInfo);
         this.UseCustomizablePreset = false;
 
         this.ActivePreset = this.redistributableModPreset.Data;
@@ -158,6 +158,13 @@ public class UpdatableGameModificationView
     {
         return new UpdatableGameModificationView(idView, info);
     }
+
+    /// <summary>
+    /// Gets the full name of the default mod preset.
+    /// </summary>
+    /// <returns>The full name of the default mod preset.</returns>
+    public static string GetDefaultPresetFullName() =>
+        $"{ModSupportPreset.ModTitle} [{ModSupportPreset.ModVersion}]";
 
     /// <summary>
     /// Updates launcher settings by the active preset for this game mod.
@@ -260,6 +267,12 @@ public class UpdatableGameModificationView
         return new FileInfo(presetBackgroundSoundTrackFilePath);
     }
 
+    /// <summary>
+    /// Generates default assets for the current customizable mod preset.
+    /// </summary>
+    public void GenerateCustomizableModPresetByDefault() =>
+        this.customizableModPreset.GenerateConfigTemplateByDefault();
+
 #if EXPERIMENTAL_FEATURES
     /// <summary>
     /// Selects the current preset of the <see cref="RedistributableModPreset"/> type
@@ -307,16 +320,4 @@ public class UpdatableGameModificationView
         this.redistributableModPreset = RedistributablePresetByDefault;
     }
 #endif
-
-    private static CustomizableModPreset GetCustomizableModPreset(GameModificationInfo info)
-    {
-        if (CustomizableModPreset.Exists(info.Location))
-        {
-            return CustomizableModPreset.ReadCurrentPreset(info.Location);
-        }
-        else
-        {
-            return CustomizableModPreset.CreateDefaultTemplate(info.Location);
-        }
-    }
 }

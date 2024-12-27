@@ -13,6 +13,7 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Localization;
 public class GuiLocaleDescr_MainBrowser : LocaleDescription
 {
     private const string KEY_buttonLaunch = "buttonLaunch";
+    private const string KEY_modConfigSettingsButton = "modConfigSettingsButton";
     private const string KEY_modQuickNavigationButton = "modQuickNavigationButton";
     private const string KEY_buttonExplore = "buttonExplore";
 
@@ -35,6 +36,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
 
     private const string KEY_toolStripAppItem = "toolStripAppItem";
     private const string KEY_gameSetupSettingsToolStripMenuItem = "gameSetupSettingsToolStripMenuItem";
+    private const string KEY_modSupportPresetSettingsToolStripMenuItem = "modSupportPresetSettingsToolStripMenuItem";
     private const string KEY_applicationSettingsToolStripMenuItem = "applicationSettingsToolStripMenuItem";
     private const string KEY_applicationHomeFolderToolStripMenuItem = "applicationHomeFolderToolStripMenuItem";
     private const string KEY_exitFromApplicationToolStripMenuItem = "exitFromApplicationToolStripMenuItem";
@@ -56,6 +58,10 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
     private const string KEY_buttonCollectionCreate = "buttonCollectionCreate";
     private const string KEY_buttonMarkFavoriteMod = "buttonMarkFavoriteMod";
 
+    private const string KEY_buttonMusicPlay = "buttonMusicPlay";
+    private const string KEY_buttonMusicPause = "buttonMusicPause";
+    private const string KEY_buttonMusicRewind = "buttonMusicRewind";
+
     public GuiLocaleDescr_MainBrowser()
     {
         this.FormName = "MainBrowserForm";
@@ -63,6 +69,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
         this.LocalizedControls = new List<string>()
         {
             KEY_buttonLaunch,
+            KEY_modConfigSettingsButton,
             KEY_modQuickNavigationButton,
             KEY_buttonExplore,
 
@@ -85,6 +92,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
 
             KEY_toolStripAppItem,
             KEY_gameSetupSettingsToolStripMenuItem,
+            KEY_modSupportPresetSettingsToolStripMenuItem,
             KEY_applicationSettingsToolStripMenuItem,
             KEY_applicationHomeFolderToolStripMenuItem,
             KEY_exitFromApplicationToolStripMenuItem,
@@ -105,6 +113,10 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
             KEY_buttonCollectionManage,
             KEY_buttonCollectionCreate,
             KEY_buttonMarkFavoriteMod,
+
+            KEY_buttonMusicPlay,
+            KEY_buttonMusicPause,
+            KEY_buttonMusicRewind,
         };
     }
 
@@ -117,6 +129,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
         return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
             {
                 { KEY_buttonLaunch, "LAUNCH" },
+                { KEY_modConfigSettingsButton, "MOD CONFIGURATION SETTINGS" },
                 { KEY_modQuickNavigationButton, "MOD QUICK NAVIGATION" },
                 { KEY_buttonExplore, "MOD HOME FOLDER" },
                 { KEY_groupBoxConfigCleanerMode, "Select mod clean routines" },
@@ -135,6 +148,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
                 { KEY_checkBoxBorderless, "Borderless Windowed Mode" },
                 { KEY_toolStripAppItem, "BROWSER" },
                 { KEY_gameSetupSettingsToolStripMenuItem, "Game Setup Settings" },
+                { KEY_modSupportPresetSettingsToolStripMenuItem, "Mod Support Preset Settings" },
                 { KEY_applicationSettingsToolStripMenuItem, "Application Settings" },
                 { KEY_applicationHomeFolderToolStripMenuItem, "Go to Home Directory" },
                 { KEY_exitFromApplicationToolStripMenuItem, "Exit from Program" },
@@ -151,6 +165,9 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
                 { KEY_buttonCollectionManage, "MANAGE YOUR COLLECTIONS" },
                 { KEY_buttonCollectionCreate, "CREATE A NEW COLLECTION" },
                 { KEY_buttonMarkFavoriteMod, "MARK or UNMARK THIS MOD as FAVORITE" },
+                { KEY_buttonMusicPlay, "Play Audio" },
+                { KEY_buttonMusicPause, "Pause Audio" },
+                { KEY_buttonMusicRewind, "Rewind Audio" },
             });
     }
 
@@ -159,6 +176,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
         return new LocaleSnapshot(this.FormName, new Dictionary<string, string>()
             {
                 { KEY_buttonLaunch, "ИГРАТЬ" },
+                { KEY_modConfigSettingsButton, "НАСТРОЙКИ КОНФИГУРАЦИИ" },
                 { KEY_modQuickNavigationButton, "БЫСТРАЯ МОД-НАВИГАЦИЯ" },
                 { KEY_buttonExplore, "РАЗМЕЩЕНИЕ МОДИФИКАЦИИ" },
                 { KEY_groupBoxConfigCleanerMode, "Выберите операции очистки для мода" },
@@ -177,6 +195,7 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
                 { KEY_checkBoxBorderless, "Оконный режим без границ" },
                 { KEY_toolStripAppItem, "БРАУЗЕР" },
                 { KEY_gameSetupSettingsToolStripMenuItem, "Игровые Установки" },
+                { KEY_modSupportPresetSettingsToolStripMenuItem, "Менеджер Поддержки Модов" },
                 { KEY_applicationSettingsToolStripMenuItem, "Настройки Программы" },
                 { KEY_applicationHomeFolderToolStripMenuItem, "Домашняя Директория" },
                 { KEY_exitFromApplicationToolStripMenuItem, "Выйти из Программы" },
@@ -193,6 +212,9 @@ public class GuiLocaleDescr_MainBrowser : LocaleDescription
                 { KEY_buttonCollectionManage, "УПРАВЛЕНИЕ КОЛЛЕКЦИЯМИ" },
                 { KEY_buttonCollectionCreate, "СОЗДАТЬ НОВУЮ КОЛЛЕКЦИЮ" },
                 { KEY_buttonMarkFavoriteMod, "ИЗБРАННОЕ (ДОБАВИТЬ/УДАЛИТЬ МОД)" },
+                { KEY_buttonMusicPlay, "Старт Аудио" },
+                { KEY_buttonMusicPause, "Стоп Аудио" },
+                { KEY_buttonMusicRewind, "Повтор Аудио" },
             });
     }
 }

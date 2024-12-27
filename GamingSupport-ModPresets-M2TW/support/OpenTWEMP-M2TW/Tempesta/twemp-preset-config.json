@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "HeaderInfo": {
+      "ModTitle": "Tempesta `Meditterraneo`",
+      "ModVersion": ""
+    },
+    "ContentInfo": {
+      "LogotypeImage": "LOGO.png",
+      "BackgroundSoundTrack": "MUSIC.mp3"
+    },
+    "LauncherInfo": {
+      "LauncherProvider_NativeBatch": "Executable.bat",
+      "LauncherProvider_NativeSetup": "",
+      "LauncherProvider_M2TWEOP": ""
+    },
+    "SocialMediaInfo": {
+      "ModURLs": {
+        "URL1": "https://imtw.org/topic/69234-mod-tempesta-meditterraneo/",
+        "URL2": "https://www.moddb.com/mods/tempesta-meditterraneo",
+        "URL3": ""
+      }
+    }
+  },
+  "Metadata": {
+    "Guid": "4d2c69be-7b56-4056-b595-cf2ec5b53e78",
+    "Version": "BETA",
+    "PresetName": "Tempesta",
+    "PackageName": "OpenTWEMP-M2TW",
+    "Creator": "The OpenTWEMP Project"
+  }
+}
