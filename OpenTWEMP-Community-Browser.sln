@@ -31,6 +31,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.Browser.App.Utilities
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.Browser.App.Utilities-CLI.M2TW-AssetsGenerator-ModPresets", "TWEMP.Browser.App.Utilities-CLI.M2TW-AssetsGenerator-ModPresets\TWEMP.Browser.App.Utilities-CLI.M2TW-AssetsGenerator-ModPresets.csproj", "{ADC1C4CC-FBF3-4FA5-AB22-704A37E34C8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.SoftwareManager.Core.CommonLibrary", "TWEMP.SoftwareManager.Core.CommonLibrary\TWEMP.SoftwareManager.Core.CommonLibrary.csproj", "{6B37EA0D-8F06-4B55-9322-AF6B47F489B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.SoftwareManager.QA.UnitTesting", "TWEMP.SoftwareManager.QA.UnitTesting\TWEMP.SoftwareManager.QA.UnitTesting.csproj", "{17478F18-82BC-43F3-ADEE-B8CC8FBC06E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.SoftwareManager.App.Console", "TWEMP.SoftwareManager.App.Console\TWEMP.SoftwareManager.App.Console.csproj", "{1A8A2633-F75E-467F-8AEB-E44B4A06BB9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWEMP.SoftwareManager.App.WinForms", "TWEMP.SoftwareManager.App.WinForms\TWEMP.SoftwareManager.App.WinForms.csproj", "{AEFC367F-A969-4FC6-8E3F-29CDC9EDA832}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +101,22 @@ Global
 		{ADC1C4CC-FBF3-4FA5-AB22-704A37E34C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADC1C4CC-FBF3-4FA5-AB22-704A37E34C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADC1C4CC-FBF3-4FA5-AB22-704A37E34C8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B37EA0D-8F06-4B55-9322-AF6B47F489B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B37EA0D-8F06-4B55-9322-AF6B47F489B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B37EA0D-8F06-4B55-9322-AF6B47F489B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B37EA0D-8F06-4B55-9322-AF6B47F489B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17478F18-82BC-43F3-ADEE-B8CC8FBC06E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17478F18-82BC-43F3-ADEE-B8CC8FBC06E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17478F18-82BC-43F3-ADEE-B8CC8FBC06E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17478F18-82BC-43F3-ADEE-B8CC8FBC06E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A8A2633-F75E-467F-8AEB-E44B4A06BB9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A8A2633-F75E-467F-8AEB-E44B4A06BB9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A8A2633-F75E-467F-8AEB-E44B4A06BB9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A8A2633-F75E-467F-8AEB-E44B4A06BB9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEFC367F-A969-4FC6-8E3F-29CDC9EDA832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEFC367F-A969-4FC6-8E3F-29CDC9EDA832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEFC367F-A969-4FC6-8E3F-29CDC9EDA832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEFC367F-A969-4FC6-8E3F-29CDC9EDA832}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
