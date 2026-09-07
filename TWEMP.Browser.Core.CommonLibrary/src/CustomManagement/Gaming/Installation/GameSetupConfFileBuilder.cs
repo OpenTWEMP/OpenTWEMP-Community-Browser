@@ -2,6 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+#pragma warning disable SA1101 // Prefix local calls with this
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
@@ -9,9 +10,26 @@ namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 using System.Text;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 
-internal static class GameSetupConfFileBuilder
+public class GameSetupConfFileBuilder
 {
-    internal static string GetSetupConfFileName()
+    private const string ConfigFileBaseName = "setup";
+    private const string ConfigFileExtension = ".conf";
+
+    private GameSetupConfFileBuilder(string configDirectoryPath)
+    {
+        string configFileName = ConfigFileBaseName + ConfigFileExtension;
+        ConfigFilePath = Path.Combine(configDirectoryPath, configFileName);
+    }
+
+    public string ConfigFilePath { get; }
+
+    public static GameSetupConfFileBuilder Create() =>
+        Create(Directory.GetCurrentDirectory());
+
+    public static GameSetupConfFileBuilder Create(string configDirectoryPath) =>
+        new GameSetupConfFileBuilder(configDirectoryPath);
+
+    public static string GetSetupConfFileName()
     {
         string cfgFileExtension = ".conf";
         string cfgFileBaseName = "setup";
@@ -22,7 +40,7 @@ internal static class GameSetupConfFileBuilder
         return Path.Combine(cfgFileLocation, cfgFilename);
     }
 
-    internal static void WriteNewSetupToConfFile(
+    public static void WriteNewSetupToConfFile(
         string setupConfFileName, string setupName, string executableFullPath, List<string> modcenterPaths)
     {
         var writer = new StreamWriter(setupConfFileName, true, Encoding.UTF8);
@@ -67,7 +85,7 @@ internal static class GameSetupConfFileBuilder
         writer.Close();
     }
 
-    internal static bool ShouldGameSetupConfFileBeCreated(string setupConfFileName)
+    public static bool ShouldGameSetupConfFileBeCreated(string setupConfFileName)
     {
         if (File.Exists(setupConfFileName))
         {
@@ -77,7 +95,7 @@ internal static class GameSetupConfFileBuilder
         return true;
     }
 
-    internal static uint ReadTotalGameSetupCount(string setupConfFileName)
+    public static uint ReadTotalGameSetupCount(string setupConfFileName)
     {
         string[] readDataStrings = File.ReadAllLines(setupConfFileName, Encoding.UTF8);
 
@@ -95,7 +113,7 @@ internal static class GameSetupConfFileBuilder
         return totalGameSetupCount;
     }
 
-    internal static List<GameSetupInfo> ReadAllSetupConfFile(string setupConfFileName)
+    public static List<GameSetupInfo> ReadAllSetupConfFile(string setupConfFileName)
     {
         var readGameSetupObjects = new List<GameSetupInfo>();
 
@@ -177,7 +195,7 @@ internal static class GameSetupConfFileBuilder
         return readGameSetupObjects;
     }
 
-    internal static void DeleteGameSetupFromConfFile(GameSetupInfo gameSetupInfo, string setupConfFileName)
+    public static void DeleteGameSetupFromConfFile(GameSetupInfo gameSetupInfo, string setupConfFileName)
     {
         // 1. Read all GameSetupInfo objects as an array of strings.
         string[] allReadData = File.ReadAllLines(setupConfFileName, Encoding.UTF8);
@@ -237,7 +255,7 @@ internal static class GameSetupConfFileBuilder
         writer.Close();
     }
 
-    internal static void CreateSetupConfFile(string setupConfFileName)
+    public static void CreateSetupConfFile(string setupConfFileName)
     {
         var stream = new FileStream(setupConfFileName, FileMode.CreateNew);
         var writer = new StreamWriter(stream, Encoding.UTF8);
