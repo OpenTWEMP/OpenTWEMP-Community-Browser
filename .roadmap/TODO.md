@@ -2,7 +2,7 @@
 
 ---
 
-## :zap: OpenTWEMP Community Browser - Current Development Activities
+## :sound: OpenTWEMP Community Browser - Current Development Activities
 
 В настоящий момент здесь следует размещать список целей к *релизу*, над которым ведется активная работа.
 
@@ -11,6 +11,53 @@
 **Рейд** - это окно творческих возможностей, сильно упрощенный и отдаленный аналог понятия "спринт" в Agile/Scrum.
 
 Я использую рейд-подход, чтобы финализировать текущие результаты, когда мои энтузиазм и свободное время на исходе.
+
+---
+
+## :zap: OpenTWEMP Community Browser BETA 2027
+
+### :dart: Preview Update 2026/09
+
+#### :dart: [BETA2027_003] Beta 2027 Release Engineering Preparations
+
+See details: [TWEMP.Browser.QA.UnitTesting\TODO-TWEMP.Browser.Core.CommonLibrary.md](TWEMP.Browser.QA.UnitTesting\TODO-TWEMP.Browser.Core.CommonLibrary.md)
+
+- [ ] **Create unit tests for existing features**:
+  - [ ] *Unit tests for classes from TWEMP.Browser.App.Classic.CommonLibrary*
+  - [ ] *Unit tests for classes from TWEMP.Browser.App.Classic.CommonLibrary*
+  - [ ] *Unit tests for classes from TWEMP.Browser.App.Classic.GamingSupport*
+
+- [ ] **Refactoring for classes from TWEMP.Browser.App.Classic.WinForms**:
+  - [ ] MainBrowserForm.GameCollections.cs : Simplify the ButtonMarkFavoriteMod_Click() procedure.
+  - [ ] MainBrowserForm.GameLauncher.cs : Simplify the ButtonLaunch_Click() procedure.
+  - [ ] MainBrowserForm.GameModsTreeView.cs : Simplify the UpdateAllModificationsInTreeView() method.
+  - [ ] MainBrowserForm.GameModsTreeView.cs : Simplify the TreeViewGameMods_AfterSelect() procedure.
+  - [ ] MainBrowserForm.GameModsTreeView.cs : Simplify the IsNotModificationNode() method.
+  - [ ] MainBrowserForm.GameModsTreeView.cs : Simplify the FindModificationBySelectedTreeNode() method.
+  - [ ] MainBrowserForm.GameModsTreeView.cs : Use an enumeration type for available tree node levels instead of hard code literal values.
+  - [ ] MainBrowserForm.GuiStyles.cs : Simplify the UpdateGUIStyle() method.
+  - [ ] MainBrowserForm.Localization.cs : Simplify the SetupCurrentLocalizationForGUIControls() method.
+
+- [ ] **Refactoring for classes from TWEMP.Browser.App.Classic.CommonLibrary**:
+  - [ ] AddNewGameSetupForm.cs : Simplify the CanSaveNewGameSetup() method.
+  - [ ] AppSettingsForm.cs : Simplify the SetupCurrentLocalizationForGUIControls() method.
+  - [ ] AppSettingsForm.cs : Simplify the InitializeCurrentGUIStyle() method.
+  - [ ] CollectionCreateForm.cs : Simplify the ButtonOK_Click() procedure.
+  - [ ] Simplify the ModQuickNavigatorForm class.
+  - [ ] ModSupportPresetSettingsForm.cs : Simplify the InitializeModSupportPresetsDataGridView() method.
+  - [ ] ModSupportPresetSettingsForm.cs : Simplify the InitializeModSupportPresetDataGridViewRow() method.
+  - [ ] ModSupportPresetSettingsForm.cs : Simplify the ModSupportPresetsDataGridView_CellContentClick() procedure.
+  - [ ] ModSupportPresetSettingsForm.cs : Simplify the ApplyButton_Click() procedure.
+  - [ ] GameConfigProfileCreateForm.cs : Simplify the LoadGameConfigSettingsForm() method.
+  - [ ] GameConfigProfileCreateForm.cs : Simplify the FormOkButton_Click() procedure.
+
+#### :dart: [BETA2027_002] Incorrect Assigning Mod Presets after Adding or Deleting a Mod Distro to a Game Mod Center
+
+- [ ] Fix wrong behavior when mod presets are attached incorrectly to items of collections after modifying physical directory content of a game mod center (after manually adding a new mod distro to a mod center or deleting an existing mod distro from a mod center).
+
+#### :dart: [BETA2027_001] Read and Write Game Setup Information via Serialization
+
+- [ ] Re-design the TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation.GameSetupConfFileBuilder class implementation to read and write setup.conf config file via XML/JSON serialization.
 
 ### :dart: Стратегическое Планирование 2026 ( 2026/04 )
 
@@ -41,8 +88,6 @@
 
 #### :dart: Усовершенствовать механизм обнаружения игровой установки M2TW
 
-- [ ] Исправить проблему некорректной синхронизации пресетов при изменении содержимого игровой установки/модцентра.
-- [ ] Перепроектировать механизм чтения/записи конфигурации игровых установок пользователя на основе сериализации.
 - [ ] Реализовать функцию автоматического обнаружения уже установленных экземпляров игры на компьютере пользователя.
 - [ ] Реализовать автоматический подбор рекомендаций по выбору предустановок по умолчанию для обнаруженных модификаций.
 
@@ -145,48 +190,6 @@
 - Управление модификациями в коллекциях
 - Управление профилями конфигурации
 - Запуск модификаций тем или иным способом
-
-### :star: Рефакторинг существующей кодовой базы версии BETA 2025
-
-#### :dart: Провести рефакторинг классов проекта TWEMP.Browser.App.Classic.WinForms
-
-- [ ] MainBrowserForm.GameCollections.cs : Simplify the ButtonMarkFavoriteMod_Click() procedure.
-- [ ] MainBrowserForm.GameLauncher.cs : Simplify the ButtonLaunch_Click() procedure.
-- [ ] MainBrowserForm.GameModsTreeView.cs : Simplify the UpdateAllModificationsInTreeView() method.
-- [ ] MainBrowserForm.GameModsTreeView.cs : Simplify the TreeViewGameMods_AfterSelect() procedure.
-- [ ] MainBrowserForm.GameModsTreeView.cs : Simplify the IsNotModificationNode() method.
-- [ ] MainBrowserForm.GameModsTreeView.cs : Simplify the FindModificationBySelectedTreeNode() method.
-- [ ] MainBrowserForm.GameModsTreeView.cs : Use an enumeration type for available tree node levels instead of hard code literal values.
-- [ ] MainBrowserForm.GuiStyles.cs : Simplify the UpdateGUIStyle() method.
-- [ ] MainBrowserForm.Localization.cs : Simplify the SetupCurrentLocalizationForGUIControls() method.
-
-#### :dart: Провести рефакторинг классов проекта TWEMP.Browser.App.Classic.CommonLibrary
-
-- [ ] AddNewGameSetupForm.cs : Simplify the CanSaveNewGameSetup() method.
-- [ ] AppSettingsForm.cs : Simplify the SetupCurrentLocalizationForGUIControls() method.
-- [ ] AppSettingsForm.cs : Simplify the InitializeCurrentGUIStyle() method.
-- [ ] CollectionCreateForm.cs : Simplify the ButtonOK_Click() procedure.
-- [ ] Simplify the ModQuickNavigatorForm class.
-- [ ] ModSupportPresetSettingsForm.cs : Simplify the InitializeModSupportPresetsDataGridView() method.
-- [ ] ModSupportPresetSettingsForm.cs : Simplify the InitializeModSupportPresetDataGridViewRow() method.
-- [ ] ModSupportPresetSettingsForm.cs : Simplify the ModSupportPresetsDataGridView_CellContentClick() procedure.
-- [ ] ModSupportPresetSettingsForm.cs : Simplify the ApplyButton_Click() procedure.
-- [ ] GameConfigProfileCreateForm.cs : Simplify the LoadGameConfigSettingsForm() method.
-- [ ] GameConfigProfileCreateForm.cs : Simplify the FormOkButton_Click() procedure.
-
-#### :dart: Проверить кодовую базу на соответствие конкретным критериям качества
-
-- [ ] Проверить исходный код на соответствие стандартной ширины текста (80 символов в лучшем случае).
-- [ ] Проверить исходный код на соответствие текста набору символов из кодировки ASCII.
-
-### :star: Обеспечение качества существующей кодовой базы
-
-#### :dart: Создать модульные тесты для функциональных возможностей программы
-
-- [ ] Необходимо покрыть модульными тестами фундаментальную функциональность приложения браузера.
-- [ ] Необходимо покрыть модульными тестами функциональность игровой поддержки модификаций M2TW.
-
-Стартовая точка: [TWEMP.Browser.QA.UnitTesting\TODO-TWEMP.Browser.Core.CommonLibrary.md](TWEMP.Browser.QA.UnitTesting\TODO-TWEMP.Browser.Core.CommonLibrary.md)
 
 #### :dart: Добавить тесты измерения производительности для наиболее критичных участков кода
 
