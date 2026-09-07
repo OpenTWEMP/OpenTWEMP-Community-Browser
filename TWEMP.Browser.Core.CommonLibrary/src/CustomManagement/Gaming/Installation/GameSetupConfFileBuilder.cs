@@ -12,6 +12,8 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 
 public class GameSetupConfFileBuilder
 {
+    private const string ObsoleteStaticMethodMessage = "This static method will be removed in BETA 2027 release!";
+
     private const string ConfigFileBaseName = "setup";
     private const string ConfigFileExtension = ".conf";
 
@@ -29,16 +31,8 @@ public class GameSetupConfFileBuilder
     public static GameSetupConfFileBuilder Create(string configDirectoryPath) =>
         new GameSetupConfFileBuilder(configDirectoryPath);
 
-    public static string GetSetupConfFileName()
-    {
-        string cfgFileExtension = ".conf";
-        string cfgFileBaseName = "setup";
-
-        string cfgFilename = cfgFileBaseName + cfgFileExtension;
-        string cfgFileLocation = Directory.GetCurrentDirectory();
-
-        return Path.Combine(cfgFileLocation, cfgFilename);
-    }
+    [Obsolete(ObsoleteStaticMethodMessage)]
+    public static string GetSetupConfFileName() => Create().ConfigFilePath;
 
     public static void WriteNewSetupToConfFile(
         string setupConfFileName, string setupName, string executableFullPath, List<string> modcenterPaths)

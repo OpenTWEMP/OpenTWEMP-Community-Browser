@@ -10,6 +10,8 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 
 public class GameSetupConfFileBuilderTest
 {
+    private const string ObsoleteTestMessage = "This test is aimed to verify legacy code. The test method will be deleted after re-design codebase !!!";
+
     [Test]
     public void CreateConfigFilePathWhenInitialization()
     {
@@ -19,5 +21,18 @@ public class GameSetupConfFileBuilderTest
         GameSetupConfFileBuilder sut = GameSetupConfFileBuilder.Create(ConfigDirectoryPath);
 
         Assert.That(sut.ConfigFilePath, Is.EqualTo($"{ConfigDirectoryPath}\\{ConfigFileName}"));
+    }
+
+    [Obsolete(ObsoleteTestMessage)]
+    [Test]
+    public void TestsForLegacyCode_GetSetupConfFileName()
+    {
+        const string ConfigFileName = "setup.conf";
+        string configDirectoryPath = Directory.GetCurrentDirectory();
+        string configFilePath = Path.Combine(configDirectoryPath, ConfigFileName);
+
+        string result = GameSetupConfFileBuilder.GetSetupConfFileName();
+
+        Assert.That(result, Is.EqualTo(configFilePath));
     }
 }
