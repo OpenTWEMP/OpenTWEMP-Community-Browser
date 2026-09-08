@@ -19,6 +19,8 @@ using TWEMP.Browser.Core.CommonLibrary.Serialization;
 /// </summary>
 public class CustomGameSetupManager
 {
+    private const string ObsoleteMethodMessage = "This method will be removed in BETA 2027 release!";
+
     private const string ConfigFileName = "setup.json";
 
     private readonly string gameSetupConfigFilePath;
@@ -75,7 +77,7 @@ public class CustomGameSetupManager
     public List<GameSetupInfo> SynchronizeGameSetupSettings()
     {
 #if LEGACY_XML_SERIALIZATION
-        if (GameSetupConfFileBuilder.ShouldGameSetupConfFileBeCreated(this.gameSetupConfigFilePath))
+        if (this.ShouldGameSetupConfigFileBeCreated())
         {
             GameSetupConfFileBuilder.CreateSetupConfFile(this.gameSetupConfigFilePath);
         }
@@ -181,5 +183,20 @@ public class CustomGameSetupManager
 
         AppSerializer.SerializeToJson(gameSetupViews, this.gameSetupConfigFilePath);
     }
+#endif
+
+#if LEGACY_XML_SERIALIZATION
+
+    [Obsolete(ObsoleteMethodMessage)]
+    private bool ShouldGameSetupConfigFileBeCreated()
+    {
+        if (File.Exists(this.gameSetupConfigFilePath))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 #endif
 }

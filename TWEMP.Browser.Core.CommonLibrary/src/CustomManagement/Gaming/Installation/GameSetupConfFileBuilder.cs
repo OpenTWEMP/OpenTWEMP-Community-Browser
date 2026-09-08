@@ -79,16 +79,6 @@ public class GameSetupConfFileBuilder
         writer.Close();
     }
 
-    public static bool ShouldGameSetupConfFileBeCreated(string setupConfFileName)
-    {
-        if (File.Exists(setupConfFileName))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     public static uint ReadTotalGameSetupCount(string setupConfFileName)
     {
         string[] readDataStrings = File.ReadAllLines(setupConfFileName, Encoding.UTF8);
