@@ -12,6 +12,19 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 
 public class GameSetupConfFileBuilder
 {
+    public const string AppVersionMarkupElement = "ApplicationVersion";
+    public const string GameSetupInfoMarkupElement = "GameSetupInfo";
+    public const string GameSetupNameMarkupAttribute = "Name";
+    public const string ExecutableMarkupElement = "Executable";
+    public const string ModCenterMarkupParentElement = "AttachedModCenters";
+    public const string ModCenterMarkupChildElement = "ModCenter";
+
+    private const string OpeningTagFirstBrace = "<";
+    private const string ClosingTagFirstBrace = "</";
+    private const string TagLastBrace = ">";
+    private const string AttributeValueAssignmentSymbol = "=";
+    private const string AttributeValueSurroundSymbol = "\"";
+
     private const string ObsoleteStaticMethodMessage = "This static method will be removed in BETA 2027 release!";
 
     private const string ConfigFileBaseName = "setup";
@@ -30,6 +43,24 @@ public class GameSetupConfFileBuilder
 
     public static GameSetupConfFileBuilder Create(string configDirectoryPath) =>
         new GameSetupConfFileBuilder(configDirectoryPath);
+
+    public static string GetConfigMarkupOpeningTag(string element) =>
+        $"{OpeningTagFirstBrace}{element}{TagLastBrace}";
+
+    public static string GetConfigMarkupClosingTag(string element) =>
+        $"{ClosingTagFirstBrace}{element}{TagLastBrace}";
+
+    public static string GetGameSetupInfoOpeningTag(string gameSetupName)
+    {
+        string gameSetupNameAttribute = GetAttribute(GameSetupNameMarkupAttribute, gameSetupName);
+        string gameSetupInfoElement = $"{GameSetupInfoMarkupElement} {gameSetupNameAttribute}";
+
+        return GetConfigMarkupOpeningTag(gameSetupInfoElement);
+    }
+
+    private static string GetAttribute(string attributeName, string attributeValue) =>
+        $"{attributeName}{AttributeValueAssignmentSymbol}" +
+            $"{AttributeValueSurroundSymbol}{attributeValue}{AttributeValueSurroundSymbol}";
 
     [Obsolete(ObsoleteStaticMethodMessage)]
     public static string GetSetupConfFileName() => Create().ConfigFilePath;

@@ -23,6 +23,45 @@ public class GameSetupConfFileBuilderTest
         Assert.That(sut.ConfigFilePath, Is.EqualTo($"{ConfigDirectoryPath}\\{ConfigFileName}"));
     }
 
+    [TestCase(GameSetupConfFileBuilder.AppVersionMarkupElement)]
+    [TestCase(GameSetupConfFileBuilder.GameSetupInfoMarkupElement)]
+    [TestCase(GameSetupConfFileBuilder.ExecutableMarkupElement)]
+    [TestCase(GameSetupConfFileBuilder.ModCenterMarkupParentElement)]
+    [TestCase(GameSetupConfFileBuilder.ModCenterMarkupChildElement)]
+    public void GetConfigMarkupOpeningTag(string element)
+    {
+        string expectedTag = "<" + element + ">";
+
+        string actualTag = GameSetupConfFileBuilder.GetConfigMarkupOpeningTag(element);
+
+        Assert.That(actualTag, Is.EqualTo(expectedTag));
+    }
+
+    [TestCase(GameSetupConfFileBuilder.AppVersionMarkupElement)]
+    [TestCase(GameSetupConfFileBuilder.GameSetupInfoMarkupElement)]
+    [TestCase(GameSetupConfFileBuilder.ExecutableMarkupElement)]
+    [TestCase(GameSetupConfFileBuilder.ModCenterMarkupParentElement)]
+    [TestCase(GameSetupConfFileBuilder.ModCenterMarkupChildElement)]
+    public void GetConfigMarkupClosingTag(string element)
+    {
+        string expectedTag = "</" + element + ">";
+
+        string actualTag = GameSetupConfFileBuilder.GetConfigMarkupClosingTag(element);
+
+        Assert.That(actualTag, Is.EqualTo(expectedTag));
+    }
+
+    [Test]
+    public void GetGameSetupInfoOpeningTag()
+    {
+        const string GameSetupName = "My Steam M2TW Setup";
+        string expectedTag = "<GameSetupInfo Name=\"" + GameSetupName + "\">";
+
+        string actualTag = GameSetupConfFileBuilder.GetGameSetupInfoOpeningTag(GameSetupName);
+
+        Assert.That(actualTag, Is.EqualTo(expectedTag));
+    }
+
     [Obsolete(ObsoleteTestMessage)]
     [Test]
     public void TestsForLegacyCode_GetSetupConfFileName()
