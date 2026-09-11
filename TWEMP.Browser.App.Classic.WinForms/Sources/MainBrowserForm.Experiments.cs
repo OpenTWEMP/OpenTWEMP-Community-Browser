@@ -13,7 +13,6 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 {
     public void UpdateExperimentalGUIChanges(bool enabled)
     {
-        this.groupBoxLauncherProviders.Visible = enabled;
         this.radioButtonLauncherProvider_TWEMP.Checked = true;
     }
 }
