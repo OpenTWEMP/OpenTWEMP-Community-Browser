@@ -7,6 +7,7 @@
 
 namespace TWEMP.Browser.App.Classic;
 
+using System.Drawing;
 using TWEMP.Browser.Core.CommonLibrary;
 using TWEMP.Browser.Core.CommonLibrary.AppGuiAbstractions;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.GUI;
@@ -15,84 +16,102 @@ internal partial class MainBrowserForm : IUpdatableBrowser
 {
     public void UpdateGUIStyle(GuiStyle style)
     {
-        ColorTheme colorTheme = BrowserKernel.UpdateCurrentColorTheme(style);
+        ColorTheme theme = BrowserKernel.UpdateCurrentColorTheme(style);
 
-        // Set back color for main form.
-        this.BackColor = colorTheme.MainFormBackColor;
+        this.SetMainBrowserFormBackColor(theme.MainFormBackColor);
+        this.SetBackColorForBrowserPanels(theme.PanelsBackColor);
+        this.SetBackColorForModificationControls(theme.ModControlsBackColor);
+        this.SetColorsForBrowserCommonControls(theme.CommonControlsBackColor, theme.CommonControlsForeColor);
+    }
 
-        // Set back color for panels.
-        this.panelCollections.BackColor = colorTheme.PanelsBackColor;
-        this.panelLauncherToolkit.BackColor = colorTheme.PanelsBackColor;
-        this.panelLauncherOptions.BackColor = colorTheme.PanelsBackColor;
-        this.panelMediaDevice.BackColor = colorTheme.PanelsBackColor;
+    private void SetMainBrowserFormBackColor(Color color) => this.BackColor = color;
 
-        // Set back color for mod UI controls.
-        this.treeViewGameMods.BackColor = colorTheme.ModControlsBackColor;
-        this.modMainTitleLabel.BackColor = colorTheme.ModControlsBackColor;
-        this.modStatusLabel.BackColor = colorTheme.ModControlsBackColor;
+    private void SetBackColorForBrowserPanels(Color color)
+    {
+        this.panelCollections.BackColor = color;
+        this.panelLauncherToolkit.BackColor = color;
+        this.panelLauncherOptions.BackColor = color;
+        this.panelMediaDevice.BackColor = color;
+    }
 
-        // Set back color for common UI controls.
-        this.buttonLaunch.BackColor = colorTheme.CommonControlsBackColor;
-        this.modConfigSettingsButton.BackColor = colorTheme.CommonControlsBackColor;
-        this.modConfigProfilesButton.BackColor = colorTheme.CommonControlsBackColor;
-        this.modQuickNavigationButton.BackColor = colorTheme.CommonControlsBackColor;
-        this.buttonExplore.BackColor = colorTheme.CommonControlsBackColor;
+    private void SetBackColorForModificationControls(Color color)
+    {
+        this.treeViewGameMods.BackColor = color;
+        this.modMainTitleLabel.BackColor = color;
+        this.modStatusLabel.BackColor = color;
+    }
 
-        this.configProfileSwitchButton.BackColor = colorTheme.CommonControlsBackColor;
+    private void SetColorsForBrowserCommonControls(Color backColor, Color foreColor)
+    {
+        this.SetBackColorForCommonControls(backColor);
+        this.SetForeColorForCommonControls(foreColor);
+    }
 
-        this.buttonMarkFavoriteMod.BackColor = colorTheme.CommonControlsBackColor;
-        this.buttonCollectionCreate.BackColor = colorTheme.CommonControlsBackColor;
-        this.buttonCollectionManage.BackColor = colorTheme.CommonControlsBackColor;
+    private void SetBackColorForCommonControls(Color color)
+    {
+        this.buttonLaunch.BackColor = color;
+        this.modConfigSettingsButton.BackColor = color;
+        this.modConfigProfilesButton.BackColor = color;
+        this.modQuickNavigationButton.BackColor = color;
+        this.buttonExplore.BackColor = color;
 
-        this.buttonMusicPlay.BackColor = colorTheme.CommonControlsBackColor;
-        this.buttonMusicPause.BackColor = colorTheme.CommonControlsBackColor;
-        this.buttonMusicRewind.BackColor = colorTheme.CommonControlsBackColor;
+        this.configProfileSwitchButton.BackColor = color;
 
-        // Set fore color for common UI controls.
-        this.buttonLaunch.ForeColor = colorTheme.CommonControlsForeColor;
-        this.modConfigSettingsButton.ForeColor = colorTheme.CommonControlsForeColor;
-        this.modConfigProfilesButton.ForeColor = colorTheme.CommonControlsForeColor;
-        this.modQuickNavigationButton.ForeColor = colorTheme.CommonControlsForeColor;
-        this.buttonExplore.ForeColor = colorTheme.CommonControlsForeColor;
+        this.buttonMarkFavoriteMod.BackColor = color;
+        this.buttonCollectionCreate.BackColor = color;
+        this.buttonCollectionManage.BackColor = color;
 
-        this.buttonMarkFavoriteMod.ForeColor = colorTheme.CommonControlsForeColor;
-        this.buttonCollectionCreate.ForeColor = colorTheme.CommonControlsForeColor;
-        this.buttonCollectionManage.ForeColor = colorTheme.CommonControlsForeColor;
+        this.buttonMusicPlay.BackColor = color;
+        this.buttonMusicPause.BackColor = color;
+        this.buttonMusicRewind.BackColor = color;
+    }
 
-        this.buttonMusicPlay.ForeColor = colorTheme.CommonControlsForeColor;
-        this.buttonMusicPause.ForeColor = colorTheme.CommonControlsForeColor;
-        this.buttonMusicRewind.ForeColor = colorTheme.CommonControlsForeColor;
+    private void SetForeColorForCommonControls(Color color)
+    {
+        this.buttonLaunch.ForeColor = color;
+        this.modConfigSettingsButton.ForeColor = color;
+        this.modConfigProfilesButton.ForeColor = color;
+        this.modQuickNavigationButton.ForeColor = color;
+        this.buttonExplore.ForeColor = color;
 
-        this.groupBoxConfigProfiles.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonConfigProfile_Gaming.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonConfigProfile_Modding.ForeColor = colorTheme.CommonControlsForeColor;
-        this.configProfileSwitchButton.ForeColor = colorTheme.CommonControlsForeColor;
+        this.buttonMarkFavoriteMod.ForeColor = color;
+        this.buttonCollectionCreate.ForeColor = color;
+        this.buttonCollectionManage.ForeColor = color;
 
-        this.groupBoxConfigLaunchMode.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonLaunchWindowScreen.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonLaunchFullScreen.ForeColor = colorTheme.CommonControlsForeColor;
-        this.checkBoxVideo.ForeColor = colorTheme.CommonControlsForeColor;
-        this.checkBoxBorderless.ForeColor = colorTheme.CommonControlsForeColor;
+        this.buttonMusicPlay.ForeColor = color;
+        this.buttonMusicPause.ForeColor = color;
+        this.buttonMusicRewind.ForeColor = color;
 
-        this.groupBoxConfigLogMode.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonLogOnlyError.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonLogOnlyTrace.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonLogErrorAndTrace.ForeColor = colorTheme.CommonControlsForeColor;
-        this.checkBoxLogHistory.ForeColor = colorTheme.CommonControlsForeColor;
+        this.groupBoxConfigProfiles.ForeColor = color;
+        this.radioButtonConfigProfile_Gaming.ForeColor = color;
+        this.radioButtonConfigProfile_Modding.ForeColor = color;
+        this.configProfileSwitchButton.ForeColor = color;
 
-        this.groupBoxConfigCleanerMode.ForeColor = colorTheme.CommonControlsForeColor;
-        this.checkBoxCleaner_MapRWM.ForeColor = colorTheme.CommonControlsForeColor;
-        this.checkBoxCleaner_textBIN.ForeColor = colorTheme.CommonControlsForeColor;
-        this.checkBoxCleaner_soundPacks.ForeColor = colorTheme.CommonControlsForeColor;
+        this.groupBoxConfigLaunchMode.ForeColor = color;
+        this.radioButtonLaunchWindowScreen.ForeColor = color;
+        this.radioButtonLaunchFullScreen.ForeColor = color;
+        this.checkBoxVideo.ForeColor = color;
+        this.checkBoxBorderless.ForeColor = color;
 
-        this.groupBoxLauncherProviders.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonLauncherProvider_TWEMP.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonLauncherProvider_BatchScript.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonLauncherProvider_NativeSetup.ForeColor = colorTheme.CommonControlsForeColor;
-        this.radioButtonLauncherProvider_M2TWEOP.ForeColor = colorTheme.CommonControlsForeColor;
+        this.groupBoxConfigLogMode.ForeColor = color;
+        this.radioButtonLogOnlyError.ForeColor = color;
+        this.radioButtonLogOnlyTrace.ForeColor = color;
+        this.radioButtonLogErrorAndTrace.ForeColor = color;
+        this.checkBoxLogHistory.ForeColor = color;
 
-        this.treeViewGameMods.ForeColor = colorTheme.CommonControlsForeColor;
-        this.modMainTitleLabel.ForeColor = colorTheme.CommonControlsForeColor;
-        this.modStatusLabel.ForeColor = colorTheme.CommonControlsForeColor;
+        this.groupBoxConfigCleanerMode.ForeColor = color;
+        this.checkBoxCleaner_MapRWM.ForeColor = color;
+        this.checkBoxCleaner_textBIN.ForeColor = color;
+        this.checkBoxCleaner_soundPacks.ForeColor = color;
+
+        this.groupBoxLauncherProviders.ForeColor = color;
+        this.radioButtonLauncherProvider_TWEMP.ForeColor = color;
+        this.radioButtonLauncherProvider_BatchScript.ForeColor = color;
+        this.radioButtonLauncherProvider_NativeSetup.ForeColor = color;
+        this.radioButtonLauncherProvider_M2TWEOP.ForeColor = color;
+
+        this.treeViewGameMods.ForeColor = color;
+        this.modMainTitleLabel.ForeColor = color;
+        this.modStatusLabel.ForeColor = color;
     }
 }
