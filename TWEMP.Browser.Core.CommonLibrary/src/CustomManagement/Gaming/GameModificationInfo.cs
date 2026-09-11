@@ -10,6 +10,8 @@ using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.GameSupportPreset
 
 public class GameModificationInfo
 {
+    // TODO: [BETA2027_002] Define a public property for current modification's ID.
+
     /// <summary>
     /// Initializes a new instance of the <see cref="GameModificationInfo"/> class.
     /// </summary>
@@ -32,6 +34,8 @@ public class GameModificationInfo
         this.LogFileRelativePath = InitializeLogFileRelativePath(this.ModCfgRelativePath, this.LogFileName);
 
         this.IsFavoriteMod = false;
+
+        // TODO: [BETA2027_002] Initialize current modification's ID in this constructor.
     }
 
     public GameSetupInfo CurrentSetup { get; }
@@ -88,4 +92,6 @@ public class GameModificationInfo
 
         return fileBaseName + fileExtension;
     }
+
+    // TODO: [BETA2027_002] Define a method to initialize current modification's ID (via hash calculating or another ways).
 }
