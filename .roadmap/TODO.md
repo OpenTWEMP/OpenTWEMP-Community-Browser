@@ -12,13 +12,21 @@
 
 Я использую рейд-подход, чтобы финализировать текущие результаты, когда мои энтузиазм и свободное время на исходе.
 
+### :dart: Стратегическое Планирование 2026 ( 2026/10 )
+
+- [ ] Составить план подготовки релиза финальной версии классической редакции программы (BETA 2027).
+- [ ] Набросать дорожную карту разработки мультиплатформенного клиента на базе редакции BETA 2027.
+
+### :dart: Стратегическое Планирование 2026 ( 2026/04 )
+
+- [x] Составить подробный план подготовки следующего релиза клиента платформы для Windows.
+- [x] Набросать предварительный черновик функционала мульти-платформенного клиента платформы.
+
 ---
 
 ## :zap: OpenTWEMP Community Browser BETA 2027
 
-### :dart: Preview Update 2026/09
-
-#### :dart: [BETA2027_003] Beta 2027 Release Engineering Preparations
+### :dart: [BETA2027_003] Beta 2027 Release Engineering Preparations
 
 See details: [TWEMP.Browser.QA.UnitTesting\TODO-TWEMP.Browser.Core.CommonLibrary.md](TWEMP.Browser.QA.UnitTesting\TODO-TWEMP.Browser.Core.CommonLibrary.md)
 
@@ -51,18 +59,13 @@ See details: [TWEMP.Browser.QA.UnitTesting\TODO-TWEMP.Browser.Core.CommonLibrary
   - [ ] GameConfigProfileCreateForm.cs : Simplify the LoadGameConfigSettingsForm() method.
   - [ ] GameConfigProfileCreateForm.cs : Simplify the FormOkButton_Click() procedure.
 
-#### :dart: [BETA2027_002] Incorrect Assigning Mod Presets after Adding or Deleting a Mod Distro to a Game Mod Center
+### :dart: [BETA2027_002] Incorrect Assigning Mod Presets after Adding or Deleting a Mod Distro to a Game Mod Center
 
 - [ ] Fix wrong behavior when mod presets are attached incorrectly to items of collections after modifying physical directory content of a game mod center (after manually adding a new mod distro to a mod center or deleting an existing mod distro from a mod center).
 
-#### :dart: [BETA2027_001] Read and Write Game Setup Information via Serialization
+### :dart: [BETA2027_001] Read and Write Game Setup Information via Serialization
 
 - [ ] Re-design the TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation.GameSetupConfFileBuilder class implementation to read and write setup.conf config file via XML/JSON serialization.
-
-### :dart: Стратегическое Планирование 2026 ( 2026/04 )
-
-- [x] Составить подробный план подготовки следующего релиза клиента платформы для Windows.
-- [x] Набросать предварительный черновик функционала мульти-платформенного клиента платформы.
 
 ---
 
