@@ -124,7 +124,10 @@ public class GameSetupConfFileBuilderTest
             "</GameSetupInfo>";
 
         string actualMarkup = GameSetupConfFileBuilder.GetSingleGameSetupInfoConfigMarkup(
-            GameSetupName, GameSetupExecutable, new string[] { ModCenterByDefault, ModCenterForModding, ModCenterForTesting });
+            new GameSetupConfFileBuilder.CustomConfigNode(
+                GameSetupName,
+                GameSetupExecutable,
+                new string[] { ModCenterByDefault, ModCenterForModding, ModCenterForTesting }));
 
         Assert.That(actualMarkup, Is.EqualTo(expectedMarkup));
     }

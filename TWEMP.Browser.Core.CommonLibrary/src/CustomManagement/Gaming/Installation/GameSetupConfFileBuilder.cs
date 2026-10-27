@@ -58,14 +58,13 @@ public class GameSetupConfFileBuilder
     public static GameSetupConfFileBuilder Create(string configDirectoryPath) =>
         new GameSetupConfFileBuilder(configDirectoryPath);
 
-    public static string GetSingleGameSetupInfoConfigMarkup(
-        string gameSetupName, string executableFullPath, string[] modcenterPaths)
+    public static string GetSingleGameSetupInfoConfigMarkup(CustomConfigNode node)
     {
-        string gameSetupInfoOpeningTag = GetGameSetupInfoOpeningTag(gameSetupName);
+        string gameSetupInfoOpeningTag = GetGameSetupInfoOpeningTag(node.Name);
         string gameSetupInfoClosingTag = GetGameSetupInfoClosingTag();
 
-        string executableMarkupElement = GetExecutableConfigMarkup(executableFullPath);
-        string modcentersMarkupElement = GetAttachedModCentersConfigMarkup(modcenterPaths);
+        string executableMarkupElement = GetExecutableConfigMarkup(node.Executable);
+        string modcentersMarkupElement = GetAttachedModCentersConfigMarkup(node.ModCenters);
 
         return $"{gameSetupInfoOpeningTag}\n" +
             $"{executableMarkupElement}\n" +
@@ -97,9 +96,7 @@ public class GameSetupConfFileBuilder
 
         foreach (CustomConfigNode node in configNodes)
         {
-            string nodeMarkup = GetSingleGameSetupInfoConfigMarkup(
-                node.Name, node.Executable, node.ModCenters);
-
+            string nodeMarkup = GetSingleGameSetupInfoConfigMarkup(node);
             markup += $"{nodeMarkup}\n";
         }
 
