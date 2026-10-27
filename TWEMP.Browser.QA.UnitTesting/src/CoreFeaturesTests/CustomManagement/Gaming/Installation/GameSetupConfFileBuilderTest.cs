@@ -6,7 +6,6 @@
 
 namespace TWEMP.Browser.QA.UnitTesting.CoreFeaturesTests.CustomManagement.Gaming.Installation;
 
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 
 public class GameSetupConfFileBuilderTest
@@ -126,6 +125,67 @@ public class GameSetupConfFileBuilderTest
 
         string actualMarkup = GameSetupConfFileBuilder.GetSingleGameSetupInfoConfigMarkup(
             GameSetupName, GameSetupExecutable, new string[] { ModCenterByDefault, ModCenterForModding, ModCenterForTesting });
+
+        Assert.That(actualMarkup, Is.EqualTo(expectedMarkup));
+    }
+
+    [Test]
+    public void GetMultipleGameSetupInfoConfigMarkup()
+    {
+        const string FirstGameSetupName = "STEAM-M2TW";
+        const string FirstGameSetupExecutable = @"D:\SteamLibrary\steamapps\common\Medieval II Total War\medieval2.exe";
+        const string FirstModCenterByDefault = @"D:\SteamLibrary\steamapps\common\Medieval II Total War\mods";
+
+        const string SecondGameSetupName = "CLASSIC-M2TW";
+        const string SecondGameSetupExecutable = @"E:\Games\SEGA\Medieval II Total War\kingdoms.exe";
+        const string SecondModCenterByDefault = @"E:\Games\SEGA\Medieval II Total War\mods";
+        const string SecondModCenterForModding = @"E:\Games\SEGA\Medieval II Total War\mods_modding";
+        const string SecondModCenterForTesting = @"E:\Games\SEGA\Medieval II Total War\mods_testing";
+
+        const string ThirdGameSetupName = "PORTABLE-M2TW";
+        const string ThirdGameSetupExecutable = @"F:\M2TWK\kingdoms.exe";
+        const string ThirdModCenterByDefault = @"F:\M2TWK\mods";
+        const string ThirdModCenterForGaming = @"F:\M2TWK\mods_gaming";
+
+        string expectedMarkup =
+            $"<GameSetupInfo Name=\"{FirstGameSetupName}\">\n" +
+                $"\t<Executable>{FirstGameSetupExecutable}</Executable>\n" +
+                "\t<AttachedModCenters>\n" +
+                    $"\t\t<ModCenter>{FirstModCenterByDefault}</ModCenter>\n" +
+                "\t</AttachedModCenters>\n" +
+            "</GameSetupInfo>\n" +
+            $"<GameSetupInfo Name=\"{SecondGameSetupName}\">\n" +
+                $"\t<Executable>{SecondGameSetupExecutable}</Executable>\n" +
+                "\t<AttachedModCenters>\n" +
+                    $"\t\t<ModCenter>{SecondModCenterByDefault}</ModCenter>\n" +
+                    $"\t\t<ModCenter>{SecondModCenterForModding}</ModCenter>\n" +
+                    $"\t\t<ModCenter>{SecondModCenterForTesting}</ModCenter>\n" +
+                "\t</AttachedModCenters>\n" +
+            "</GameSetupInfo>\n" +
+            $"<GameSetupInfo Name=\"{ThirdGameSetupName}\">\n" +
+                $"\t<Executable>{ThirdGameSetupExecutable}</Executable>\n" +
+                "\t<AttachedModCenters>\n" +
+                    $"\t\t<ModCenter>{ThirdModCenterByDefault}</ModCenter>\n" +
+                    $"\t\t<ModCenter>{ThirdModCenterForGaming}</ModCenter>\n" +
+                "\t</AttachedModCenters>\n" +
+            "</GameSetupInfo>\n";
+
+        string actualMarkup = GameSetupConfFileBuilder.GetMultipleGameSetupInfoConfigMarkup(
+            new GameSetupConfFileBuilder.CustomConfigNode[]
+        {
+            new GameSetupConfFileBuilder.CustomConfigNode(
+                FirstGameSetupName,
+                FirstGameSetupExecutable,
+                new string[] { FirstModCenterByDefault }),
+            new GameSetupConfFileBuilder.CustomConfigNode(
+                SecondGameSetupName,
+                SecondGameSetupExecutable,
+                new string[] { SecondModCenterByDefault, SecondModCenterForModding, SecondModCenterForTesting }),
+            new GameSetupConfFileBuilder.CustomConfigNode(
+                ThirdGameSetupName,
+                ThirdGameSetupExecutable,
+                new string[] { ThirdModCenterByDefault, ThirdModCenterForGaming }),
+        });
 
         Assert.That(actualMarkup, Is.EqualTo(expectedMarkup));
     }

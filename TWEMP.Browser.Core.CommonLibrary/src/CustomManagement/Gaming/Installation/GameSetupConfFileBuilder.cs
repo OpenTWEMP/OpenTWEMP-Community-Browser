@@ -38,6 +38,20 @@ public class GameSetupConfFileBuilder
 
     public string ConfigFilePath { get; }
 
+    public record CustomConfigNode
+    {
+        public CustomConfigNode(string name, string executable, string[] modcenters)
+        {
+            Name = name;
+            Executable = executable;
+            ModCenters = modcenters;
+        }
+
+        public string Name { get; }
+        public string Executable { get; }
+        public string[] ModCenters { get; }
+    }
+
     public static GameSetupConfFileBuilder Create() =>
         Create(Directory.GetCurrentDirectory());
 
@@ -75,6 +89,21 @@ public class GameSetupConfFileBuilder
 
             return markup;
         }
+    }
+
+    public static string GetMultipleGameSetupInfoConfigMarkup(CustomConfigNode[] configNodes)
+    {
+        string markup = string.Empty;
+
+        foreach (CustomConfigNode node in configNodes)
+        {
+            string nodeMarkup = GetSingleGameSetupInfoConfigMarkup(
+                node.Name, node.Executable, node.ModCenters);
+
+            markup += $"{nodeMarkup}\n";
+        }
+
+        return markup;
     }
 
     public static string GetConfigMarkupOpeningTag(string element) =>
