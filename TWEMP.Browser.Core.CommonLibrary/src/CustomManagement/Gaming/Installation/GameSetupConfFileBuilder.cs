@@ -58,6 +58,24 @@ public class GameSetupConfFileBuilder
         return GetConfigMarkupOpeningTag(gameSetupInfoElement);
     }
 
+    public static string GetGameSetupInfoClosingTag() =>
+        GetConfigMarkupClosingTag(GameSetupInfoMarkupElement);
+
+    public static string GetExecutableMarkupElement(string executableFilePath) =>
+        GetElementWithValue(ExecutableMarkupElement, executableFilePath);
+
+    public static string GetModCenterParentOpeningTag() =>
+        GetConfigMarkupOpeningTag(ModCenterMarkupParentElement);
+
+    public static string GetModCenterParentClosingTag() =>
+        GetConfigMarkupClosingTag(ModCenterMarkupParentElement);
+
+    public static string GetModCenterMarkupChildElement(string modcenterDirectoryPath) =>
+        GetElementWithValue(ModCenterMarkupChildElement, modcenterDirectoryPath);
+
+    private static string GetElementWithValue(string elemName, string elemValue) =>
+        $"{GetConfigMarkupOpeningTag(elemName)}{elemValue}{GetConfigMarkupClosingTag(elemName)}";
+
     private static string GetAttribute(string attributeName, string attributeValue) =>
         $"{attributeName}{AttributeValueAssignmentSymbol}" +
             $"{AttributeValueSurroundSymbol}{attributeValue}{AttributeValueSurroundSymbol}";

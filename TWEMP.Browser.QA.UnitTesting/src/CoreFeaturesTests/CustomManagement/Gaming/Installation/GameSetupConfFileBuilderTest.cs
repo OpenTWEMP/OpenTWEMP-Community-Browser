@@ -6,6 +6,7 @@
 
 namespace TWEMP.Browser.QA.UnitTesting.CoreFeaturesTests.CustomManagement.Gaming.Installation;
 
+using System.Xml.Linq;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 
 public class GameSetupConfFileBuilderTest
@@ -60,6 +61,49 @@ public class GameSetupConfFileBuilderTest
         string actualTag = GameSetupConfFileBuilder.GetGameSetupInfoOpeningTag(GameSetupName);
 
         Assert.That(actualTag, Is.EqualTo(expectedTag));
+    }
+
+    [Test]
+    public void GetGameSetupInfoClosingTag()
+    {
+        string actualTag = GameSetupConfFileBuilder.GetGameSetupInfoClosingTag();
+        Assert.That(actualTag, Is.EqualTo("</GameSetupInfo>"));
+    }
+
+    [TestCase(@"D:\SteamLibrary\steamapps\common\Medieval II Total War\medieval2.exe")]
+    [TestCase(@"E:\Games\SEGA\Medieval II Total War\kingdoms.exe")]
+    public void GetExecutableMarkupElement(string executableFilePath)
+    {
+        string expectedElement = $"<Executable>{executableFilePath}</Executable>";
+
+        string actualElement = GameSetupConfFileBuilder.GetExecutableMarkupElement(executableFilePath);
+
+        Assert.That(actualElement, Is.EqualTo(expectedElement));
+    }
+
+    [Test]
+    public void GetModCenterParentOpeningTag()
+    {
+        string actualTag = GameSetupConfFileBuilder.GetModCenterParentOpeningTag();
+        Assert.That(actualTag, Is.EqualTo("<AttachedModCenters>"));
+    }
+
+    [Test]
+    public void GetModCenterParentClosingTag()
+    {
+        string actualTag = GameSetupConfFileBuilder.GetModCenterParentClosingTag();
+        Assert.That(actualTag, Is.EqualTo("</AttachedModCenters>"));
+    }
+
+    [TestCase(@"D:\SteamLibrary\steamapps\common\Medieval II Total War\mods")]
+    [TestCase(@"E:\Games\SEGA\Medieval II Total War\mods")]
+    public void GetModCenterMarkupChildElement(string modcenterDirectoryPath)
+    {
+        string expectedElement = $"<ModCenter>{modcenterDirectoryPath}</ModCenter>";
+
+        string actualElement = GameSetupConfFileBuilder.GetModCenterMarkupChildElement(modcenterDirectoryPath);
+
+        Assert.That(actualElement, Is.EqualTo(expectedElement));
     }
 
     [Obsolete(ObsoleteTestMessage)]
