@@ -44,6 +44,39 @@ public class GameSetupConfFileBuilder
     public static GameSetupConfFileBuilder Create(string configDirectoryPath) =>
         new GameSetupConfFileBuilder(configDirectoryPath);
 
+    public static string GetSingleGameSetupInfoConfigMarkup(
+        string gameSetupName, string executableFullPath, string[] modcenterPaths)
+    {
+        string gameSetupInfoOpeningTag = GetGameSetupInfoOpeningTag(gameSetupName);
+        string gameSetupInfoClosingTag = GetGameSetupInfoClosingTag();
+
+        string executableMarkupElement = GetExecutableConfigMarkup(executableFullPath);
+        string modcentersMarkupElement = GetAttachedModCentersConfigMarkup(modcenterPaths);
+
+        return $"{gameSetupInfoOpeningTag}\n" +
+            $"{executableMarkupElement}\n" +
+            $"{modcentersMarkupElement}\n" +
+            $"{gameSetupInfoClosingTag}";
+
+        static string GetExecutableConfigMarkup(string executableFilePath) =>
+            $"\t{GetExecutableMarkupElement(executableFilePath)}";
+
+        static string GetAttachedModCentersConfigMarkup(string[] modcenters)
+        {
+            string markup = $"\t{GetModCenterParentOpeningTag()}\n";
+
+            foreach (string modcenter in modcenters)
+            {
+                string element = GetModCenterMarkupChildElement(modcenter);
+                markup += $"\t\t{element}\n";
+            }
+
+            markup += $"\t{GetModCenterParentClosingTag()}";
+
+            return markup;
+        }
+    }
+
     public static string GetConfigMarkupOpeningTag(string element) =>
         $"{OpeningTagFirstBrace}{element}{TagLastBrace}";
 

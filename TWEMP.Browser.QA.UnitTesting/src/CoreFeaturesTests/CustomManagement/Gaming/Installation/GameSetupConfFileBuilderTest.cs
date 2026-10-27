@@ -6,7 +6,7 @@
 
 namespace TWEMP.Browser.QA.UnitTesting.CoreFeaturesTests.CustomManagement.Gaming.Installation;
 
-using System.Xml.Linq;
+using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 
 public class GameSetupConfFileBuilderTest
@@ -104,6 +104,30 @@ public class GameSetupConfFileBuilderTest
         string actualElement = GameSetupConfFileBuilder.GetModCenterMarkupChildElement(modcenterDirectoryPath);
 
         Assert.That(actualElement, Is.EqualTo(expectedElement));
+    }
+
+    [Test]
+    public void GetSingleGameSetupInfoConfigMarkup()
+    {
+        const string GameSetupName = "STEAM-M2TW";
+        const string GameSetupExecutable = @"D:\SteamLibrary\steamapps\common\Medieval II Total War\medieval2.exe";
+        const string ModCenterByDefault = @"D:\SteamLibrary\steamapps\common\Medieval II Total War\mods";
+        const string ModCenterForModding = @"D:\SteamLibrary\steamapps\common\Medieval II Total War\mods_modding";
+        const string ModCenterForTesting = @"D:\SteamLibrary\steamapps\common\Medieval II Total War\mods_testing";
+
+        string expectedMarkup = $"<GameSetupInfo Name=\"{GameSetupName}\">\n" +
+            $"\t<Executable>{GameSetupExecutable}</Executable>\n" +
+            "\t<AttachedModCenters>\n" +
+            $"\t\t<ModCenter>{ModCenterByDefault}</ModCenter>\n" +
+            $"\t\t<ModCenter>{ModCenterForModding}</ModCenter>\n" +
+            $"\t\t<ModCenter>{ModCenterForTesting}</ModCenter>\n" +
+            "\t</AttachedModCenters>\n" +
+            "</GameSetupInfo>";
+
+        string actualMarkup = GameSetupConfFileBuilder.GetSingleGameSetupInfoConfigMarkup(
+            GameSetupName, GameSetupExecutable, new string[] { ModCenterByDefault, ModCenterForModding, ModCenterForTesting });
+
+        Assert.That(actualMarkup, Is.EqualTo(expectedMarkup));
     }
 
     [Obsolete(ObsoleteTestMessage)]
