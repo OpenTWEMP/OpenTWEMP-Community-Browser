@@ -14,6 +14,7 @@ using System.Text;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 /// <summary>
 /// Represents a device to manage custom game setup installations into the application.
@@ -90,7 +91,7 @@ public class CustomGameSetupManager
 
                 if (gameSetupObjectsCount > 0)
                 {
-                    List<GameSetupInfo> gameSetupObjects = this.ReadAllSetupConfFile();
+                    GameSetupInfo[] gameSetupObjects = this.ReadAllSetupConfFile();
                     this.GameInstallations.AddRange(gameSetupObjects);
                 }
             }
@@ -188,6 +189,14 @@ public class CustomGameSetupManager
 
 #if LEGACY_XML_SERIALIZATION
 
+    private static bool IsGameSetupCfgNode(string cfgStr)
+    {
+        const string begCfgSubStr = "<GameSetupInfo Name=\"";
+        const string endCfgSubStr = "\">";
+
+        return cfgStr.StartsWith(begCfgSubStr) && cfgStr.EndsWith(endCfgSubStr);
+    }
+
     [Obsolete(ObsoleteMethodMessage)]
     private void SaveNewGameSetupConfig(string name, string executable, string[] modcenters)
     {
@@ -234,102 +243,136 @@ public class CustomGameSetupManager
         }
 
         return totalGameSetupCount;
-
-        static bool IsGameSetupCfgNode(string cfgStr)
-        {
-            const string begCfgSubStr = "<GameSetupInfo Name=\"";
-            const string endCfgSubStr = "\">";
-
-            return cfgStr.StartsWith(begCfgSubStr) && cfgStr.EndsWith(endCfgSubStr);
-        }
     }
 
     [Obsolete(ObsoleteMethodMessage)]
-    private List<GameSetupInfo> ReadAllSetupConfFile()
+    private GameSetupInfo[] ReadAllSetupConfFile()
     {
-        var readGameSetupObjects = new List<GameSetupInfo>();
+        string executableCfgMarkupElementBegTag = GameSetupConfFileBuilder.GetConfigMarkupOpeningTag(
+            GameSetupConfFileBuilder.ExecutableMarkupElement);
+        string executableCfgMarkupElementEndTag = GameSetupConfFileBuilder.GetConfigMarkupClosingTag(
+            GameSetupConfFileBuilder.ExecutableMarkupElement);
 
-        string setupElemEntryBeg = "<GameSetupInfo Name=\"";
-        string setupElemEntryEnd = "\">";
+        string modcenterCfgMarkupElementBegTag = GameSetupConfFileBuilder.GetConfigMarkupOpeningTag(
+            GameSetupConfFileBuilder.ModCenterMarkupChildElement);
+        string modcenterCfgMarkupElementEndTag = GameSetupConfFileBuilder.GetConfigMarkupClosingTag(
+            GameSetupConfFileBuilder.ModCenterMarkupChildElement);
 
-        string[] readDataStrings = File.ReadAllLines(this.gameSetupConfigFilePath, Encoding.UTF8);
+        string[] configStrings = File.ReadAllLines(this.gameSetupConfigFilePath, Encoding.UTF8);
 
-        // 1. Define GameSetupInfo objects coordinates into the config file via indexes.
-        var gameSetupObjectsStartEntryIndexes = new List<int>();
-        for (int index = 0; index < readDataStrings.Length; index++)
+        return RetrieveAllGameSetupInfoObjectsFromCfgMarkup(configStrings);
+
+        GameSetupInfo[] RetrieveAllGameSetupInfoObjectsFromCfgMarkup(string[] cfgStrArr)
         {
-            if (readDataStrings[index].StartsWith(setupElemEntryBeg))
+            var gameSetupInfoObjects = new List<GameSetupInfo>();
+
+            int[] gameSetupObjectsStartEntryIndexes = FindGameSetupCfgNodeStartIndexes(cfgStrArr);
+
+            for (int entryIndex = 0; entryIndex < gameSetupObjectsStartEntryIndexes.Length; entryIndex++)
             {
-                gameSetupObjectsStartEntryIndexes.Add(index);
+                int begEntryIndex = gameSetupObjectsStartEntryIndexes[entryIndex];
+
+                int endEntryIndex = FindGameSetupCfgNodeEndIndex(
+                    cfgStrArr.Length, gameSetupObjectsStartEntryIndexes, entryIndex);
+
+                GameSetupInfo gameSetupInfo = RetrieveGameSetupInfoObjectFromCfgMarkup(
+                    cfgStrArr, begEntryIndex, endEntryIndex);
+
+                gameSetupInfoObjects.Add(gameSetupInfo);
             }
+
+            return gameSetupInfoObjects.ToArray();
         }
 
-        // 2. Read GameSetupInfo objects from the config file by detected coordinates.
-        for (int entryIndex = 0; entryIndex < gameSetupObjectsStartEntryIndexes.Count; entryIndex++)
+        static int[] FindGameSetupCfgNodeStartIndexes(string[] cfgStrArr)
         {
-            int begEntryIndex = gameSetupObjectsStartEntryIndexes[entryIndex];
+            var targetIndexes = new List<int>();
 
-            int endEntryIndex;
-            if (entryIndex == (gameSetupObjectsStartEntryIndexes.Count - 1))
+            for (int index = 0; index < cfgStrArr.Length; index++)
+            {
+                if (IsGameSetupCfgNode(cfgStrArr[index]))
+                {
+                    targetIndexes.Add(index);
+                }
+            }
+
+            return targetIndexes.ToArray();
+        }
+
+        int FindGameSetupCfgNodeEndIndex(
+            int cfgStrArrLen, int[] gameSetupCfgNodeStartIndexes, int gameSetupCfgNodeCurrentIndex)
+        {
+            int targetIndex;
+
+            if (gameSetupCfgNodeCurrentIndex == (gameSetupCfgNodeStartIndexes.Length - 1))
             {
                 // We don't know the end entry index of the last GameSetupInfo object.
-                endEntryIndex = readDataStrings.Length - 1;
+                targetIndex = cfgStrArrLen - 1;
             }
             else
             {
                 // We know the begin entry index of the next GameSetupInfo object.
-                endEntryIndex = gameSetupObjectsStartEntryIndexes[entryIndex + 1];
+                targetIndex = gameSetupCfgNodeStartIndexes[gameSetupCfgNodeCurrentIndex + 1];
             }
 
-            // 3. Read the GameSetupInfo object.
+            return targetIndex;
+        }
 
-            // 3.1. 'Name'
-            string gameSetupName = readDataStrings[begEntryIndex];
-            gameSetupName = gameSetupName.Replace(setupElemEntryBeg, string.Empty);
-            gameSetupName = gameSetupName.Replace(setupElemEntryEnd, string.Empty);
+        bool IsExecutableCfgMarkupElement(string cfgStr) =>
+            cfgStr.StartsWith(executableCfgMarkupElementBegTag) &&
+            cfgStr.EndsWith(executableCfgMarkupElementEndTag);
+
+        bool IsModCenterCfgMarkupChildElement(string cfgStr) =>
+            cfgStr.StartsWith(modcenterCfgMarkupElementBegTag) &&
+            cfgStr.EndsWith(modcenterCfgMarkupElementEndTag);
+
+        GameSetupInfo RetrieveGameSetupInfoObjectFromCfgMarkup(
+            string[] cfgStrArr, int cfgNodeStartIndex, int cfgNodeEndIndex)
+        {
+            string gameSetupName = RetrieveGameSetupCfgMarkupElementValue(configStrings[cfgNodeStartIndex]);
 
             string executableFullPath = string.Empty;
-
             var attachedModCenters = new List<string>();
 
-            for (int dataIndex = begEntryIndex; dataIndex < endEntryIndex; dataIndex++)
+            for (int dataIndex = cfgNodeStartIndex; dataIndex < cfgNodeEndIndex; dataIndex++)
             {
-                string data = readDataStrings[dataIndex].TrimStart();
+                string data = cfgStrArr[dataIndex].TrimStart();
 
-                // 3.2. 'Executable'
-                string executableElemEntryBeg = GameSetupConfFileBuilder.GetConfigMarkupOpeningTag(
-                    GameSetupConfFileBuilder.ExecutableMarkupElement);
-                string executableElemEntryEnd = GameSetupConfFileBuilder.GetConfigMarkupClosingTag(
-                    GameSetupConfFileBuilder.ExecutableMarkupElement);
-
-                if (data.StartsWith(executableElemEntryBeg) && data.EndsWith(executableElemEntryEnd))
+                if (IsExecutableCfgMarkupElement(data))
                 {
-                    executableFullPath = data.Replace(executableElemEntryBeg, string.Empty);
-                    executableFullPath = executableFullPath.Replace(executableElemEntryEnd, string.Empty);
+                    executableFullPath = RetrieveExecutableCfgMarkupElementValue(data);
                     continue;
                 }
 
-                // 3.3. 'AttachedModCenters'
-                string modcenterElemEntryBeg = GameSetupConfFileBuilder.GetConfigMarkupOpeningTag(
-                    GameSetupConfFileBuilder.ModCenterMarkupChildElement);
-                string modcenterElemEntryEnd = GameSetupConfFileBuilder.GetConfigMarkupClosingTag(
-                    GameSetupConfFileBuilder.ModCenterMarkupChildElement);
-
-                if (data.StartsWith(modcenterElemEntryBeg) && data.EndsWith(modcenterElemEntryEnd))
+                if (IsModCenterCfgMarkupChildElement(data))
                 {
-                    string modcenter = data.Replace(modcenterElemEntryBeg, string.Empty);
-                    modcenter = modcenter.Replace(modcenterElemEntryEnd, string.Empty);
-
+                    string modcenter = RetrieveModCenterCfgMarkupChildElementValue(data);
                     attachedModCenters.Add(modcenter);
                 }
             }
 
-            // 4. Generate a new GameSetupInfo object.
-            GameSetupInfo gameSetupInfo = GameSetupInfo.Create(gameSetupName, executableFullPath, attachedModCenters);
-            readGameSetupObjects.Add(gameSetupInfo);
+            return GameSetupInfo.Create(gameSetupName, executableFullPath, attachedModCenters);
         }
 
-        return readGameSetupObjects;
+        string RetrieveGameSetupCfgMarkupElementValue(string cfgStr)
+        {
+            const string gameSetupOpeningTagBeg =
+                $"<{GameSetupConfFileBuilder.GameSetupInfoMarkupElement} " +
+                $"{GameSetupConfFileBuilder.GameSetupNameMarkupAttribute}=\"";
+            const string gameSetupOpeningTagEnd = "\">";
+
+            return cfgStr
+                .Replace(gameSetupOpeningTagBeg, string.Empty)
+                .Replace(gameSetupOpeningTagEnd, string.Empty);
+        }
+
+        string RetrieveExecutableCfgMarkupElementValue(string cfgStr) => cfgStr
+            .Replace(executableCfgMarkupElementBegTag, string.Empty)
+            .Replace(executableCfgMarkupElementEndTag, string.Empty);
+
+        string RetrieveModCenterCfgMarkupChildElementValue(string cfgStr) => cfgStr
+            .Replace(modcenterCfgMarkupElementBegTag, string.Empty)
+            .Replace(modcenterCfgMarkupElementEndTag, string.Empty);
     }
 
     [Obsolete(ObsoleteMethodMessage)]
