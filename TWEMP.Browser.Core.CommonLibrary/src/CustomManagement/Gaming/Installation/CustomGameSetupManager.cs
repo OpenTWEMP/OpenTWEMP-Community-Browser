@@ -108,7 +108,7 @@ public class CustomGameSetupManager
     {
 #if LEGACY_XML_SERIALIZATION
         GameSetupInfo gameSetupInfo = this.GameInstallations[gameSetupIndex];
-        GameSetupConfFileBuilder.DeleteGameSetupFromConfFile(gameSetupInfo, this.gameSetupConfigFilePath);
+        this.DeleteGameSetupFromConfFile(gameSetupInfo);
 #endif
 
         this.GameInstallations.RemoveAt(gameSetupIndex);
@@ -241,6 +241,77 @@ public class CustomGameSetupManager
             const string endCfgSubStr = "\">";
 
             return cfgStr.StartsWith(begCfgSubStr) && cfgStr.EndsWith(endCfgSubStr);
+        }
+    }
+
+    [Obsolete(ObsoleteMethodMessage)]
+    private void DeleteGameSetupFromConfFile(GameSetupInfo gameSetupInfo)
+    {
+        string[] initialCfgStrArr = File.ReadAllLines(this.gameSetupConfigFilePath, Encoding.UTF8);
+
+        int gameSetupCfgNodeStartIndex = FindGameSetupCfgNodeStartIndex(initialCfgStrArr, gameSetupInfo.Name);
+        int gameSetupCfgNodeEndIndex = FindGameSetupCfgNodeEndIndex(initialCfgStrArr, gameSetupCfgNodeStartIndex);
+
+        string[] updatedCfgStrArr = ExcludeGameSetupCfgNodeFromConfigStrings(
+            initialCfgStrArr, gameSetupCfgNodeStartIndex, gameSetupCfgNodeEndIndex);
+
+        File.WriteAllLines(this.gameSetupConfigFilePath, updatedCfgStrArr, Encoding.UTF8);
+
+        static int FindGameSetupCfgNodeStartIndex(string[] srcCfgStrArr, string destGameSetupName)
+        {
+            int targetCfgNodeIndex = 0;
+
+            string gameSetupOpeningTag = GameSetupConfFileBuilder.GetGameSetupInfoOpeningTag(destGameSetupName);
+
+            for (int cfgStrIndex = 0; cfgStrIndex < srcCfgStrArr.Length; cfgStrIndex++)
+            {
+                if (srcCfgStrArr[cfgStrIndex].StartsWith(gameSetupOpeningTag))
+                {
+                    targetCfgNodeIndex = cfgStrIndex;
+                    break;
+                }
+            }
+
+            return targetCfgNodeIndex;
+        }
+
+        static int FindGameSetupCfgNodeEndIndex(string[] srcCfgStrArr, int destGameSetupStartIndex)
+        {
+            int targetCfgNodeIndex = destGameSetupStartIndex;
+
+            string gameSetupClosingTag = GameSetupConfFileBuilder.GetGameSetupInfoClosingTag();
+
+            for (int cfgStrIndex = destGameSetupStartIndex; cfgStrIndex < srcCfgStrArr.Length; cfgStrIndex++)
+            {
+                if (srcCfgStrArr[cfgStrIndex].StartsWith(gameSetupClosingTag))
+                {
+                    targetCfgNodeIndex = cfgStrIndex;
+                    break;
+                }
+            }
+
+            return targetCfgNodeIndex;
+        }
+
+        static string[] ExcludeGameSetupCfgNodeFromConfigStrings(
+            string[] srcCfgStrArr, int destGameSetupStartIndex, int destGameSetupEndIndex)
+        {
+            var updatedConfigStrArr = new List<string>();
+
+            for (int index = 0; index < srcCfgStrArr.Length; index++)
+            {
+                bool moreOrEqualBegIndex = index >= destGameSetupStartIndex;
+                bool lessOrEqualEndIndex = index <= destGameSetupEndIndex;
+
+                if (moreOrEqualBegIndex && lessOrEqualEndIndex)
+                {
+                    continue;
+                }
+
+                updatedConfigStrArr.Add(srcCfgStrArr[index]);
+            }
+
+            return updatedConfigStrArr.ToArray();
         }
     }
 
