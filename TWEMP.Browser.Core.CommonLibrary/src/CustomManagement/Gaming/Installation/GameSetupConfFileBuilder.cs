@@ -187,24 +187,6 @@ public class GameSetupConfFileBuilder
         writer.Close();
     }
 
-    public static uint ReadTotalGameSetupCount(string setupConfFileName)
-    {
-        string[] readDataStrings = File.ReadAllLines(setupConfFileName, Encoding.UTF8);
-
-        uint totalGameSetupCount = 0;
-        string gameSetupObjectMarker = "<GameSetupInfo";
-
-        for (int i = 0; i < readDataStrings.Length; i++)
-        {
-            if (readDataStrings[i].StartsWith(gameSetupObjectMarker))
-            {
-                totalGameSetupCount++;
-            }
-        }
-
-        return totalGameSetupCount;
-    }
-
     public static List<GameSetupInfo> ReadAllSetupConfFile(string setupConfFileName)
     {
         var readGameSetupObjects = new List<GameSetupInfo>();

@@ -10,6 +10,7 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 
+using System.Text;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
@@ -85,7 +86,7 @@ public class CustomGameSetupManager
         {
             if (this.GameInstallations.Count == 0)
             {
-                uint gameSetupObjectsCount = GameSetupConfFileBuilder.ReadTotalGameSetupCount(this.gameSetupConfigFilePath);
+                int gameSetupObjectsCount = this.ReadTotalGameSetupCount();
 
                 if (gameSetupObjectsCount > 0)
                 {
@@ -196,6 +197,32 @@ public class CustomGameSetupManager
         }
 
         return true;
+    }
+
+    [Obsolete(ObsoleteMethodMessage)]
+    private int ReadTotalGameSetupCount()
+    {
+        int totalGameSetupCount = 0;
+
+        string[] cfgStrArr = File.ReadAllLines(this.gameSetupConfigFilePath, Encoding.UTF8);
+
+        foreach (string cfgStr in cfgStrArr)
+        {
+            if (IsGameSetupCfgNode(cfgStr))
+            {
+                totalGameSetupCount++;
+            }
+        }
+
+        return totalGameSetupCount;
+
+        static bool IsGameSetupCfgNode(string cfgStr)
+        {
+            const string begCfgSubStr = "<GameSetupInfo Name=\"";
+            const string endCfgSubStr = "\">";
+
+            return cfgStr.StartsWith(begCfgSubStr) && cfgStr.EndsWith(endCfgSubStr);
+        }
     }
 
 #endif
