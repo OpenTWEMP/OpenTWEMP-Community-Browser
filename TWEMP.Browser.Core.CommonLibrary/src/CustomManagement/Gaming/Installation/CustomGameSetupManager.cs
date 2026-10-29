@@ -80,7 +80,7 @@ public class CustomGameSetupManager
 #if LEGACY_XML_SERIALIZATION
         if (this.ShouldGameSetupConfigFileBeCreated())
         {
-            GameSetupConfFileBuilder.CreateSetupConfFile(this.gameSetupConfigFilePath);
+            this.CreateSetupConfigFile();
         }
         else
         {
@@ -152,7 +152,7 @@ public class CustomGameSetupManager
             File.Delete(this.gameSetupConfigFilePath);
 
 #if LEGACY_XML_SERIALIZATION
-            GameSetupConfFileBuilder.CreateSetupConfFile(this.gameSetupConfigFilePath);
+            this.CreateSetupConfigFile();
 #endif
         }
     }
@@ -209,6 +209,13 @@ public class CustomGameSetupManager
         }
 
         return true;
+    }
+
+    [Obsolete(ObsoleteMethodMessage)]
+    private void CreateSetupConfigFile()
+    {
+        string metadataCfgNodeMarkup = GameSetupConfFileBuilder.GetConfigMetadataMarkupElement();
+        File.WriteAllText(this.gameSetupConfigFilePath, metadataCfgNodeMarkup, Encoding.UTF8);
     }
 
     [Obsolete(ObsoleteMethodMessage)]

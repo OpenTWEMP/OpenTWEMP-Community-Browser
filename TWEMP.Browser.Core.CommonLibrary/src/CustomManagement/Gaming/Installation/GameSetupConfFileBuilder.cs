@@ -30,6 +30,8 @@ public class GameSetupConfFileBuilder
     private const string ConfigFileBaseName = "setup";
     private const string ConfigFileExtension = ".conf";
 
+    private const string DefaultConfigVersion = "BETA_2027";
+
     private GameSetupConfFileBuilder(string configDirectoryPath)
     {
         string configFileName = ConfigFileBaseName + ConfigFileExtension;
@@ -57,6 +59,9 @@ public class GameSetupConfFileBuilder
 
     public static GameSetupConfFileBuilder Create(string configDirectoryPath) =>
         new GameSetupConfFileBuilder(configDirectoryPath);
+
+    public static string GetConfigMetadataMarkupElement() =>
+        $"{GetElementWithValue(AppVersionMarkupElement, DefaultConfigVersion)}\n";
 
     public static string GetSingleGameSetupInfoConfigMarkup(CustomConfigNode node)
     {
@@ -282,20 +287,5 @@ public class GameSetupConfFileBuilder
         }
 
         writer.Close();
-    }
-
-    public static void CreateSetupConfFile(string setupConfFileName)
-    {
-        var stream = new FileStream(setupConfFileName, FileMode.CreateNew);
-        var writer = new StreamWriter(stream, Encoding.UTF8);
-
-        string rootElementName = "ApplicationVersion";
-        string elemBegTag = "<" + rootElementName + ">";
-        string elemEndTag = "</" + rootElementName + ">";
-
-        writer.WriteLine($"{elemBegTag}{rootElementName}{elemEndTag}"); // paste config version
-
-        writer.Close();
-        stream.Close();
     }
 }

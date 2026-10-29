@@ -23,6 +23,16 @@ public class GameSetupConfFileBuilderTest
         Assert.That(sut.ConfigFilePath, Is.EqualTo($"{ConfigDirectoryPath}\\{ConfigFileName}"));
     }
 
+    [Test]
+    public void GetConfigMetadataMarkupElement()
+    {
+        const string expectedElement = $"<ApplicationVersion>BETA_2027</ApplicationVersion>\n";
+
+        string actualElement = GameSetupConfFileBuilder.GetConfigMetadataMarkupElement();
+
+        Assert.That(actualElement, Is.EqualTo(expectedElement));
+    }
+
     [TestCase(GameSetupConfFileBuilder.AppVersionMarkupElement)]
     [TestCase(GameSetupConfFileBuilder.GameSetupInfoMarkupElement)]
     [TestCase(GameSetupConfFileBuilder.ExecutableMarkupElement)]
