@@ -90,7 +90,7 @@ public class CustomGameSetupManager
 
                 if (gameSetupObjectsCount > 0)
                 {
-                    List<GameSetupInfo> gameSetupObjects = GameSetupConfFileBuilder.ReadAllSetupConfFile(this.gameSetupConfigFilePath);
+                    List<GameSetupInfo> gameSetupObjects = this.ReadAllSetupConfFile();
                     this.GameInstallations.AddRange(gameSetupObjects);
                 }
             }
@@ -242,6 +242,94 @@ public class CustomGameSetupManager
 
             return cfgStr.StartsWith(begCfgSubStr) && cfgStr.EndsWith(endCfgSubStr);
         }
+    }
+
+    [Obsolete(ObsoleteMethodMessage)]
+    private List<GameSetupInfo> ReadAllSetupConfFile()
+    {
+        var readGameSetupObjects = new List<GameSetupInfo>();
+
+        string setupElemEntryBeg = "<GameSetupInfo Name=\"";
+        string setupElemEntryEnd = "\">";
+
+        string[] readDataStrings = File.ReadAllLines(this.gameSetupConfigFilePath, Encoding.UTF8);
+
+        // 1. Define GameSetupInfo objects coordinates into the config file via indexes.
+        var gameSetupObjectsStartEntryIndexes = new List<int>();
+        for (int index = 0; index < readDataStrings.Length; index++)
+        {
+            if (readDataStrings[index].StartsWith(setupElemEntryBeg))
+            {
+                gameSetupObjectsStartEntryIndexes.Add(index);
+            }
+        }
+
+        // 2. Read GameSetupInfo objects from the config file by detected coordinates.
+        for (int entryIndex = 0; entryIndex < gameSetupObjectsStartEntryIndexes.Count; entryIndex++)
+        {
+            int begEntryIndex = gameSetupObjectsStartEntryIndexes[entryIndex];
+
+            int endEntryIndex;
+            if (entryIndex == (gameSetupObjectsStartEntryIndexes.Count - 1))
+            {
+                // We don't know the end entry index of the last GameSetupInfo object.
+                endEntryIndex = readDataStrings.Length - 1;
+            }
+            else
+            {
+                // We know the begin entry index of the next GameSetupInfo object.
+                endEntryIndex = gameSetupObjectsStartEntryIndexes[entryIndex + 1];
+            }
+
+            // 3. Read the GameSetupInfo object.
+
+            // 3.1. 'Name'
+            string gameSetupName = readDataStrings[begEntryIndex];
+            gameSetupName = gameSetupName.Replace(setupElemEntryBeg, string.Empty);
+            gameSetupName = gameSetupName.Replace(setupElemEntryEnd, string.Empty);
+
+            string executableFullPath = string.Empty;
+
+            var attachedModCenters = new List<string>();
+
+            for (int dataIndex = begEntryIndex; dataIndex < endEntryIndex; dataIndex++)
+            {
+                string data = readDataStrings[dataIndex].TrimStart();
+
+                // 3.2. 'Executable'
+                string executableElemEntryBeg = GameSetupConfFileBuilder.GetConfigMarkupOpeningTag(
+                    GameSetupConfFileBuilder.ExecutableMarkupElement);
+                string executableElemEntryEnd = GameSetupConfFileBuilder.GetConfigMarkupClosingTag(
+                    GameSetupConfFileBuilder.ExecutableMarkupElement);
+
+                if (data.StartsWith(executableElemEntryBeg) && data.EndsWith(executableElemEntryEnd))
+                {
+                    executableFullPath = data.Replace(executableElemEntryBeg, string.Empty);
+                    executableFullPath = executableFullPath.Replace(executableElemEntryEnd, string.Empty);
+                    continue;
+                }
+
+                // 3.3. 'AttachedModCenters'
+                string modcenterElemEntryBeg = GameSetupConfFileBuilder.GetConfigMarkupOpeningTag(
+                    GameSetupConfFileBuilder.ModCenterMarkupChildElement);
+                string modcenterElemEntryEnd = GameSetupConfFileBuilder.GetConfigMarkupClosingTag(
+                    GameSetupConfFileBuilder.ModCenterMarkupChildElement);
+
+                if (data.StartsWith(modcenterElemEntryBeg) && data.EndsWith(modcenterElemEntryEnd))
+                {
+                    string modcenter = data.Replace(modcenterElemEntryBeg, string.Empty);
+                    modcenter = modcenter.Replace(modcenterElemEntryEnd, string.Empty);
+
+                    attachedModCenters.Add(modcenter);
+                }
+            }
+
+            // 4. Generate a new GameSetupInfo object.
+            GameSetupInfo gameSetupInfo = GameSetupInfo.Create(gameSetupName, executableFullPath, attachedModCenters);
+            readGameSetupObjects.Add(gameSetupInfo);
+        }
+
+        return readGameSetupObjects;
     }
 
     [Obsolete(ObsoleteMethodMessage)]
