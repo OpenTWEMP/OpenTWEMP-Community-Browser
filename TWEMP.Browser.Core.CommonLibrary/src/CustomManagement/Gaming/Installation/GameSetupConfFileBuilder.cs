@@ -142,51 +142,6 @@ public class GameSetupConfFileBuilder
     [Obsolete(ObsoleteStaticMethodMessage)]
     public static string GetSetupConfFileName() => Create().ConfigFilePath;
 
-    public static void WriteNewSetupToConfFile(
-        string setupConfFileName, string setupName, string executableFullPath, List<string> modcenterPaths)
-    {
-        var writer = new StreamWriter(setupConfFileName, true, Encoding.UTF8);
-
-        string gameSetupElemName = "GameSetupInfo";
-        string gameSetupNameAttrKey = "Name";
-        string gameSetupNameAttrValue = setupName;
-        string gameSetupNamePairAttribute = gameSetupNameAttrKey + "=\"" + gameSetupNameAttrValue + "\"";
-        string gameSetupBegTag = "<" + gameSetupElemName + " " + gameSetupNamePairAttribute + ">";
-        string gameSetupEndTag = "</" + gameSetupElemName + ">";
-
-        string executableElemName = "Executable";
-        string executableBegTag = "<" + executableElemName + ">";
-        string executableEndTag = "</" + executableElemName + ">";
-        string executableElemValue = executableFullPath;
-        string executableElement = executableBegTag + executableElemValue + executableEndTag;
-
-        string modcentersElemName = "AttachedModCenters";
-        string modcentersBegTag = "<" + modcentersElemName + ">";
-        string modcentersEndTag = "</" + modcentersElemName + ">";
-        string modCenterElemName = "ModCenter";
-        string modCenterBegTag = "<" + modCenterElemName + ">";
-        string modCenterEndTag = "</" + modCenterElemName + ">";
-        List<string> modCenterElements = new ();
-        foreach (string modcenter in modcenterPaths)
-        {
-            string modCenterElement = modCenterBegTag + modcenter + modCenterEndTag;
-            modCenterElements.Add(modCenterElement);
-        }
-
-        writer.WriteLine(gameSetupBegTag);
-        writer.WriteLine("   {0}", executableElement);
-        writer.WriteLine("   {0}", modcentersBegTag);
-        foreach (string modCenter in modCenterElements)
-        {
-            writer.WriteLine("      {0}", modCenter);
-        }
-
-        writer.WriteLine("   {0}", modcentersEndTag);
-        writer.WriteLine(gameSetupEndTag);
-
-        writer.Close();
-    }
-
     public static List<GameSetupInfo> ReadAllSetupConfFile(string setupConfFileName)
     {
         var readGameSetupObjects = new List<GameSetupInfo>();

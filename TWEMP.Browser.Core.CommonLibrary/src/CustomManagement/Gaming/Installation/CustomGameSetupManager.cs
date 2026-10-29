@@ -62,7 +62,7 @@ public class CustomGameSetupManager
     public GameSetupInfo RegistrateGameInstallation(string setupName, string executableFullPath, List<string> modcenterPaths)
     {
 #if LEGACY_XML_SERIALIZATION
-        GameSetupConfFileBuilder.WriteNewSetupToConfFile(this.gameSetupConfigFilePath, setupName, executableFullPath, modcenterPaths);
+        this.SaveNewGameSetupConfig(setupName, executableFullPath, modcenterPaths.ToArray());
 #endif
 
         GameSetupInfo gameSetupInfo = GameSetupInfo.Create(setupName, executableFullPath, modcenterPaths);
@@ -187,6 +187,18 @@ public class CustomGameSetupManager
 #endif
 
 #if LEGACY_XML_SERIALIZATION
+
+    [Obsolete(ObsoleteMethodMessage)]
+    private void SaveNewGameSetupConfig(string name, string executable, string[] modcenters)
+    {
+        var cfgNode = new GameSetupConfFileBuilder.CustomConfigNode(name, executable, modcenters);
+        string cfgMarkup = GameSetupConfFileBuilder.GetSingleGameSetupInfoConfigMarkup(cfgNode);
+
+        using (var sw = new StreamWriter(this.gameSetupConfigFilePath, true, Encoding.UTF8))
+        {
+            sw.WriteLine(cfgMarkup);
+        }
+    }
 
     [Obsolete(ObsoleteMethodMessage)]
     private bool ShouldGameSetupConfigFileBeCreated()
