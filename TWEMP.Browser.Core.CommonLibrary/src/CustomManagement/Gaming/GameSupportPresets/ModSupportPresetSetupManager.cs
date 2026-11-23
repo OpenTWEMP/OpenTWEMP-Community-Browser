@@ -121,6 +121,7 @@ public class ModSupportPresetSetupManager
         {
             GameModificationInfo gameModInfo = newGameModInfos[modIndex];
 
+            // TODO: [BETA2027_002] Use GameModificationInfo object's ID instead 'modIndex' to initialize the 'gameModId' object.
             GameModificationIdView gameModId = new (modIndex);
             Guid activePresetId = UpdatableGameModificationView.GetDefaultPresetId();
             bool useCustomizablePreset = false;
@@ -149,6 +150,7 @@ public class ModSupportPresetSetupManager
 
         for (int modIndex = 0; modIndex < gameMods.Count; modIndex++)
         {
+            // TODO: [BETA2027_002] Use GameModificationInfo object's ID instead 'modIndex' to initialize the 'gameModificationView' object.
             UpdatableGameModificationView gameModificationView =
                 UpdatableGameModificationView.CreateGameModificationViewByDefaultPreset(
                     new GameModificationIdView(modIndex), gameMods[modIndex]);

@@ -62,12 +62,16 @@ public class UpdatableGameModificationView
         this.UseCustomizablePreset = false;
 
         this.ActivePreset = this.redistributableModPreset.Data;
+
+        // TODO: [BETA2027_002] Join 'idView' and 'modInfo' parameters and make the one ID parameter.
     }
 
     /// <summary>
     /// Gets the game modification identifier entity for this view.
     /// </summary>
     public GameModificationIdView IdView { get; }
+
+    // TODO: [BETA2027_002] The IdView public property should be attached to GameModificationInfo object's ID instead of the current integer index.
 
     /// <summary>
     /// Gets the current game modification info entity for this view.
