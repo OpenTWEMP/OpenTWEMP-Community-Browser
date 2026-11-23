@@ -109,7 +109,7 @@ I combine these tags as follows:
 
 Перепроектировать автономное расширение M2TW-Addons-Setup-Framework в универсально применимый конфигуратор наиболее часто используемых игровых настроек модификаций M2TW.
 
-Подробнее: [.roadmap\TODO-SubmodSwitcherExtension.md](.roadmap\TODO-SubmodSwitcherExtension.md)
+Подробнее: [roadmap\TODO-SubmodSwitcherExtension.md](.roadmap/TODO-SubmodSwitcherExtension.md)
 
 #### :dart: `[MAYBE:HARD]` Разработка экспериментального менеджера плагинов для расширения функциональности программы
 
@@ -124,6 +124,8 @@ I combine these tags as follows:
 - [ ] Выбрать несколько популярных инструментов TWE-MDK для адаптации в качестве плагинов.
 - [ ] Провести эксперимент по адаптации избранных инструментов TWE-MDK в локальный репозиторий.
 - [ ] Попробовать запустить адаптированные инструменты из-под браузера для некоторого мода.
+
+Подробнее: [roadmap\TODO-TwempSoftwareManager.md](.roadmap/TODO-TwempSoftwareManager.md)
 
 ### :star: `[BETA2027_SCOPE4]` Усовершенствовать поддержку программой существующих модификаций M2TW
 
