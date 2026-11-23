@@ -10,11 +10,9 @@
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
 
-using System.Text;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Views;
 using TWEMP.Browser.Core.CommonLibrary.Serialization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 /// <summary>
 /// Represents a device to manage custom game setup installations into the application.
@@ -203,7 +201,7 @@ public class CustomGameSetupManager
         var cfgNode = new GameSetupConfFileBuilder.CustomConfigNode(name, executable, modcenters);
         string cfgMarkup = GameSetupConfFileBuilder.GetSingleGameSetupInfoConfigMarkup(cfgNode);
 
-        using (var sw = new StreamWriter(this.gameSetupConfigFilePath, true, Encoding.UTF8))
+        using (var sw = new StreamWriter(this.gameSetupConfigFilePath, true, System.Text.Encoding.UTF8))
         {
             sw.WriteLine(cfgMarkup);
         }
@@ -224,7 +222,7 @@ public class CustomGameSetupManager
     private void CreateSetupConfigFile()
     {
         string metadataCfgNodeMarkup = GameSetupConfFileBuilder.GetConfigMetadataMarkupElement();
-        File.WriteAllText(this.gameSetupConfigFilePath, metadataCfgNodeMarkup, Encoding.UTF8);
+        File.WriteAllText(this.gameSetupConfigFilePath, metadataCfgNodeMarkup, System.Text.Encoding.UTF8);
     }
 
     [Obsolete(ObsoleteMethodMessage)]
@@ -232,7 +230,7 @@ public class CustomGameSetupManager
     {
         int totalGameSetupCount = 0;
 
-        string[] cfgStrArr = File.ReadAllLines(this.gameSetupConfigFilePath, Encoding.UTF8);
+        string[] cfgStrArr = File.ReadAllLines(this.gameSetupConfigFilePath, System.Text.Encoding.UTF8);
 
         foreach (string cfgStr in cfgStrArr)
         {
@@ -258,7 +256,7 @@ public class CustomGameSetupManager
         string modcenterCfgMarkupElementEndTag = GameSetupConfFileBuilder.GetConfigMarkupClosingTag(
             GameSetupConfFileBuilder.ModCenterMarkupChildElement);
 
-        string[] configStrings = File.ReadAllLines(this.gameSetupConfigFilePath, Encoding.UTF8);
+        string[] configStrings = File.ReadAllLines(this.gameSetupConfigFilePath, System.Text.Encoding.UTF8);
 
         return RetrieveAllGameSetupInfoObjectsFromCfgMarkup(configStrings);
 
@@ -378,7 +376,7 @@ public class CustomGameSetupManager
     [Obsolete(ObsoleteMethodMessage)]
     private void DeleteGameSetupFromConfFile(GameSetupInfo gameSetupInfo)
     {
-        string[] initialCfgStrArr = File.ReadAllLines(this.gameSetupConfigFilePath, Encoding.UTF8);
+        string[] initialCfgStrArr = File.ReadAllLines(this.gameSetupConfigFilePath, System.Text.Encoding.UTF8);
 
         int gameSetupCfgNodeStartIndex = FindGameSetupCfgNodeStartIndex(initialCfgStrArr, gameSetupInfo.Name);
         int gameSetupCfgNodeEndIndex = FindGameSetupCfgNodeEndIndex(initialCfgStrArr, gameSetupCfgNodeStartIndex);
@@ -386,7 +384,7 @@ public class CustomGameSetupManager
         string[] updatedCfgStrArr = ExcludeGameSetupCfgNodeFromConfigStrings(
             initialCfgStrArr, gameSetupCfgNodeStartIndex, gameSetupCfgNodeEndIndex);
 
-        File.WriteAllLines(this.gameSetupConfigFilePath, updatedCfgStrArr, Encoding.UTF8);
+        File.WriteAllLines(this.gameSetupConfigFilePath, updatedCfgStrArr, System.Text.Encoding.UTF8);
 
         static int FindGameSetupCfgNodeStartIndex(string[] srcCfgStrArr, string destGameSetupName)
         {

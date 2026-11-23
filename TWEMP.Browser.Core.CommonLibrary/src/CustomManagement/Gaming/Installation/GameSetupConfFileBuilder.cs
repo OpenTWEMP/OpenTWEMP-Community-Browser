@@ -2,13 +2,9 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-#pragma warning disable SA1101 // Prefix local calls with this
 #pragma warning disable SA1600 // ElementsMustBeDocumented
 
 namespace TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming.Installation;
-
-using System.Text;
-using TWEMP.Browser.Core.CommonLibrary.CustomManagement.Gaming;
 
 public class GameSetupConfFileBuilder
 {
@@ -35,7 +31,7 @@ public class GameSetupConfFileBuilder
     private GameSetupConfFileBuilder(string configDirectoryPath)
     {
         string configFileName = ConfigFileBaseName + ConfigFileExtension;
-        ConfigFilePath = Path.Combine(configDirectoryPath, configFileName);
+        this.ConfigFilePath = Path.Combine(configDirectoryPath, configFileName);
     }
 
     public string ConfigFilePath { get; }
@@ -44,9 +40,9 @@ public class GameSetupConfFileBuilder
     {
         public CustomConfigNode(string name, string executable, string[] modcenters)
         {
-            Name = name;
-            Executable = executable;
-            ModCenters = modcenters;
+            this.Name = name;
+            this.Executable = executable;
+            this.ModCenters = modcenters;
         }
 
         public string Name { get; }
